@@ -23,7 +23,8 @@ const NAV_ITEMS = [
   {
     name: "Our Services",
     children: [
-      { name: "Trekking", link: "/services/trekking" },
+      { name: "Free Walking Tour Kathmandu", link: "/services/Free-Walking-Tour" },
+       { name: "Trekking", link: "/services/trekking" },
       { name: "Day Hiking", link: "/services/day-hiking" },
       { name: "Day Sightseeing", link: "/services/day-sightseeing" },
       { name: "Package Sightseeing Tours", link: "/services/package-sightseeing-tours" },

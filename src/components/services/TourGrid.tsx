@@ -95,7 +95,7 @@ export default function ToursGrid({ tours, onTourSelect, className = "" }: Tours
             className="flex-1 border-[#3C6AA6] text-[#3C6AA6] hover:bg-[#BFDFFF] hover:text-[#1F4880] transform transition-transform duration-300 hover:scale-105 text-xs sm:text-sm py-2"
             onClick={() => handleLearnMore(tour)}
           >
-            Learn About This Tour
+            Learn More
           </Button>
           <Button
             className="flex-1 bg-[#3C6AA6] text-[#EAF2FF] hover:bg-[#1F4880] transform transition-transform duration-300 hover:scale-105 text-xs sm:text-sm py-2"
