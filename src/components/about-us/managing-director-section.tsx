@@ -35,7 +35,7 @@ function normalizeAchievements(
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  visible: { opacity: 1, transition: { staggerChildren: 0.08 } }
 }
 
 const itemVariants: Variants = {
@@ -106,6 +106,7 @@ export default function ManagingDirectorSection({
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
               className="object-cover transition-all duration-700 ease-out group-hover:scale-105"
+              priority // <-- preload the image instantly
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#375D87]/10 via-transparent to-transparent" />
             <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -160,7 +161,15 @@ export default function ManagingDirectorSection({
               </div>
               <ul className="grid list-outside grid-cols-1 gap-2 pl-0 sm:grid-cols-2">
                 {items.map((item, idx) => (
-                  <motion.li key={idx} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }} viewport={{ once: true }} whileHover={{ scale: 1.02 }} className="flex items-start gap-2 rounded-md bg-[#D8E6F3]/40 px-3 py-2 text-sm text-[#375D87] ring-1 ring-[#6CA0DC]">
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-start gap-2 rounded-md bg-[#D8E6F3]/40 px-3 py-2 text-sm text-[#375D87] ring-1 ring-[#6CA0DC]"
+                  >
                     <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-sm bg-[#6CA0DC] text-white">
                       <svg viewBox="0 0 20 20" fill="currentColor" className="h-3 w-3">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.071 7.071a1 1 0 01-1.415 0L3.293 9.85a1 1 0 011.414-1.414l3.1 3.1 6.364-6.364a1 1 0 011.536.121z" clipRule="evenodd"/>

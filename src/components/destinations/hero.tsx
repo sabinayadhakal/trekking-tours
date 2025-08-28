@@ -17,7 +17,7 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <div className="w-full">
       <div
-        className="relative w-full h-[55vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center bg-center bg-cover"
+        className="relative w-full h-[55vh] sm:h-[70vh] md:h-[60vh] flex items-center justify-center bg-center bg-cover"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         {/* Overlay: same as FullScreenBackgroundHero */}
