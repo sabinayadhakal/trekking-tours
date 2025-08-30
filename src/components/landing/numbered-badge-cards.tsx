@@ -83,7 +83,7 @@ const NumberedBadgeCards = () => {
         {/* Header */}
         <div className="flex flex-col items-center pb-6 text-center">
           <Badge variant="outline" className="bg-[#B8E0FF]/30 px-3 py-1 border-[#A6D4FF] shadow-md mb-3">
-            <Mountain className="mr-2 h-4 w-4 text-[#3C6AA6]" />
+            
             <p className="text-sm font-medium text-[#3C6AA6]">Our Adventures</p>
           </Badge>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#2E4F7C] max-w-3xl">

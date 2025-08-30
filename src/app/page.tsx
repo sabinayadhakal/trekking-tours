@@ -9,30 +9,12 @@ import { ComplexBentoGrid } from "@/components/landing/complex-bento-grid";
 export default function Home() {
   return (
     <main>
-      {/* Hero */}
       <FullScreenBackgroundHero />
-
-      {/* Services / Quick Value */}
       <NumberedBadgeCards />
-
-      {/* ComplexBentoGrid - Desktop only */}
-      <div className="hidden md:block">
-        <ComplexBentoGrid />
-      </div>
-
-
-      {/* Social proof - Testimonials */}
+      <div className="hidden md:block"><ComplexBentoGrid /></div>
       <MasonryTestimonialGrid />
-
-
-      {/* Stats / Numbers */}
       <YearSelectorStats />
-
-      {/* TabControlledGallery - Desktop only */}
-      <div className="hidden md:block">
-        <TabControlledGallery />
-      </div>
-
+      <div className="hidden md:block"><TabControlledGallery /></div>
       <ToggleTabsPricing />
     </main>
   );

@@ -40,7 +40,7 @@ const ComplexBentoGrid = () => {
             Turning travel into lasting memories since 2015.
           </h2>
           <p className="text-base text-[#3d6678] md:text-lg">
-            With over 9 years of expertise in Nepal, Bhutan, and Tibet, we bring
+            With years of expertise in Nepal, Bhutan, and Tibet, we bring
             together certified guides, safety certifications, and deep local
             knowledge to create unforgettable mountain experiences.
           </p>
