@@ -52,6 +52,7 @@ export default function ReviewForm() {
     5: "Excellent",
   };
 
+  // Load draft from localStorage
   useEffect(() => {
     const savedDraft = localStorage.getItem("reviewForm-draft");
     if (savedDraft) {
@@ -175,20 +176,39 @@ export default function ReviewForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async () => {
-    if (!validateForm()) return toast.error("Please complete all required fields");
-    setIsSubmitting(true);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      localStorage.removeItem("reviewForm-draft");
-      toast.success("Review submitted successfully!");
-      setShowSuccess(true);
-    } catch {
-      toast.error("Failed to submit review. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+// Inside handleSubmit
+const handleSubmit = async () => {
+  if (!validateForm()) return toast.error("Please complete all required fields");
+  setIsSubmitting(true);
+
+  try {
+    const response = await fetch("/api/submit-review", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("API response error:", errorText);
+      throw new Error("Failed to submit review. Please try again.");
     }
-  };
+
+    localStorage.removeItem("reviewForm-draft");
+    toast.success("Review submitted successfully! It will be published after approval.");
+    setShowSuccess(true);
+  } catch (error: any) {
+    console.error("Submission error:", error);
+    toast.error(error.message || "Failed to submit review. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+
+  // --- End handleSubmit ---
 
   if (showSuccess) {
     return (
@@ -203,13 +223,14 @@ export default function ReviewForm() {
             Thank you for your review!
           </h2>
           <p className="text-[#5A91D1] mb-6">
-            Your feedback is valuable for us.
+            Your feedback is valuable for us. It will be published after approval.
           </p>
         </div>
       </div>
     );
   }
 
+  // --- Render form (unchanged from your code) ---
   return (
     <div className="pt-[250px] sm:pt-[150px]">
       <div className="w-full max-w-4xl mx-auto bg-[#EAF2FF] rounded-lg shadow-lg border border-[#BFDFFF]">

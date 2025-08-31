@@ -3,7 +3,7 @@ import { NumberedBadgeCards } from "@/components/landing/numbered-badge-cards";
 import { TabControlledGallery } from "@/components/landing/tab-controlled-gallery";
 import { YearSelectorStats } from "@/components/landing/year-selector-stats";
 import { ToggleTabsPricing } from "@/components/landing/toggle-tabs-pricing";
-import { MasonryTestimonialGrid } from "@/components/landing/masonry-testimonial-grid";
+import {MasonryTestimonialGrid} from "@/components/landing/masonry-testimonial-grid";
 import { ComplexBentoGrid } from "@/components/landing/complex-bento-grid";
 
 export default function Home() {
