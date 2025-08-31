@@ -3,7 +3,7 @@
 import { useState } from "react"
 import BlogContent, { BlogPost } from "@/components/blog/BlogContent"
 import BlogForm from "@/components/blog/BlogForm"
-import NewsletterForm from "@/components/blog/NewsletterForm"
+
 import BlogHero from "@/components/blog/blogHero"  // ✅ Correct import (note case sensitivity!)
 
 export default function BlogPage() {
@@ -72,7 +72,6 @@ export default function BlogPage() {
           <BlogForm addPost={addPost} />
         </div>
 
-        <NewsletterForm />
       </div>
     </>
   )

@@ -9,8 +9,7 @@ import { Button } from "@/components/ui/button";
 // ---------------- CONFIG ----------------
 const NAV_LOGO = { url: "/", src: "/images/himkala-logo.png", alt: "Logo" };
 const NAV_ITEMS = [
-    { name: "Home", link: "/" },
-
+  { name: "Home", link: "/" },
   { name: "About Us", link: "/about-us" },
   {
     name: "Destinations",
@@ -24,7 +23,7 @@ const NAV_ITEMS = [
     name: "Our Services",
     children: [
       { name: "Free Walking Tour Kathmandu", link: "/services/Free-Walking-Tour" },
-       { name: "Trekking", link: "/services/trekking" },
+      { name: "Trekking", link: "/services/trekking" },
       { name: "Day Hiking", link: "/services/day-hiking" },
       { name: "Day Sightseeing", link: "/services/day-sightseeing" },
       { name: "Package Sightseeing Tours", link: "/services/package-sightseeing-tours" },
@@ -89,7 +88,7 @@ const MobileNav = ({
             <motion.img
               src={NAV_LOGO.src}
               alt={NAV_LOGO.alt}
-              className="object-contain h-14"
+              className="object-contain h-14 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
               whileHover={{ scale: 1.05 }}
             />
           </Link>
@@ -218,133 +217,133 @@ const AnimatedIndicatorNavbar = () => {
             <motion.img
               src={NAV_LOGO.src}
               alt={NAV_LOGO.alt}
-              className="w-auto cursor-pointer"
+              className="w-auto cursor-pointer drop-shadow-[0_0_20px_rgba(255,255,255,0.6)] rounded-lg"
               style={{ height: "200px" }}
               whileHover={{ scale: 1.05 }}
             />
           </Link>
           <motion.div className="text-white font-mono text-shadow-2xs overflow-hidden whitespace-nowrap">
             {"with each trip comes a new optimism...".split("").map((char, index) => (
-<motion.span
-key={index}
-initial={{ opacity: 0, y: -5 }}
-animate={{ opacity: 1, y: 0 }}
-transition={{
-delay: index * 0.05,
-repeat: Infinity,
-repeatType: "loop",
-repeatDelay: 2,
-}}
->
-{char}
-</motion.span>
-))}
-</motion.div>
-</div>
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: index * 0.05,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  repeatDelay: 2,
+                }}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </motion.div>
+        </div>
 
-    {/* Nav Menu */}
-    <nav className="flex gap-12 items-center relative">
-      {NAV_ITEMS.map((item) =>
-        "children" in item && item.children ? (
-          <div
-            key={item.name}
-            className="relative"
-            onMouseEnter={() => setActiveItem(item.name)}
-            onMouseLeave={() => setActiveItem("")}
-          >
-            <motion.span
-              className={`cursor-pointer font-semibold text-xl ${
-                activeItem === item.name ? "text-yellow-400" : "text-white"
-              }`}
-              whileHover={{ scale: 1.05, color: "#FBBF24" }}
-            >
-              {item.name}
-            </motion.span>
-
-            <AnimatePresence>
-              {activeItem === item.name && (
-                <motion.ul
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute left-0 mt-2 w-64 bg-[#1F2937] shadow-lg rounded-md z-50"
+        {/* Nav Menu */}
+        <nav className="flex gap-12 items-center relative">
+          {NAV_ITEMS.map((item) =>
+            "children" in item && item.children ? (
+              <div
+                key={item.name}
+                className="relative"
+                onMouseEnter={() => setActiveItem(item.name)}
+                onMouseLeave={() => setActiveItem("")}
+              >
+                <motion.span
+                  className={`cursor-pointer font-semibold text-xl ${
+                    activeItem === item.name ? "text-yellow-400" : "text-white"
+                  }`}
+                  whileHover={{ scale: 1.05, color: "#FBBF24" }}
                 >
-                  {item.children.map((child, index) => (
-                    <motion.li
-                      key={child.name}
-                      className="px-4 py-3 hover:bg-gray-700 rounded-md"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.05 * index }}
-                      whileHover={{ scale: 1.03 }}
+                  {item.name}
+                </motion.span>
+
+                <AnimatePresence>
+                  {activeItem === item.name && (
+                    <motion.ul
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute left-0 mt-2 w-64 bg-[#1F2937] shadow-lg rounded-md z-50"
                     >
-                      <Link
-                        href={child.link}
-                        className="text-white font-medium text-lg block"
-                      >
-                        {child.name}
-                      </Link>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              )}
-            </AnimatePresence>
-          </div>
-        ) : (
-          <motion.div
-            key={item.name}
-            whileHover={{ scale: 1.05, color: "#FBBF24" }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <Link
-              href={item.link || "#"}
-              className={`font-semibold text-xl ${
-                activeItem === item.name ? "text-yellow-400" : "text-white"
-              }`}
-            >
-              {item.name}
+                      {item.children.map((child, index) => (
+                        <motion.li
+                          key={child.name}
+                          className="px-4 py-3 hover:bg-gray-700 rounded-md"
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.05 * index }}
+                          whileHover={{ scale: 1.03 }}
+                        >
+                          <Link
+                            href={child.link}
+                            className="text-white font-medium text-lg block"
+                          >
+                            {child.name}
+                          </Link>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <motion.div
+                key={item.name}
+                whileHover={{ scale: 1.05, color: "#FBBF24" }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Link
+                  href={item.link || "#"}
+                  className={`font-semibold text-xl ${
+                    activeItem === item.name ? "text-yellow-400" : "text-white"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
+            )
+          )}
+
+          {/* CTA Button */}
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link href="/contact">
+              <Button className="bg-orange-500 text-white font-bold text-lg px-6 py-4 rounded-lg shadow-lg hover:bg-orange-600 transition-all duration-300">
+                Contact Us & Book Now
+              </Button>
             </Link>
           </motion.div>
-        )
-      )}
+        </nav>
+      </div>
 
-      {/* CTA Button */}
-      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-        <Link href="/contact">
-          <Button className="bg-orange-500 text-white font-bold text-lg px-6 py-4 rounded-lg shadow-lg hover:bg-orange-600 transition-all duration-300">
-            Contact Us & Book Now
-          </Button>
-        </Link>
-      </motion.div>
-    </nav>
-  </div>
+      {/* Mobile Nav */}
+      <div className="lg:hidden">
+        <MobileNav activeItem={activeItem} setActiveItem={setActiveItem} />
+      </div>
 
-  {/* Mobile Nav */}
-  <div className="lg:hidden">
-    <MobileNav activeItem={activeItem} setActiveItem={setActiveItem} />
-  </div>
-
-  {/* Floating animations */}
-  <style jsx>{`
-    @keyframes floatSlow {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      50% { transform: translateY(-30px) translateX(20px); }
-    }
-    @keyframes floatMedium {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      50% { transform: translateY(-20px) translateX(-15px); }
-    }
-    @keyframes floatFast {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      50% { transform: translateY(-15px) translateX(10px); }
-    }
-    .animate-floatSlow { animation: floatSlow 8s ease-in-out infinite; }
-    .animate-floatMedium { animation: floatMedium 6s ease-in-out infinite; }
-    .animate-floatFast { animation: floatFast 4s ease-in-out infinite; }
-  `}</style>
-</header>
-);
+      {/* Floating animations */}
+      <style jsx>{`
+        @keyframes floatSlow {
+          0%, 100% { transform: translateY(0) translateX(0); }
+          50% { transform: translateY(-30px) translateX(20px); }
+        }
+        @keyframes floatMedium {
+          0%, 100% { transform: translateY(0) translateX(0); }
+          50% { transform: translateY(-20px) translateX(-15px); }
+        }
+        @keyframes floatFast {
+          0%, 100% { transform: translateY(0) translateX(0); }
+          50% { transform: translateY(-15px) translateX(10px); }
+        }
+        .animate-floatSlow { animation: floatSlow 8s ease-in-out infinite; }
+        .animate-floatMedium { animation: floatMedium 6s ease-in-out infinite; }
+        .animate-floatFast { animation: floatFast 4s ease-in-out infinite; }
+      `}</style>
+    </header>
+  );
 };
 
 export { AnimatedIndicatorNavbar };

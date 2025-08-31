@@ -27,8 +27,6 @@ const socialLinks = [
 
 export const NewsletterFooter = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -43,15 +41,6 @@ export const NewsletterFooter = () => {
       if (containerRef.current) observer.unobserve(containerRef.current);
     };
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail("");
-      setTimeout(() => setSubscribed(false), 3000);
-    }
-  };
 
   return (
    <footer
@@ -91,24 +80,6 @@ export const NewsletterFooter = () => {
           <p className={`text-sm sm:text-lg text-white/90 max-w-full sm:max-w-md leading-relaxed transition-all duration-700 delay-200 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
             Get your free consultation and custom itinerary planning with us.
           </p>
-
-          {/* Newsletter */}
-          <form onSubmit={handleSubmit} className={`flex flex-col sm:flex-row items-center gap-2 mt-4 transition-all duration-700 delay-400 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
-            <div className="relative w-full sm:w-auto flex-1">
-              <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email address"
-                required
-                className="h-10 sm:h-12 w-full pl-10 pr-4 rounded bg-white text-black focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all duration-300"
-              />
-            </div>
-            <Button type="submit" className="bg-cyan-600 hover:bg-cyan-700 text-white h-10 sm:h-12 px-4 sm:px-6 rounded-full transition-all duration-300">
-              {subscribed ? "Subscribed!" : "Subscribe"}
-            </Button>
-          </form>
 
   {/* Affiliations */}
   <div className="flex flex-wrap gap-2 sm:gap-3 justify-center md:justify-start">
@@ -202,7 +173,7 @@ export const NewsletterFooter = () => {
       `}</style>
 
       {/* Credits */}
-      <div className="relative z-10 mb-2 flex justify-end px-4 text-white text-sm">
+      <div className="relative z-10 mb-2 flex justify-center px-4 text-white text-sm">
         Website made by{' '}
         <a href="https://www.linkedin.com/in/sabinaya-dhakal-a3a433321/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline ml-1">
           Sabinaya Dhakal
