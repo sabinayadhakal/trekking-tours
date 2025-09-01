@@ -33,7 +33,7 @@ const NAV_ITEMS = [
       { name: "Peak Climbing", link: "/services/peak-climbing" },
     ],
   },
-  { name: "Blogs", link: "/blog" },
+  { name: "Stories", link: "/blog" },
 ];
 
 // ---------------- ANIMATED HAMBURGER ----------------

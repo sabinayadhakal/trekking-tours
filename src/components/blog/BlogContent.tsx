@@ -119,7 +119,10 @@ export default function BlogContent() {
 
         console.log("Fetching blogs from:", `${apiUrl}/api/blogs?filters[approval][$eq]=true&populate=*`);
         
-        const res = await fetch(`${apiUrl}/api/blogs?filters[approval][$eq]=true&populate=*`);
+       const res = await fetch(
+  `${apiUrl}/api/blogs?filters[approval][$eq]=true&populate=*&sort=id:desc`
+);
+
         
         if (!res.ok) {
           throw new Error(`Failed to fetch blogs: ${res.status} ${res.statusText}`);

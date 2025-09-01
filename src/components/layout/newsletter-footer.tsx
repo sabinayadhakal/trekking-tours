@@ -109,7 +109,7 @@ export const NewsletterFooter = () => {
               <a href="/services/trekking" className="hover:text-cyan-300 text-sm sm:text-base">Treks</a>
               <a href="/contact" className="hover:text-cyan-300 text-sm sm:text-base">Contact</a>
               <a href="/about-us" className="hover:text-cyan-300 text-sm sm:text-base">About Us</a>
-              <a href="/blog" className="hover:text-cyan-300 text-sm sm:text-base">Blogs</a>
+              <a href="/blog" className="hover:text-cyan-300 text-sm sm:text-base">Stories</a>
             </div>
             <div className="flex flex-col gap-2">
               <h3 className="text-lg sm:text-xl text-cyan-300">Contact</h3>

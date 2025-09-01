@@ -70,10 +70,10 @@ const MasonryTestimonialGrid = () => {
         }
 
         const endpoints = [
-          `${apiUrl}/api/reviews?filters[approval][$eq]=true&populate=*`,
-          `${apiUrl}/api/reviews?approval=true&populate=*`,
-          `${apiUrl}/api/reviews?populate=*`
-        ];
+  `${apiUrl}/api/reviews?filters[approval][$eq]=true&populate=*&sort=id:desc`,
+  `${apiUrl}/api/reviews?approval=true&populate=*&sort=id:desc`,
+  `${apiUrl}/api/reviews?populate=*&sort=id:desc`
+];
 
         let responseData: StrapiResponse | null = null;
 
