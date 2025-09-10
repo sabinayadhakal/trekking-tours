@@ -1,146 +1,162 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Hero from "@/components/destinations/hero"
-import Notifications, { notify } from "@/components/destinations/notifications"
+import Notifications from "@/components/destinations/notifications"
 import ThemeProvider from "@/components/destinations/themeProvider"
 import ToursGrid from "@/components/destinations/tourGrid"
 import TourDetailModal from "@/components/destinations/tourdetail"
 import { Tour } from "@/types/tour"
 
-// Sample Tibet trips
-const tibetTrips: Tour[] = [
-  {
-    id: "5",
-    title: "Tibet Lhasa Tour",
-    location: "Tibet, China",
-    duration: "5 nights / 6 days",
-    rating: 4.8,
-    reviewCount: 95,
-    price: 1800,
-    excerpt: "Explore the spiritual heart of Tibet with a 6-day Lhasa tour, visiting Potala Palace, Jokhang Temple, and Barkhor Street.",
-    description: "This 6-day tour focuses on Lhasa, the cultural and spiritual center of Tibet. Discover ancient temples, monasteries, and local markets while immersing yourself in Tibetan culture and Buddhist traditions.",
-    image: "/images/lhasa-1.jpg",
-    images: ["/images/potala-palace.jpg", "/images/jokhang-temple.jpg", "/images/barkhor-street.jpg"],
-    tags: ["Tibet", "Lhasa", "Culture", "Heritage", "Spiritual"],
-    highlights: [
-      "Visit Potala Palace, Jokhang Temple, and Sera Monastery",
-      "Walk around Barkhor Street and explore local markets",
-      "Experience Tibetan Buddhism and culture",
-      "Enjoy scenic city views and local cuisine",
-      "Interact with local monks and artisans"
-    ],
-    includes: ["Accommodation", "Breakfast & Dinner", "Guided tour", "Transport within Tibet", "Entrance fees"],
-    excludes: ["International flights", "Lunch & personal expenses", "Tibet travel permit fees"],
-    entryRequirements: ["Chinese visa required", "Tibet Travel Permit arranged via tour operator"],
-    requirements: ["Valid passport with at least 6 months validity, Tibet permit via authorized operator"],
-    included: ["Accommodation", "Breakfast & Dinner", "Guided tour", "Transport within Tibet", "Entrance fees"],
-    excluded: ["International flights", "Lunch & personal expenses", "Tibet travel permit fees"],
-    itinerary: [
-      { day: 1, title: "Arrival in Lhasa", description: "Arrive in Lhasa, transfer to hotel, evening leisure." },
-      { day: 2, title: "Potala Palace & Jokhang Temple", description: "Visit Potala Palace, Jokhang Temple, and Barkhor Street." },
-      { day: 3, title: "Sera & Drepung Monasteries", description: "Explore Sera and Drepung Monasteries, witness monk debates." },
-      { day: 4, title: "Norbulingka & Tibetan Museum", description: "Visit Norbulingka Palace, Tibetan Museum, and local markets." },
-      { day: 5, title: "Leisure & Culture", description: "Free day for shopping, cultural activities, or city exploration." },
-      { day: 6, title: "Departure", description: "Transfer to airport or next destination." }
-    ],
-    maxGroupSize: 12,
-    cancellationPolicy: "Full refund if canceled 15 days before start date",
-    difficulty: "Easy",
-    maxAltitude: "3,650 m",
-    isPopular: true,
-    isSoldOut: false
-  },
-  {
-    id: "6",
-    title: "Tibet Overland Tour",
-    location: "Tibet, China",
-    duration: "10 nights / 11 days",
-    rating: 5.0,
-    reviewCount: 110,
-    price: 3800,
-    excerpt: "A comprehensive overland journey through Tibet visiting Lhasa, Shigatse, Everest Base Camp, and Yamdrok Lake.",
-    description: "Experience Tibet’s majestic landscapes and spiritual landmarks on this 11-day overland tour. Travel across the Tibetan Plateau, see Everest Base Camp, stunning lakes, and monasteries, while learning about Tibetan culture and traditions.",
-    image: "/images/tibet-overland.jpg",
-    images: ["/images/everest-base.jpg", "/images/shigatse.jpg", "/images/yamdrok-lake.jpg"],
-    tags: ["Tibet", "Lhasa", "Everest", "Adventure", "Culture"],
-    highlights: [
-      "Visit Lhasa’s Potala Palace and Jokhang Temple",
-      "Explore Shigatse and Tashilhunpo Monastery",
-      "Experience the grandeur of Everest Base Camp",
-      "See Yamdrok and Namtso Lakes",
-      "Immerse in Tibetan culture and high-altitude landscapes"
-    ],
-    includes: ["Accommodation", "Breakfast & Dinner", "Guided tour", "Transport within Tibet", "Entrance fees"],
-    excludes: ["International flights", "Lunch & personal expenses", "Tibet travel permit fees"],
-    entryRequirements: ["Chinese visa required", "Tibet Travel Permit arranged via tour operator"],
-    requirements: ["Valid passport with at least 6 months validity, Tibet permit via authorized operator, moderate fitness for high-altitude travel"],
-    included: ["Accommodation", "Breakfast & Dinner", "Guided tour", "Transport within Tibet", "Entrance fees"],
-    excluded: ["International flights", "Lunch & personal expenses", "Tibet travel permit fees"],
-    itinerary: [
-      { day: 1, title: "Arrival in Lhasa", description: "Arrive in Lhasa, transfer to hotel, evening leisure." },
-      { day: 2, title: "Lhasa Sightseeing", description: "Visit Potala Palace, Jokhang Temple, Barkhor Street." },
-      { day: 3, title: "Sera & Drepung Monasteries", description: "Explore local monasteries and experience monk debates." },
-      { day: 4, title: "Drive to Shigatse", description: "Travel to Shigatse, visit Tashilhunpo Monastery." },
-      { day: 5, title: "Yamdrok Lake", description: "Drive via Yamdrok Lake, scenic stops, photography opportunities." },
-      { day: 6, title: "Gyantse & Pelkor Chode Monastery", description: "Visit Gyantse town and Pelkor Chode Monastery." },
-      { day: 7, title: "Everest Base Camp", description: "Drive to Everest Base Camp, see glaciers, panoramic Himalayan views." },
-      { day: 8, title: "Explore Rongbuk & Local Villages", description: "Visit Rongbuk Monastery, interact with local communities." },
-      { day: 9, title: "Return to Shigatse", description: "Drive back to Shigatse, leisure evening." },
-      { day: 10, title: "Return to Lhasa", description: "Drive back to Lhasa, free time for shopping and culture." },
-      { day: 11, title: "Departure", description: "Transfer to Lhasa airport or next destination." }
-    ],
-    maxGroupSize: 12,
-    cancellationPolicy: "Full refund if canceled 20 days before start date",
-    difficulty: "Moderate",
-    maxAltitude: "3,650 m – 5,200 m",
-    isPopular: true,
-    isSoldOut: false
-  },
-  {
-    id: "7",
-    title: "Tibet Short Tour",
-    location: "Lhasa, Tibet",
-    duration: "3 nights / 4 days",
-    rating: 4.7,
-    reviewCount: 70,
-    price: 1200,
-    excerpt: "A short 4-day tour to explore Lhasa’s spiritual and cultural highlights.",
-    description: "Ideal for travelers with limited time, this 4-day tour focuses on the must-see attractions in Lhasa, including Potala Palace, Jokhang Temple, and Barkhor Street, offering a compact but immersive Tibetan experience.",
-    image: "/images/tibet-short.jpg",
-    images: ["/images/potala-palace.jpg", "/images/jokhang-temple.jpg", "/images/barkhor-street.jpg"],
-    tags: ["Tibet", "Lhasa", "Culture", "Heritage", "Short Tour"],
-    highlights: [
-      "Visit Lhasa’s iconic Potala Palace and Jokhang Temple",
-      "Explore Barkhor Street and local markets",
-      "Learn about Tibetan culture and Buddhist traditions",
-      "Compact and immersive experience for short-time travelers"
-    ],
-    includes: ["Accommodation", "Breakfast & Dinner", "Guided tour", "Transport within Lhasa", "Entrance fees"],
-    excludes: ["International flights", "Lunch & personal expenses", "Tibet travel permit fees"],
-    entryRequirements: ["Chinese visa required", "Tibet Travel Permit arranged via tour operator"],
-    requirements: ["Valid passport with at least 6 months validity, Tibet permit via authorized operator"],
-    included: ["Accommodation", "Breakfast & Dinner", "Guided tour", "Transport within Lhasa", "Entrance fees"],
-    excluded: ["International flights", "Lunch & personal expenses", "Tibet travel permit fees"],
-    itinerary: [
-      { day: 1, title: "Arrival in Lhasa", description: "Arrive in Lhasa, transfer to hotel, evening leisure." },
-      { day: 2, title: "Potala Palace & Jokhang Temple", description: "Visit Potala Palace, Jokhang Temple, and Barkhor Street." },
-      { day: 3, title: "Sera Monastery & Cultural Activities", description: "Explore Sera Monastery and optional cultural activities." },
-      { day: 4, title: "Departure", description: "Transfer to Lhasa airport for departure." }
-    ],
-    maxGroupSize: 12,
-    cancellationPolicy: "Full refund if canceled 15 days before start date",
-    difficulty: "Easy",
-    maxAltitude: "3,650 m",
-    isPopular: true,
-    isSoldOut: false
-  }
-];
-
-
 export default function TibetPage() {
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [tours, setTours] = useState<Tour[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchTours = async () => {
+      try {
+        console.log('Fetching tours from:', `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/tibet-destinations?populate=*`)
+        
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/tibet-destinations?populate=*`
+        )
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch tours: ${response.status} ${response.statusText}`)
+        }
+        
+        const data = await response.json()
+        console.log('Full API Response:', data)
+        
+        if (!data || !Array.isArray(data)) {
+          if (data.data && Array.isArray(data.data)) {
+            console.log('Using data.data array')
+            processToursData(data.data)
+          } else {
+            throw new Error('Invalid API response format')
+          }
+        } else {
+          processToursData(data)
+        }
+      } catch (err) {
+        console.error('Error fetching tours:', err)
+        setError(err instanceof Error ? err.message : 'An unknown error occurred')
+        setLoading(false)
+      }
+    }
+
+    const processToursData = (toursData: any[]) => {
+      try {
+        console.log('Processing tours data:', toursData)
+        
+        const formattedTours: Tour[] = toursData.map((item: any) => {
+          console.log('Processing item:', item)
+          
+          const attributes = item.attributes || item
+          const id = item.id?.toString() || Math.random().toString()
+          
+          let imageUrl = "/images/default-tour.jpg"
+          if (attributes.image) {
+            if (typeof attributes.image === 'string') {
+              imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image}`
+            } else if (attributes.image.data) {
+              if (Array.isArray(attributes.image.data)) {
+                imageUrl = attributes.image.data[0]?.attributes?.url 
+                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image.data[0].attributes.url}`
+                  : "/images/default-tour.jpg"
+              } else {
+                imageUrl = attributes.image.data?.attributes?.url 
+                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image.data.attributes.url}`
+                  : "/images/default-tour.jpg"
+              }
+            } else if (attributes.image.url) {
+              imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image.url}`
+            }
+          }
+          
+          let imagesUrls: string[] = []
+          if (attributes.images) {
+            if (Array.isArray(attributes.images)) {
+              imagesUrls = attributes.images.map((img: any) => {
+                if (typeof img === 'string') {
+                  return `${process.env.NEXT_PUBLIC_STRAPI_URL}${img}`
+                } else if (img.url) {
+                  return `${process.env.NEXT_PUBLIC_STRAPI_URL}${img.url}`
+                } else if (img.data) {
+                  return img.data.attributes?.url 
+                    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${img.data.attributes.url}`
+                    : ""
+                }
+                return ""
+              }).filter((url: string) => url !== "")
+            } else if (attributes.images.data && Array.isArray(attributes.images.data)) {
+              imagesUrls = attributes.images.data.map((img: any) => 
+                img.attributes?.url 
+                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${img.attributes.url}`
+                  : ""
+              ).filter((url: string) => url !== "")
+            }
+          }
+          
+          const parseField = (field: any) => {
+            if (typeof field === 'string') {
+              try {
+                return JSON.parse(field)
+              } catch {
+                return []
+              }
+            }
+            return field || []
+          }
+          
+          return {
+            id: id,
+            title: attributes.title || "Untitled Tour",
+            location: attributes.location || "Tibet",
+            duration: attributes.duration || "",
+            rating: typeof attributes.rating === 'number' ? attributes.rating : 0,
+            reviewCount: typeof attributes.reviewCount === 'number' ? attributes.reviewCount : 0,
+            price: typeof attributes.price === 'number' ? attributes.price : 0,
+            originalPrice: typeof attributes.originalPrice === 'number' ? attributes.originalPrice : 0,
+            excerpt: attributes.excerpt || "",
+            description: attributes.description || "",
+            image: imageUrl,
+            images: imagesUrls,
+            tags: parseField(attributes.tags),
+            highlights: parseField(attributes.highlights),
+            includes: parseField(attributes.includes),
+            excludes: parseField(attributes.excludes),
+            included: parseField(attributes.included || attributes.includes),
+            excluded: parseField(attributes.excluded || attributes.excludes),
+            entryRequirements: parseField(attributes.entryRequirements),
+            requirements: parseField(attributes.requirements),
+            itinerary: parseField(attributes.itinerary),
+            maxGroupSize: typeof attributes.maxGroupSize === 'number' ? attributes.maxGroupSize : 0,
+            cancellationPolicy: attributes.cancellationPolicy || "",
+            isPopular: Boolean(attributes.isPopular),
+            isSoldOut: Boolean(attributes.isSoldOut),
+            difficulty: attributes.difficulty || "",
+            maxAltitude: attributes.maxAltitude || "",
+            permits: parseField(attributes.permits),
+            equipment: parseField(attributes.equipment)
+          }
+        })
+        
+        console.log('Formatted tours:', formattedTours)
+        setTours(formattedTours)
+      } catch (err) {
+        console.error('Error processing tours data:', err)
+        setError('Failed to process tour data')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchTours()
+  }, [])
 
   const handleTourSelect = (tour: Tour) => {
     setSelectedTour(tour)
@@ -152,31 +168,67 @@ export default function TibetPage() {
     setSelectedTour(null)
   }
 
-  const handleBookNow = (tour: Tour) => {
-    notify.info(`Redirecting to booking for ${tour.title}`)
-    setSelectedTour(tour)
-    setIsModalOpen(true)
+  if (loading) {
+    return (
+      <ThemeProvider>
+        <div className="container mx-auto px-4 py-12 text-center">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-200 rounded w-1/4 mx-auto mb-6"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3].map((item) => (
+                <div key={item} className="bg-gray-200 rounded-lg h-80"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </ThemeProvider>
+    )
+  }
+
+  if (error) {
+    return (
+      <ThemeProvider>
+        <div className="container mx-auto px-4 py-12 text-center">
+          <p className="text-red-500 text-lg mb-4">Error loading tours</p>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <p className="text-sm text-gray-500 mb-4">
+            Check if your Strapi server is running and the API endpoint is correct.
+          </p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Try Again
+          </button>
+        </div>
+      </ThemeProvider>
+    )
   }
 
   return (
     <ThemeProvider>
       <Notifications showTestToast={true} />
 
-      {/* Hero Section */}
+      {/* Hero section */}
       <Hero
         title="Discover the Mystical Land of Tibet"
-        description="Experience the spiritual heart of Tibet, its highland landscapes, and rich culture."
-        backgroundImage="/images/hero-tibet.jpg"
+        description="Experience ancient monasteries, breathtaking landscapes, and rich Buddhist culture in the Roof of the World."
+        backgroundImage="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
       />
 
       {/* Trips Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="text-3xl font-bold mb-6 text-center">Popular Tibet Trips</h2>
-        <ToursGrid
-          tours={tibetTrips}
-          onTourSelect={handleTourSelect}
-        />
-          
+        <h2 className="text-3xl font-bold mb-6 text-center">Popular Tibet Journeys</h2>
+        {tours.length > 0 ? (
+          <ToursGrid tours={tours} onTourSelect={handleTourSelect} />
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-500">No tours available at the moment.</p>
+            <p className="text-sm text-gray-400 mt-2">
+              Check your Strapi admin panel to add Tibet destinations.
+            </p>
+          </div>
+        )}
       </section>
 
       {/* Trip Detail Modal */}
