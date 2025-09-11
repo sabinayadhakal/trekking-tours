@@ -91,7 +91,6 @@ export const NewsletterFooter = () => {
 
   {/* Copyright */}
   <div className="text-white/70 text-sm mt-2 md:mt-0 text-center text-2sx md:text-right">
-    © 2015 - 2025 All rights reserved. Himkala Adventure.
   </div>
 
 

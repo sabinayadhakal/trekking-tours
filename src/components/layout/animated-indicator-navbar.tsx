@@ -76,24 +76,10 @@ const MobileNav = ({
   setActiveItem: (item: string) => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [hideHeader, setHideHeader] = useState(false);
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) setHideHeader(true);
-      else setHideHeader(false);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div className="block lg:hidden">
-      <motion.div
-        className="flex flex-col bg-[#1F2937] z-50"
-        animate={{ y: hideHeader ? -75 : 0 }}
-        transition={{ type: "tween", duration: 0.35 }}
-      >
+      <div className="flex flex-col bg-[#1F2937] z-50">
         <div className="flex flex-col items-center py-1">
           <Link href={NAV_LOGO.url}>
             <motion.img
@@ -118,7 +104,7 @@ const MobileNav = ({
             <AnimatedHamburger isOpen={isOpen} />
           </button>
         </div>
-      </motion.div>
+      </div>
 
       <AnimatePresence>
         {isOpen && (
@@ -144,7 +130,7 @@ const MobileNav = ({
                       onClick={() =>
                         setActiveItem(activeItem === item.name ? "" : item.name)
                       }
-                      className={`w-full text-left px-4 py-2 rounded-lg flex justify-between items-center transition-colors ${
+                      className={`w-full text-left px-4 py-3 rounded-lg flex justify-between items-center transition-colors ${
                         activeItem === item.name 
                           ? "bg-blue-600 text-white" 
                           : "bg-gray-800 hover:bg-gray-700"
@@ -159,16 +145,16 @@ const MobileNav = ({
                       />
                     </button>
                     {activeItem === item.name && (
-                      <ul className="flex flex-col gap-2 pl-6 mt-2">
+                      <ul className="flex flex-col gap-2 mt-2 pl-0">
                         {item.children.map((child) => (
-                          <li key={child.name} className="list-disc list-inside">
+                          <li key={child.name} className="mb-1 last:mb-0">
                             <Link
                               href={child.link}
                               onClick={() => {
                                 setActiveItem("");
                                 setIsOpen(false);
                               }}
-                              className="hover:text-blue-300 transition-colors block py-2 px-2 rounded hover:bg-blue-800/30"
+                              className="block py-3 px-4 rounded-lg bg-blue-900/40 hover:bg-blue-800/60 text-white transition-colors"
                             >
                               {child.name}
                             </Link>
@@ -185,7 +171,7 @@ const MobileNav = ({
                         setActiveItem(item.name);
                         setIsOpen(false);
                       }}
-                      className="w-full block bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg text-left transition-colors"
+                      className="w-full block bg-gray-800 hover:bg-gray-700 px-4 py-3 rounded-lg text-left transition-colors"
                     >
                       {item.name}
                     </Link>

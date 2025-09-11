@@ -177,17 +177,27 @@ export default function ReviewForm() {
   };
 
 // Inside handleSubmit
+// Inside handleSubmit
 const handleSubmit = async () => {
   if (!validateForm()) return toast.error("Please complete all required fields");
   setIsSubmitting(true);
 
   try {
+    const formDataToSend = new FormData();
+    formDataToSend.append("displayName", formData.displayName);
+    formDataToSend.append("nationality", formData.nationality);
+    formDataToSend.append("tours", formData.tours);
+    formDataToSend.append("feedback", formData.feedback);
+    formDataToSend.append("rating", formData.rating.toString());
+    
+    // Append files
+    fileUploads.forEach((upload, index) => {
+      formDataToSend.append(`file${index}`, upload.file);
+    });
+
     const response = await fetch("/api/submit-review", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(formData)
+      body: formDataToSend
     });
 
     if (!response.ok) {
@@ -316,7 +326,7 @@ const handleSubmit = async () => {
 
           {/* Tours */}
           <div>
-            <label className="text-sm font-medium text-[#3C6AA6]">Experience</label>
+            <label className="text-sm font-medium text-[#3C6AA6]">Tours</label>
             <Input
               value={formData.tours}
               onChange={(e) =>

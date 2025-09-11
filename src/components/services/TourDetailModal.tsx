@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { X, ChevronLeft, ChevronRight, Star, MapPin, Check, X as XIcon, Mountain, Gauge } from "lucide-react"
+import { X, ChevronLeft, ChevronRight, Star, MapPin, Check, X as XIcon, Mountain, Gauge, AlertCircle } from "lucide-react"
+import { toast } from "sonner"
 import { Tour } from "@/types/tour"
 
 interface TourDetailModalProps {
@@ -70,7 +71,7 @@ export default function TourDetailModal({ tour, isOpen, onClose }: TourDetailMod
         </div>
 
         <div className="flex flex-col lg:flex-row max-h-[calc(90vh-88px)] overflow-hidden">
-          {/* Left Column - Image Gallery */}
+          {/* Left Column - Image Gallery (desktop only) */}
           <div className="hidden lg:block lg:w-1/2 p-6">
             <div className="relative overflow-hidden rounded-lg shadow-md">
               <img
@@ -210,6 +211,79 @@ export default function TourDetailModal({ tour, isOpen, onClose }: TourDetailMod
                           </li>
                         ))}
                       </ul>
+                    </div>
+                  )}
+
+                  {tour.requirements && (
+                    <div>
+                      <h3 className="font-semibold mb-2 text-[#3C6AA6]">Requirements</h3>
+                      <ul className="space-y-1">
+                        {tour.requirements.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-2 transform transition-transform duration-300 hover:scale-[1.02]">
+                            <Check className="h-4 w-4 text-[#3C6AA6] mt-0.5" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {tour.permits && (
+                    <div>
+                      <h3 className="font-semibold mb-2 text-[#3C6AA6]">Permits</h3>
+                      <ul className="space-y-1">
+                        {tour.permits.map((permit, idx) => (
+                          <li key={idx} className="flex items-start gap-2 transform transition-transform duration-300 hover:scale-[1.02]">
+                            <Check className="h-4 w-4 text-[#3C6AA6] mt-0.5" />
+                            <span>{permit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {tour.equipment && (
+                    <div>
+                      <h3 className="font-semibold mb-2 text-[#3C6AA6]">Equipment Needed</h3>
+                      <ul className="space-y-1">
+                        {tour.equipment.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-2 transform transition-transform duration-300 hover:scale-[1.02]">
+                            <Check className="h-4 w-4 text-[#3C6AA6] mt-0.5" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {tour.entryRequirements && (
+                    <div>
+                      <h3 className="font-semibold mb-2 text-[#3C6AA6]">Country Entry Requirements</h3>
+                      <ul className="space-y-1">
+                        {tour.entryRequirements.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-2 transform transition-transform duration-300 hover:scale-[1.02]">
+                            <Check className="h-4 w-4 text-[#3C6AA6] mt-0.5" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Cancellation Policy Section */}
+                  {tour.cancellationPolicy && (
+                    <div>
+                      <h3 className="font-semibold mb-2 text-[#3C6AA6]">Cancellation Policy</h3>
+                      <div className="bg-[#BFDFFF]/50 p-3 rounded-md transform transition-transform duration-300 hover:scale-[1.01]">
+                        <div className="flex items-start gap-2">
+                          <AlertCircle className="h-4 w-4 text-[#3C6AA6] mt-0.5 flex-shrink-0" />
+                          <div className="text-sm text-[#3C6AA6]">
+                            {tour.cancellationPolicy.split('\n').map((paragraph, idx) => (
+                              <p key={idx} className={idx > 0 ? 'mt-2' : ''}>{paragraph}</p>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </>

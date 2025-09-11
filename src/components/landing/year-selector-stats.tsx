@@ -75,7 +75,7 @@ const YearSelectorStats = () => {
             className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-4 md:mb-6"
           >
             <span className="block md:hidden text-[#3C6AA6]">
-              9+ Years of Service
+              10+ Years of Service
             </span>
             <motion.span
               className="hidden md:block bg-clip-text text-transparent bg-gradient-to-r from-[#3C6AA6] via-[#468faf] to-[#61a5c2] bg-[length:200%_100%]"
@@ -83,7 +83,7 @@ const YearSelectorStats = () => {
               animate={isInView ? { backgroundPositionX: '0%' } : { backgroundPositionX: '100%' }}
               transition={{ duration: 1.2, ease: 'easeInOut' }}
             >
-              9+ Years of Service
+              10+ Years of Service
             </motion.span>
           </motion.h1>
           

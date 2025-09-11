@@ -15,8 +15,8 @@ interface HeroData {
   Title: string;
   Description: string;
   Tagline: string;
+  Excerpt: string;
   DesktopBackgroundImage: HeroImage[];
-  MobileBackgroundImage: HeroImage;
 }
 
 // Fallback data
@@ -24,12 +24,12 @@ const fallbackData: HeroData = {
   Title: "Explore the wildness",
   Description: "Journey through Nepal's ancient towns and high mountains, experiencing both heritage and nature.",
   Tagline: "SnowArt since 2015",
+  Excerpt: "Adventure awaits in the Himalayas",
   DesktopBackgroundImage: [
     { url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" },
     { url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" },
     { url: "https://images.unsplash.com/photo-1522199710521-72d69614c702?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" }
-  ],
-  MobileBackgroundImage: { url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" }
+  ]
 };
 
 const FullScreenBackgroundHero = () => {
@@ -76,20 +76,13 @@ const FullScreenBackgroundHero = () => {
             Title: attributes.Title || fallbackData.Title,
             Description: attributes.Description || fallbackData.Description,
             Tagline: attributes.Tagline || fallbackData.Tagline,
+            Excerpt: attributes.Excerpt || fallbackData.Excerpt,
             DesktopBackgroundImage: 
               attributes.DesktopBackgroundImage?.map((img: any) => ({
                 url: img.url.startsWith('http') 
                   ? img.url 
                   : `${apiUrl}${img.url}`
               })) || fallbackData.DesktopBackgroundImage,
-            MobileBackgroundImage: 
-              attributes.MobileBackgroundImage
-                ? { 
-                    url: attributes.MobileBackgroundImage.url.startsWith('http')
-                      ? attributes.MobileBackgroundImage.url
-                      : `${apiUrl}${attributes.MobileBackgroundImage.url}`
-                  }
-                : fallbackData.MobileBackgroundImage
           };
 
           console.log("Transformed Data:", transformedData);
@@ -110,7 +103,7 @@ const FullScreenBackgroundHero = () => {
     fetchHeroData();
   }, []);
 
-  // Cycle desktop images every 8s
+  // Cycle images every 8s
   useEffect(() => {
     if (!heroData) return;
     const interval = setInterval(() => {
@@ -125,9 +118,22 @@ const FullScreenBackgroundHero = () => {
     <>
       <section className="relative h-[60vh] md:h-screen w-full overflow-hidden py-12 md:py-20">
 
-        {/* Mobile background */}
+        {/* Mobile slideshow with light blue overlay */}
         <div className="absolute inset-0 z-10 md:hidden">
-          <img src={data.MobileBackgroundImage.url} alt="Nepal landscape" className="h-full w-full object-cover" />
+          {data.DesktopBackgroundImage.map((img, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ${
+                index === currentIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                backgroundImage: `url(${img.url})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            />
+          ))}
+          {/* Light blue overlay for better text visibility */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#1c3c50]/70 via-[#3d6678]/50 to-[#1c3c50]/30" />
         </div>
 
@@ -148,10 +154,11 @@ const FullScreenBackgroundHero = () => {
               )
             ))}
           </AnimatePresence>
+          {/* Desktop overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#1c3c50]/70 via-[#3d6678]/50 to-[#1c3c50]/30" />
         </div>
 
-        {/* Desktop overlay */}
+        {/* Desktop content */}
         <div className="container relative z-20 h-full w-full max-w-[85rem] mx-auto hidden md:flex flex-col justify-center px-4">
           <div className="flex flex-col gap-4 max-w-[61.375rem]">
             <div className="flex items-center gap-3 mb-6">
@@ -180,26 +187,55 @@ const FullScreenBackgroundHero = () => {
             <div className="w-1 h-1 bg-[#d0e6f0] rounded-full" />
           </div>
         </motion.div>
-      </section>
 
-      {/* Mobile overlay */}
-      <div className="absolute inset-0 z-20 md:hidden flex flex-col justify-center items-center text-center px-6">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1c3c50]/70 via-[#3d6678]/50 to-[#1c3c50]/30" />
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="font-display text-[#f0f8ff] text-4xl sm:text-3xl font-bold leading-tight mb-6 z-10"
-        >
-          {data.Title}
-        </motion.h1>
-        <div className="flex flex-row justify-center gap-4 flex-wrap z-10">
-          <Button onClick={() => navigateTo('/destinations/nepal')} className="bg-[#d0e6f0] text-[#1c3c50] hover:bg-[#c0d9e7] font-semibold px-6 py-4 text-sm rounded-full">Explore Tours</Button>
-          <Button onClick={() => navigateTo('/contact')} variant="outline" className="border-[#d0e6f0]/60 text-[#d0e6f0] hover:text-[#1c3c50] border bg-transparent px-6 py-4 text-sm rounded-full">Plan Your Trek</Button>
+        {/* Mobile content - Different for small and larger phones */}
+        <div className="absolute inset-0 z-20 md:hidden flex flex-col justify-center items-center text-center px-6">
+          
+          {/* Tagline - Hidden on small screens, visible on larger phones */}
+          <div className="hidden xs:flex flex-col items-center gap-4 mb-6 z-10">
+            <Mountain className="h-8 w-8 text-[#d0e6f0]" />
+            <span className="text-[#d0e6f0] font-display text-sm tracking-wide">{data.Tagline}</span>
+          </div>
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="font-display text-[#f0f8ff] text-3xl xs:text-4xl font-bold leading-tight mb-4 z-10"
+          >
+            {data.Title}
+          </motion.h1>
+          
+          {/* Excerpt - Only shown on small screens with different color */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="xs:hidden text-[#c0d9e7] text-sm font-medium mb-6 z-10 max-w-xs"
+          >
+            {data.Excerpt}
+          </motion.p>
+          
+          {/* Description - Only shown on larger phones */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="hidden xs:block text-[#e0f0f5]/90 text-base font-light mb-6 z-10 max-w-md"
+          >
+            {data.Description}
+          </motion.p>
+          
+          <div className="flex flex-row justify-center gap-3 flex-wrap z-10">
+            <Button onClick={() => navigateTo('/destinations/nepal')} className="bg-[#d0e6f0] text-[#1c3c50] hover:bg-[#c0d9e7] font-semibold px-5 py-3 text-sm rounded-full">Explore Tours</Button>
+            <Button onClick={() => navigateTo('/contact')} variant="outline" className="border-[#d0e6f0]/60 text-[#d0e6f0] hover:text-[#1c3c50] border bg-transparent px-5 py-3 text-sm rounded-full">
+              Plan Your Trek <MoveUpRight className="h-4 w-4 ml-1 inline-block" />
+            </Button>
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
 
-export { FullScreenBackgroundHero };
+export { FullScreenBackgroundHero };  

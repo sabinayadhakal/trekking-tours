@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { X, ChevronLeft, ChevronRight, Star, MapPin, Check, X as XIcon, Mountain, Gauge } from "lucide-react"
+import { X, ChevronLeft, ChevronRight, Star, MapPin, Check, X as XIcon, Mountain, Gauge, AlertCircle } from "lucide-react"
 import { toast } from "sonner"
 import { Tour } from "@/types/tour"
 
@@ -44,8 +44,6 @@ export default function TourDetailModal({ tour, isOpen, onClose }: TourDetailMod
   const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % tour.images.length)
   const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + tour.images.length) % tour.images.length)
 
-  
-
   if (!isOpen) return null
 
   return (
@@ -57,21 +55,20 @@ export default function TourDetailModal({ tour, isOpen, onClose }: TourDetailMod
         ref={modalRef}
         className="bg-[#EAF2FF] max-w-6xl w-full max-h-[90vh] rounded-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300 transition-transform transform hover:scale-[1.01]"
       >
-       {/* Header */}
-<div className="flex items-center justify-between p-6 border-b border-[#A0C4FF]">
-  <h2 className="text-2xl font-bold text-[#3C6AA6] transition-colors duration-300 group-hover:text-[#1F4880]">{tour.title}</h2>
-  <div className="flex items-center gap-2">
-    <button
-      ref={firstFocusableRef}
-      onClick={onClose}
-      className="p-2 hover:bg-[#BFDFFF] rounded-md transition-colors duration-300 transform hover:scale-110"
-      aria-label="Close modal"
-    >
-      <X className="h-5 w-5 text-[#3C6AA6]" />
-    </button>
-  </div>
-</div>
-
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-b border-[#A0C4FF]">
+          <h2 className="text-2xl font-bold text-[#3C6AA6] transition-colors duration-300 group-hover:text-[#1F4880]">{tour.title}</h2>
+          <div className="flex items-center gap-2">
+            <button
+              ref={firstFocusableRef}
+              onClick={onClose}
+              className="p-2 hover:bg-[#BFDFFF] rounded-md transition-colors duration-300 transform hover:scale-110"
+              aria-label="Close modal"
+            >
+              <X className="h-5 w-5 text-[#3C6AA6]" />
+            </button>
+          </div>
+        </div>
 
         <div className="flex flex-col lg:flex-row max-h-[calc(90vh-88px)] overflow-hidden">
           {/* Left Column - Image Gallery (desktop only) */}
@@ -270,6 +267,23 @@ export default function TourDetailModal({ tour, isOpen, onClose }: TourDetailMod
                           </li>
                         ))}
                       </ul>
+                    </div>
+                  )}
+
+                  {/* Cancellation Policy Section */}
+                  {tour.cancellationPolicy && (
+                    <div>
+                      <h3 className="font-semibold mb-2 text-[#3C6AA6]">Cancellation Policy</h3>
+                      <div className="bg-[#BFDFFF]/50 p-3 rounded-md transform transition-transform duration-300 hover:scale-[1.01]">
+                        <div className="flex items-start gap-2">
+                          <AlertCircle className="h-4 w-4 text-[#3C6AA6] mt-0.5 flex-shrink-0" />
+                          <div className="text-sm text-[#3C6AA6]">
+                            {tour.cancellationPolicy.split('\n').map((paragraph, idx) => (
+                              <p key={idx} className={idx > 0 ? 'mt-2' : ''}>{paragraph}</p>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </>

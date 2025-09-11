@@ -143,9 +143,8 @@ export default function YouTubeVideosSection() {
     return (
       <div className="w-full py-16 px-4 md:px-8 lg:px-16 bg-[#E3F2FF]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-12">
-            Featured Videos
-          </h2>
+          <h1 className="text-4xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-12">
+Featured Videos      </h1>
           <div className="flex justify-center items-center py-12">
             <Loader2 className="h-8 w-8 animate-spin text-[#2E4F7C]" />
             <span className="ml-2 text-[#2E4F7C]">Loading videos...</span>
@@ -159,7 +158,7 @@ export default function YouTubeVideosSection() {
     return (
       <div className="w-full py-16 px-4 md:px-8 lg:px-16 bg-[#E3F2FF]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-12">
             Featured Videos
           </h2>
           <div className="text-center py-12">
@@ -179,7 +178,7 @@ export default function YouTubeVideosSection() {
   return (
     <div className="w-full py-16 px-4 md:px-8 lg:px-16 bg-[#E3F2FF]">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-12">
           Featured Videos
         </h2>
 

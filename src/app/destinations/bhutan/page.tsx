@@ -119,7 +119,6 @@ export default function BhutanPage() {
             rating: typeof attributes.rating === 'number' ? attributes.rating : 0,
             reviewCount: typeof attributes.reviewCount === 'number' ? attributes.reviewCount : 0,
             price: typeof attributes.price === 'number' ? attributes.price : 0,
-            originalPrice: typeof attributes.originalPrice === 'number' ? attributes.originalPrice : 0,
             excerpt: attributes.excerpt || "",
             description: attributes.description || "",
             image: imageUrl,
