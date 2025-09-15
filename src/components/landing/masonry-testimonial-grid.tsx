@@ -1,6 +1,6 @@
 "use client";
 
-import { Star } from "lucide-react";
+import { Star, ChevronDown, ChevronUp } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -49,6 +49,7 @@ const MasonryTestimonialGrid = () => {
   const [selectedPhotos, setSelectedPhotos] = useState<string[] | null>(null);
   const [data, setData] = useState<DataItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const tripadvisorUrl =
     "https://www.tripadvisor.com/Attraction_Review-g293890-d8417075-Reviews-Himkala_Adventure-Kathmandu_Kathmandu_Valley_Bagmati_Zone_Central_Region.html";
@@ -70,10 +71,10 @@ const MasonryTestimonialGrid = () => {
         }
 
         const endpoints = [
-  `${apiUrl}/api/reviews?filters[approval][$eq]=true&populate=*&sort=id:desc`,
-  `${apiUrl}/api/reviews?approval=true&populate=*&sort=id:desc`,
-  `${apiUrl}/api/reviews?populate=*&sort=id:desc`
-];
+          `${apiUrl}/api/reviews?filters[approval][$eq]=true&populate=*&sort=id:desc`,
+          `${apiUrl}/api/reviews?approval=true&populate=*&sort=id:desc`,
+          `${apiUrl}/api/reviews?populate=*&sort=id:desc`
+        ];
 
         let responseData: StrapiResponse | null = null;
 
@@ -132,7 +133,23 @@ const MasonryTestimonialGrid = () => {
     fetchReviews();
   }, []);
 
-  const loadMore = () => setVisibleCount(prev => Math.min(prev + 3, data.length));
+  const loadMore = () => {
+    setVisibleCount(prev => Math.min(prev + 3, data.length));
+    setIsExpanded(true);
+  };
+
+  const showLess = () => {
+    setVisibleCount(3);
+    setIsExpanded(false);
+    
+    // Scroll to the top of the testimonials section
+    setTimeout(() => {
+      const element = document.getElementById("testimonials-section");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
 
   if (!isClient) return null;
 
@@ -149,7 +166,7 @@ const MasonryTestimonialGrid = () => {
   }
 
   return (
-    <section className="bg-gradient-to-b from-[#E3F8FF]/40 via-[#CFE8FF]/30 to-[#A6D4FF]/20 py-12 sm:py-20 md:py-32 relative overflow-hidden">
+    <section id="testimonials-section" className="bg-gradient-to-b from-[#E3F8FF]/40 via-[#CFE8FF]/30 to-[#A6D4FF]/20 py-12 sm:py-20 md:py-32 relative overflow-hidden">
       <div className="container mx-auto">
         {/* Heading */}
         <div className="flex flex-col items-center gap-4 sm:gap-6 px-4 sm:px-8">
@@ -165,63 +182,114 @@ const MasonryTestimonialGrid = () => {
         <div className="mt-8 sm:mt-14 w-full px-2 sm:px-8 md:px-16 lg:px-32">
           {data.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-[#3C6AA6]">No reviews yet. Be the first to leave a review!</p>
+              <p className="text-[#3C6AA6]">No reviews yet. Check out our Tripadvisor reviews!</p>
             </div>
           ) : (
             <>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {data.slice(0, visibleCount).map((testimonial) => (
-                  <Card
+                {data.slice(0, visibleCount).map((testimonial, index) => (
+                  <motion.div
                     key={testimonial.id}
-                    className={cn(
-                      "rounded-xl p-4 sm:p-6 shadow-sm bg-[#f0f8ff] border-[#A6D4FF] transition-all duration-500 hover:shadow-lg hover:-translate-y-1 hover:border-[#3C6AA6] cursor-pointer group",
-                      testimonial.margin
-                    )}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <div className="mb-2 flex gap-1">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="fill-[#FFD966] text-[#FFD966] h-4 w-4" />
-                      ))}
-                    </div>
-                    <div className="text-[#1C3C50] mt-2 text-xs sm:text-sm leading-relaxed">
-                      <q>{testimonial.content}</q>
-                    </div>
-                    {testimonial.reviewDate && (
-                      <p className="text-[10px] sm:text-xs text-[#3C6AA6] mt-2">{testimonial.reviewDate}</p>
-                    )}
+                    <Card
+                      className={cn(
+                        "rounded-xl p-4 sm:p-6 shadow-sm bg-[#f0f8ff] border-[#A6D4FF] transition-all duration-500 hover:shadow-lg hover:-translate-y-1 hover:border-[#3C6AA6] cursor-pointer group h-full",
+                        testimonial.margin
+                      )}
+                    >
+                      <div className="mb-2 flex gap-1">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="fill-[#FFD966] text-[#FFD966] h-4 w-4" />
+                        ))}
+                      </div>
+                      <div className="text-[#1C3C50] mt-2 text-xs sm:text-sm leading-relaxed">
+                        <q>{testimonial.content}</q>
+                      </div>
+                      {testimonial.reviewDate && (
+                        <p className="text-[10px] sm:text-xs text-[#3C6AA6] mt-2">{testimonial.reviewDate}</p>
+                      )}
 
-                    <div className="mt-4 flex flex-col gap-1">
-                      <p className="font-bold text-[#2E4F7C] font-display text-sm">{testimonial.name}</p>
-                      <p className="text-[10px] sm:text-xs text-[#3C6AA6]">{testimonial.country}</p>
-                      <p className="text-[10px] sm:text-xs text-[#5C90B0] font-medium">{testimonial.trek}</p>
-                    </div>
+                      <div className="mt-4 flex flex-col gap-1">
+                        <p className="font-bold text-[#2E4F7C] font-display text-sm">{testimonial.name}</p>
+                        <p className="text-[10px] sm:text-xs text-[#3C6AA6]">{testimonial.country}</p>
+                        <p className="text-[10px] sm:text-xs text-[#5C90B0] font-medium">{testimonial.trek}</p>
+                      </div>
 
-                    {testimonial.photos && testimonial.photos.length > 0 && (
-                      <Button
-                        className="mt-2 sm:mt-4 bg-[#3C6AA6] hover:bg-[#2E4F7C] text-white text-xs sm:text-sm"
-                        onClick={() => setSelectedPhotos(testimonial.photos!)}
-                      >
-                        View Photos
-                      </Button>
-                    )}
-                  </Card>
+                      {testimonial.photos && testimonial.photos.length > 0 && (
+                        <Button
+                          className="mt-2 sm:mt-4 bg-[#3C6AA6] hover:bg-[#2E4F7C] text-white text-xs sm:text-sm"
+                          onClick={() => setSelectedPhotos(testimonial.photos!)}
+                        >
+                          View Photos
+                        </Button>
+                      )}
+                    </Card>
+                  </motion.div>
                 ))}
               </div>
 
-              {visibleCount < data.length && (
+              {data.length > 3 && (
                 <div className="flex justify-center mt-4 sm:mt-10">
-                  <motion.button
-                    onClick={loadMore}
-                    className="bg-[#3C6AA6] hover:bg-[#2E4F7C] rounded-full px-6 sm:px-8 py-3 sm:py-6 text-white text-sm sm:text-base"
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    Read more reviews
-                  </motion.button>
+                  {visibleCount < data.length ? (
+                    <motion.button
+                      onClick={loadMore}
+                      className="flex items-center gap-2 bg-[#3C6AA6] hover:bg-[#2E4F7C] rounded-full px-6 sm:px-8 py-3 sm:py-4 text-white text-sm sm:text-base font-medium group"
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      whileHover={{ 
+                        scale: 1.05,
+                        transition: { duration: 0.2 }
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <span>Load More Reviews</span>
+                      <motion.div
+                        animate={{ y: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        <ChevronDown className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                      </motion.div>
+                    </motion.button>
+                  ) : (
+                    <motion.button
+                      onClick={showLess}
+                      className="flex items-center gap-2 bg-[#2E4F7C] hover:bg-[#1C3C50] rounded-full px-6 sm:px-8 py-3 sm:py-4 text-white text-sm sm:text-base font-medium group"
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      whileHover={{ 
+                        scale: 1.05,
+                        transition: { duration: 0.2 }
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <span>Show Less</span>
+                      <motion.div
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        <ChevronUp className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                      </motion.div>
+                    </motion.button>
+                  )}
                 </div>
+              )}
+
+              {visibleCount >= data.length && data.length > 6 && (
+                <motion.div 
+                  className="mt-6 text-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <p className="text-sm text-[#3C6AA6] italic">
+                    You've viewed all {data.length} reviews!
+                  </p>
+                </motion.div>
               )}
             </>
           )}
@@ -265,21 +333,7 @@ const MasonryTestimonialGrid = () => {
           )}
         </AnimatePresence>
 
-        {/* Leave Review CTA */}
-        <div className="flex justify-center mt-6 sm:mt-12">
-          <motion.a
-            href="/leave-a-review"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="bg-[#3C6AA6] hover:bg-[#2E4F7C] text-white font-bold text-base sm:text-lg md:text-xl px-8 sm:px-12 py-4 sm:py-6 rounded-xl shadow-lg cursor-pointer"
-          >
-            Leave a Review
-          </motion.a>
-        </div>
-
+        {/* Tripadvisor Link */}
         <div className="mt-8 sm:mt-20 flex flex-col items-center gap-4 sm:gap-6 px-4">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -287,7 +341,7 @@ const MasonryTestimonialGrid = () => {
             transition={{ duration: 0.8 }}
             className="text-sm sm:text-lg font-medium text-[#3C6AA6] text-center"
           >
-            See all reviews or write a review in Tripadvisor
+            See all reviews on Tripadvisor
           </motion.p>
           <motion.a
             href={tripadvisorUrl}
@@ -298,6 +352,7 @@ const MasonryTestimonialGrid = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
+            className="block"
           >
             <Image
               src="/images/TripAdvisor-Logo.png"
