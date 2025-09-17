@@ -21,8 +21,8 @@ interface HeroData {
 
 // Fallback data
 const fallbackData: HeroData = {
-  Title: "Explore the wildness",
-  Description: "Journey through Nepal's ancient towns and high mountains, experiencing both heritage and nature.",
+  Title: "Trekking in the Wildness of Nepal: Everest, Annapurna & Beyond",
+  Description: "Journey beyond the guidebook. From the peaks of Nepal to the monasteries of Bhutan and Tibet, we craft immersive trekking and cultural tours that reveal the soul of the Himalayas.",
   Tagline: "SnowArt since 2015",
   Excerpt: "Adventure awaits in the Himalayas",
   DesktopBackgroundImage: [

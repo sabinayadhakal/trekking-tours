@@ -91,8 +91,7 @@ const YearSelectorStats = () => {
             variants={itemVariants}
             className="mt-2 md:mt-4 max-w-xl text-sm md:text-lg text-[#3C6AA6]/80 leading-relaxed"
           >
-            Himkala Adventure is a trusted provider of quality trekking and tour services in Nepal, offering tailor-made adventures at affordable rates. Himkala prioritizes personalized service, sustainability, and community engagement.
-          </motion.p>
+Himkala Adventure: Award-Winning Nepal Trekking along with Tibet & Bhutan Tours | Affordable & Sustainable          </motion.p>
           
           <motion.div 
             variants={itemVariants}
@@ -165,7 +164,7 @@ const YearSelectorStats = () => {
             >
               <Image
                 src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&h=600&q=80"
-                alt="Professional mountain guide leading expedition in the Himalayas"
+                alt="Professional certified guides leading Nepal trekking and Nepal tours"
                 width={500}
                 height={400}
                 className="rounded-2xl object-cover w-full h-auto transition-transform duration-700 hover:scale-105"

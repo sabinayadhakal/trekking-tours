@@ -37,12 +37,10 @@ const ComplexBentoGrid = () => {
             ABOUT HIMKALA(SNOWART) ADVENTURE
           </div>
           <h2 className="mt-4 mb-8 text-4xl font-bold text-[#2e4f5c] md:text-6xl">
-            Turning travel into lasting memories since 2015.
+            Crafting Unforgettable Nepal Trekking & Tours Since 2015
           </h2>
           <p className="text-base text-[#3d6678] md:text-lg">
-            With years of expertise in Nepal, Bhutan, and Tibet, we bring
-            together certified guides, safety certifications, and deep local
-            knowledge to create unforgettable mountain experiences.
+            With years of expertise in Nepal trekking, Bhutan tours, and Tibet travel, we combine certified guides, safety certifications, and deep local knowledge to create your unforgettable Himalayan adventure.
           </p>
         </div>
 
@@ -60,7 +58,7 @@ const ComplexBentoGrid = () => {
             <div className="card-shine" />
             <img
               src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Company History"
+              alt="Free Walking Tour| Nepal Tour"
               className="absolute inset-0 -z-30 size-full rounded-2xl object-cover transition-all duration-700 group-hover:scale-110"
             />
             <div className="flex h-full flex-col justify-between p-8">
@@ -73,7 +71,7 @@ const ComplexBentoGrid = () => {
               <div className="transform transition-transform duration-500 group-hover:translate-y-[-10px]">
                 <h3 className="font-bold text-white text-xl">Free Walking Tour</h3>
                 <p className="mt-2 text-white/90">
-                  Discover the real Kathmandu with Nepal's first Free Walking Tour.
+                  Original & Free Walking Tour of Kathmandu | Discover Nepal's Capital
                 </p>
               </div>
             </div>
@@ -103,7 +101,7 @@ const ComplexBentoGrid = () => {
               <div className="transform transition-transform duration-500 group-hover:translate-y-[-10px]">
                 <h3 className="font-bold text-white text-xl">Safety First</h3>
                 <p className="mt-2 text-white/90">
-                  Experience the thrill without the worry. Our first rule is always your safety.
+                  Experience the thrill of Nepal trekking & Bhutan tours without the worry. Our safety-first rule, certified guides, and proven protocols protect you on every adventure.
                 </p>
               </div>
             </div>
@@ -120,7 +118,7 @@ const ComplexBentoGrid = () => {
             <div className="card-shine" />
             <img
               src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Award Recognition"
+              alt="Award Winning Tours"
               className="absolute inset-0 -z-30 size-full rounded-2xl object-cover transition-all duration-700 group-hover:scale-110"
             />
             <div className="flex h-full flex-col justify-between p-8">
@@ -133,8 +131,7 @@ const ComplexBentoGrid = () => {
               <div className="transform transition-transform duration-500 group-hover:translate-y-[-10px]">
                 <h3 className="font-bold text-white text-xl">Award Winning</h3>
                 <p className="mt-2 text-white/90">
-                  As a 6-time winner of the TripAdvisor Certificate of Excellence, we are consistently recognized for delivering outstanding, unforgettable service.
-                </p>
+6-Time TripAdvisor Winner | Unforgettable Nepal, Bhutan & Tibet Trekking & Tours                </p>
               </div>
             </div>
           </div>

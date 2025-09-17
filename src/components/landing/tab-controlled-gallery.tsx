@@ -14,33 +14,29 @@ interface Destination {
 
 const destinations: Destination[] = [
   {
-    title: "Nepal - Heritage of the Himalayas",
-    description:
-      "Nepal, a sovereign and landlocked Himalayan nation between China and India, ...",
-    image:
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
-    category: "Nepal",
-    highlights: ["8 UNESCO World Heritage Sites", "Birthplace of Buddha", "Rich Newari architecture", "Diverse ethnic cultures"],
-    link: "/destinations/nepal",
-  },
+    "title": "Nepal Trekking & UNESCO World Heritage Tours | Himalayan Adventures",
+    "description": "Explore Nepal, the sovereign Himalayan nation between China and India. Discover 8 UNESCO World Heritage Sites, including Lumbini—the birthplace of Buddha—and experience rich Newari architecture and diverse ethnic cultures on a tailor-made trekking or cultural tour.",
+    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+    "category": "Nepal Trekking & Tours",
+    "highlights": ["8 UNESCO World Heritage Sites", "Birthplace of Buddha", "Rich Newari Architecture", "Diverse Ethnic Cultures", "Expert-Led Trekking Adventures", "Custom Cultural Experiences"],
+    "link": "/destinations/nepal"
+},
   {
-    title: "Bhutan - The Last Shangri-La",
-    description: "Nestled in the Eastern Himalayas, Bhutan is a landlocked kingdom ...",
-    image:
-      "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
-    category: "Bhutan",
-    highlights: ["Carbon-negative country", "Ancient Buddhist traditions", "Dzong architecture", "Traditional festivals"],
-    link: "/destinations/bhutan",
-  },
-  {
-    title: "Tibet - Roof of the World",
-    description: "Tibet is a land of profound cultural and historical richness ...",
-    image:
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
-    category: "Tibet",
-    highlights: ["Potala Palace UNESCO site", "Sacred Mount Kailash", "Tibetan Buddhist traditions", "High-altitude ecosystems"],
-    link: "/destinations/tibet",
-  },
+    "title": "Bhutan Cultural Tours & Sustainable Travel | The Last Shangri-La",
+    "description": "Explore Bhutan, the carbon-negative kingdom nestled in the Eastern Himalayas. Experience ancient Buddhist traditions, majestic Dzong architecture, and vibrant traditional festivals on an immersive cultural tour.",
+    "image": "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+    "category": "Bhutan Tours & Cultural Experiences",
+    "highlights": ["Carbon-Negative Country", "Ancient Buddhist Traditions", "Dzong Architecture", "Traditional Festivals", "Sustainable Tourism", "Gross National Happiness Philosophy"],
+    "link": "/destinations/bhutan"
+},
+{
+    "title": "Tibet Adventure Travel & Buddhist Pilgrimage Tours | Roof of the World",
+    "description": "Discover Tibet, the Roof of the World, with its profound cultural heritage. Visit the UNESCO Potala Palace, sacred Mount Kailash, and experience Tibetan Buddhist traditions in unique high-altitude ecosystems.",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+    "category": "Tibet Adventure & Pilgrimage Tours",
+    "highlights": ["Potala Palace UNESCO Site", "Sacred Mount Kailash", "Tibetan Buddhist Traditions", "High-Altitude Ecosystems", "Buddhist Pilgrimage Routes", "Himalayan Landscapes"],
+    "link": "/destinations/tibet"
+}
 ];
 
 const TabControlledGallery = () => {

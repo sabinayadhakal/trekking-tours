@@ -101,7 +101,7 @@ export default function ContactSection({ posts = [], onSubmit }: BlogContentProp
       {!success ? (
         <motion.form 
           onSubmit={handleSubmit} 
-          className="space-y-6 bg-[#f1f9fb] p-10 md:p-12 rounded-3xl shadow-lg border border-[#c9e0e5] w-full max-w-5xl mx-auto"
+className="mt-6 sm:mt-0 space-y-6 bg-[#f1f9fb] p-10 md:p-12 rounded-3xl shadow-lg border border-[#c9e0e5] w-full max-w-5xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -182,7 +182,7 @@ export default function ContactSection({ posts = [], onSubmit }: BlogContentProp
             />
           </div>
 
-          <div className="text-center">
+          <div className="text-center mt-6 sm:mt-3">
             <button
               type="submit"
               disabled={isSubmitting}

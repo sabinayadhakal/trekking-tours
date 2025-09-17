@@ -23,7 +23,7 @@ const DATA: DataItem[] = [
   {
     id: 1,
     number: "01",
-    title: "Trekking and Peak Climbing",
+    title: "Nepal Trekking and Peak Climbing",
     description:
       "Multi-day mountain treks through pristine Himalayan trails.",
     image:
@@ -37,7 +37,7 @@ const DATA: DataItem[] = [
   {
     id: 2,
     number: "02",
-    title: "Cultural Tours",
+    title: "Cultural Tours in Nepal",
     description:
       "Explore old monasteries, traditional villages and customs.",
     image:
@@ -90,7 +90,7 @@ const NumberedBadgeCards = () => {
             To Travel is to <span className="text-[#3C6AA6]">Live</span>.
           </h1>
           <p className="text-sm sm:text-lg text-[#1F3A5A] max-w-2xl mt-2 sm:mt-4">
-            Discover the beauty of the Himalayas with our carefully crafted itineraries.
+            Experience the Himalayas on our expert-led trekking and cultural tours in Nepal, Bhutan, and Tibet.
           </p>
         </div>
 

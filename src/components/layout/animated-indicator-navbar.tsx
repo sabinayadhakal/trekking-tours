@@ -180,28 +180,28 @@ const MobileNav = ({
               )}
 
               <li className="mt-4 flex flex-col gap-3">
-                <Link
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="w-full block"
-                >
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-6 py-3 rounded-lg shadow-lg transition-all duration-300">
-                    Plan your Trip
-                  </Button>
-                </Link>
-                
-                {/* WhatsApp Button for Mobile */}
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-lg px-6 py-3 rounded-lg shadow-lg transition-all duration-300"
-                >
-                  <WhatsAppIcon className="w-7 h-7" />
-                  WhatsApp Us
-                </a>
-              </li>
+  <Link
+    href="/contact"
+    onClick={() => setIsOpen(false)}
+    className="w-full block"
+  >
+    <Button className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-300">
+      Plan your Trip
+    </Button>
+  </Link>
+
+  <a
+    href={WHATSAPP_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={() => setIsOpen(false)}
+    className="w-full h-14 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-300"
+  >
+    <WhatsAppIcon className="w-7 h-7" />
+    WhatsApp Us
+  </a>
+</li>
+
             </ul>
           </motion.div>
         )}
