@@ -42,23 +42,24 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}`;
 
 // ---------------- ANIMATED HAMBURGER ----------------
 const AnimatedHamburger = ({ isOpen }: { isOpen: boolean }) => (
-  <div className="relative h-6 w-6 flex items-center justify-center">
+  <div className="relative h-8 w-8 flex items-center justify-center"> {/* increased container size */}
     <Menu
-      size={30}
-      strokeWidth={2.5}
+      size={36}  // increased from 30
+      strokeWidth={3} // slightly thicker
       className={`text-neutral-50 absolute transition-all duration-300 ${
         isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
       }`}
     />
     <X
-      size={32}
-      strokeWidth={2.5}
+      size={38} // increased from 32
+      strokeWidth={3}
       className={`text-neutral-50 absolute transition-all duration-300 ${
         isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
       }`}
     />
   </div>
 );
+
 
 // WhatsApp Icon SVG
 const WhatsAppIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
@@ -76,36 +77,75 @@ const MobileNav = ({
   setActiveItem: (item: string) => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true); // fully visible on load
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const lastScrollY = React.useRef(0);
+  const ticking = React.useRef(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          if (currentScrollY <= 0) {
+            // At top → show full navbar
+            setShowNavbar(true);
+          } else if (hasScrolled) {
+            // After first scroll → always hide 75%
+            setShowNavbar(false);
+          }
+
+          lastScrollY.current = currentScrollY;
+          ticking.current = false;
+        });
+        ticking.current = true;
+      }
+
+      if (!hasScrolled && currentScrollY > 0) {
+        setHasScrolled(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [hasScrolled]);
 
   return (
     <div className="block lg:hidden">
-      <div className="flex flex-col bg-[#1F2937] z-50">
-        <div className="flex flex-col items-center py-1">
-          <Link href={NAV_LOGO.url}>
-            <motion.img
-              src={NAV_LOGO.src}
-              alt={NAV_LOGO.alt}
-              className="object-contain h-14 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
-              whileHover={{ scale: 1.05 }}
-            />
-          </Link>
-          <motion.span
-            className="text-white text-sm font-mono -mt-1 text-center"
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            with each trip comes new optimism...
-          </motion.span>
-        </div>
+      {/* Navbar Header */}
+      <motion.div
+        className="flex flex-col items-center z-50"
+        animate={{
+          y: showNavbar ? "0%" : "-65%",
+        }}
+        transition={{
+          type: "tween",
+          duration: 0.25,
+          ease: "easeInOut",
+        }}
+        style={{ backgroundColor: "rgba(70, 130, 180, 0.15)" }}
+      >
+        {/* Logo */}
+        <Link href={NAV_LOGO.url}>
+          <motion.img
+            src={NAV_LOGO.src}
+            alt={NAV_LOGO.alt}
+            className="object-contain h-35 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
+            whileHover={{ scale: 1.05 }}
+          />
+        </Link>
 
-        <div className="flex justify-between items-center px-4 py-2 bg-[#111827]">
-          <span className="text-neutral-50 font-semibold text-lg">Menu</span>
+        {/* Hamburger + Menu Title */}
+        <div className="flex justify-between items-center px-4 py-2 w-full bg-[#111827] -mt-11">
+          <span className="text-neutral-50 font-semibold text-3xl">Menu</span>
           <button onClick={() => setIsOpen(true)}>
             <AnimatedHamburger isOpen={isOpen} />
           </button>
         </div>
-      </div>
+      </motion.div>
 
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -116,12 +156,14 @@ const MobileNav = ({
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-[#1F2937] z-50 flex flex-col max-h-[80vh] overflow-y-auto"
           >
+            {/* Close Button */}
             <div className="flex justify-end p-4">
               <button onClick={() => setIsOpen(false)} className="text-neutral-50">
                 <X size={28} />
               </button>
             </div>
 
+            {/* Nav Items */}
             <ul className="flex flex-col gap-4 p-4 text-neutral-50 text-lg font-semibold">
               {NAV_ITEMS.map((item) =>
                 "children" in item && item.children ? (
@@ -131,8 +173,8 @@ const MobileNav = ({
                         setActiveItem(activeItem === item.name ? "" : item.name)
                       }
                       className={`w-full text-left px-4 py-3 rounded-lg flex justify-between items-center transition-colors ${
-                        activeItem === item.name 
-                          ? "bg-blue-600 text-white" 
+                        activeItem === item.name
+                          ? "bg-blue-600 text-white"
                           : "bg-gray-800 hover:bg-gray-700"
                       }`}
                     >
@@ -179,29 +221,29 @@ const MobileNav = ({
                 )
               )}
 
+              {/* CTA Buttons */}
               <li className="mt-4 flex flex-col gap-3">
-  <Link
-    href="/contact"
-    onClick={() => setIsOpen(false)}
-    className="w-full block"
-  >
-    <Button className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-300">
-      Plan your Trip
-    </Button>
-  </Link>
+                <Link
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full block"
+                >
+                  <Button className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-300 cursor-pointer">
+                    Plan your Trip
+                  </Button>
+                </Link>
 
-  <a
-    href={WHATSAPP_URL}
-    target="_blank"
-    rel="noopener noreferrer"
-    onClick={() => setIsOpen(false)}
-    className="w-full h-14 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-300"
-  >
-    <WhatsAppIcon className="w-7 h-7" />
-    WhatsApp Us
-  </a>
-</li>
-
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full h-14 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-300 cursor-pointer"
+                >
+                  <WhatsAppIcon className="w-7 h-7" />
+                  WhatsApp Us
+                </a>
+              </li>
             </ul>
           </motion.div>
         )}
@@ -209,6 +251,8 @@ const MobileNav = ({
     </div>
   );
 };
+
+
 
 // ---------------- DESKTOP NAV + HEADER ----------------
 const AnimatedIndicatorNavbar = () => {
@@ -265,10 +309,10 @@ const AnimatedIndicatorNavbar = () => {
                 onMouseLeave={() => setActiveItem("")}
               >
                 <motion.span
-                  className={`cursor-pointer font-semibold text-xl ${
-                    activeItem === item.name ? "text-blue-400" : "text-white"
+                  className={`cursor-pointer font-semibold text-xl transition-colors duration-200 ${
+                    activeItem === item.name ? "text-blue-400" : "text-white hover:text-blue-400"
                   }`}
-                  whileHover={{ scale: 1.05, color: "#60A5FA" }}
+                  whileHover={{ scale: 1.05 }}
                 >
                   {item.name}
                 </motion.span>
@@ -293,7 +337,7 @@ const AnimatedIndicatorNavbar = () => {
                         >
                           <Link
                             href={child.link}
-                            className="text-white font-medium text-lg block"
+                            className="text-white font-medium text-lg block cursor-pointer"
                           >
                             {child.name}
                           </Link>
@@ -306,14 +350,16 @@ const AnimatedIndicatorNavbar = () => {
             ) : (
               <motion.div
                 key={item.name}
-                whileHover={{ scale: 1.05, color: "#60A5FA" }}
+                whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <Link
                   href={item.link || "#"}
-                  className={`font-semibold text-xl ${
-                    activeItem === item.name ? "text-blue-400" : "text-white"
-                  }`}
+                  className={`font-semibold text-xl transition-colors duration-200 ${
+                    activeItem === item.name ? "text-blue-400" : "text-white hover:text-blue-400"
+                  } cursor-pointer`}
+                  onMouseEnter={() => setActiveItem(item.name)}
+                  onMouseLeave={() => setActiveItem("")}
                 >
                   {item.name}
                 </Link>
@@ -330,7 +376,7 @@ const AnimatedIndicatorNavbar = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center w-14 h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg transition-all duration-300"
+              className="flex items-center justify-center w-14 h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg transition-all duration-300 cursor-pointer"
               aria-label="Contact via WhatsApp"
             >
               <WhatsAppIcon className="w-8 h-8" />
@@ -339,8 +385,9 @@ const AnimatedIndicatorNavbar = () => {
             {/* Contact Button */}
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link href="/contact">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-6 py-4 rounded-lg shadow-lg transition-all duration-300">
-Plan your Trip                </Button>
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-6 py-4 rounded-lg shadow-lg transition-all duration-300 cursor-pointer">
+                  Plan your Trip
+                </Button>
               </Link>
             </motion.div>
           </div>
