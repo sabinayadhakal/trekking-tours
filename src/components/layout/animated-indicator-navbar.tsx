@@ -260,12 +260,13 @@ const AnimatedIndicatorNavbar = () => {
 
   return (
     <header className="fixed top-0 w-full z-50">
-      {/* Floating background shapes */}
-      <div className="absolute inset-0 -z-10 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-slate-600/20 animate-floatSlow" />
-        <div className="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-slate-400/30 animate-floatMedium" />
-        <div className="absolute bottom-1/4 left-1/3 w-4 h-4 rounded-full bg-white/10 animate-floatFast" />
-      </div>
+      {/* Floating background shapes — only visible on desktop */}
+<div className="hidden lg:block absolute inset-0 -z-10 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+  <div className="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-slate-600/20 animate-floatSlow" />
+  <div className="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-slate-400/30 animate-floatMedium" />
+  <div className="absolute bottom-1/4 left-1/3 w-4 h-4 rounded-full bg-white/10 animate-floatFast" />
+</div>
+
 
       <div className="hidden lg:flex justify-between items-center px-12 py-4 shadow-md h-32">
         {/* Logo + slogan */}
