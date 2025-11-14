@@ -21,8 +21,8 @@ interface HeroData {
 
 // Hero data - now using static data instead of Strapi
 const heroData: HeroData = {
-  Title: "Trekking in the Wildness of Nepal: Everest, Annapurna & Beyond",
-  Description: "Journey beyond the guidebook. From the peaks of Nepal to the monasteries of Bhutan and Tibet, we craft immersive trekking and cultural tours that reveal the soul of the Himalayas.",
+  Title: "Experience Nepal: Trekking, Heritage Tours & Adventure Travel",
+  Description: "Immersive Himalayan trekking and cultural tours across Nepal, Bhutan & Tibet crafted to reveal the region’s true spirit.",
   Tagline: "SnowArt since 2015",
   Excerpt: "Adventure awaits in the Himalayas",
   DesktopBackgroundImage: [

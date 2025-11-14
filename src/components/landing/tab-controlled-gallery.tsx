@@ -14,24 +14,24 @@ interface Destination {
 
 const destinations: Destination[] = [
   {
-    "title": "Nepal Trekking & UNESCO World Heritage Tours | Himalayan Adventures",
-    "description": "Explore Nepal, the sovereign Himalayan nation between China and India. Discover 8 UNESCO World Heritage Sites, including Lumbini—the birthplace of Buddha—and experience rich Newari architecture and diverse ethnic cultures on a tailor-made trekking or cultural tour.",
+    "title": "Nepal Trekking Tours & UNESCO World Heritage Excursions",
+    "description": "Explore Nepal. An independent nation between China and India with 8 UNESCO World Heritage Sites, including Lumbini, the birthplace of Buddha. Discover Newari architecture, diverse ethnic cultures, and tailor-made trekking and cultural tour experiences.",
     "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
     "category": "Nepal Trekking & Tours",
     "highlights": ["8 UNESCO World Heritage Sites", "Birthplace of Buddha", "Rich Newari Architecture", "Diverse Ethnic Cultures", "Expert-Led Trekking Adventures", "Custom Cultural Experiences"],
     "link": "/destinations/nepal"
 },
   {
-    "title": "Bhutan Cultural Tours & Sustainable Travel | The Last Shangri-La",
-    "description": "Explore Bhutan, the carbon-negative kingdom nestled in the Eastern Himalayas. Experience ancient Buddhist traditions, majestic Dzong architecture, and vibrant traditional festivals on an immersive cultural tour.",
+    "title": "Bhutan Cultural Tours & Sustainable Travel Packages | Explore the Last Shangri-La",
+    "description": "Explore Bhutan, the carbon-negative kingdom of the Eastern Himalayas. Experience Buddhist culture, Dzong architecture, traditional festivals, and tailor-made Bhutan cultural tours.",
     "image": "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
     "category": "Bhutan Tours & Cultural Experiences",
     "highlights": ["Carbon-Negative Country", "Ancient Buddhist Traditions", "Dzong Architecture", "Traditional Festivals", "Sustainable Tourism", "Gross National Happiness Philosophy"],
     "link": "/destinations/bhutan"
 },
 {
-    "title": "Tibet Adventure Travel & Buddhist Pilgrimage Tours | Roof of the World",
-    "description": "Discover Tibet, the Roof of the World, with its profound cultural heritage. Visit the UNESCO Potala Palace, sacred Mount Kailash, and experience Tibetan Buddhist traditions in unique high-altitude ecosystems.",
+    "title": "Tibet Adventure Travel & Buddhist Pilgrimage Tours | Explore the Roof of the World",
+    "description": "Explore Tibet, the Roof of the World, with its rich cultural heritage. Tour the UNESCO Potala Palace, discover sacred Mount Kailash, and experience Tibetan Buddhist traditions across breathtaking high-altitude regions.",
     "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
     "category": "Tibet Adventure & Pilgrimage Tours",
     "highlights": ["Potala Palace UNESCO Site", "Sacred Mount Kailash", "Tibetan Buddhist Traditions", "High-Altitude Ecosystems", "Buddhist Pilgrimage Routes", "Himalayan Landscapes"],
@@ -65,8 +65,7 @@ const TabControlledGallery = () => {
             Himalayan Heritage & Culture
           </h2>
           <p className="text-[#2a2a2a] max-w-3xl mx-auto text-lg">
-            Journey through the ancient mountain cities and experience their culture, heritage, and stunning surroundings.
-          </p>
+Explore ancient cities known for their rich culture, heritage sites, and beautiful mountain surroundings.          </p>
         </div>
 
         <div className="max-w-6xl mx-auto">

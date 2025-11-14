@@ -253,7 +253,7 @@ export const NewsletterFooter = () => {
                 <span className="text-cyan-300 font-semibold">Ready for Your Adventure?</span>
               </div>
               <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6 transition-all duration-700 delay-100 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
-                Let&apos;s Craft Your <span className="text-cyan-300">Perfect Journey</span>
+                Design Your Trip, <span className="text-cyan-300">Your Way</span>
               </h2>
               
               {/* Affiliation Logos */}

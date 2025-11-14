@@ -47,7 +47,7 @@ const ToggleTabsPricing = () => {
     nepal: [
       {
 id: "np-1",
-name: "Everest Base Camp Trek - Classic Himalayan Adventure",
+name: "Everest Base Camp Trek – Classic Route to the Foot of the World’s Highest Peak",
 description: "Conquer the iconic trek to Everest Base Camp. Experience breathtaking panoramic Himalayan views, immerse in authentic Sherpa culture, and visit ancient monasteries on this challenging 14-day adventure.",
 duration: "14 Days",
 difficulty: "Challenging",

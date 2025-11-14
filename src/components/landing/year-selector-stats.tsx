@@ -91,7 +91,7 @@ const YearSelectorStats = () => {
             variants={itemVariants}
             className="mt-2 md:mt-4 max-w-xl text-sm md:text-lg text-[#3C6AA6]/80 leading-relaxed"
           >
-Himkala Adventure: Award-Winning Nepal Trekking along with Tibet & Bhutan Tours | Affordable & Sustainable          </motion.p>
+Himkala Adventure: Nepal Trekking Experts | Tibet & Bhutan Tour Packages | Affordable & Sustainable Travel        </motion.p>
           
           <motion.div 
             variants={itemVariants}

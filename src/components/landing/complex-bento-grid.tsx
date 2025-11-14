@@ -37,10 +37,9 @@ const ComplexBentoGrid = () => {
             ABOUT HIMKALA(SNOWART) ADVENTURE
           </div>
           <h2 className="mt-4 mb-8 text-4xl font-bold text-[#2e4f5c] md:text-6xl">
-            Crafting Unforgettable Nepal Trekking & Tours Since 2015
-          </h2>
+Trekking & Tour Packages Crafted with Expertise Since 2015          </h2>
           <p className="text-base text-[#3d6678] md:text-lg">
-            With years of expertise in Nepal trekking, Bhutan tours, and Tibet travel, we combine certified guides, safety certifications, and deep local knowledge to create your unforgettable Himalayan adventure.
+            From Nepal’s trekking trails to Bhutan and Tibet’s cultural landscapes, our certified guides and local expertise craft safe, meaningful Himalayan adventures.
           </p>
         </div>
 
