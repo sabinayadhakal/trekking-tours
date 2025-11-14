@@ -7,8 +7,8 @@ import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
-// Fallback data in case API fails
-const FALLBACK_TOURS: Tour[] = [
+// Mock day sightseeing tours data
+const DAY_SIGHTSEEING_TOURS: Tour[] = [
   {
     id: "1",
     title: "Free Walking Tour Kathmandu",
@@ -116,6 +116,74 @@ const FALLBACK_TOURS: Tour[] = [
     permits: [],
     equipment: [],
     entryRequirements: []
+  },
+  {
+    id: "4",
+    title: "Bhaktapur and Changunarayan Cultural Tour",
+    location: "Bhaktapur, Nepal",
+    duration: "6-7 hours",
+    rating: 4.7,
+    reviewCount: 156,
+    price: 45,
+    excerpt: "Medieval city and ancient temple exploration",
+    description: "Step back in time in Bhaktapur, the best-preserved medieval city in Nepal. Wander through cobblestone streets, admire intricate woodcarvings, and visit ancient temples. Continue to Changunarayan Temple, the oldest temple in the Kathmandu Valley, featuring exquisite stone and wood carvings.",
+    image: "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?w=800&h=600&fit=crop"
+    ],
+    tags: ["UNESCO", "Medieval", "Cultural"],
+    highlights: ["Bhaktapur Durbar Square", "Pottery Square", "Changunarayan Temple"],
+    includes: ["Guide", "Transportation", "Entry fees", "Lunch"],
+    excludes: ["Personal shopping", "Additional snacks"],
+    itinerary: [
+      { day: 1, title: "Bhaktapur Exploration", description: "Hotel pickup, explore Bhaktapur's medieval architecture, visit pottery workshops, tour Changunarayan Temple, return" }
+    ],
+    maxGroupSize: 8,
+    included: ["Cultural guide", "Transport", "All fees", "Lunch"],
+    excluded: ["Souvenirs", "Extra food"],
+    cancellationPolicy: "24-hour cancellation policy applies.",
+    isPopular: true,
+    isSoldOut: true,
+    difficulty: "easy",
+    maxAltitude: "1,401m",
+    requirements: ["Comfortable shoes"],
+    permits: [],
+    equipment: [],
+    entryRequirements: []
+  },
+  {
+    id: "5",
+    title: "Swayambhunath and Kathmandu Durbar Square",
+    location: "Kathmandu, Nepal",
+    duration: "4-5 hours",
+    rating: 4.6,
+    reviewCount: 278,
+    price: 30,
+    excerpt: "Monkey Temple and royal palace discovery",
+    description: "Visit two of Kathmandu's most iconic landmarks. Climb the 365 steps to Swayambhunath Stupa (Monkey Temple) for panoramic city views and spiritual ambiance. Then explore Kathmandu Durbar Square with its ancient temples, palaces, and living goddess Kumari.",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
+    ],
+    tags: ["Iconic", "Historical", "Half Day"],
+    highlights: ["Swayambhunath Stupa", "Monkey Temple", "Kathmandu Durbar Square", "Kumari Temple"],
+    includes: ["Guide", "Entry fees", "Transportation"],
+    excludes: ["Meals", "Personal expenses"],
+    itinerary: [
+      { day: 1, title: "Iconic Landmarks", description: "Hotel pickup, climb to Swayambhunath, explore temples, visit Durbar Square, see Kumari Temple, return" }
+    ],
+    maxGroupSize: 10,
+    included: ["Expert guide", "All entry fees", "Transport"],
+    excluded: ["Food and drinks", "Shopping"],
+    cancellationPolicy: "Flexible cancellation policy.",
+    isPopular: false,
+    isSoldOut: false,
+    difficulty: "easy",
+    maxAltitude: "1,350m",
+    requirements: ["Comfortable walking shoes"],
+    permits: [],
+    equipment: [],
+    entryRequirements: []
   }
 ];
 
@@ -124,162 +192,23 @@ export default function DaySightseeingPage() {
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  // Fetch day sightseeing tours from Strapi API
+  // Load day sightseeing tours
   useEffect(() => {
-    const fetchTours = async () => {
+    const loadTours = async () => {
       try {
-        setLoading(true);
-        setError(null);
-        
-        const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-        const response = await fetch(`${API_URL}/api/day-sightseeings?populate=*`);
-        
-        console.log("API Response status:", response.status);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log("API Response data:", data);
-        
-        // Handle different response formats
-        let toursData = [];
-        
-        // Format 1: Standard Strapi v4 response (data array)
-        if (data.data && Array.isArray(data.data)) {
-          toursData = data.data;
-        } 
-        // Format 2: Array response (direct)
-        else if (Array.isArray(data)) {
-          toursData = data;
-        }
-        // Format 3: Single object response
-        else if (data.data && typeof data.data === 'object') {
-          toursData = [data.data];
-        }
-        // Format 4: Direct object
-        else if (data.id) {
-          toursData = [data];
-        } else {
-          console.warn("Unexpected API response format, using fallback data");
-          setTours(FALLBACK_TOURS);
-          setLoading(false);
-          return;
-        }
-        
-        // Transform API response to match Tour type
-        const transformedTours: Tour[] = toursData.map((item: any) => {
-          // Extract attributes based on Strapi v4 format or direct format
-          const attributes = item.attributes || item;
-          const id = item.id?.toString() || Math.random().toString(36).substr(2, 9);
-          
-          // Handle image extraction
-          const extractImageUrl = (imageData: any) => {
-            if (!imageData) return "/images/default-tour.jpg";
-            
-            if (Array.isArray(imageData)) {
-              return imageData[0]?.url 
-                ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData[0].url}`
-                : "/images/default-tour.jpg";
-            } else if (imageData.url) {
-              return `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.url}`;
-            } else if (imageData.data) {
-              // Handle nested data structure
-              if (Array.isArray(imageData.data)) {
-                return imageData.data[0]?.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.data[0].attributes.url}`
-                  : "/images/default-tour.jpg";
-              } else {
-                return imageData.data.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.data.attributes.url}`
-                  : "/images/default-tour.jpg";
-              }
-            }
-            return "/images/default-tour.jpg";
-          };
-          
-          // Handle multiple images extraction
-          const extractMultipleImages = (imagesData: any): string[] => {
-            if (!imagesData) return [];
-            
-            if (Array.isArray(imagesData)) {
-              return imagesData
-                .map((img: any) => 
-                  img.url ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${img.url}` : null
-                )
-                .filter(Boolean) as string[];
-            } else if (imagesData.data && Array.isArray(imagesData.data)) {
-              return imagesData.data
-                .map((img: any) => 
-                  img.attributes?.url 
-                    ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${img.attributes.url}`
-                    : null
-                )
-                .filter(Boolean) as string[];
-            }
-            return [];
-          };
-          
-          // Parse JSON fields if they are stored as strings
-          const parseField = (field: any, defaultValue: any = []) => {
-            if (typeof field === 'string') {
-              try {
-                return JSON.parse(field);
-              } catch {
-                return defaultValue;
-              }
-            }
-            return field || defaultValue;
-          };
-          
-          return {
-            id,
-            title: attributes.title || "Untitled Tour",
-            location: attributes.location || "",
-            duration: attributes.duration || "",
-            rating: attributes.rating || 0,
-            reviewCount: attributes.reviewCount || 0,
-            price: attributes.price || 0,
-            excerpt: attributes.excerpt || "",
-            description: attributes.description || "",
-            image: extractImageUrl(attributes.image),
-            images: extractMultipleImages(attributes.images),
-            tags: parseField(attributes.tags, []),
-            highlights: parseField(attributes.highlights, []),
-            includes: parseField(attributes.includes, []),
-            excludes: parseField(attributes.excludes, []),
-            included: parseField(attributes.included || attributes.includes, []),
-            excluded: parseField(attributes.excluded || attributes.excludes, []),
-            itinerary: parseField(attributes.itinerary, []),
-            maxGroupSize: attributes.maxGroupSize || 0,
-            cancellationPolicy: attributes.cancellationPolicy || "",
-            isPopular: attributes.isPopular || false,
-            isSoldOut: attributes.isSoldOut || false,
-            difficulty: attributes.difficulty || "easy",
-            maxAltitude: attributes.maxAltitude || "",
-            requirements: parseField(attributes.requirements, []),
-            permits: parseField(attributes.permits, []),
-            equipment: parseField(attributes.equipment, []),
-            entryRequirements: parseField(attributes.entryRequirements, [])
-          };
-        });
-        
-        console.log("Transformed tours:", transformedTours);
-        setTours(transformedTours);
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 800));
+        setTours(DAY_SIGHTSEEING_TOURS);
       } catch (err) {
-        console.error("Error fetching day sightseeing tours:", err);
-        setError(`Failed to load tours: ${err instanceof Error ? err.message : 'Unknown error'}`);
-        // Use fallback data if API fails
-        setTours(FALLBACK_TOURS);
+        console.error("Error loading cultural tours:", err);
+        setTours(DAY_SIGHTSEEING_TOURS); // Still use mock data on error
       } finally {
         setLoading(false);
       }
     };
 
-    fetchTours();
+    loadTours();
   }, []);
 
   const handleTourSelect = (tour: Tour) => {
@@ -304,15 +233,6 @@ export default function DaySightseeingPage() {
         title="Kathmandu Cultural Tours"
         description="Discover the rich heritage of the Kathmandu Valley with our curated cultural tours. Explore ancient temples, medieval palaces, and vibrant local traditions with expert guides."
       />
-      
-      {error && (
-        <div className="container mx-auto px-4 py-4">
-          <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative">
-            <strong className="font-bold">Note: </strong>
-            <span className="block sm:inline">{error}</span>
-          </div>
-        </div>
-      )}
       
       <section className="py-12 bg-muted/20">
         <div className="container mx-auto px-4">

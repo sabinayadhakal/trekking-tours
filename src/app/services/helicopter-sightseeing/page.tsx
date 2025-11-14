@@ -7,8 +7,8 @@ import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
-// Fallback data in case API fails
-const FALLBACK_TOURS: Tour[] = [
+// Mock helicopter tours data
+const HELICOPTER_TOURS: Tour[] = [
   {
     id: "1",
     title: "Everest Helicopter Sightseeing",
@@ -20,8 +20,12 @@ const FALLBACK_TOURS: Tour[] = [
     originalPrice: 1250,
     excerpt: "Breathtaking aerial views of the world's highest peak",
     description: "Experience the ultimate adventure with a helicopter tour to Mount Everest. Fly over the majestic Himalayas, witness stunning glaciers, and land at the world's highest hotel at Everest View Point (3,880m) for breakfast with a panoramic view of Everest, Lhotse, and Ama Dablam. This once-in-a-lifetime journey offers unparalleled views of the world's highest mountains without the strenuous trek.",
-    image: "/images/everest-helicopter.jpg",
-    images: ["/images/everest-helicopter1.jpg", "/images/everest-helicopter2.jpg", "/images/everest-helicopter3.jpg"],
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
+    ],
     tags: ["Helicopter", "Luxury", "Bucket List"],
     highlights: [
       "Mount Everest close-up view",
@@ -46,6 +50,125 @@ const FALLBACK_TOURS: Tour[] = [
     permits: ["National Park entry permit", "Flight operation permit"],
     equipment: ["Warm clothing", "Sunglasses", "Camera"],
     entryRequirements: ["Valid passport for identification"]
+  },
+  {
+    id: "2",
+    title: "Annapurna Base Camp Helicopter Tour",
+    location: "Annapurna Region, Nepal",
+    duration: "3-4 hours",
+    rating: 4.8,
+    reviewCount: 189,
+    price: 850,
+    originalPrice: 950,
+    excerpt: "Spectacular Annapurna range views with ABC landing",
+    description: "Soar above the Annapurna Sanctuary and land at Annapurna Base Camp (4,130m) for unparalleled close-up views of the Annapurna massif. This helicopter adventure takes you deep into the heart of the Himalayas, offering breathtaking aerial perspectives of Machhapuchhre (Fishtail Mountain), Annapurna I, and surrounding peaks.",
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop"
+    ],
+    tags: ["Helicopter", "Annapurna", "Adventure"],
+    highlights: [
+      "Annapurna Base Camp landing",
+      "Machhapuchhre close-up views",
+      "Annapurna Sanctuary flight",
+      "Himalayan glacier views"
+    ],
+    includes: ["Helicopter flight", "Pilot guide", "Hotel transfers"],
+    excludes: ["Personal expenses", "Travel insurance"],
+    included: ["Shared helicopter", "Expert pilot", "Transfers", "All permits"],
+    excluded: ["Personal items", "Insurance"],
+    itinerary: [
+      { day: 1, title: "Annapurna Helicopter Tour", description: "Hotel pickup, scenic flight to Annapurna region, landing at ABC for photos, return to Pokhara" }
+    ],
+    maxGroupSize: 5,
+    cancellationPolicy: "7-day cancellation policy with full refund.",
+    isPopular: true,
+    isSoldOut: false,
+    difficulty: "Easy",
+    maxAltitude: "4,130m",
+    requirements: ["Good health", "No altitude issues"],
+    permits: ["ACAP permit", "Flight permits"],
+    equipment: ["Warm layers", "Camera"],
+    entryRequirements: ["Passport copy"]
+  },
+  {
+    id: "3",
+    title: "Langtang Valley Helicopter Tour",
+    location: "Langtang Region, Nepal",
+    duration: "3 hours",
+    rating: 4.7,
+    reviewCount: 124,
+    price: 750,
+    excerpt: "Glacier-filled valley adventure with monastery landing",
+    description: "Discover the stunning Langtang Valley from above with this scenic helicopter tour. Fly over dramatic glaciers, traditional Tamang villages, and land at Kyanjin Gompa (3,870m) for spectacular views of Langtang Lirung and the surrounding peaks. Experience the beauty of this less-crowded Himalayan region.",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
+    ],
+    tags: ["Helicopter", "Langtang", "Glaciers"],
+    highlights: [
+      "Kyanjin Gompa landing",
+      "Langtang Lirung views",
+      "Glacier overflight",
+      "Tamang culture insight"
+    ],
+    includes: ["Helicopter flight", "Pilot", "Transfers"],
+    excludes: ["Meals", "Personal costs"],
+    included: ["Flight", "Transfers", "Permits"],
+    excluded: ["Food", "Extras"],
+    itinerary: [
+      { day: 1, title: "Langtang Valley Tour", description: "Hotel pickup, flight over Langtang National Park, landing at Kyanjin, photography session, return" }
+    ],
+    maxGroupSize: 5,
+    cancellationPolicy: "Flexible 5-day cancellation.",
+    isPopular: false,
+    isSoldOut: false,
+    difficulty: "Easy",
+    maxAltitude: "3,870m",
+    requirements: ["Basic fitness"],
+    permits: ["National Park permit"],
+    equipment: ["Jacket", "Camera"],
+    entryRequirements: ["ID required"]
+  },
+  {
+    id: "4",
+    title: "Muktinath Helicopter Pilgrimage",
+    location: "Mustang Region, Nepal",
+    duration: "4 hours",
+    rating: 4.9,
+    reviewCount: 95,
+    price: 900,
+    originalPrice: 1000,
+    excerpt: "Spiritual journey to sacred Muktinath Temple",
+    description: "Combine spiritual pilgrimage with aerial adventure on this helicopter tour to Muktinath Temple. Fly over the dramatic landscapes of Lower Mustang, land at one of Nepal's most sacred sites, and receive blessings at the temple revered by both Hindus and Buddhists. Witness the unique desert-like landscape of the Mustang region from above.",
+    image: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
+    ],
+    tags: ["Helicopter", "Pilgrimage", "Spiritual"],
+    highlights: [
+      "Muktinath Temple visit",
+      "Mustang region flight",
+      "Sacred site blessings",
+      "Dramatic landscape views"
+    ],
+    includes: ["Helicopter", "Pilot guide", "Temple entry", "Transfers"],
+    excludes: ["Donations", "Personal shopping"],
+    included: ["Flight", "Temple fees", "Transfers"],
+    excluded: ["Personal donations", "Shopping"],
+    itinerary: [
+      { day: 1, title: "Muktinath Pilgrimage", description: "Hotel pickup, scenic flight to Mustang, temple visit and prayers, exploration time, return flight" }
+    ],
+    maxGroupSize: 5,
+    cancellationPolicy: "Special pilgrimage cancellation terms apply.",
+    isPopular: true,
+    isSoldOut: true,
+    difficulty: "Easy",
+    maxAltitude: "3,710m",
+    requirements: ["Respect for religious sites"],
+    permits: ["Restricted area permit"],
+    equipment: ["Modest clothing", "Camera"],
+    entryRequirements: ["Passport mandatory"]
   }
 ];
 
@@ -54,163 +177,23 @@ export default function HelicopterSightseeingPage() {
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  // Fetch helicopter tours from Strapi API
+  // Load helicopter tours
   useEffect(() => {
-    const fetchTours = async () => {
+    const loadTours = async () => {
       try {
-        setLoading(true);
-        setError(null);
-        
-        const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-        const response = await fetch(`${API_URL}/api/helicopter-sightseeings?populate=*`);
-        
-        console.log("API Response status:", response.status);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log("API Response data:", data);
-        
-        // Handle different response formats
-        let toursData = [];
-        
-        // Format 1: Standard Strapi v4 response (data array)
-        if (data.data && Array.isArray(data.data)) {
-          toursData = data.data;
-        } 
-        // Format 2: Array response (direct)
-        else if (Array.isArray(data)) {
-          toursData = data;
-        }
-        // Format 3: Single object response
-        else if (data.data && typeof data.data === 'object') {
-          toursData = [data.data];
-        }
-        // Format 4: Direct object
-        else if (data.id) {
-          toursData = [data];
-        } else {
-          console.warn("Unexpected API response format, using fallback data");
-          setTours(FALLBACK_TOURS);
-          setLoading(false);
-          return;
-        }
-        
-        // Transform API response to match Tour type
-        const transformedTours: Tour[] = toursData.map((item: any) => {
-          // Extract attributes based on Strapi v4 format or direct format
-          const attributes = item.attributes || item;
-          const id = item.id?.toString() || Math.random().toString(36).substr(2, 9);
-          
-          // Handle image extraction
-          const extractImageUrl = (imageData: any) => {
-            if (!imageData) return "/images/default-helicopter.jpg";
-            
-            if (Array.isArray(imageData)) {
-              return imageData[0]?.url 
-                ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData[0].url}`
-                : "/images/default-helicopter.jpg";
-            } else if (imageData.url) {
-              return `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.url}`;
-            } else if (imageData.data) {
-              // Handle nested data structure
-              if (Array.isArray(imageData.data)) {
-                return imageData.data[0]?.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.data[0].attributes.url}`
-                  : "/images/default-helicopter.jpg";
-              } else {
-                return imageData.data.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.data.attributes.url}`
-                  : "/images/default-helicopter.jpg";
-              }
-            }
-            return "/images/default-helicopter.jpg";
-          };
-          
-          // Handle multiple images extraction
-          const extractMultipleImages = (imagesData: any): string[] => {
-            if (!imagesData) return [];
-            
-            if (Array.isArray(imagesData)) {
-              return imagesData
-                .map((img: any) => 
-                  img.url ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${img.url}` : null
-                )
-                .filter(Boolean) as string[];
-            } else if (imagesData.data && Array.isArray(imagesData.data)) {
-              return imagesData.data
-                .map((img: any) => 
-                  img.attributes?.url 
-                    ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${img.attributes.url}`
-                    : null
-                )
-                .filter(Boolean) as string[];
-            }
-            return [];
-          };
-          
-          // Parse JSON fields if they are stored as strings
-          const parseField = (field: any, defaultValue: any = []) => {
-            if (typeof field === 'string') {
-              try {
-                return JSON.parse(field);
-              } catch {
-                return defaultValue;
-              }
-            }
-            return field || defaultValue;
-          };
-          
-          return {
-            id,
-            title: attributes.title || "Untitled Helicopter Tour",
-            location: attributes.location || "",
-            duration: attributes.duration || "",
-            rating: attributes.rating || 0,
-            reviewCount: attributes.reviewCount || 0,
-            price: attributes.price || 0,
-            originalPrice: attributes.originalPrice || attributes.price || 0,
-            excerpt: attributes.excerpt || "",
-            description: attributes.description || "",
-            image: extractImageUrl(attributes.image),
-            images: extractMultipleImages(attributes.images),
-            tags: parseField(attributes.tags, []),
-            highlights: parseField(attributes.highlights, []),
-            includes: parseField(attributes.includes, []),
-            excludes: parseField(attributes.excludes, []),
-            included: parseField(attributes.included || attributes.includes, []),
-            excluded: parseField(attributes.excluded || attributes.excludes, []),
-            itinerary: parseField(attributes.itinerary, []),
-            maxGroupSize: attributes.maxGroupSize || 0,
-            cancellationPolicy: attributes.cancellationPolicy || "",
-            isPopular: attributes.isPopular || false,
-            isSoldOut: attributes.isSoldOut || false,
-            difficulty: attributes.difficulty || "Easy",
-            maxAltitude: attributes.maxAltitude || "",
-            requirements: parseField(attributes.requirements, []),
-            permits: parseField(attributes.permits, []),
-            equipment: parseField(attributes.equipment, []),
-            entryRequirements: parseField(attributes.entryRequirements, [])
-          };
-        });
-        
-        console.log("Transformed helicopter tours:", transformedTours);
-        setTours(transformedTours);
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 800));
+        setTours(HELICOPTER_TOURS);
       } catch (err) {
-        console.error("Error fetching helicopter tours:", err);
-        setError(`Failed to load helicopter tours: ${err instanceof Error ? err.message : 'Unknown error'}`);
-        // Use fallback data if API fails
-        setTours(FALLBACK_TOURS);
+        console.error("Error loading helicopter tours:", err);
+        setTours(HELICOPTER_TOURS); // Still use mock data on error
       } finally {
         setLoading(false);
       }
     };
 
-    fetchTours();
+    loadTours();
   }, []);
 
   const handleTourSelect = (tour: Tour) => {
@@ -235,15 +218,6 @@ export default function HelicopterSightseeingPage() {
         title="Nepal Helicopter Sightseeing Tours"
         description="Experience the Himalayas from above with our exclusive helicopter tours. Witness breathtaking aerial views of Everest, Annapurna, and Langtang regions without the strenuous trekking. A once-in-a-lifetime adventure awaits."
       />
-      
-      {error && (
-        <div className="container mx-auto px-4 py-4">
-          <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative">
-            <strong className="font-bold">Note: </strong>
-            <span className="block sm:inline">{error}</span>
-          </div>
-        </div>
-      )}
       
       <section className="py-12 bg-muted/20">
         <div className="container mx-auto px-4">

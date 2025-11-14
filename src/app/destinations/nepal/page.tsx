@@ -13,148 +13,307 @@ export default function NepalPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [tours, setTours] = useState<Tour[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+
+  // Mock Nepal tours data
+  const mockNepalTours: Tour[] = [
+    {
+      id: "1",
+      title: "Everest Base Camp Trek",
+      location: "Sagarmatha National Park",
+      duration: "14 Days",
+      rating: 4.9,
+      reviewCount: 156,
+      price: 1299,
+      originalPrice: 1499,
+      excerpt: "Trek to the base of the world's highest mountain through stunning Himalayan landscapes",
+      description: "Embark on the adventure of a lifetime to Everest Base Camp. This iconic trek takes you through Sherpa villages, ancient monasteries, and breathtaking valleys to stand at the foot of Mount Everest.",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      images: [
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+        "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+      ],
+      tags: ["Trekking", "Adventure", "Himalayas", "Everest"],
+      highlights: [
+        "Stand at Everest Base Camp",
+        "Cross Hillary Suspension Bridge",
+        "Visit Tengboche Monastery",
+        "Kala Patthar sunrise view"
+      ],
+      includes: [
+        "Experienced Sherpa guide",
+        "All meals during trek",
+        "Teahouse accommodations",
+        "Sagarmatha National Park permit"
+      ],
+      excludes: [
+        "International flights",
+        "Nepal visa fees",
+        "Travel insurance",
+        "Personal expenses"
+      ],
+      included: [
+        "Experienced Sherpa guide",
+        "All meals during trek",
+        "Teahouse accommodations",
+        "Sagarmatha National Park permit"
+      ],
+      excluded: [
+        "International flights",
+        "Nepal visa fees",
+        "Travel insurance",
+        "Personal expenses"
+      ],
+      entryRequirements: [
+        "Valid passport",
+        "Nepal tourist visa",
+        "Travel insurance with helicopter evacuation"
+      ],
+      requirements: [
+        "Good physical fitness",
+        "Previous trekking experience recommended",
+        "Proper hiking gear"
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: "Kathmandu to Lukla to Phakding",
+          description: "Scenic flight to Lukla and gentle trek to Phakding village"
+        },
+        {
+          day: 2,
+          title: "Phakding to Namche Bazaar",
+          description: "Trek to the bustling Sherpa capital of Namche Bazaar"
+        }
+      ],
+      maxGroupSize: 12,
+      cancellationPolicy: "Free cancellation up to 60 days before departure. 50% refund between 30-59 days. No refund within 29 days.",
+      isPopular: true,
+      isSoldOut: false,
+      difficulty: "Challenging",
+      maxAltitude: "5,545m",
+      permits: ["TIMS card", "Sagarmatha National Park permit"],
+      equipment: ["Trekking boots", "Down jacket", "Sleeping bag", "Trekking poles"]
+    },
+    {
+      id: "2",
+      title: "Annapurna Circuit Trek",
+      location: "Annapurna Conservation Area",
+      duration: "18 Days",
+      rating: 4.8,
+      reviewCount: 89,
+      price: 1199,
+      excerpt: "Complete circuit around the Annapurna massif with diverse landscapes",
+      description: "Experience one of the world's best treks circling the Annapurna massif. Cross the challenging Thorong La Pass and witness incredible diversity from subtropical forests to high-altitude deserts.",
+      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      images: [
+        "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+      ],
+      tags: ["Trekking", "Circuit", "Annapurna", "Thorong La"],
+      highlights: [
+        "Cross Thorong La Pass (5,416m)",
+        "Natural hot springs at Tatopani",
+        "Muktinath Temple visit",
+        "Poon Hill sunrise"
+      ],
+      includes: [
+        "ACAP permit and TIMS card",
+        "All accommodation",
+        "Three meals daily",
+        "Experienced guide and porters"
+      ],
+      excludes: [
+        "Personal expenses",
+        "Alcoholic beverages",
+        "Tips for guide and porters"
+      ],
+      included: [
+        "ACAP permit and TIMS card",
+        "All accommodation",
+        "Three meals daily",
+        "Experienced guide and porters"
+      ],
+      excluded: [
+        "Personal expenses",
+        "Alcoholic beverages",
+        "Tips for guide and porters"
+      ],
+      entryRequirements: [
+        "Valid passport",
+        "Good physical condition"
+      ],
+      requirements: [
+        "Excellent physical fitness",
+        "High altitude experience",
+        "Proper trekking equipment"
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: "Drive to Besisahar and trek to Bhulbhule",
+          description: "Scenic drive from Kathmandu and start of Annapurna Circuit"
+        }
+      ],
+      maxGroupSize: 10,
+      cancellationPolicy: "Free cancellation up to 45 days before departure for Annapurna treks.",
+      isPopular: true,
+      isSoldOut: false,
+      difficulty: "Challenging",
+      maxAltitude: "5,416m",
+      permits: ["Annapurna Conservation Area Permit", "TIMS card"],
+      equipment: ["4-season sleeping bag", "Waterproof gear", "Headlamp", "Trekking boots"]
+    },
+    {
+      id: "3",
+      title: "Chitwan Jungle Safari",
+      location: "Chitwan National Park",
+      duration: "4 Days",
+      rating: 4.7,
+      reviewCount: 67,
+      price: 499,
+      excerpt: "Wildlife adventure in Nepal's premier national park",
+      description: "Explore the wilderness of Chitwan National Park, home to Bengal tigers, one-horned rhinoceros, and diverse bird species. Experience jungle safaris, elephant rides, and Tharu cultural shows.",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      images: [
+        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+      ],
+      tags: ["Wildlife", "Safari", "Jungle", "Cultural"],
+      highlights: [
+        "Jeep safari in Chitwan National Park",
+        "One-horned rhinoceros spotting",
+        "Traditional Tharu dance performance",
+        "Canoe ride on Rapti River"
+      ],
+      includes: [
+        "All park entry fees",
+        "Jungle activities as per itinerary",
+        "Accommodation in jungle resort",
+        "All meals during safari"
+      ],
+      excludes: [
+        "Personal shopping",
+        "Additional activities",
+        "Beverages"
+      ],
+      included: [
+        "All park entry fees",
+        "Jungle activities as per itinerary",
+        "Accommodation in jungle resort",
+        "All meals during safari"
+      ],
+      excluded: [
+        "Personal shopping",
+        "Additional activities",
+        "Beverages"
+      ],
+      entryRequirements: [
+        "Valid passport",
+        "Vaccination certificates if required"
+      ],
+      requirements: [
+        "Comfortable clothing",
+        "Binoculars for bird watching",
+        "Camera for wildlife photography"
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival and Tharu Village Tour",
+          description: "Arrive in Chitwan and visit local Tharu community"
+        }
+      ],
+      maxGroupSize: 15,
+      cancellationPolicy: "Free cancellation up to 14 days before safari date.",
+      isPopular: false,
+      isSoldOut: false,
+      difficulty: "Easy",
+      maxAltitude: "415m",
+      permits: ["Chitwan National Park entry permit"],
+      equipment: ["Light clothing", "Sunscreen", "Insect repellent", "Camera"]
+    },
+    {
+      id: "4",
+      title: "Langtang Valley Trek",
+      location: "Langtang National Park",
+      duration: "10 Days",
+      rating: 4.6,
+      reviewCount: 42,
+      price: 799,
+      excerpt: "Beautiful valley trek close to Kathmandu with Tibetan culture",
+      description: "Discover the stunning Langtang Valley, often called the 'valley of glaciers'. Experience Tamang and Tibetan cultures while trekking through pristine forests and high mountain scenery.",
+      image: "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      images: [
+        "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+      ],
+      tags: ["Trekking", "Valley", "Tibetan Culture", "Glaciers"],
+      highlights: [
+        "Langtang Valley views",
+        "Kyanjin Gompa monastery",
+        "Tamang heritage experience",
+        "Langtang Lirung glacier"
+      ],
+      includes: [
+        "Langtang National Park permit",
+        "Teahouse accommodation",
+        "All meals during trek",
+        "Experienced local guide"
+      ],
+      excludes: [
+        "Personal expenses",
+        "Travel insurance",
+        "Kathmandu accommodation"
+      ],
+      included: [
+        "Langtang National Park permit",
+        "Teahouse accommodation",
+        "All meals during trek",
+        "Experienced local guide"
+      ],
+      excluded: [
+        "Personal expenses",
+        "Travel insurance",
+        "Kathmandu accommodation"
+      ],
+      entryRequirements: [
+        "Valid passport",
+        "Moderate fitness level"
+      ],
+      requirements: [
+        "Basic trekking fitness",
+        "Warm clothing",
+        "Trekking shoes"
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: "Drive to Syabrubesi",
+          description: "Scenic drive from Kathmandu to trek starting point"
+        }
+      ],
+      maxGroupSize: 8,
+      cancellationPolicy: "Standard trekking cancellation policy applies.",
+      isPopular: true,
+      isSoldOut: true,
+      difficulty: "Moderate",
+      maxAltitude: "4,984m",
+      permits: ["Langtang National Park permit", "TIMS card"],
+      equipment: ["Trekking gear", "Warm layers", "Water bottles", "First aid kit"]
+    }
+  ]
 
   useEffect(() => {
-    const fetchTours = async () => {
+    const loadTours = async () => {
       try {
-        console.log('Fetching tours from:', `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/nepal-destinations?populate=*`)
-        
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/nepal-destinations?populate=*`
-        )
-        
-        if (!response.ok) {
-          throw new Error(`Failed to fetch tours: ${response.status} ${response.statusText}`)
-        }
-        
-        const data = await response.json()
-        console.log('Full API Response:', data)
-        
-        if (!data || !Array.isArray(data)) {
-          if (data.data && Array.isArray(data.data)) {
-            console.log('Using data.data array')
-            processToursData(data.data)
-          } else {
-            throw new Error('Invalid API response format')
-          }
-        } else {
-          processToursData(data)
-        }
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        setTours(mockNepalTours)
       } catch (err) {
-        console.error('Error fetching tours:', err)
-        setError(err instanceof Error ? err.message : 'An unknown error occurred')
-        setLoading(false)
-      }
-    }
-
-    const processToursData = (toursData: any[]) => {
-      try {
-        console.log('Processing tours data:', toursData)
-        
-        const formattedTours: Tour[] = toursData.map((item: any) => {
-          console.log('Processing item:', item)
-          
-          const attributes = item.attributes || item
-          const id = item.id?.toString() || Math.random().toString()
-          
-          let imageUrl = "/images/default-tour.jpg"
-          if (attributes.image) {
-            if (typeof attributes.image === 'string') {
-              imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image}`
-            } else if (attributes.image.data) {
-              if (Array.isArray(attributes.image.data)) {
-                imageUrl = attributes.image.data[0]?.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image.data[0].attributes.url}`
-                  : "/images/default-tour.jpg"
-              } else {
-                imageUrl = attributes.image.data?.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image.data.attributes.url}`
-                  : "/images/default-tour.jpg"
-              }
-            } else if (attributes.image.url) {
-              imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image.url}`
-            }
-          }
-          
-          let imagesUrls: string[] = []
-          if (attributes.images) {
-            if (Array.isArray(attributes.images)) {
-              imagesUrls = attributes.images.map((img: any) => {
-                if (typeof img === 'string') {
-                  return `${process.env.NEXT_PUBLIC_STRAPI_URL}${img}`
-                } else if (img.url) {
-                  return `${process.env.NEXT_PUBLIC_STRAPI_URL}${img.url}`
-                } else if (img.data) {
-                  return img.data.attributes?.url 
-                    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${img.data.attributes.url}`
-                    : ""
-                }
-                return ""
-              }).filter((url: string) => url !== "")
-            } else if (attributes.images.data && Array.isArray(attributes.images.data)) {
-              imagesUrls = attributes.images.data.map((img: any) => 
-                img.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${img.attributes.url}`
-                  : ""
-              ).filter((url: string) => url !== "")
-            }
-          }
-          
-          const parseField = (field: any) => {
-            if (typeof field === 'string') {
-              try {
-                return JSON.parse(field)
-              } catch {
-                return []
-              }
-            }
-            return field || []
-          }
-          
-          return {
-            id: id,
-            title: attributes.title || "Untitled Tour",
-            location: attributes.location || "Nepal",
-            duration: attributes.duration || "",
-            rating: typeof attributes.rating === 'number' ? attributes.rating : 0,
-            reviewCount: typeof attributes.reviewCount === 'number' ? attributes.reviewCount : 0,
-            price: typeof attributes.price === 'number' ? attributes.price : 0,
-            excerpt: attributes.excerpt || "",
-            description: attributes.description || "",
-            image: imageUrl,
-            images: imagesUrls,
-            tags: parseField(attributes.tags),
-            highlights: parseField(attributes.highlights),
-            includes: parseField(attributes.includes),
-            excludes: parseField(attributes.excludes),
-            included: parseField(attributes.included || attributes.includes),
-            excluded: parseField(attributes.excluded || attributes.excludes),
-            entryRequirements: parseField(attributes.entryRequirements),
-            requirements: parseField(attributes.requirements),
-            itinerary: parseField(attributes.itinerary),
-            maxGroupSize: typeof attributes.maxGroupSize === 'number' ? attributes.maxGroupSize : 0,
-            cancellationPolicy: attributes.cancellationPolicy || "",
-            isPopular: Boolean(attributes.isPopular),
-            isSoldOut: Boolean(attributes.isSoldOut),
-            difficulty: attributes.difficulty || "",
-            maxAltitude: attributes.maxAltitude || "",
-            permits: parseField(attributes.permits),
-            equipment: parseField(attributes.equipment)
-          }
-        })
-        
-        console.log('Formatted tours:', formattedTours)
-        setTours(formattedTours)
-      } catch (err) {
-        console.error('Error processing tours data:', err)
-        setError('Failed to process tour data')
+        console.error('Error loading tours:', err)
       } finally {
         setLoading(false)
       }
     }
 
-    fetchTours()
+    loadTours()
   }, [])
 
   const handleTourSelect = (tour: Tour) => {
@@ -184,26 +343,6 @@ export default function NepalPage() {
     )
   }
 
-  if (error) {
-    return (
-      <ThemeProvider>
-        <div className="container mx-auto px-4 py-12 text-center">
-          <p className="text-red-500 text-lg mb-4">Error loading tours</p>
-          <p className="text-gray-600 mb-4">{error}</p>
-          <p className="text-sm text-gray-500 mb-4">
-            Check if your Strapi server is running and the API endpoint is correct.
-          </p>
-          <button 
-            onClick={() => window.location.reload()}
-            className="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          >
-            Try Again
-          </button>
-        </div>
-      </ThemeProvider>
-    )
-  }
-
   return (
     <ThemeProvider>
       <Notifications showTestToast={true} />
@@ -224,7 +363,7 @@ export default function NepalPage() {
           <div className="text-center py-12">
             <p className="text-gray-500">No tours available at the moment.</p>
             <p className="text-sm text-gray-400 mt-2">
-              Check your Strapi admin panel to add Nepal destinations.
+              Check back soon for new Nepal tour offerings.
             </p>
           </div>
         )}

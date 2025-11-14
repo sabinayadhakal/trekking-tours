@@ -12,148 +12,243 @@ export default function BhutanPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [tours, setTours] = useState<Tour[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+
+  // Mock Bhutan tours data
+  const mockBhutanTours: Tour[] = [
+    {
+      id: "1",
+      title: "Classic Bhutan Cultural Tour",
+      location: "Paro, Thimphu, Punakha",
+      duration: "7 Days",
+      rating: 4.9,
+      reviewCount: 42,
+      price: 2499,
+      originalPrice: 2799,
+      excerpt: "Experience the essence of Bhutan's culture and spirituality",
+      description: "Discover the magical kingdom of Bhutan through its ancient monasteries, vibrant festivals, and breathtaking landscapes. This comprehensive cultural tour takes you through the heart of Bhutanese heritage.",
+      image: "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      images: [
+        "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+      ],
+      tags: ["Cultural", "Spiritual", "UNESCO", "Festivals"],
+      highlights: [
+        "Visit Tiger's Nest Monastery",
+        "Explore Punakha Dzong",
+        "Experience local festivals",
+        "Traditional Bhutanese meals"
+      ],
+      includes: [
+        "All meals included",
+        "Expert local guide",
+        "Comfortable accommodations",
+        "All entry fees and permits"
+      ],
+      excludes: [
+        "International flights",
+        "Travel insurance",
+        "Personal expenses",
+        "Alcohol beverages"
+      ],
+      included: [
+        "All meals included",
+        "Expert local guide",
+        "Comfortable accommodations",
+        "All entry fees and permits"
+      ],
+      excluded: [
+        "International flights",
+        "Travel insurance",
+        "Personal expenses",
+        "Alcohol beverages"
+      ],
+      entryRequirements: [
+        "Valid passport",
+        "Bhutan visa arranged",
+        "Travel insurance",
+        "Vaccination certificates if required"
+      ],
+      requirements: [
+        "Moderate fitness level",
+        "Respect for local customs",
+        "Comfortable walking shoes",
+        "Weather-appropriate clothing"
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Paro",
+          description: "Arrive at Paro International Airport, transfer to hotel, and visit Paro Dzong."
+        },
+        {
+          day: 2,
+          title: "Tiger's Nest Monastery",
+          description: "Hike to the iconic Taktsang Palphug Monastery, also known as Tiger's Nest."
+        }
+      ],
+      maxGroupSize: 12,
+      cancellationPolicy: "Free cancellation up to 30 days before departure. 50% refund between 15-29 days. No refund within 14 days of departure.",
+      isPopular: true,
+      isSoldOut: false,
+      difficulty: "Moderate",
+      maxAltitude: "3,120m",
+      permits: ["Bhutan visa", "Monastery entry permits"],
+      equipment: ["Daypack", "Water bottles", "Walking poles", "Camera"]
+    },
+    {
+      id: "2",
+      title: "Bhutan Trekking Adventure",
+      location: "Himalayan Mountains",
+      duration: "10 Days",
+      rating: 4.8,
+      reviewCount: 28,
+      price: 1899,
+      excerpt: "Trek through pristine Himalayan landscapes",
+      description: "Embark on an unforgettable trekking adventure through Bhutan's untouched wilderness, passing through remote villages and high mountain passes.",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      images: [
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+      ],
+      tags: ["Trekking", "Adventure", "Wilderness", "Mountains"],
+      highlights: [
+        "Druk Path Trek",
+        "Remote village visits",
+        "Alpine lakes",
+        "Mountain panoramas"
+      ],
+      includes: [
+        "Camping equipment",
+        "Experienced trekking guide",
+        "All meals during trek",
+        "Porter service"
+      ],
+      excludes: [
+        "Personal trekking gear",
+        "Travel insurance",
+        "International flights"
+      ],
+      included: [
+        "Camping equipment",
+        "Experienced trekking guide",
+        "All meals during trek",
+        "Porter service"
+      ],
+      excluded: [
+        "Personal trekking gear",
+        "Travel insurance",
+        "International flights"
+      ],
+      entryRequirements: [
+        "Valid passport",
+        "Bhutan visa",
+        "Good physical condition"
+      ],
+      requirements: [
+        "Good physical fitness",
+        "Trekking experience",
+        "Proper hiking boots"
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: "Start of Druk Path",
+          description: "Begin trek from Paro to Jele Dzong through beautiful pine forests."
+        }
+      ],
+      maxGroupSize: 8,
+      cancellationPolicy: "Free cancellation up to 45 days before departure for trekking tours.",
+      isPopular: false,
+      isSoldOut: false,
+      difficulty: "Challenging",
+      maxAltitude: "4,200m",
+      permits: ["Trekking permits", "National park fees"],
+      equipment: ["Trekking boots", "Sleeping bag", "Water purification", "Headlamp"]
+    },
+    {
+      id: "3",
+      title: "Bhutan Festival Experience",
+      location: "Various Locations",
+      duration: "8 Days",
+      rating: 5.0,
+      reviewCount: 15,
+      price: 2199,
+      excerpt: "Immerse in vibrant Bhutanese festivals and traditions",
+      description: "Time your visit to coincide with Bhutan's colorful festivals featuring masked dances, religious ceremonies, and community celebrations.",
+      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      images: [
+        "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+      ],
+      tags: ["Festival", "Cultural", "Photography", "Traditional"],
+      highlights: [
+        "Paro Tshechu Festival",
+        "Traditional mask dances",
+        "Local artisan workshops",
+        "Cultural performances"
+      ],
+      includes: [
+        "Festival entry fees",
+        "Cultural expert guide",
+        "Traditional costume rental",
+        "Photography guidance"
+      ],
+      excludes: [
+        "International flights",
+        "Personal shopping",
+        "Special photography permits"
+      ],
+      included: [
+        "Festival entry fees",
+        "Cultural expert guide",
+        "Traditional costume rental",
+        "Photography guidance"
+      ],
+      excluded: [
+        "International flights",
+        "Personal shopping",
+        "Special photography permits"
+      ],
+      entryRequirements: [
+        "Valid passport",
+        "Bhutan visa",
+        "Festival timing alignment"
+      ],
+      requirements: [
+        "Respect for religious ceremonies",
+        "Camera equipment",
+        "Comfortable clothing"
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: "Festival Opening Day",
+          description: "Witness the grand opening ceremony and first day of mask dances."
+        }
+      ],
+      maxGroupSize: 15,
+      cancellationPolicy: "Special festival cancellation policy applies due to limited dates.",
+      isPopular: true,
+      isSoldOut: true,
+      difficulty: "Easy",
+      maxAltitude: "2,300m",
+      permits: ["Festival photography permit"],
+      equipment: ["Camera", "Comfortable shoes", "Sun protection"]
+    }
+  ]
 
   useEffect(() => {
-    const fetchTours = async () => {
+    const loadTours = async () => {
       try {
-        console.log('Fetching tours from:', `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/bhutan-destinations?populate=*`)
-        
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/bhutan-destinations?populate=*`
-        )
-        
-        if (!response.ok) {
-          throw new Error(`Failed to fetch tours: ${response.status} ${response.statusText}`)
-        }
-        
-        const data = await response.json()
-        console.log('Full API Response:', data)
-        
-        if (!data || !Array.isArray(data)) {
-          if (data.data && Array.isArray(data.data)) {
-            console.log('Using data.data array')
-            processToursData(data.data)
-          } else {
-            throw new Error('Invalid API response format')
-          }
-        } else {
-          processToursData(data)
-        }
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        setTours(mockBhutanTours)
       } catch (err) {
-        console.error('Error fetching tours:', err)
-        setError(err instanceof Error ? err.message : 'An unknown error occurred')
-        setLoading(false)
-      }
-    }
-
-    const processToursData = (toursData: any[]) => {
-      try {
-        console.log('Processing tours data:', toursData)
-        
-        const formattedTours: Tour[] = toursData.map((item: any) => {
-          console.log('Processing item:', item)
-          
-          const attributes = item.attributes || item
-          const id = item.id?.toString() || Math.random().toString()
-          
-          let imageUrl = "/images/default-tour.jpg"
-          if (attributes.image) {
-            if (typeof attributes.image === 'string') {
-              imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image}`
-            } else if (attributes.image.data) {
-              if (Array.isArray(attributes.image.data)) {
-                imageUrl = attributes.image.data[0]?.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image.data[0].attributes.url}`
-                  : "/images/default-tour.jpg"
-              } else {
-                imageUrl = attributes.image.data?.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image.data.attributes.url}`
-                  : "/images/default-tour.jpg"
-              }
-            } else if (attributes.image.url) {
-              imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${attributes.image.url}`
-            }
-          }
-          
-          let imagesUrls: string[] = []
-          if (attributes.images) {
-            if (Array.isArray(attributes.images)) {
-              imagesUrls = attributes.images.map((img: any) => {
-                if (typeof img === 'string') {
-                  return `${process.env.NEXT_PUBLIC_STRAPI_URL}${img}`
-                } else if (img.url) {
-                  return `${process.env.NEXT_PUBLIC_STRAPI_URL}${img.url}`
-                } else if (img.data) {
-                  return img.data.attributes?.url 
-                    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${img.data.attributes.url}`
-                    : ""
-                }
-                return ""
-              }).filter((url: string) => url !== "")
-            } else if (attributes.images.data && Array.isArray(attributes.images.data)) {
-              imagesUrls = attributes.images.data.map((img: any) => 
-                img.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${img.attributes.url}`
-                  : ""
-              ).filter((url: string) => url !== "")
-            }
-          }
-          
-          const parseField = (field: any) => {
-            if (typeof field === 'string') {
-              try {
-                return JSON.parse(field)
-              } catch {
-                return []
-              }
-            }
-            return field || []
-          }
-          
-          return {
-            id: id,
-            title: attributes.title || "Untitled Tour",
-            location: attributes.location || "Bhutan",
-            duration: attributes.duration || "",
-            rating: typeof attributes.rating === 'number' ? attributes.rating : 0,
-            reviewCount: typeof attributes.reviewCount === 'number' ? attributes.reviewCount : 0,
-            price: typeof attributes.price === 'number' ? attributes.price : 0,
-            excerpt: attributes.excerpt || "",
-            description: attributes.description || "",
-            image: imageUrl,
-            images: imagesUrls,
-            tags: parseField(attributes.tags),
-            highlights: parseField(attributes.highlights),
-            includes: parseField(attributes.includes),
-            excludes: parseField(attributes.excludes),
-            included: parseField(attributes.included || attributes.includes),
-            excluded: parseField(attributes.excluded || attributes.excludes),
-            entryRequirements: parseField(attributes.entryRequirements),
-            requirements: parseField(attributes.requirements),
-            itinerary: parseField(attributes.itinerary),
-            maxGroupSize: typeof attributes.maxGroupSize === 'number' ? attributes.maxGroupSize : 0,
-            cancellationPolicy: attributes.cancellationPolicy || "",
-            isPopular: Boolean(attributes.isPopular),
-            isSoldOut: Boolean(attributes.isSoldOut),
-            difficulty: attributes.difficulty || "",
-            maxAltitude: attributes.maxAltitude || "",
-            permits: parseField(attributes.permits),
-            equipment: parseField(attributes.equipment)
-          }
-        })
-        
-        console.log('Formatted tours:', formattedTours)
-        setTours(formattedTours)
-      } catch (err) {
-        console.error('Error processing tours data:', err)
-        setError('Failed to process tour data')
+        console.error('Error loading tours:', err)
       } finally {
         setLoading(false)
       }
     }
 
-    fetchTours()
+    loadTours()
   }, [])
 
   const handleTourSelect = (tour: Tour) => {
@@ -183,26 +278,6 @@ export default function BhutanPage() {
     )
   }
 
-  if (error) {
-    return (
-      <ThemeProvider>
-        <div className="container mx-auto px-4 py-12 text-center">
-          <p className="text-red-500 text-lg mb-4">Error loading tours</p>
-          <p className="text-gray-600 mb-4">{error}</p>
-          <p className="text-sm text-gray-500 mb-4">
-            Check if your Strapi server is running and the API endpoint is correct.
-          </p>
-          <button 
-            onClick={() => window.location.reload()}
-            className="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          >
-            Try Again
-          </button>
-        </div>
-      </ThemeProvider>
-    )
-  }
-
   return (
     <ThemeProvider>
       {/* Hero section */}
@@ -221,7 +296,7 @@ export default function BhutanPage() {
           <div className="text-center py-12">
             <p className="text-gray-500">No tours available at the moment.</p>
             <p className="text-sm text-gray-400 mt-2">
-              Check your Strapi admin panel to add Bhutan destinations.
+              Check back soon for new Bhutan tour offerings.
             </p>
           </div>
         )}

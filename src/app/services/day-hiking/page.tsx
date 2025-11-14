@@ -7,8 +7,8 @@ import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
-// Fallback data in case API fails (optional)
-const FALLBACK_TOURS: Tour[] = [
+// Mock day hiking tours data
+const DAY_HIKING_TOURS: Tour[] = [
   {
     id: "1",
     title: "Nagarkot to Changunarayan Day Hiking",
@@ -45,6 +45,110 @@ const FALLBACK_TOURS: Tour[] = [
     permits: ["None required"],
     equipment: ["Day pack", "Water bottle", "Sun protection", "Comfortable shoes"],
     entryRequirements: ["None for day hikes"]
+  },
+  {
+    id: "2",
+    title: "Shivapuri Day Hike",
+    location: "Kathmandu Valley, Nepal",
+    duration: "1 day",
+    rating: 4.6,
+    reviewCount: 89,
+    price: 35,
+    originalPrice: 45,
+    excerpt: "Forest hike to the second highest peak around Kathmandu Valley",
+    description: "Explore the Shivapuri Nagarjun National Park on this rewarding day hike. Trek through pristine forests, spot diverse birdlife, and reach the summit of Shivapuri Peak for spectacular views of the Kathmandu Valley and Himalayan ranges.",
+    image: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
+    ],
+    tags: ["Day Hike", "Nature", "Challenging"],
+    highlights: ["Shivapuri National Park", "Diverse wildlife", "360-degree mountain views"],
+    includes: ["Expert naturalist guide", "National park fees", "Lunch", "Transportation"],
+    excludes: ["Personal expenses", "Tips"],
+    itinerary: [
+      { day: 1, title: "Shivapuri Summit", description: "Drive to trailhead, hike through rhododendron forests to Shivapuri summit, picnic lunch with mountain views" }
+    ],
+    maxGroupSize: 6,
+    included: ["Naturalist guide", "National park entry", "Lunch", "Transport"],
+    excluded: ["Personal items", "Gratuities"],
+    cancellationPolicy: "Free cancellation up to 48 hours before hike.",
+    isPopular: true,
+    isSoldOut: false,
+    difficulty: "challenging",
+    maxAltitude: "2,732m",
+    requirements: ["Good physical fitness", "Hiking experience"],
+    permits: ["National Park Permit"],
+    equipment: ["Hiking boots", "Rain jacket", "Water", "Camera"],
+    entryRequirements: ["None"]
+  },
+  {
+    id: "3",
+    title: "Phulchowki Day Hike",
+    location: "Kathmandu Valley, Nepal",
+    duration: "1 day",
+    rating: 4.5,
+    reviewCount: 67,
+    price: 40,
+    excerpt: "Highest peak around Kathmandu with rich biodiversity",
+    description: "Conquer Phulchowki, the highest hill surrounding Kathmandu Valley. This hike takes you through dense forests teeming with birdlife and offers magnificent panoramic views from the summit.",
+    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=600&fit=crop"
+    ],
+    tags: ["Day Hike", "Bird Watching", "Moderate"],
+    highlights: ["Highest valley viewpoint", "Bird watching paradise", "Mountain panoramas"],
+    includes: ["Bird watching guide", "Transport", "Lunch", "Entry fees"],
+    excludes: ["Binoculars", "Personal expenses"],
+    itinerary: [
+      { day: 1, title: "Phulchowki Summit", description: "Early start for bird watching, gradual ascent to summit, lunch with views, return via different trail" }
+    ],
+    maxGroupSize: 8,
+    included: ["Specialist guide", "All fees", "Lunch", "Transport"],
+    excluded: ["Optical equipment", "Personal items"],
+    cancellationPolicy: "24-hour cancellation policy.",
+    isPopular: false,
+    isSoldOut: false,
+    difficulty: "moderate",
+    maxAltitude: "2,782m",
+    requirements: ["Moderate fitness", "Interest in nature"],
+    permits: ["None"],
+    equipment: ["Walking shoes", "Binoculars", "Layers"],
+    entryRequirements: ["None"]
+  },
+  {
+    id: "4",
+    title: "Chandragiri Hills Day Hike",
+    location: "Kathmandu Valley, Nepal",
+    duration: "1 day",
+    rating: 4.7,
+    reviewCount: 124,
+    price: 50,
+    originalPrice: 60,
+    excerpt: "Scenic hike with cable car option and stunning Himalayan views",
+    description: "Hike to Chandragiri Hills for some of the best Himalayan views accessible from Kathmandu. Visit the famous Bhaleshwar Mahadev Temple and enjoy the breathtaking scenery of the entire Himalayan range.",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
+    ],
+    tags: ["Day Hike", "Scenic", "Easy"],
+    highlights: ["Cable car experience", "Bhaleshwar Temple", "Himalayan panorama"],
+    includes: ["Guide", "Cable car ticket", "Lunch", "Transport"],
+    excludes: ["Personal shopping", "Additional activities"],
+    itinerary: [
+      { day: 1, title: "Chandragiri Exploration", description: "Drive to base, optional hike or cable car ascent, temple visit, lunch with views, leisurely descent" }
+    ],
+    maxGroupSize: 10,
+    included: ["Guide", "Cable car", "Lunch", "Transport"],
+    excluded: ["Personal purchases", "Extra activities"],
+    cancellationPolicy: "Flexible cancellation up to 12 hours before.",
+    isPopular: true,
+    isSoldOut: true,
+    difficulty: "easy",
+    maxAltitude: "2,551m",
+    requirements: ["Basic fitness", "Suitable for families"],
+    permits: ["None"],
+    equipment: ["Comfortable shoes", "Camera", "Light jacket"],
+    entryRequirements: ["None"]
   }
 ];
 
@@ -53,162 +157,23 @@ export default function HomePage() {
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  // Fetch day hiking tours from Strapi API
+  // Load day hiking tours
   useEffect(() => {
-    const fetchTours = async () => {
+    const loadTours = async () => {
       try {
-        setLoading(true);
-        setError(null);
-        
-        const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-        const response = await fetch(`${API_URL}/api/day-hikings?populate=*`);
-        
-        console.log("API Response status:", response.status);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log("API Response data:", data);
-        
-        // Handle different response formats
-        let toursData = [];
-        
-        // Format 1: Standard Strapi v4 response (data array)
-        if (data.data && Array.isArray(data.data)) {
-          toursData = data.data;
-        } 
-        // Format 2: Array response (direct)
-        else if (Array.isArray(data)) {
-          toursData = data;
-        }
-        // Format 3: Single object response
-        else if (data.data && typeof data.data === 'object') {
-          toursData = [data.data];
-        }
-        // Format 4: Direct object
-        else if (data.id) {
-          toursData = [data];
-        } else {
-          console.warn("Unexpected API response format, using fallback data");
-          setTours(FALLBACK_TOURS);
-          setLoading(false);
-          return;
-        }
-        
-        // Transform API response to match Tour type
-        const transformedTours: Tour[] = toursData.map((item: any) => {
-          // Extract attributes based on Strapi v4 format or direct format
-          const attributes = item.attributes || item;
-          const id = item.id?.toString() || Math.random().toString(36).substr(2, 9);
-          
-          // Handle image extraction
-          const extractImageUrl = (imageData: any) => {
-            if (!imageData) return "/images/default-hike.jpg";
-            
-            if (Array.isArray(imageData)) {
-              return imageData[0]?.url 
-                ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData[0].url}`
-                : "/images/default-hike.jpg";
-            } else if (imageData.url) {
-              return `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.url}`;
-            } else if (imageData.data) {
-              // Handle nested data structure
-              if (Array.isArray(imageData.data)) {
-                return imageData.data[0]?.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.data[0].attributes.url}`
-                  : "/images/default-hike.jpg";
-              } else {
-                return imageData.data.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.data.attributes.url}`
-                  : "/images/default-hike.jpg";
-              }
-            }
-            return "/images/default-hike.jpg";
-          };
-          
-          // Handle multiple images extraction
-          const extractMultipleImages = (imagesData: any): string[] => {
-            if (!imagesData) return [];
-            
-            if (Array.isArray(imagesData)) {
-              return imagesData
-                .map((img: any) => 
-                  img.url ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${img.url}` : null
-                )
-                .filter(Boolean) as string[];
-            } else if (imagesData.data && Array.isArray(imagesData.data)) {
-              return imagesData.data
-                .map((img: any) => 
-                  img.attributes?.url 
-                    ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${img.attributes.url}`
-                    : null
-                )
-                .filter(Boolean) as string[];
-            }
-            return [];
-          };
-          
-          // Parse JSON fields if they are stored as strings
-          const parseField = (field: any, defaultValue: any = []) => {
-            if (typeof field === 'string') {
-              try {
-                return JSON.parse(field);
-              } catch {
-                return defaultValue;
-              }
-            }
-            return field || defaultValue;
-          };
-          
-          return {
-            id,
-            title: attributes.title || "Untitled Day Hike",
-            location: attributes.location || "",
-            duration: attributes.duration || "1 day",
-            rating: attributes.rating || 0,
-            reviewCount: attributes.reviewCount || 0,
-            price: attributes.price || 0,
-            excerpt: attributes.excerpt || "",
-            description: attributes.description || "",
-            image: extractImageUrl(attributes.image),
-            images: extractMultipleImages(attributes.images),
-            tags: parseField(attributes.tags, []),
-            highlights: parseField(attributes.highlights, []),
-            includes: parseField(attributes.includes, []),
-            excludes: parseField(attributes.excludes, []),
-            included: parseField(attributes.included || attributes.includes, []),
-            excluded: parseField(attributes.excluded || attributes.excludes, []),
-            itinerary: parseField(attributes.itinerary, []),
-            maxGroupSize: attributes.maxGroupSize || 0,
-            cancellationPolicy: attributes.cancellationPolicy || "Free cancellation up to 24 hours before departure",
-            isPopular: attributes.isPopular || false,
-            isSoldOut: attributes.isSoldOut || false,
-            difficulty: attributes.difficulty || "moderate",
-            maxAltitude: attributes.maxAltitude || "",
-            requirements: parseField(attributes.requirements, []),
-            permits: parseField(attributes.permits, []),
-            equipment: parseField(attributes.equipment, []),
-            entryRequirements: parseField(attributes.entryRequirements, [])
-          };
-        });
-        
-        console.log("Transformed day hiking tours:", transformedTours);
-        setTours(transformedTours);
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 800));
+        setTours(DAY_HIKING_TOURS);
       } catch (err) {
-        console.error("Error fetching day hiking tours:", err);
-        setError(`Failed to load day hiking tours: ${err instanceof Error ? err.message : 'Unknown error'}`);
-        // Use fallback data if API fails
-        setTours(FALLBACK_TOURS);
+        console.error("Error loading day hiking tours:", err);
+        setTours(DAY_HIKING_TOURS); // Still use mock data on error
       } finally {
         setLoading(false);
       }
     };
 
-    fetchTours();
+    loadTours();
   }, []);
 
   const handleTourSelect = (tour: Tour) => {
@@ -233,15 +198,6 @@ export default function HomePage() {
         title="Nepal Day Hiking Adventures"
         description="Experience the beauty of the Kathmandu Valley with our curated day hiking tours. Discover traditional villages, sacred sites, and breathtaking Himalayan views just hours from the city."
       />
-      
-      {error && (
-        <div className="container mx-auto px-4 py-4">
-          <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative">
-            <strong className="font-bold">Note: </strong>
-            <span className="block sm:inline">{error}</span>
-          </div>
-        </div>
-      )}
       
       <section className="py-12 bg-muted/20">
         <div className="container mx-auto px-4">

@@ -55,31 +55,18 @@ export default function ContactSection({ posts = [], onSubmit }: BlogContentProp
     setError("")
     
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}/api/booking-enquiry/submit`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          data: formData
-        }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error?.message || 'Failed to submit enquiry')
-      }
-
-      console.log("Submitted successfully:", data)
+      // Simulate form submission without Strapi
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      console.log("Form submitted successfully:", formData)
       setFormData({ name: "", email: "", phone: "", preferredTrek: "", message: "" })
       setSuccess(true)
       onSubmit?.()
       setTimeout(() => setSuccess(false), 4000)
       
     } catch (err) {
-      console.error('Error submitting booking:', err)
-      setError(err instanceof Error ? err.message : "There was an error submitting your enquiry. Please try again.")
+      console.error('Error submitting form:', err)
+      setError("There was an error submitting your enquiry. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
@@ -101,7 +88,7 @@ export default function ContactSection({ posts = [], onSubmit }: BlogContentProp
       {!success ? (
         <motion.form 
           onSubmit={handleSubmit} 
-className="mt-6 sm:mt-0 space-y-6 bg-[#f1f9fb] p-10 md:p-12 rounded-3xl shadow-lg border border-[#c9e0e5] w-full max-w-5xl mx-auto"
+          className="mt-6 sm:mt-0 space-y-6 bg-[#f1f9fb] p-10 md:p-12 rounded-3xl shadow-lg border border-[#c9e0e5] w-full max-w-5xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

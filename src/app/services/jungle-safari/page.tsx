@@ -7,8 +7,8 @@ import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
-// Fallback data in case API fails
-const FALLBACK_TOURS: Tour[] = [
+// Mock jungle safari tours data
+const JUNGLE_SAFARI_TOURS: Tour[] = [
   {
     id: "1",
     title: "Chitwan Classic Jungle Safari",
@@ -45,6 +45,110 @@ const FALLBACK_TOURS: Tour[] = [
     requirements: ["Comfortable walking shoes", "Binoculars recommended"],
     equipment: ["Light clothing", "Sunscreen", "Insect repellent", "Camera"],
     entryRequirements: ["Valid identification"]
+  },
+  {
+    id: "2",
+    title: "Bardia Wildlife Adventure Safari",
+    location: "Bardia National Park, Nepal",
+    duration: "4 days / 3 nights",
+    rating: 4.7,
+    reviewCount: 156,
+    price: 420,
+    originalPrice: 480,
+    excerpt: "Remote wilderness experience in Western Nepal",
+    description: "Explore Bardia National Park, one of Nepal's most pristine and least-visited wildlife reserves. This remote park offers excellent opportunities to spot tigers, wild elephants, and Gangetic dolphins in a more exclusive setting away from the crowds.",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
+    ],
+    tags: ["Wildlife", "Adventure", "Remote"],
+    highlights: ["Tiger tracking", "Elephant sightings", "River dolphin watching", "Jungle drives"],
+    includes: ["Lodge accommodation", "All meals", "Expert tracker", "Park fees"],
+    excludes: ["Transport to Bardia", "Personal items"],
+    itinerary: [
+      { day: 1, title: "Arrival and Orientation", description: "Arrive in Bardia, afternoon jungle walk, evening presentation" },
+      { day: 2, title: "Full Day Wildlife Tracking", description: "Morning elephant safari, afternoon jungle drive, evening crocodile spotting" },
+      { day: 3, title: "River and Village Exploration", description: "River rafting for dolphin watching, Tharu village visit, cultural evening" },
+      { day: 4, title: "Departure", description: "Early bird watching, breakfast, departure" }
+    ],
+    maxGroupSize: 8,
+    included: ["3 nights jungle lodge", "All meals", "Wildlife activities", "Park fees", "Expert guide"],
+    excluded: ["Transportation", "Alcohol", "Personal shopping"],
+    cancellationPolicy: "10-day cancellation policy for remote area bookings.",
+    isPopular: false,
+    isSoldOut: false,
+    difficulty: "moderate",
+    requirements: ["Good fitness", "Patience for wildlife viewing"],
+    equipment: ["Neutral colored clothing", "Binoculars", "Camera"],
+    entryRequirements: ["ID required"]
+  },
+  {
+    id: "3",
+    title: "Chitwan Luxury Safari Experience",
+    location: "Chitwan National Park, Nepal",
+    duration: "2 days / 1 night",
+    rating: 4.9,
+    reviewCount: 89,
+    price: 450,
+    excerpt: "Premium wildlife experience with luxury accommodation",
+    description: "Indulge in a luxury safari experience at Chitwan's finest jungle resort. Enjoy premium accommodations, gourmet dining, and exclusive wildlife activities including private elephant safaris and guided nature walks with expert naturalists.",
+    image: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
+    ],
+    tags: ["Luxury", "Wildlife", "Premium"],
+    highlights: ["Luxury resort stay", "Private elephant safari", "Gourmet dining", "Spa treatments"],
+    includes: ["Luxury accommodation", "Gourmet meals", "Private guide", "Spa access"],
+    excludes: ["Transport", "Premium beverages", "Personal services"],
+    itinerary: [
+      { day: 1, title: "Arrival and Premium Safari", description: "Luxury transfer, welcome drinks, private elephant safari, gourmet dinner" },
+      { day: 2, title: "Morning Activities and Departure", description: "Sunrise bird watching, breakfast, nature walk with naturalist, departure" }
+    ],
+    maxGroupSize: 6,
+    included: ["Luxury suite", "Gourmet meals", "Private activities", "Spa access"],
+    excluded: ["Premium alcohol", "Personal purchases"],
+    cancellationPolicy: "14-day cancellation for luxury bookings.",
+    isPopular: true,
+    isSoldOut: true,
+    difficulty: "easy",
+    requirements: ["None"],
+    equipment: ["Casual elegant wear", "Camera"],
+    entryRequirements: ["None"]
+  },
+  {
+    id: "4",
+    title: "Family Jungle Safari Package",
+    location: "Chitwan National Park, Nepal",
+    duration: "3 days / 2 nights",
+    rating: 4.8,
+    reviewCount: 234,
+    price: 680,
+    originalPrice: 750,
+    excerpt: "Family-friendly wildlife adventure with child-focused activities",
+    description: "Specially designed for families with children, this safari package offers safe and engaging wildlife experiences. Includes child-friendly activities, educational programs, and accommodations perfect for families exploring the jungle together.",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
+    ],
+    tags: ["Family", "Educational", "Wildlife"],
+    highlights: ["Child-friendly activities", "Elephant breeding center", "Nature crafts", "Family accommodations"],
+    includes: ["Family room", "All meals", "Child activities", "Park fees"],
+    excludes: ["Transport", "Childcare", "Personal items"],
+    itinerary: [
+      { day: 1, title: "Family Arrival and Orientation", description: "Arrival, lunch, elephant breeding center visit, evening cultural show" },
+      { day: 2, title: "Family Safari Day", description: "Gentle elephant safari, nature crafts, canoe ride, wildlife documentary" },
+      { day: 3, title: "Departure", description: "Bird watching, breakfast, departure" }
+    ],
+    maxGroupSize: 10,
+    included: ["Family accommodations", "All meals", "Child-focused activities", "Educational materials"],
+    excluded: ["Transportation", "Extra childcare"],
+    cancellationPolicy: "Flexible family cancellation policy.",
+    isPopular: true,
+    isSoldOut: false,
+    difficulty: "easy",
+    requirements: ["Children must be accompanied"],
+    equipment: ["Comfortable family gear", "Child binoculars"],
+    entryRequirements: ["None"]
   }
 ];
 
@@ -53,161 +157,23 @@ export default function HomePage() {
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  // Fetch jungle safari tours from Strapi API
+  // Load jungle safari tours
   useEffect(() => {
-    const fetchTours = async () => {
+    const loadTours = async () => {
       try {
-        setLoading(true);
-        setError(null);
-        
-        const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-        const response = await fetch(`${API_URL}/api/jungle-safaris?populate=*`);
-        
-        console.log("API Response status:", response.status);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log("API Response data:", data);
-        
-        // Handle different response formats
-        let toursData = [];
-        
-        // Format 1: Standard Strapi v4 response (data array)
-        if (data.data && Array.isArray(data.data)) {
-          toursData = data.data;
-        } 
-        // Format 2: Array response (direct)
-        else if (Array.isArray(data)) {
-          toursData = data;
-        }
-        // Format 3: Single object response
-        else if (data.data && typeof data.data === 'object') {
-          toursData = [data.data];
-        }
-        // Format 4: Direct object
-        else if (data.id) {
-          toursData = [data];
-        } else {
-          console.warn("Unexpected API response format, using fallback data");
-          setTours(FALLBACK_TOURS);
-          setLoading(false);
-          return;
-        }
-        
-        // Transform API response to match Tour type
-        const transformedTours: Tour[] = toursData.map((item: any) => {
-          // Extract attributes based on Strapi v4 format or direct format
-          const attributes = item.attributes || item;
-          const id = item.id?.toString() || Math.random().toString(36).substr(2, 9);
-          
-          // Handle image extraction
-          const extractImageUrl = (imageData: any) => {
-            if (!imageData) return "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop";
-            
-            if (Array.isArray(imageData)) {
-              return imageData[0]?.url 
-                ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData[0].url}`
-                : "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop";
-            } else if (imageData.url) {
-              return `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.url}`;
-            } else if (imageData.data) {
-              // Handle nested data structure
-              if (Array.isArray(imageData.data)) {
-                return imageData.data[0]?.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.data[0].attributes.url}`
-                  : "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop";
-              } else {
-                return imageData.data.attributes?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageData.data.attributes.url}`
-                  : "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop";
-              }
-            }
-            return "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop";
-          };
-          
-          // Handle multiple images extraction
-          const extractMultipleImages = (imagesData: any): string[] => {
-            if (!imagesData) return [];
-            
-            if (Array.isArray(imagesData)) {
-              return imagesData
-                .map((img: any) => 
-                  img.url ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${img.url}` : null
-                )
-                .filter(Boolean) as string[];
-            } else if (imagesData.data && Array.isArray(imagesData.data)) {
-              return imagesData.data
-                .map((img: any) => 
-                  img.attributes?.url 
-                    ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${img.attributes.url}`
-                    : null
-                )
-                .filter(Boolean) as string[];
-            }
-            return [];
-          };
-          
-          // Parse JSON fields if they are stored as strings
-          const parseField = (field: any, defaultValue: any = []) => {
-            if (typeof field === 'string') {
-              try {
-                return JSON.parse(field);
-              } catch {
-                return defaultValue;
-              }
-            }
-            return field || defaultValue;
-          };
-          
-          return {
-            id,
-            title: attributes.title || "Untitled Safari",
-            location: attributes.location || "Chitwan National Park, Nepal",
-            duration: attributes.duration || "",
-            rating: attributes.rating || 0,
-            reviewCount: attributes.reviewCount || 0,
-            price: attributes.price || 0,
-            originalPrice: attributes.originalPrice || attributes.price + 50,
-            excerpt: attributes.excerpt || "",
-            description: attributes.description || "",
-            image: extractImageUrl(attributes.image),
-            images: extractMultipleImages(attributes.images),
-            tags: parseField(attributes.tags, []),
-            highlights: parseField(attributes.highlights, []),
-            includes: parseField(attributes.includes, []),
-            excludes: parseField(attributes.excludes, []),
-            included: parseField(attributes.included || attributes.includes, []),
-            excluded: parseField(attributes.excluded || attributes.excludes, []),
-            itinerary: parseField(attributes.itinerary, []),
-            maxGroupSize: attributes.maxGroupSize || 0,
-            cancellationPolicy: attributes.cancellationPolicy || "",
-            isPopular: attributes.isPopular || false,
-            isSoldOut: attributes.isSoldOut || false,
-            difficulty: attributes.difficulty || "easy to moderate",
-            requirements: parseField(attributes.requirements, []),
-            equipment: parseField(attributes.equipment, []),
-            entryRequirements: parseField(attributes.entryRequirements, [])
-          };
-        });
-        
-        console.log("Transformed jungle safari tours:", transformedTours);
-        setTours(transformedTours);
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 800));
+        setTours(JUNGLE_SAFARI_TOURS);
       } catch (err) {
-        console.error("Error fetching jungle safari tours:", err);
-        setError(`Failed to load jungle safari tours: ${err instanceof Error ? err.message : 'Unknown error'}`);
-        // Use fallback data if API fails
-        setTours(FALLBACK_TOURS);
+        console.error("Error loading jungle safari tours:", err);
+        setTours(JUNGLE_SAFARI_TOURS); // Still use mock data on error
       } finally {
         setLoading(false);
       }
     };
 
-    fetchTours();
+    loadTours();
   }, []);
 
   const handleTourSelect = (tour: Tour) => {
@@ -232,15 +198,6 @@ export default function HomePage() {
         title="Chitwan Jungle Safari Experiences"
         description="Discover the wild heart of Nepal at Chitwan National Park, a UNESCO World Heritage Site. Encounter rare wildlife including one-horned rhinoceros, Bengal tigers, and over 500 bird species in their natural habitat."
       />
-      
-      {error && (
-        <div className="container mx-auto px-4 py-4">
-          <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative">
-            <strong className="font-bold">Note: </strong>
-            <span className="block sm:inline">{error}</span>
-          </div>
-        </div>
-      )}
       
       <section className="py-12 bg-muted/20">
         <div className="container mx-auto px-4">

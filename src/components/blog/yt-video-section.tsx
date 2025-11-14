@@ -5,18 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, Calendar, Loader2 } from "lucide-react";
 
-interface StrapiYouTubeVideo {
-  id: number;
-  documentId: string;
-  title: string;
-  youtube_url: string;
-  description: string;
-  published_date: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-}
-
 interface YouTubeVideo {
   id: string;
   title: string;
@@ -25,6 +13,52 @@ interface YouTubeVideo {
   published_date: string;
 }
 
+// Mock data to replace Strapi API calls
+const mockVideos: YouTubeVideo[] = [
+  {
+    id: "1",
+    title: "Getting Started with Web Development",
+    youtube_url: "https://www.youtube.com/watch?v=abcdefghijk",
+    description: "Learn the basics of web development in this comprehensive tutorial.",
+    published_date: "2024-01-15T00:00:00.000Z"
+  },
+  {
+    id: "2",
+    title: "Advanced React Patterns",
+    youtube_url: "https://www.youtube.com/watch?v=lmno1234567",
+    description: "Explore advanced React patterns and best practices for building scalable applications.",
+    published_date: "2024-01-10T00:00:00.000Z"
+  },
+  {
+    id: "3",
+    title: "CSS Masterclass",
+    youtube_url: "https://www.youtube.com/watch?v=pqrst890123",
+    description: "Master modern CSS techniques and layout systems.",
+    published_date: "2024-01-05T00:00:00.000Z"
+  },
+  {
+    id: "4",
+    title: "TypeScript for Beginners",
+    youtube_url: "https://www.youtube.com/watch?v=xyzabc45678",
+    description: "A complete guide to getting started with TypeScript.",
+    published_date: "2024-01-01T00:00:00.000Z"
+  },
+  {
+    id: "5",
+    title: "Node.js Backend Development",
+    youtube_url: "https://www.youtube.com/watch?v=defghi78901",
+    description: "Build robust backend services with Node.js and Express.",
+    published_date: "2023-12-28T00:00:00.000Z"
+  },
+  {
+    id: "6",
+    title: "Database Design Principles",
+    youtube_url: "https://www.youtube.com/watch?v=jklmno23456",
+    description: "Learn essential database design principles and normalization.",
+    published_date: "2023-12-20T00:00:00.000Z"
+  }
+];
+
 export default function YouTubeVideosSection() {
   const [videos, setVideos] = useState<YouTubeVideo[]>([]);
   const [selectedVideo, setSelectedVideo] = useState<YouTubeVideo | null>(null);
@@ -32,60 +66,18 @@ export default function YouTubeVideosSection() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch videos from Strapi
+  // Fetch videos from mock data
   useEffect(() => {
     const fetchVideos = async () => {
       try {
         setIsLoading(true);
         setError(null);
-        const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
         
-        if (!apiUrl) {
-          throw new Error("Strapi API URL is not configured");
-        }
-
-        // Clean up the API URL to remove any trailing slashes
-        const cleanApiUrl = apiUrl.replace(/\/+$/, "");
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
         
-        const endpoint = `${cleanApiUrl}/api/youtube-videos?sort=id:desc`;
-
-        
-        console.log("Fetching from:", endpoint);
-        
-        const res = await fetch(endpoint);
-        
-        if (!res.ok) {
-          throw new Error(`Failed to fetch videos: HTTP ${res.status}`);
-        }
-        
-        const data = await res.json();
-        console.log("Videos API response:", data);
-        
-        // Handle the response structure - data is directly in data array
-        if (data.data && Array.isArray(data.data)) {
-          const formattedVideos: YouTubeVideo[] = data.data
-            .filter((video: StrapiYouTubeVideo) => {
-              return video && video.youtube_url && video.title;
-            })
-            .map((video: StrapiYouTubeVideo) => {
-              return {
-                id: video.id.toString(),
-                title: video.title || "Untitled Video",
-                youtube_url: video.youtube_url || "",
-                description: video.description || "",
-                published_date: video.published_date || 
-                              video.publishedAt || 
-                              video.createdAt ||
-                              new Date().toISOString(),
-              };
-            });
-
-          setVideos(formattedVideos);
-          console.log("Formatted videos:", formattedVideos);
-        } else {
-          console.warn("No video data found in response");
-          setVideos([]);
-        }
+        setVideos(mockVideos);
+        console.log("Loaded mock videos:", mockVideos);
 
       } catch (err) {
         console.error("Error fetching YouTube videos:", err);

@@ -23,26 +23,6 @@ interface DataItem {
   reviewLink?: string;
 }
 
-interface StrapiPhoto {
-  url: string;
-  [key: string]: any;
-}
-
-interface StrapiReview {
-  id: number;
-  name: string;
-  nationality?: string;
-  tours?: string;
-  rating?: number;
-  reviewDate?: string;
-  feedback?: string;
-  photos?: StrapiPhoto[];
-}
-
-interface StrapiResponse {
-  data: StrapiReview[];
-}
-
 const MasonryTestimonialGrid = () => {
   const [visibleCount, setVisibleCount] = useState(3);
   const [isClient, setIsClient] = useState(false);
@@ -54,83 +34,93 @@ const MasonryTestimonialGrid = () => {
   const tripadvisorUrl =
     "https://www.tripadvisor.com/Attraction_Review-g293890-d8417075-Reviews-Himkala_Adventure-Kathmandu_Kathmandu_Valley_Bagmati_Zone_Central_Region.html";
 
+  // Mock testimonials data
+  const mockTestimonials: DataItem[] = [
+    {
+      id: 1,
+      name: "Sarah Johnson",
+      experiencePhoto: "/images/review-1.jpg",
+      content: "The Everest Base Camp trek was absolutely incredible! Our guide was knowledgeable and the entire experience was well-organized. The views were breathtaking and the cultural immersion was authentic.",
+      trek: "Everest Base Camp Trek",
+      country: "United States",
+      rating: 5,
+      reviewDate: "2024-01-15",
+      photos: ["/images/everest-trek-1.jpg", "/images/everest-trek-2.jpg"]
+    },
+    {
+      id: 2,
+      name: "David Chen",
+      experiencePhoto: "/images/review-2.jpg",
+      content: "Annapurna Circuit exceeded all expectations. The team took care of every detail, from accommodation to meals. The scenery changed dramatically each day and the local communities were welcoming.",
+      trek: "Annapurna Circuit",
+      country: "Canada",
+      rating: 5,
+      reviewDate: "2024-01-10"
+    },
+    {
+      id: 3,
+      name: "Maria Rodriguez",
+      experiencePhoto: "/images/review-3.jpg",
+      content: "As a solo female traveler, I felt completely safe and supported throughout my Langtang Valley trek. The guide was attentive and the porter was incredibly strong and kind. Highly recommended!",
+      trek: "Langtang Valley Trek",
+      country: "Spain",
+      rating: 5,
+      reviewDate: "2024-01-08",
+      photos: ["/images/langtang-1.jpg"]
+    },
+    {
+      id: 4,
+      name: "James Wilson",
+      experiencePhoto: "/images/review-4.jpg",
+      content: "The Manaslu Circuit was challenging but rewarding. The restricted area permit made it feel exclusive and the Tibetan-influenced culture was fascinating. Great food and comfortable teahouses.",
+      trek: "Manaslu Circuit",
+      country: "Australia",
+      rating: 5,
+      reviewDate: "2024-01-05"
+    },
+    {
+      id: 5,
+      name: "Lisa Tanaka",
+      experiencePhoto: "/images/review-5.jpg",
+      content: "Poon Hill sunrise was magical! Perfect for beginners who want to experience Himalayan trekking without the extreme altitude. The rhododendron forests were in full bloom during our visit.",
+      trek: "Ghorepani Poon Hill Trek",
+      country: "Japan",
+      rating: 5,
+      reviewDate: "2024-01-03"
+    },
+    {
+      id: 6,
+      name: "Robert Kim",
+      experiencePhoto: "/images/review-6.jpg",
+      content: "Upper Mustang was like stepping into another world. The ancient monasteries, cave dwellings, and desert landscape were unforgettable. Well worth the special permit cost.",
+      trek: "Upper Mustang Trek",
+      country: "South Korea",
+      rating: 5,
+      reviewDate: "2023-12-28",
+      photos: ["/images/mustang-1.jpg", "/images/mustang-2.jpg", "/images/mustang-3.jpg"]
+    }
+  ];
+
   useEffect(() => {
     setIsClient(true);
     if (window.innerWidth < 640) setVisibleCount(1);
     else setVisibleCount(3);
 
-    const fetchReviews = async () => {
+    const loadData = async () => {
       try {
         setIsLoading(true);
-        const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-
-        if (!apiUrl) {
-          console.error("NEXT_PUBLIC_STRAPI_URL is not defined");
-          setData([]);
-          return;
-        }
-
-        const endpoints = [
-          `${apiUrl}/api/reviews?filters[approval][$eq]=true&populate=*&sort=id:desc`,
-          `${apiUrl}/api/reviews?approval=true&populate=*&sort=id:desc`,
-          `${apiUrl}/api/reviews?populate=*&sort=id:desc`
-        ];
-
-        let responseData: StrapiResponse | null = null;
-
-        for (const endpoint of endpoints) {
-          try {
-            const response = await fetch(endpoint);
-            if (response.ok) {
-              responseData = await response.json();
-              console.log("Success with endpoint:", endpoint);
-              break;
-            }
-          } catch (error) {
-            console.warn("Failed with endpoint:", endpoint, error);
-          }
-        }
-
-        if (!responseData) {
-          setData([]);
-          return;
-        }
-
-        const transformedData: DataItem[] = responseData.data.map((item: StrapiReview) => {
-          const photos: string[] = item.photos
-            ? item.photos.map((photo) => {
-                // Ensure full URL for Next.js Image
-                if (photo.url.startsWith("http")) return photo.url;
-                else if (photo.url.startsWith("/")) return `${process.env.NEXT_PUBLIC_STRAPI_URL}${photo.url}`;
-                else return "/images/default-review.jpg";
-              })
-            : [];
-
-          return {
-            id: item.id,
-            name: item.name || "Anonymous",
-            content: item.feedback || "",
-            trek: item.tours || "",
-            country: item.nationality || "",
-            rating: item.rating || 5,
-            reviewDate: item.reviewDate ? new Date(item.reviewDate).toLocaleDateString() : undefined,
-            photos: photos.length > 0 ? photos : undefined,
-            experiencePhoto: photos.length > 0 ? photos[0] : "/images/default-review.jpg",
-            margin: ""
-          };
-        }).filter(item => item.content.trim() !== "");
-
-        setData(transformedData);
-
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 800));
+        setData(mockTestimonials);
       } catch (error) {
-        console.error("Error fetching reviews:", error);
+        console.error("Error loading reviews:", error);
         setData([]);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchReviews();
+    loadData();
   }, []);
 
   const loadMore = () => {
@@ -317,15 +307,15 @@ const MasonryTestimonialGrid = () => {
                 </div>
                 <div className="mt-2 md:mt-4 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
                   {selectedPhotos.map((photo, i) => (
-                    <Image
-                      key={i}
-                      src={photo.startsWith("http") ? photo : `${process.env.NEXT_PUBLIC_STRAPI_URL}${photo}`}
-                      alt={`Photo ${i + 1}`}
-                      width={500}
-                      height={500}
-                      className="rounded-lg object-cover w-full h-40 sm:h-64"
-                      unoptimized
-                    />
+                    <div key={i} className="relative w-full h-40 sm:h-64">
+                      <Image
+                        src={photo}
+                        alt={`Photo ${i + 1}`}
+                        fill
+                        className="rounded-lg object-cover"
+                        unoptimized
+                      />
+                    </div>
                   ))}
                 </div>
               </motion.div>

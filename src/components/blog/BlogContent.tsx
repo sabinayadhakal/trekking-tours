@@ -21,82 +21,105 @@ export interface BlogPost {
   readTime: string;
 }
 
-interface StrapiBlogPhoto {
-  id: number;
-  url: string;
-  formats?: any;
-  [key: string]: any;
-}
-
-interface StrapiBlog {
-  id: number;
-  title: string;
-  excerpt: string;
-  description: string;
-  approval: boolean;
-  publishedAt: string;
-  createdAt: string;
-  updatedAt: string;
-  photos: StrapiBlogPhoto[];
-  category?: string;
-  readTime?: string;
-}
-
-interface StrapiBlogResponse {
-  data: StrapiBlog[];
-  meta: {
-    pagination: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
-}
-
-// Helper function to check if URL is from the same origin
-const isSameOrigin = (url: string) => {
-  if (typeof window === 'undefined') return false;
-  try {
-    const parsedUrl = new URL(url, window.location.origin);
-    return parsedUrl.origin === window.location.origin;
-  } catch {
-    return false;
+// Demo blog data with placeholder images that work with Next.js Image
+const demoBlogPosts: BlogPost[] = [
+  {
+    id: "1",
+    title: "Getting Started with Web Development",
+    excerpt: "Learn the fundamentals of modern web development and build your first website with these essential tips and tools.",
+    content: "Web development has evolved significantly over the years. From simple static pages to complex web applications, the journey has been incredible.\n\nIn this comprehensive guide, we'll explore the core concepts of web development including HTML, CSS, and JavaScript. These three technologies form the foundation of every website you see on the internet today.\n\nHTML provides the structure of your web pages, CSS takes care of the styling and layout, while JavaScript adds interactivity and dynamic behavior to your sites.\n\nWhether you're a complete beginner or looking to refresh your knowledge, this guide will provide you with the essential knowledge to start building websites.",
+    coverImage: "/images/web-dev.jpg",
+    images: ["/images/web-dev-detail1.jpg", "/images/web-dev-detail2.jpg"],
+    category: "Web Development",
+    publishedDate: "2024-01-15",
+    readTime: "5 min"
+  },
+  {
+    id: "2",
+    title: "The Future of Artificial Intelligence",
+    excerpt: "Discover how AI is transforming industries and what the future holds for this groundbreaking technology.",
+    content: "Artificial Intelligence is no longer just a concept from science fiction movies. It's here, and it's transforming every industry imaginable.\n\nFrom healthcare to finance, education to entertainment, AI is making processes more efficient and opening up new possibilities that were once thought impossible.\n\nMachine learning algorithms can now diagnose diseases with remarkable accuracy, self-driving cars are becoming a reality, and natural language processing allows us to communicate with computers in ways that feel natural and intuitive.\n\nThe future of AI holds even more promise, with advancements in quantum computing and neural networks pushing the boundaries of what's possible.",
+    coverImage: "/images/ai-future.jpg",
+    images: ["/images/ai-detail1.jpg", "/images/ai-detail2.jpg"],
+    category: "Artificial Intelligence",
+    publishedDate: "2024-01-10",
+    readTime: "7 min"
+  },
+  {
+    id: "3",
+    title: "Sustainable Technology Solutions",
+    excerpt: "Explore how technology can help create a more sustainable future and reduce our environmental impact.",
+    content: "As climate change becomes an increasingly pressing issue, technology offers promising solutions to create a more sustainable future.\n\nRenewable energy technologies like solar panels and wind turbines are becoming more efficient and affordable. Smart grids help optimize energy distribution, reducing waste and improving reliability.\n\nIn the transportation sector, electric vehicles and improved public transit systems are reducing our reliance on fossil fuels. Meanwhile, smart cities use IoT devices to monitor and manage resources more efficiently.\n\nSustainable technology isn't just about big infrastructure projects. Small changes in how we design software, manage data centers, and dispose of electronic waste can also make a significant difference.",
+    coverImage: "/images/sustainable-tech.jpg",
+    images: ["/images/sustainable-detail1.jpg", "/images/sustainable-detail2.jpg"],
+    category: "Sustainability",
+    publishedDate: "2024-01-05",
+    readTime: "6 min"
+  },
+  {
+    id: "4",
+    title: "Mobile App Development Trends 2024",
+    excerpt: "Stay ahead of the curve with the latest trends in mobile app development and user experience design.",
+    content: "The mobile app landscape continues to evolve at a rapid pace. In 2024, we're seeing several key trends that are shaping how apps are built and used.\n\nCross-platform development frameworks like React Native and Flutter have matured significantly, allowing developers to build high-quality apps for both iOS and Android with a single codebase.\n\nArtificial intelligence and machine learning are being integrated into mobile apps to provide personalized experiences, intelligent recommendations, and advanced features like image recognition and natural language processing.\n\nPrivacy and security have become paramount concerns for users and regulators alike. Apps that prioritize user privacy and transparent data practices are gaining trust and market share.",
+    coverImage: "/images/mobile-trends.jpg",
+    images: ["/images/mobile-detail1.jpg", "/images/mobile-detail2.jpg"],
+    category: "Mobile Development",
+    publishedDate: "2024-01-01",
+    readTime: "8 min"
+  },
+  {
+    id: "5",
+    title: "Cloud Computing Best Practices",
+    excerpt: "Learn essential best practices for cloud computing to optimize performance, security, and costs.",
+    content: "Cloud computing has become the backbone of modern digital infrastructure. However, effectively leveraging cloud services requires careful planning and implementation.\n\nOne of the most important considerations is cost optimization. Without proper management, cloud costs can quickly spiral out of control. Implementing auto-scaling, choosing the right instance types, and monitoring usage patterns are crucial for controlling expenses.\n\nSecurity in the cloud is another critical area. Implementing proper access controls, encrypting sensitive data, and regularly auditing your cloud environment are essential practices.\n\nPerformance optimization involves selecting the right services for your workload, implementing caching strategies, and designing for high availability across multiple regions.",
+    coverImage: "/images/cloud-computing.jpg",
+    images: ["/images/cloud-detail1.jpg", "/images/cloud-detail2.jpg"],
+    category: "Cloud Computing",
+    publishedDate: "2023-12-28",
+    readTime: "10 min"
+  },
+  {
+    id: "6",
+    title: "The Rise of Remote Work Technology",
+    excerpt: "How technology is enabling the remote work revolution and what tools are essential for distributed teams.",
+    content: "The shift to remote work has been one of the most significant workplace transformations in recent history. Technology has been at the center of this change, enabling teams to collaborate effectively regardless of their physical location.\n\nCommunication tools like Slack, Microsoft Teams, and Zoom have become essential for daily operations. These platforms provide not just video conferencing, but also messaging, file sharing, and integration with other productivity tools.\n\nProject management software has evolved to support distributed teams with features like real-time collaboration, time tracking, and automated workflows.\n\nAs remote work becomes more permanent for many organizations, we're seeing the emergence of new technologies designed specifically for distributed teams, including virtual office spaces, advanced security solutions, and tools that help maintain company culture across distances.",
+    coverImage: "/images/remote-work.jpg",
+    images: ["/images/remote-detail1.jpg", "/images/remote-detail2.jpg"],
+    category: "Remote Work",
+    publishedDate: "2023-12-20",
+    readTime: "9 min"
   }
-};
+];
 
-// Helper function to determine if we should use Next.js Image or regular img
-const ImageComponent = ({ src, alt, fill, className, onError }: {
+// Simple image component that handles fallbacks
+const SafeImage = ({ 
+  src, 
+  alt, 
+  className = "",
+  fallbackSrc = "/images/default-blog.jpg"
+}: {
   src: string;
   alt: string;
-  fill?: boolean;
   className?: string;
-  onError?: (e: React.SyntheticEvent<HTMLImageElement, Event>) => void;
+  fallbackSrc?: string;
 }) => {
-  // For external URLs or data URLs, use regular img tag
-  const isExternal = !src.startsWith('/') && !src.startsWith('data:') && !isSameOrigin(src);
-  
-  if (isExternal) {
-    return (
-      <img
-        src={src}
-        alt={alt}
-        className={className}
-        onError={onError}
-        style={fill ? { position: 'absolute', height: '100%', width: '100%', inset: 0 } : {}}
-      />
-    );
-  }
-  
-  // For internal URLs, use Next.js Image component
+  const [imgSrc, setImgSrc] = useState(src);
+
+  const handleError = () => {
+    setImgSrc(fallbackSrc);
+  };
+
   return (
-    <Image
-      src={src}
-      alt={alt}
-      fill={fill}
-      className={className}
-      onError={onError}
-    />
+    <div className={`relative ${className}`}>
+      <Image
+        src={imgSrc}
+        alt={alt}
+        fill
+        className="object-cover"
+        onError={handleError}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </div>
   );
 };
 
@@ -107,85 +130,13 @@ export default function BlogContent() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-        
-        if (!apiUrl) {
-          console.error("NEXT_PUBLIC_STRAPI_URL is not defined");
-          setIsLoading(false);
-          return;
-        }
+    // Simulate API loading delay
+    const timer = setTimeout(() => {
+      setPosts(demoBlogPosts);
+      setIsLoading(false);
+    }, 1000);
 
-        console.log("Fetching blogs from:", `${apiUrl}/api/blogs?filters[approval][$eq]=true&populate=*`);
-        
-       const res = await fetch(
-  `${apiUrl}/api/blogs?filters[approval][$eq]=true&populate=*&sort=id:desc`
-);
-
-        
-        if (!res.ok) {
-          throw new Error(`Failed to fetch blogs: ${res.status} ${res.statusText}`);
-        }
-        
-        const responseData = await res.json();
-        console.log("API Response:", responseData);
-
-        if (!responseData.data) {
-          console.error("No data found in response");
-          setPosts([]);
-          setIsLoading(false);
-          return;
-        }
-
-        const formattedPosts: BlogPost[] = responseData.data
-          .filter((item: any) => item.approval)
-          .map((item: any) => {
-            try {
-              // Handle photos data
-              const photosData = item.photos || [];
-              
-              // Get cover image (first photo)
-              const coverImage = photosData.length > 0
-                ? photosData[0].url.startsWith("http")
-                  ? photosData[0].url
-                  : `${apiUrl}${photosData[0].url}`
-                : "/images/default-blog.jpg";
-
-              // Get all images
-              const images = photosData.map((p: StrapiBlogPhoto) =>
-                p.url.startsWith("http") ? p.url : `${apiUrl}${p.url}`
-              );
-
-              return {
-                id: item.id.toString(),
-                title: item.title || "Untitled",
-                excerpt: item.excerpt || "",
-                content: item.description || "",
-                coverImage,
-                images,
-                category: item.category || "General",
-                publishedDate: item.publishedAt || item.createdAt,
-                readTime: item.readTime || "5 min",
-              };
-            } catch (error) {
-              console.error("Error processing blog item:", item, error);
-              return null;
-            }
-          })
-          .filter((post: BlogPost | null): post is BlogPost => post !== null);
-
-        console.log("Formatted posts:", formattedPosts);
-        setPosts(formattedPosts);
-      } catch (err) {
-        console.error("Error fetching blogs:", err);
-        setPosts([]);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchBlogs();
+    return () => clearTimeout(timer);
   }, []);
 
   const formatDate = (dateString: string) => {
@@ -265,14 +216,10 @@ export default function BlogContent() {
                   onClick={() => setSelectedPost(post)}
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <ImageComponent
+                    <SafeImage
                       src={post.coverImage}
                       alt={post.title}
-                      className="object-cover transition-transform duration-300 group-hover:scale-110"
-                      onError={(e) => {
-                        // Fallback if image fails to load
-                        (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                      }}
+                      className="transition-transform duration-300 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/20 to-transparent" />
                   </div>
@@ -347,13 +294,9 @@ export default function BlogContent() {
                   transition={{ duration: 0.5 }}
                 >
                   <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden shadow-md">
-                    <ImageComponent
+                    <SafeImage
                       src={selectedPost.coverImage} 
                       alt={selectedPost.title}
-                      className="object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                      }}
                     />
                   </div>
                   
@@ -388,13 +331,9 @@ export default function BlogContent() {
                         if ((idx + 1) % 2 === 0 && imgIndex < images.length) {
                           content.push(
                             <div key={`img-${imgIndex}`} className="relative w-full aspect-[16/9] rounded-lg overflow-hidden shadow-md my-4">
-                              <ImageComponent
+                              <SafeImage
                                 src={images[imgIndex]} 
                                 alt={`Image ${imgIndex + 1}`}
-                                className="object-cover"
-                                onError={(e) => {
-                                  (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                                }}
                               />
                             </div>
                           );
@@ -407,13 +346,9 @@ export default function BlogContent() {
                     for (; imgIndex < images.length; imgIndex++) {
                       content.push(
                         <div key={`img-${imgIndex}`} className="relative w-full aspect-[16/9] rounded-lg overflow-hidden shadow-md my-4">
-                          <ImageComponent
+                          <SafeImage
                             src={images[imgIndex]} 
                             alt={`Image ${imgIndex + 1}`}
-                            className="object-cover"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                            }}
                           />
                         </div>
                       );

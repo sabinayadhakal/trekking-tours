@@ -32,52 +32,21 @@ interface BlogPost {
   readTime: string;
 }
 
-interface StrapiBlogPhoto {
-  id: number;
-  url: string;
-  formats?: any;
-  [key: string]: any;
-}
-
-interface StrapiBlog {
-  id: number;
-  title: string;
-  excerpt: string;
-  description: string;
-  approval: boolean;
-  publishedAt: string;
-  createdAt: string;
-  updatedAt: string;
-  photos: StrapiBlogPhoto[];
-  category?: string;
-  readTime?: string;
-}
-
-const isSameOrigin = (url: string) => {
-  if (typeof window === "undefined") return false;
-  try {
-    const parsedUrl = new URL(url, window.location.origin);
-    return parsedUrl.origin === window.location.origin;
-  } catch {
-    return false;
-  }
-};
-
-const ImageComponent = ({
+// Safe Image Component that handles both internal and external images
+const SafeImage = ({
   src,
   alt,
-  fill,
   className,
   onError,
 }: {
   src: string;
   alt: string;
-  fill?: boolean;
   className?: string;
   onError?: (e: React.SyntheticEvent<HTMLImageElement, Event>) => void;
 }) => {
-  const isExternal = !src.startsWith("/") && !src.startsWith("data:") && !isSameOrigin(src);
-
+  // Check if it's an external URL
+  const isExternal = src.startsWith('http') && !src.includes('localhost') && !src.includes('127.0.0.1');
+  
   if (isExternal) {
     return (
       <img
@@ -85,12 +54,21 @@ const ImageComponent = ({
         alt={alt}
         className={className}
         onError={onError}
-        style={fill ? { position: "absolute", height: "100%", width: "100%", inset: 0 } : {}}
       />
     );
   }
 
-  return <Image src={src} alt={alt} fill={fill} className={className} onError={onError} />;
+  // For local images, use Next.js Image with proper configuration
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      className={className}
+      onError={onError}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    />
+  );
 };
 
 export default function CombinedContentSection() {
@@ -103,88 +81,64 @@ export default function CombinedContentSection() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Fetch YouTube videos - only get the latest one
+  // Mock YouTube videos data
+  const mockVideos: YouTubeVideo[] = [
+    {
+      id: "1",
+      title: "Everest Base Camp Trek - Complete Journey",
+      youtube_url: "https://www.youtube.com/watch?v=abcdefghijk",
+      description: "Join us on an incredible journey to Everest Base Camp",
+      published_date: "2024-01-15T00:00:00.000Z"
+    }
+  ];
+
+  // Mock blog posts data
+  const mockPosts: BlogPost[] = [
+    {
+      id: "1",
+      title: "Top 10 Tips for High Altitude Trekking in Nepal",
+      excerpt: "Essential tips and tricks for a successful high altitude trekking experience in the Himalayas.",
+      content: `High altitude trekking in Nepal is an experience of a lifetime, but it requires proper preparation and knowledge. The Himalayas offer some of the most breathtaking landscapes on earth, but the altitude can present challenges even for experienced trekkers.
+
+First and foremost, proper acclimatization is crucial. Our guides recommend spending at least two nights at intermediate altitudes before attempting higher passes. This allows your body to adjust to the reduced oxygen levels and helps prevent altitude sickness.
+
+Physical preparation is equally important. Regular cardiovascular exercise for at least 2-3 months before your trek will significantly improve your experience. Focus on building endurance through hiking, running, or cycling.
+
+The right gear can make or break your trek. Invest in quality waterproof boots, layered clothing system, and a reliable sleeping bag rated for sub-zero temperatures. Remember, the weather in the mountains can change rapidly.`,
+      coverImage: "/images/trekking-tips.jpg",
+      images: [
+        "/images/trekking-gear.jpg",
+        "/images/mountain-view.jpg"
+      ],
+      category: "Trekking Tips",
+      publishedDate: "2024-01-10T00:00:00.000Z",
+      readTime: "5 min"
+    }
+  ];
+
+  // Fetch YouTube videos - using mock data
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-        if (!apiUrl) return;
-
-        const cleanApiUrl = apiUrl.replace(/\/+$/, "");
-        const res = await fetch(`${cleanApiUrl}/api/youtube-videos?sort=published_date:desc&pagination[limit]=1`);
-
-        if (res.ok) {
-          const data = await res.json();
-          if (data.data && Array.isArray(data.data)) {
-            const formattedVideos: YouTubeVideo[] = data.data
-              .filter((video: any) => video.youtube_url && video.title)
-              .map((video: any) => ({
-                id: video.id.toString(),
-                title: video.title,
-                youtube_url: video.youtube_url,
-                description: video.description || "",
-                published_date: video.published_date || video.publishedAt,
-              }));
-            setVideos(formattedVideos);
-          }
-        }
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 500));
+        setVideos(mockVideos);
       } catch (err) {
         console.error("Error fetching videos:", err);
+        setVideos([]);
       }
     };
 
     fetchVideos();
   }, []);
 
-  // Fetch Blog posts - only get the latest one
+  // Fetch Blog posts - using mock data
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-        if (!apiUrl) {
-          console.error("NEXT_PUBLIC_STRAPI_URL is not defined");
-          setIsLoading(false);
-          return;
-        }
-
-        const res = await fetch(`${apiUrl}/api/blogs?filters[approval][$eq]=true&populate=*&pagination[limit]=1&sort=publishedAt:desc`);
-        if (!res.ok) throw new Error(`Failed to fetch blogs: ${res.status} ${res.statusText}`);
-
-        const responseData = await res.json();
-        if (!responseData.data) {
-          setPosts([]);
-          setIsLoading(false);
-          return;
-        }
-
-        const formattedPosts: BlogPost[] = responseData.data
-          .filter((item: any) => item.approval)
-          .map((item: any) => {
-            const photosData = item.photos || [];
-            const coverImage =
-              photosData.length > 0
-                ? photosData[0].url.startsWith("http")
-                  ? photosData[0].url
-                  : `${apiUrl}${photosData[0].url}`
-                : "/images/default-blog.jpg";
-            const images = photosData.map((p: StrapiBlogPhoto) =>
-              p.url.startsWith("http") ? p.url : `${apiUrl}${p.url}`
-            );
-            return {
-              id: item.id.toString(),
-              title: item.title || "Untitled",
-              excerpt: item.excerpt || "",
-              content: item.description || "",
-              coverImage,
-              images,
-              category: item.category || "General",
-              publishedDate: item.publishedAt || item.createdAt,
-              readTime: item.readTime || "5 min",
-            };
-          })
-          .filter((post: BlogPost | null): post is BlogPost => post !== null);
-
-        setPosts(formattedPosts);
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 800));
+        setPosts(mockPosts);
       } catch (err) {
         console.error("Error fetching blogs:", err);
         setPosts([]);
@@ -300,7 +254,7 @@ export default function CombinedContentSection() {
             </div>
             
             <div className="text-center pt-4">
-              <Link href="/videos">
+              <Link href="/blog">
                 <Button className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 mx-auto">
                   See more videos <ArrowRight className="h-4 w-4" />
                 </Button>
@@ -346,14 +300,16 @@ export default function CombinedContentSection() {
                       onClick={() => setSelectedPost(post)}
                     >
                       <div className="relative aspect-[4/3] overflow-hidden">
-                        <ImageComponent
-                          src={post.coverImage}
-                          alt={post.title}
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                          }}
-                        />
+                        <div className="relative w-full h-full">
+                          <SafeImage
+                            src={post.coverImage}
+                            alt={post.title}
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
+                            }}
+                          />
+                        </div>
                         <div className="absolute top-3 left-3">
                           <Badge variant="secondary" className="text-xs bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0]">
                             {post.category}
@@ -443,14 +399,16 @@ export default function CombinedContentSection() {
                     transition={{ duration: 0.5 }}
                   >
                     <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden shadow-md">
-                      <ImageComponent
-                        src={selectedPost.coverImage}
-                        alt={selectedPost.title}
-                        className="object-cover"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                        }}
-                      />
+                      <div className="relative w-full h-full">
+                        <SafeImage
+                          src={selectedPost.coverImage}
+                          alt={selectedPost.title}
+                          className="object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
+                          }}
+                        />
+                      </div>
                     </div>
 
                     <div className="flex items-center gap-4 text-sm text-[#2E4F7C]/80">
@@ -484,14 +442,16 @@ export default function CombinedContentSection() {
                           if ((idx + 1) % 2 === 0 && imgIndex < images.length) {
                             content.push(
                               <div key={`img-${imgIndex}`} className="relative w-full aspect-[16/9] rounded-lg overflow-hidden shadow-md my-4">
-                                <ImageComponent
-                                  src={images[imgIndex]}
-                                  alt={`Image ${imgIndex + 1}`}
-                                  className="object-cover"
-                                  onError={(e) => {
-                                    (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                                  }}
-                                />
+                                <div className="relative w-full h-full">
+                                  <SafeImage
+                                    src={images[imgIndex]}
+                                    alt={`Image ${imgIndex + 1}`}
+                                    className="object-cover"
+                                    onError={(e) => {
+                                      (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
+                                    }}
+                                  />
+                                </div>
                               </div>
                             );
                             imgIndex++;
@@ -502,14 +462,16 @@ export default function CombinedContentSection() {
                       for (; imgIndex < images.length; imgIndex++) {
                         content.push(
                           <div key={`img-${imgIndex}`} className="relative w-full aspect-[16/9] rounded-lg overflow-hidden shadow-md my-4">
-                            <ImageComponent
-                              src={images[imgIndex]}
-                              alt={`Image ${imgIndex + 1}`}
-                              className="object-cover"
-                              onError={(e) => {
-                                (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                              }}
-                            />
+                            <div className="relative w-full h-full">
+                              <SafeImage
+                                src={images[imgIndex]}
+                                alt={`Image ${imgIndex + 1}`}
+                                className="object-cover"
+                                onError={(e) => {
+                                  (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
+                                }}
+                              />
+                            </div>
                           </div>
                         );
                       }

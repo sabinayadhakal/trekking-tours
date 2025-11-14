@@ -19,8 +19,8 @@ interface HeroData {
   DesktopBackgroundImage: HeroImage[];
 }
 
-// Fallback data
-const fallbackData: HeroData = {
+// Hero data - now using static data instead of Strapi
+const heroData: HeroData = {
   Title: "Trekking in the Wildness of Nepal: Everest, Annapurna & Beyond",
   Description: "Journey beyond the guidebook. From the peaks of Nepal to the monasteries of Bhutan and Tibet, we craft immersive trekking and cultural tours that reveal the soul of the Himalayas.",
   Tagline: "SnowArt since 2015",
@@ -37,82 +37,37 @@ const FullScreenBackgroundHero = () => {
   const navigateTo = (path: string) => router.push(path);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [heroData, setHeroData] = useState<HeroData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Fetch data from Strapi
+  // Simulate loading delay
   useEffect(() => {
-    const fetchHeroData = async () => {
-      try {
-        setIsLoading(true);
-        const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-        const apiToken = process.env.STRAPI_API_TOKEN;
-
-        if (!apiUrl) {
-          console.error("NEXT_PUBLIC_STRAPI_URL is not defined");
-          setHeroData(fallbackData);
-          return;
-        }
-
-        const headers: HeadersInit = {};
-        if (apiToken) headers['Authorization'] = `Bearer ${apiToken}`;
-
-        const response = await fetch(`${apiUrl}/api/hero-page-landing?populate=*`, { headers });
-
-        if (!response.ok) {
-          const text = await response.text();
-          console.error("Fetch failed:", response.status, text);
-          setHeroData(fallbackData);
-          return;
-        }
-
-        const data = await response.json();
-        console.log("Strapi API Response:", data);
-
-        if (data.data) {
-          const attributes = data.data;
-
-          const transformedData: HeroData = {
-            Title: attributes.Title || fallbackData.Title,
-            Description: attributes.Description || fallbackData.Description,
-            Tagline: attributes.Tagline || fallbackData.Tagline,
-            Excerpt: attributes.Excerpt || fallbackData.Excerpt,
-            DesktopBackgroundImage: 
-              attributes.DesktopBackgroundImage?.map((img: any) => ({
-                url: img.url.startsWith('http') 
-                  ? img.url 
-                  : `${apiUrl}${img.url}`
-              })) || fallbackData.DesktopBackgroundImage,
-          };
-
-          console.log("Transformed Data:", transformedData);
-          setHeroData(transformedData);
-        } else {
-          console.warn("No valid data found in response, using fallback");
-          setHeroData(fallbackData);
-        }
-
-      } catch (error) {
-        console.error("Error fetching hero data:", error);
-        setHeroData(fallbackData);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchHeroData();
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
   }, []);
 
   // Cycle images every 8s
   useEffect(() => {
-    if (!heroData) return;
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % heroData.DesktopBackgroundImage.length);
     }, 8000);
     return () => clearInterval(interval);
-  }, [heroData]);
+  }, []);
 
-  const data = heroData || fallbackData;
+  if (isLoading) {
+    return (
+      <section className="relative h-[60vh] md:h-screen w-full overflow-hidden py-12 md:py-20 bg-gray-200 animate-pulse">
+        <div className="container relative z-20 h-full w-full max-w-[85rem] mx-auto flex flex-col justify-center px-4">
+          <div className="flex flex-col gap-4 max-w-[61.375rem]">
+            <div className="h-10 w-48 bg-gray-300 rounded mb-6"></div>
+            <div className="h-16 md:h-24 bg-gray-300 rounded w-3/4"></div>
+            <div className="h-6 bg-gray-300 rounded w-1/2 mt-4"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <>
@@ -120,7 +75,7 @@ const FullScreenBackgroundHero = () => {
 
         {/* Mobile slideshow with light blue overlay */}
         <div className="absolute inset-0 z-10 md:hidden">
-          {data.DesktopBackgroundImage.map((img, index) => (
+          {heroData.DesktopBackgroundImage.map((img, index) => (
             <div
               key={index}
               className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ${
@@ -140,7 +95,7 @@ const FullScreenBackgroundHero = () => {
         {/* Desktop slideshow */}
         <div className="absolute inset-0 z-10 hidden md:block">
           <AnimatePresence>
-            {data.DesktopBackgroundImage.map((img, index) => (
+            {heroData.DesktopBackgroundImage.map((img, index) => (
               index === currentIndex && (
                 <motion.div
                   key={index}
@@ -163,10 +118,10 @@ const FullScreenBackgroundHero = () => {
           <div className="flex flex-col gap-4 max-w-[61.375rem]">
             <div className="flex items-center gap-3 mb-6">
               <Mountain className="h-10 w-10 text-[#d0e6f0]" />
-              <span className="text-[#d0e6f0] font-display text-lg tracking-wide">{data.Tagline}</span>
+              <span className="text-[#d0e6f0] font-display text-lg tracking-wide">{heroData.Tagline}</span>
             </div>
-            <h1 className="font-display text-[#f0f8ff] text-5xl lg:text-7xl font-bold leading-tight">{data.Title}</h1>
-            <p className="text-[#e0f0f5]/90 text-2xl font-light max-w-3xl mt-6 leading-relaxed">{data.Description}</p>
+            <h1 className="font-display text-[#f0f8ff] text-5xl lg:text-7xl font-bold leading-tight">{heroData.Title}</h1>
+            <p className="text-[#e0f0f5]/90 text-2xl font-light max-w-3xl mt-6 leading-relaxed">{heroData.Description}</p>
             <div className="flex gap-4 mt-6 flex-wrap">
               <Button onClick={() => navigateTo('/destinations/nepal')} className="bg-[#d0e6f0] text-[#1c3c50] hover:bg-[#c0d9e7] font-semibold px-8 py-6 text-base rounded-full">Explore Tours</Button>
               <Button onClick={() => navigateTo('/contact')} variant="outline" className="border-[#d0e6f0]/60 text-[#d0e6f0] hover:text-[#1c3c50] border bg-transparent px-8 py-6 text-base rounded-full">
@@ -194,7 +149,7 @@ const FullScreenBackgroundHero = () => {
           {/* Tagline - Hidden on small screens, visible on larger phones */}
           <div className="hidden xs:flex flex-col items-center gap-4 mb-6 z-10">
             <Mountain className="h-8 w-8 text-[#d0e6f0]" />
-            <span className="text-[#d0e6f0] font-display text-sm tracking-wide">{data.Tagline}</span>
+            <span className="text-[#d0e6f0] font-display text-sm tracking-wide">{heroData.Tagline}</span>
           </div>
           
           <motion.h1
@@ -203,7 +158,7 @@ const FullScreenBackgroundHero = () => {
             transition={{ duration: 0.8 }}
             className="font-display text-[#f0f8ff] text-3xl xs:text-4xl font-bold leading-tight mb-4 z-10"
           >
-            {data.Title}
+            {heroData.Title}
           </motion.h1>
           
           {/* Excerpt - Only shown on small screens with different color */}
@@ -213,7 +168,7 @@ const FullScreenBackgroundHero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="xs:hidden text-[#c0d9e7] text-sm font-medium mb-6 z-10 max-w-xs"
           >
-            {data.Excerpt}
+            {heroData.Excerpt}
           </motion.p>
           
           {/* Description - Only shown on larger phones */}
@@ -223,7 +178,7 @@ const FullScreenBackgroundHero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="hidden xs:block text-[#e0f0f5]/90 text-base font-light mb-6 z-10 max-w-md"
           >
-            {data.Description}
+            {heroData.Description}
           </motion.p>
           
           <div className="flex flex-row justify-center gap-3 flex-wrap z-10">
@@ -238,4 +193,4 @@ const FullScreenBackgroundHero = () => {
   );
 };
 
-export { FullScreenBackgroundHero };  
+export { FullScreenBackgroundHero };
