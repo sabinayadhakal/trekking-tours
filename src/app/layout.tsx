@@ -33,6 +33,12 @@ export default function RootLayout({
           data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
         />
 
+        {/* reCAPTCHA v3 Script */}
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          strategy="afterInteractive"
+        />
+
         {/* Header */}
         <AnimatedIndicatorNavbar  />
 
