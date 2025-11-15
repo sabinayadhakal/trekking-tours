@@ -11,8 +11,8 @@ export default function AboutPage() {
     title: "Managing Director & Founder",
     headshotSrc: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/0be1ec1c-c0d9-4e55-b25d-dd0e7300017e/generated_images/professional-corporate-headshot-of-a-con-3d80c316-20250823023854.jpg",
     headshotAlt: "Shiva Prasad Dhakal, Managing Director of Himkala Adventure",
-    background: "Shiva Prasad Dhakal, Managing Director of Himkala Adventure, began his journey in tourism as a porter and has since spent over years guiding more than 1,000 visitors from around the world. With extensive experience in trekking, touring, mountaineering, rafting, bungee jumping, and other adventure activities, he brings both expertise and passion to every journey. Himkala Adventure, under his leadership, offers authentic and eco-friendly trekking experiences that blend traditional practices with modern approaches, reflecting a deep respect for Nepal's breathtaking landscapes and rich cultural diversity.",
-    vision: "To make adventure accessible to everyone while preserving the natural beauty and cultural heritage of the destinations we explore. We believe that travel should transform both the traveler and the places they visit.",
+    background: "Starting his career as a porter, Shiva Prasad Dhakal has grown into a respected leader in Nepal’s tourism industry. Today, as Managing Director, he guides Himkala Adventure with a commitment to offering authentic, eco-friendly trekking experiences that honor Nepal’s natural beauty and rich cultural heritage.",
+    vision: "Committed to making adventure travel available to all, while safeguarding the landscapes and cultural traditions that make each journey meaningful. Our focus is on responsible travel that creates value for both visitors and local communities.",
     yearsExperience: 25,
     achievements: [
       { label: "Certified Trekking Guide", year: "2000" },
@@ -20,7 +20,7 @@ export default function AboutPage() {
       { label: "Five times continuous receiver of Trip Advisor Excellence certificate.", year: "2016" },
       { label: "First to start the Free Walking Tour in Kathmandu", year: "2017" }
     ],
-    quote: "Adventure isn't just about reaching the summit—it's about the connections you make, the cultures you experience, and the memories you create along the way.",
+    quote: "Adventure is shaped not just by where you go, but by the people, culture, and meaningful moments you encounter along the way.",
     quoteAttribution: "Shiva Prasad Dhakal",
     orientation: "image-left" as const
   }
@@ -31,7 +31,7 @@ export default function AboutPage() {
       name: "Sabinaya Dhakal",
       title: "Professional Certified Trekking Guide and IT facilitator",
       years: 6,
-      bio: "Sabinaya specializes in high-altitude expeditions and has been to the highest passes of Nepal. His expertise in mountain safety, knowledge and cultural interpretation makes him one of our most sought-after guides.",
+      bio: "Sabinaya has a strong background in high-altitude trekking and also manages various IT tasks within the company. His calm approach, safety awareness, and knowledge of the region make him a dependable part of our team.",
       photoUrl: "/images/sabinaya.jpg",
       alt: "Sabinaya Dhakal, Trekking Guide and IT facilitator"
     },
@@ -102,8 +102,8 @@ export default function AboutPage() {
       <AboutHero
         imageSrc="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/0be1ec1c-c0d9-4e55-b25d-dd0e7300017e/generated_images/professional-outdoor-adventure-landscape-689f7a08-20250823023843.jpg"
         imageAlt="Mountain landscape with adventurers"
-        title="Meet Us and Collaborate"
-        description="We provide professional advice regarding treks and expeditions in Nepal, and our experience in the field of adventure travels is extensive as we are experts in the realms of organizing and planning. "
+        title="Get to Know Us"
+        description="As trusted Nepal trekking and expedition experts, we offer professional advice and comprehensive planning for adventure travel. Our team’s deep field experience ensures every trek and expedition is safe, well-organized, and tailored to your goals."
   overlay="bg-gradient-to-b from-gray-900/80 sm:from-gray-900/70 via-gray-800/60 sm:via-gray-800/50 to-gray-900/40 sm:to-gray-900/30"        priority={true}
       />
 
