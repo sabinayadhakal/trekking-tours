@@ -130,46 +130,7 @@ const HELICOPTER_TOURS: Tour[] = [
     equipment: ["Jacket", "Camera"],
     entryRequirements: ["ID required"]
   },
-  {
-    id: "4",
-    title: "Muktinath Helicopter Pilgrimage",
-    location: "Mustang Region, Nepal",
-    duration: "4 hours",
-    rating: 4.9,
-    reviewCount: 95,
-    price: 900,
-    originalPrice: 1000,
-    excerpt: "Spiritual journey to sacred Muktinath Temple",
-    description: "Combine spiritual pilgrimage with aerial adventure on this helicopter tour to Muktinath Temple. Fly over the dramatic landscapes of Lower Mustang, land at one of Nepal's most sacred sites, and receive blessings at the temple revered by both Hindus and Buddhists. Witness the unique desert-like landscape of the Mustang region from above.",
-    image: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=400&h=300&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
-    ],
-    tags: ["Helicopter", "Pilgrimage", "Spiritual"],
-    highlights: [
-      "Muktinath Temple visit",
-      "Mustang region flight",
-      "Sacred site blessings",
-      "Dramatic landscape views"
-    ],
-    includes: ["Helicopter", "Pilot guide", "Temple entry", "Transfers"],
-    excludes: ["Donations", "Personal shopping"],
-    included: ["Flight", "Temple fees", "Transfers"],
-    excluded: ["Personal donations", "Shopping"],
-    itinerary: [
-      { day: 1, title: "Muktinath Pilgrimage", description: "Hotel pickup, scenic flight to Mustang, temple visit and prayers, exploration time, return flight" }
-    ],
-    maxGroupSize: 5,
-    cancellationPolicy: "Special pilgrimage cancellation terms apply.",
-    isPopular: true,
-    isSoldOut: true,
-    difficulty: "Easy",
-    maxAltitude: "3,710m",
-    requirements: ["Respect for religious sites"],
-    permits: ["Restricted area permit"],
-    equipment: ["Modest clothing", "Camera"],
-    entryRequirements: ["Passport mandatory"]
-  }
+  
 ];
 
 export default function HelicopterSightseeingPage() {

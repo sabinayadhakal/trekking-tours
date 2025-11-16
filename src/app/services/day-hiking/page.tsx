@@ -8,9 +8,83 @@ import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
 // Mock day hiking tours data
-const DAY_HIKING_TOURS: Tour[] = [
+const DAY_HIKING_TOURS: Tour[] = 
+  [
   {
     id: "1",
+    title: "Sundarijal to Chisapani Day Hiking",
+    location: "Kathmandu Valley, Nepal",
+    duration: "1 day",
+    rating: 4.7,
+    reviewCount: 142,
+    price: 40,
+    originalPrice: 50,
+    excerpt: "Forest hike through Shivapuri National Park with scenic valley and mountain views",
+    description: "A classic hiking route near Kathmandu, the Sundarijal to Chisapani trail leads you through lush forests, waterfalls, and traditional Tamang villages inside Shivapuri Nagarjun National Park. Perfect for nature lovers seeking a refreshing full-day trek.",
+    image: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1500048993953-d23a436266cf?w=800&h=600&fit=crop"
+    ],
+    tags: ["Day Hike", "Nature", "Moderate"],
+    highlights: ["Waterfalls and forests", "National Park trail", "Village walk"],
+    includes: ["Guide", "National Park entry", "Lunch", "Transportation"],
+    excludes: ["Personal expenses", "Tips"],
+    itinerary: [
+      { day: 1, title: "Sundarijal to Chisapani", description: "Start at Sundarijal, hike through forests and villages to Chisapani, enjoy views, return to Kathmandu" }
+    ],
+    maxGroupSize: 10,
+    included: ["Guide", "Park permits", "Lunch", "Transport"],
+    excluded: ["Personal items", "Gratuities"],
+    cancellationPolicy: "Free cancellation up to 24 hours before.",
+    isPopular: true,
+    isSoldOut: false,
+    difficulty: "moderate",
+    maxAltitude: "2,215m (Chisapani)",
+    requirements: ["Moderate fitness", "Comfort walking for 5–6 hours"],
+    permits: ["National Park Permit"],
+    equipment: ["Hiking shoes", "Water bottle", "Sun protection", "Light jacket"],
+    entryRequirements: ["None"]
+  },
+
+  {
+    id: "2",
+    title: "Namobuddha Day Hiking",
+    location: "Kavre, Nepal",
+    duration: "1 day",
+    rating: 4.8,
+    reviewCount: 120,
+    price: 35,
+    originalPrice: 45,
+    excerpt: "Peaceful cultural hike to one of Buddhism’s holiest pilgrimage sites",
+    description: "A serene day hike offering lush forest trails, rural landscapes, and a peaceful arrival at the sacred Namobuddha Monastery. Perfect for hikers seeking a cultural and nature-filled day outside the city.",
+    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=600&fit=crop"
+    ],
+    tags: ["Day Hike", "Cultural", "Easy"],
+    highlights: ["Thrangu Tashi Yangtse Monastery", "Village paths", "Peaceful forest walk"],
+    includes: ["Guide", "Transportation", "Lunch"],
+    excludes: ["Monastery donations", "Personal expenses"],
+    itinerary: [
+      { day: 1, title: "Namobuddha Trail", description: "Drive to Dhulikhel, hike through villages to Namobuddha Monastery, explore the site, return to Kathmandu" }
+    ],
+    maxGroupSize: 12,
+    included: ["Guide", "Lunch", "Transport"],
+    excluded: ["Personal items", "Donations"],
+    cancellationPolicy: "48-hour free cancellation.",
+    isPopular: true,
+    isSoldOut: false,
+    difficulty: "easy",
+    maxAltitude: "1,750m",
+    requirements: ["Basic fitness"],
+    permits: ["None"],
+    equipment: ["Walking shoes", "Water", "Sunhat"],
+    entryRequirements: ["None"]
+  },
+
+  {
+    id: "3",
     title: "Nagarkot to Changunarayan Day Hiking",
     location: "Kathmandu Valley, Nepal",
     duration: "1 day",
@@ -46,8 +120,116 @@ const DAY_HIKING_TOURS: Tour[] = [
     equipment: ["Day pack", "Water bottle", "Sun protection", "Comfortable shoes"],
     entryRequirements: ["None for day hikes"]
   },
+
   {
-    id: "2",
+    id: "4",
+    title: "Rupakot Day Hiking",
+    location: "Kaski, Nepal",
+    duration: "1 day",
+    rating: 4.6,
+    reviewCount: 74,
+    price: 55,
+    originalPrice: 65,
+    excerpt: "A peaceful hike with stunning views of Begnas & Rupa Lakes and the Annapurna range",
+    description: "This scenic hike takes you through quiet forests and villages to the beautiful hilltop of Rupakot. With panoramic lake views and the Annapurna Himalayas in the background, it’s one of Pokhara’s best lesser-known day hikes.",
+    image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&h=600&fit=crop"
+    ],
+    tags: ["Day Hike", "Scenic", "Easy"],
+    highlights: ["Rupa & Begnas Lakes", "Annapurna views", "Peaceful forest trails"],
+    includes: ["Guide", "Transportation", "Lunch"],
+    excludes: ["Personal expenses"],
+    itinerary: [
+      { day: 1, title: "Rupakot Ridge Hike", description: "Drive to Begnas area, hike to Rupakot viewpoint, explore the ridge, lunch, hike down and return" }
+    ],
+    maxGroupSize: 10,
+    included: ["Guide", "Lunch", "Transport"],
+    excluded: ["Personal items"],
+    cancellationPolicy: "Free cancellation 24 hours before.",
+    isPopular: false,
+    isSoldOut: false,
+    difficulty: "easy",
+    maxAltitude: "1,320m",
+    requirements: ["Basic fitness"],
+    permits: ["None"],
+    equipment: ["Comfortable shoes", "Hat", "Water bottle"],
+    entryRequirements: ["None"]
+  },
+
+  {
+    id: "5",
+    title: "Champadevi Day Hiking",
+    location: "Kathmandu Valley, Nepal",
+    duration: "1 day",
+    rating: 4.7,
+    reviewCount: 101,
+    price: 35,
+    excerpt: "A rewarding ridge hike with wide Himalayan and valley views",
+    description: "Champadevi is one of the most scenic ridge walks around Kathmandu. The trail passes forests, local shrines, and offers incredible views of the Langtang, Ganesh, and Annapurna ranges.",
+    image: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=800&h=600&fit=crop"
+    ],
+    tags: ["Day Hike", "Scenic", "Moderate"],
+    highlights: ["Ridge trail", "Valley & mountain views", "Sacred hilltop"],
+    includes: ["Guide", "Lunch", "Transport"],
+    excludes: ["Personal expenses"],
+    itinerary: [
+      { day: 1, title: "Champadevi Summit", description: "Drive to Hattiban, ascend through forest to ridge, summit Champadevi, enjoy views, return to Kathmandu" }
+    ],
+    maxGroupSize: 10,
+    included: ["Guide", "Packed lunch", "Transport"],
+    excluded: ["Personal items"],
+    cancellationPolicy: "Free cancellation up to 24 hours.",
+    isPopular: true,
+    isSoldOut: false,
+    difficulty: "moderate",
+    maxAltitude: "2,278m",
+    requirements: ["Good fitness"],
+    permits: ["None"],
+    equipment: ["Hiking shoes", "Snacks", "Water"],
+    entryRequirements: ["None"]
+  },
+
+  {
+    id: "6",
+    title: "Balthali Village Day Hiking",
+    location: "Kavre, Nepal",
+    duration: "1 day",
+    rating: 4.6,
+    reviewCount: 85,
+    price: 40,
+    originalPrice: 50,
+    excerpt: "A peaceful countryside hike through terraced fields and traditional villages",
+    description: "Balthali Village offers one of the most relaxing day hikes near Kathmandu, featuring terraced farmland, forest trails, and a glimpse into rural Nepali lifestyle. Ideal for travelers seeking an easy, culture-rich walk.",
+    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&h=300&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=600&fit=crop"
+    ],
+    tags: ["Day Hike", "Cultural", "Easy"],
+    highlights: ["Village lifestyle", "Terraced landscapes", "Countryside peace"],
+    includes: ["Guide", "Lunch", "Transport"],
+    excludes: ["Personal expenses"],
+    itinerary: [
+      { day: 1, title: "Balthali Village", description: "Drive to Khopasi, hike through villages to Balthali, enjoy lunch and scenery, return via rural trails" }
+    ],
+    maxGroupSize: 12,
+    included: ["Guide", "Lunch", "Transport"],
+    excluded: ["Personal items"],
+    cancellationPolicy: "Free cancellation 24 hours before.",
+    isPopular: false,
+    isSoldOut: false,
+    difficulty: "easy",
+    maxAltitude: "1,600m",
+    requirements: ["Basic fitness"],
+    permits: ["None"],
+    equipment: ["Walking shoes", "Hat", "Water bottle"],
+    entryRequirements: ["None"]
+  },
+
+  {
+    id: "7",
     title: "Shivapuri Day Hike",
     location: "Kathmandu Valley, Nepal",
     duration: "1 day",
@@ -80,76 +262,8 @@ const DAY_HIKING_TOURS: Tour[] = [
     permits: ["National Park Permit"],
     equipment: ["Hiking boots", "Rain jacket", "Water", "Camera"],
     entryRequirements: ["None"]
-  },
-  {
-    id: "3",
-    title: "Phulchowki Day Hike",
-    location: "Kathmandu Valley, Nepal",
-    duration: "1 day",
-    rating: 4.5,
-    reviewCount: 67,
-    price: 40,
-    excerpt: "Highest peak around Kathmandu with rich biodiversity",
-    description: "Conquer Phulchowki, the highest hill surrounding Kathmandu Valley. This hike takes you through dense forests teeming with birdlife and offers magnificent panoramic views from the summit.",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=600&fit=crop"
-    ],
-    tags: ["Day Hike", "Bird Watching", "Moderate"],
-    highlights: ["Highest valley viewpoint", "Bird watching paradise", "Mountain panoramas"],
-    includes: ["Bird watching guide", "Transport", "Lunch", "Entry fees"],
-    excludes: ["Binoculars", "Personal expenses"],
-    itinerary: [
-      { day: 1, title: "Phulchowki Summit", description: "Early start for bird watching, gradual ascent to summit, lunch with views, return via different trail" }
-    ],
-    maxGroupSize: 8,
-    included: ["Specialist guide", "All fees", "Lunch", "Transport"],
-    excluded: ["Optical equipment", "Personal items"],
-    cancellationPolicy: "24-hour cancellation policy.",
-    isPopular: false,
-    isSoldOut: false,
-    difficulty: "moderate",
-    maxAltitude: "2,782m",
-    requirements: ["Moderate fitness", "Interest in nature"],
-    permits: ["None"],
-    equipment: ["Walking shoes", "Binoculars", "Layers"],
-    entryRequirements: ["None"]
-  },
-  {
-    id: "4",
-    title: "Chandragiri Hills Day Hike",
-    location: "Kathmandu Valley, Nepal",
-    duration: "1 day",
-    rating: 4.7,
-    reviewCount: 124,
-    price: 50,
-    originalPrice: 60,
-    excerpt: "Scenic hike with cable car option and stunning Himalayan views",
-    description: "Hike to Chandragiri Hills for some of the best Himalayan views accessible from Kathmandu. Visit the famous Bhaleshwar Mahadev Temple and enjoy the breathtaking scenery of the entire Himalayan range.",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
-    ],
-    tags: ["Day Hike", "Scenic", "Easy"],
-    highlights: ["Cable car experience", "Bhaleshwar Temple", "Himalayan panorama"],
-    includes: ["Guide", "Cable car ticket", "Lunch", "Transport"],
-    excludes: ["Personal shopping", "Additional activities"],
-    itinerary: [
-      { day: 1, title: "Chandragiri Exploration", description: "Drive to base, optional hike or cable car ascent, temple visit, lunch with views, leisurely descent" }
-    ],
-    maxGroupSize: 10,
-    included: ["Guide", "Cable car", "Lunch", "Transport"],
-    excluded: ["Personal purchases", "Extra activities"],
-    cancellationPolicy: "Flexible cancellation up to 12 hours before.",
-    isPopular: true,
-    isSoldOut: true,
-    difficulty: "easy",
-    maxAltitude: "2,551m",
-    requirements: ["Basic fitness", "Suitable for families"],
-    permits: ["None"],
-    equipment: ["Comfortable shoes", "Camera", "Light jacket"],
-    entryRequirements: ["None"]
   }
+
 ];
 
 export default function HomePage() {

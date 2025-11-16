@@ -10,146 +10,42 @@ import { Tour } from "@/types/tour";
 // Mock jungle safari tours data
 const JUNGLE_SAFARI_TOURS: Tour[] = [
   {
-    id: "1",
-    title: "Chitwan Classic Jungle Safari",
-    location: "Chitwan National Park, Nepal",
-    duration: "3 days / 2 nights",
-    rating: 4.8,
-    reviewCount: 423,
-    price: 285,
-    originalPrice: 325,
-    excerpt: "Complete wildlife experience in Nepal's premier national park",
-    description: "Immerse yourself in the wilderness of Chitwan National Park, a UNESCO World Heritage Site. This classic safari package offers diverse activities including jungle walks, canoe rides, elephant safaris, and cultural performances. Spot rare wildlife like one-horned rhinoceros, Bengal tigers, crocodiles, and over 500 species of birds in their natural habitat.",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
-    ],
-    tags: ["Wildlife", "Jungle Safari", "All Inclusive"],
-    highlights: ["Elephant safari", "Jungle walk", "Canoe ride", "Tharu cultural show"],
-    includes: ["Accommodation", "All meals", "Activities", "Park fees", "Guide"],
-    excludes: ["Transportation to Chitwan", "Personal expenses", "Tips"],
-    itinerary: [
-      { day: 1, title: "Arrival and Village Tour", description: "Arrive in Chitwan, lunch, visit Tharu village, sunset views, dinner, cultural program" },
-      { day: 2, title: "Full Day Safari Activities", description: "Bird watching, elephant safari, jungle walk, canoe trip, wildlife spotting" },
-      { day: 3, title: "Departure", description: "Early morning nature walk, breakfast, departure from Chitwan" }
-    ],
-    maxGroupSize: 12,
-    included: ["2 nights accommodation in jungle lodge", "All meals (2 breakfasts, 2 lunches, 2 dinners)", "All safari activities with expert guides", "Chitwan National Park entry fees", "Cultural program attendance"],
-    excluded: ["Transportation to/from Chitwan", "Alcoholic beverages", "Personal expenses", "Gratuities", "Travel insurance"],
-    cancellationPolicy: "Free cancellation up to 7 days before departure. 50% refund between 3-7 days. No refund within 3 days.",
-    isPopular: true,
-    isSoldOut: false,
-    difficulty: "easy to moderate",
-    requirements: ["Comfortable walking shoes", "Binoculars recommended"],
-    equipment: ["Light clothing", "Sunscreen", "Insect repellent", "Camera"],
-    entryRequirements: ["Valid identification"]
-  },
-  {
-    id: "2",
-    title: "Bardia Wildlife Adventure Safari",
-    location: "Bardia National Park, Nepal",
-    duration: "4 days / 3 nights",
-    rating: 4.7,
-    reviewCount: 156,
-    price: 420,
-    originalPrice: 480,
-    excerpt: "Remote wilderness experience in Western Nepal",
-    description: "Explore Bardia National Park, one of Nepal's most pristine and least-visited wildlife reserves. This remote park offers excellent opportunities to spot tigers, wild elephants, and Gangetic dolphins in a more exclusive setting away from the crowds.",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
-    ],
-    tags: ["Wildlife", "Adventure", "Remote"],
-    highlights: ["Tiger tracking", "Elephant sightings", "River dolphin watching", "Jungle drives"],
-    includes: ["Lodge accommodation", "All meals", "Expert tracker", "Park fees"],
-    excludes: ["Transport to Bardia", "Personal items"],
-    itinerary: [
-      { day: 1, title: "Arrival and Orientation", description: "Arrive in Bardia, afternoon jungle walk, evening presentation" },
-      { day: 2, title: "Full Day Wildlife Tracking", description: "Morning elephant safari, afternoon jungle drive, evening crocodile spotting" },
-      { day: 3, title: "River and Village Exploration", description: "River rafting for dolphin watching, Tharu village visit, cultural evening" },
-      { day: 4, title: "Departure", description: "Early bird watching, breakfast, departure" }
-    ],
-    maxGroupSize: 8,
-    included: ["3 nights jungle lodge", "All meals", "Wildlife activities", "Park fees", "Expert guide"],
-    excluded: ["Transportation", "Alcohol", "Personal shopping"],
-    cancellationPolicy: "10-day cancellation policy for remote area bookings.",
-    isPopular: false,
-    isSoldOut: false,
-    difficulty: "moderate",
-    requirements: ["Good fitness", "Patience for wildlife viewing"],
-    equipment: ["Neutral colored clothing", "Binoculars", "Camera"],
-    entryRequirements: ["ID required"]
-  },
-  {
-    id: "3",
-    title: "Chitwan Luxury Safari Experience",
-    location: "Chitwan National Park, Nepal",
-    duration: "2 days / 1 night",
-    rating: 4.9,
-    reviewCount: 89,
-    price: 450,
-    excerpt: "Premium wildlife experience with luxury accommodation",
-    description: "Indulge in a luxury safari experience at Chitwan's finest jungle resort. Enjoy premium accommodations, gourmet dining, and exclusive wildlife activities including private elephant safaris and guided nature walks with expert naturalists.",
-    image: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=400&h=300&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
-    ],
-    tags: ["Luxury", "Wildlife", "Premium"],
-    highlights: ["Luxury resort stay", "Private elephant safari", "Gourmet dining", "Spa treatments"],
-    includes: ["Luxury accommodation", "Gourmet meals", "Private guide", "Spa access"],
-    excludes: ["Transport", "Premium beverages", "Personal services"],
-    itinerary: [
-      { day: 1, title: "Arrival and Premium Safari", description: "Luxury transfer, welcome drinks, private elephant safari, gourmet dinner" },
-      { day: 2, title: "Morning Activities and Departure", description: "Sunrise bird watching, breakfast, nature walk with naturalist, departure" }
-    ],
-    maxGroupSize: 6,
-    included: ["Luxury suite", "Gourmet meals", "Private activities", "Spa access"],
-    excluded: ["Premium alcohol", "Personal purchases"],
-    cancellationPolicy: "14-day cancellation for luxury bookings.",
-    isPopular: true,
-    isSoldOut: true,
-    difficulty: "easy",
-    requirements: ["None"],
-    equipment: ["Casual elegant wear", "Camera"],
-    entryRequirements: ["None"]
-  },
-  {
-    id: "4",
-    title: "Family Jungle Safari Package",
-    location: "Chitwan National Park, Nepal",
-    duration: "3 days / 2 nights",
-    rating: 4.8,
-    reviewCount: 234,
-    price: 680,
-    originalPrice: 750,
-    excerpt: "Family-friendly wildlife adventure with child-focused activities",
-    description: "Specially designed for families with children, this safari package offers safe and engaging wildlife experiences. Includes child-friendly activities, educational programs, and accommodations perfect for families exploring the jungle together.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
-    ],
-    tags: ["Family", "Educational", "Wildlife"],
-    highlights: ["Child-friendly activities", "Elephant breeding center", "Nature crafts", "Family accommodations"],
-    includes: ["Family room", "All meals", "Child activities", "Park fees"],
-    excludes: ["Transport", "Childcare", "Personal items"],
-    itinerary: [
-      { day: 1, title: "Family Arrival and Orientation", description: "Arrival, lunch, elephant breeding center visit, evening cultural show" },
-      { day: 2, title: "Family Safari Day", description: "Gentle elephant safari, nature crafts, canoe ride, wildlife documentary" },
-      { day: 3, title: "Departure", description: "Bird watching, breakfast, departure" }
-    ],
-    maxGroupSize: 10,
-    included: ["Family accommodations", "All meals", "Child-focused activities", "Educational materials"],
-    excluded: ["Transportation", "Extra childcare"],
-    cancellationPolicy: "Flexible family cancellation policy.",
-    isPopular: true,
-    isSoldOut: false,
-    difficulty: "easy",
-    requirements: ["Children must be accompanied"],
-    equipment: ["Comfortable family gear", "Child binoculars"],
-    entryRequirements: ["None"]
-  }
+  "id": "1",
+  "title": "Chitwan National Park Jungle Safari - 3 Days Wildlife Tour Nepal",
+  "location": "Chitwan National Park, Nepal",
+  "duration": "3 days / 2 nights",
+  "rating": 4.8,
+  "reviewCount": 423,
+  "price": 285,
+  "originalPrice": 325,
+  "excerpt": "3-day Chitwan National Park jungle safari with elephant rides, wildlife spotting, and Tharu cultural experience. UNESCO World Heritage Site.",
+  "description": "Experience Chitwan National Park jungle safari in Nepal's premier wildlife destination. This 3-day package offers elephant safari rides, jungle walks, canoe trips, and Tharu cultural shows. Spot one-horned rhinoceros, Bengal tigers, crocodiles, and over 500 bird species. Perfect wildlife adventure in Nepal.",
+  "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop",
+  "images": [
+    "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
+  ],
+  "tags": ["Chitwan National Park", "Nepal Jungle Safari", "Wildlife Tour", "Elephant Safari", "UNESCO World Heritage", "One-Horned Rhino"],
+  "highlights": ["Elephant Back Safari", "Jungle Walk with Guide", "Canoe Ride Crocodile Spotting", "Tharu Cultural Dance", "One-Horned Rhinoceros Viewing", "Bird Watching 500+ Species"],
+  "includes": ["Jungle Lodge Accommodation", "All Meals", "Professional Safari Guide", "National Park Fees", "All Safari Activities"],
+  "excludes": ["Transportation to Chitwan", "Personal Expenses", "Travel Insurance", "Alcoholic Drinks"],
+  "itinerary": [
+    { "day": 1, "title": "Arrival & Tharu Village Cultural Tour", "description": "Arrive at safari lodge, lunch, explore Tharu village, sunset views, cultural performance after dinner" },
+    { "day": 2, "title": "Full Day Jungle Safari - Elephant Ride & Wildlife", "description": "Bird watching, elephant back safari, jungle walk, canoe trip, crocodile spotting, jeep safari" },
+    { "day": 3, "title": "Nature Walk & Departure from Chitwan", "description": "Morning nature walk, breakfast, visit elephant breeding center, check out and departure" }
+  ],
+  "maxGroupSize": 12,
+  "included": ["2 nights jungle lodge accommodation", "All meals (2 breakfasts, 2 lunches, 2 dinners)", "Chitwan National Park entry fees", "Professional naturalist guide", "Elephant safari ride", "Jungle walk", "Canoe trip", "Jeep safari", "Tharu cultural dance"],
+  "excluded": ["Transportation to/from Chitwan", "Alcoholic beverages", "Personal expenses and tips", "Travel insurance", "Services not mentioned"],
+  "cancellationPolicy": "Free cancellation up to 7 days before safari. 50% refund 3-7 days prior. No refund within 3 days.",
+  "isPopular": true,
+  "isSoldOut": false,
+  "difficulty": "easy to moderate",
+  "requirements": ["Comfortable walking shoes", "Binoculars recommended", "Valid passport/ID", "Moderate physical fitness"],
+  "equipment": ["Light clothing", "Warm layers", "Sunscreen", "Insect repellent", "Camera", "Water bottle"],
+  "entryRequirements": ["Valid passport or government ID", "Chitwan National Park entry permit"]
+}
 ];
 
 export default function HomePage() {
