@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Play, Calendar, Clock, ArrowRight } from "lucide-react";
+import { Play, Calendar, Clock, ArrowRight, Mountain, Star } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -71,6 +71,61 @@ const SafeImage = ({
   );
 };
 
+// Component to render formatted blog content with proper spacing (same as blog content section)
+const BlogContentRenderer = ({ content }: { content: string }) => {
+  const sections = content.split('## ').filter(section => section.trim());
+  
+  return (
+    <div className="space-y-6 text-[#2E4F7C]">
+      {sections.map((section, index) => {
+        const [title, ...contentLines] = section.split('\n').filter(line => line.trim());
+        const contentText = contentLines.join('\n').trim();
+        
+        return (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className="bg-white/50 rounded-lg p-4 sm:p-6 shadow-sm"
+          >
+            {title && (
+              <h3 className="text-xl sm:text-2xl font-bold text-[#2E4F7C] mb-4 pb-2 border-b border-[#8AB8E0]">
+                {title}
+              </h3>
+            )}
+            
+            <div className="prose prose-sm sm:prose-base max-w-none text-[#2E4F7C]">
+              {contentText.split('• ').map((paragraph, pIndex) => {
+                if (pIndex === 0) {
+                  return (
+                    <p key={pIndex} className="mb-4 leading-relaxed text-base sm:text-lg">
+                      {paragraph}
+                    </p>
+                  );
+                }
+                
+                if (paragraph.trim()) {
+                  return (
+                    <div key={pIndex} className="flex items-start mb-2">
+                      <Star className="h-4 w-4 text-[#3C6AA6] mt-1 mr-3 flex-shrink-0" />
+                      <span className="text-base sm:text-lg leading-relaxed">
+                        {paragraph}
+                      </span>
+                    </div>
+                  );
+                }
+                
+                return null;
+              })}
+            </div>
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+};
+
 export default function CombinedContentSection() {
   // YouTube videos state
   const [videos, setVideos] = useState<YouTubeVideo[]>([]);
@@ -100,11 +155,25 @@ export default function CombinedContentSection() {
       excerpt: "Essential tips and tricks for a successful high altitude trekking experience in the Himalayas.",
       content: `High altitude trekking in Nepal is an experience of a lifetime, but it requires proper preparation and knowledge. The Himalayas offer some of the most breathtaking landscapes on earth, but the altitude can present challenges even for experienced trekkers.
 
+## Proper Acclimatization
+
 First and foremost, proper acclimatization is crucial. Our guides recommend spending at least two nights at intermediate altitudes before attempting higher passes. This allows your body to adjust to the reduced oxygen levels and helps prevent altitude sickness.
+
+## Physical Preparation
 
 Physical preparation is equally important. Regular cardiovascular exercise for at least 2-3 months before your trek will significantly improve your experience. Focus on building endurance through hiking, running, or cycling.
 
-The right gear can make or break your trek. Invest in quality waterproof boots, layered clothing system, and a reliable sleeping bag rated for sub-zero temperatures. Remember, the weather in the mountains can change rapidly.`,
+## Essential Gear
+
+• Quality waterproof boots - Your most important investment
+• Layered clothing system - For changing mountain weather
+• Reliable sleeping bag - Rated for sub-zero temperatures
+• Headlamp and extra batteries - Essential for early starts
+• First aid kit - Including altitude sickness medication
+
+## Weather Considerations
+
+The weather in the mountains can change rapidly. Always be prepared for sudden temperature drops and precipitation. Trust your guide's judgment when it comes to weather-related decisions.`,
       coverImage: "/images/trekking-tips.jpg",
       images: [
         "/images/trekking-gear.jpg",
@@ -166,7 +235,7 @@ The right gear can make or break your trek. Invest in quality waterproof boots, 
     try {
       return new Date(dateString).toLocaleDateString("en-US", {
         year: "numeric",
-        month: "short",
+        month: "long",
         day: "numeric",
       });
     } catch {
@@ -380,28 +449,29 @@ The right gear can make or break your trek. Invest in quality waterproof boots, 
           </div>
         )}
 
-        {/* Blog Post Dialog */}
+        {/* Blog Post Dialog - Updated to match blog content section style */}
         <Dialog open={!!selectedPost} onOpenChange={() => setSelectedPost(null)}>
-          <DialogContent className="max-w-4xl max-h-[95vh] overflow-y-auto bg-white p-6 rounded-2xl shadow-xl">
+          <DialogContent className="max-w-4xl max-h-[95vh] overflow-y-auto bg-gradient-to-br from-[#E3F2FF] to-[#CFE8FF] p-4 sm:p-8 rounded-2xl shadow-xl">
             {selectedPost && (
               <>
-                <DialogHeader className="flex justify-between items-center mb-4">
-                  <DialogTitle className="font-semibold text-2xl text-[#2E4F7C]">
+                <DialogHeader className="flex justify-between items-start mb-6">
+                  <DialogTitle className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2E4F7C] leading-tight">
                     {selectedPost.title}
                   </DialogTitle>
                 </DialogHeader>
 
                 <DialogDescription asChild>
-                  <motion.div
-                    className="space-y-4 text-[#2E4F7C]"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                  <motion.div 
+                    className="space-y-6 text-[#2E4F7C]" 
+                    initial={{ opacity: 0, y: 20 }} 
+                    animate={{ opacity: 1, y: 0 }} 
                     transition={{ duration: 0.5 }}
                   >
-                    <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden shadow-md">
+                    {/* Cover Image */}
+                    <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-lg">
                       <div className="relative w-full h-full">
                         <SafeImage
-                          src={selectedPost.coverImage}
+                          src={selectedPost.coverImage} 
                           alt={selectedPost.title}
                           className="object-cover"
                           onError={(e) => {
@@ -409,75 +479,53 @@ The right gear can make or break your trek. Invest in quality waterproof boots, 
                           }}
                         />
                       </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/30 to-transparent" />
                     </div>
-
-                    <div className="flex items-center gap-4 text-sm text-[#2E4F7C]/80">
-                      <Badge variant="secondary" className="bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0]">
+                    
+                    {/* Meta Information */}
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm text-[#2E4F7C]/80 bg-white/60 rounded-lg p-3 sm:p-4">
+                      <Badge variant="secondary" className="bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0] text-xs sm:text-sm">
+                        <Mountain className="h-3 w-3 mr-1" />
                         {selectedPost.category}
                       </Badge>
                       <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4" />
-                        {formatDate(selectedPost.publishedDate)}
+                        <span className="text-xs sm:text-sm">{formatDate(selectedPost.publishedDate)}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <Clock className="h-4 w-4" />
-                        {selectedPost.readTime}
+                        <span className="text-xs sm:text-sm">{selectedPost.readTime}</span>
                       </div>
                     </div>
 
-                    {(() => {
-                      const paragraphs = selectedPost.content.split("\n\n");
-                      const images = selectedPost.images || [];
-                      const content: React.ReactNode[] = [];
-                      let imgIndex = 0;
+                    {/* Blog Content */}
+                    <BlogContentRenderer content={selectedPost.content} />
 
-                      paragraphs.forEach((p, idx) => {
-                        if (p.trim()) {
-                          content.push(
-                            <p key={`p-${idx}`} className="leading-relaxed text-base">
-                              {p}
-                            </p>
-                          );
-
-                          if ((idx + 1) % 2 === 0 && imgIndex < images.length) {
-                            content.push(
-                              <div key={`img-${imgIndex}`} className="relative w-full aspect-[16/9] rounded-lg overflow-hidden shadow-md my-4">
-                                <div className="relative w-full h-full">
-                                  <SafeImage
-                                    src={images[imgIndex]}
-                                    alt={`Image ${imgIndex + 1}`}
-                                    className="object-cover"
-                                    onError={(e) => {
-                                      (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                                    }}
-                                  />
-                                </div>
-                              </div>
-                            );
-                            imgIndex++;
-                          }
-                        }
-                      });
-
-                      for (; imgIndex < images.length; imgIndex++) {
-                        content.push(
-                          <div key={`img-${imgIndex}`} className="relative w-full aspect-[16/9] rounded-lg overflow-hidden shadow-md my-4">
+                    {/* Additional Images */}
+                    {selectedPost.images && selectedPost.images.length > 0 && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                        {selectedPost.images.map((image, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: index * 0.1 }}
+                            className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-md"
+                          >
                             <div className="relative w-full h-full">
                               <SafeImage
-                                src={images[imgIndex]}
-                                alt={`Image ${imgIndex + 1}`}
+                                src={image}
+                                alt={`${selectedPost.title} - Image ${index + 1}`}
                                 className="object-cover"
                                 onError={(e) => {
                                   (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
                                 }}
                               />
                             </div>
-                          </div>
-                        );
-                      }
-
-                      return content;
-                    })()}
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
                   </motion.div>
                 </DialogDescription>
               </>
