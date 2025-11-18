@@ -82,12 +82,67 @@ As visitors to this fragile ecosystem, we emphasize leave no trace principles, s
 
 The Everest Base Camp trek isn't just a journey through mountains—it's a transformative experience that connects you with nature's grandeur and the resilient spirit of the Himalayan people.
 `,
-    coverImage: "/images/review-36.jpg",
+    coverImage: "/images/blog-1.jpeg",
     images: [],
     category: "Everest Trekking",
     publishedDate: "2015-06-15",
     readTime: "8 min"
-  }
+  },
+
+  {
+  "id": "2",
+  "title": "Nepal Earthquakes 2015: Recovery, Tourism Impact & Safe Trekking Updates",
+  "excerpt": "Understanding the impact of Nepal's 2015 earthquakes on tourism and trekking. Discover which regions remain safe for travel, recovery efforts, and why Annapurna Region continues to be a top trekking destination.",
+  "content": `
+The world knows that Nepal has been victimized by the earthquakes. The two big earthquakes; the first one of 7.8 magnitude, struck at the depth of 18.5 km, the epicenter from Gorkha, Barpak and the second of 7.3 magnitude, the epicenter from Dolakha and Sindhupalchowk districts have devastated buildings, some of them plunged inside, collapsed many historical monuments, shook everything. Tremors were felt very far up to India and China. The recurring aftershocks caused mass panic. People were living in open air. The tremor caused fresh landslides. This sparked an avalanche at Mt. Everest and Langtang Region. Nepali people will never forget those helping hands, rescuers whose great presence wiped out tears of wounded, bereaved and helpless people. A US military helicopter UH-1 Huey, carrying 6 US marines and two Nepalese soldiers, went missing when on a disaster relief operation in central Nepal. We salute them!
+
+## Impact on Nepal Tourism Industry
+
+This is a natural disaster. This can be anywhere at any time. But the question is: will there really be a denouement in tourism? Will this industry be down as some people say? It's true our world heritage sites only in Kathmandu have been destroyed. As the Nepali Government has estimated, our trekking trails altogether 155 km have been damaged but we don't see, we have to be that much pessimistic. We do not agree that this will be the most devastating blow for the long term. Only the thing that the world should know that Nepal still has very safe trekking trails.
+
+## Safe Trekking Regions After Earthquakes
+
+• Annapurna Region is safe - It is still one of the 10, the most interesting trekking trail in the world
+• Everest Region - Recovery efforts ongoing with improved safety measures
+• Langtang Region - Reconstruction and rehabilitation in progress
+• Mustang Region - Completely unaffected and open for tourism
+
+## Current Tourism Situation & Recovery
+
+Obviously, we have challenges to make the visitors feel safe while staying in the hotels, lodges; doing trekking, visiting sites and so on. The world has kept the record that there was Everest avalanche last year and 16 died. There was Annapurna blizzard in October and 80 died. Despite this, a record number of tourists visited in Nepal in 2014, boosted by an influx of visitors from China and India.
+
+## Moving Forward: Rebuilding Nepal Tourism
+
+So, it is the time that we all should be in the speed of recovery and rebuilding. It is the time to be very responsible, constructive and creative. It is the time to get up. We trembled, shivered, cried, screamed….We were horrified. We were being buried in the rubbles. It is time to handle the situation rationally. The world is praying for us. They smile, come to hug us and go to see the landscapes, beautiful village houses, and meet the local people again.
+
+## Safety Measures & Infrastructure Updates
+
+• Enhanced building codes and construction standards
+• Improved emergency response systems in trekking regions
+• Regular trail maintenance and safety assessments
+• Updated evacuation protocols for remote areas
+• Better weather forecasting and communication systems
+
+## Why Visit Nepal Now?
+
+• Support local communities and economic recovery
+• Experience Nepal's resilient spirit and culture
+• Enjoy less crowded trails and authentic experiences
+• Contribute to rebuilding efforts through tourism
+• Witness the incredible recovery and reconstruction
+
+## Travel Advisory & Recommendations
+
+Check with official tourism boards for latest updates, travel with reputable agencies, follow local guidelines, and be prepared for ongoing reconstruction work in some areas while enjoying the pristine conditions in others.
+
+Nepal's spirit remains unbroken, and its mountains continue to call adventurers from around the world.
+`,
+  "coverImage": "/images/blog-2.jpeg",
+  "images": [],
+  "category": "Nepal News & Updates",
+  "publishedDate": "2015-06-09",
+  "readTime": "6 min"
+}
 ];
 
 // Improved image component with the same robust error handling as testimonials
@@ -100,14 +155,11 @@ const SafeImage = ({
   alt: string;
   className?: string;
 }) => {
-  const [imgSrc, setImgSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
 
   const handleError = () => {
     if (!hasError) {
       console.log(`Blog image failed to load: ${src}`);
-      // Use a placeholder image that definitely exists
-      setImgSrc("/images/review-36.jpg"); // Use an image we know exists
       setHasError(true);
     }
   };
@@ -117,17 +169,15 @@ const SafeImage = ({
       {hasError ? (
         <div className="w-full h-full flex flex-col items-center justify-center text-[#2E4F7C]">
           <ImageIcon className="h-8 w-8 mb-2 opacity-50" />
-          <span className="text-xs opacity-70">Image loading...</span>
+          <span className="text-xs opacity-70">Image not available</span>
         </div>
       ) : (
-        <Image
-          src={imgSrc}
+        // Use regular img tag instead of Next.js Image component
+        <img
+          src={src}
           alt={alt}
-          fill
-          className="object-cover"
+          className="w-full h-full object-cover"
           onError={handleError}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          priority={className.includes('aspect-[16/9]')}
         />
       )}
     </div>

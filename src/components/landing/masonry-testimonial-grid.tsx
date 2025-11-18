@@ -365,8 +365,7 @@ const MasonryTestimonialGrid = () => {
             Testimonials and Reviews
           </h2>
           <p className="hidden sm:block text-center text-sm sm:text-lg text-[#3C6AA6] max-w-2xl">
-            Honest stories from travelers who trusted us with their adventure.
-          </p>
+Highlights from travelers who’ve reviewed us online.          </p>
         </div>
 
         {/* Cards Grid */}
