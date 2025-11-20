@@ -1105,6 +1105,261 @@ Nepal's diverse landscapes offer unparalleled hiking experiences that combine ph
   "category": "Hiking Guides",
   "publishedDate": "2016-04-14",
   "readTime": "8 min"
+},
+{
+  "id": "16",
+  "title": "Lacs Gokyo et Camp de Base de l'Everest avec Himkala Adventure",
+  "excerpt": "Découvrez le trek spectaculaire des lacs Gokyo et du camp de base de l'Everest à travers l'Himalaya. Lacs turquoise, cols élevés et vues montagneuses à couper le souffle avec des guides experts.",
+  "content": `
+Partir randonner 2 semaines dans la chaîne himalayenne, loin de tout, en passant par des lieux mythiques comme le Kala Patthar ou le camp de base de l'Everest, est un rêve pour tout trekkeur. Et le réaliser n'enlève rien à son côté magique puisque ce séjour est définitivement à la hauteur des espérances.
+
+Atteindre le camp de base de l'Everest en passant par les lacs Gokyo est une variante que je recommande grandement pour plusieurs raisons. Tout d'abord, cela permet d'éviter la randonnée aller-retour redoutée par tous les randonneurs. Deuxièmement, la quiétude au bord du lac Gokyo ainsi que le panorama au sommet du Gokyo Ri à 5357m restent deux de mes plus beaux souvenirs de ce trek. Enfin, le passage du col du Cho La ajoutera un peu de piment à votre séjour avec un réveil très matinal et une ascension plus compliquée qu'il n'y paraît, en raison de l'altitude et de l'environnement.
+
+## Jour 1 : Vol pour Lukla et marche vers Phakding
+Vol matinal de Kathmandu pour Lukla pour maximiser nos chances d'arriver, car le vent cause souvent des problèmes à Lukla, empêchant tout trafic aérien. Le guide nous accompagne depuis Kathmandu et nous rencontrons l'assistant guide ainsi que les porteurs à notre arrivée à Lukla. Après un thé, ni le premier ni le dernier de votre périple, direction Phakding (2610m) où nous passons la première nuit. Petite journée de plat népalais : pas de montée importante, pas de descente importante, mais vous êtes en montagne, donc la notion de plat est toute relative.
+
+## Jour 2 : Marche vers Namche Bazar
+Direction Namche Bazar (3440m), la grande ville du trek. Après une matinée tranquille jusqu'à Monjo (2835m, 2-3 heures), s'annonce une belle montée de 600m, mais néanmoins magnifique : en pleine forêt, passage sur un pont suspendu très impressionnant, vue sur l'Everest si le ciel est dégagé. Arrivée à Namche dans l'après-midi. Attention, les effets de l'altitude peuvent commencer à se faire sentir, surtout après un tel effort.
+
+## Jour 3 : Journée d'acclimatation à Namche
+Journée d'acclimatation à Namche. Petite marche le matin pour monter en altitude avant de redescendre dormir, ce qui est fortement conseillé. Tourisme l'après-midi : monastère, musée Sherpa, repérage des souvenirs.
+
+## Jour 4 : Vers Mong et Phortse Tenga
+Il est l'heure de repartir et de continuer l'ascension. Après une première partie de matinée très exposée mais avec vue dégagée si le temps le permet : Thamserku (6618m), Ama Dablam (6814m), Nuptse (7864m), Lhotse (8516m), Everest (8848m). Vient le moment de la séparation des chemins selon la destination : Gokyo ou camp de base. Un autre avantage de notre itinéraire : bien moins rempli de touristes que l'autre option. Suite à cette séparation, une belle montée nous attend pour atteindre Mong (3975m). L'après-midi, une descente d'une heure maximum vous mènera à Phortse Tenga (3680m) où vous ne serez pas embêtés par les touristes car on n'y trouve que deux lodges.
+
+## Jour 5 : Dole et Maccherma
+Une belle matinée nous attend pour enfin franchir la barre des 4000m d'altitude et atteindre Dole (4110m). S'ensuivra un plat népalais pour atteindre Maccherma (4470m). Belle journée de marche (environ 6 heures) pour aller passer la nuit à presque 4500m.
+
+## Jour 6 : Direction Gokyo
+Direction Gokyo. Après une première heure plutôt tranquille, la pente s'accentue pour atteindre un premier lac minuscule à 4710m. En regardant derrière vous, vous pourrez admirer la vue sur la vallée avec en fond le Thamserku. La suite jusqu'à Gokyo est plus calme, et après avoir longé un second lac beaucoup plus imposant, vous arriverez à l'extrémité du lac Gokyo, avec en fond le Gokyo Ri. Arrivée à Gokyo (4790m) pour l'heure du déjeuner, ce qui permet d'avoir le temps de profiter de l'après-midi pour se reposer, flâner dans ce décor idyllique, éventuellement se baigner pour les plus courageux, et marcher un peu.
+
+## Jour 7 : Ascension du Gokyo Ri
+Ascension du Gokyo Ri au programme de la matinée. Profitez du fait que vous repassez par Gokyo ensuite pour partir léger, mais n'oubliez pas de prendre de quoi vous couvrir une fois arrivés au sommet. Presque 600m de dénivelé positif pour passer de 4790m à 5360m. Comptez entre 1h30 et 2h30 d'ascension. Mais le jeu en vaut la chandelle : quel panorama une fois au sommet. Cho Oyu, Lobuche, Nuptse, Everest, Lhotse, Cholatse, Kangtega, Thamserku, Kyajo Ri. Redescente pour déjeuner sur Gokyo avant de repartir pour traverser le glacier Ngozumba et aller dormir à Dragnag (4700m), au pied du col du Cho La.
+
+## Jour 8 : Passage du col du Cho La
+Départ fixé à 4h du matin pour le col du Cho La. Car le soleil se levant, la température augmente et la fonte des neiges provoque des éboulements dans le couloir de la montée. 600m de dénivelé positif également, peu évident, mais grande fierté d'arriver au sommet à seulement 8h du matin. Vient ensuite la descente, d'abord périlleuse sur la neige puis les rochers pour arriver à Dzongla (4830m). Le départ matinal nous permet d'y arriver pour le déjeuner.
+
+## Jour 9 : Vers Lobuche
+Journée de transition (4 heures) pour rejoindre Lobuche, sans grande difficulté.
+
+## Jour 10 : Kala Patthar et camp de base de l'Everest
+Pour éviter de dormir au-dessus de 5000m à Gorakshep, une grosse journée nous attend. Départ à 4h du matin pour Gorakshep, où nous arrivons pour 6h afin d'y petit-déjeuner avant d'entamer l'ascension du Kala Patthar dont le sommet est à 5545m, le point le plus haut de notre trek. À cette altitude, l'air contient moitié moins d'oxygène qu'au niveau de la mer. Mieux vaut arriver tôt au Kala Patthar car le vent s'y lève au fur et à mesure de l'avancement de la journée. Redescente sur Gorakshep pour le déjeuner, avant d'enchaîner avec le camp de base de l'Everest, puis tout redescendre pour arriver à Lobuche vers 16h.
+
+## Jour 11 : Descente vers Dingboche
+Après une bonne nuit de sommeil, il est l'heure d'entamer la descente. Direction Dingboche (4410m) où nous arrivons après une matinée de marche. Dingboche est beaucoup moins touristique que les arrêts précédents.
+
+## Jour 12 : Tengboche et Phungi Thanga
+Le lendemain, après une longue matinée de marche (4h30), nous arrivons à Tengboche et son célèbre monastère que nous visitons. Nous poursuivons ensuite notre chemin pour nous arrêter dormir à Phungi Thanga (3250m).
+
+## Jour 13 : Retour à Namche Bazar
+La journée commence par une montée et se poursuit par un plat népalais pour retourner à Namche Bazar où nous arrivons pour le déjeuner. Nous profitons de l'après-midi pour nous reposer.
+
+## Jour 14 : Boucle vers Khumjung
+Ayant un peu d'avance sur notre programme, nous effectuons une petite boucle jusqu'à Khumjung le matin, village plus authentique et moins marqué du sceau touristique. Après le déjeuner à Namche, longue descente pour retourner dormir à Phakding le soir.
+
+## Jour 15 : Retour à Lukla
+Trajet rapide entre Phakding et Lukla, où nous pouvons enfin profiter d'une douche chaude avant de se reposer l'après-midi. Nous profitons de la soirée à Lukla, la dernière avec tout le monde pour manger tous ensemble.
+
+## Jour 16 : Vol de retour pour Kathmandu
+Départ matinal pour être tôt à l'aéroport (6h) dans le but d'être sûr de pouvoir retourner à Kathmandu.
+
+## Recommandations et conseils pratiques
+Je recommande vivement ce trek à tout amoureux de la nature. Le confort dans les différentes lodges est minimal mais suffisant : eau chaude, électricité et internet payants. Cependant vous trouverez des lits décents et même des couettes.
+
+Pour ce qui est du temps, nous avons été chanceux avec grand soleil pratiquement tous les jours. Tendance cependant à se couvrir l'après-midi.
+
+Prévoir 3 semaines de vacances pour un tel trek me semble raisonnable. Cela permet d'avoir quelques jours à Kathmandu, mais également de se couvrir vis-à-vis des aléas liés aux vols internes.
+
+Avec Himkala Adventure, chaque détail est pris en compte pour que vous puissiez vous concentrer sur l'essentiel : profiter des paysages himalayens époustouflants et vivre une expérience inoubliable dans les plus hautes montagnes du monde.
+`,
+  "coverImage": "/images/blog-16.jpeg",
+  "images": [
+
+  ],
+  "category": "Trekking Guides",
+  "publishedDate": "2016-04-22",
+  "readTime": "10 min"
+},
+
+{
+  "id": "17",
+  "title": "Pupal Yarsha Festival 2016: Nepal's Unique Medicinal Herb Trekking Experience",
+  "excerpt": "Join the exclusive Pupal Yarsha Festival in Rukum district, featuring Yarshagumba harvesting and exploring newly opened trekking trails in western Nepal's Himalayan region.",
+  "content": `
+Nepal is incredibly rich in natural resources, with the main challenges being advanced technology and proper management systems. The country is blessed with extraordinary natural and cultural treasures, ranging from plains to the highest Himalayan peaks. The highlands, meadows, and pasturelands are particularly rich in medicinal herbs, with Yarshagumba being one of the most precious. This unique medicinal herb can only be found in high-altitude regions above 3,500 meters.
+
+Pupal Lek is located in Rukum district, the center of post-conflict territory that was the epicenter of Nepal's decade-long civil war from 1996 to 2006. This region boasts remarkable biodiversity, with 60% of the Dhorpatan Hunting Reserve situated within Rukum district. The Pupal Lek Trekking route represents a newly revitalized trail that needs promotion and visitation by trekkers seeking authentic, off-the-beaten-path experiences. Local communities welcome visitors with their amiable nature and traditional hospitality, inviting them to participate in Yarshagumba harvesting and explore the surrounding Himalayan landscape.
+
+## Pupal Yarsha Festival 2016 Details
+
+The Pupal Yarsha Festival is organized by local communities from May 22nd to June 15th, 2016. The Trekking Agencies Association of Nepal (TAAN) has partnered with local stakeholders to promote this region as an emerging trekking destination. Trekking enthusiasts, adventure travelers, explorers, and researchers are warmly invited to participate in this unique festival. Your presence will help bring international attention to this remarkable region and encourage local tourism development.
+
+## Complete 13-Day Trekking Itinerary
+
+Day 1 begins with an 18-hour drive from Kathmandu to Musikot for overnight accommodation. Day 2 continues with a 7-hour jeep drive from Musikot to Taksera through challenging mountain roads. Day 3 features a 6-hour trek from Taksera to Ghattekhola for lunch, then continuing to Mayang with overnight stay.
+
+Day 4 involves a 6-hour trek from Mayang to Maikot at 2,230 meters with lunch stop at Gara village. Day 5 continues with a 6-hour trek from Maikot to Dule Base Camp using packed lunch. Day 6 ascends from Dule Base Camp to Pupal Phedi Camp at 4,100 meters during a 5-hour trek with packed lunch.
+
+Day 7 represents the festival highlight with a 3-hour trek from Pupal Phedi to Pupal Lek at 4,550 meters for full day excursion and Yarshagumba harvesting experience. Day 8 descends from Pupal Lek to Dule Base Camp at 3,350 meters during a 6-hour trek. Day 9 continues to Pelma at 2,515 meters over 6 hours with packed lunch.
+
+Day 10 treks from Pelma to Thangkur at 3,200 meters over 6 hours with lunch at Kayam village. Day 11 ascends to Fagune Deurali at 4,060 meters then to Dhorpatan over 6 hours with lunch at Bhujikhun. Day 12 features jeep drive from Dhorpatan at 2,805 meters to Burtibang with lunch stop. Day 13 concludes with bus drive from Burtibang to Pokhara then to Kathmandu for final overnight.
+
+## Yarshagumba Medicinal Significance
+
+Yarshagumba, known scientifically as Ophiocordyceps sinensis and commonly called Himalayan Viagra, represents one of the world's most valuable medicinal fungi. This rare herb grows only in specific high-altitude conditions and has been used in traditional Asian medicine for centuries. The festival provides unique access to witness and participate in the traditional harvesting methods that have been preserved through generations of local communities.
+
+## Rukum District Cultural Heritage
+
+Rukum district offers not only spectacular natural landscapes but also rich cultural diversity. Visitors experience authentic interactions with local communities, discover unique traditions, and participate in daily village life. The legendary hospitality of Himalayan people combined with their preserved traditional lifestyle creates unforgettable cultural exchanges away from mass tourism routes.
+
+## Sustainable Tourism and Conservation
+
+This festival represents a significant initiative promoting sustainable tourism in a previously conflict-affected region. Visitor participation directly contributes to local economic development while supporting conservation of fragile Himalayan ecosystems. The community-based approach ensures that tourism benefits reach local families and helps preserve both cultural heritage and natural environment.
+
+## Trek Preparation Requirements
+
+Participants should be physically prepared for this demanding trek that reaches altitudes exceeding 4,500 meters. Proper acclimatization and preparation for changing Himalayan weather conditions are essential. Himkala Adventure provides comprehensive logistical support including experienced guides, camping equipment, and medical assistance throughout the journey.
+
+This unique festival combines adventure, culture, and conservation, offering an authentic trekking experience far from crowded trails while supporting development of rural Nepalese communities. The opportunity to participate in traditional Yarshagumba harvesting makes this festival particularly special for those interested in medicinal plants and traditional Himalayan practices.
+
+We hope this festival brings new opportunities for the region and serves as inspiration for future trekkers exploring western Nepal. Let's work together to promote this new trekking destination and support sustainable tourism development in the Himalayas.
+`,
+  "coverImage": "/images/blog-17.jpeg",
+  "images": [
+
+  ],
+  "category": "Festivals & Events",
+  "publishedDate": "2016-05-01",
+  "readTime": "8 min"
+},
+
+{
+  "id": "18",
+  "title": "Dakshinkali Pharping Day Trip: Experience Authentic Nepalese Spiritual Culture",
+  "excerpt": "Discover Dakshinkali Temple and Pharping monasteries on a perfect day trip from Kathmandu. Experience Hindu and Buddhist spiritual traditions in authentic local settings.",
+  "content": `
+If you're looking to escape noisy and dusty Kathmandu without venturing too far, a trip to Dakshinkali and Pharping offers the perfect day tour experience. This journey provides exceptional value for travelers wanting to understand Nepalese spiritual culture beyond the main tourist temples of Kathmandu. Opting for local buses ensures one of the most authentic local experiences available around Kathmandu Valley.
+
+## Dakshinkali Temple: Sacred Hindu Worship Site
+
+Dakshinkali village sits just over 20 kilometers outside Kathmandu and hosts one of Nepal's most famous and holiest Hindu places of worship. The magnificent Dakshinkali Temple represents a beautiful dedication to Goddess Kali, the fearful and ferocious form of the mother goddess in Hindu tradition. Hindus revere Kali as a supremely important deity believed to possess the power to make wishes come true.
+
+Every Tuesday and Saturday, hundreds of local devotees from throughout Kathmandu Valley pilgrimage to Dakshinkali Temple to pay their respects. To satisfy the blood lust attributed to Goddess Kali, worshippers bring various animals including chickens, goats, sheep, and pigeons as sacrificial offerings. The temple atmosphere during these days becomes particularly vibrant with religious fervor and traditional rituals.
+
+## Pharping Village: Buddhist Spiritual Center
+
+A short walk through lush green forested hills leads to Pharping, a neighboring village home to a thriving Newari community and significant Tibetan population. Exploring Pharping provides fascinating glimpses into local Buddhist culture, particularly through its monasteries that attract numerous spiritual seekers.
+
+Many Buddhist pilgrims visit Pharping's colorful temples because of the belief that Padmasambhava, also known as Guru Rinpoche, achieved enlightenment in the caves of Pharping during the 8th century. Visitors can examine the cave entrance where legend claims the guru left his handprint on stone walls after attaining supernatural powers during deep meditation. This sacred site holds profound significance in Tibetan Buddhist tradition.
+
+## Practical Travel Information
+
+The rich religious sites throughout Dakshinkali and Pharping create a compelling day trip destination from Kathmandu. Both villages are easily accessible within a single day using various transportation options including taxis, local buses, or even bicycles for adventurous travelers.
+
+The villages are located approximately 20 kilometers from Kathmandu with typical travel time of one to one and a half hours each way. The relatively short distance makes this excursion perfect for travelers with limited time who still want to experience authentic Nepalese culture beyond the capital city.
+
+## Cultural and Spiritual Significance
+
+This day trip offers unique opportunities to witness the fascinating coexistence of Hindu and Buddhist traditions in Nepal. The proximity of these two important religious sites demonstrates the religious harmony characteristic of Nepalese society. Visitors can observe morning Hindu sacrifices at Dakshinkali Temple and afternoon Buddhist meditation practices in Pharping, creating a comprehensive spiritual experience.
+
+The local communities in both villages maintain traditional lifestyles that have continued for generations. Interacting with residents provides insights into daily Nepalese life rarely experienced in urban Kathmandu. The surrounding natural landscape of forested hills and terraced farmland adds beautiful scenery to the cultural immersion.
+
+## Himkala Adventure Tour Details
+
+Himkala Adventure offers this specialized tour for adventurous budget travelers twice weekly. The tour includes transportation guidance, cultural interpretation, and opportunities to participate respectfully in local traditions. This carefully designed experience ensures visitors can navigate the cultural nuances of both Hindu and Buddhist sites while gaining deep understanding of Nepalese spiritual practices.
+
+The combination of ancient temples, sacred caves, traditional villages, and stunning natural surroundings makes Dakshinkali and Pharping an unforgettable day trip that captures the essence of Nepal's spiritual heritage. Whether you're interested in religious studies, cultural photography, or simply authentic travel experiences, this journey delivers meaningful insights and lasting memories.
+
+For travelers seeking genuine local experiences near Kathmandu that combine adventure with cultural depth, Dakshinkali and Pharping represent ideal destinations that showcase the rich spiritual tapestry of Nepal beyond the usual tourist attractions.
+`,
+  "coverImage": "/images/blog-18.jpg",
+  "images": [
+  
+    "/images/blog-20.jpg",
+        "/images/blog-21.jpg",
+            "/images/blog-22.jpg",
+
+
+
+  ],
+  "category": "Day Tours",
+  "publishedDate": "2016-08-22",
+  "readTime": "6 min"
+},
+
+{
+  "id": "16",
+  "title": "Gorkha Village Tour: An Authentic Cultural Experience in Rural Nepal",
+  "excerpt": "Join Edward's journey through Gorkha's mystical villages - from earthquake recovery to traditional farming life. Experience authentic Nepali culture with Himkala Adventure.",
+  "content": `
+Namaste from the mystical mountains of Gorkha, a region inhabited by some of Nepal's most wonderful people. I feel incredibly fortunate to have spent meaningful time experiencing village life firsthand. Our adventure began when four of us left our Kathmandu house early morning to catch a bus to Gorkha during the Teej festival - a vibrant celebration of womanhood where women adorn themselves in elegant bright clothes, jewelry, and makeup before returning to their villages for quality family time.
+
+The bus journey proved memorable, with Sabinaya and I occupying front seats that required constant contortion into inhuman positions as passengers squeezed in and out at various villages along the route. The breathtaking scenery kept my mind occupied as we followed a river valley flanked by steep cliffs covered in vibrant green, fertile jungle.
+
+## Arrival in Gorkha and Historical Exploration
+
+Upon reaching Gorkha, we utilized our guide Shiva's expertise to visit the lower Gorkha palace, remarkably unaffected by the 2015 earthquake despite Gorkha being at the epicenter. The palace featured skillfully hand-carved doors and windows with ornate patterns stained jet black, creating stunning contrast against terracotta-colored brickwork.
+
+## The Memorable Journey to Namjung
+
+Our bus ride to Namjung deserved its own travel story. Our chariot was one of many brightly painted Indian Tata machines with fluorescent tassels lining the cockpit roof. The tarmac road quickly transitioned to dirt, rock, and debris as we wound around mountainsides. Monsoon season had carved deep ruts in the road, with the worst measuring at least three feet deep.
+
+Earthquake damage remained apparent everywhere - tin huts stood where village-built houses once stood. Despite the devastation, smiles lit up faces of onlookers, probably laughing at our bus rocking violently from side to side while passengers screamed and giggled inside. The driver worked tirelessly, forehead beaded with sweat as he hung from the window watching tires spin helplessly in mud. After two hours of struggling over one kilometer, the team finally got us onto firmer ground.
+
+## Village Life and Traditional Hospitality
+
+In pitch darkness, we carefully walked downhill by iPhone torchlight to Shiva's parents' house. His mother was visiting her sister for the festival, so his father kindly cooked us dal bhat and curry with bitter gourd - appropriately named for its extreme bitterness that took me several tries to appreciate. A bowl of buffalo milk accompanied the meal, its earthy flavor far more delicious than cow's milk. I later discovered the buffaloes lived in a garden hut behind where we sat, alongside four goats.
+
+Shiva's uncle joined us during dinner, the brothers looking remarkably similar - both thin with leathery skin revealing networks of veins and muscles. They spoke with great purpose, asking questions that Shiva translated from Nepali.
+
+We slept in a metal shed erected post-earthquake after their house's second floor completely collapsed. Despite incredible hardship over the past year and a half, these remarkable people maintained their kindness, pride, and sense of humor.
+
+## Agricultural Wonders and Community Encounters
+
+Heavy overnight rain altered our plans to hike a steep hill for panoramic views. Instead, Shiva and I opted for a walk around paddy fields. The terraced hillsides demonstrated ingenious ancestral engineering - flat planting areas dug into steep slopes with constant water flow irrigation creating magnificent rippling green patterns across hills adorned with thick mist.
+
+During our walk, we encountered a family sitting outside their house and stopped to chat. Further up the hill, a little old woman appeared carrying an enormous grass stack twice her size, supported by a forehead strap. As we overtook her, she stopped us, nodding at my camera and requesting a photograph through Shiva's translation. When asked how far she'd carried her load, Shiva pointed to an area approximately two kilometers away. We later passed her house another kilometer up the road - this 65-year-old woman made this journey twice daily, every day.
+
+## Cultural Insights and Festival Joy
+
+During our hour-long stroll, Shiva pointed out local temples, schools, and tin sheds where "untouchables" lived - people pigeonholed into Nepal's lowest social caste, a system I'm still learning about but recognize as terribly unfair.
+
+Returning, we heard blaring Nepali music from crackling speakers and discovered fifteen women dressed in festive red, green, and gold, dancing, laughing, and smiling while making the men look like chumps - an absolute delight to watch.
+
+## Extended Village Experience
+
+Evening rain prompted us to hike to Sharmila's village for overnight stay before our adventurous bus return to Gorkha. The exercise invigorated me with ups and downs stretching my legs and lungs drinking clean air.
+
+Sharmila's family greeted us with smiles at their quaint house, recently rebuilt by her father after earthquake destruction. They spoke to each other in soft tones but shouted at me as if volume would help me understand Nepali. Two buffaloes and six goats occupied a nearby hut while kid goats played outside. The magical views featured paddy fields, thick forests, and skies filled with dragonflies and sun-reflecting flies buzzing like tiny light orbs.
+
+We enjoyed immediate dal bhat, curry, and copious rice - all eaten by hand Nepali-style. When I asked why, they explained it helps you feel the food while eating, an sensory experience I quickly appreciated and recommend trying.
+
+The day continued with vegetable picking from fields, eating freshly harvested peanuts and roasted corn, showering at the forest water supply, and simply watching time pass in beautiful surroundings. Nightfall revealed the Milky Way's beautiful streak, distant thunderstorms, and occasional fireflies sharing the stage. I learned wild tigers sometimes roam near the village - a wonderfully magical place indeed.
+
+I must have made a good impression because villagers invited me to stay, marry a local girl, and settle permanently - a nice offer I politely declined.
+
+## The Bittersweet Departure
+
+Village life had thoroughly charmed me, but morning brought our departure. After goodbyes and hiking uphill, we heard our bus rumbling away - missed by thirty seconds. A tractor towing a trailer carrying twenty people offered an alternative, though significantly less comfortable.
+
+The trailer ride proved excruciating - we clung to anything including arms, legs, and shirts to avoid being thrown off. Sitting on the floor with knees to ears, every bump threw me backward into the metal frame. Reaching Gorkha felt like enduring an international rugby match - village life is simple but not easy.
+
+After dealing with someone trying to rip us off, we boarded the Kathmandu-bound bus. I felt genuine sadness leaving this magical area where people left me feeling content, happy, and peaceful.
+
+## Why Choose Village Tourism
+
+If you seek relaxing times in beautiful surroundings on a budget, the village experience with Himkala Adventure delivers beyond expectations. You will not be disappointed by the authentic cultural immersion, genuine hospitality, and breathtaking landscapes that make Gorkha's villages truly special destinations for meaningful travel experiences.
+
+Much love,
+Edward
+`,
+  "coverImage": "/images/blog-23.jpeg",
+  "images": ["/images/blog-24.jpg",
+    "/images/blog-25.jpg","/images/blog-26.jpg","/images/blog-27.jpg","/images/blog-28.jpg","/images/blog-29.jpg","/images/blog-30.jpg",
+  ],
+  "category": "Village Tourism",
+  "publishedDate": "2016-09-08",
+  "readTime": "9 min"
 }
 ];
 
