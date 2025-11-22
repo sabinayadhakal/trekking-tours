@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useState, useRef, ChangeEvent } from "react";
 
 export default function Page() {
-  const [bgImage, setBgImage] = useState("/images/reviews-1.jpg");
+  const [bgImage, setBgImage] = useState("/images/FWT-1.jpeg");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +37,12 @@ export default function Page() {
         
         {/* Upload Button */}
         <div className="absolute top-4 right-4 z-20">
-         
+          <button
+            onClick={triggerFileInput}
+            className="bg-white/80 hover:bg-white text-gray-800 px-4 py-2 rounded-lg font-medium transition-all duration-300 backdrop-blur-sm"
+          >
+            Upload Background
+          </button>
           <input
             type="file"
             ref={fileInputRef}
