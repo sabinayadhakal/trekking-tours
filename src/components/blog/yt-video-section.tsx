@@ -10,52 +10,82 @@ interface YouTubeVideo {
   title: string;
   youtube_url: string;
   description: string;
-  published_date: string;
+
 }
 
 // Mock data to replace Strapi API calls
 const mockVideos: YouTubeVideo[] = [
   {
     id: "1",
-    title: "Getting Started with Web Development",
-    youtube_url: "https://www.youtube.com/watch?v=abcdefghijk",
-    description: "Learn the basics of web development in this comprehensive tutorial.",
-    published_date: "2024-01-15T00:00:00.000Z"
+    title: "Come with us to Nepal! | Kathmandu, Gorkha, Pokhara",
+    youtube_url: "https://youtu.be/IITmhV3CQIY",
+    description: "This video was prepared by Kelvin and Jaycee from MacamYes Studios from Malaysia. The filming tour was organized by Himkala Adventure and guided by Shiva Dhakal. Thank you so much for the nice video. Hope you will make such videos about Nepal, its culture and people. Thank you",
   },
   {
     id: "2",
-    title: "Advanced React Patterns",
-    youtube_url: "https://www.youtube.com/watch?v=lmno1234567",
-    description: "Explore advanced React patterns and best practices for building scalable applications.",
-    published_date: "2024-01-10T00:00:00.000Z"
+    title: "WHY I TRAVEL | Kathmandu, Gorkha, Pokhara (Nepal)",
+    youtube_url: "https://youtu.be/7xomaokzetY",
+    description: "It is our great pleasure to guide  Kelvin and Jaycee for making videos about Nepalese life style, Nature, Heritage Sites and so on. We would like to thank them they had worked hard for the nice video. Himkala Adventure feels proud that we got an opportunity to guide them and work with them. We would like to thank MacamYes Studio as well. Namaste!!!",
   },
   {
     id: "3",
-    title: "CSS Masterclass",
-    youtube_url: "https://www.youtube.com/watch?v=pqrst890123",
-    description: "Master modern CSS techniques and layout systems.",
-    published_date: "2024-01-05T00:00:00.000Z"
+    title: "Trekking Poon Hill, Annapurna | Himkala Adventure",
+    youtube_url: "https://youtu.be/S6mlQoAFTZ4",
+    description: "The Poon Hill trek is a 5-day journey through the villages and valleys South West of the Annapurna Himalayan Range, culminating with a 4:30AM wake up call to trek to the top of Poon Hill (3210m) to watch the sunrise over the mountains. Finally, descend through woods of the mountainside, back to Pokhara.",
   },
   {
     id: "4",
-    title: "TypeScript for Beginners",
-    youtube_url: "https://www.youtube.com/watch?v=xyzabc45678",
-    description: "A complete guide to getting started with TypeScript.",
-    published_date: "2024-01-01T00:00:00.000Z"
+    title: "Kathmandu Free Walking Tour | Visit Kaathe Swayambhu",
+    youtube_url: "https://youtu.be/W3NOSvCPdQk",
+    description: "Welcome to the Himkala Adventure Youtube channel! Here you can find some trekking, adventure and free walking tour videos in Nepal (Kathmandu, Pokhara, Gorkha, Chitwan, Lumbini, Bandipur, etc.). Himkala Adventure is a trekking and tour company run by a professional tour and trekking local guide. The company is registered in all government departments like registered company, department of tourism, TAAN, tax department and Nepal Rastra Bank. We operate the tour in Tibet, Bhutan and India also. So, if you like our videos, and you would also like to live this awesome experience, contact us in himkalaadventure@gmail.com. Thank you very much! Namaste.",
   },
   {
     id: "5",
-    title: "Node.js Backend Development",
-    youtube_url: "https://www.youtube.com/watch?v=defghi78901",
-    description: "Build robust backend services with Node.js and Express.",
-    published_date: "2023-12-28T00:00:00.000Z"
+    title: " Kathmandu Free Walking Tour | Visit Monkey Temple ",
+    youtube_url: "https://youtu.be/sG-USCB_Q-A",
+    description: "Welcome to the Himkala Adventure Youtube channel! Here you can find some trekking, adventure and free walking tour videos in Nepal (Kathmandu, Pokhara, Gorkha, Chitwan, Lumbini, Bandipur, etc.). Himkala Adventure is a trekking and tour company run by a professional tour and trekking local guide. The company is registered in all government departments like registered company, department of tourism, TAAN, tax department and Nepal Rastra Bank. We operate the tour in Tibet, Bhutan and India also. So, if you like our videos, and you would also like to live this awesome experience, contact us in himkalaadventure@gmail.com. Thank you very much! Namaste.",
   },
   {
     id: "6",
-    title: "Database Design Principles",
-    youtube_url: "https://www.youtube.com/watch?v=jklmno23456",
-    description: "Learn essential database design principles and normalization.",
-    published_date: "2023-12-20T00:00:00.000Z"
+    title: " Dakshinkali Temple | Champa Devi Day Hike ",
+    youtube_url: "https://youtu.be/yCnP10YYX0I",
+    description: "Welcome to the Himkala Adventure Youtube channel! Here you can find some trekking, adventure and free walking tour videos in Nepal (Kathmandu, Pokhara, Gorkha, Chitwan, Lumbini, Bandipur, etc.). Himkala Adventure is a trekking and tour company run by a professional tour and trekking local guide. The company is registered in all government departments like registered company, department of tourism, TAAN, tax department and Nepal Rastra Bank. We operate the tour in Tibet, Bhutan and India also. So, if you like our videos, and you would also like to live this awesome experience, contact us in himkalaadventure@gmail.com. Thank you very much! Namaste.",
+  },
+  {
+    id: "7",
+    title: "Himkala Adventure | Kathmandu, Nepal",
+    youtube_url: "https://youtu.be/JxiY-aG0e_c",
+    description: "Welcome to the Himkala Adventure Youtube channel! Here you can find some trekking, adventure and free walking tour videos in Nepal (Kathmandu, Pokhara, Gorkha, Chitwan, Lumbini, Bandipur, etc.). Himkala Adventure is a trekking and tour company run by a professional tour and trekking local guide. The company is registered in all government departments like registered company, department of tourism, TAAN, tax department and Nepal Rastra Bank. We operate the tour in Tibet, Bhutan and India also. So, if you like our videos, and you would also like to live this awesome experience, contact us in himkalaadventure@gmail.com. Thank you very much! Namaste.",
+  },
+  {
+    id: "8",
+    title: " Amazing Free Walking Tour Kathmandu | Himkala Adventure  ",
+    youtube_url: "https://youtu.be/BjfCd9C2uS4",
+    description: "Welcome to the Himkala Adventure Youtube channel! Here you can find some trekking, adventure and free walking tour videos in Nepal (Kathmandu, Pokhara, Gorkha, Chitwan, Lumbini, Bandipur, etc.). Himkala Adventure is a trekking and tour company run by a professional tour and trekking local guide. The company is registered in all government departments like registered company, department of tourism, TAAN, tax department and Nepal Rastra Bank. We operate the tour in Tibet, Bhutan and India also. So, if you like our videos, and you would also like to live this awesome experience, contact us in himkalaadventure@gmail.com. Thank you very much! Namaste.",
+  },
+  {
+    id: "9",
+    title: " Free Walking Tour Kathmandu in July | Kathmandu, Nepal ",
+    youtube_url: "https://youtu.be/gsogl0e_UZQ",
+    description: "Welcome to the Himkala Adventure Youtube channel! Here you can find some trekking, adventure and free walking tour videos in Nepal (Kathmandu, Pokhara, Gorkha, Chitwan, Lumbini, Bandipur, etc.). Himkala Adventure is a trekking and tour company run by a professional tour and trekking local guide. The company is registered in all government departments like registered company, department of tourism, TAAN, tax department and Nepal Rastra Bank. We operate the tour in Tibet, Bhutan and India also. So, if you like our videos, and you would also like to live this awesome experience, contact us in himkalaadventure@gmail.com. Thank you very much! Namaste.",
+  },
+  {
+    id: "10",
+    title: "Kathmandu Valley Fringe Hiking with Himkala Adventure | Kathmandu, Nepal",
+    youtube_url: "https://youtu.be/JS9aWnSWHAA",
+    description: "Welcome to the Himkala Adventure Youtube channel! Here you can find some trekking, adventure and free walking tour videos in Nepal (Kathmandu, Pokhara, Gorkha, Chitwan, Lumbini, Bandipur, etc.). Himkala Adventure is a trekking and tour company run by a professional tour and trekking local guide. The company is registered in all government departments like registered company, department of tourism, TAAN, tax department and Nepal Rastra Bank. We operate the tour in Tibet, Bhutan and India also. So, if you like our videos, and you would also like to live this awesome experience, contact us in himkalaadventure@gmail.com. Thank you very much! Namaste.",
+  },
+  {
+    id: "11",
+    title: " Ritual Thread Ceremony | Himkala Adventure ",
+    youtube_url: "https://youtu.be/a0P-e9MRRpY",
+    description: "Ritual Thread Ceremony held at Gorkha, a great cultural practice in Nepal.",
+  },
+  {
+    id: "12",
+    title: "  Nagarkot to Changunarayan Hiking | Himkala Adventure  ",
+    youtube_url: "https://youtu.be/6aUyYVxnaOA",
+    description: "Nagarkot to Changunarayan is the most scenic and colorful hiking among others in Kathmandu Valley Fringe Hiking. We could have the best sunrise, great Mountain View from the tower at 2175 m along with 360 degrees view around. Then exploring Nagarkot, Tamang settlement, we can hike through beautiful villages to Changunarayan, the UNESCO World Heritage Site.",
   }
 ];
 
@@ -76,8 +106,10 @@ export default function YouTubeVideosSection() {
         // Simulate API delay
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-        setVideos(mockVideos);
-        console.log("Loaded mock videos:", mockVideos);
+        // Sort videos by ID in descending order (highest ID first)
+        const sortedVideos = [...mockVideos].sort((a, b) => parseInt(b.id) - parseInt(a.id));
+        setVideos(sortedVideos);
+        console.log("Loaded mock videos:", sortedVideos);
 
       } catch (err) {
         console.error("Error fetching YouTube videos:", err);
@@ -219,10 +251,7 @@ Featured Videos      </h1>
                       <p className="text-sm text-[#2E4F7C]/80 mb-3 line-clamp-2 flex-grow">
                         {video.description}
                       </p>
-                      <div className="flex items-center gap-1 text-xs text-[#2E4F7C]/60 mt-auto">
-                        <Calendar className="h-3 w-3" />
-                        {formatDate(video.published_date)}
-                      </div>
+                      
                     </CardContent>
                   </Card>
                 );

@@ -16,7 +16,6 @@ interface YouTubeVideo {
   title: string;
   youtube_url: string;
   description: string;
-  published_date: string;
 }
 
 // Blog Post Types
@@ -140,49 +139,89 @@ export default function CombinedContentSection() {
   const mockVideos: YouTubeVideo[] = [
     {
       id: "1",
-      title: "Everest Base Camp Trek - Complete Journey",
-      youtube_url: "https://www.youtube.com/watch?v=abcdefghijk",
-      description: "Join us on an incredible journey to Everest Base Camp",
-      published_date: "2024-01-15T00:00:00.000Z"
+      title: "Ritual Thread Ceremony | Himkala Adventure ",
+      youtube_url: "https://youtu.be/a0P-e9MRRpY",
+      description: "Ritual Thread Ceremony held at Gorkha, a great cultural practice in Nepal.",
+   
     }
   ];
 
   // Mock blog posts data
   const mockPosts: BlogPost[] = [
     {
-      id: "1",
-      title: "Top 10 Tips for High Altitude Trekking in Nepal",
-      excerpt: "Essential tips and tricks for a successful high altitude trekking experience in the Himalayas.",
-      content: `High altitude trekking in Nepal is an experience of a lifetime, but it requires proper preparation and knowledge. The Himalayas offer some of the most breathtaking landscapes on earth, but the altitude can present challenges even for experienced trekkers.
+  "id": "19",
+  "title": "Gorkha Village Tour: An Authentic Cultural Experience in Rural Nepal",
+  "excerpt": "Join Edward's journey through Gorkha's mystical villages - from earthquake recovery to traditional farming life. Experience authentic Nepali culture with Himkala Adventure.",
+  "content": `
+Namaste from the mystical mountains of Gorkha, a region inhabited by some of Nepal's most wonderful people. I feel incredibly fortunate to have spent meaningful time experiencing village life firsthand. Our adventure began when four of us left our Kathmandu house early morning to catch a bus to Gorkha during the Teej festival - a vibrant celebration of womanhood where women adorn themselves in elegant bright clothes, jewelry, and makeup before returning to their villages for quality family time.
 
-## Proper Acclimatization
+The bus journey proved memorable, with Sabinaya and I occupying front seats that required constant contortion into inhuman positions as passengers squeezed in and out at various villages along the route. The breathtaking scenery kept my mind occupied as we followed a river valley flanked by steep cliffs covered in vibrant green, fertile jungle.
 
-First and foremost, proper acclimatization is crucial. Our guides recommend spending at least two nights at intermediate altitudes before attempting higher passes. This allows your body to adjust to the reduced oxygen levels and helps prevent altitude sickness.
+## Arrival in Gorkha and Historical Exploration
 
-## Physical Preparation
+Upon reaching Gorkha, we utilized our guide Shiva's expertise to visit the lower Gorkha palace, remarkably unaffected by the 2015 earthquake despite Gorkha being at the epicenter. The palace featured skillfully hand-carved doors and windows with ornate patterns stained jet black, creating stunning contrast against terracotta-colored brickwork.
 
-Physical preparation is equally important. Regular cardiovascular exercise for at least 2-3 months before your trek will significantly improve your experience. Focus on building endurance through hiking, running, or cycling.
+## The Memorable Journey to Namjung
 
-## Essential Gear
+Our bus ride to Namjung deserved its own travel story. Our chariot was one of many brightly painted Indian Tata machines with fluorescent tassels lining the cockpit roof. The tarmac road quickly transitioned to dirt, rock, and debris as we wound around mountainsides. Monsoon season had carved deep ruts in the road, with the worst measuring at least three feet deep.
 
-• Quality waterproof boots - Your most important investment
-• Layered clothing system - For changing mountain weather
-• Reliable sleeping bag - Rated for sub-zero temperatures
-• Headlamp and extra batteries - Essential for early starts
-• First aid kit - Including altitude sickness medication
+Earthquake damage remained apparent everywhere - tin huts stood where village-built houses once stood. Despite the devastation, smiles lit up faces of onlookers, probably laughing at our bus rocking violently from side to side while passengers screamed and giggled inside. The driver worked tirelessly, forehead beaded with sweat as he hung from the window watching tires spin helplessly in mud. After two hours of struggling over one kilometer, the team finally got us onto firmer ground.
 
-## Weather Considerations
+## Village Life and Traditional Hospitality
 
-The weather in the mountains can change rapidly. Always be prepared for sudden temperature drops and precipitation. Trust your guide's judgment when it comes to weather-related decisions.`,
-      coverImage: "/images/trekking-tips.jpg",
-      images: [
-        "/images/trekking-gear.jpg",
-        "/images/mountain-view.jpg"
-      ],
-      category: "Trekking Tips",
-      publishedDate: "2024-01-10T00:00:00.000Z",
-      readTime: "5 min"
-    }
+In pitch darkness, we carefully walked downhill by iPhone torchlight to Shiva's parents' house. His mother was visiting her sister for the festival, so his father kindly cooked us dal bhat and curry with bitter gourd - appropriately named for its extreme bitterness that took me several tries to appreciate. A bowl of buffalo milk accompanied the meal, its earthy flavor far more delicious than cow's milk. I later discovered the buffaloes lived in a garden hut behind where we sat, alongside four goats.
+
+Shiva's uncle joined us during dinner, the brothers looking remarkably similar - both thin with leathery skin revealing networks of veins and muscles. They spoke with great purpose, asking questions that Shiva translated from Nepali.
+
+We slept in a metal shed erected post-earthquake after their house's second floor completely collapsed. Despite incredible hardship over the past year and a half, these remarkable people maintained their kindness, pride, and sense of humor.
+
+## Agricultural Wonders and Community Encounters
+
+Heavy overnight rain altered our plans to hike a steep hill for panoramic views. Instead, Shiva and I opted for a walk around paddy fields. The terraced hillsides demonstrated ingenious ancestral engineering - flat planting areas dug into steep slopes with constant water flow irrigation creating magnificent rippling green patterns across hills adorned with thick mist.
+
+During our walk, we encountered a family sitting outside their house and stopped to chat. Further up the hill, a little old woman appeared carrying an enormous grass stack twice her size, supported by a forehead strap. As we overtook her, she stopped us, nodding at my camera and requesting a photograph through Shiva's translation. When asked how far she'd carried her load, Shiva pointed to an area approximately two kilometers away. We later passed her house another kilometer up the road - this 65-year-old woman made this journey twice daily, every day.
+
+## Cultural Insights and Festival Joy
+
+During our hour-long stroll, Shiva pointed out local temples, schools, and tin sheds where "untouchables" lived - people pigeonholed into Nepal's lowest social caste, a system I'm still learning about but recognize as terribly unfair.
+
+Returning, we heard blaring Nepali music from crackling speakers and discovered fifteen women dressed in festive red, green, and gold, dancing, laughing, and smiling while making the men look like chumps - an absolute delight to watch.
+
+## Extended Village Experience
+
+Evening rain prompted us to hike to Sharmila's village for overnight stay before our adventurous bus return to Gorkha. The exercise invigorated me with ups and downs stretching my legs and lungs drinking clean air.
+
+Sharmila's family greeted us with smiles at their quaint house, recently rebuilt by her father after earthquake destruction. They spoke to each other in soft tones but shouted at me as if volume would help me understand Nepali. Two buffaloes and six goats occupied a nearby hut while kid goats played outside. The magical views featured paddy fields, thick forests, and skies filled with dragonflies and sun-reflecting flies buzzing like tiny light orbs.
+
+We enjoyed immediate dal bhat, curry, and copious rice - all eaten by hand Nepali-style. When I asked why, they explained it helps you feel the food while eating, an sensory experience I quickly appreciated and recommend trying.
+
+The day continued with vegetable picking from fields, eating freshly harvested peanuts and roasted corn, showering at the forest water supply, and simply watching time pass in beautiful surroundings. Nightfall revealed the Milky Way's beautiful streak, distant thunderstorms, and occasional fireflies sharing the stage. I learned wild tigers sometimes roam near the village - a wonderfully magical place indeed.
+
+I must have made a good impression because villagers invited me to stay, marry a local girl, and settle permanently - a nice offer I politely declined.
+
+## The Bittersweet Departure
+
+Village life had thoroughly charmed me, but morning brought our departure. After goodbyes and hiking uphill, we heard our bus rumbling away - missed by thirty seconds. A tractor towing a trailer carrying twenty people offered an alternative, though significantly less comfortable.
+
+The trailer ride proved excruciating - we clung to anything including arms, legs, and shirts to avoid being thrown off. Sitting on the floor with knees to ears, every bump threw me backward into the metal frame. Reaching Gorkha felt like enduring an international rugby match - village life is simple but not easy.
+
+After dealing with someone trying to rip us off, we boarded the Kathmandu-bound bus. I felt genuine sadness leaving this magical area where people left me feeling content, happy, and peaceful.
+
+## Why Choose Village Tourism
+
+If you seek relaxing times in beautiful surroundings on a budget, the village experience with Himkala Adventure delivers beyond expectations. You will not be disappointed by the authentic cultural immersion, genuine hospitality, and breathtaking landscapes that make Gorkha's villages truly special destinations for meaningful travel experiences.
+
+Much love,
+Edward
+`,
+  "coverImage": "/images/blog-23.jpeg",
+  "images": ["/images/blog-24.jpg",
+    "/images/blog-25.jpg","/images/blog-26.jpg","/images/blog-27.jpg","/images/blog-28.jpg","/images/blog-29.jpg","/images/blog-30.jpg",
+  ],
+  "category": "Village Tourism",
+  "publishedDate": "2016-09-08",
+  "readTime": "9 min"
+}
   ];
 
   // Fetch YouTube videos - using mock data
@@ -311,10 +350,7 @@ The weather in the mountains can change rapidly. Always be prepared for sudden t
                         <h3 className="font-semibold text-sm leading-tight text-[#2E4F7C] mb-2 line-clamp-2">
                           {video.title}
                         </h3>
-                        <div className="flex items-center gap-1 text-xs text-[#2E4F7C]/60">
-                          <Calendar className="h-3 w-3" />
-                          {formatDate(video.published_date)}
-                        </div>
+                        
                       </CardContent>
                     </Card>
                   </motion.div>
