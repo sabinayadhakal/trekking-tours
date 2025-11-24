@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Play, Calendar, Clock, ArrowRight, Mountain, Star } from "lucide-react";
+import { Play, Calendar, Clock, ArrowRight, Mountain, Star, X, Image as ImageIcon } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -43,16 +43,34 @@ const SafeImage = ({
   className?: string;
   onError?: (e: React.SyntheticEvent<HTMLImageElement, Event>) => void;
 }) => {
+  const [hasError, setHasError] = useState(false);
+
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    setHasError(true);
+    onError?.(e);
+  };
+
   // Check if it's an external URL
   const isExternal = src.startsWith('http') && !src.includes('localhost') && !src.includes('127.0.0.1');
   
+  if (hasError) {
+    return (
+      <div className={`w-full h-full flex items-center justify-center bg-gray-100 ${className}`}>
+        <div className="text-center text-gray-400">
+          <ImageIcon className="h-8 w-8 mx-auto mb-2" />
+          <span className="text-xs">Image unavailable</span>
+        </div>
+      </div>
+    );
+  }
+
   if (isExternal) {
     return (
       <img
         src={src}
         alt={alt}
         className={className}
-        onError={onError}
+        onError={handleError}
       />
     );
   }
@@ -64,18 +82,18 @@ const SafeImage = ({
       alt={alt}
       fill
       className={className}
-      onError={onError}
-      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      onError={handleError}
+      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
     />
   );
 };
 
-// Component to render formatted blog content with proper spacing (same as blog content section)
+// Component to render formatted blog content with proper spacing
 const BlogContentRenderer = ({ content }: { content: string }) => {
   const sections = content.split('## ').filter(section => section.trim());
   
   return (
-    <div className="space-y-6 text-[#2E4F7C]">
+    <div className="space-y-4 sm:space-y-6 text-[#2E4F7C]">
       {sections.map((section, index) => {
         const [title, ...contentLines] = section.split('\n').filter(line => line.trim());
         const contentText = contentLines.join('\n').trim();
@@ -86,10 +104,10 @@ const BlogContentRenderer = ({ content }: { content: string }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-white/50 rounded-lg p-4 sm:p-6 shadow-sm"
+            className="bg-white/70 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm border border-[#8AB8E0]/20"
           >
             {title && (
-              <h3 className="text-xl sm:text-2xl font-bold text-[#2E4F7C] mb-4 pb-2 border-b border-[#8AB8E0]">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#2E4F7C] mb-3 sm:mb-4 pb-2 sm:pb-3 border-b border-[#8AB8E0]">
                 {title}
               </h3>
             )}
@@ -98,7 +116,7 @@ const BlogContentRenderer = ({ content }: { content: string }) => {
               {contentText.split('• ').map((paragraph, pIndex) => {
                 if (pIndex === 0) {
                   return (
-                    <p key={pIndex} className="mb-4 leading-relaxed text-base sm:text-lg">
+                    <p key={pIndex} className="mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base md:text-lg">
                       {paragraph}
                     </p>
                   );
@@ -106,9 +124,9 @@ const BlogContentRenderer = ({ content }: { content: string }) => {
                 
                 if (paragraph.trim()) {
                   return (
-                    <div key={pIndex} className="flex items-start mb-2">
-                      <Star className="h-4 w-4 text-[#3C6AA6] mt-1 mr-3 flex-shrink-0" />
-                      <span className="text-base sm:text-lg leading-relaxed">
+                    <div key={pIndex} className="flex items-start mb-2 sm:mb-3">
+                      <Star className="h-3 w-3 sm:h-4 sm:w-4 text-[#3C6AA6] mt-1 mr-2 sm:mr-3 flex-shrink-0" />
+                      <span className="text-sm sm:text-base md:text-lg leading-relaxed">
                         {paragraph}
                       </span>
                     </div>
@@ -139,20 +157,19 @@ export default function CombinedContentSection() {
   const mockVideos: YouTubeVideo[] = [
     {
       id: "1",
-      title: "Ritual Thread Ceremony | Himkala Adventure ",
+      title: "Ritual Thread Ceremony | Himkala Adventure",
       youtube_url: "https://youtu.be/a0P-e9MRRpY",
       description: "Ritual Thread Ceremony held at Gorkha, a great cultural practice in Nepal.",
-   
     }
   ];
 
   // Mock blog posts data
   const mockPosts: BlogPost[] = [
     {
-  "id": "19",
-  "title": "Gorkha Village Tour: An Authentic Cultural Experience in Rural Nepal",
-  "excerpt": "Join Edward's journey through Gorkha's mystical villages - from earthquake recovery to traditional farming life. Experience authentic Nepali culture with Himkala Adventure.",
-  "content": `
+      "id": "19",
+      "title": "Gorkha Village Tour: An Authentic Cultural Experience in Rural Nepal",
+      "excerpt": "Join Edward's journey through Gorkha's mystical villages - from earthquake recovery to traditional farming life. Experience authentic Nepali culture with Himkala Adventure.",
+      "content": `
 Namaste from the mystical mountains of Gorkha, a region inhabited by some of Nepal's most wonderful people. I feel incredibly fortunate to have spent meaningful time experiencing village life firsthand. Our adventure began when four of us left our Kathmandu house early morning to catch a bus to Gorkha during the Teej festival - a vibrant celebration of womanhood where women adorn themselves in elegant bright clothes, jewelry, and makeup before returning to their villages for quality family time.
 
 The bus journey proved memorable, with Sabinaya and I occupying front seats that required constant contortion into inhuman positions as passengers squeezed in and out at various villages along the route. The breathtaking scenery kept my mind occupied as we followed a river valley flanked by steep cliffs covered in vibrant green, fertile jungle.
@@ -214,21 +231,26 @@ If you seek relaxing times in beautiful surroundings on a budget, the village ex
 Much love,
 Edward
 `,
-  "coverImage": "/images/blog-23.jpeg",
-  "images": ["/images/blog-24.jpg",
-    "/images/blog-25.jpg","/images/blog-26.jpg","/images/blog-27.jpg","/images/blog-28.jpg","/images/blog-29.jpg","/images/blog-30.jpg",
-  ],
-  "category": "Village Tourism",
-  "publishedDate": "2016-09-08",
-  "readTime": "9 min"
-}
+      "coverImage": "/images/blog-23.jpeg",
+      "images": [
+        "/images/blog-24.jpg",
+        "/images/blog-25.jpg",
+        "/images/blog-26.jpg",
+        "/images/blog-27.jpg",
+        "/images/blog-28.jpg",
+        "/images/blog-29.jpg",
+        "/images/blog-30.jpg",
+      ],
+      "category": "Village Tourism",
+      "publishedDate": "2016-09-08",
+      "readTime": "9 min"
+    }
   ];
 
   // Fetch YouTube videos - using mock data
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        // Simulate API delay
         await new Promise(resolve => setTimeout(resolve, 500));
         setVideos(mockVideos);
       } catch (err) {
@@ -244,7 +266,6 @@ Edward
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        // Simulate API delay
         await new Promise(resolve => setTimeout(resolve, 800));
         setPosts(mockPosts);
       } catch (err) {
@@ -293,29 +314,46 @@ Edward
   };
 
   return (
-    <div className="w-full py-12 px-4 md:px-8 bg-gradient-to-b from-[#E3F2FF] to-[#F5F9FF]">
+    <div className="w-full py-8 sm:py-12 px-3 sm:px-4 md:px-8 bg-gradient-to-b from-[#E3F2FF] to-[#F5F9FF]">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-12">
-          Latest Stories & Content
-        </h2>
+        {/* Header */}
+        <div className="text-center mb-8 sm:mb-12 px-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2E4F7C] mb-3 sm:mb-4">
+            Latest Stories & Content
+          </h2>
+          <p className="text-sm sm:text-base text-[#2E4F7C]/70 max-w-2xl mx-auto">
+            Discover our latest video stories and blog posts from the heart of Nepal
+          </p>
+        </div>
 
         {/* Combined Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-10 sm:mb-12">
           {/* YouTube Videos Section */}
-          <div className="space-y-6">
-            <h3 className="text-xl md:text-2xl font-semibold text-[#2E4F7C] border-b-2 border-[#2E4F7C] pb-2">
-              Video Stories
-            </h3>
+          <div className="space-y-4 sm:space-y-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#2E4F7C] border-b-2 border-[#2E4F7C] pb-2">
+                Video Stories
+              </h3>
+              <span className="text-xs sm:text-sm text-[#2E4F7C]/60 bg-[#CFE8FF] px-2 py-1 rounded-full">
+                {videos.length} video{videos.length !== 1 ? 's' : ''}
+              </span>
+            </div>
             
             {videos.length === 0 && !isLoading && (
-              <p className="text-center text-[#2E4F7C]/70 py-8">No videos available</p>
+              <div className="text-center py-8 sm:py-12 bg-white/50 rounded-lg border border-[#CFE8FF]">
+                <div className="w-12 h-12 mx-auto mb-3 bg-[#E3F2FF] rounded-full flex items-center justify-center">
+                  <Play className="h-6 w-6 text-[#2E4F7C]" />
+                </div>
+                <p className="text-[#2E4F7C]/60">No videos available yet</p>
+                <p className="text-xs text-[#2E4F7C]/40 mt-1">Check back soon for new content</p>
+              </div>
             )}
             
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6">
               {videos.map((video, idx) => {
                 const videoId = getYouTubeId(video.youtube_url);
                 const thumbnailUrl = videoId
-                  ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
+                  ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
                   : "/images/default-video.jpg";
 
                 return (
@@ -324,33 +362,45 @@ Edward
                     custom={idx}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-50px" }}
                     variants={cardVariants}
                   >
                     <Card
-                      className="group cursor-pointer overflow-hidden bg-white hover:shadow-lg transition-all duration-300"
+                      className="group cursor-pointer overflow-hidden bg-white hover:shadow-lg transition-all duration-300 border border-[#CFE8FF] hover:border-[#8AB8E0] h-full"
                     >
                       <div
-                        className="relative aspect-video overflow-hidden bg-[#2E4F7C]"
+                        className="relative aspect-video overflow-hidden bg-gradient-to-br from-[#2E4F7C] to-[#1F3A5A]"
                         onClick={() => setSelectedVideo(video)}
                       >
                         <img
                           src={thumbnailUrl}
                           alt={video.title}
                           className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = "/images/default-video.jpg";
+                          }}
                         />
-                        <div className="absolute inset-0 bg-[#2E4F7C]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <div className="bg-white/90 p-3 rounded-full">
-                            <Play className="h-6 w-6 text-[#2E4F7C] fill-[#2E4F7C]" />
+                        <div className="absolute inset-0 bg-[#2E4F7C]/20 group-hover:bg-[#2E4F7C]/40 transition-all duration-300 flex items-center justify-center">
+                          <div className="bg-white/90 p-2 sm:p-3 rounded-full transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <Play className="h-4 w-4 sm:h-6 sm:w-6 text-[#2E4F7C] fill-[#2E4F7C]" />
+                          </div>
+                        </div>
+                        <div className="absolute top-3 right-3">
+                          <div className="bg-black/70 text-white text-xs px-2 py-1 rounded-md">
+                            Video
                           </div>
                         </div>
                       </div>
 
-                      <CardContent className="p-4">
-                        <h3 className="font-semibold text-sm leading-tight text-[#2E4F7C] mb-2 line-clamp-2">
+                      <CardContent className="p-3 sm:p-4">
+                        <h3 className="font-semibold text-sm sm:text-base leading-tight text-[#2E4F7C] mb-2 line-clamp-2 group-hover:text-[#1F3A5A] transition-colors">
                           {video.title}
                         </h3>
-                        
+                        {video.description && (
+                          <p className="text-xs sm:text-sm text-[#2E4F7C]/70 line-clamp-2">
+                            {video.description}
+                          </p>
+                        )}
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -358,53 +408,66 @@ Edward
               })}
             </div>
             
-            <div className="text-center pt-4">
-              <Link href="/blog">
-                <Button className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 mx-auto">
-                  See more videos <ArrowRight className="h-4 w-4" />
+            <div className="text-center pt-2 sm:pt-4">
+              <Link href="/videos">
+                <Button className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-4 sm:px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 mx-auto text-sm sm:text-base shadow-md hover:shadow-lg">
+                  View All Videos <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
               </Link>
             </div>
           </div>
 
           {/* Blog Posts Section */}
-          <div className="space-y-6">
-            <h3 className="text-xl md:text-2xl font-semibold text-[#2E4F7C] border-b-2 border-[#2E4F7C] pb-2">
-              Blog Stories
-            </h3>
+          <div className="space-y-4 sm:space-y-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#2E4F7C] border-b-2 border-[#2E4F7C] pb-2">
+                Blog Stories
+              </h3>
+              <span className="text-xs sm:text-sm text-[#2E4F7C]/60 bg-[#CFE8FF] px-2 py-1 rounded-full">
+                {posts.length} post{posts.length !== 1 ? 's' : ''}
+              </span>
+            </div>
             
             {isLoading ? (
-              <div className="grid grid-cols-1 gap-6">
-                <Card className="overflow-hidden bg-white border border-[#CFE8FF] animate-pulse">
-                  <div className="aspect-[4/3] bg-gray-200"></div>
-                  <CardHeader className="pb-3">
-                    <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
-                    <div className="h-5 bg-gray-200 rounded w-3/4"></div>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
-                    <div className="h-4 bg-gray-200 rounded w-2/3"></div>
-                  </CardContent>
-                </Card>
+              <div className="grid grid-cols-1 gap-4 sm:gap-6">
+                {[1, 2].map((i) => (
+                  <Card key={i} className="overflow-hidden bg-white border border-[#CFE8FF] animate-pulse">
+                    <div className="aspect-[4/3] bg-gray-200"></div>
+                    <CardHeader className="pb-3 px-3 sm:px-4">
+                      <div className="h-3 bg-gray-200 rounded w-1/4 mb-2"></div>
+                      <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                    </CardHeader>
+                    <CardContent className="pt-0 px-3 sm:px-4">
+                      <div className="h-3 bg-gray-200 rounded w-full mb-2"></div>
+                      <div className="h-3 bg-gray-200 rounded w-2/3"></div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             ) : posts.length === 0 ? (
-              <p className="text-center text-[#2E4F7C]/70 py-8">No blog posts available</p>
+              <div className="text-center py-8 sm:py-12 bg-white/50 rounded-lg border border-[#CFE8FF]">
+                <div className="w-12 h-12 mx-auto mb-3 bg-[#E3F2FF] rounded-full flex items-center justify-center">
+                  <Mountain className="h-6 w-6 text-[#2E4F7C]" />
+                </div>
+                <p className="text-[#2E4F7C]/60">No blog posts available yet</p>
+                <p className="text-xs text-[#2E4F7C]/40 mt-1">New stories coming soon</p>
+              </div>
             ) : (
-              <div className="grid grid-cols-1 gap-6">
+              <div className="grid grid-cols-1 gap-4 sm:gap-6">
                 {posts.map((post, idx) => (
                   <motion.div
                     key={post.id}
                     custom={idx}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-50px" }}
                     variants={cardVariants}
                   >
                     <Card
                       className="group cursor-pointer overflow-hidden bg-white border border-[#CFE8FF] hover:shadow-md hover:border-[#8AB8E0] transition-all duration-300 h-full flex flex-col"
                       onClick={() => setSelectedPost(post)}
                     >
-                      <div className="relative aspect-[4/3] overflow-hidden">
+                      <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
                         <div className="relative w-full h-full">
                           <SafeImage
                             src={post.coverImage}
@@ -415,29 +478,30 @@ Edward
                             }}
                           />
                         </div>
-                        <div className="absolute top-3 left-3">
-                          <Badge variant="secondary" className="text-xs bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0]">
+                        <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
+                          <Badge variant="secondary" className="text-xs bg-[#CFE8FF]/90 text-[#2E4F7C] border border-[#8AB8E0] backdrop-blur-sm">
                             {post.category}
                           </Badge>
                         </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
 
-                      <CardHeader className="pb-3 flex-grow">
-                        <h3 className="font-semibold text-lg leading-tight text-[#2E4F7C] group-hover:text-[#1F3A5A] transition-colors line-clamp-2">
+                      <CardHeader className="pb-3 px-3 sm:px-4 flex-grow">
+                        <h3 className="font-semibold text-base sm:text-lg leading-tight text-[#2E4F7C] group-hover:text-[#1F3A5A] transition-colors line-clamp-2">
                           {post.title}
                         </h3>
                       </CardHeader>
 
-                      <CardContent className="pt-0">
-                        <p className="text-sm text-[#2E4F7C]/80 mb-3 line-clamp-2">{post.excerpt}</p>
+                      <CardContent className="pt-0 px-3 sm:px-4 pb-3 sm:pb-4">
+                        <p className="text-xs sm:text-sm text-[#2E4F7C]/80 mb-3 line-clamp-2 leading-relaxed">{post.excerpt}</p>
                         <div className="flex items-center justify-between text-xs text-[#2E4F7C]">
                           <div className="flex items-center gap-1">
                             <Calendar className="h-3 w-3" />
-                            {formatDate(post.publishedDate)}
+                            <span className="text-xs">{formatDate(post.publishedDate)}</span>
                           </div>
                           <div className="flex items-center gap-1">
                             <Clock className="h-3 w-3" />
-                            {post.readTime}
+                            <span className="text-xs">{post.readTime}</span>
                           </div>
                         </div>
                       </CardContent>
@@ -447,10 +511,10 @@ Edward
               </div>
             )}
             
-            <div className="text-center pt-4">
+            <div className="text-center pt-2 sm:pt-4">
               <Link href="/blog">
-                <Button className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 mx-auto">
-                  See more blogs <ArrowRight className="h-4 w-4" />
+                <Button className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-4 sm:px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 mx-auto text-sm sm:text-base shadow-md hover:shadow-lg">
+                  Read All Blogs <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
               </Link>
             </div>
@@ -460,17 +524,18 @@ Edward
         {/* Video Modal */}
         {selectedVideo && (
           <div
-            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-3 sm:p-4"
             onClick={() => setSelectedVideo(null)}
           >
             <div
-              className="relative w-full max-w-3xl aspect-video bg-black rounded-lg overflow-hidden"
+              className="relative w-full max-w-2xl sm:max-w-3xl lg:max-w-4xl aspect-video bg-black rounded-lg sm:rounded-xl overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                className="absolute -top-10 right-0 text-white text-sm z-10 bg-[#2E4F7C] px-2 py-1 rounded-md hover:bg-[#1F3A5A]"
+                className="absolute -top-8 sm:-top-10 right-0 text-white text-sm z-10 bg-[#2E4F7C] hover:bg-[#1F3A5A] px-3 py-1.5 rounded-md transition-colors duration-200 flex items-center gap-2"
                 onClick={() => setSelectedVideo(null)}
               >
+                <X className="h-3 w-3" />
                 Close
               </button>
               <iframe
@@ -485,87 +550,109 @@ Edward
           </div>
         )}
 
-        {/* Blog Post Dialog - Updated to match blog content section style */}
+        {/* Blog Post Dialog - Optimized for all screen sizes */}
         <Dialog open={!!selectedPost} onOpenChange={() => setSelectedPost(null)}>
-          <DialogContent className="max-w-4xl max-h-[95vh] overflow-y-auto bg-gradient-to-br from-[#E3F2FF] to-[#CFE8FF] p-4 sm:p-8 rounded-2xl shadow-xl">
-            {selectedPost && (
-              <>
-                <DialogHeader className="flex justify-between items-start mb-6">
-                  <DialogTitle className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2E4F7C] leading-tight">
-                    {selectedPost.title}
-                  </DialogTitle>
-                </DialogHeader>
+          <DialogContent className="max-w-2xl sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl max-h-[85vh] sm:max-h-[90vh] overflow-y-auto bg-gradient-to-br from-[#E3F2FF] to-[#CFE8FF] p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-2xl border border-[#8AB8E0]/30">
+            <div className="relative">
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedPost(null)}
+                className="absolute -top-2 -right-2 z-50 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 shadow-lg transition-all duration-200 hover:scale-110 border border-[#8AB8E0]/30"
+              >
+                <X className="h-3 w-3 sm:h-4 sm:w-4 text-[#2E4F7C]" />
+              </button>
+              
+              {selectedPost && (
+                <>
+                  <DialogHeader className="flex justify-between items-start mb-4 sm:mb-6 pr-8">
+                    <DialogTitle className="font-heading text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#2E4F7C] leading-tight">
+                      {selectedPost.title}
+                    </DialogTitle>
+                  </DialogHeader>
 
-                <DialogDescription asChild>
-                  <motion.div 
-                    className="space-y-6 text-[#2E4F7C]" 
-                    initial={{ opacity: 0, y: 20 }} 
-                    animate={{ opacity: 1, y: 0 }} 
-                    transition={{ duration: 0.5 }}
-                  >
-                    {/* Cover Image */}
-                    <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-lg">
-                      <div className="relative w-full h-full">
-                        <SafeImage
-                          src={selectedPost.coverImage} 
-                          alt={selectedPost.title}
-                          className="object-cover"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                          }}
-                        />
+                  <DialogDescription asChild>
+                    <motion.div 
+                      className="space-y-4 sm:space-y-6 text-[#2E4F7C]" 
+                      initial={{ opacity: 0, y: 20 }} 
+                      animate={{ opacity: 1, y: 0 }} 
+                      transition={{ duration: 0.5 }}
+                    >
+                      {/* Cover Image */}
+                      <div className="relative w-full aspect-[16/9] rounded-lg sm:rounded-xl overflow-hidden shadow-lg">
+                        <div className="relative w-full h-full">
+                          <SafeImage
+                            src={selectedPost.coverImage} 
+                            alt={selectedPost.title}
+                            className="object-cover"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
+                            }}
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/30 to-transparent" />
                       </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/30 to-transparent" />
-                    </div>
-                    
-                    {/* Meta Information */}
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm text-[#2E4F7C]/80 bg-white/60 rounded-lg p-3 sm:p-4">
-                      <Badge variant="secondary" className="bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0] text-xs sm:text-sm">
-                        <Mountain className="h-3 w-3 mr-1" />
-                        {selectedPost.category}
-                      </Badge>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
-                        <span className="text-xs sm:text-sm">{formatDate(selectedPost.publishedDate)}</span>
+                      
+                      {/* Meta Information */}
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-[#2E4F7C]/80 bg-white/80 rounded-lg p-3 sm:p-4 shadow-sm">
+                        <Badge variant="secondary" className="bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0] text-xs px-2 py-1">
+                          <Mountain className="h-3 w-3 mr-1" />
+                          {selectedPost.category}
+                        </Badge>
+                        <div className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <span>{formatDate(selectedPost.publishedDate)}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <span>{selectedPost.readTime} read</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        <span className="text-xs sm:text-sm">{selectedPost.readTime}</span>
-                      </div>
-                    </div>
 
-                    {/* Blog Content */}
-                    <BlogContentRenderer content={selectedPost.content} />
-
-                    {/* Additional Images */}
-                    {selectedPost.images && selectedPost.images.length > 0 && (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                        {selectedPost.images.map((image, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-md"
-                          >
-                            <div className="relative w-full h-full">
-                              <SafeImage
-                                src={image}
-                                alt={`${selectedPost.title} - Image ${index + 1}`}
-                                className="object-cover"
-                                onError={(e) => {
-                                  (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                                }}
-                              />
-                            </div>
-                          </motion.div>
-                        ))}
+                      {/* Blog Content */}
+                      <div className="bg-white/70 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm border border-[#8AB8E0]/20">
+                        <BlogContentRenderer content={selectedPost.content} />
                       </div>
-                    )}
-                  </motion.div>
-                </DialogDescription>
-              </>
-            )}
+
+                      {/* Additional Images */}
+                      {selectedPost.images && selectedPost.images.length > 0 && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6">
+                          {selectedPost.images.map((image, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, scale: 0.9 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: index * 0.1 }}
+                              className="relative aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden shadow-md"
+                            >
+                              <div className="relative w-full h-full">
+                                <SafeImage
+                                  src={image}
+                                  alt={`${selectedPost.title} - Image ${index + 1}`}
+                                  className="object-cover"
+                                  onError={(e) => {
+                                    (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
+                                  }}
+                                />
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Close Button at Bottom for Mobile */}
+                      <div className="flex justify-center sm:hidden pt-4">
+                        <Button 
+                          onClick={() => setSelectedPost(null)}
+                          className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-6 py-2 rounded-lg font-medium text-sm transition-all duration-200 w-full max-w-xs shadow-md"
+                        >
+                          Close Article
+                        </Button>
+                      </div>
+                    </motion.div>
+                  </DialogDescription>
+                </>
+              )}
+            </div>
           </DialogContent>
         </Dialog>
       </div>

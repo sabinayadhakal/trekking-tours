@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 const NAV_LOGO = { url: "/", src: "/images/himkala-logo.png", alt: "Logo" };
 const NAV_ITEMS = [
   { name: "Home", link: "/" },
-  { name: "About Us", link: "/about-us" },
+  { name: "Our Story", link: "/about-us" },
   {
     name: "Destinations",
     children: [
@@ -20,7 +20,7 @@ const NAV_ITEMS = [
     ],
   },
   {
-    name: "Our Services",
+    name: "Nepal Adventures",
     children: [
       { name: "Free Walking Tour Kathmandu", link: "/services/Free-Walking-Tour" },
       { name: "Trekking", link: "/services/trekking" },
@@ -33,7 +33,7 @@ const NAV_ITEMS = [
       { name: "Peak Climbing", link: "/services/peak-climbing" },
     ],
   },
-  { name: "Stories", link: "/blog" },
+  { name: "Trail Tales", link: "/blog" },
 ];
 
 // WhatsApp configuration
@@ -77,54 +77,62 @@ const MobileNav = ({
   setActiveItem: (item: string) => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showNavbar, setShowNavbar] = useState(true); // fully visible on load
-  const [hasScrolled, setHasScrolled] = useState(false);
-  const lastScrollY = React.useRef(0);
-  const ticking = React.useRef(false);
+  const navbarRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const handleScroll = () => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    let rafId: number;
+
+    const updateNavbar = () => {
       const currentScrollY = window.scrollY;
-
-      if (!ticking.current) {
-        window.requestAnimationFrame(() => {
-          if (currentScrollY <= 0) {
-            // At top → show full navbar
-            setShowNavbar(true);
-          } else if (hasScrolled) {
-            // After first scroll → always hide 75%
-            setShowNavbar(false);
-          }
-
-          lastScrollY.current = currentScrollY;
-          ticking.current = false;
-        });
-        ticking.current = true;
+      const navbar = navbarRef.current;
+      
+      if (navbar) {
+        // Calculate progress with smoother curve
+        const scrollProgress = Math.min(currentScrollY / 150, 1);
+        // Ultra-smooth easing function
+        const easeOutQuart = 1 - Math.pow(1 - scrollProgress, 4);
+        const translateY = -65 * easeOutQuart;
+        
+        // Use transform for better performance
+        navbar.style.transform = `translateY(${translateY}%)`;
+        navbar.style.willChange = 'transform';
       }
+      
+      lastScrollY = currentScrollY;
+      ticking = false;
+    };
 
-      if (!hasScrolled && currentScrollY > 0) {
-        setHasScrolled(true);
+    const handleScroll = () => {
+      if (!ticking) {
+        rafId = requestAnimationFrame(updateNavbar);
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasScrolled]);
+    // Use passive scroll for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   return (
     <div className="block lg:hidden">
       {/* Navbar Header */}
-      <motion.div
-        className="flex flex-col items-center z-50"
-        animate={{
-          y: showNavbar ? "0%" : "-65%",
+      <div
+        ref={navbarRef}
+        className="flex flex-col items-center z-50 fixed top-0 left-0 right-0 transition-transform duration-[400ms] ease-out"
+        style={{ 
+          backgroundColor: "rgba(70, 130, 180, 0.15)",
+          transform: 'translateY(0%)',
+          // Hardware acceleration
+          backfaceVisibility: 'hidden',
+          perspective: 1000,
         }}
-        transition={{
-          type: "tween",
-          duration: 0.25,
-          ease: "easeInOut",
-        }}
-        style={{ backgroundColor: "rgba(70, 130, 180, 0.15)" }}
       >
         {/* Logo */}
         <Link href={NAV_LOGO.url}>
@@ -133,6 +141,7 @@ const MobileNav = ({
             alt={NAV_LOGO.alt}
             className="object-contain h-35 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
             whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
           />
         </Link>
 
@@ -143,7 +152,10 @@ const MobileNav = ({
             <AnimatedHamburger isOpen={isOpen} />
           </button>
         </div>
-      </motion.div>
+      </div>
+
+      {/* Spacer to prevent content jump */}
+      <div className="h-32" />
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
@@ -153,7 +165,7 @@ const MobileNav = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className="fixed inset-0 bg-[#1F2937] z-50 flex flex-col max-h-[80vh] overflow-y-auto"
           >
             {/* Close Button */}
@@ -229,7 +241,7 @@ const MobileNav = ({
                   className="w-full block"
                 >
                   <Button className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-300 cursor-pointer">
-                    Plan your Trip
+                    Start Your Journey
                   </Button>
                 </Link>
 
@@ -251,7 +263,6 @@ const MobileNav = ({
     </div>
   );
 };
-
 
 
 // ---------------- DESKTOP NAV + HEADER ----------------

@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, Mountain, MapPin, Users, Star, Image as ImageIcon } from "lucide-react";
+import { Calendar, Clock, Mountain, MapPin, Users, Star, Image as ImageIcon, X } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -1502,10 +1502,10 @@ const BlogContentRenderer = ({ content }: { content: string }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-white/50 rounded-lg p-4 sm:p-6 shadow-sm"
+            className="bg-white/70 rounded-lg p-4 sm:p-6 shadow-sm border border-[#8AB8E0]/20"
           >
             {title && (
-              <h3 className="text-xl sm:text-2xl font-bold text-[#2E4F7C] mb-4 pb-2 border-b border-[#8AB8E0]">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#2E4F7C] mb-4 pb-3 border-b border-[#8AB8E0]">
                 {title}
               </h3>
             )}
@@ -1522,7 +1522,7 @@ const BlogContentRenderer = ({ content }: { content: string }) => {
                 
                 if (paragraph.trim()) {
                   return (
-                    <div key={pIndex} className="flex items-start mb-2">
+                    <div key={pIndex} className="flex items-start mb-3">
                       <Star className="h-4 w-4 text-[#3C6AA6] mt-1 mr-3 flex-shrink-0" />
                       <span className="text-base sm:text-lg leading-relaxed">
                         {paragraph}
@@ -1588,19 +1588,19 @@ export default function BlogContent() {
 
   if (isLoading) {
     return (
-      <div className="w-full py-16 px-4 md:px-8 lg:px-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-12">
+      <div className="w-full py-12 sm:py-16 px-3 sm:px-4 md:px-8 lg:px-16">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-8 sm:mb-12 px-2">
           Our Latest Blogs
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {[...Array(3)].map((_, i) => (
-            <Card key={i} className="overflow-hidden bg-[#E3F2FF] animate-pulse">
+            <Card key={i} className="overflow-hidden bg-[#E3F2FF] animate-pulse border border-[#8AB8E0]/30">
               <div className="aspect-[4/3] bg-gray-300"></div>
-              <CardHeader className="pb-3">
+              <CardHeader className="pb-3 px-4 sm:px-6">
                 <div className="h-4 bg-gray-300 rounded w-1/4 mb-2"></div>
                 <div className="h-6 bg-gray-300 rounded w-3/4"></div>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="pt-0 px-4 sm:px-6">
                 <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
                 <div className="h-4 bg-gray-300 rounded w-2/3"></div>
               </CardContent>
@@ -1612,8 +1612,8 @@ export default function BlogContent() {
   }
 
   return (
-    <div className="w-full py-16 px-4 md:px-8 lg:px-16">
-      <h1 className="text-4xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-12">
+    <div className="w-full py-12 sm:py-16 px-3 sm:px-4 md:px-8 lg:px-16">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-8 sm:mb-12 px-2">
         Our Latest Blogs
       </h1>
 
@@ -1624,7 +1624,7 @@ export default function BlogContent() {
       ) : (
         <>
           {/* Blog Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {displayPosts.slice(0, visibleCount).map((post, idx) => (
               <motion.div
                 key={post.id}
@@ -1635,42 +1635,42 @@ export default function BlogContent() {
                 variants={cardVariants}
               >
                 <Card
-                  className="group cursor-pointer overflow-hidden bg-[#E3F2FF] hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                  className="group cursor-pointer overflow-hidden bg-[#E3F2FF] hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border border-[#8AB8E0]/30 h-full flex flex-col"
                   onClick={() => setSelectedPost(post)}
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
                     <SafeImage
                       src={post.coverImage}
                       alt={post.title}
-                      className="transition-transform duration-300 group-hover:scale-110"
+                      className="transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/20 to-transparent" />
                   </div>
 
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center justify-between mb-2">
-                      <Badge variant="secondary" className="text-xs bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0]">
+                  <CardHeader className="pb-3 px-4 sm:px-6 flex-grow-0">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                      <Badge variant="secondary" className="text-xs bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0] px-2 py-1">
                         {post.category}
                       </Badge>
-                      <div className="flex items-center gap-2 text-xs text-[#2E4F7C]">
+                      <div className="flex items-center gap-1 text-xs text-[#2E4F7C]">
                         <Calendar className="h-3 w-3" />
-                        {formatDate(post.publishedDate)}
+                        <span className="whitespace-nowrap">{formatDate(post.publishedDate)}</span>
                       </div>
                     </div>
-                    <h3 className="font-heading font-semibold text-lg leading-tight text-[#2E4F7C] group-hover:text-[#1F3A5A] transition-colors">
+                    <h3 className="font-heading font-semibold text-lg leading-tight text-[#2E4F7C] group-hover:text-[#1F3A5A] transition-colors line-clamp-3">
                       {post.title}
                     </h3>
                   </CardHeader>
 
-                  <CardContent className="pt-0">
-                    <p className="text-sm text-[#2E4F7C]/80 mb-4 line-clamp-3">{post.excerpt}</p>
-                    <div className="flex items-center justify-between">
+                  <CardContent className="pt-0 px-4 sm:px-6 pb-4 flex-grow">
+                    <p className="text-sm text-[#2E4F7C]/80 mb-4 line-clamp-3 leading-relaxed">{post.excerpt}</p>
+                    <div className="flex items-center justify-between mt-auto">
                       <div className="flex items-center gap-1 text-xs text-[#2E4F7C]">
                         <Clock className="h-3 w-3" />
                         {post.readTime}
                       </div>
-                      <Button variant="ghost" size="sm" className="text-[#2E4F7C] hover:text-[#1F3A5A] p-0 h-auto font-medium">
-                        Read more
+                      <Button variant="ghost" size="sm" className="text-[#2E4F7C] hover:text-[#1F3A5A] hover:bg-[#CFE8FF] p-0 h-auto font-medium text-xs sm:text-sm">
+                        Read more →
                       </Button>
                     </div>
                   </CardContent>
@@ -1679,94 +1679,116 @@ export default function BlogContent() {
             ))}
           </div>
 
-          {/* Load More Button - Hidden since we only have one post */}
+          {/* Load More Button */}
           {visibleCount < displayPosts.length && (
             <motion.div 
-              className="flex justify-center mt-8 sm:mt-10" 
+              className="flex justify-center mt-8 sm:mt-12" 
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 0.6 }}
             >
               <Button 
-                className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-6 py-3 rounded-lg font-semibold w-full sm:w-auto max-w-xs sm:max-w-none transition-all duration-200" 
+                className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-6 py-3 rounded-lg font-semibold text-sm sm:text-base transition-all duration-200 shadow-md hover:shadow-lg w-full max-w-xs" 
                 onClick={loadMore}
               >
-                Load More
+                Load More Articles
               </Button>
             </motion.div>
           )}
         </>
       )}
 
-      {/* Blog Dialog */}
+      {/* Blog Dialog - Optimized for all screen sizes */}
       <Dialog open={!!selectedPost} onOpenChange={() => setSelectedPost(null)}>
-        <DialogContent className="max-w-4xl max-h-[95vh] overflow-y-auto bg-gradient-to-br from-[#E3F2FF] to-[#CFE8FF] p-4 sm:p-8 rounded-2xl shadow-xl">
-          {selectedPost && (
-            <>
-              <DialogHeader className="flex justify-between items-start mb-6">
-                <DialogTitle className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2E4F7C] leading-tight">
-                  {selectedPost.title}
-                </DialogTitle>
-              </DialogHeader>
+        <DialogContent className="max-w-2xl sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-y-auto bg-gradient-to-br from-[#E3F2FF] to-[#CFE8FF] p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-2xl border border-[#8AB8E0]/30">
+          <div className="relative">
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedPost(null)}
+              className="absolute -top-2 -right-2 z-50 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 shadow-lg transition-all duration-200 hover:scale-110 border border-[#8AB8E0]/30"
+            >
+              <X className="h-4 w-4 sm:h-5 sm:w-5 text-[#2E4F7C]" />
+            </button>
+            
+            {selectedPost && (
+              <>
+                <DialogHeader className="flex justify-between items-start mb-4 sm:mb-6 pr-8">
+                  <DialogTitle className="font-heading text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-[#2E4F7C] leading-tight">
+                    {selectedPost.title}
+                  </DialogTitle>
+                </DialogHeader>
 
-              <DialogDescription asChild>
-                <motion.div 
-                  className="space-y-6 text-[#2E4F7C]" 
-                  initial={{ opacity: 0, y: 20 }} 
-                  animate={{ opacity: 1, y: 0 }} 
-                  transition={{ duration: 0.5 }}
-                >
-                  {/* Cover Image */}
-                  <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-lg">
-                    <SafeImage
-                      src={selectedPost.coverImage} 
-                      alt={selectedPost.title}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/30 to-transparent" />
-                  </div>
-                  
-                  {/* Meta Information */}
-                  <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm text-[#2E4F7C]/80 bg-white/60 rounded-lg p-3 sm:p-4">
-                    <Badge variant="secondary" className="bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0] text-xs sm:text-sm">
-                      <Mountain className="h-3 w-3 mr-1" />
-                      {selectedPost.category}
-                    </Badge>
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      <span className="text-xs sm:text-sm">{formatDate(selectedPost.publishedDate)}</span>
+                <DialogDescription asChild>
+                  <motion.div 
+                    className="space-y-4 sm:space-y-6 text-[#2E4F7C]" 
+                    initial={{ opacity: 0, y: 20 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    transition={{ duration: 0.5 }}
+                  >
+                    {/* Cover Image */}
+                    <div className="relative w-full aspect-[16/9] rounded-lg sm:rounded-xl overflow-hidden shadow-lg">
+                      <SafeImage
+                        src={selectedPost.coverImage} 
+                        alt={selectedPost.title}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/30 to-transparent" />
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      <span className="text-xs sm:text-sm">{selectedPost.readTime}</span>
+                    
+                    {/* Meta Information */}
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-[#2E4F7C]/80 bg-white/80 rounded-lg p-3 sm:p-4 shadow-sm">
+                      <Badge variant="secondary" className="bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0] text-xs px-2 py-1">
+                        <Mountain className="h-3 w-3 mr-1" />
+                        {selectedPost.category}
+                      </Badge>
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
+                        <span>{formatDate(selectedPost.publishedDate)}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
+                        <span>{selectedPost.readTime} read</span>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Blog Content */}
-                  <BlogContentRenderer content={selectedPost.content} />
-
-                  {/* Additional Images - Only show if images exist */}
-                  {selectedPost.images && selectedPost.images.length > 0 && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                      {selectedPost.images.map((image, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: index * 0.1 }}
-                          className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-md"
-                        >
-                          <SafeImage
-                            src={image}
-                            alt={`${selectedPost.title} - Image ${index + 1}`}
-                          />
-                        </motion.div>
-                      ))}
+                    {/* Blog Content */}
+                    <div className="bg-white/70 rounded-lg p-4 sm:p-6 shadow-sm border border-[#8AB8E0]/20">
+                      <BlogContentRenderer content={selectedPost.content} />
                     </div>
-                  )}
-                </motion.div>
-              </DialogDescription>
-            </>
-          )}
+
+                    {/* Additional Images - Only show if images exist */}
+                    {selectedPost.images && selectedPost.images.length > 0 && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8">
+                        {selectedPost.images.map((image, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: index * 0.1 }}
+                            className="relative aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden shadow-md"
+                          >
+                            <SafeImage
+                              src={image}
+                              alt={`${selectedPost.title} - Image ${index + 1}`}
+                            />
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Close Button at Bottom for Mobile */}
+                    <div className="flex justify-center sm:hidden pt-4">
+                      <Button 
+                        onClick={() => setSelectedPost(null)}
+                        className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-6 py-2 rounded-lg font-medium text-sm transition-all duration-200 w-full max-w-xs"
+                      >
+                        Close Article
+                      </Button>
+                    </div>
+                  </motion.div>
+                </DialogDescription>
+              </>
+            )}
+          </div>
         </DialogContent>
       </Dialog>
     </div>
