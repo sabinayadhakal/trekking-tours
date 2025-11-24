@@ -146,59 +146,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-12 bg-muted/40">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Chitwan Wildlife Information</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">What You Might See</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  One-horned rhinoceros (population: ~600)
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Bengal tiger (population: ~120)
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Gharial and mugger crocodiles
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Over 500 species of birds
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Sloth bears, leopards, and deer species
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Best Time to Visit</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>October-November:</strong> Perfect weather, clear skies
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>December-February:</strong> Cool temperatures, good wildlife spotting
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>March-April:</strong> Spring blooms, bird migration
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>Monsoon (June-September):</strong> Lush vegetation, fewer tourists
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {selectedTour && (
         <TourDetailModal

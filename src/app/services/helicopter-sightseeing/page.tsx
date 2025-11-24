@@ -231,55 +231,7 @@ export default function HelicopterSightseeingPage() {
         </div>
       </section>
 
-      <section className="py-12 bg-muted/40">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Tour Information</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">What to Bring</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Warm layers (temperatures drop at high altitude)
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Sunglasses and sunscreen (high UV at altitude)
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Camera with extra batteries
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Valid passport for permit processing
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Important Notes</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Flights are weather-dependent and may be rescheduled
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Weight restrictions apply for passenger safety
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Oxygen is available on all flights
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  Minimum 2 passengers required for tour operation
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+   
 
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 text-center">

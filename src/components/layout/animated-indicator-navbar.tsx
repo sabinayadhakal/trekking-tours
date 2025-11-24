@@ -42,16 +42,16 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}`;
 
 // ---------------- ANIMATED HAMBURGER ----------------
 const AnimatedHamburger = ({ isOpen }: { isOpen: boolean }) => (
-  <div className="relative h-8 w-8 flex items-center justify-center"> {/* increased container size */}
+  <div className="relative h-8 w-8 flex items-center justify-center">
     <Menu
-      size={36}  // increased from 30
-      strokeWidth={3} // slightly thicker
+      size={36}
+      strokeWidth={3}
       className={`text-neutral-50 absolute transition-all duration-300 ${
         isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
       }`}
     />
     <X
-      size={38} // increased from 32
+      size={38}
       strokeWidth={3}
       className={`text-neutral-50 absolute transition-all duration-300 ${
         isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
@@ -59,7 +59,6 @@ const AnimatedHamburger = ({ isOpen }: { isOpen: boolean }) => (
     />
   </div>
 );
-
 
 // WhatsApp Icon SVG
 const WhatsAppIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
@@ -77,6 +76,7 @@ const MobileNav = ({
   setActiveItem: (item: string) => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navbarRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -89,14 +89,20 @@ const MobileNav = ({
       const navbar = navbarRef.current;
       
       if (navbar) {
-        // Calculate progress with smoother curve
-        const scrollProgress = Math.min(currentScrollY / 150, 1);
-        // Ultra-smooth easing function
-        const easeOutQuart = 1 - Math.pow(1 - scrollProgress, 4);
-        const translateY = -65 * easeOutQuart;
+        // Only apply transform when scrolled down, not at the top
+        if (currentScrollY > 10) {
+          const scrollProgress = Math.min((currentScrollY - 10) / 140, 1);
+          const easeOutQuart = 1 - Math.pow(1 - scrollProgress, 4);
+          const translateY = -65 * easeOutQuart;
+          
+          navbar.style.transform = `translateY(${translateY}%)`;
+          setIsScrolled(true);
+        } else {
+          // At the top - reset transform completely
+          navbar.style.transform = `translateY(0%)`;
+          setIsScrolled(false);
+        }
         
-        // Use transform for better performance
-        navbar.style.transform = `translateY(${translateY}%)`;
         navbar.style.willChange = 'transform';
       }
       
@@ -111,7 +117,6 @@ const MobileNav = ({
       }
     };
 
-    // Use passive scroll for better performance
     window.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {
@@ -122,14 +127,13 @@ const MobileNav = ({
 
   return (
     <div className="block lg:hidden">
-      {/* Navbar Header */}
+      {/* Navbar Header - Fixed with smooth transitions */}
       <div
         ref={navbarRef}
         className="flex flex-col items-center z-50 fixed top-0 left-0 right-0 transition-transform duration-[400ms] ease-out"
         style={{ 
           backgroundColor: "rgba(70, 130, 180, 0.15)",
           transform: 'translateY(0%)',
-          // Hardware acceleration
           backfaceVisibility: 'hidden',
           perspective: 1000,
         }}
@@ -139,7 +143,10 @@ const MobileNav = ({
           <motion.img
             src={NAV_LOGO.src}
             alt={NAV_LOGO.alt}
-            className="object-contain h-35 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
+            className="object-contain h-35 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] transition-opacity duration-300"
+            style={{
+              opacity: isScrolled ? 0.7 : 1, // Slight opacity change instead of jump
+            }}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           />
@@ -154,7 +161,7 @@ const MobileNav = ({
         </div>
       </div>
 
-      {/* Spacer to prevent content jump */}
+      {/* Spacer to prevent content jump - adjusted height */}
       <div className="h-32" />
 
       {/* Mobile Menu Overlay */}
@@ -264,7 +271,6 @@ const MobileNav = ({
   );
 };
 
-
 // ---------------- DESKTOP NAV + HEADER ----------------
 const AnimatedIndicatorNavbar = () => {
   const [activeItem, setActiveItem] = useState("");
@@ -272,12 +278,11 @@ const AnimatedIndicatorNavbar = () => {
   return (
     <header className="fixed top-0 w-full z-50">
       {/* Floating background shapes — only visible on desktop */}
-<div className="hidden lg:block absolute inset-0 -z-10 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-  <div className="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-slate-600/20 animate-floatSlow" />
-  <div className="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-slate-400/30 animate-floatMedium" />
-  <div className="absolute bottom-1/4 left-1/3 w-4 h-4 rounded-full bg-white/10 animate-floatFast" />
-</div>
-
+      <div className="hidden lg:block absolute inset-0 -z-10 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-slate-600/20 animate-floatSlow" />
+        <div className="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-slate-400/30 animate-floatMedium" />
+        <div className="absolute bottom-1/4 left-1/3 w-4 h-4 rounded-full bg-white/10 animate-floatFast" />
+      </div>
 
       <div className="hidden lg:flex justify-between items-center px-12 py-4 shadow-md h-32">
         {/* Logo + slogan */}

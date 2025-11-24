@@ -361,55 +361,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-12 bg-muted/40">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Tour Categories</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">By Duration</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>Short Tours (4-5 days):</strong> Perfect for limited time
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>Standard Tours (7-9 days):</strong> Comprehensive experiences
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>Extended Tours (10+ days):</strong> In-depth exploration
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>Customizable:</strong> Tailored to your preferences
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">By Interest</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>Cultural & Heritage:</strong> Temples, palaces, UNESCO sites
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>Family Friendly:</strong> Activities for all ages
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>Photography:</strong> Designed for capturing best shots
-                </li>
-                <li className="flex items-center">
-                  <span className="text-primary mr-2">•</span>
-                  <strong>Comprehensive:</strong> Combining multiple experiences
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+    
 
       {selectedTour && (
         <TourDetailModal
