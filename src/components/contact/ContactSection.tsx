@@ -235,11 +235,13 @@ export default function ContactSection({ posts = [], onSubmit }: BlogContentProp
           )}
 
           {/* reCAPTCHA status indicator (optional, for debugging) */}
-          {process.env.NODE_ENV === 'development' && (
-            <div className="text-xs text-gray-500 text-center">
-              reCAPTCHA Status: {isRecaptchaReady ? '✅ secured' : '⏳ Loading...'}
-            </div>
-          )}
+         {/* reCAPTCHA status indicator */}
+{!isRecaptchaReady && (
+  <div className="text-xs text-gray-500 text-center mb-2">
+    ⏳ Loading security verification...
+  </div>
+)}
+        
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <div className="flex flex-col">
