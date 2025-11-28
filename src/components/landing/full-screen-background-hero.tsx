@@ -22,7 +22,7 @@ interface HeroData {
 // Hero data - now using static data instead of Strapi
 const heroData: HeroData = {
   Title: "Experience Nepal: Trekking, Heritage Tours & Adventure Travel",
-  Description: "Immersive Himalayan trekking and cultural tours across Nepal, Bhutan & Tibet crafted to reveal the region’s true spirit.",
+  Description: "Immersive Himalayan trekking and cultural tours across Nepal, Bhutan & Tibet crafted to reveal the region's true spirit.",
   Tagline: "SnowArt since 2015",
   Excerpt: "Adventure awaits in the Himalayas",
   DesktopBackgroundImage: [
@@ -40,6 +40,7 @@ const FullScreenBackgroundHero = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [showScrollPrompt, setShowScrollPrompt] = useState(true);
 
   // Simulate loading delay
   useEffect(() => {
@@ -55,6 +56,24 @@ const FullScreenBackgroundHero = () => {
       setCurrentIndex(prev => (prev + 1) % heroData.DesktopBackgroundImage.length);
     }, 8000);
     return () => clearInterval(interval);
+  }, []);
+
+  // Hide scroll prompt after 5 seconds or on scroll
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowScrollPrompt(false);
+    }, 5000);
+
+    const handleScroll = () => {
+      setShowScrollPrompt(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   if (isLoading) {
@@ -190,6 +209,47 @@ const FullScreenBackgroundHero = () => {
             </Button>
           </div>
         </div>
+
+        {/* Scroll More to Explore Animation - Mobile Only */}
+        <AnimatePresence>
+          {showScrollPrompt && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 md:hidden z-30 flex flex-col items-center"
+            >
+              <motion.div
+                animate={{ 
+                  y: [0, 8, 0],
+                  opacity: [0.7, 1, 0.7]
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity, 
+                  repeatType: "loop",
+                  ease: "easeInOut"
+                }}
+                className="flex flex-col items-center text-[#e0f0f5]"
+              >
+                <span className="text-xs font-medium mb-2 tracking-wide">SCROLL MORE TO EXPLORE</span>
+                <div className="w-5 h-8 border border-[#e0f0f5]/70 rounded-full flex justify-center">
+                  <motion.div
+                    animate={{ y: [0, 12, 0] }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity, 
+                      repeatType: "loop",
+                      ease: "easeInOut"
+                    }}
+                    className="w-1 h-1 bg-[#e0f0f5] rounded-full mt-2"
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
     </>
   );
