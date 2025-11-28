@@ -37,12 +37,7 @@ export default function Page() {
         
         {/* Upload Button */}
         <div className="absolute top-4 right-4 z-20">
-          <button
-            onClick={triggerFileInput}
-            className="bg-white/80 hover:bg-white text-gray-800 px-4 py-2 rounded-lg font-medium transition-all duration-300 backdrop-blur-sm"
-          >
-            Upload Background
-          </button>
+         
           <input
             type="file"
             ref={fileInputRef}
