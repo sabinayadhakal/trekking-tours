@@ -153,20 +153,20 @@ const FullScreenBackgroundHero = () => {
         </div>
 
         {/* Scroll indicator - Desktop */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center text-[#e0f0f5]/80 z-30"
-        >
-          <span className="text-sm mb-2 font-medium">Scroll to explore</span>
-          <div className="w-6 h-10 border-2 border-[#d0e6f0]/50 rounded-full flex justify-center p-1">
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-              className="w-1 h-1 bg-[#d0e6f0] rounded-full"
-            />
-          </div>
-        </motion.div>
+<motion.div
+  animate={{ y: [0, 10, 0] }}
+  transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+  className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center text-[#e0f0f5]/80 z-30"
+>
+  <span className="text-lg mb-3 font-medium">Scroll to explore</span>
+  <div className="w-10 h-18 border-2 border-[#d0e6f0]/50 rounded-full flex justify-center p-1">
+    <motion.div
+      animate={{ y: [0, 10, 0] }}
+      transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+      className="w-2 h-2 bg-[#d0e6f0] rounded-full"
+    />
+  </div>
+</motion.div>
 
         {/* Mobile content - Different for small and larger phones */}
         <div className="absolute inset-0 z-20 md:hidden flex flex-col justify-center items-center text-center px-6">
