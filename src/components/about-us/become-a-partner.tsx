@@ -1,22 +1,23 @@
 "use client"
 
 import * as React from "react"
-import { motion, Variants } from "framer-motion"
+import { motion } from "framer-motion"
 import { Star, Users, Heart, Shield, MapPin, Award } from "lucide-react"
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+// Simple approach - remove complex transitions
+const containerVariants = {
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { staggerChildren: 0.15, duration: 0.6, ease: "easeOut" }
+    transition: {
+      staggerChildren: 0.15
+    }
   }
 }
 
-const itemVariants: Variants = {
+const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  hover: { scale: 1.05, y: -5, transition: { type: "spring", stiffness: 300 } }
+  visible: { opacity: 1, y: 0 }
 }
 
 export default function BecomeAPartner() {
@@ -61,7 +62,7 @@ export default function BecomeAPartner() {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                whileHover="hover"
+                whileHover={{ scale: 1.05, y: -5 }}
                 className="bg-[#D8E6F3]/60 rounded-lg p-6 shadow-md border border-[#6CA0DC] cursor-pointer"
               >
                 <motion.div

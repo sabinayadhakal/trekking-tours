@@ -3,7 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import { Award, FileText, Shield, CheckCircle, Calendar, BookOpen } from "lucide-react"
-import { motion, Variants } from "framer-motion"
+import { motion } from "framer-motion"
 
 export type LicenseCertification = {
   title: string
@@ -25,19 +25,19 @@ export type LicensesCertificationsProps = {
   items: LicenseCertification[]
 }
 
-const containerVariants: Variants = {
+const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
 }
 
-const itemVariants: Variants = {
+const itemVariants = {
   hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
+  visible: { y: 0, opacity: 1 }
 }
 
-const imageVariants: Variants = {
+const imageVariants = {
   hidden: { scale: 0.9, opacity: 0 },
-  visible: { scale: 1, opacity: 1, transition: { duration: 0.7, ease: "easeOut" } }
+  visible: { scale: 1, opacity: 1 }
 }
 
 export default function LicensesCertifications({

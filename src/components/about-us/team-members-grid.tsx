@@ -11,7 +11,7 @@ import {
   CardDescription,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { motion, Variants } from "framer-motion"
+import { motion } from "framer-motion"
 
 export type TeamMember = {
   id?: string
@@ -37,22 +37,22 @@ interface TeamMembersGridProps {
   style?: React.CSSProperties
 }
 
-const containerVariants: Variants = {
+const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
 }
 
-const itemVariants: Variants = {
+const itemVariants = {
   hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
+  visible: { y: 0, opacity: 1 }
 }
 
-const cardHoverVariants: Variants = {
-  rest: { scale: 1, y: 0, transition: { duration: 0.3 } },
-  hover: { scale: 1.02, y: -4, transition: { duration: 0.4, ease: "easeOut" } }
+const cardHoverVariants = {
+  rest: { scale: 1, y: 0 },
+  hover: { scale: 1.02, y: -4 }
 }
 
-const imageHoverVariants: Variants = {
+const imageHoverVariants = {
   rest: { scale: 1 },
   hover: { scale: 1.05 }
 }

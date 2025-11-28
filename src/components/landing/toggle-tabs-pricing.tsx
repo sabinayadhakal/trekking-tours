@@ -2,7 +2,7 @@
 
 import { Check, Mountain, Users, Clock, Star, MapPin, Calendar, Building } from "lucide-react";
 import { useState, useMemo, useCallback, useRef } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -47,7 +47,7 @@ const ToggleTabsPricing = () => {
     nepal: [
       {
 id: "np-1",
-name: "Everest Base Camp Trek – Classic Route to the Foot of the World’s Highest Peak",
+name: "Everest Base Camp Trek – Classic Route to the Foot of the World's Highest Peak",
 description: "Conquer the iconic trek to Everest Base Camp. Experience breathtaking panoramic Himalayan views, immerse in authentic Sherpa culture, and visit ancient monasteries on this challenging 14-day adventure.",
 duration: "14 Days",
 difficulty: "Challenging",
@@ -288,7 +288,7 @@ highlights: [
   }, []);
 
   // Animation variants with proper TypeScript typing
-  const containerVariants: Variants = {
+  const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -298,38 +298,26 @@ highlights: [
     }
   };
 
-  const itemVariants: Variants = {
+  const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
+      opacity: 1
     }
   };
 
-  const tabContentVariants: Variants = {
+  const tabContentVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 1000 : -1000,
       opacity: 0
     }),
     center: {
       x: 0,
-      opacity: 1,
-      transition: {
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.5 }
-      }
+      opacity: 1
     },
     exit: (direction: number) => ({
       x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-      transition: {
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.2 }
-      }
+      opacity: 0
     })
   };
 

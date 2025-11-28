@@ -1,18 +1,21 @@
 "use client"
 
 import * as React from "react"
-import { motion, Variants } from "framer-motion"
+import { motion } from "framer-motion"
 import { FileText, CreditCard, Calendar, Plane, Shield, AlertCircle, RefreshCw, FileWarning } from "lucide-react"
 
-// Animation variants
-const containerVariants: Variants = {
+// Simple animation variants without complex transitions
+const containerVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  visible: { 
+    opacity: 1, 
+    transition: { staggerChildren: 0.1 }
+  }
 }
 
-const itemVariants: Variants = {
+const itemVariants = {
   hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
+  visible: { y: 0, opacity: 1 }
 }
 
 export default function CompanyPolicySection() {
@@ -36,10 +39,12 @@ export default function CompanyPolicySection() {
       <Shield className="absolute -right-4 -bottom-4 h-24 w-24 text-[#375D87]/40" />
 
       <div className="relative p-6 sm:p-8 md:p-10">
-        <motion.div variants={itemVariants} className="mb-4 inline-flex items-center gap-2">
-          <span className="inline-flex h-2 w-2 rounded-full bg-[#6CA0DC]" aria-hidden="true" />
-          <span className="text-sm font-medium uppercase tracking-wide text-[#375D87]">Company Policy</span>
-        </motion.div>
+         <motion.div variants={itemVariants} className="mb-4 inline-flex items-center gap-2">
+                    <span className="inline-flex h-2 w-2 rounded-full bg-[#375D87]" aria-hidden="true" />
+                    <span className="text-sm font-medium uppercase tracking-wide text-[#375D87]">
+                      Company Policy
+                    </span>
+                  </motion.div>
 
         <motion.h2 variants={itemVariants} id="company-policy-heading"
           className="font-heading text-3xl font-bold tracking-tight text-[#375D87] sm:text-4xl mb-8">
