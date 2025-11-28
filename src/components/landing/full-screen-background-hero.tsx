@@ -152,15 +152,19 @@ const FullScreenBackgroundHero = () => {
           </div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator - Desktop */}
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center text-[#e0f0f5]/80"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center text-[#e0f0f5]/80 z-30"
         >
           <span className="text-sm mb-2 font-medium">Scroll to explore</span>
           <div className="w-6 h-10 border-2 border-[#d0e6f0]/50 rounded-full flex justify-center p-1">
-            <div className="w-1 h-1 bg-[#d0e6f0] rounded-full" />
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+              className="w-1 h-1 bg-[#d0e6f0] rounded-full"
+            />
           </div>
         </motion.div>
 
