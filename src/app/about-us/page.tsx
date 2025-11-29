@@ -40,19 +40,19 @@ export default function AboutPage() {
 
   const certificationsData = [
     {
-      title: "Wilderness First Responder",
-      issuingOrganization: "National Outdoor Leadership School",
-      issueDate: "March 2022",
-      expirationDate: "March 2024",
-      credentialId: "WFR-2022-48932",
-      credentialUrl: "https://example.com/verify/48932",
-      description: "Advanced medical training for emergencies in remote settings",
-      imageSrc: "/images/certifications/wilderness-first-responder.jpg",
-      imageAlt: "Wilderness First Responder Certification"
+      title: "Certificate of Incorporation Company",
+      issuingOrganization: "Office of Company Registrar",
+      issueDate: "January 26, 2015",
+     
+      credentialId: "131462/071/072",
+     
+      description: "Legal document officially establishing the company as a registered legal entity.",
+      imageSrc: "/images/certificate-of-incorporation-company.jpg",
+  
     },
     {
-      title: "Leave No Trace Master Educator",
-      issuingOrganization: "Leave No Trace Center for Outdoor Ethics",
+      title: "Certificate of tourism industry division ",
+      issuingOrganization: "Department of Tourism",
       issueDate: "June 2021",
       credentialId: "LNT-ME-2177",
       description: "Training in sustainable outdoor practices and environmental stewardship",

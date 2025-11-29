@@ -20,14 +20,31 @@ const YearSelectorStats = () => {
     { value: 3, suffix: "", label: "Countries Covered", icon: Globe, color: "text-[#3C6AA6]" },
   ];
 
+  // Mobile-optimized animation durations
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const animationFactor = isMobile ? 0.5 : 1; // Reduce durations by 50% on mobile
+
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.3 } }
+    visible: { 
+      opacity: 1, 
+      transition: { 
+        staggerChildren: 0.2 * animationFactor, 
+        delayChildren: 0.3 * animationFactor 
+      } 
+    }
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" as const } }
+    visible: { 
+      y: 0, 
+      opacity: 1, 
+      transition: { 
+        duration: 0.5 * animationFactor, 
+        ease: "easeOut" as const 
+      } 
+    }
   };
 
   const statVariants = {
@@ -35,13 +52,25 @@ const YearSelectorStats = () => {
     visible: (i: number) => ({
       scale: 1,
       opacity: 1,
-      transition: { delay: i * 0.2, duration: 0.8, type: "spring" as const, stiffness: 100 }
+      transition: { 
+        delay: i * 0.2 * animationFactor, 
+        duration: 0.8 * animationFactor, 
+        type: "spring" as const, 
+        stiffness: isMobile ? 150 : 100 // Increase stiffness on mobile for faster spring
+      }
     })
   };
 
   const imageVariants = {
     hidden: { x: 100, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" as const } }
+    visible: { 
+      x: 0, 
+      opacity: 1, 
+      transition: { 
+        duration: 0.8 * animationFactor, 
+        ease: "easeOut" as const 
+      } 
+    }
   };
 
   const handleLearnMoreClick = () => router.push('/about-us');
@@ -64,7 +93,10 @@ const YearSelectorStats = () => {
               className="inline-block bg-[#3C6AA6]/15 text-[#3C6AA6] px-2 py-1 rounded-full text-xs md:text-sm font-medium mb-2 md:mb-4"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
+              transition={{ 
+                delay: 0.2 * animationFactor, 
+                duration: 0.5 * animationFactor 
+              }}
             >
               Since 2015
             </motion.span>
@@ -81,7 +113,10 @@ const YearSelectorStats = () => {
               className="hidden md:block bg-clip-text text-transparent bg-gradient-to-r from-[#3C6AA6] via-[#468faf] to-[#61a5c2] bg-[length:200%_100%]"
               initial={{ backgroundPositionX: '100%' }}
               animate={isInView ? { backgroundPositionX: '0%' } : { backgroundPositionX: '100%' }}
-              transition={{ duration: 1.2, ease: 'easeInOut' }}
+              transition={{ 
+                duration: isMobile ? 0.6 : 1.2, // Much faster on mobile
+                ease: 'easeInOut' 
+              }}
             >
               10+ Years of Service
             </motion.span>
@@ -134,7 +169,11 @@ Himkala Adventure: Nepal Trekking Experts | Tibet & Bhutan Tour Packages | Affor
                       className={`text-2xl md:text-3xl lg:text-4xl font-bold ${stat.color}`}
                       initial={{ scale: 0 }}
                       animate={isInView ? { scale: 1 } : {}}
-                      transition={{ delay: index * 0.2 + 0.5, type: "spring", stiffness: 100 }}
+                      transition={{ 
+                        delay: index * 0.2 * animationFactor + 0.5 * animationFactor, 
+                        type: "spring", 
+                        stiffness: isMobile ? 150 : 100 
+                      }}
                     >
                       {stat.value}{stat.suffix}
                     </motion.h2>
@@ -159,7 +198,7 @@ Himkala Adventure: Nepal Trekking Experts | Tibet & Bhutan Tour Packages | Affor
             <motion.div
               initial={{ rotate: -2 }}
               animate={isInView ? { rotate: 0 } : {}}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5 * animationFactor }}
               className="rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
@@ -174,7 +213,10 @@ Himkala Adventure: Nepal Trekking Experts | Tibet & Bhutan Tour Packages | Affor
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.8, duration: 0.5 }}
+              transition={{ 
+                delay: 0.8 * animationFactor, 
+                duration: 0.5 * animationFactor 
+              }}
               className="absolute -bottom-4 -right-4 bg-[#E3F8FF]/80 rounded-xl shadow-lg p-3 md:p-4 border border-[#3C6AA6]/20"
             >
               <div className="flex items-center">
@@ -195,13 +237,16 @@ Himkala Adventure: Nepal Trekking Experts | Tibet & Bhutan Tour Packages | Affor
       <motion.div 
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1 * animationFactor }}
         className="absolute top-20 left-10 w-72 h-72 bg-[#3C6AA6]/15 rounded-full -z-10 hidden sm:block"
       ></motion.div>
       <motion.div 
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 1, delay: 0.3 }}
+        transition={{ 
+          duration: 1 * animationFactor, 
+          delay: 0.3 * animationFactor 
+        }}
         className="absolute bottom-20 right-10 w-96 h-96 bg-[#61a5c2]/10 rounded-full -z-10 hidden sm:block"
       ></motion.div>
     </section>

@@ -3,7 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import { Award, Clock, Quote, Compass, Flag, Mountain, Trees, Map } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 
 export type ManagingDirectorSectionProps = {
   className?: string
@@ -33,19 +33,52 @@ function normalizeAchievements(
   return []
 }
 
-const containerVariants = {
+// Fixed animation variants with proper typing
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } }
+  visible: { 
+    opacity: 1, 
+    transition: { 
+      staggerChildren: 0.05,
+      delayChildren: 0.1 
+    }
+  }
 }
 
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1 }
+const itemVariants: Variants = {
+  hidden: { y: 15, opacity: 0 },
+  visible: { 
+    y: 0, 
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut"
+    }
+  }
 }
 
-const imageVariants = {
-  hidden: { scale: 0.9, opacity: 0 },
-  visible: { scale: 1, opacity: 1 }
+const imageVariants: Variants = {
+  hidden: { scale: 0.95, opacity: 0 },
+  visible: { 
+    scale: 1, 
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+}
+
+const quickItemVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut"
+    }
+  }
 }
 
 export default function ManagingDirectorSection({
@@ -70,7 +103,7 @@ export default function ManagingDirectorSection({
     <motion.section
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-30px" }}
       variants={containerVariants}
       aria-labelledby="managing-director-heading"
       className={[
@@ -97,7 +130,7 @@ export default function ManagingDirectorSection({
         >
           <motion.div 
             whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
             className="group relative h-64 sm:h-72 md:h-80 w-full max-h-80 overflow-hidden rounded-lg bg-[#D8E6F3]/50 ring-2 ring-[#6CA0DC]"
           >
             <Image
@@ -105,21 +138,18 @@ export default function ManagingDirectorSection({
               alt={headshotAlt}
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
-              className="object-cover transition-all duration-700 ease-out group-hover:scale-105"
+              className="object-cover transition-all duration-500 ease-out group-hover:scale-105"
               priority
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#375D87]/10 via-transparent to-transparent" />
-            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#4682B4]/10 to-[#6495ED]/10" />
             </div>
           </motion.div>
         </motion.div>
 
         {/* Content column */}
-        <motion.div
-          variants={containerVariants}
-          className={imageFirst ? "order-2" : "order-1 md:order-1 relative flex flex-col justify-center"}
-        >
+        <div className={imageFirst ? "order-2" : "order-1 md:order-1 relative flex flex-col justify-center"}>
           <motion.div variants={itemVariants} className="mb-4 inline-flex items-center gap-2">
             <span className="inline-flex h-2 w-2 rounded-full bg-[#375D87]" />
             <span className="text-sm font-medium uppercase tracking-wide text-[#375D87]">{title}</span>
@@ -129,21 +159,31 @@ export default function ManagingDirectorSection({
 
           {/* Quick facts */}
           <motion.div variants={itemVariants} className="mt-4 flex flex-wrap items-center gap-3 text-sm">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#D8E6F3]/60 px-3 py-1.5 text-[#375D87] ring-1 ring-[#6CA0DC]">
+            <motion.div 
+              variants={quickItemVariants}
+              className="inline-flex items-center gap-2 rounded-full bg-[#D8E6F3]/60 px-3 py-1.5 text-[#375D87] ring-1 ring-[#6CA0DC]"
+            >
               <Clock className="h-4 w-4 text-[#6CA0DC]" />
               <span className="font-medium">{yearsExperience}+ years</span>
               <span className="text-[#6CA0DC]">in adventure tourism</span>
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#D8E6F3]/60 px-3 py-1.5 text-[#375D87] ring-1 ring-[#6CA0DC]">
+            </motion.div>
+            <motion.div 
+              variants={quickItemVariants}
+              className="inline-flex items-center gap-2 rounded-full bg-[#D8E6F3]/60 px-3 py-1.5 text-[#375D87] ring-1 ring-[#6CA0DC]"
+            >
               <Compass className="h-4 w-4 text-[#6CA0DC]" />
               <span className="font-medium">Vision-led growth</span>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Background & Vision */}
           <motion.div variants={itemVariants} className="mt-6 space-y-4 text-base leading-relaxed">
             <p className="text-[#375D87]">{background}</p>
-            <motion.div whileHover={{ y: -2 }} className="rounded-lg bg-[#D8E6F3]/40 p-4 ring-1 ring-[#6CA0DC]">
+            <motion.div 
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.2 }}
+              className="rounded-lg bg-[#D8E6F3]/40 p-4 ring-1 ring-[#6CA0DC]"
+            >
               <div className="mb-2 inline-flex items-center gap-2">
                 <Flag className="h-4 w-4 text-[#6CA0DC]" />
                 <span className="text-sm font-semibold tracking-wide text-[#375D87]">Vision for the company</span>
@@ -163,17 +203,21 @@ export default function ManagingDirectorSection({
                 {items.map((item, idx) => (
                   <motion.li
                     key={idx}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    viewport={{ once: true }}
+                    transition={{ 
+                      delay: idx * 0.08,
+                      duration: 0.3,
+                      ease: "easeOut"
+                    }}
+                    viewport={{ once: true, margin: "-20px" }}
                     whileHover={{ scale: 1.02 }}
                     className="flex items-start gap-2 rounded-md bg-[#D8E6F3]/40 px-3 py-2 text-sm text-[#375D87] ring-1 ring-[#6CA0DC]"
                   >
                     <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-sm bg-[#6CA0DC] text-white">
                       ✓
                     </span>
-                                      <div className="flex flex-col">
+                    <div className="flex flex-col">
                       <span className="font-medium leading-snug text-[#375D87]">{item.label}</span>
                       {item.year && <span className="text-xs text-[#6CA0DC]">Year: {item.year}</span>}
                     </div>
@@ -185,7 +229,11 @@ export default function ManagingDirectorSection({
 
           {/* YouTube Video */}
           <motion.div variants={itemVariants} className="mt-6 w-full sm:w-10/12 md:w-9/12 lg:w-8/12">
-            <div className="relative aspect-video w-full overflow-hidden rounded-lg ring-1 ring-[#6CA0DC]">
+            <motion.div 
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
+              className="relative aspect-video w-full overflow-hidden rounded-lg ring-1 ring-[#6CA0DC]"
+            >
               <iframe
                 src="https://www.youtube.com/embed/JxiY-aG0e_c"
                 title="YouTube video"
@@ -193,20 +241,24 @@ export default function ManagingDirectorSection({
                 allowFullScreen
                 className="absolute inset-0 h-full w-full"
               />
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Quote */}
           {quote && (
             <motion.figure variants={itemVariants} className="mt-8">
-              <motion.blockquote whileHover={{ scale: 1.01 }} className="relative rounded-lg bg-[#D8E6F3]/40 px-5 py-4 text-base italic text-[#375D87] ring-1 ring-[#6CA0DC]">
+              <motion.blockquote 
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.2 }}
+                className="relative rounded-lg bg-[#D8E6F3]/40 px-5 py-4 text-base italic text-[#375D87] ring-1 ring-[#6CA0DC]"
+              >
                 <Quote className="absolute -left-2 -top-2 h-5 w-5 text-[#6CA0DC]" />
                 "{quote}"
               </motion.blockquote>
               {quoteAttribution && <figcaption className="mt-2 pl-6 text-sm text-[#6CA0DC]">— {quoteAttribution}</figcaption>}
             </motion.figure>
           )}
-        </motion.div>
+        </div>
       </div>
     </motion.section>
   )

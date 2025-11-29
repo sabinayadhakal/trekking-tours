@@ -61,8 +61,16 @@ const FullScreenBackgroundHero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Hide scroll prompt after 5 seconds or on scroll
+  // Hide scroll prompt after 5 seconds or on scroll - DESKTOP ONLY
   useEffect(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    
+    // Only run this effect for desktop
+    if (isMobile) {
+      setShowScrollPrompt(false);
+      return;
+    }
+
     const timer = setTimeout(() => {
       setShowScrollPrompt(false);
     }, 5000);
@@ -155,21 +163,21 @@ const FullScreenBackgroundHero = () => {
           </div>
         </div>
 
-        {/* Scroll indicator - Desktop */}
-<motion.div
-  animate={{ y: [0, 10, 0] }}
-  transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-  className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center text-[#e0f0f5]/80 z-30"
->
-  <span className="text-lg mb-3 font-medium">Scroll to explore</span>
-  <div className="w-10 h-18 border-2 border-[#d0e6f0]/50 rounded-full flex justify-center p-1">
-    <motion.div
-      animate={{ y: [0, 10, 0] }}
-      transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-      className="w-2 h-2 bg-[#d0e6f0] rounded-full"
-    />
-  </div>
-</motion.div>
+        {/* Scroll indicator - Desktop Only (Always visible on desktop) */}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center text-[#e0f0f5]/80 z-30"
+        >
+          <span className="text-lg mb-3 font-medium">Scroll to explore</span>
+          <div className="w-10 h-18 border-2 border-[#d0e6f0]/50 rounded-full flex justify-center p-1">
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+              className="w-2 h-2 bg-[#d0e6f0] rounded-full"
+            />
+          </div>
+        </motion.div>
 
         {/* Mobile content - Different for small and larger phones */}
         <div className="absolute inset-0 z-20 md:hidden flex flex-col justify-center items-center text-center px-6">
@@ -217,46 +225,8 @@ const FullScreenBackgroundHero = () => {
           </div>
         </div>
 
-        {/* Scroll More to Explore Animation - Mobile Only */}
-        <AnimatePresence>
-          {showScrollPrompt && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 md:hidden z-30 flex flex-col items-center"
-            >
-              <motion.div
-                animate={{ 
-                  y: [0, 8, 0],
-                  opacity: [0.7, 1, 0.7]
-                }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity, 
-                  repeatType: "loop",
-                  ease: "easeInOut"
-                }}
-                className="flex flex-col items-center text-[#e0f0f5]"
-              >
-                <span className="text-xs font-medium mb-2 tracking-wide">SCROLL MORE TO EXPLORE</span>
-                <div className="w-5 h-8 border border-[#e0f0f5]/70 rounded-full flex justify-center">
-                  <motion.div
-                    animate={{ y: [0, 12, 0] }}
-                    transition={{ 
-                      duration: 2, 
-                      repeat: Infinity, 
-                      repeatType: "loop",
-                      ease: "easeInOut"
-                    }}
-                    className="w-1 h-1 bg-[#e0f0f5] rounded-full mt-2"
-                  />
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Scroll More to Explore Animation - REMOVED FOR MOBILE */}
+        {/* No mobile scroll prompt exists anymore */}
       </section>
     </>
   );
