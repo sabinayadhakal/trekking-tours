@@ -7,7 +7,7 @@ import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
-// Mock day hiking tours data
+
 const DAY_HIKING_TOURS: Tour[] = 
   [
   {
@@ -272,6 +272,9 @@ export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Add the hero image path here for day hiking
+  const heroImage = "/images/day-hiking-hero.jpg"; // Change this to your desired image path
+
   // Load day hiking tours
   useEffect(() => {
     const loadTours = async () => {
@@ -308,9 +311,11 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen">
+      {/* Updated Hero section with image for day hiking */}
       <Hero 
         title="Nepal Day Hiking Adventures"
         description="Experience the beauty of the Kathmandu Valley with our curated day hiking tours. Discover traditional villages, sacred sites, and breathtaking Himalayan views just hours from the city."
+        backgroundImage={heroImage} // Add this line
       />
       
       <section className="py-12 bg-muted/20">
@@ -328,7 +333,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Additional sections can be added here */}
+      {/* Additional sections remain the same */}
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Why Choose Our Day Hikes?</h2>

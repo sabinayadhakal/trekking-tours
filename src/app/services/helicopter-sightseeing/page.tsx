@@ -7,7 +7,7 @@ import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
-// Mock helicopter tours data
+// Mock helicopter tours data (your existing HELICOPTER_TOURS array remains the same)
 const HELICOPTER_TOURS: Tour[] = [
   {
     id: "1",
@@ -133,11 +133,15 @@ const HELICOPTER_TOURS: Tour[] = [
   
 ];
 
+
 export default function HelicopterSightseeingPage() {
   const [tours, setTours] = useState<Tour[]>([]);
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  // Add the hero image path here for helicopter tours
+  const heroImage = "/images/helicopter-tours-hero.jpg"; // Change this to your desired image path
 
   // Load helicopter tours
   useEffect(() => {
@@ -175,9 +179,11 @@ export default function HelicopterSightseeingPage() {
 
   return (
     <main className="min-h-screen">
+      {/* Updated Hero section with image for helicopter tours */}
       <Hero 
         title="Nepal Helicopter Sightseeing Tours"
         description="Experience the Himalayas from above with our exclusive helicopter tours. Witness breathtaking aerial views of Everest, Annapurna, and Langtang regions without the strenuous trekking. A once-in-a-lifetime adventure awaits."
+        backgroundImage={heroImage} // Add this line
       />
       
       <section className="py-12 bg-muted/20">
@@ -230,8 +236,6 @@ export default function HelicopterSightseeingPage() {
           </div>
         </div>
       </section>
-
-   
 
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 text-center">

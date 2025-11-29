@@ -9,7 +9,7 @@ export default function AboutPage() {
   const managingDirectorData = {
     name: "Shiva Prasad Dhakal",
     title: "Managing Director & Founder",
-    headshotSrc: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/0be1ec1c-c0d9-4e55-b25d-dd0e7300017e/generated_images/professional-corporate-headshot-of-a-con-3d80c316-20250823023854.jpg",
+    headshotSrc: "/images/managing-director.jpg",
     headshotAlt: "Shiva Prasad Dhakal, Managing Director of Himkala Adventure",
     background: "Starting his career as a porter, Shiva Prasad Dhakal has grown into a respected leader in Nepal’s tourism industry. Today, as Managing Director, he guides Himkala Adventure with a commitment to offering authentic, eco-friendly trekking experiences that honor Nepal’s natural beauty and rich cultural heritage.",
     vision: "Committed to making adventure travel available to all, while safeguarding the landscapes and cultural traditions that make each journey meaningful. Our focus is on responsible travel that creates value for both visitors and local communities.",
@@ -100,7 +100,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
       <AboutHero
-        imageSrc="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/0be1ec1c-c0d9-4e55-b25d-dd0e7300017e/generated_images/professional-outdoor-adventure-landscape-689f7a08-20250823023843.jpg"
+        imageSrc="/images/about-us-hero.png"
         imageAlt="Mountain landscape with adventurers"
         title="Get to Know Us"
         description="As trusted Nepal trekking and expedition experts, we offer professional advice and comprehensive planning for adventure travel. Our team’s deep field experience ensures every trek and expedition is safe, well-organized, and tailored to your goals."

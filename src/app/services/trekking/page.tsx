@@ -7,7 +7,7 @@ import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
-// Sample tours data
+// Sample tours data (your existing TOURS array remains the same)
 const TOURS: Tour[] = [
 {
 id: "1",
@@ -873,10 +873,14 @@ entryRequirements: ["Valid Nepal visa"]
 }
 ]
 
+
 export default function HomePage() {
   const [tours] = useState<Tour[]>(TOURS);
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Add the hero image path here
+  const heroImage = "/images/trekking-hero.jpg"; // Change this to your desired image path
 
   const handleTourSelect = (tour: Tour) => {
     setSelectedTour(tour);
@@ -885,9 +889,11 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen">
+      {/* Updated Hero section with image */}
       <Hero 
         title="Nepal Trekking Adventures"
         description="Experience the ultimate Himalayan adventure with our comprehensive trekking options. From gentle cultural walks to challenging high-altitude treks and peak climbing expeditions, we offer guided experiences for every level of adventurer in Nepal's most spectacular mountain regions."
+        backgroundImage={heroImage} // Add this line
       />
       
       <section className="py-12 bg-muted/20">
@@ -905,7 +911,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Additional sections can be added here */}
+      {/* Additional sections remain the same */}
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Trekking Regions of Nepal</h2>

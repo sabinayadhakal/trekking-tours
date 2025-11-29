@@ -294,6 +294,9 @@ export default function PeakClimbingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Add the hero image path here for peak climbing
+  const heroImage = "/images/peak-climbing-hero.jpg"; // Change this to your desired image path
+
   // Load peak climbing tours
   useEffect(() => {
     const loadTours = async () => {
@@ -330,9 +333,11 @@ export default function PeakClimbingPage() {
 
   return (
     <main className="min-h-screen">
+      {/* Updated Hero section with image for peak climbing */}
       <Hero 
         title="Nepal Peak Climbing Expeditions"
         description="Challenge yourself with Nepal's iconic peaks. From moderate trekking peaks to high-altitude summits, experience adventure, culture, and the breathtaking Himalayas with expert guides."
+        backgroundImage={heroImage} // Add this line
       />
       
       <section className="py-12 bg-muted/20">

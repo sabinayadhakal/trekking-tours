@@ -163,7 +163,7 @@ Himkala Adventure: Nepal Trekking Experts | Tibet & Bhutan Tour Packages | Affor
               className="rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&h=600&q=80"
+                src="/images/year-selector-image.jpg"
                 alt="Professional certified guides leading Nepal trekking and Nepal tours"
                 width={500}
                 height={400}

@@ -7,7 +7,6 @@ import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
-// Mock jungle safari tours data
 const JUNGLE_SAFARI_TOURS: Tour[] = [
   {
   "id": "1",
@@ -54,6 +53,9 @@ export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Add the hero image path here for jungle safari
+  const heroImage = "/images/jungle-safari-hero.jpg"; // Change this to your desired image path
+
   // Load jungle safari tours
   useEffect(() => {
     const loadTours = async () => {
@@ -90,9 +92,11 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen">
+      {/* Updated Hero section with image for jungle safari */}
       <Hero 
         title="Chitwan Jungle Safari Experiences"
         description="Discover the wild heart of Nepal at Chitwan National Park, a UNESCO World Heritage Site. Encounter rare wildlife including one-horned rhinoceros, Bengal tigers, and over 500 bird species in their natural habitat."
+        backgroundImage={heroImage} // Add this line
       />
       
       <section className="py-12 bg-muted/20">
@@ -145,8 +149,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-
 
       {selectedTour && (
         <TourDetailModal

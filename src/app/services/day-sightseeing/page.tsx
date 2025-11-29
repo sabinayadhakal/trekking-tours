@@ -190,6 +190,9 @@ export default function DaySightseeingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Add the hero image path here for cultural tours
+  const heroImage = "/images/day-sightseeing-hero.jpg"; // Change this to your desired image path
+
   // Load day sightseeing tours
   useEffect(() => {
     const loadTours = async () => {
@@ -226,9 +229,11 @@ export default function DaySightseeingPage() {
 
   return (
     <main className="min-h-screen">
+      {/* Updated Hero section with image for cultural tours */}
       <Hero 
         title="Kathmandu Cultural Tours"
         description="Discover the rich heritage of the Kathmandu Valley with our curated cultural tours. Explore ancient temples, medieval palaces, and vibrant local traditions with expert guides."
+        backgroundImage={heroImage} // Add this line
       />
       
       <section className="py-12 bg-muted/20">
@@ -246,7 +251,7 @@ export default function DaySightseeingPage() {
         </div>
       </section>
 
-      {/* Additional sections can be added here */}
+      {/* Additional sections remain the same */}
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Why Choose Our Cultural Tours?</h2>

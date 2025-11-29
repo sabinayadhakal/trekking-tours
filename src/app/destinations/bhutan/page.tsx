@@ -431,7 +431,7 @@ export default function BhutanPage() {
       <Hero
         title="Discover the Kingdom of Bhutan"
         description="Immerse yourself in Bhutan's breathtaking landscapes, vibrant culture, and spiritual heritage."
-        backgroundImage="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+        backgroundImage="/images/bhutan-hero.png"
       />
 
       {/* Trips Section */}

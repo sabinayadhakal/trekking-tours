@@ -16,7 +16,7 @@ const destinations: Destination[] = [
   {
     "title": "Nepal Trekking Tours & UNESCO World Heritage Excursions",
     "description": "Explore Nepal. An independent nation between China and India with 8 UNESCO World Heritage Sites, including Lumbini, the birthplace of Buddha. Discover Newari architecture, diverse ethnic cultures, and tailor-made trekking and cultural tour experiences.",
-    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+    "image": "/images/tab-controlled-nepal.jpg",
     "category": "Nepal Trekking & Tours",
     "highlights": ["8 UNESCO World Heritage Sites", "Birthplace of Buddha", "Rich Newari Architecture", "Diverse Ethnic Cultures", "Expert-Led Trekking Adventures", "Custom Cultural Experiences"],
     "link": "/destinations/nepal"

@@ -86,7 +86,7 @@ Trekking & Tour Packages Crafted with Expertise Since 2015          </h2>
             <div className="absolute inset-0 -z-20 bg-gradient-to-t from-[#2e4f5c]/90 via-[#3d6678]/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="card-shine" />
             <img
-              src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="/images/bento-grid-safety.jpg"
               alt="Safety First"
               className="absolute inset-0 -z-30 size-full rounded-2xl object-cover transition-all duration-700 group-hover:scale-110"
             />

@@ -12,7 +12,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({
   title,
   description,
-  backgroundImage = "/images/hero-bhutan.jpg",
+  backgroundImage = "/images/trekking-hero.jpg",
 }) => {
   return (
     <div className="w-full">

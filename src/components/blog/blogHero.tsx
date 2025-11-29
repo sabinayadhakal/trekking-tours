@@ -8,7 +8,7 @@ const BlogHero = () => {
     <section className="relative w-full h-[55vh] sm:h-[70vh] md:h-[60vh]">
       {/* Background image */}
       <img
-        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2070&q=80"
+        src="/images/blog-hero.jpg"
         alt="Blogs and Articles"
         className="absolute inset-0 w-full h-full object-cover"
       />

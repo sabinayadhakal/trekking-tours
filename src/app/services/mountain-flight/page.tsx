@@ -7,7 +7,6 @@ import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
-// Mock mountain flight tours data
 const MOUNTAIN_FLIGHT_TOURS: Tour[] = [
   {
     id: "1",
@@ -158,6 +157,9 @@ export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Add the hero image path here for mountain flights
+  const heroImage = "/images/mountain-flight-hero.jpg"; // Change this to your desired image path
+
   // Load mountain flight tours
   useEffect(() => {
     const loadTours = async () => {
@@ -194,9 +196,11 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen">
+      {/* Updated Hero section with image for mountain flights */}
       <Hero 
         title="Everest Mountain Flight Experience"
         description="Witness the majesty of Mount Everest and the Himalayan range from the air. This breathtaking one-hour flight offers unparalleled views of the world's highest peak without the strenuous trekking. A once-in-a-lifetime experience that will stay with you forever."
+        backgroundImage={heroImage} // Add this line
       />
       
       <section className="py-12 bg-muted/20">
@@ -249,8 +253,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-     
 
       {selectedTour && (
         <TourDetailModal

@@ -443,7 +443,7 @@ export default function NepalPage() {
       <Hero
         title="Explore Nepal's Incredible Landscapes, Heritage and History"
         description="From high Himalayan treks to exotic wildlife safaris, discover the best experiences Nepal has to offer."
-        backgroundImage="/images/hero-nepal.jpg"
+        backgroundImage="/images/nepal-hero.jpg"
       />
 
       {/* Trips Section */}

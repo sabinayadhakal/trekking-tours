@@ -27,7 +27,7 @@ const DATA: DataItem[] = [
     description:
       "Multi-day mountain treks through pristine Himalayan trails.",
     image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0",
+      "/images/numbered-cards-trekking.jpg",
     duration: "7-14 days",
     difficulty: "Moderate to Challenging",
     rating: 4.9,

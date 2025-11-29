@@ -269,6 +269,9 @@ export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Add the hero image path here for package tours
+  const heroImage = "/images/package-tours-hero.jpg"; // Change this to your desired image path
+
   // Load package sightseeing tours
   useEffect(() => {
     const loadTours = async () => {
@@ -305,9 +308,11 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen">
+      {/* Updated Hero section with image for package tours */}
       <Hero 
         title="Nepal Package Sightseeing Tours"
         description="Discover the diverse beauty of Nepal with our carefully curated package tours. From cultural heritage sites and spiritual journeys to family adventures and photography expeditions, we offer comprehensive experiences that showcase the best of Nepal's treasures."
+        backgroundImage={heroImage} // Add this line
       />
       
       <section className="py-12 bg-muted/20">
@@ -360,8 +365,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-    
 
       {selectedTour && (
         <TourDetailModal
