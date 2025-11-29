@@ -3,7 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import { Award, Clock, Quote, Compass, Flag, Mountain, Trees, Map } from "lucide-react"
-import { motion, Variants } from "framer-motion"
+import { motion } from "framer-motion"
 
 export type ManagingDirectorSectionProps = {
   className?: string
@@ -33,54 +33,6 @@ function normalizeAchievements(
   return []
 }
 
-// Fixed animation variants with proper typing
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1, 
-    transition: { 
-      staggerChildren: 0.05,
-      delayChildren: 0.1 
-    }
-  }
-}
-
-const itemVariants: Variants = {
-  hidden: { y: 15, opacity: 0 },
-  visible: { 
-    y: 0, 
-    opacity: 1,
-    transition: {
-      duration: 0.4,
-      ease: "easeOut"
-    }
-  }
-}
-
-const imageVariants: Variants = {
-  hidden: { scale: 0.95, opacity: 0 },
-  visible: { 
-    scale: 1, 
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  }
-}
-
-const quickItemVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: { 
-    opacity: 1, 
-    scale: 1,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut"
-    }
-  }
-}
-
 export default function ManagingDirectorSection({
   className,
   style,
@@ -101,10 +53,10 @@ export default function ManagingDirectorSection({
 
   return (
     <motion.section
-      initial="hidden"
-      whileInView="visible"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-30px" }}
-      variants={containerVariants}
+      transition={{ staggerChildren: 0.05, delayChildren: 0.1 }}
       aria-labelledby="managing-director-heading"
       className={[
         "relative w-full overflow-hidden rounded-lg border border-[#6CA0DC]",
@@ -125,7 +77,10 @@ export default function ManagingDirectorSection({
       <div className="grid items-stretch gap-8 p-6 sm:p-8 md:gap-10 md:grid-cols-2">
         {/* Image column */}
         <motion.div
-          variants={imageVariants}
+          initial={{ scale: 0.95, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className={imageFirst ? "order-1" : "order-2 md:order-2"}
         >
           <motion.div 
@@ -150,17 +105,41 @@ export default function ManagingDirectorSection({
 
         {/* Content column */}
         <div className={imageFirst ? "order-2" : "order-1 md:order-1 relative flex flex-col justify-center"}>
-          <motion.div variants={itemVariants} className="mb-4 inline-flex items-center gap-2">
+          <motion.div 
+            initial={{ y: 15, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="mb-4 inline-flex items-center gap-2"
+          >
             <span className="inline-flex h-2 w-2 rounded-full bg-[#375D87]" />
             <span className="text-sm font-medium uppercase tracking-wide text-[#375D87]">{title}</span>
           </motion.div>
 
-          <motion.h2 variants={itemVariants} id="managing-director-heading" className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#375D87]">{name}</motion.h2>
+          <motion.h2 
+            initial={{ y: 15, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            id="managing-director-heading" 
+            className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#375D87]"
+          >
+            {name}
+          </motion.h2>
 
           {/* Quick facts */}
-          <motion.div variants={itemVariants} className="mt-4 flex flex-wrap items-center gap-3 text-sm">
+          <motion.div 
+            initial={{ y: 15, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="mt-4 flex flex-wrap items-center gap-3 text-sm"
+          >
             <motion.div 
-              variants={quickItemVariants}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               className="inline-flex items-center gap-2 rounded-full bg-[#D8E6F3]/60 px-3 py-1.5 text-[#375D87] ring-1 ring-[#6CA0DC]"
             >
               <Clock className="h-4 w-4 text-[#6CA0DC]" />
@@ -168,7 +147,10 @@ export default function ManagingDirectorSection({
               <span className="text-[#6CA0DC]">in adventure tourism</span>
             </motion.div>
             <motion.div 
-              variants={quickItemVariants}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               className="inline-flex items-center gap-2 rounded-full bg-[#D8E6F3]/60 px-3 py-1.5 text-[#375D87] ring-1 ring-[#6CA0DC]"
             >
               <Compass className="h-4 w-4 text-[#6CA0DC]" />
@@ -177,7 +159,13 @@ export default function ManagingDirectorSection({
           </motion.div>
 
           {/* Background & Vision */}
-          <motion.div variants={itemVariants} className="mt-6 space-y-4 text-base leading-relaxed">
+          <motion.div 
+            initial={{ y: 15, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="mt-6 space-y-4 text-base leading-relaxed"
+          >
             <p className="text-[#375D87]">{background}</p>
             <motion.div 
               whileHover={{ y: -2 }}
@@ -194,7 +182,13 @@ export default function ManagingDirectorSection({
 
           {/* Achievements */}
           {items.length > 0 && (
-            <motion.div variants={itemVariants} className="mt-6">
+            <motion.div 
+              initial={{ y: 15, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="mt-6"
+            >
               <div className="mb-3 flex items-center gap-2">
                 <Award className="h-5 w-5 text-[#6CA0DC]" />
                 <h3 className="text-base font-semibold tracking-wide text-[#375D87]">Key achievements</h3>
@@ -228,7 +222,13 @@ export default function ManagingDirectorSection({
           )}
 
           {/* YouTube Video */}
-          <motion.div variants={itemVariants} className="mt-6 w-full sm:w-10/12 md:w-9/12 lg:w-8/12">
+          <motion.div 
+            initial={{ y: 15, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="mt-6 w-full sm:w-10/12 md:w-9/12 lg:w-8/12"
+          >
             <motion.div 
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.2 }}
@@ -246,7 +246,13 @@ export default function ManagingDirectorSection({
 
           {/* Quote */}
           {quote && (
-            <motion.figure variants={itemVariants} className="mt-8">
+            <motion.figure 
+              initial={{ y: 15, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="mt-8"
+            >
               <motion.blockquote 
                 whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.2 }}
