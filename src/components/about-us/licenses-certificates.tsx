@@ -25,21 +25,6 @@ export type LicensesCertificationsProps = {
   items: LicenseCertification[]
 }
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
-}
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1 }
-}
-
-const imageVariants = {
-  hidden: { scale: 0.9, opacity: 0 },
-  visible: { scale: 1, opacity: 1 }
-}
-
 export default function LicensesCertifications({
   className,
   style,
@@ -81,10 +66,10 @@ export default function LicensesCertifications({
   return (
     <>
       <motion.section
-        initial="hidden"
-        whileInView="visible"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-50px" }}
-        variants={containerVariants}
+        transition={{ staggerChildren: 0.1 }}
         aria-labelledby="licenses-certifications-heading"
         className={[
           "relative w-full overflow-hidden rounded-lg border border-[#6CA0DC]",
@@ -105,8 +90,18 @@ export default function LicensesCertifications({
 
         <div className="p-6 sm:p-8">
           {/* Header */}
-          <motion.div variants={itemVariants} className="mb-8 text-center">
-            <motion.div variants={itemVariants} className="mb-4 inline-flex items-center gap-2">
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="mb-8 text-center"
+          >
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              className="mb-4 inline-flex items-center gap-2"
+            >
               <span className="inline-flex h-2 w-2 rounded-full bg-[#375D87]" aria-hidden="true" />
               <span className="text-sm font-medium uppercase tracking-wide text-[#375D87]">
                 Professional Credentials
@@ -114,7 +109,9 @@ export default function LicensesCertifications({
             </motion.div>
 
             <motion.h2
-              variants={itemVariants}
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
               id="licenses-certifications-heading"
               className="font-heading text-3xl font-bold tracking-tight text-[#375D87] sm:text-4xl"
             >
@@ -122,25 +119,35 @@ export default function LicensesCertifications({
             </motion.h2>
 
             {subtitle && (
-              <motion.p variants={itemVariants} className="mt-4 max-w-2xl mx-auto text-lg text-[#375D87]">
+              <motion.p 
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                className="mt-4 max-w-2xl mx-auto text-lg text-[#375D87]"
+              >
                 {subtitle}
               </motion.p>
             )}
           </motion.div>
 
           {/* Certifications Grid */}
-          <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((item, index) => (
               <motion.div
                 key={index}
-                variants={itemVariants}
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
                 className="flex flex-col h-full rounded-lg bg-white overflow-hidden border border-[#6CA0DC]/20 shadow-md transition-all hover:shadow-lg"
               >
                 {/* Image section - now clickable */}
                 {item.imageSrc ? (
                   <motion.button
-                    variants={imageVariants}
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
                     onClick={() => openModal(item)}
                     className="relative h-48 w-full overflow-hidden bg-[#D8E6F3] cursor-pointer group focus:outline-none focus:ring-2 focus:ring-[#6CA0DC] focus:ring-offset-2"
                   >
@@ -213,11 +220,16 @@ export default function LicensesCertifications({
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
 
           {/* Empty state */}
           {items.length === 0 && (
-            <motion.div variants={itemVariants} className="text-center py-12">
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-center py-12"
+            >
               <FileText className="mx-auto h-12 w-12 text-[#6CA0DC]/60 mb-4" />
               <h3 className="text-lg font-medium text-[#375D87]">No certifications to display</h3>
               <p className="mt-2 text-[#375D87]">Our certifications will be listed here soon.</p>
@@ -229,15 +241,15 @@ export default function LicensesCertifications({
       {/* Modal for enlarged image */}
       {selectedImage && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
           onClick={closeModal}
         >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", damping: 25 }}
             className="relative bg-white rounded-lg max-w-4xl max-h-[90vh] w-full overflow-hidden"
             onClick={(e) => e.stopPropagation()}
