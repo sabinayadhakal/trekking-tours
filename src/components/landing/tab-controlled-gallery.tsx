@@ -24,7 +24,7 @@ const destinations: Destination[] = [
   {
     "title": "Bhutan Cultural Tours & Sustainable Travel Packages | Explore the Last Shangri-La",
     "description": "Explore Bhutan, the carbon-negative kingdom of the Eastern Himalayas. Experience Buddhist culture, Dzong architecture, traditional festivals, and tailor-made Bhutan cultural tours.",
-    "image": "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+    "image": "/images/tab-controlled-bhutan.jpg",
     "category": "Bhutan Tours & Cultural Experiences",
     "highlights": ["Carbon-Negative Country", "Ancient Buddhist Traditions", "Dzong Architecture", "Traditional Festivals", "Sustainable Tourism", "Gross National Happiness Philosophy"],
     "link": "/destinations/bhutan"
@@ -32,7 +32,7 @@ const destinations: Destination[] = [
 {
     "title": "Tibet Adventure Travel & Buddhist Pilgrimage Tours | Explore the Roof of the World",
     "description": "Explore Tibet, the Roof of the World, with its rich cultural heritage. Tour the UNESCO Potala Palace, discover sacred Mount Kailash, and experience Tibetan Buddhist traditions across breathtaking high-altitude regions.",
-    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0",
+    "image": "/images/tab-controlled-tibet.jpg",
     "category": "Tibet Adventure & Pilgrimage Tours",
     "highlights": ["Potala Palace UNESCO Site", "Sacred Mount Kailash", "Tibetan Buddhist Traditions", "High-Altitude Ecosystems", "Buddhist Pilgrimage Routes", "Himalayan Landscapes"],
     "link": "/destinations/tibet"

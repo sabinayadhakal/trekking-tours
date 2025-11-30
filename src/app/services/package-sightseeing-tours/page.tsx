@@ -270,7 +270,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   // Add the hero image path here for package tours
-  const heroImage = "/images/package-tours-hero.jpg"; // Change this to your desired image path
+  const heroImage = "/images/numbered-cards-package.jpg"; // Change this to your desired image path
 
   // Load package sightseeing tours
   useEffect(() => {

@@ -41,7 +41,7 @@ const DATA: DataItem[] = [
     description:
       "Explore old monasteries, traditional villages and customs.",
     image:
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0",
+      "/images/numbered-cards-tours.jpg",
     duration: "5-10 days",
     difficulty: "Easy to Moderate",
     rating: 4.8,
@@ -55,7 +55,7 @@ const DATA: DataItem[] = [
     description:
       "Pre-arranged travel plan in one single priced trip.",
     image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0",
+      "/images/numbered-cards-package.jpg",
     duration: "Flexible",
     difficulty: "Customizable",
     rating: 5.0,

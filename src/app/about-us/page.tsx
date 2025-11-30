@@ -32,7 +32,7 @@ export default function AboutPage() {
       title: "Professional Certified Trekking Guide and IT facilitator",
       years: 6,
       bio: "Sabinaya has a strong background in high-altitude trekking and also manages various IT tasks within the company. His calm approach, safety awareness, and knowledge of the region make him a dependable part of our team.",
-      photoUrl: "/images/sabinaya.jpg",
+      photoUrl: "/images/sabinaya.jpeg",
       alt: "Sabinaya Dhakal, Trekking Guide and IT facilitator"
     },
     
@@ -59,42 +59,41 @@ export default function AboutPage() {
       // No image - will show default document icon
     },
     {
-      title: "Trekking Guide Certification",
+      title: "Tourist Guide Certification",
       issuingOrganization: "Nepal Academy of Tourism & Hotel Management",
-      issueDate: "January 2019",
-      credentialId: "TGC-NATHM-2019-0451",
-      description: "Official certification for professional trekking guides in Nepal",
-      imageSrc: "/images/certifications/trekking-guide-certificate.jpg",
+      issueDate: "November 2005",
+      credentialId: "TG-01/36",
+      description: "Official certification for professional tourist guide in Nepal",
+      imageSrc: "/images/tourist-guide-certificate.jpg",
       imageAlt: "Trekking Guide Certification"
     },
     {
-      title: "Advanced Mountaineering Course",
-      issuingOrganization: "Nepal Mountaineering Association",
-      issueDate: "November 2020",
-      expirationDate: "November 2025",
+      title: "Certicate of Trekking Agencies' Association of Nepal (TAAN)",
+      issuingOrganization: "Trekking Agencies' Association of Nepal (TAAN)",
+     
       credentialId: "AMC-NMA-2020-1289",
-      description: "Advanced technical skills for high-altitude mountaineering expeditions",
-      // No image - will show default document icon
+     description: "Certificate of TAAN declaring Himkala Adventure Pvt. Ltd. as General Member",
+        imageSrc: "/images/taan-certificate.jpg",
+     
     },
     {
-      title: "Wilderness Emergency Medical Technician",
-      issuingOrganization: "Wilderness Medical Associates",
-      issueDate: "August 2021",
-      expirationDate: "August 2024",
-      credentialId: "WEMT-2021-7821",
-      credentialUrl: "https://example.com/verify/7821",
-      description: "Comprehensive medical training for wilderness environments",
-      imageSrc: "/images/certifications/wilderness-emt.jpg",
-      imageAlt: "Wilderness EMT Certification"
+      title: "Certicates of excellence by TripAdvisor",
+      issuingOrganization: "Trekking Agencies' Association of Nepal (TAAN)",
+     
+     description: "Certificate of TAAN declaring Himkala Adventure Pvt. Ltd. as General Member",
+        imageSrc: "/images/tripadvisor-awards.png",
+     
     },
     {
-      title: "Sustainable Tourism Practices",
-      issuingOrganization: "Global Sustainable Tourism Council",
-      issueDate: "February 2023",
-      credentialId: "GSTC-STP-2023-3356",
-      description: "Certification in environmentally and culturally responsible tourism operations",
-      // No image - will show default document icon
-    }
+      title: "Foreign Exchange Authorization Letter",
+      issuingOrganization: "Nepal Rastra Bank",
+     
+      credentialId: "",
+     description: "Official permission for making payments in foreign currency",
+        imageSrc: "/images/nrb.jpg",
+     
+    },
+    
   ]
 
   return (

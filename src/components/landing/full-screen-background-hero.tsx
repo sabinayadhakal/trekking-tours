@@ -26,6 +26,7 @@ const heroData: HeroData = {
   Tagline: "SnowArt since 2015",
   Excerpt: "Adventure awaits in the Himalayas",
   DesktopBackgroundImage: [
+    { url: "/images/landing-hero-0.jpg" },
     { url: "/images/landing-hero-1.jpg" },
     { url: "/images/landing-hero-2.jpg" },
      { url: "/images/landing-hero-3.jpg" },
