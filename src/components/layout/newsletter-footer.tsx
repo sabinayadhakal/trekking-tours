@@ -312,8 +312,8 @@ export const NewsletterFooter = () => {
                   <div className="bg-cyan-500/20 p-2 rounded-full">
                     <Mail className="h-4 w-4 md:h-5 md:w-5 text-cyan-300" />
                   </div>
-                  <a href="mailto:himkalaadventure@gmail.com" className="hover:text-cyan-300 transition-colors break-all">
-                    himkalaadventure@gmail.com
+                  <a href="mailto:info@himkalaadventure.com" className="hover:text-cyan-300 transition-colors break-all">
+                    info@himkalaadventure.com
                   </a>
                 </div>
                 

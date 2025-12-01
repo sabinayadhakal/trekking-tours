@@ -34,8 +34,8 @@ export default function ContactPage() {
           <div className="space-y-6">
             <div className="bg-white rounded-2xl p-6 shadow-lg border border-blue-200 flex flex-col gap-6">
               <h3 className="text-lg font-semibold text-forest-900">Contact Us</h3>
-              <a href="mailto:himkalaadventure@gmail.com" className="flex items-center gap-3 text-blue-700 hover:text-forest-800 transition-colors">
-                <Mail className="h-5 w-5" /> himkalaadventure@gmail.com
+              <a href="mailto:info@himkalaadventure.com" className="flex items-center gap-3 text-blue-700 hover:text-forest-800 transition-colors">
+                <Mail className="h-5 w-5" /> info@himkalaadventure.com
               </a>
               <a href="tel:+9779841376470" className="flex items-center gap-3 text-blue-700 hover:text-forest-800 transition-colors">
                 <Phone className="h-5 w-5" /> +977 9841376470

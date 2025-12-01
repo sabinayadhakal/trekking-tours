@@ -35,7 +35,7 @@
     ".next/types/**/*.ts",
     "src",
     ".next/types/app/services/day-sightseeing-tours/page.ts"
-  ],
+, "optimize-images.js"  ],
   "exclude": [
     "node_modules"
   ]
