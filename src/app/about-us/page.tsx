@@ -81,7 +81,7 @@ export default function AboutPage() {
       issuingOrganization: "Trekking Agencies' Association of Nepal (TAAN)",
      
      description: "Certificate of TAAN declaring Himkala Adventure Pvt. Ltd. as General Member",
-        imageSrc: "/images/tripadvisor-awards.png",
+        imageSrc: "/images/tripadvisor-awards.jpg",
      
     },
     {

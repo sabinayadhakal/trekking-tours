@@ -116,7 +116,7 @@ Trekking & Tour Packages Crafted with Expertise Since 2015          </h2>
             <div className="absolute inset-0 -z-20 bg-gradient-to-t from-[#2e4f5c]/90 via-[#3d6678]/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="card-shine" />
             <img
-              src="/images/tripadvisor-awards.png"
+              src="/images/tripadvisor-awards.jpg"
               alt="Award Winning Tours"
               className="absolute inset-0 -z-30 size-full rounded-2xl object-cover transition-all duration-700 group-hover:scale-110"
             />
