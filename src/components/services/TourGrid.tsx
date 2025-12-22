@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Star, Clock, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -13,11 +14,30 @@ interface ToursGridProps {
   className?: string
 }
 
-export default function ToursGrid({ tours, onTourSelect, className = "" }: ToursGridProps) {
+export default function ToursGrid({
+  tours,
+  onTourSelect,
+  className = ""
+}: ToursGridProps) {
   const router = useRouter()
 
-  const handleLearnMore = (tour: Tour) => onTourSelect?.(tour)
-  const handleContactBooking = () => router.push("/contact")
+  const handleLearnMore = (tour: Tour) => {
+    if (onTourSelect) onTourSelect(tour)
+  }
+
+  const handleContactBooking = (tour: Tour) => {
+    // Create WhatsApp message with tour details
+    const message = `Hello! I'm interested in booking the tour: "${tour.title}" for $${tour.price}. Please provide more information.`;
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // WhatsApp URL with phone number and message
+    const whatsappUrl = `https://wa.me/9779841376470?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+  }
 
   const TourCard = ({ tour }: { tour: Tour }) => (
     <Card className="group relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] bg-[#EAF2FF]">
@@ -77,7 +97,7 @@ export default function ToursGrid({ tours, onTourSelect, className = "" }: Tours
         <p className="text-[#5A91D1] text-sm sm:text-base line-clamp-3">{tour.excerpt}</p>
 
         <div className="flex flex-wrap gap-1">
-          {tour.tags.slice(0, 3).map(tag => (
+          {tour.tags.slice(0, 3).map((tag) => (
             <Badge key={tag} variant="secondary" className="text-[9px] sm:text-xs transform transition-transform duration-300 group-hover:scale-105 bg-[#A0C4FF] text-[#1F4880]">{tag}</Badge>
           ))}
         </div>
@@ -99,9 +119,9 @@ export default function ToursGrid({ tours, onTourSelect, className = "" }: Tours
           </Button>
           <Button
             className="flex-1 bg-[#3C6AA6] text-[#EAF2FF] hover:bg-[#1F4880] transform transition-transform duration-300 hover:scale-105 text-xs sm:text-sm py-2"
-            onClick={handleContactBooking}
+            onClick={() => handleContactBooking(tour)}
           >
-            Contact Us to Book Now
+            Book on WhatsApp
           </Button>
         </div>
       </CardContent>
@@ -116,7 +136,7 @@ export default function ToursGrid({ tours, onTourSelect, className = "" }: Tours
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {tours.map(tour => (
+        {tours.map((tour) => (
           <TourCard key={tour.id} tour={tour} />
         ))}
       </div>

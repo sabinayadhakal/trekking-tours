@@ -25,8 +25,18 @@ export default function ToursGrid({
     if (onTourSelect) onTourSelect(tour)
   }
 
-  const handleContactBooking = () => {
-    router.push("/contact")
+  const handleContactBooking = (tour: Tour) => {
+    // Create WhatsApp message with tour details
+    const message = `Hello! I'm interested in booking the tour: "${tour.title}" for $${tour.price}. Please provide more information.`;
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // WhatsApp URL with phone number and message
+    const whatsappUrl = `https://wa.me/9779841376470?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
   }
 
   const TourCard = ({ tour }: { tour: Tour }) => (
@@ -109,9 +119,9 @@ export default function ToursGrid({
           </Button>
           <Button
             className="flex-1 bg-[#3C6AA6] text-[#EAF2FF] hover:bg-[#1F4880] transform transition-transform duration-300 hover:scale-105 text-xs sm:text-sm py-2"
-            onClick={handleContactBooking}
+            onClick={() => handleContactBooking(tour)}
           >
-            Contact Us to Book Now
+            Book on WhatsApp
           </Button>
         </div>
       </CardContent>

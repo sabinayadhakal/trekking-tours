@@ -44,27 +44,28 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
     "equipment": [],
     "entryRequirements": []
   },
+  
   {
     "id": "2",
-    "title": "Pashupatinath – Bouddhanath – Patan Tour",
+    "title": "Kapan Dumba, Bouddhanath and Pashupatinath Day Tour",
     "location": "Kathmandu Valley, Nepal",
     "duration": "6 hours",
     "rating": 4.9,
     "reviewCount": 156,
     "price": 39,
-    "excerpt": "Cultural and spiritual exploration of three major heritage sites.",
-    "description": "Visit Nepal’s sacred Hindu and Buddhist landmarks followed by the cultural artistry of Patan’s royal squares.",
+    "excerpt": "Spiritual journey through sacred Buddhist and Hindu sites.",
+    "description": "Experience the tranquility of Kapan Dumba, the grandeur of Bouddhanath Stupa, and the spiritual significance of Pashupatinath Temple.",
     "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
     "images": [
       "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
       "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop"
     ],
-    "tags": ["UNESCO", "Cultural", "Half Day"],
-    "highlights": ["Pashupatinath", "Bouddhanath", "Patan Durbar Square"],
+    "tags": ["Spiritual", "Cultural", "Half Day"],
+    "highlights": ["Kapan Dumba Monastery", "Bouddhanath Stupa", "Pashupatinath Temple"],
     "includes": ["Guide", "Transportation"],
     "excludes": ["Meals", "Tips"],
     "itinerary": [
-      { "day": 1, "title": "Cultural Tour", "description": "Pickup, visit Pashupatinath, Bouddhanath, and Patan Durbar Square, then return." }
+      { "day": 1, "title": "Spiritual Day Tour", "description": "Pickup, visit Kapan Dumba Monastery, Bouddhanath Stupa, and Pashupatinath Temple, then return." }
     ],
     "maxGroupSize": 8,
     "included": ["Guide", "Private vehicle", "Entry fees"],
@@ -81,24 +82,24 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
   },
   {
     "id": "3",
-    "title": "Kathmandu Sightseeing Tour",
-    "location": "Kathmandu, Nepal",
+    "title": "Patan Durbar Square, Pashupatinath and Bouddhanath Day Tour",
+    "location": "Kathmandu Valley, Nepal",
     "duration": "1 day",
     "rating": 4.7,
     "reviewCount": 178,
     "price": 45,
-    "excerpt": "Full-day exploration of Kathmandu's major heritage sites.",
-    "description": "Discover the cultural, religious, and historical highlights of Kathmandu including key UNESCO World Heritage Sites.",
+    "excerpt": "Explore ancient royal squares and sacred religious sites.",
+    "description": "Discover the artistic heritage of Patan Durbar Square followed by the spiritual significance of Pashupatinath and Bouddhanath.",
     "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
     "images": [
       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
     ],
-    "tags": ["Full Day", "UNESCO", "Cultural"],
-    "highlights": ["Swayambhunath", "Patan", "Pashupatinath", "Durbar Square"],
+    "tags": ["Full Day", "UNESCO", "Cultural", "Religious"],
+    "highlights": ["Patan Durbar Square", "Pashupatinath Temple", "Bouddhanath Stupa"],
     "includes": ["Guide", "Transport"],
     "excludes": ["Meals", "Personal expenses"],
     "itinerary": [
-      { "day": 1, "title": "Kathmandu Full Day", "description": "Visit major UNESCO sites around the city." }
+      { "day": 1, "title": "Heritage & Spiritual Tour", "description": "Visit Patan Durbar Square, Pashupatinath Temple, and Bouddhanath Stupa." }
     ],
     "maxGroupSize": 10,
     "included": ["Guide", "Entry fees", "Private transportation"],
@@ -115,24 +116,24 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
   },
   {
     "id": "4",
-    "title": "Bungamati Khokana Patan Tour",
+    "title": "Patan Durbar Square, Bungamati, Khokana Day Tour",
     "location": "Kathmandu Valley, Nepal",
     "duration": "1 day",
     "rating": 4.9,
     "reviewCount": 94,
     "price": 55,
-    "excerpt": "Traditional Newari villages and heritage city exploration.",
-    "description": "Experience the charm of Bungamati and Khokana’s old villages before exploring Patan’s artistic heritage.",
+    "excerpt": "Traditional Newari village exploration and royal heritage.",
+    "description": "Experience the charm of traditional Newari villages Bungamati and Khokana before exploring the artistic heritage of Patan Durbar Square.",
     "image": "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?w=400&h=300&fit=crop",
     "images": [
       "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?w=800&h=600&fit=crop"
     ],
-    "tags": ["Cultural", "Village Tour", "Full Day"],
-    "highlights": ["Bungamati Village", "Khokana Village", "Patan Durbar Square"],
+    "tags": ["Cultural", "Village Tour", "Full Day", "Newari"],
+    "highlights": ["Patan Durbar Square", "Bungamati Village", "Khokana Village"],
     "includes": ["Guide", "Transport"],
     "excludes": ["Meals"],
     "itinerary": [
-      { "day": 1, "title": "Village and City Tour", "description": "Visit Bungamati, Khokana, and Patan." }
+      { "day": 1, "title": "Village and Heritage Tour", "description": "Visit Patan Durbar Square, Bungamati Village, and Khokana Village." }
     ],
     "maxGroupSize": 8,
     "included": ["Guide", "Entry fees", "Vehicle"],
@@ -149,24 +150,24 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
   },
   {
     "id": "5",
-    "title": "Changunarayan Bhaktapur Sanga Tour",
-    "location": "Bhaktapur, Nepal",
+    "title": "Kathmandu Durbar Square, Swayambhunath, Bouddhanath and Pashupatinath",
+    "location": "Kathmandu, Nepal",
     "duration": "1 day",
     "rating": 4.8,
     "reviewCount": 103,
     "price": 60,
-    "excerpt": "Ancient temple visit and medieval city walk.",
-    "description": "Explore the oldest temple in the Kathmandu Valley and wander through Bhaktapur’s beautifully preserved medieval streets.",
+    "excerpt": "Complete cultural and spiritual tour of Kathmandu's highlights.",
+    "description": "Explore the royal heritage of Kathmandu Durbar Square, the panoramic views from Swayambhunath, and the spiritual centers of Bouddhanath and Pashupatinath.",
     "image": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=400&h=300&fit=crop",
     "images": [
       "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
     ],
-    "tags": ["Medieval", "Cultural", "UNESCO"],
-    "highlights": ["Changunarayan Temple", "Bhaktapur Durbar Square", "Sanga Viewpoint"],
+    "tags": ["Cultural", "Spiritual", "UNESCO", "Full Day"],
+    "highlights": ["Kathmandu Durbar Square", "Swayambhunath", "Bouddhanath", "Pashupatinath"],
     "includes": ["Guide", "Transport"],
     "excludes": ["Meals"],
     "itinerary": [
-      { "day": 1, "title": "Bhaktapur and Changunarayan", "description": "Visit temple, explore Bhaktapur, and continue to Sanga." }
+      { "day": 1, "title": "Complete Kathmandu Tour", "description": "Visit Kathmandu Durbar Square, Swayambhunath, Bouddhanath, and Pashupatinath." }
     ],
     "maxGroupSize": 8,
     "included": ["Guide", "Transport", "Entry fees"],
@@ -180,7 +181,77 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
     "permits": [],
     "equipment": [],
     "entryRequirements": []
+  },
+  {
+    "id": "6",
+    "title": "Bhaktapur Durbar Square + Patan Durbar Square",
+    "location": "Kathmandu Valley, Nepal",
+    "duration": "1 day",
+    "rating": 4.8,
+    "reviewCount": 120,
+    "price": 65,
+    "excerpt": "Medieval city exploration of two UNESCO World Heritage Sites.",
+    "description": "Discover the ancient royal squares of Bhaktapur and Patan, showcasing exquisite Newari architecture and craftsmanship.",
+    "image": "https://images.unsplash.com/photo-1611746869697-6b0e65ba2e5f?w=400&h=300&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1611746869697-6b0e65ba2e5f?w=800&h=600&fit=crop"
+    ],
+    "tags": ["UNESCO", "Medieval", "Architectural", "Full Day"],
+    "highlights": ["Bhaktapur Durbar Square", "Patan Durbar Square", "Newari Architecture"],
+    "includes": ["Guide", "Transport"],
+    "excludes": ["Meals"],
+    "itinerary": [
+      { "day": 1, "title": "Medieval Cities Tour", "description": "Explore Bhaktapur Durbar Square and Patan Durbar Square." }
+    ],
+    "maxGroupSize": 8,
+    "included": ["Guide", "Transport", "Entry fees"],
+    "excluded": ["Food", "Insurance"],
+    "cancellationPolicy": "Free cancellation 24 hours before.",
+    "isPopular": true,
+    "isSoldOut": false,
+    "difficulty": "easy",
+    "maxAltitude": "1,350m",
+    "requirements": ["Comfortable walking shoes"],
+    "permits": [],
+    "equipment": [],
+    "entryRequirements": []
+  },
+  {
+    "id": "7",
+    "title": "Dakshinkali, Pharping and Kirtipur",
+    "location": "Kathmandu Valley, Nepal",
+    "duration": "1 day",
+    "rating": 4.6,
+    "reviewCount": 85,
+    "price": 50,
+    "excerpt": "Spiritual pilgrimage and historical hilltop town visit.",
+    "description": "Visit the sacred Dakshinkali Temple, explore the Buddhist pilgrimage site of Pharping, and discover the ancient hilltop town of Kirtipur.",
+    "image": "https://images.unsplash.com/photo-1564507004663-b6dfb3e2ede6?w=400&h=300&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1564507004663-b6dfb3e2ede6?w=800&h=600&fit=crop"
+    ],
+    "tags": ["Spiritual", "Pilgrimage", "Historical", "Full Day"],
+    "highlights": ["Dakshinkali Temple", "Pharping Monastery", "Kirtipur Town"],
+    "includes": ["Guide", "Transport"],
+    "excludes": ["Meals"],
+    "itinerary": [
+      { "day": 1, "title": "Spiritual & Historical Tour", "description": "Visit Dakshinkali Temple, Pharping, and Kirtipur." }
+    ],
+    "maxGroupSize": 8,
+    "included": ["Guide", "Transport", "Entry fees"],
+    "excluded": ["Food", "Insurance"],
+    "cancellationPolicy": "Free cancellation 24 hours before.",
+    "isPopular": false,
+    "isSoldOut": false,
+    "difficulty": "moderate",
+    "maxAltitude": "1,500m",
+    "requirements": ["Comfortable walking shoes", "Moderate fitness"],
+    "permits": [],
+    "equipment": [],
+    "entryRequirements": []
   }
+
+  
 ]
 
 

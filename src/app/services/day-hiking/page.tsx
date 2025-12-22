@@ -229,6 +229,42 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="py-12 bg-muted/40">
+  <div className="container mx-auto px-4">
+    <h2 className="text-3xl font-bold text-center mb-8">Day Hiking Features</h2>
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="text-center p-6 bg-background rounded-lg shadow hover:shadow-lg transition-shadow">
+        <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span className="text-primary font-bold">🥾</span>
+        </div>
+        <h3 className="text-xl font-semibold mb-2">All Levels Welcome</h3>
+        <p className="text-muted-foreground">Easy to moderate trails suitable for beginners to experienced hikers</p>
+      </div>
+      <div className="text-center p-6 bg-background rounded-lg shadow hover:shadow-lg transition-shadow">
+        <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span className="text-primary font-bold">🌄</span>
+        </div>
+        <h3 className="text-xl font-semibold mb-2">Panoramic Views</h3>
+        <p className="text-muted-foreground">Stunning Himalayan vistas and valley landscapes</p>
+      </div>
+      <div className="text-center p-6 bg-background rounded-lg shadow hover:shadow-lg transition-shadow">
+        <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span className="text-primary font-bold">🏞️</span>
+        </div>
+        <h3 className="text-xl font-semibold mb-2">Nature Immersion</h3>
+        <p className="text-muted-foreground">Forest trails, rivers, waterfalls, and local flora/fauna</p>
+      </div>
+      <div className="text-center p-6 bg-background rounded-lg shadow hover:shadow-lg transition-shadow">
+        <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span className="text-primary font-bold">🍛</span>
+        </div>
+        <h3 className="text-xl font-semibold mb-2">Picnic Lunch</h3>
+        <p className="text-muted-foreground">Traditional Nepali lunch with scenic views along the trail</p>
+      </div>
+    </div>
+  </div>
+</section>
+
      
 
       {selectedTour && (
