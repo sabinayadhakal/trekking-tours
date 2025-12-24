@@ -16,370 +16,474 @@ export default function BhutanPage() {
   // Mock Bhutan tours data
   const mockBhutanTours: Tour[] = 
     [
-  // 1 NIGHT 2 DAYS
   {
-    id: "B1",
-    title: "Paro Weekend Escape",
-    location: "Paro",
-    duration: "2 Days",
-    rating: 4.7,
-    reviewCount: 19,
-    price: 499,
-    originalPrice: 549,
-    excerpt: "A quick cultural gateway into Bhutan's heritage",
-    description: "A short but immersive journey exploring Paro’s iconic landmarks, monasteries, and serene landscapes—perfect for time-bound travelers.",
-    image: "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop"
-    ],
-    tags: ["Short Trip", "Cultural", "Quick Escape"],
-    highlights: [
-      "Visit Paro Dzong",
-      "Explore local markets",
-      "Evening cultural show"
-    ],
-    includes: ["Accommodation", "Local guide", "Breakfast", "Entry fees"],
-    excludes: ["International flights", "Personal expenses"],
-    included: ["Accommodation", "Local guide", "Breakfast", "Entry fees"],
-    excluded: ["International flights", "Personal expenses"],
-    entryRequirements: ["Valid passport", "Bhutan visa"],
-    requirements: ["Comfortable shoes"],
-    itinerary: [
-      { day: 1, title: "Arrival in Paro", description: "Visit Paro Dzong and explore the riverside." },
-      { day: 2, title: "Local Experiences", description: "Market visit and optional short hike." }
-    ],
-    maxGroupSize: 10,
-    cancellationPolicy: "Full refund up to 7 days before departure.",
-    isPopular: false,
-    isSoldOut: false,
-    difficulty: "Easy",
-    maxAltitude: "2,200m",
-    permits: ["Bhutan visa"],
-    equipment: ["Camera", "Comfortable shoes"]
-  },
+  "id": "B1",
+  "title": "Delightful Bhutan Tour",
+  "location": "Thimpu, Punakha, Paro",
+  "duration": "5 Days",
+  "rating": 4.9,
+  "reviewCount": 42,
+  "price": 1850,
+  "originalPrice": 1999,
+  "excerpt": "A comprehensive cultural, historical, and spiritual journey through Bhutan's heartlands",
+  "description": "This thoughtfully designed program merges cultural immersion, historical exploration, and spiritual discovery across Bhutan's most iconic valleys. Experience ancient temples, majestic dzongs, breathtaking mountain passes, and the legendary Tiger's Nest Monastery.",
+  "image": "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+  "images": [
+    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1627465316641-4b1c6e505d5e?q=80&w=1974&auto=format&fit=crop"
+  ],
+  "tags": ["Cultural", "Historical", "Spiritual", "Hiking", "Comprehensive"],
+  "highlights": [
+    "Fly from Kathmandu to Paro with stunning Himalayan views",
+    "Explore Thimpu, Punakha, and Paro valleys",
+    "Hike to Tiger's Nest Monastery (Taktsang)",
+    "Cross Dochula Pass (3,200m) with mountain views",
+    "Experience Bhutanese culture and daily life",
+    "Visit Punakha Dzong - masterpiece of Bhutanese architecture",
+    "See traditional Archery Sports"
+  ],
+  "includes": [
+    "All necessary travel permits",
+    "English speaking Bhutanese Guide",
+    "Transportation as per group size",
+    "Accommodation on twin sharing basis",
+    "All entrance fees to monasteries & historical sites",
+    "Full board meals during the tour"
+  ],
+  "excludes": [
+    "Travel Insurance",
+    "Nepal re-entry visa fee",
+    "Personal expenses (drinks, telephone, bar bills, laundry)",
+    "Tips for guide and driver",
+    "Any cost not mentioned in includes section"
+  ],
+  "included": [
+    "All necessary travel permits",
+    "English speaking Bhutanese Guide",
+    "Transportation as per group size",
+    "Accommodation on twin sharing basis",
+    "All entrance fees to monasteries & historical sites",
+    "Full board meals during the tour"
+  ],
+  "excluded": [
+    "Travel Insurance",
+    "Nepal re-entry visa fee",
+    "Personal expenses (drinks, telephone, bar bills, laundry)",
+    "Tips for guide and driver",
+    "Any cost not mentioned in includes section"
+  ],
+  "entryRequirements": ["Valid passport", "Bhutan visa"],
+  "requirements": ["Moderate fitness level", "Comfortable hiking shoes", "Layered clothing"],
+  "itinerary": [
+    { "day": 1, "title": "Arrival at Paro, transfer to Thimpu", "description": "Arrive at Paro airport, drive to Thimpu (1.5 hrs). Visit Memorial Temple (built in memory of 3rd King), Changangkha Lhakhang (oldest temple), and the newly built Buddha statue. Overnight in Thimpu." },
+    { "day": 2, "title": "Thimpu to Punakha via Dochula Pass", "description": "Morning visits to Traditional Handmade Paper Mill, School of Arts and Crafts, Folk Heritage Museum, National Library, Traditional Institute of Medicine, and Zilukha Nunnery. Drive to Punakha through Dochula Pass (3,200m) - enjoy mountain views if clear. Walk around 108 stupas. Visit Chimi Lhakhang (Temple of Fertility). Overnight in Punakha." },
+    { "day": 3, "title": "Punakha sightseeing & drive to Paro", "description": "Visit Punakha Dzong showcasing Bhutanese rich art and architecture. Witness traditional Archery Sports. Drive back to Paro (3 hrs). Paro sightseeing. Overnight in Paro." },
+    { "day": 4, "title": "Hike to Tiger's Nest Monastery", "description": "Full day hike to Taktsang (Tiger's Nest), Bhutan's most revered monastery, situated on a granite cliff with spiritual and adventurous significance. Enjoy valley views. Overnight in Paro." },
+    { "day": 5, "title": "Departure", "description": "Transfer to Paro Airport for departure." }
+  ],
+  "maxGroupSize": 12,
+  "cancellationPolicy": "Full refund up to 14 days before arrival. 50% refund between 7-14 days. No refund within 7 days.",
+  "isPopular": true,
+  "isSoldOut": false,
+  "difficulty": "Moderate",
+  "maxAltitude": "3,200m (Dochula Pass)",
+  "permits": ["Bhutan visa", "Tourism Council of Bhutan permit"],
+  "equipment": ["Comfortable hiking shoes", "Daypack", "Water bottle", "Camera", "Layered clothing", "Sun protection"]
+},
 
-  // 2 NIGHTS 3 DAYS
   {
-    id: "B2",
-    title: "Thimphu Cultural Highlights",
-    location: "Thimphu",
-    duration: "3 Days",
-    rating: 4.8,
-    reviewCount: 22,
-    price: 799,
-    originalPrice: 899,
-    excerpt: "Explore Bhutan’s capital and its cultural treasures",
-    description: "Discover Thimphu’s monasteries, craft workshops, and scenic viewpoints while soaking in Bhutan’s urban charm.",
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=2070&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=2070&auto=format&fit=crop"
-    ],
-    tags: ["Cultural", "City Tour", "Heritage"],
-    highlights: [
-      "Buddha Dordenma",
-      "Tashichho Dzong",
-      "Craft market visit"
-    ],
-    includes: ["Hotel stay", "Breakfast & dinner", "Guide", "Transport"],
-    excludes: ["International flights", "Alcohol"],
-    included: ["Hotel stay", "Breakfast & dinner", "Guide", "Transport"],
-    excluded: ["International flights", "Alcohol"],
-    entryRequirements: ["Passport", "Bhutan visa"],
-    requirements: ["Respect for local customs"],
-    itinerary: [
-      { day: 1, title: "Arrival", description: "Drive to Thimphu and evening walk." },
-      { day: 2, title: "City Tour", description: "Visit Buddha Point, dzongs, and museums." },
-      { day: 3, title: "Departure", description: "Free morning and final souvenir shopping." }
-    ],
-    maxGroupSize: 12,
-    cancellationPolicy: "Cancel up to 10 days before trip.",
-    isPopular: true,
-    isSoldOut: false,
-    difficulty: "Easy",
-    maxAltitude: "2,350m",
-    permits: ["Bhutan visa"],
-    equipment: ["Comfortable clothing"]
-  },
+  "id": "B2",
+  "title": "Tiger's Nest Monastery Day Hike",
+  "location": "Paro",
+  "duration": "1 Day",
+  "rating": 5.0,
+  "reviewCount": 56,
+  "price": 299,
+  "originalPrice": 349,
+  "excerpt": "A spiritual journey to Bhutan's most sacred monastery perched on a cliff",
+  "description": "Experience the sheer joy and spiritual satisfaction of hiking to the legendary Taktsang (Tiger's Nest) Monastery. This sacred pilgrimage site offers breathtaking views, mystical atmosphere, and profound spiritual connection. Perched dramatically on a granite cliff, the monastery is believed to be the birthplace of Buddhism in Bhutan, where Guru Padmasambhava meditated for 3 years, 3 months, and 3 days.",
+  "image": "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+  "images": [
+    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1627465316641-4b1c6e505d5e?q=80&w=1974&auto=format&fit=crop"
+  ],
+  "tags": ["Spiritual", "Hiking", "Pilgrimage", "Day Trip", "Sacred Site"],
+  "highlights": [
+    "Hike to the sacred Taktsang Monastery",
+    "Walk through beautiful pine forests",
+    "Pass by prayer wheels and prayer flags",
+    "Enjoy lunch at the mountain cafeteria",
+    "Stunning views of Paro Valley",
+    "See the waterfall cascading into sacred pool",
+    "Visit the meditation cave of Guru Rinpoche"
+  ],
+  "includes": [
+    "All necessary travel permits",
+    "English speaking Bhutanese Guide",
+    "Transportation to/from hike base",
+    "Lunch at mountain cafeteria",
+    "Entrance fees to monastery",
+    "Bottled water and snacks"
+  ],
+  "excludes": [
+    "Travel Insurance",
+    "Horse riding fees (optional)",
+    "Personal expenses (drinks, telephone, souvenirs)",
+    "Tips for guide and driver",
+    "Hotel accommodation",
+    "Any cost not mentioned in includes section"
+  ],
+  "included": [
+    "All necessary travel permits",
+    "English speaking Bhutanese Guide",
+    "Transportation to/from hike base",
+    "Lunch at mountain cafeteria",
+    "Entrance fees to monastery",
+    "Bottled water and snacks"
+  ],
+  "excluded": [
+    "Travel Insurance",
+    "Horse riding fees (optional)",
+    "Personal expenses (drinks, telephone, souvenirs)",
+    "Tips for guide and driver",
+    "Hotel accommodation",
+    "Any cost not mentioned in includes section"
+  ],
+  "entryRequirements": ["Valid passport", "Bhutan visa"],
+  "requirements": ["Moderate fitness level", "Hiking shoes", "Respectful clothing for monastery"],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Tiger's Nest Monastery Hike",
+      "description": "Morning drive to the hike base. Begin the 2-hour hike through pine forests marked by prayer flags and prayer wheels. Optional horse riding available for part of the way. Stop for lunch at the mountain cafeteria with stunning valley views. Continue to the monastery complex, visit the sacred cave where Guru Padmasambhava meditated, explore the various temples and statues. Experience the mystical atmosphere of this sacred site. Descend back to base and return to hotel."
+    }
+  ],
+  "maxGroupSize": 8,
+  "cancellationPolicy": "Full refund up to 48 hours before hike. No refund within 48 hours.",
+  "isPopular": true,
+  "isSoldOut": false,
+  "difficulty": "Moderate to Challenging",
+  "maxAltitude": "3,120m",
+  "permits": ["Bhutan visa", "Monastery entry permit"],
+  "equipment": ["Sturdy hiking shoes", "Daypack", "Water bottle", "Camera", "Layered clothing", "Sun protection", "Rain jacket"]
+},
 
-  // 3 NIGHTS 4 DAYS
   {
-    id: "B3",
-    title: "Paro & Thimphu Exploration",
-    location: "Paro, Thimphu",
-    duration: "4 Days",
-    rating: 4.9,
-    reviewCount: 31,
-    price: 1199,
-    originalPrice: 1299,
-    excerpt: "A perfect introduction to Bhutan’s culture and landscapes",
-    description: "Explore two of Bhutan’s most significant cities with guided monastery visits, scenic hikes, and cultural immersion.",
-    image: "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?q=80&w=2070&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?q=80&w=2070&auto=format&fit=crop"
-    ],
-    tags: ["Cultural", "Scenic", "Short Tour"],
-    highlights: [
-      "Tiger’s Nest Viewpoint",
-      "Thimphu Craft Bazaar",
-      "National Memorial Chorten"
-    ],
-    includes: ["Accommodation", "Meals", "Guide", "Transport"],
-    excludes: ["International flights"],
-    included: ["Accommodation", "Meals", "Guide", "Transport"],
-    excluded: ["International flights"],
-    entryRequirements: ["Passport", "Bhutan visa"],
-    requirements: ["Comfortable hiking shoes"],
-    itinerary: [
-      { day: 1, title: "Arrival in Paro", description: "Visit Paro Dzong." },
-      { day: 2, title: "Drive to Thimphu", description: "Explore major cultural sites." },
-      { day: 3, title: "Return to Paro", description: "Hike to Tiger’s Nest viewpoint." },
-      { day: 4, title: "Departure", description: "Final shopping and airport drop." }
-    ],
-    maxGroupSize: 14,
-    cancellationPolicy: "Free cancellation 20 days in advance.",
-    isPopular: true,
-    isSoldOut: false,
-    difficulty: "Moderate",
-    maxAltitude: "3,120m",
-    permits: ["Bhutan visa"],
-    equipment: ["Hiking shoes", "Camera"]
-  },
+  "id": "B3",
+  "title": "Short and Sweet Bhutan Express",
+  "location": "Paro, Thimpu",
+  "duration": "3 Days",
+  "rating": 4.7,
+  "reviewCount": 38,
+  "price": 899,
+  "originalPrice": 999,
+  "excerpt": "A perfect quick getaway to experience Bhutan's highlights when time is limited",
+  "description": "Designed for travelers with very limited time who want to explore Bhutan's essence. This compact tour begins with a scenic mountain flight from Kathmandu to Paro, offering breathtaking Himalayan views. Experience Bhutan's spiritual heart with visits to sacred monasteries and dzongs, including the iconic Tiger's Nest Monastery hike. Perfect for those who want to capture Bhutan's magic in a short span.",
+  "image": "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
+  "images": [
+    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=2070&auto=format&fit=crop"
+  ],
+  "tags": ["Express Tour", "Short Trip", "Mountain Flight", "Cultural", "Spiritual"],
+  "highlights": [
+    "Scenic mountain flight from Kathmandu to Paro over Himalayas",
+    "Visit Rinpung Dzong and Kichu Lhakhang (7th century temple)",
+    "Hike to Taktsang Monastery (Tiger's Nest) at 9,678 feet",
+    "Explore Thimpu - Bhutan's capital city",
+    "Witness traditional Archery sports",
+    "Experience Bhutanese hospitality and culture"
+  ],
+  "includes": [
+    "Kathmandu-Paro-Kathmandu flight tickets",
+    "All necessary travel permits",
+    "English speaking Bhutanese Guide",
+    "Transportation as per group size",
+    "Accommodation on twin sharing basis",
+    "All entrance fees to monasteries and dzongs",
+    "Full board meals during the tour"
+  ],
+  "excludes": [
+    "Travel Insurance",
+    "Nepal re-entry visa fee",
+    "Personal expenses (drinks, telephone, bar bills, laundry)",
+    "Tips for guide and driver",
+    "Kathmandu hotel accommodation",
+    "Any cost not mentioned in includes section"
+  ],
+  "included": [
+    "Kathmandu-Paro-Kathmandu flight tickets",
+    "All necessary travel permits",
+    "English speaking Bhutanese Guide",
+    "Transportation as per group size",
+    "Accommodation on twin sharing basis",
+    "All entrance fees to monasteries and dzongs",
+    "Full board meals during the tour"
+  ],
+  "excluded": [
+    "Travel Insurance",
+    "Nepal re-entry visa fee",
+    "Personal expenses (drinks, telephone, bar bills, laundry)",
+    "Tips for guide and driver",
+    "Kathmandu hotel accommodation",
+    "Any cost not mentioned in includes section"
+  ],
+  "entryRequirements": ["Valid passport", "Bhutan visa", "Nepal visa for re-entry"],
+  "requirements": ["Moderate fitness for hiking", "Comfortable walking shoes", "Passport copies"],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Fly Kathmandu to Paro, Explore Paro",
+      "description": "Morning scenic flight from Kathmandu (1 hour) with breathtaking views of Himalayas including Everest, Kanchenjunga, and Bhutanese foothills. Upon arrival at Paro Airport, meet your Bhutanese guide and transfer to hotel. If time permits, visit Rinpung Dzong (fortress monastery) and Kichu Lhakhang - one of Bhutan's oldest temples from 7th century. Evening at leisure to acclimatize. Overnight in Paro."
+    },
+    {
+      "day": 2,
+      "title": "Tiger's Nest Hike & Thimpu Exploration",
+      "description": "Early morning hike to Taktsang Monastery (Tiger's Nest), Bhutan's most sacred site. This 2-hour hike takes you to the monastery perched at 9,678 feet, built in the 8th century where Guru Padmasambhava meditated. The monastery was rebuilt after a 1998 fire. After lunch, drive to Thimpu (1.5 hours). Explore Thimpu's highlights and witness traditional Archery sports - Bhutan's national sport. Overnight in Paro."
+    },
+    {
+      "day": 3,
+      "title": "Departure from Paro",
+      "description": "After breakfast, transfer to Paro Airport for your flight back to Kathmandu. End of your short but memorable Bhutan experience with lasting memories of Himalayan vistas and spiritual encounters."
+    }
+  ],
+  "maxGroupSize": 10,
+  "cancellationPolicy": "Full refund up to 7 days before departure. 50% refund 3-7 days before. No refund within 3 days.",
+  "isPopular": true,
+  "isSoldOut": false,
+  "difficulty": "Moderate",
+  "maxAltitude": "3,120m (Tiger's Nest)",
+  "permits": ["Bhutan visa", "Flight tickets included"],
+  "equipment": ["Hiking shoes", "Daypack", "Camera", "Warm layers", "Flight essentials"],
+},
 
-  // 4 NIGHTS 5 DAYS
   {
-    id: "B4",
-    title: "Bhutan Essence Tour",
-    location: "Paro, Thimphu, Punakha",
-    duration: "5 Days",
-    rating: 4.9,
-    reviewCount: 24,
-    price: 1499,
-    originalPrice: 1599,
-    excerpt: "Discover Bhutan’s spiritual landmarks and valley landscapes",
-    description: "A balanced itinerary covering Bhutan’s cultural highlights, sacred monasteries, and the majestic Punakha Dzong.",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop"
-    ],
-    tags: ["Culture", "Heritage", "Scenic"],
-    highlights: [
-      "Dochula Pass",
-      "Punakha Dzong",
-      "Chimi Lhakhang"
-    ],
-    includes: ["Meals", "Hotels", "Guide", "Transport"],
-    excludes: ["Flights", "Insurance"],
-    included: ["Meals", "Hotels", "Guide", "Transport"],
-    excluded: ["Flights", "Insurance"],
-    entryRequirements: ["Passport", "Bhutan visa"],
-    requirements: ["Moderate fitness"],
-    itinerary: [
-      { day: 1, title: "Paro Arrival", description: "Visit local sites." },
-      { day: 2, title: "Thimphu Tour", description: "Explore museums and viewpoints." },
-      { day: 3, title: "Drive to Punakha", description: "Stop at Dochula Pass." },
-      { day: 4, title: "Return to Paro", description: "Cultural sightseeing." },
-      { day: 5, title: "Departure", description: "Airport drop." }
-    ],
-    maxGroupSize: 12,
-    cancellationPolicy: "Free cancellation up to 21 days.",
-    isPopular: true,
-    isSoldOut: false,
-    difficulty: "Moderate",
-    maxAltitude: "3,050m",
-    permits: ["Bhutan visa"],
-    equipment: ["Warm clothing"]
-  },
+  "id": "B4",
+  "title": "Bhutan Cultural & Tigers Nest Adventure",
+  "location": "Paro, Thimpu",
+  "duration": "4 Days",
+  "rating": 4.8,
+  "reviewCount": 45,
+  "price": 1199,
+  "originalPrice": 1299,
+  "excerpt": "An organized 4-day journey through Bhutan's cultural landmarks and spiritual sites, culminating in the iconic Tiger's Nest hike",
+  "description": "This comprehensive 4-day tour offers a perfect blend of cultural immersion and adventure. Explore Thimpu's important dzongs, museums, and the giant Buddha statue, then challenge yourself with the legendary hike to Tiger's Nest Monastery. Visit royal memorials, traditional craft centers, and sacred temples while experiencing Bhutan's unique heritage.",
+  "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=2070&auto=format&fit=crop",
+  "images": [
+    "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop"
+  ],
+  "tags": ["Cultural", "Hiking", "Heritage", "Short Trip", "Dzong Tour"],
+  "highlights": [
+    "Visit Tashichho Dzong - Buddhist monastery fortress in Thimpu",
+    "Explore National Memorial Chorten built by 3rd King Jigme Dorje Wangchuk",
+    "See Simtokha Dzong - Bhutan's oldest fortress (1629)",
+    "Marvel at Kuenselphodrang - 167-foot tall sitting Buddha statue",
+    "Tour Folk Heritage Museum, National Textile Museum, and traditional craft institutes",
+    "Hike to Taktsang Monastery (Tiger's Nest) - Bhutan's most iconic site",
+    "Visit Motithang Takin Preserve and local markets"
+  ],
+  "includes": [
+    "Private transportation throughout",
+    "All necessary travel permits",
+    "English speaking local guide",
+    "Accommodation on single room basis",
+    "All sightseeing and monastery entrance fees",
+    "Full board meals (breakfast, lunch, dinner)",
+    "Tiger's Nest Monastery entrance fee"
+  ],
+  "excludes": [
+    "Travel insurance of any kind",
+    "Additional costs due to natural calamities",
+    "Personal expenses (drinks, tips, souvenirs)",
+    "International flights",
+    "Visa fees",
+    "Optional horse riding at Tiger's Nest"
+  ],
+  "included": [
+    "Private transportation throughout",
+    "All necessary travel permits",
+    "English speaking local guide",
+    "Accommodation on single room basis",
+    "All sightseeing and monastery entrance fees",
+    "Full board meals (breakfast, lunch, dinner)",
+    "Tiger's Nest Monastery entrance fee"
+  ],
+  "excluded": [
+    "Travel insurance of any kind",
+    "Additional costs due to natural calamities",
+    "Personal expenses (drinks, tips, souvenirs)",
+    "International flights",
+    "Visa fees",
+    "Optional horse riding at Tiger's Nest"
+  ],
+  "entryRequirements": ["Valid passport", "Bhutan visa"],
+  "requirements": ["Moderate fitness for hiking", "Comfortable walking shoes", "Respectful clothing for temples"],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Arrival in Paro, Drive to Thimpu & Cultural Tour",
+      "description": "Arrive at Paro Airport, meet your guide and drive to Thimpu (1.5 hours). Visit Tashichho Dzong, the impressive Buddhist monastery and fortress at Thimpu's northern edge, serving as the seat of government. Then visit the National Memorial Chorten, built in 1974 by the 3rd King of Bhutan, H.M. Jigme Dorje Wangchuk, as a memorial to world peace. Overnight in Thimpu."
+    },
+    {
+      "day": 2,
+      "title": "Thimpu Cultural Immersion",
+      "description": "Full day exploring Thimpu's cultural treasures. Visit Simtokha Dzong (5km south of Thimpu), Bhutan's oldest fortress built in 1629. See the magnificent Kuenselphodrang - a 167-foot tall sitting Buddha statue overlooking the valley. Tour the Folk Heritage Museum, National Textile Museum, and National Institute of Zorig Chusum (traditional arts school). Visit Motithang Takin Preserve (home to Bhutan's national animal), Changangkha Lhakhang (12th-century temple), and National Handicrafts Emporium. Overnight in Thimpu."
+    },
+    {
+      "day": 3,
+      "title": "Tiger's Nest Monastery Hike & Paro Exploration",
+      "description": "Morning drive back to Paro for the highlight of the trip - hiking to Taktsang Monastery (Tiger's Nest). This 2-3 hour hike takes you to Bhutan's most sacred monastery perched on a cliff face. After the rewarding hike and monastery visit, explore Paro's local markets for souvenirs and handicrafts. Optional: Visit Paro Dzong or Kyichu Lhakhang (one of Bhutan's oldest temples). Overnight in Paro."
+    },
+    {
+      "day": 4,
+      "title": "Departure",
+      "description": "After breakfast, transfer to Paro Airport for your departure flight, carrying memories of Bhutan's rich culture and spiritual sites."
+    }
+  ],
+  "maxGroupSize": 12,
+  "cancellationPolicy": "Full refund up to 14 days before arrival. 50% refund 7-14 days before. No refund within 7 days.",
+  "isPopular": true,
+  "isSoldOut": false,
+  "difficulty": "Moderate",
+  "maxAltitude": "3,120m (Tiger's Nest)",
+  "permits": ["Bhutan visa", "Monastery entry permits"],
+  "equipment": ["Hiking shoes", "Daypack", "Camera", "Layered clothing", "Sun protection", "Water bottle"],
+},
 
-  // 5 NIGHTS 6 DAYS
   {
-    id: "B5",
-    title: "Western Bhutan Discovery",
-    location: "Paro, Thimphu, Punakha, Haa Valley",
-    duration: "6 Days",
-    rating: 4.8,
-    reviewCount: 26,
-    price: 1699,
-    originalPrice: 1799,
-    excerpt: "A deeper dive into Bhutan’s western valleys",
-    description: "This multi-valley tour blends cultural depth with scenic exploration, showcasing Bhutan’s remote and peaceful landscapes.",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop"
-    ],
-    tags: ["Valleys", "Culture", "Remote"],
-    highlights: [
-      "Haa Valley Day Trip",
-      "Punakha Suspension Bridge",
-      "Traditional farmhouse visit"
-    ],
-    includes: ["Guide", "Meals", "Hotels", "Transport"],
-    excludes: ["Insurance", "Flights"],
-    included: ["Guide", "Meals", "Hotels", "Transport"],
-    excluded: ["Insurance", "Flights"],
-    entryRequirements: ["Passport", "Bhutan visa"],
-    requirements: ["Walking shoes"],
-    itinerary: [
-      { day: 1, title: "Arrival", description: "Introductory cultural tour." },
-      { day: 2, title: "Thimphu Sightseeing", description: "Museums and temples." },
-      { day: 3, title: "Haa Valley Trip", description: "Visit remote villages." },
-      { day: 4, title: "Punakha Drive", description: "Scenic valleys and passes." },
-      { day: 5, title: "Back to Paro", description: "Local handicraft shopping." },
-      { day: 6, title: "Departure", description: "Airport transfer." }
-    ],
-    maxGroupSize: 10,
-    cancellationPolicy: "Full refund before 25 days.",
-    isPopular: false,
-    isSoldOut: false,
-    difficulty: "Moderate",
-    maxAltitude: "3,140m",
-    permits: ["Bhutan visa"],
-    equipment: ["Warm layers"]
-  },
+  "id": "B5",
+  "title": "Bhutan Grand Cultural Expedition",
+  "location": "Paro, Thimpu, Punakha, Wangdue, Gangtey, Phobjikha, Trongsa, Bumthang",
+  "duration": "11 Days",
+  "rating": 5.0,
+  "reviewCount": 62,
+  "price": 3499,
+  "originalPrice": 3799,
+  "excerpt": "An immersive journey through Bhutan's spiritual heartlands, exploring ancient dzongs, sacred monasteries, and untouched Himalayan valleys",
+  "description": "Experience Bhutan's untouched lands and Buddhist way of life on this first-grade cultural expedition. Travel from Kathmandu to explore Bhutan's most historically and culturally significant regions, including sacred sites, ancient dzongs, temples, museums, and remote valleys. Discover the spirit of the Bhutanese people, their connection to Shambala, and the kingdom's unique secular Buddhist culture.",
+  "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
+  "images": [
+    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1509644851130-484289537bde?q=80&w=2070&auto=format&fit=crop"
+  ],
+  "tags": ["Cultural", "Comprehensive", "Spiritual", "Extended Tour", "Himalayan"],
+  "highlights": [
+    "Enthralling mountain flight from Kathmandu to Paro over Himalayas",
+    "Explore 8 major regions of Bhutan including remote valleys",
+    "Visit ancient dzongs, monasteries, and sacred pilgrimage sites",
+    "Experience authentic Bhutanese Buddhist way of life",
+    "See rare black-necked cranes in Phobjikha glacial valley",
+    "Cross multiple high mountain passes including Dochula, Pelela, Yutong La",
+    "Stay in traditional lodges and guest houses"
+  ],
+  "includes": [
+    "Kathmandu-Paro-Kathmandu round-trip flight tickets",
+    "Nepal re-entry visa fees",
+    "Bhutan visa and all travel permits",
+    "Accommodation in best available hotels/lodges",
+    "Full board meals throughout the trip",
+    "All transportation as per itinerary",
+    "English speaking Bhutanese guide"
+  ],
+  "excludes": [
+    "Travel insurance",
+    "Personal expenses (drinks, telephone, bar bills, laundry)",
+    "Tips for guide and driver",
+    "Optional activities and horse riding",
+    "Any cost not mentioned in includes section"
+  ],
+  "included": [
+    "Kathmandu-Paro-Kathmandu round-trip flight tickets",
+    "Nepal re-entry visa fees",
+    "Bhutan visa and all travel permits",
+    "Accommodation in best available hotels/lodges",
+    "Full board meals throughout the trip",
+    "All transportation as per itinerary",
+    "English speaking Bhutanese guide"
+  ],
+  "excluded": [
+    "Travel insurance",
+    "Personal expenses (drinks, telephone, bar bills, laundry)",
+    "Tips for guide and driver",
+    "Optional activities and horse riding",
+    "Any cost not mentioned in includes section"
+  ],
+  "entryRequirements": ["Valid passport", "Bhutan visa", "Nepal visa"],
+  "requirements": ["Good physical condition", "Comfortable walking shoes", "Respectful clothing for temples", "Patience for long drives"],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Fly Kathmandu to Paro",
+      "description": "Dramatic mountain flight from Kathmandu to Paro with breathtaking views of Himalayan peaks. Upon arrival, complete immigration formalities and transfer to hotel. Evening walk around Paro market to experience local culture."
+    },
+    {
+      "day": 2,
+      "title": "Paro Cultural Exploration",
+      "description": "Visit Ta Dzong (National Museum since 1967) with collections of relics and arts. Explore Rinpung Dzong ('Heap of Jewels' built 1646). See Drukgyel Dzong (built 1647 for Tibetan defense) with views of Mt. Chomolhari. Visit 7th-century Kyichu Lhakhang (one of 108 Himalayan temples) and explore the town."
+    },
+    {
+      "day": 3,
+      "title": "Paro to Thimpu via Simtokha",
+      "description": "Scenic drive through villages and paddy fields to Simtokha Dzong, once a tantric teaching center, now for Dzongkha language study. Visit Changangkha Lhakhang (12th-century temple where parents get names for newborns). Explore Memorial Chorten (built for 3rd King) and Tashichho Dzong (fortress-monastery, summer residence of Chief Abbot)."
+    },
+    {
+      "day": 4,
+      "title": "Thimpu to Punakha via Dochula Pass",
+      "description": "Drive to Punakha crossing Dochula Pass (3,050m) with panoramic Himalayan views. Visit Punakha Dzong at the confluence of two rivers, where the first King was crowned in 1907. Explore the fortress's unique architecture and historical significance."
+    },
+    {
+      "day": 5,
+      "title": "Punakha to Gangtey (Phobjikha Valley)",
+      "description": "Drive to Wangdue and continue to Phobjikha glacial valley in Black Mountain National Park. Spot rare black-necked cranes (seasonal). Visit exquisite Gangtey Monastery (Nyingmapa sect). Overnight in traditional guest house."
+    },
+    {
+      "day": 6,
+      "title": "Gangtey to Trongsa via Pelela Pass",
+      "description": "Cross Pelela Pass (3,300m) to Trongsa. Visit Chendbji Chorten (18th-century Nepalese-style stupa with painted eyes). Arrive in Trongsa, historically important central Bhutan town."
+    },
+    {
+      "day": 7,
+      "title": "Trongsa to Bumthang via Yutong La Pass",
+      "description": "Drive to Bumthang crossing Yutong La Pass (3,400m). Bumthang comprises four valleys (Chumey, Choekhor, Tang, Ura) at 2,600-4,000m. Check into lodge and explore Jakar town."
+    },
+    {
+      "day": 8,
+      "title": "Bumthang Valley Exploration",
+      "description": "Full day exploring Bumthang's sacred sites: Kurje Lhakhang (three temples surrounded by 108 chortens), Jambey Lhakhang (7th-century temple), Jakar Dzong (administrative center since 1646), and Membartsho (Burning Lake - major pilgrimage site with prayer flags and clay offerings)."
+    },
+    {
+      "day": 9,
+      "title": "Bumthang to Thimpu",
+      "description": "Full day drive (7 hours) back to Thimpu through scenic mountain roads. Rest and reflect on the journey. Optional evening visit to Handicraft Emporium or National Library with antique Buddhist manuscripts."
+    },
+    {
+      "day": 10,
+      "title": "Thimpu to Paro",
+      "description": "Final cultural visits in Thimpu: Traditional Medicine Institute (view herbal medicine preparation), National Library, Handicraft Emporium. Drive back to Paro for farewell dinner."
+    },
+    {
+      "day": 11,
+      "title": "Departure from Paro",
+      "description": "Transfer to Paro Airport for flight back to Kathmandu. End of comprehensive Bhutan cultural journey with deep understanding of Buddhist way of life."
+    }
+  ],
+  "maxGroupSize": 8,
+  "cancellationPolicy": "Full refund up to 30 days before departure. 50% refund 15-30 days before. No refund within 15 days.",
+  "isPopular": true,
+  "isSoldOut": false,
+  "difficulty": "Moderate",
+  "maxAltitude": "4,000m (Bumthang valleys)",
+  "permits": ["Bhutan visa", "Nepal re-entry visa", "All regional permits"],
+  "equipment": ["Comfortable walking shoes", "Layered clothing", "Daypack", "Camera", "Travel documents", "Medication"],
+}
 
-  // 6 NIGHTS 7 DAYS
-  {
-    id: "B6",
-    title: "Bhutan Cultural Circuit",
-    location: "Paro, Thimphu, Punakha, Wangdue",
-    duration: "7 Days",
-    rating: 4.9,
-    reviewCount: 38,
-    price: 1999,
-    originalPrice: 2199,
-    excerpt: "A full week exploring Bhutan’s cultural heart",
-    description: "A comprehensive cultural immersion covering ancient dzongs, sacred sites, and the peaceful rural heartlands of Bhutan.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop"
-    ],
-    tags: ["Cultural", "Full Week", "Heritage"],
-    highlights: [
-      "Tashichho Dzong",
-      "Punakha Valley",
-      "Local weaving center"
-    ],
-    includes: ["Guide", "Entry permits", "Hotels", "Meals"],
-    excludes: ["Insurance", "Flights"],
-    included: ["Guide", "Entry permits", "Hotels", "Meals"],
-    excluded: ["Insurance", "Flights"],
-    entryRequirements: ["Passport", "Visa"],
-    requirements: ["Comfortable clothing"],
-    itinerary: [
-      { day: 1, title: "Arrival", description: "Paro city walk." },
-      { day: 2, title: "Thimphu Tour", description: "Major landmarks." },
-      { day: 3, title: "Cultural Workshops", description: "Handicrafts and arts." },
-      { day: 4, title: "Drive to Punakha", description: "Valley exploration." },
-      { day: 5, title: "Wangdue Tour", description: "Rural landscapes." },
-      { day: 6, title: "Return to Paro", description: "Rest day." },
-      { day: 7, title: "Departure", description: "Airport transfer." }
-    ],
-    maxGroupSize: 14,
-    cancellationPolicy: "30-day refund policy.",
-    isPopular: true,
-    isSoldOut: false,
-    difficulty: "Easy",
-    maxAltitude: "3,100m",
-    permits: ["Bhutan visa"],
-    equipment: ["Walking shoes"]
-  },
-
-  // 7 NIGHTS 8 DAYS
-  {
-    id: "B7",
-    title: "Bhutan Heritage Journey",
-    location: "Paro, Thimphu, Punakha, Phobjikha",
-    duration: "8 Days",
-    rating: 5.0,
-    reviewCount: 33,
-    price: 2299,
-    originalPrice: 2499,
-    excerpt: "Traverse Bhutan’s valleys and ancient monasteries",
-    description: "This journey brings you through Bhutan’s most sacred landscapes and high mountain valleys, including the serene Phobjikha Valley.",
-    image: "https://images.unsplash.com/photo-1552728089-57bdde30beb3?q=80&w=2070&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1552728089-57bdde30beb3?q=80&w=2070&auto=format&fit=crop"
-    ],
-    tags: ["Heritage", "Valleys", "Long Tour"],
-    highlights: [
-      "Gangtey Monastery",
-      "Phobjikha Valley Trek",
-      "Dochula Pass"
-    ],
-    includes: ["Meals", "Guide", "Transport", "Accommodation"],
-    excludes: ["Flights", "Insurance"],
-    included: ["Meals", "Guide", "Transport", "Accommodation"],
-    excluded: ["Flights", "Insurance"],
-    entryRequirements: ["Passport", "Visa"],
-    requirements: ["Light trekking ability"],
-    itinerary: [
-      { day: 1, title: "Paro Arrival", description: "Relax and explore." },
-      { day: 2, title: "Thimphu Tour", description: "Cultural highlights." },
-      { day: 3, title: "Punakha Drive", description: "Valley sightseeing." },
-      { day: 4, title: "Phobjikha Transfer", description: "Visit Gangtey." },
-      { day: 5, title: "Phobjikha Hike", description: "Nature trail walk." },
-      { day: 6, title: "Return to Paro", description: "Scenic drive." },
-      { day: 7, title: "Tiger’s Nest", description: "Hike to the iconic monastery." },
-      { day: 8, title: "Departure", description: "Final morning in Paro." }
-    ],
-    maxGroupSize: 12,
-    cancellationPolicy: "Full refund 35 days before departure.",
-    isPopular: true,
-    isSoldOut: false,
-    difficulty: "Moderate",
-    maxAltitude: "3,300m",
-    permits: ["Bhutan visa"],
-    equipment: ["Hiking gear"]
-  },
-
-  // 8 NIGHTS 9 DAYS
-  {
-    id: "B8",
-    title: "Ultimate Bhutan Experience",
-    location: "Paro, Thimphu, Punakha, Phobjikha, Bumthang",
-    duration: "9 Days",
-    rating: 5.0,
-    reviewCount: 41,
-    price: 2799,
-    originalPrice: 2999,
-    excerpt: "A complete journey across Bhutan’s cultural and spiritual heartlands",
-    description: "Travel deep into Bhutan’s central valleys, exploring Bumthang—the cultural heart of the kingdom—along with the country’s most sacred monasteries and breathtaking landscapes.",
-    image: "https://images.unsplash.com/photo-1509644851130-484289537bde?q=80&w=2070&auto=format&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1509644851130-484289537bde?q=80&w=2070&auto=format&fit=crop"
-    ],
-    tags: ["Long Tour", "Cultural", "Scenic"],
-    highlights: [
-      "Bumthang Valley",
-      "Sacred Kurjey Lhakhang",
-      "Tiger’s Nest Monastery",
-      "Dochula Pass & Phobjikha"
-    ],
-    includes: ["All meals", "All accommodations", "Guide", "Transport", "Permits"],
-    excludes: ["International flights", "Insurance"],
-    included: ["All meals", "All accommodations", "Guide", "Transport", "Permits"],
-    excluded: ["International flights", "Insurance"],
-    entryRequirements: ["Valid passport", "Bhutan visa"],
-    requirements: ["Moderate fitness", "Respect for cultural sites"],
-    itinerary: [
-      { day: 1, title: "Paro Arrival", description: "Acclimatize and explore." },
-      { day: 2, title: "Thimphu Tour", description: "City and cultural sites." },
-      { day: 3, title: "Punakha Valley", description: "Explore Punakha Dzong." },
-      { day: 4, title: "Phobjikha Valley", description: "Visit Gangtey Monastery." },
-      { day: 5, title: "Drive to Bumthang", description: "Cross high mountain passes." },
-      { day: 6, title: "Bumthang Tour", description: "Sacred sites and temples." },
-      { day: 7, title: "Return to Paro", description: "Scenic cross-country drive." },
-      { day: 8, title: "Tiger’s Nest Hike", description: "Full-day iconic hike." },
-      { day: 9, title: "Departure", description: "Final day in Bhutan." }
-    ],
-    maxGroupSize: 15,
-    cancellationPolicy: "Refund available up to 40 days prior.",
-    isPopular: true,
-    isSoldOut: false,
-    difficulty: "Moderate",
-    maxAltitude: "3,500m",
-    permits: ["Bhutan visa", "Park fees"],
-    equipment: ["Trekking shoes", "Warm clothing", "Camera"]
-  }
+  
 ]
 
   useEffect(() => {

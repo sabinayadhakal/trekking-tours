@@ -35,7 +35,7 @@ export default function NepalPage() {
       rating: 4.9,
       reviewCount: 203,
       price: 0,
-      originalPrice: 0,
+
       excerpt: "Join the first FREE WALKING TOUR in Kathmandu, Nepal! Explore the beautiful capital with experienced local guides.",
       description: "We are offering the first FREE WALKING TOUR in Kathmandu, Nepal! Join this amazing free city tour around the beautiful capital. Everybody knows that Free Walking Tours in Europe are very popular, and now this unique experience is here in Nepal.\n\nOrganized daily by Himkala Adventure, this walk begins at the Garden of Dreams and guides you through local temples, bustling markets, and ends at the iconic Monkey Temple. Tours run with licensed and experienced guides, ensuring cultural depth and a warm experience.\n\nTour Schedule\nMorning Shift: 9:00 am – 1:00 pm\nAfternoon Shift: 2:00 pm – 6:00 pm\n\nTours start from the Garden of Dreams, Thamel.",
       image: "/images/walking-tour-kathmandu.jpg",
@@ -73,12 +73,7 @@ export default function NepalPage() {
         "Entrance fees",
         "Food and drinks"
       ],
-      entryRequirements: [
-        "Comfortable walking shoes",
-        "Weather appropriate clothing",
-        "Water bottle",
-        "Camera"
-      ],
+     
       requirements: [
         "Moderate walking ability",
         "Respect for local customs",
