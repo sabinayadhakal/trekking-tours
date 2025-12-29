@@ -17,7 +17,7 @@ export default function Home() {
       <MasonryTestimonialGrid />
       <YearSelectorStats />
       <div className="hidden md:block"><TabControlledGallery /></div>
-      <div className="hidden md:block"><ToggleTabsPricing /></div>
+      <ToggleTabsPricing />
       <CombinedContentSection/>
     </main>
   );

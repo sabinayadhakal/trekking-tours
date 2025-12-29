@@ -1,7 +1,7 @@
 "use client";
 
-import { Star, ChevronDown, ChevronUp, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Star, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { cn } from "@/lib/utils";
@@ -24,14 +24,14 @@ interface DataItem {
 }
 
 const MasonryTestimonialGrid = () => {
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [isClient, setIsClient] = useState(false);
-  const [selectedPhotos, setSelectedPhotos] = useState<string[] | null>(null);
-  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const [data, setData] = useState<DataItem[]>([]);
-  const [displayData, setDisplayData] = useState<DataItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(3);
   const [isExpanded, setIsExpanded] = useState(false);
+  const slideRef = useRef<HTMLDivElement>(null);
 
   const tripadvisorUrl =
     "https://www.tripadvisor.com/Attraction_Review-g293890-d8417075-Reviews-Himkala_Adventure-Kathmandu_Kathmandu_Valley_Bagmati_Zone_Central_Region.html";
@@ -83,7 +83,7 @@ const MasonryTestimonialGrid = () => {
       id: 5,
       name: "Samuel John",
       experiencePhoto: "",
-      content: "I first met Shiva on his Free Walking tour of Kathmandu (this is also fantastic and very much worth doing as an introduction to the city). I had always wanted to see Everest, and through a recommendation from a friend who did the Annapurna Circuit Trek, I decided to do the 16-day Everest Base Camp trek. Throughout, Shiva was always friendly, accessible and full of interesting facts about the region. Having only done smaller treks before, I was a little anxious about altitude sickness and the physical demand of the trek, but Shiva was responsive and helped us through the acclimatisation process and kept a pace that matched our ability. Particular highlights included the Tengboche Monastery, a beautiful location in itself with the added bonus of a great view of Everest; as well as the sunset views of Gokyo Ri and Kala Patthar. Seeing the Sherpa villages was also a bonus; I was also lucky enough to see the Mani Rimdu festival at Khumbu, which was on during my visit.The costs of the trip included airport transfer, a day of sightseeing and 3 nights accommodation in Kathmandu (including breakfast); as well as the return flight to Lukla, meals and lodging during the trek as well as a (well deserved) farewell dinner and cultural show at the end of the trip! I would highly recommend Himkala Adventure for any treks whilst in Nepal. Shiva is an enthusiastic, friendly and helpful guide who is also responsive to various levels of trekking/mountaineering skills; and Himkala Adventure is the best way to see the world’s highest peak!",
+      content: "I first met Shiva on his Free Walking tour of Kathmandu (this is also fantastic and very much worth doing as an introduction to the city). I had always wanted to see Everest, and through a recommendation from a friend who did the Annapurna Circuit Trek, I decided to do the 16-day Everest Base Camp trek. Throughout, Shiva was always friendly, accessible and full of interesting facts about the region. Having only done smaller treks before, I was a little anxious about altitude sickness and the physical demand of the trek, but Shiva was responsive and helped us through the acclimatisation process and kept a pace that matched our ability. Particular highlights included the Tengboche Monastery, a beautiful location in itself with the added bonus of a great view of Everest; as well as the sunset views of Gokyo Ri and Kala Patthar. Seeing the Sherpa villages was also a bonus; I was also lucky enough to see the Mani Rimdu festival at Khumbu, which was on during my visit.The costs of the trip included airport transfer, a day of sightseeing and 3 nights accommodation in Kathmandu (including breakfast); as well as the return flight to Lukla, meals and lodging during the trek as well as a (well deserved) farewell dinner and cultural show at the end of the trip! I would highly recommend Himkala Adventure for any treks whilst in Nepal. Shiva is an enthusiastic, friendly and helpful guide who is also responsive to various levels of trekking/mountaineering skills; and Himkala Adventure is the best way to see the world's highest peak!",
       trek: "Everest Base Camp Trek",
       country: "United States of America",
       rating: 5,
@@ -115,7 +115,7 @@ const MasonryTestimonialGrid = () => {
       id: 8,
       name: "Sebastien Schille",
       experiencePhoto: "/images/review-7.jpg",
-      content: "I had an amazing and unforgettable experience with Himkala Adventure! After going on the ONLY free walking tour in Kathmandu I decided I wanted to do a bit of trekking in the nearby Valley Fringe. I came to Shiva , Himkala Adventure’s director, to ask him what he thought was the best next step. Before I knew it, he had come up with a complete itinerary for 3 days and 2 nights with some fantastic sightseeing included. Shiva was an excellent guide! He is easy going, kind and very knowledgeable. If you are looking to do some trekking in Nepal, I very highly recommend going with Himkala Adventure!",
+      content: "I had an amazing and unforgettable experience with Himkala Adventure! After going on the ONLY free walking tour in Kathmandu I decided I wanted to do a bit of trekking in the nearby Valley Fringe. I came to Shiva , Himkala Adventure's director, to ask him what he thought was the best next step. Before I knew it, he had come up with a complete itinerary for 3 days and 2 nights with some fantastic sightseeing included. Shiva was an excellent guide! He is easy going, kind and very knowledgeable. If you are looking to do some trekking in Nepal, I very highly recommend going with Himkala Adventure!",
       trek: "Free Walking Tour and Valley Fringe Tour",
       country: "United Kingdom",
       rating: 5,
@@ -147,7 +147,7 @@ const MasonryTestimonialGrid = () => {
       id: 11,
       name: "Stephania Polo Viera",
       experiencePhoto: "/images/review-17.jpg",
-      content: "To experience Kathmandu with Himkala adventure it’s definitely a great experience, you feel secure every time and of course you can reach all places you are interested in. I won’t doubt to reach this agency in my next trip!",
+      content: "To experience Kathmandu with Himkala adventure it's definitely a great experience, you feel secure every time and of course you can reach all places you are interested in. I won't doubt to reach this agency in my next trip!",
       trek: "Kathmandu Tour",
       country: "Spain",
       rating: 5,
@@ -224,7 +224,7 @@ const MasonryTestimonialGrid = () => {
       id: 18,
       name: "Novitri Esna (Esperiana)",
       experiencePhoto: "/images/review-47.jpg",
-      content: "I’m a beginner trekker, but Shiva made the Langtang trek feel possible. He was so patient and always checked in—“How are you feeling?” “Need a break?” “Almost there!” He never forgot to remind us about our things and made sure we were well prepared each day. Along the way, he pointed out langurs, yaks, and special places I would’ve missed on my own. Thanks to him, I felt supported the whole way and had an unforgettable journey to 4400m!",
+      content: "I'm a beginner trekker, but Shiva made the Langtang trek feel possible. He was so patient and always checked in—'How are you feeling?' 'Need a break?' 'Almost there!' He never forgot to remind us about our things and made sure we were well prepared each day. Along the way, he pointed out langurs, yaks, and special places I would've missed on my own. Thanks to him, I felt supported the whole way and had an unforgettable journey to 4400m!",
       trek: "Langtang Valley Trek",
       country: "Indonesia",
       rating: 5,
@@ -264,47 +264,80 @@ const MasonryTestimonialGrid = () => {
       reviewDate: "2025-11-22",
       photos: ["/images/review-55.jpg", "/images/review-56.jpg", "/images/review-57.jpg", "/images/review-58.jpg", "/images/review-59.jpg", ]
     },
-  
-    
   ];
 
   useEffect(() => {
     setIsClient(true);
-    if (window.innerWidth < 640) setVisibleCount(1);
-    else setVisibleCount(3);
+    
+    // Set visible count based on screen size
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCount(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCount(2);
+      } else {
+        setVisibleCount(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
 
     const loadData = async () => {
       try {
         setIsLoading(true);
-        // Simulate API delay
         await new Promise(resolve => setTimeout(resolve, 800));
-        setData(mockTestimonials);
-        
-        // Reverse the array so first item appears last
         const reversedData = [...mockTestimonials].reverse();
-        setDisplayData(reversedData);
+        setData(reversedData);
       } catch (error) {
         console.error("Error loading reviews:", error);
         setData([]);
-        setDisplayData([]);
       } finally {
         setIsLoading(false);
       }
     };
 
     loadData();
+
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Auto-play slideshow
+  useEffect(() => {
+    if (!autoPlay || data.length === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % Math.ceil(data.length / visibleCount));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [autoPlay, data.length, visibleCount]);
+
+  const totalSlides = Math.ceil(data.length / visibleCount);
+  const startIndex = currentSlide * visibleCount;
+  const visibleData = data.slice(startIndex, startIndex + visibleCount);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   const loadMore = () => {
-    setVisibleCount(prev => Math.min(prev + 3, displayData.length));
+    setVisibleCount(prev => Math.min(prev + visibleCount, data.length));
     setIsExpanded(true);
   };
 
   const showLess = () => {
-    setVisibleCount(3);
+    setVisibleCount(window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3);
     setIsExpanded(false);
     
-    // Scroll to the top of the testimonials section
     setTimeout(() => {
       const element = document.getElementById("testimonials-section");
       if (element) {
@@ -313,52 +346,17 @@ const MasonryTestimonialGrid = () => {
     }, 100);
   };
 
-  const openPhotoViewer = (photoIndex: number) => {
-    setSelectedPhotoIndex(photoIndex);
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength).trim() + "...";
   };
-
-  const closePhotoViewer = () => {
-    setSelectedPhotoIndex(null);
-  };
-
-  const goToNextPhoto = () => {
-    if (selectedPhotos && selectedPhotoIndex !== null) {
-      setSelectedPhotoIndex((selectedPhotoIndex + 1) % selectedPhotos.length);
-    }
-  };
-
-  const goToPreviousPhoto = () => {
-    if (selectedPhotos && selectedPhotoIndex !== null) {
-      setSelectedPhotoIndex(
-        selectedPhotoIndex === 0 ? selectedPhotos.length - 1 : selectedPhotoIndex - 1
-      );
-    }
-  };
-
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (selectedPhotoIndex !== null) {
-        if (e.key === 'Escape') {
-          closePhotoViewer();
-        } else if (e.key === 'ArrowRight') {
-          goToNextPhoto();
-        } else if (e.key === 'ArrowLeft') {
-          goToPreviousPhoto();
-        }
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [selectedPhotoIndex, selectedPhotos]);
 
   if (!isClient) return null;
 
   if (isLoading) {
     return (
       <section className="bg-gradient-to-b from-[#E3F8FF]/40 via-[#CFE8FF]/30 to-[#A6D4FF]/20 py-12 sm:py-20 md:py-32 relative overflow-hidden">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4">
           <div className="flex justify-center items-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#3C6AA6]"></div>
           </div>
@@ -369,284 +367,319 @@ const MasonryTestimonialGrid = () => {
 
   return (
     <section id="testimonials-section" className="bg-gradient-to-b from-[#E3F8FF]/40 via-[#CFE8FF]/30 to-[#A6D4FF]/20 py-12 sm:py-20 md:py-32 relative overflow-hidden">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         {/* Heading */}
-        <div className="flex flex-col items-center gap-4 sm:gap-6 px-4 sm:px-8">
-          <h2 className="mb-2 text-center text-2xl sm:text-3xl lg:text-5xl font-semibold font-display text-[#2E4F7C]">
-            Testimonials and Reviews
+        <div className="flex flex-col items-center gap-4 sm:gap-6 px-4">
+          <h2 className="text-center text-2xl sm:text-3xl lg:text-5xl font-semibold font-display text-[#2E4F7C]">
+            What Our Travelers Say
           </h2>
-          <p className="hidden sm:block text-center text-sm sm:text-lg text-[#3C6AA6] max-w-2xl">
-Highlights from travelers who’ve reviewed us online.          </p>
+          <p className="text-center text-sm sm:text-base text-[#3C6AA6] max-w-2xl">
+            Read authentic reviews from adventurers who've explored Nepal with us
+          </p>
         </div>
 
-        {/* Cards Grid */}
-        <div className="mt-8 sm:mt-14 w-full px-2 sm:px-8 md:px-16 lg:px-32">
-          {displayData.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-[#3C6AA6]">No reviews yet. Check out our Tripadvisor reviews!</p>
-            </div>
-          ) : (
-            <>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {displayData.slice(0, visibleCount).map((testimonial, index) => (
-                  <motion.div
-                    key={testimonial.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+        {/* Slideshow Section */}
+        <div className="mt-8 sm:mt-14 relative">
+          <div className="relative overflow-hidden rounded-2xl">
+            {/* Slides */}
+            <div 
+              ref={slideRef}
+              className="flex transition-transform duration-300 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {Array.from({ length: totalSlides }).map((_, slideIndex) => {
+                const slideData = data.slice(
+                  slideIndex * visibleCount,
+                  slideIndex * visibleCount + visibleCount
+                );
+                
+                return (
+                  <div
+                    key={slideIndex}
+                    className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
                   >
-                    <Card
-                      className={cn(
-                        "rounded-xl p-4 sm:p-6 shadow-sm bg-[#f0f8ff] border-[#A6D4FF] transition-all duration-500 hover:shadow-lg hover:-translate-y-1 hover:border-[#3C6AA6] cursor-pointer group h-full",
-                        testimonial.margin
-                      )}
-                    >
-                      <div className="mb-2 flex gap-1">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="fill-[#FFD966] text-[#FFD966] h-4 w-4" />
-                        ))}
-                      </div>
-                      <div className="text-[#1C3C50] mt-2 text-xs sm:text-sm leading-relaxed">
-                        <q>{testimonial.content}</q>
-                      </div>
-                      {testimonial.reviewDate && (
-                        <p className="text-[10px] sm:text-xs text-[#3C6AA6] mt-2">{testimonial.reviewDate}</p>
-                      )}
-
-                      <div className="mt-4 flex flex-col gap-1">
-                        <p className="font-bold text-[#2E4F7C] font-display text-sm">{testimonial.name}</p>
-                        <p className="text-[10px] sm:text-xs text-[#3C6AA6]">{testimonial.country}</p>
-                        <p className="text-[10px] sm:text-xs text-[#5C90B0] font-medium">{testimonial.trek}</p>
-                      </div>
-
-                      {testimonial.photos && testimonial.photos.length > 0 && (
-                        <Button
-                          className="mt-2 sm:mt-4 bg-[#3C6AA6] hover:bg-[#2E4F7C] text-white text-xs sm:text-sm"
-                          onClick={() => setSelectedPhotos(testimonial.photos!)}
-                        >
-                          View Photos
-                        </Button>
-                      )}
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-
-              {displayData.length > 3 && (
-                <div className="flex justify-center mt-4 sm:mt-10">
-                  {visibleCount < displayData.length ? (
-                    <motion.button
-                      onClick={loadMore}
-                      className="flex items-center gap-2 bg-[#3C6AA6] hover:bg-[#2E4F7C] rounded-full px-6 sm:px-8 py-3 sm:py-4 text-white text-sm sm:text-base font-medium group"
-                      initial={{ scale: 0.9, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      whileHover={{ 
-                        scale: 1.05,
-                        transition: { duration: 0.2 }
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <span>Load More Reviews</span>
+                    {slideData.map((testimonial) => (
                       <motion.div
-                        animate={{ y: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
+                        key={testimonial.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="h-full"
                       >
-                        <ChevronDown className="h-5 w-5 group-hover:scale-110 transition-transform" />
-                      </motion.div>
-                    </motion.button>
-                  ) : (
-                    <motion.button
-                      onClick={showLess}
-                      className="flex items-center gap-2 bg-[#2E4F7C] hover:bg-[#1C3C50] rounded-full px-6 sm:px-8 py-3 sm:py-4 text-white text-sm sm:text-base font-medium group"
-                      initial={{ scale: 0.9, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      whileHover={{ 
-                        scale: 1.05,
-                        transition: { duration: 0.2 }
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <span>Show Less</span>
-                      <motion.div
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >
-                        <ChevronUp className="h-5 w-5 group-hover:scale-110 transition-transform" />
-                      </motion.div>
-                    </motion.button>
-                  )}
-                </div>
-              )}
+                        <Card className="h-full rounded-xl p-4 sm:p-5 shadow-sm bg-white border-[#A6D4FF] transition-all duration-300 hover:shadow-md hover:-translate-y-1 hover:border-[#3C6AA6]">
+                          {/* Review Content with Photo Grid */}
+                          <div className="mb-4">
+                            {/* Rating */}
+                            <div className="flex gap-1 mb-3">
+                              {[...Array(testimonial.rating)].map((_, i) => (
+                                <Star key={i} className="fill-[#FFD966] text-[#FFD966] h-3 w-3 sm:h-4 sm:w-4" />
+                              ))}
+                            </div>
 
-              {visibleCount >= displayData.length && displayData.length > 6 && (
-                <motion.div 
-                  className="mt-6 text-center"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
+                            {/* Photos Grid - Integrated into card */}
+                            {testimonial.photos && testimonial.photos.length > 0 && (
+                              <div className="mb-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                {testimonial.photos.slice(0, 4).map((photo, index) => (
+                                  <div 
+                                    key={index}
+                                    className="relative aspect-square rounded-lg overflow-hidden bg-gray-100"
+                                  >
+                                    <Image
+                                      src={photo}
+                                      alt={`Review photo ${index + 1}`}
+                                      fill
+                                      className="object-cover hover:scale-105 transition-transform duration-300"
+                                      sizes="(max-width: 640px) 50vw, 33vw"
+                                      unoptimized
+                                    />
+                                    {index === 3 && testimonial.photos && testimonial.photos.length > 4 && (
+                                      <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                                        <span className="text-white text-xs font-semibold">
+                                          +{testimonial.photos.length - 4}
+                                        </span>
+                                      </div>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+
+                            {/* Review Text */}
+                            <div className="text-[#1C3C50] text-xs sm:text-sm leading-relaxed line-clamp-5">
+                              <q>{truncateText(testimonial.content, 200)}</q>
+                            </div>
+                          </div>
+
+                          {/* Reviewer Info */}
+                          <div className="mt-auto pt-4 border-t border-[#A6D4FF]/30">
+                            <div className="flex flex-col gap-1">
+                              <div className="flex items-center justify-between">
+                                <p className="font-bold text-[#2E4F7C] font-display text-sm">
+                                  {testimonial.name}
+                                </p>
+                                {testimonial.reviewDate && (
+                                  <span className="text-[10px] text-[#3C6AA6]">
+                                    {testimonial.reviewDate}
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-[#3C6AA6]">
+                                {testimonial.country} • {testimonial.trek}
+                              </p>
+                            </div>
+                          </div>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Navigation Arrows */}
+            {totalSlides > 1 && (
+              <>
+                <button
+                  onClick={prevSlide}
+                  onMouseEnter={() => setAutoPlay(false)}
+                  onMouseLeave={() => setAutoPlay(true)}
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110"
+                  aria-label="Previous slide"
                 >
-                  <p className="text-sm text-[#3C6AA6] italic">
-                    You've viewed all {displayData.length} reviews!
-                  </p>
-                </motion.div>
-              )}
-            </>
+                  <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 text-[#3C6AA6]" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  onMouseEnter={() => setAutoPlay(false)}
+                  onMouseLeave={() => setAutoPlay(true)}
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 text-[#3C6AA6]" />
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Slide Dots */}
+          {totalSlides > 1 && (
+            <div className="flex justify-center items-center gap-2 mt-6">
+              {Array.from({ length: totalSlides }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  onMouseEnter={() => setAutoPlay(false)}
+                  onMouseLeave={() => setAutoPlay(true)}
+                  className={`transition-all duration-300 ${
+                    index === currentSlide
+                      ? "bg-[#3C6AA6] w-8 h-2 rounded-full"
+                      : "bg-[#A6D4FF] w-2 h-2 rounded-full hover:bg-[#3C6AA6]/60"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           )}
         </div>
 
-        {/* Photos Modal */}
-        <AnimatePresence>
-          {selectedPhotos && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
-              onClick={() => setSelectedPhotos(null)}
-            >
-              <motion.div
-                initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.8 }}
-                className="bg-white rounded-xl p-4 sm:p-6 max-w-3xl w-full overflow-y-auto max-h-[80vh]"
-                onClick={(e) => e.stopPropagation()}
+        {/* Load More/Show Less Button */}
+        {data.length > visibleCount && (
+          <div className="flex justify-center mt-8">
+            {!isExpanded ? (
+              <Button
+                onClick={loadMore}
+                className="bg-[#3C6AA6] hover:bg-[#2E4F7C] rounded-full px-6 py-3 text-white text-sm font-medium group transition-all duration-300 hover:shadow-lg"
               >
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-semibold text-[#2E4F7C]">Review Photos</h3>
-                  <Button onClick={() => setSelectedPhotos(null)} className="bg-red-500 hover:bg-red-600 text-white text-xs sm:text-sm">
-                    Close
-                  </Button>
-                </div>
-                <div className="mt-2 md:mt-4 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
-                  {selectedPhotos.map((photo, i) => (
-                    <motion.div
-                      key={i}
-                      className="relative w-full h-40 sm:h-64 cursor-pointer group"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.2 }}
-                      onClick={() => openPhotoViewer(i)}
-                    >
-                      <Image
-                        src={photo}
-                        alt={`Photo ${i + 1}`}
-                        fill
-                        className="rounded-lg object-cover"
-                        unoptimized
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 rounded-lg flex items-center justify-center">
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-white font-semibold">
-                          Click to enlarge
+                <span>View All Reviews ({data.length})</span>
+                <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            ) : (
+              <Button
+                onClick={showLess}
+                className="bg-[#2E4F7C] hover:bg-[#1C3C50] rounded-full px-6 py-3 text-white text-sm font-medium group transition-all duration-300 hover:shadow-lg"
+              >
+                <span>Show Less</span>
+                <ChevronLeft className="ml-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+              </Button>
+            )}
+          </div>
+        )}
+
+        {/* Full Grid View (when expanded) */}
+        {isExpanded && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+          >
+            {data.slice(visibleCount).map((testimonial) => (
+              <Card
+                key={testimonial.id}
+                className="rounded-xl p-4 sm:p-5 shadow-sm bg-white border-[#A6D4FF] transition-all duration-300 hover:shadow-md"
+              >
+                <div className="mb-4">
+                  <div className="flex gap-1 mb-3">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="fill-[#FFD966] text-[#FFD966] h-3 w-3 sm:h-4 sm:w-4" />
+                    ))}
+                  </div>
+
+                  {testimonial.photos && testimonial.photos.length > 0 && (
+                    <div className="mb-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
+                      {testimonial.photos.slice(0, 4).map((photo, index) => (
+                        <div 
+                          key={index}
+                          className="relative aspect-square rounded-lg overflow-hidden bg-gray-100"
+                        >
+                          <Image
+                            src={photo}
+                            alt={`Review photo ${index + 1}`}
+                            fill
+                            className="object-cover hover:scale-105 transition-transform duration-300"
+                            sizes="(max-width: 640px) 50vw, 33vw"
+                            unoptimized
+                          />
+                          {index === 3 && testimonial.photos && testimonial.photos.length > 4 && (
+                            <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                              <span className="text-white text-xs font-semibold">
+                                +{testimonial.photos.length - 4}
+                              </span>
+                            </div>
+                          )}
                         </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                      ))}
+                    </div>
+                  )}
 
-        {/* Full Screen Photo Viewer */}
-        <AnimatePresence>
-          {selectedPhotoIndex !== null && selectedPhotos && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90"
-              onClick={closePhotoViewer}
-            >
-              <div className="relative w-full h-full flex items-center justify-center">
-                {/* Close Button */}
-                <button
-                  className="absolute top-4 right-4 z-10 text-white hover:text-gray-300 transition-colors"
-                  onClick={closePhotoViewer}
-                >
-                  <X className="h-8 w-8" />
-                </button>
-
-                {/* Navigation Arrows */}
-                {selectedPhotos.length > 1 && (
-                  <>
-                    <button
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:text-gray-300 transition-colors"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        goToPreviousPhoto();
-                      }}
-                    >
-                      <ChevronUp className="h-8 w-8 rotate-90" />
-                    </button>
-                    <button
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:text-gray-300 transition-colors"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        goToNextPhoto();
-                      }}
-                    >
-                      <ChevronDown className="h-8 w-8 -rotate-90" />
-                    </button>
-                  </>
-                )}
-
-                {/* Photo Counter */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 text-white text-sm">
-                  {selectedPhotoIndex + 1} / {selectedPhotos.length}
+                  <div className="text-[#1C3C50] text-xs sm:text-sm leading-relaxed line-clamp-5">
+                    <q>{truncateText(testimonial.content, 150)}</q>
+                  </div>
                 </div>
 
-                {/* Main Image */}
-                <motion.div
-                  key={selectedPhotoIndex}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  className="relative w-full h-full max-w-5xl max-h-[80vh] mx-4"
-                  onClick={(e) => e.stopPropagation()}
-                >
+                <div className="pt-4 border-t border-[#A6D4FF]/30">
+                  <div className="flex flex-col gap-1">
+                    <div className="flex items-center justify-between">
+                      <p className="font-bold text-[#2E4F7C] font-display text-sm">
+                        {testimonial.name}
+                      </p>
+                      {testimonial.reviewDate && (
+                        <span className="text-[10px] text-[#3C6AA6]">
+                          {testimonial.reviewDate}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-[#3C6AA6]">
+                      {testimonial.country} • {testimonial.trek}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </motion.div>
+        )}
+
+        {/* Tripadvisor Section */}
+        <div className="mt-12 sm:mt-20 bg-gradient-to-r from-[#E3F8FF] to-[#CFE8FF] rounded-2xl p-6 sm:p-8 md:p-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div className="lg:w-2/3 text-center lg:text-left">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#2E4F7C] mb-3">
+                See All Reviews on Tripadvisor
+              </h3>
+              <p className="text-sm sm:text-base text-[#3C6AA6] mb-4">
+                Join thousands of satisfied travelers who've shared their experiences. 
+                Read detailed reviews, see more photos, and discover why we're rated so highly.
+              </p>
+              <a
+                href={tripadvisorUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#3C6AA6] hover:bg-[#2E4F7C] text-white font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
+              >
+                <span>Visit Tripadvisor</span>
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
+            
+            <div className="lg:w-1/3 flex justify-center">
+              <a
+                href={tripadvisorUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:scale-105 transition-transform duration-300"
+              >
+                <div className="relative w-48 sm:w-56 h-48 sm:h-56">
                   <Image
-                    src={selectedPhotos[selectedPhotoIndex]}
-                    alt={`Photo ${selectedPhotoIndex + 1}`}
+                    src="/images/TripAdvisor-Logo.png"
+                    alt="Tripadvisor"
                     fill
-                    className="object-contain rounded-lg"
+                    className="object-contain drop-shadow-lg"
                     unoptimized
                   />
-                </motion.div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
 
-        {/* Tripadvisor Link */}
-        <div className="mt-8 sm:mt-20 flex flex-col items-center gap-4 sm:gap-6 px-4">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-sm sm:text-lg font-medium text-[#3C6AA6] text-center"
-          >
-            See all reviews on Tripadvisor
-          </motion.p>
-          <motion.a
-            href={tripadvisorUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="block"
-          >
-            <Image
-              src="/images/TripAdvisor-Logo.png"
-              alt="Tripadvisor"
-              width={240}
-              height={240}
-              className="w-40 sm:w-60 h-40 sm:h-60 object-contain"
-            />
-          </motion.a>
+        {/* Stats */}
+        <div className="mt-8 sm:mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="text-center p-4 bg-white/50 rounded-xl">
+            <div className="text-2xl sm:text-3xl font-bold text-[#2E4F7C]">{data.length}</div>
+            <div className="text-xs sm:text-sm text-[#3C6AA6] mt-1">Total Reviews</div>
+          </div>
+          <div className="text-center p-4 bg-white/50 rounded-xl">
+            <div className="text-2xl sm:text-3xl font-bold text-[#2E4F7C]">5.0</div>
+            <div className="text-xs sm:text-sm text-[#3C6AA6] mt-1">Average Rating</div>
+          </div>
+          <div className="text-center p-4 bg-white/50 rounded-xl">
+            <div className="text-2xl sm:text-3xl font-bold text-[#2E4F7C]">21+</div>
+            <div className="text-xs sm:text-sm text-[#3C6AA6] mt-1">Countries</div>
+          </div>
+          <div className="text-center p-4 bg-white/50 rounded-xl">
+            <div className="text-2xl sm:text-3xl font-bold text-[#2E4F7C]">100%</div>
+            <div className="text-xs sm:text-sm text-[#3C6AA6] mt-1">Satisfaction</div>
+          </div>
         </div>
       </div>
     </section>

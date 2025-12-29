@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, Mountain, Users, Clock, Star, MapPin, Calendar, Building } from "lucide-react";
-import { useState, useMemo, useCallback, useRef } from "react";
+import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Badge } from "@/components/ui/badge";
@@ -24,6 +24,7 @@ type Package = {
   type: "trek" | "city" | "cultural-tour" | "overland-tour" | "short-tour" | "festival-tour" | "pilgrimage-trek";
   highlights: string[];
 };  
+
 type PackageData = {
   [key: string]: Package[];
 };
@@ -40,205 +41,222 @@ const ToggleTabsPricing = () => {
   const [activeTab, setActiveTab] = useState("nepal");
   const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const prevTabRef = useRef<string>("nepal");
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // 768px is the md breakpoint
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add event listener
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const packageData: PackageData = useMemo(() => ({
     nepal: [
       {
-id: "np-1",
-name: "Everest Base Camp Trek – Classic Route to the Foot of the World's Highest Peak",
-description: "Conquer the iconic trek to Everest Base Camp. Experience breathtaking panoramic Himalayan views, immerse in authentic Sherpa culture, and visit ancient monasteries on this challenging 14-day adventure.",
-duration: "14 Days",
-difficulty: "Challenging",
-groupSize: "2–12 people",
-price: 1450,
-rating: 4.8,
-reviews: 320,
-location: "Khumbu Region, Nepal",
-type: "trek",
-highlights: [
-"Panoramic views of Everest, Lhotse, and Ama Dablam",
-"Immersive Sherpa culture and villages",
-"Visit historic Tengboche Monastery",
-"Trek through UNESCO Sagarmatha National Park",
-"Kala Patthar summit for iconic sunrise views",
-"Full support team including guides and porters"
-]
-},
-{
-id: "np-2",
-name: "Annapurna Base Camp Trek - Himalayan Panorama Journey",
-description: "Journey through diverse landscapes from terraced farms to high alpine terrain. Experience Gurung culture, rhododendron forests, and stunning Annapurna massif views on this moderate 10-day trek.",
-duration: "10 Days",
-difficulty: "Moderate",
-groupSize: "2–15 people",
-price: 950,
-rating: 4.7,
-reviews: 210,
-location: "Annapurna Region, Nepal",
-type: "trek",
-highlights: [
-"Spectacular sunrise from Poon Hill viewpoint",
-"Walk through blooming rhododendron forests",
-"Cultural immersion in traditional Ghandruk village",
-"360-degree views of Annapurna Massif",
-"Natural hot springs at Jhinu Danda",
-"All-inclusive meals and accommodation"
-]
-},
-{
-id: "np-3",
-name: "Langtang Valley Trek - Hidden Himalayan Gem",
-description: "Discover the secluded Langtang Valley, known as the 'Valley of Glaciers.' Experience Tibetan-influenced culture, ancient monasteries, and stunning mountain vistas on this moderate 8-day trek.",
-duration: "8 Days",
-difficulty: "Moderate",
-groupSize: "2–10 people",
-price: 750,
-rating: 4.6,
-reviews: 145,
-location: "Langtang Region, Nepal",
-type: "trek",
-highlights: [
-"Explore Tibetan-influenced culture and traditions",
-"Visit sacred Kyanjin Gompa monastery",
-"Spectacular views of Langtang Lirung (7,234m)",
-"Less crowded alternative to Everest and Annapurna",
-"Cheese factory visit in Kyanjin Gompa",
-"All permits and national park fees included"
-]
-}
-],
+        id: "np-1",
+        name: "Everest Base Camp Trek – Classic Route to the Foot of the World's Highest Peak",
+        description: "Conquer the iconic trek to Everest Base Camp. Experience breathtaking panoramic Himalayan views, immerse in authentic Sherpa culture, and visit ancient monasteries on this challenging 14-day adventure.",
+        duration: "14 Days",
+        difficulty: "Challenging",
+        groupSize: "2–12 people",
+        price: 1450,
+        rating: 4.8,
+        reviews: 320,
+        location: "Khumbu Region, Nepal",
+        type: "trek",
+        highlights: [
+          "Panoramic views of Everest, Lhotse, and Ama Dablam",
+          "Immersive Sherpa culture and villages",
+          "Visit historic Tengboche Monastery",
+          "Trek through UNESCO Sagarmatha National Park",
+          "Kala Patthar summit for iconic sunrise views",
+          "Full support team including guides and porters"
+        ]
+      },
+      {
+        id: "np-2",
+        name: "Annapurna Base Camp Trek - Himalayan Panorama Journey",
+        description: "Journey through diverse landscapes from terraced farms to high alpine terrain. Experience Gurung culture, rhododendron forests, and stunning Annapurna massif views on this moderate 10-day trek.",
+        duration: "10 Days",
+        difficulty: "Moderate",
+        groupSize: "2–15 people",
+        price: 950,
+        rating: 4.7,
+        reviews: 210,
+        location: "Annapurna Region, Nepal",
+        type: "trek",
+        highlights: [
+          "Spectacular sunrise from Poon Hill viewpoint",
+          "Walk through blooming rhododendron forests",
+          "Cultural immersion in traditional Ghandruk village",
+          "360-degree views of Annapurna Massif",
+          "Natural hot springs at Jhinu Danda",
+          "All-inclusive meals and accommodation"
+        ]
+      },
+      {
+        id: "np-3",
+        name: "Langtang Valley Trek - Hidden Himalayan Gem",
+        description: "Discover the secluded Langtang Valley, known as the 'Valley of Glaciers.' Experience Tibetan-influenced culture, ancient monasteries, and stunning mountain vistas on this moderate 8-day trek.",
+        duration: "8 Days",
+        difficulty: "Moderate",
+        groupSize: "2–10 people",
+        price: 750,
+        rating: 4.6,
+        reviews: 145,
+        location: "Langtang Region, Nepal",
+        type: "trek",
+        highlights: [
+          "Explore Tibetan-influenced culture and traditions",
+          "Visit sacred Kyanjin Gompa monastery",
+          "Spectacular views of Langtang Lirung (7,234m)",
+          "Less crowded alternative to Everest and Annapurna",
+          "Cheese factory visit in Kyanjin Gompa",
+          "All permits and national park fees included"
+        ]
+      }
+    ],
     bhutan: [
       {
-id: "bt-1",
-name: "Bhutan Cultural Tour: Tigers Nest Monastery & Dzong Exploration",
-description: "Immerse yourself in Bhutan's rich Buddhist heritage on this 7-day cultural journey. Visit iconic landmarks including the legendary Tiger's Nest Monastery, magnificent Punakha Dzong, and experience traditional Bhutanese arts, crafts, and festivals with expert local guides.",
-duration: "7 Days",
-difficulty: "Easy",
-groupSize: "2–10 people",
-price: 1850,
-rating: 4.9,
-reviews: 150,
-location: "Paro, Thimphu, Punakha Valley",
-type: "cultural-tour",
-highlights: [
-"Tiger's Nest Monastery hike (Paro Taktsang)",
-"Punakha Dzong - Palace of Great Happiness",
-"Traditional Bhutanese arts & crafts workshops",
-"Scenic Himalayan drives through mountain passes",
-"National Memorial Chorten and Buddha Dordenma",
-"All Bhutan visa fees and tourism taxes included"
-]
-},
-{
-id: "bt-2",
-name: "Bhutan Dragon Trail: Sacred Valleys & Cultural Immersion",
-description: "Journey deep into Bhutan's spiritual heartland on this 12-day cultural expedition. Explore sacred Bumthang Valley, witness endangered black-necked cranes in Phobjikha, and experience authentic village life, ancient monasteries, and traditional hot stone baths in remote Himalayan valleys.",
-duration: "12 Days",
-difficulty: "Moderate",
-groupSize: "2–8 people",
-price: 2850,
-rating: 4.8,
-reviews: 85,
-location: "Bumthang, Gangtey, Haa Valley",
-type: "cultural-tour",
-highlights: [
-"Sacred Bumthang Valley temple circuit",
-"Black-necked crane viewing in Phobjikha Valley",
-"Remote Haa Valley cultural immersion",
-"Traditional hot stone bath experience",
-"Gangtey Monastery and nature trails",
-"All-inclusive sustainable tourism package"
-]
-},
-{
-id: "bt-3",
-name: "Bhutan Festival Tour: Vibrant Tshechus & Cultural Celebration",
-description: "Experience Bhutan's vibrant living culture during our exclusive 9-day festival tour. Witness spectacular masked dance festivals (Tshechus), join local celebrations, and explore ancient dzongs and monasteries while immersed in Bhutan's most colorful cultural events with expert guides.",
-duration: "9 Days",
-difficulty: "Easy",
-groupSize: "2–12 people",
-price: 2250,
-rating: 4.9,
-reviews: 120,
-location: "Paro, Thimphu, Punakha",
-type: "festival-tour",
-highlights: [
-"Exclusive Tshechu festival access",
-"Traditional masked dance performances",
-"Festival photography opportunities",
-"Cultural interactions with local communities",
-"Bhutanese traditional dress experience",
-"All festival permits and special access included"
-]
-}
-],
+        id: "bt-1",
+        name: "Bhutan Cultural Tour: Tigers Nest Monastery & Dzong Exploration",
+        description: "Immerse yourself in Bhutan's rich Buddhist heritage on this 7-day cultural journey. Visit iconic landmarks including the legendary Tiger's Nest Monastery, magnificent Punakha Dzong, and experience traditional Bhutanese arts, crafts, and festivals with expert local guides.",
+        duration: "7 Days",
+        difficulty: "Easy",
+        groupSize: "2–10 people",
+        price: 1850,
+        rating: 4.9,
+        reviews: 150,
+        location: "Paro, Thimphu, Punakha Valley",
+        type: "cultural-tour",
+        highlights: [
+          "Tiger's Nest Monastery hike (Paro Taktsang)",
+          "Punakha Dzong - Palace of Great Happiness",
+          "Traditional Bhutanese arts & crafts workshops",
+          "Scenic Himalayan drives through mountain passes",
+          "National Memorial Chorten and Buddha Dordenma",
+          "All Bhutan visa fees and tourism taxes included"
+        ]
+      },
+      {
+        id: "bt-2",
+        name: "Bhutan Dragon Trail: Sacred Valleys & Cultural Immersion",
+        description: "Journey deep into Bhutan's spiritual heartland on this 12-day cultural expedition. Explore sacred Bumthang Valley, witness endangered black-necked cranes in Phobjikha, and experience authentic village life, ancient monasteries, and traditional hot stone baths in remote Himalayan valleys.",
+        duration: "12 Days",
+        difficulty: "Moderate",
+        groupSize: "2–8 people",
+        price: 2850,
+        rating: 4.8,
+        reviews: 85,
+        location: "Bumthang, Gangtey, Haa Valley",
+        type: "cultural-tour",
+        highlights: [
+          "Sacred Bumthang Valley temple circuit",
+          "Black-necked crane viewing in Phobjikha Valley",
+          "Remote Haa Valley cultural immersion",
+          "Traditional hot stone bath experience",
+          "Gangtey Monastery and nature trails",
+          "All-inclusive sustainable tourism package"
+        ]
+      },
+      {
+        id: "bt-3",
+        name: "Bhutan Festival Tour: Vibrant Tshechus & Cultural Celebration",
+        description: "Experience Bhutan's vibrant living culture during our exclusive 9-day festival tour. Witness spectacular masked dance festivals (Tshechus), join local celebrations, and explore ancient dzongs and monasteries while immersed in Bhutan's most colorful cultural events with expert guides.",
+        duration: "9 Days",
+        difficulty: "Easy",
+        groupSize: "2–12 people",
+        price: 2250,
+        rating: 4.9,
+        reviews: 120,
+        location: "Paro, Thimphu, Punakha",
+        type: "festival-tour",
+        highlights: [
+          "Exclusive Tshechu festival access",
+          "Traditional masked dance performances",
+          "Festival photography opportunities",
+          "Cultural interactions with local communities",
+          "Bhutanese traditional dress experience",
+          "All festival permits and special access included"
+        ]
+      }
+    ],
     tibet: [
       {
-id: "tb-1",
-name: "Tibet Overland Adventure: Lhasa to Everest Base Camp Tour",
-description: "Embark on an epic 9-day journey from Lhasa to Everest Base Camp. Explore ancient monasteries, cross high Himalayan passes, and witness the majestic north face of Mount Everest while immersing yourself in Tibet's rich Buddhist culture and breathtaking landscapes.",
-duration: "9 Days",
-difficulty: "Moderate",
-groupSize: "4–12 people",
-price: 1899,
-rating: 4.7,
-reviews: 95,
-location: "Lhasa, Gyantse, Shigatse, Everest Base Camp",
-type: "overland-tour",
-highlights: [
-"Potala Palace UNESCO World Heritage Site",
-"Sacred Jokhang Temple and Barkhor Street",
-"Gyantse Kumbum and Pelkor Monastery",
-"Tashilhunpo Monastery in Shigatse",
-"Drive across 5,000m+ Himalayan passes",
-"North Face Everest view from Rongbuk Monastery"
-]
-},
-{
-id: "tb-2",
-name: "Mount Kailash Pilgrimage Trek: Sacred Kora Adventure",
-description: "Undertake the ultimate spiritual journey to Tibet's most sacred mountain. This 15-day pilgrimage includes the challenging Mount Kailash kora (circumambulation), visits to holy Lake Manasarovar, and deep immersion in Tibetan Buddhist culture in remote western Tibet.",
-duration: "15 Days",
-difficulty: "Challenging",
-groupSize: "4–10 people",
-price: 2499,
-rating: 4.9,
-reviews: 72,
-location: "Western Tibet, Mount Kailash, Lake Manasarovar",
-type: "pilgrimage-trek",
-highlights: [
-"Complete 3-day Mount Kailash kora (circumambulation)",
-"Holy dip in sacred Lake Manasarovar",
-"Visit ancient monasteries in remote western Tibet",
-"Experience authentic Tibetan Buddhist rituals",
-"Cross high-altitude passes over 5,600m",
-"All special permits and pilgrimage fees included"
-]
-},
-{
-id: "tb-3",
-name: "Tibetan Cultural Discovery: Lhasa, Samye and Yarlung Valley",
-description: "Discover Tibet's cultural heartland on this 8-day immersive tour. Explore Lhasa's UNESCO sites, visit Tibet's first monastery at Samye, discover the ancient Yarlung Valley kingdom, and experience authentic Tibetan Buddhism with expert local guides.",
-duration: "8 Days",
-difficulty: "Easy to Moderate",
-groupSize: "4–15 people",
-price: 1450,
-rating: 4.6,
-reviews: 68,
-location: "Lhasa, Samye Monastery, Yarlung Valley",
-type: "cultural-tour",
-highlights: [
-"Potala Palace and Jokhang Temple exploration",
-"Samye Monastery - Tibet's first Buddhist monastery",
-"Yarlung Valley - cradle of Tibetan civilization",
-"Trandruk Temple and Yumbulagang Palace",
-"Tibetan Buddhist philosophy sessions",
-"All entrance fees and travel permits included"
-]
-}
-]
+        id: "tb-1",
+        name: "Tibet Overland Adventure: Lhasa to Everest Base Camp Tour",
+        description: "Embark on an epic 9-day journey from Lhasa to Everest Base Camp. Explore ancient monasteries, cross high Himalayan passes, and witness the majestic north face of Mount Everest while immersing yourself in Tibet's rich Buddhist culture and breathtaking landscapes.",
+        duration: "9 Days",
+        difficulty: "Moderate",
+        groupSize: "4–12 people",
+        price: 1899,
+        rating: 4.7,
+        reviews: 95,
+        location: "Lhasa, Gyantse, Shigatse, Everest Base Camp",
+        type: "overland-tour",
+        highlights: [
+          "Potala Palace UNESCO World Heritage Site",
+          "Sacred Jokhang Temple and Barkhor Street",
+          "Gyantse Kumbum and Pelkor Monastery",
+          "Tashilhunpo Monastery in Shigatse",
+          "Drive across 5,000m+ Himalayan passes",
+          "North Face Everest view from Rongbuk Monastery"
+        ]
+      },
+      {
+        id: "tb-2",
+        name: "Mount Kailash Pilgrimage Trek: Sacred Kora Adventure",
+        description: "Undertake the ultimate spiritual journey to Tibet's most sacred mountain. This 15-day pilgrimage includes the challenging Mount Kailash kora (circumambulation), visits to holy Lake Manasarovar, and deep immersion in Tibetan Buddhist culture in remote western Tibet.",
+        duration: "15 Days",
+        difficulty: "Challenging",
+        groupSize: "4–10 people",
+        price: 2499,
+        rating: 4.9,
+        reviews: 72,
+        location: "Western Tibet, Mount Kailash, Lake Manasarovar",
+        type: "pilgrimage-trek",
+        highlights: [
+          "Complete 3-day Mount Kailash kora (circumambulation)",
+          "Holy dip in sacred Lake Manasarovar",
+          "Visit ancient monasteries in remote western Tibet",
+          "Experience authentic Tibetan Buddhist rituals",
+          "Cross high-altitude passes over 5,600m",
+          "All special permits and pilgrimage fees included"
+        ]
+      },
+      {
+        id: "tb-3",
+        name: "Tibetan Cultural Discovery: Lhasa, Samye and Yarlung Valley",
+        description: "Discover Tibet's cultural heartland on this 8-day immersive tour. Explore Lhasa's UNESCO sites, visit Tibet's first monastery at Samye, discover the ancient Yarlung Valley kingdom, and experience authentic Tibetan Buddhism with expert local guides.",
+        duration: "8 Days",
+        difficulty: "Easy to Moderate",
+        groupSize: "4–15 people",
+        price: 1450,
+        rating: 4.6,
+        reviews: 68,
+        location: "Lhasa, Samye Monastery, Yarlung Valley",
+        type: "cultural-tour",
+        highlights: [
+          "Potala Palace and Jokhang Temple exploration",
+          "Samye Monastery - Tibet's first Buddhist monastery",
+          "Yarlung Valley - cradle of Tibetan civilization",
+          "Trandruk Temple and Yumbulagang Palace",
+          "Tibetan Buddhist philosophy sessions",
+          "All entrance fees and travel permits included"
+        ]
+      }
+    ]
   }), []);
 
   const currentPackages = packageData[activeTab as keyof typeof packageData];
@@ -288,10 +306,8 @@ highlights: [
   }, []);
 
   const handleWhatsAppClick = useCallback((pkg: Package) => {
-    // WhatsApp phone number (replace with your actual WhatsApp business number)
-    const phoneNumber = "+9779841376470"; // Example: +1234567890
+    const phoneNumber = "+9779841376470";
     
-    // Create the pre-filled message
     const message = `Hello! I'm interested in booking the "${pkg.name}" package.\n\n` +
                    `Package Details:\n` +
                    `- Duration: ${pkg.duration}\n` +
@@ -301,17 +317,13 @@ highlights: [
                    `- Location: ${pkg.location}\n\n` +
                    `I'd like to know more about availability and booking options.`;
     
-    // Encode the message for URL
     const encodedMessage = encodeURIComponent(message);
-    
-    // Create WhatsApp URL
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     
-    // Open WhatsApp in a new tab
     window.open(whatsappUrl, '_blank');
   }, [formatPrice]);
 
-  // Animation variants with proper TypeScript typing
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -348,6 +360,12 @@ highlights: [
   // Determine animation direction based on tab order
   const tabs = ["nepal", "bhutan", "tibet"];
   const direction = tabs.indexOf(activeTab) - tabs.indexOf(prevTabRef.current);
+
+  // Determine grid columns based on screen size
+  const getGridCols = () => {
+    if (isMobile) return "grid-cols-1";
+    return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+  };
 
   return (
     <section className="bg-gradient-to-b from-[#e8f3fa] via-[#bfd9e9] to-[#92bdd8] py-16 lg:py-24">
@@ -404,9 +422,10 @@ highlights: [
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="mx-auto grid w-full gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                className={`mx-auto grid w-full gap-6 ${getGridCols()}`}
               >
-                {[1, 2, 3].map((item) => (
+                {/* Show only 1 skeleton on mobile, 3 on desktop */}
+                {(isMobile ? [1] : [1, 2, 3]).map((item) => (
                   <div key={item} className="w-full rounded-xl border bg-white p-6 shadow-sm">
                     <Skeleton className="h-7 w-3/4 mb-3" />
                     <Skeleton className="h-4 w-full mb-3" />
@@ -428,9 +447,10 @@ highlights: [
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="mx-auto grid w-full gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                className={`mx-auto grid w-full gap-6 ${getGridCols()}`}
               >
-                {currentPackages.map((pkg, index) => (
+                {/* On mobile, show only the first package, on desktop show all */}
+                {(isMobile ? currentPackages.slice(0, 1) : currentPackages).map((pkg, index) => (
                   <motion.div
                     key={pkg.id}
                     layout
@@ -490,7 +510,7 @@ highlights: [
 
                     <Button
                       onClick={(e) => {
-                        e.stopPropagation(); // Prevent card selection when clicking button
+                        e.stopPropagation();
                         handleWhatsAppClick(pkg);
                       }}
                       className="w-full mb-4 py-3 text-base font-medium bg-[#295d7a] hover:bg-[#3a6e8c] transition-colors duration-300"
