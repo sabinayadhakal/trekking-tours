@@ -370,7 +370,7 @@ const MasonryTestimonialGrid = () => {
       <div className="container mx-auto px-4">
         {/* Heading */}
         <div className="flex flex-col items-center gap-4 sm:gap-6 px-4">
-          <h2 className="text-center text-2xl sm:text-3xl lg:text-5xl font-semibold font-display text-[#2E4F7C]">
+          <h2 className="text-center text-2xl sm:text-3xl lg:text-5xl font-bold font-display text-[#2E4F7C]">
             What Our Travelers Say
           </h2>
           <p className="text-center text-sm sm:text-base text-[#3C6AA6] max-w-2xl">
@@ -662,25 +662,7 @@ const MasonryTestimonialGrid = () => {
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="mt-8 sm:mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="text-center p-4 bg-white/50 rounded-xl">
-            <div className="text-2xl sm:text-3xl font-bold text-[#2E4F7C]">{data.length}</div>
-            <div className="text-xs sm:text-sm text-[#3C6AA6] mt-1">Total Reviews</div>
-          </div>
-          <div className="text-center p-4 bg-white/50 rounded-xl">
-            <div className="text-2xl sm:text-3xl font-bold text-[#2E4F7C]">5.0</div>
-            <div className="text-xs sm:text-sm text-[#3C6AA6] mt-1">Average Rating</div>
-          </div>
-          <div className="text-center p-4 bg-white/50 rounded-xl">
-            <div className="text-2xl sm:text-3xl font-bold text-[#2E4F7C]">21+</div>
-            <div className="text-xs sm:text-sm text-[#3C6AA6] mt-1">Countries</div>
-          </div>
-          <div className="text-center p-4 bg-white/50 rounded-xl">
-            <div className="text-2xl sm:text-3xl font-bold text-[#2E4F7C]">100%</div>
-            <div className="text-xs sm:text-sm text-[#3C6AA6] mt-1">Satisfaction</div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

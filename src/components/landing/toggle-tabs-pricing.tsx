@@ -382,7 +382,7 @@ const ToggleTabsPricing = () => {
           </motion.div>
 
           <motion.h1 
-            className="text-center text-3xl sm:text-5xl font-semibold text-[#295d7a]"
+            className="text-center text-3xl sm:text-5xl font-bold text-[#295d7a]"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}

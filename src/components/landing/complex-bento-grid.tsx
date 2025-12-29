@@ -36,7 +36,7 @@ const ComplexBentoGrid = () => {
           <div className="text-xs text-[#4a6c7d] md:text-sm font-semibold tracking-wider mb-2">
             ABOUT HIMKALA(SNOWART) ADVENTURE
           </div>
-          <h2 className="mt-4 mb-8 text-4xl font-bold text-[#2e4f5c] md:text-6xl">
+          <h2 className="mt-4 mb-8 text-4xl font-bold text-[#2e4f5c] md:text-5xl">
 Trekking & Tour Packages Crafted with Expertise Since 2015          </h2>
           <p className="text-base text-[#3d6678] md:text-lg">
             From Nepal’s trekking trails to Bhutan and Tibet’s cultural landscapes, our certified guides and local expertise craft safe, meaningful Himalayan adventures.

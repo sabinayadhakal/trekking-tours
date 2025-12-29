@@ -86,7 +86,7 @@ const NumberedBadgeCards = () => {
             
             <p className="text-sm font-medium text-[#3C6AA6]">Our Adventures</p>
           </Badge>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#2E4F7C] max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#2E4F7C] max-w-3xl">
             To Travel is to <span className="text-[#3C6AA6]">Live</span>.
           </h1>
           <p className="text-sm sm:text-lg text-[#1F3A5A] max-w-2xl mt-2 sm:mt-4">

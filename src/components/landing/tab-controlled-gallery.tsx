@@ -61,7 +61,7 @@ const TabControlledGallery = () => {
     <section className="py-20 bg-gradient-to-b from-[#d0e7f2] via-[#a3cde6] to-[#7fbde1]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#1f5f8b] mb-4 font-display">
+          <h2 className="text-5xl font-bold text-[#1f5f8b] mb-4 font-display">
             Himalayan Heritage & Culture
           </h2>
           <p className="text-[#2a2a2a] max-w-3xl mx-auto text-lg">
