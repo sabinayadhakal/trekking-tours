@@ -98,7 +98,7 @@ const MasonryTestimonialGrid = () => {
       country: "Greece",
       rating: 5,
       reviewDate: "2018-02-08",
-      photos: ["/images/review-3.jpg", "/images/review-4.jpg", "/images/review-5.jpg"]
+      photos: ["/images/review-3.jpg", "/images/review-4.jpg", ]
     },
     {
       id: 7,
@@ -120,7 +120,7 @@ const MasonryTestimonialGrid = () => {
       country: "United Kingdom",
       rating: 5,
       reviewDate: "2019-09-02",
-      photos: ["/images/review-7.jpg", "/images/review-8.jpg", "/images/review-9.jpg","/images/review-10.jpg", "/images/review-11.jpg", "/images/review-12.jpg"]
+      photos: ["/images/review-7.jpg", "/images/review-8.jpg", "/images/review-9.jpg","/images/review-10.jpg"]
     },
     {
       id: 9,
@@ -152,7 +152,7 @@ const MasonryTestimonialGrid = () => {
       country: "Spain",
       rating: 5,
       reviewDate: "2022-08-31",
-      photos: ["/images/review-17.jpg", "/images/review-18.jpg", "/images/review-19.jpg", "/images/review-20.jpg", "/images/review-21.jpg", "/images/review-22.jpg"]
+      photos: ["/images/review-17.jpg", "/images/review-18.jpg", "/images/review-19.jpg", "/images/review-20.jpg", ]
     },
     {
       id: 12,
@@ -163,7 +163,7 @@ const MasonryTestimonialGrid = () => {
       country: "France",
       rating: 5,
       reviewDate: "2024-08-31",
-      photos: ["/images/review-23.jpg", "/images/review-24.jpg", "/images/review-25.jpg", "/images/review-26.jpg", "/images/review-27.jpg", "/images/review-28.jpg"]
+      photos: ["/images/review-23.jpg", "/images/review-24.jpg", "/images/review-25.jpg", "/images/review-26.jpg"]
     },
     {
       id: 13,
@@ -185,18 +185,18 @@ const MasonryTestimonialGrid = () => {
       country: "France",
       rating: 5,
       reviewDate: "2024-05-21",
-      photos: ["/images/review-32.jpg", "/images/review-33.jpg", "/images/review-34.jpg", "/images/review-35.jpg", "/images/review-36.jpg", "/images/review-37.jpg"]
+      photos: ["/images/review-32.jpg", "/images/review-33.jpg", "/images/review-34.jpg", "/images/review-35.jpg", ]
     },
     {
       id: 15,
       name: "Krystsina Babets",
-      experiencePhoto: "/images/review-38.jpg",
+      experiencePhoto: "",
       content: "I did Annapurna Base Camp trekking with Himkala Adventure and it was absolutely fantastic experience!! It was my third trekking experience with Himkala Adventure. Shiva is a very caring knowledgeable guide and genuinely honest person. The trekking was personalized according to my available days and went smoothly with few options in case I needed to come back earlier. You will really have a great experience with Himkala Adventure!!",
       trek: "Annapurna Base Camp Trek",
       country: "Belarus",
       rating: 5,
       reviewDate: "2024-06-10",
-      photos: ["/images/review-38.jpg","/images/review-39.jpg","/images/review-40.jpg" ]
+      photos: ["/images/review-40.jpg" ]
     },
     {
       id: 16,
@@ -218,7 +218,7 @@ const MasonryTestimonialGrid = () => {
       country: "Norway",
       rating: 5,
       reviewDate: "2022-05-31",
-      photos: ["/images/review-43.jpg","/images/review-44.jpg", "/images/review-45.jpg", "/images/review-46.jpg" ]
+      photos: ["/images/review-43.jpg","/images/review-44.jpg", "/images/review-46.jpg" ]
     },
     {
       id: 18,
@@ -262,7 +262,7 @@ const MasonryTestimonialGrid = () => {
       country: "Iran",
       rating: 5,
       reviewDate: "2025-11-22",
-      photos: ["/images/review-55.jpg", "/images/review-56.jpg", "/images/review-57.jpg", "/images/review-58.jpg", "/images/review-59.jpg", ]
+      photos: ["/images/review-55.jpg", "/images/review-56.jpg", "/images/review-57.jpg", "/images/review-58.jpg",  ]
     },
   ];
 
@@ -374,7 +374,7 @@ const MasonryTestimonialGrid = () => {
             What Our Travelers Say
           </h2>
           <p className="text-center text-sm sm:text-base text-[#3C6AA6] max-w-2xl">
-            Read authentic reviews from adventurers who've explored Nepal with us
+            Read authentic Google reviews from adventurers who've explored Nepal with us
           </p>
         </div>
 
