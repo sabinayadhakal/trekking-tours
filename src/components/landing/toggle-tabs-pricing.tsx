@@ -287,6 +287,30 @@ highlights: [
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }, []);
 
+  const handleWhatsAppClick = useCallback((pkg: Package) => {
+    // WhatsApp phone number (replace with your actual WhatsApp business number)
+    const phoneNumber = "+9779841376470"; // Example: +1234567890
+    
+    // Create the pre-filled message
+    const message = `Hello! I'm interested in booking the "${pkg.name}" package.\n\n` +
+                   `Package Details:\n` +
+                   `- Duration: ${pkg.duration}\n` +
+                   `- Difficulty: ${pkg.difficulty}\n` +
+                   `- Group Size: ${pkg.groupSize}\n` +
+                   `- Price: $${formatPrice(pkg.price)} per person\n` +
+                   `- Location: ${pkg.location}\n\n` +
+                   `I'd like to know more about availability and booking options.`;
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+  }, [formatPrice]);
+
   // Animation variants with proper TypeScript typing
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -465,13 +489,14 @@ highlights: [
                     </p>
 
                     <Button
-                      asChild
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent card selection when clicking button
+                        handleWhatsAppClick(pkg);
+                      }}
                       className="w-full mb-4 py-3 text-base font-medium bg-[#295d7a] hover:bg-[#3a6e8c] transition-colors duration-300"
                     >
-                      <a href="/contact">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Contact Us to Book Now
-                      </a>
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Contact to Book Now
                     </Button>
 
                     <Separator className="my-4" />

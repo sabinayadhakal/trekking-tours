@@ -21,11 +21,11 @@ const DAY_HIKING_TOURS: Tour[] =
   "originalPrice": 60,
   "excerpt": "Panoramic Himalayan sunrise views followed by a cultural hike to ancient heritage sites",
   "description": "This classic day hike combines stunning Himalayan vistas with rich cultural heritage. Begin with a spectacular sunrise over the mountains from Nagarkot viewpoint, then descend through lush forests and traditional Tamang and Newari villages. The hike concludes at Changunarayan Temple, one of Nepal's oldest and most important Hindu temples and a UNESCO World Heritage Site. Perfect for those seeking both natural beauty and cultural immersion.",
-  "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop",
+  "image": "/images/nagarkot-1.jpg",
   "images": [
-    "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1529408632839-a54952c491e5?w=800&h=600&fit=crop"
+    "/images/nagarkot-1.jpg",
+    "/images/nagarkot-2.jpg",
+    "/images/changu-1.jpg",
   ],
   "tags": ["Day Hike", "Cultural", "Moderate", "UNESCO"],
   "highlights": ["Sunrise Himalayan panorama", "Traditional village walk", "UNESCO Changunarayan Temple"],
@@ -58,11 +58,13 @@ const DAY_HIKING_TOURS: Tour[] =
   "originalPrice": 50,
   "excerpt": "Historical trail connecting two ancient Newari towns with traditional architecture",
   "description": "Explore the living history of Nepal on this gentle day hike connecting Dhulikhel and Panauti, two beautifully preserved Newari towns. Walk through terraced farmlands, cross traditional suspension bridges, and witness daily rural life. The hike culminates in Panauti, considered one of Nepal's most important medieval towns, featuring exceptional woodcarving, metalwork, and ancient temples at the sacred confluence of two rivers.",
-  "image": "https://images.unsplash.com/photo-1588666309990-d68f08e3d4c6?w=400&h=300&fit=crop",
+  "image": "/images/dhulikhel-1.jpg",
   "images": [
-    "https://images.unsplash.com/photo-1588666309990-d68f08e3d4c6?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=800&h=600&fit=crop"
+    "/images/dhulikhel-1.jpg",
+    "/images/dhulikhel-2.jpg",
+    "/images/dhulikhel-3.jpg",
+        "/images/dhulikhel-4.jpg",
+
   ],
   "tags": ["Day Hike", "Cultural", "Easy", "Historical"],
   "highlights": ["Newari architecture & culture", "Terraced farmland views", "Panauti's ancient temples & river confluence"],
@@ -95,12 +97,11 @@ const DAY_HIKING_TOURS: Tour[] =
   "originalPrice": 55,
   "excerpt": "Spiritual journey to a sacred hilltop with panoramic valley views",
   "description": "A rewarding day hike combining spirituality, nature, and panoramic views. Start at the sacred Buddhist meditation sites of Pharping, then ascend through dense rhododendron and pine forests to the summit of Champadevi (2,278m). The peak is crowned with Buddhist stupas and offers one of the best 360-degree views of the Kathmandu Valley and Himalayan ranges to the north. A perfect escape for both spiritual seekers and hiking enthusiasts.",
-  "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop",
+  "image":  "/images/pharping-1.jpg",
   "images": [
-    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&h=600&fit=crop"
-  ],
+"/images/pharping-1.jpg",
+"/images/pharping-2.jpg",
+"/images/pharping-3.jpg",  ],
   "tags": ["Day Hike", "Nature", "Moderate", "Spiritual"],
   "highlights": ["Sacred Buddhist sites of Pharping", "Champadevi summit with 360° views", "Forest walk with rhododendrons (spring)"],
   "includes": ["Guide", "Transportation", "Lunch", "Entry fees"],

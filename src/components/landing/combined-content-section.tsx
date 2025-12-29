@@ -409,7 +409,7 @@ Edward
             </div>
             
             <div className="text-center pt-2 sm:pt-4">
-              <Link href="/videos">
+              <Link href="/blog">
                 <Button className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-4 sm:px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 mx-auto text-sm sm:text-base shadow-md hover:shadow-lg">
                   View All Videos <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>

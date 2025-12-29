@@ -99,7 +99,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
       <AboutHero
-        imageSrc="/images/about-us-hero.png"
+        imageSrc="/images/about-us-hero.jpg"
         imageAlt="Mountain landscape with adventurers"
         title="Get to Know Us"
         description="As trusted Nepal trekking and expedition experts, we offer professional advice and comprehensive planning for adventure travel. Our team’s deep field experience ensures every trek and expedition is safe, well-organized, and tailored to your goals."

@@ -27,11 +27,12 @@ export default function BhutanPage() {
   "originalPrice": 1999,
   "excerpt": "A comprehensive cultural, historical, and spiritual journey through Bhutan's heartlands",
   "description": "This thoughtfully designed program merges cultural immersion, historical exploration, and spiritual discovery across Bhutan's most iconic valleys. Experience ancient temples, majestic dzongs, breathtaking mountain passes, and the legendary Tiger's Nest Monastery.",
-  "image": "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+  "image": "/images/bhutan_tours-1.jpg",
   "images": [
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1627465316641-4b1c6e505d5e?q=80&w=1974&auto=format&fit=crop"
+    "/images/bhutan_tours-1.jpg",
+    "/images/bhutan_tours-2.jpg",
+    "/images/bhutan_tours-3.jpg"
+
   ],
   "tags": ["Cultural", "Historical", "Spiritual", "Hiking", "Comprehensive"],
   "highlights": [
@@ -103,11 +104,12 @@ export default function BhutanPage() {
   "originalPrice": 349,
   "excerpt": "A spiritual journey to Bhutan's most sacred monastery perched on a cliff",
   "description": "Experience the sheer joy and spiritual satisfaction of hiking to the legendary Taktsang (Tiger's Nest) Monastery. This sacred pilgrimage site offers breathtaking views, mystical atmosphere, and profound spiritual connection. Perched dramatically on a granite cliff, the monastery is believed to be the birthplace of Buddhism in Bhutan, where Guru Padmasambhava meditated for 3 years, 3 months, and 3 days.",
-  "image": "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+  "image":     "/images/bhutan_tours-4.jpg",
+
   "images": [
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1627465316641-4b1c6e505d5e?q=80&w=1974&auto=format&fit=crop"
+    "/images/bhutan_tours-4.jpg",
+     "/images/bhutan_tours-5.jpg",
+  
   ],
   "tags": ["Spiritual", "Hiking", "Pilgrimage", "Day Trip", "Sacred Site"],
   "highlights": [
@@ -181,11 +183,11 @@ export default function BhutanPage() {
   "originalPrice": 999,
   "excerpt": "A perfect quick getaway to experience Bhutan's highlights when time is limited",
   "description": "Designed for travelers with very limited time who want to explore Bhutan's essence. This compact tour begins with a scenic mountain flight from Kathmandu to Paro, offering breathtaking Himalayan views. Experience Bhutan's spiritual heart with visits to sacred monasteries and dzongs, including the iconic Tiger's Nest Monastery hike. Perfect for those who want to capture Bhutan's magic in a short span.",
-  "image": "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
+  "image":  "/images/bhutan_tours-6.jpg",
   "images": [
-    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=2070&auto=format&fit=crop"
+    "/images/bhutan_tours-6.jpg",
+    "/images/bhutan_tours-7.jpg",
+    "/images/bhutan_tours-8.jpg",
   ],
   "tags": ["Express Tour", "Short Trip", "Mountain Flight", "Cultural", "Spiritual"],
   "highlights": [
@@ -270,11 +272,12 @@ export default function BhutanPage() {
   "originalPrice": 1299,
   "excerpt": "An organized 4-day journey through Bhutan's cultural landmarks and spiritual sites, culminating in the iconic Tiger's Nest hike",
   "description": "This comprehensive 4-day tour offers a perfect blend of cultural immersion and adventure. Explore Thimpu's important dzongs, museums, and the giant Buddha statue, then challenge yourself with the legendary hike to Tiger's Nest Monastery. Visit royal memorials, traditional craft centers, and sacred temples while experiencing Bhutan's unique heritage.",
-  "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=2070&auto=format&fit=crop",
+  "image":     "/images/bhutan_tours-9.jpg",
+
   "images": [
-    "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop"
+    "/images/bhutan_tours-9.jpg",
+    "/images/bhutan_tours-10.jpg",
+    "/images/bhutan_tours-11.jpg",
   ],
   "tags": ["Cultural", "Hiking", "Heritage", "Short Trip", "Dzong Tour"],
   "highlights": [
@@ -365,12 +368,17 @@ export default function BhutanPage() {
   "originalPrice": 3799,
   "excerpt": "An immersive journey through Bhutan's spiritual heartlands, exploring ancient dzongs, sacred monasteries, and untouched Himalayan valleys",
   "description": "Experience Bhutan's untouched lands and Buddhist way of life on this first-grade cultural expedition. Travel from Kathmandu to explore Bhutan's most historically and culturally significant regions, including sacred sites, ancient dzongs, temples, museums, and remote valleys. Discover the spirit of the Bhutanese people, their connection to Shambala, and the kingdom's unique secular Buddhist culture.",
-  "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
+  "image":     "/images/bhutan_tours-12.jpg",
+
   "images": [
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1509644851130-484289537bde?q=80&w=2070&auto=format&fit=crop"
+        "/images/bhutan_tours-12.jpg",
+
+        "/images/bhutan_tours-13.jpg",
+
+       "/images/bhutan_tours-14.jpg",
+
+        "/images/bhutan_tours-15.jpg",
+
   ],
   "tags": ["Cultural", "Comprehensive", "Spiritual", "Extended Tour", "Himalayan"],
   "highlights": [
@@ -535,7 +543,7 @@ export default function BhutanPage() {
       <Hero
         title="Discover the Kingdom of Bhutan"
         description="Immerse yourself in Bhutan's breathtaking landscapes, vibrant culture, and spiritual heritage."
-        backgroundImage="/images/bhutan-hero.png"
+        backgroundImage="/images/bhutan-hero.jpg"
       />
 
       {/* Trips Section */}

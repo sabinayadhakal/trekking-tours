@@ -38,9 +38,9 @@ export default function NepalPage() {
 
       excerpt: "Join the first FREE WALKING TOUR in Kathmandu, Nepal! Explore the beautiful capital with experienced local guides.",
       description: "We are offering the first FREE WALKING TOUR in Kathmandu, Nepal! Join this amazing free city tour around the beautiful capital. Everybody knows that Free Walking Tours in Europe are very popular, and now this unique experience is here in Nepal.\n\nOrganized daily by Himkala Adventure, this walk begins at the Garden of Dreams and guides you through local temples, bustling markets, and ends at the iconic Monkey Temple. Tours run with licensed and experienced guides, ensuring cultural depth and a warm experience.\n\nTour Schedule\nMorning Shift: 9:00 am – 1:00 pm\nAfternoon Shift: 2:00 pm – 6:00 pm\n\nTours start from the Garden of Dreams, Thamel.",
-      image: "/images/walking-tour-kathmandu.jpg",
+      image: "/images/FWT-2.jpg",
       images: [
-        "/images/walking-tour-kathmandu.jpg"
+        "/images/FWT-2.jpg"
       ],
       tags: ["Free", "Walking Tour", "Cultural", "City Tour"],
       highlights: [
@@ -105,9 +105,9 @@ export default function NepalPage() {
       price: 899,
       excerpt: "Experience world-class trekking adventures in the majestic Himalayas of Nepal",
       description: "Discover the ultimate trekking experience in Nepal's breathtaking Himalayan landscapes. From Everest Base Camp to Annapurna Circuit, we offer guided treks for all skill levels.",
-      image: "/images/trekking-nepal.jpg",
+      image: "/images/trekking-hero.jpg",
       images: [
-        "/images/trekking-nepal.jpg"
+        "/images/trekking-hero.jpg"
       ],
       tags: ["Trekking", "Adventure", "Himalayas", "Mountains"],
       highlights: [
@@ -150,9 +150,9 @@ export default function NepalPage() {
       price: 49,
       excerpt: "Perfect short hikes around Kathmandu Valley for those with limited time",
       description: "Enjoy scenic day hikes in the beautiful hills surrounding Kathmandu Valley. Perfect for travelers who want to experience Nepal's nature without multi-day commitments.",
-      image: "/images/day-hiking.jpg",
+      image: "/images/day-hiking-hero.jpg",
       images: [
-        "/images/day-hiking.jpg"
+        "/images/day-hiking-hero.jpg"
       ],
       tags: ["Hiking", "Day Trip", "Nature", "Scenic"],
       highlights: [
@@ -185,9 +185,9 @@ export default function NepalPage() {
       price: 39,
       excerpt: "Explore UNESCO World Heritage Sites and ancient cities in day tours",
       description: "Discover the rich cultural heritage of Nepal through our guided day sightseeing tours. Visit ancient temples, palaces, and UNESCO sites with expert local guides.",
-      image: "/images/day-sightseeing.jpg",
+      image: "/images/day-sightseeing-hero.jpg",
       images: [
-        "/images/day-sightseeing.jpg"
+        "/images/day-sightseeing-hero.jpg"
       ],
       tags: ["Sightseeing", "Cultural", "UNESCO", "Heritage"],
       highlights: [
@@ -220,9 +220,9 @@ export default function NepalPage() {
       price: 299,
       excerpt: "Comprehensive sightseeing packages covering major attractions across Nepal",
       description: "Our package sightseeing tours offer the perfect way to experience Nepal's diverse attractions. From cultural heritage to natural wonders, we've got you covered.",
-      image: "/images/package-sightseeing.jpg",
+      image: "/images/numbered-cards-package.jpg",
       images: [
-        "/images/package-sightseeing.jpg"
+        "/images/numbered-cards-package.jpg"
       ],
       tags: ["Package", "Sightseeing", "Cultural", "Comprehensive"],
       highlights: [
@@ -255,9 +255,9 @@ export default function NepalPage() {
       price: 199,
       excerpt: "Wildlife adventures in Nepal's national parks with jungle safaris",
       description: "Experience the wild side of Nepal with our jungle safari tours. Spot rhinos, tigers, and exotic birds in Chitwan and Bardia National Parks.",
-      image: "/images/jungle-safari.jpg",
+      image: "/images/jungle-safari-hero.jpg",
       images: [
-        "/images/jungle-safari.jpg"
+        "/images/jungle-safari-hero.jpg"
       ],
       tags: ["Wildlife", "Safari", "Jungle", "Adventure"],
       highlights: [
@@ -290,9 +290,9 @@ export default function NepalPage() {
       price: 199,
       excerpt: "Spectacular mountain flight experience over the Himalayas",
       description: "Witness the majestic Himalayas from above with our mountain flight tours. Get up close with Mount Everest and other peaks without the trekking.",
-      image: "/images/mountain-flight.jpg",
+      image: "/images/mountain-flight-hero.jpg",
       images: [
-        "/images/mountain-flight.jpg"
+        "/images/mountain-flight-hero.jpg"
       ],
       tags: ["Flight", "Mountains", "Everest", "Scenic"],
       highlights: [
@@ -325,9 +325,9 @@ export default function NepalPage() {
       price: 999,
       excerpt: "Luxury helicopter tours for breathtaking aerial views of Nepal",
       description: "Experience Nepal's most spectacular sights from the air with our helicopter sightseeing tours. Perfect for those seeking luxury and unique perspectives.",
-      image: "/images/helicopter-tour.jpg",
+      image: "/images/helicopter-tours-hero.jpg",
       images: [
-        "/images/helicopter-tour.jpg"
+        "/images/helicopter-tours-hero.jpg"
       ],
       tags: ["Helicopter", "Luxury", "Scenic", "Adventure"],
       highlights: [
@@ -360,9 +360,9 @@ export default function NepalPage() {
       price: 2499,
       excerpt: "Professional peak climbing expeditions for adventure enthusiasts",
       description: "Challenge yourself with our peak climbing expeditions in the Himalayas. We offer guided climbs to various peaks suitable for different experience levels.",
-      image: "/images/peak-climbing.jpg",
+      image: "/images/peak-climbing-hero.jpg",
       images: [
-        "/images/peak-climbing.jpg"
+        "/images/peak-climbing-hero.jpg"
       ],
       tags: ["Climbing", "Adventure", "Expedition", "Mountains"],
       highlights: [
@@ -507,12 +507,27 @@ function CustomToursGrid({
 
     const handleLearnMoreClick = (e: React.MouseEvent) => {
       e.stopPropagation(); // Prevent card click from triggering
-      onTourSelect?.(tour);
+      
+      // Special handling for Free Walking Tour (id: "1")
+      if (tour.id === "1") {
+        window.location.href = "/services/Free-Walking-Tour";
+      } else {
+        onTourSelect?.(tour);
+      }
     }
 
     const handleCustomizeClick = (e: React.MouseEvent) => {
       e.stopPropagation(); // Prevent card click from triggering
-      onContactBooking?.();
+      
+      // Special handling for Free Walking Tour (id: "1")
+      if (tour.id === "1") {
+        // URL encode the message
+        const message = encodeURIComponent("Hello! I'm interested in booking the Free Walking Tour. Please let me know when you would organize it.");
+        // Redirect to WhatsApp with phone number and pre-filled message
+        window.open(`https://wa.me/9779841376470?text=${message}`, '_blank');
+      } else {
+        onContactBooking?.();
+      }
     }
 
     return (
@@ -616,7 +631,7 @@ function CustomToursGrid({
               onClick={handleCustomizeClick}
               data-prevent-card-click
             >
-              Customize yourself
+              {tour.id === "1" ? "Book on WhatsApp" : "Customize yourself"}
             </Button>
           </div>
         </CardContent>

@@ -19,11 +19,11 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
     "price": 0,
     "excerpt": "Explore the cultural heart of Kathmandu on foot.",
     "description": "Walk through Kathmandu’s historic streets, visit key heritage sites, and experience local life with an expert guide on this immersive walking tour.",
-    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop",
+    "image": "/images/FWT-3.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
-    ],
+      "/images/FWT-3.jpg",
+      "/images/asan_market-1.jpg",
+"/images/swoyambhunath-2.jpg",    ],
     "tags": ["Walking Tour", "Cultural", "Half Day"],
     "highlights": ["Old Kathmandu Streets", "Local Markets", "Heritage Temples"],
     "includes": ["Professional guide"],
@@ -47,25 +47,28 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
   
   {
     "id": "2",
-    "title": "Kapan Dumba, Bouddhanath and Pashupatinath Day Tour",
+    "title": "Kapan Gumba, Bouddhanath and Pashupatinath Day Tour",
     "location": "Kathmandu Valley, Nepal",
     "duration": "6 hours",
     "rating": 4.9,
     "reviewCount": 156,
     "price": 39,
     "excerpt": "Spiritual journey through sacred Buddhist and Hindu sites.",
-    "description": "Experience the tranquility of Kapan Dumba, the grandeur of Bouddhanath Stupa, and the spiritual significance of Pashupatinath Temple.",
-    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    "description": "Experience the tranquility of Kapan Gumba, the grandeur of Bouddhanath Stupa, and the spiritual significance of Pashupatinath Temple.",
+    "image":  "/images/boudhanath-1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop"
-    ],
+      "/images/boudhanath-1.jpg",
+ "/images/kopan-1.jpg", 
+       "/images/pashupati-1.jpg",
+
+ 
+   ],
     "tags": ["Spiritual", "Cultural", "Half Day"],
-    "highlights": ["Kapan Dumba Monastery", "Bouddhanath Stupa", "Pashupatinath Temple"],
+    "highlights": ["Kapan Gumba Monastery", "Bouddhanath Stupa", "Pashupatinath Temple"],
     "includes": ["Guide", "Transportation"],
     "excludes": ["Meals", "Tips"],
     "itinerary": [
-      { "day": 1, "title": "Spiritual Day Tour", "description": "Pickup, visit Kapan Dumba Monastery, Bouddhanath Stupa, and Pashupatinath Temple, then return." }
+      { "day": 1, "title": "Spiritual Day Tour", "description": "Pickup, visit Kapan Gumba Monastery, Bouddhanath Stupa, and Pashupatinath Temple, then return." }
     ],
     "maxGroupSize": 8,
     "included": ["Guide", "Private vehicle", "Entry fees"],
@@ -90,9 +93,15 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
     "price": 45,
     "excerpt": "Explore ancient royal squares and sacred religious sites.",
     "description": "Discover the artistic heritage of Patan Durbar Square followed by the spiritual significance of Pashupatinath and Bouddhanath.",
-    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+    "image":       "/images/patan-1.jpg",
+
     "images": [
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
+            "/images/patan-1.jpg",
+                  "/images/boudhanath-2.jpg",
+
+                        "/images/pashupati-2.jpg",
+
+
     ],
     "tags": ["Full Day", "UNESCO", "Cultural", "Religious"],
     "highlights": ["Patan Durbar Square", "Pashupatinath Temple", "Bouddhanath Stupa"],
@@ -124,9 +133,14 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
     "price": 55,
     "excerpt": "Traditional Newari village exploration and royal heritage.",
     "description": "Experience the charm of traditional Newari villages Bungamati and Khokana before exploring the artistic heritage of Patan Durbar Square.",
-    "image": "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?w=400&h=300&fit=crop",
+    "image":             "/images/bungamati-1.jpg",
+
     "images": [
-      "https://images.unsplash.com/photo-1581503369908-6c5013366a9e?w=800&h=600&fit=crop"
+            "/images/bungamati-1.jpg",
+                        "/images/patan-1.jpg",
+                                    "/images/bungamati-2.jpg",
+
+
     ],
     "tags": ["Cultural", "Village Tour", "Full Day", "Newari"],
     "highlights": ["Patan Durbar Square", "Bungamati Village", "Khokana Village"],
@@ -158,9 +172,16 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
     "price": 60,
     "excerpt": "Complete cultural and spiritual tour of Kathmandu's highlights.",
     "description": "Explore the royal heritage of Kathmandu Durbar Square, the panoramic views from Swayambhunath, and the spiritual centers of Bouddhanath and Pashupatinath.",
-    "image": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=400&h=300&fit=crop",
+    "image":             "/images/ktm_durbar_square-2.jpg",
+
     "images": [
-      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
+       "/images/ktm_durbar_square-2.jpg",
+                  "/images/swoyambhunath-1.jpg",
+                      "/images/boudhanath-1.jpg",
+                                  "/images/pashupati-1.jpg",
+
+
+
     ],
     "tags": ["Cultural", "Spiritual", "UNESCO", "Full Day"],
     "highlights": ["Kathmandu Durbar Square", "Swayambhunath", "Bouddhanath", "Pashupatinath"],
@@ -192,9 +213,10 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
     "price": 65,
     "excerpt": "Medieval city exploration of two UNESCO World Heritage Sites.",
     "description": "Discover the ancient royal squares of Bhaktapur and Patan, showcasing exquisite Newari architecture and craftsmanship.",
-    "image": "https://images.unsplash.com/photo-1611746869697-6b0e65ba2e5f?w=400&h=300&fit=crop",
+    "image":  "/images/bhaktapur-1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1611746869697-6b0e65ba2e5f?w=800&h=600&fit=crop"
+       "/images/bhaktapur-1.jpg",
+        "/images/patan-1.jpg",
     ],
     "tags": ["UNESCO", "Medieval", "Architectural", "Full Day"],
     "highlights": ["Bhaktapur Durbar Square", "Patan Durbar Square", "Newari Architecture"],
@@ -226,9 +248,12 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
     "price": 50,
     "excerpt": "Spiritual pilgrimage and historical hilltop town visit.",
     "description": "Visit the sacred Dakshinkali Temple, explore the Buddhist pilgrimage site of Pharping, and discover the ancient hilltop town of Kirtipur.",
-    "image": "https://images.unsplash.com/photo-1564507004663-b6dfb3e2ede6?w=400&h=300&fit=crop",
+    "image": "/images/dakshinkali-1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1564507004663-b6dfb3e2ede6?w=800&h=600&fit=crop"
+      "/images/dakshinkali-1.jpg",
+      "/images/pharping-2.jpg",
+      "/images/dakshinkali-2.jpg",
+      "/images/dakshinkali-3.jpg",
     ],
     "tags": ["Spiritual", "Pilgrimage", "Historical", "Full Day"],
     "highlights": ["Dakshinkali Temple", "Pharping Monastery", "Kirtipur Town"],

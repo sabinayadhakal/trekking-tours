@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useState, useRef, ChangeEvent } from "react";
 
 export default function Page() {
-  const [bgImage, setBgImage] = useState("/images/FWT-1.jpeg");
+  const [bgImage, setBgImage] = useState("/images/FWT-1.jpg");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +37,12 @@ export default function Page() {
         
         {/* Upload Button */}
         <div className="absolute top-4 right-4 z-20">
-         
+          <button
+            onClick={triggerFileInput}
+            className="px-4 py-2 bg-white/80 text-gray-800 rounded-lg hover:bg-white transition-colors backdrop-blur-sm"
+          >
+            Change Background
+          </button>
           <input
             type="file"
             ref={fileInputRef}
@@ -54,11 +59,11 @@ export default function Page() {
           className="relative z-10 text-center text-white px-6"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg text-white">
-  Free Walking Tour in Kathmandu
-</h1>
-<p className="text-lg md:text-2xl font-light max-w-2xl mx-auto text-white">
-  Discover the heart of Kathmandu with Himkala Adventure.
-</p>
+            Free Walking Tour in Kathmandu
+          </h1>
+          <p className="text-lg md:text-2xl font-light max-w-2xl mx-auto text-white">
+            Discover the heart of Kathmandu with Himkala Adventure.
+          </p>
         </motion.div>
       </section>
 
@@ -123,31 +128,39 @@ export default function Page() {
           Experience in Pictures & Videos
         </h2>
         <div className="grid md:grid-cols-3 gap-4">
-          <div className="relative h-64 rounded-xl shadow-md overflow-hidden">
+           <div className="relative h-64 rounded-xl shadow-md overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1564422019951-2c3a346787d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+              src="/images/ktm_durbar_square-1.jpg"
               alt="Kathmandu Durbar Square"
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
             />
           </div>
+          
+          {/* Image 2 - Local image from public folder */}
           <div className="relative h-64 rounded-xl shadow-md overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1582540479919-4c765f937a0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+              src="/images/swoyambhunath-1.jpg"
               alt="Monkey Temple"
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
             />
           </div>
+          
+          {/* Image 3 - Another external URL */}
           <div className="relative h-64 rounded-xl shadow-md overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1598433849836-a363e94b2d56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80"
+              src="/images/asan_market-1.jpg"
               alt="Local Market"
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
             />
           </div>
 
+          {/* Video Section */}
           <div className="md:col-span-3 mt-6">
             <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-md">
               <iframe

@@ -258,7 +258,7 @@ export default function TourDetailModal({ tour, isOpen, onClose }: TourDetailMod
 
                   {tour.entryRequirements && (
                     <div>
-                      <h3 className="font-semibold mb-2 text-[#3C6AA6]">Country Entry Requirements</h3>
+                      <h3 className="font-semibold mb-2 text-[#3C6AA6]">Entry Requirements</h3>
                       <ul className="space-y-1">
                         {tour.entryRequirements.map((item, idx) => (
                           <li key={idx} className="flex items-start gap-2 transform transition-transform duration-300 hover:scale-[1.02]">

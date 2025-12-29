@@ -27,11 +27,11 @@ export default function TibetPage() {
   "originalPrice": 2099,
   "excerpt": "A comprehensive journey through Tibet's cultural heartlands, visiting ancient monasteries, palaces, and the cradle of Tibetan civilization",
   "description": "This classic tour covers all major cultural centers of Tibet including Tsedang, Lhasa, Gyatse, and Shigatse. Designed for travelers with limited time and budget, it offers a deep immersion into Tibetan history, spirituality, and architecture. Experience the birthplace of Tibetan civilization, explore UNESCO World Heritage sites, and witness the living traditions of Tibetan Buddhism.",
-  "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
+  "image": "/images/tibet_tours-1.jpg",
   "images": [
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop"
+"/images/tibet_tours-1.jpg",
+    "/images/tibet_tours-2.jpeg",
+    "/images/tibet_tours-3.jpg",
   ],
   "tags": ["Cultural", "Buddhist", "Historical", "Budget-Friendly", "UNESCO"],
   "highlights": [
@@ -139,11 +139,15 @@ export default function TibetPage() {
   "originalPrice": 2399,
   "excerpt": "A high-altitude adventure to Tibet's sacred turquoise lake at 4,718m, crossing the dramatic Yangpachen Pass at 5,630m",
   "description": "Journey to Namtso, one of Tibet's three holy lakes, known as the 'Heavenly Lake' for its stunning turquoise waters and dramatic mountain backdrop. This expedition combines cultural exploration of Lhasa's monasteries with a challenging high-altitude trek to the remote Namtso Lake, camping beside its sacred shores and experiencing nomadic Tibetan life.",
-  "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
+  "image":     "/images/tibet_tours-4.jpg",
+
   "images": [
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop"
+        "/images/tibet_tours-4.jpg",
+
+        "/images/tibet_tours-5.jpeg",
+
+        "/images/tibet_tours-6.jpg",
+
   ],
   "tags": ["Trekking", "High Altitude", "Lake", "Adventure", "Sacred Sites"],
   "highlights": [
@@ -262,11 +266,11 @@ export default function TibetPage() {
   "originalPrice": 2699,
   "excerpt": "Experience the majesty of Mount Everest from the Tibetan side, hiking to base camp at 5,200m with cultural immersion in Tibet's sacred sites",
   "description": "Fulfill your Everest dream affordably by standing at its very foot from the Tibetan side. This tour combines cultural exploration of Lhasa's UNESCO sites with a journey across high Himalayan passes to Everest Base Camp. Experience the grandeur of Everest up close without the extreme challenges of climbing, while immersing in Tibetan culture and crossing the world's highest plateau.",
-  "image": "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+  "image": "/images/tibet_tours-7.jpg",
   "images": [
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop"
+    "/images/tibet_tours-7.jpg",
+    "/images/tibet_tours-8.jpg",
+    "/images/tibet_tours-9.jpg",
   ],
   "tags": ["Everest", "Base Camp", "High Altitude", "Adventure", "Cultural"],
   "highlights": [
@@ -379,11 +383,14 @@ export default function TibetPage() {
   "originalPrice": 2199,
   "excerpt": "An epic overland journey from Nepal to Tibet, crossing high mountain passes and exploring ancient monasteries along the historic Friendship Highway",
   "description": "Embark on an exciting overland adventure from Kathmandu to Lhasa via the historic Araniko Highway. This journey takes you through dramatic Himalayan landscapes, crossing the Tibetan Plateau at 5,200m, visiting ancient monasteries, fortress cities, and culminating in Lhasa's spiritual heart. Experience the raw beauty of Tibet's countryside and its profound cultural heritage.",
-  "image": "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
+  "image":"/images/tibet_tours-10.jpg",
+
   "images": [
-    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop"
+       "/images/tibet_tours-10.jpg",
+
+        "/images/tibet_tours-11.jpg",
+
+    "/images/tibet_tours-12.jpg",
   ],
   "tags": ["Overland", "Road Trip", "Cultural", "High Altitude", "Historic Route"],
   "highlights": [
@@ -497,11 +504,15 @@ export default function TibetPage() {
   "originalPrice": 1999,
   "excerpt": "Perfect blend of flying to Lhasa and overland return to Kathmandu, experiencing Tibet's cultural treasures and breathtaking Himalayan landscapes",
   "description": "Experience the best of both worlds with this unique tour that begins with a spectacular mountain flight from Kathmandu to Lhasa and returns via an epic overland journey through Tibet's heartland. Witness the dramatic transition from Nepal's green hills to Tibet's high plateau, explore ancient monasteries and palaces, and enjoy panoramic mountain views including Everest, Cho Oyu, Makalu, and Shishapangma.",
-  "image": "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+  "image":     "/images/tibet_tours-13.jpg",
+
   "images": [
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop"
+        "/images/tibet_tours-13.jpg",
+
+        "/images/tibet_tours-14.jpg",
+
+        "/images/tibet_tours-15.jpg",
+
   ],
   "tags": ["Fly-In", "Drive-Out", "Mountain Views", "Cultural", "Short Tour"],
   "highlights": [
@@ -606,11 +617,11 @@ export default function TibetPage() {
   "originalPrice": 1449,
   "excerpt": "A compact journey to Tibet's spiritual capital, exploring the sacred sites that make Lhasa 'The Place of the Gods' in Tibetan language",
   "description": "Experience the mystical allure of Lhasa, once known as 'The Forbidden City.' This essential tour takes you to the heart of Tibetan Buddhism, visiting the magnificent Potala Palace perched on Marpo Ri hill, the sacred Jokhang Temple housing Tibet's most precious relics, and the vibrant Barkhor pilgrimage circuit. Discover why Lhasa has been a magnet for pilgrims for centuries.",
-  "image": "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
+  "image": "/images/tibet_tours-16.jpg",
   "images": [
-    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop"
+    "/images/tibet_tours-16.jpg",
+    "/images/tibet_tours-17.jpg",
+    "/images/tibet_tours-18.jpg",
   ],
   "tags": ["Lhasa", "Cultural", "Short Trip", "Spiritual", "UNESCO"],
   "highlights": [
@@ -704,11 +715,14 @@ export default function TibetPage() {
   "originalPrice": 3599,
   "excerpt": "A profound spiritual journey to Tibet's most sacred mountain and lake, revered by Hindus, Buddhists, Jains, and Bonpos as the axis of the universe",
   "description": "Embark on the ultimate pilgrimage to Mount Kailash (6,714m), regarded as the navel of the earth and abode of Lord Shiva. This transformative journey combines spiritual devotion with adventure, taking you to the sacred Lake Mansarovar and around the holy Kailash peak via the challenging Kora (circumambulation) across the 5,630m Domala Pass. Experience the source of four great rivers and attain spiritual energy in this remote, mystical landscape.",
-  "image": "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
+  "image":     "/images/tibet_tours-19.jpg",
+
   "images": [
-    "https://images.unsplash.com/photo-1559599075-5cde18107c03?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1580502304787-8ad2b5b4b93c?q=80&w=2070&auto=format&fit=crop"
+        "/images/tibet_tours-19.jpg",
+
+    "/images/tibet_tours-20.jpg",
+    "/images/tibet_tours-21.jpg",
+    "/images/tibet_tours-22.jpg",
   ],
   "tags": ["Pilgrimage", "Spiritual", "Trekking", "Sacred Sites", "Adventure"],
   "highlights": [
@@ -905,7 +919,7 @@ export default function TibetPage() {
       <Hero
         title="Discover the Mystical Land of Tibet"
         description="Experience ancient monasteries, breathtaking landscapes, and rich Buddhist culture in the Roof of the World."
-        backgroundImage="/images/tibet-hero.png"
+        backgroundImage="/images/tibet_hero.jpg"
       />
 
       {/* Trips Section */}
