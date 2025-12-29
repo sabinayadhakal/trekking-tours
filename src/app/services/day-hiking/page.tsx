@@ -24,8 +24,7 @@ const DAY_HIKING_TOURS: Tour[] =
   "image": "/images/nagarkot-1.jpg",
   "images": [
     "/images/nagarkot-1.jpg",
-    "/images/nagarkot-2.jpg",
-    "/images/changu-1.jpg",
+    
   ],
   "tags": ["Day Hike", "Cultural", "Moderate", "UNESCO"],
   "highlights": ["Sunrise Himalayan panorama", "Traditional village walk", "UNESCO Changunarayan Temple"],
@@ -61,9 +60,7 @@ const DAY_HIKING_TOURS: Tour[] =
   "image": "/images/dhulikhel-1.jpg",
   "images": [
     "/images/dhulikhel-1.jpg",
-    "/images/dhulikhel-2.jpg",
-    "/images/dhulikhel-3.jpg",
-        "/images/dhulikhel-4.jpg",
+ 
 
   ],
   "tags": ["Day Hike", "Cultural", "Easy", "Historical"],
@@ -100,8 +97,7 @@ const DAY_HIKING_TOURS: Tour[] =
   "image":  "/images/pharping-1.jpg",
   "images": [
 "/images/pharping-1.jpg",
-"/images/pharping-2.jpg",
-"/images/pharping-3.jpg",  ],
+ ],
   "tags": ["Day Hike", "Nature", "Moderate", "Spiritual"],
   "highlights": ["Sacred Buddhist sites of Pharping", "Champadevi summit with 360° views", "Forest walk with rhododendrons (spring)"],
   "includes": ["Guide", "Transportation", "Lunch", "Entry fees"],

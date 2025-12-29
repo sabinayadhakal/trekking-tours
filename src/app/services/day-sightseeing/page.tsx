@@ -58,7 +58,6 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
     "image":  "/images/boudhanath-1.jpg",
     "images": [
       "/images/boudhanath-1.jpg",
- "/images/kopan-1.jpg", 
        "/images/pashupati-1.jpg",
 
  
@@ -97,9 +96,7 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
 
     "images": [
             "/images/patan-1.jpg",
-                  "/images/boudhanath-2.jpg",
-
-                        "/images/pashupati-2.jpg",
+                 
 
 
     ],
@@ -137,8 +134,7 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
 
     "images": [
             "/images/bungamati-1.jpg",
-                        "/images/patan-1.jpg",
-                                    "/images/bungamati-2.jpg",
+                
 
 
     ],
@@ -176,9 +172,7 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
 
     "images": [
        "/images/ktm_durbar_square-2.jpg",
-                  "/images/swoyambhunath-1.jpg",
-                      "/images/boudhanath-1.jpg",
-                                  "/images/pashupati-1.jpg",
+                 
 
 
 
@@ -216,7 +210,7 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
     "image":  "/images/bhaktapur-1.jpg",
     "images": [
        "/images/bhaktapur-1.jpg",
-        "/images/patan-1.jpg",
+      
     ],
     "tags": ["UNESCO", "Medieval", "Architectural", "Full Day"],
     "highlights": ["Bhaktapur Durbar Square", "Patan Durbar Square", "Newari Architecture"],
@@ -251,9 +245,7 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
     "image": "/images/dakshinkali-1.jpg",
     "images": [
       "/images/dakshinkali-1.jpg",
-      "/images/pharping-2.jpg",
-      "/images/dakshinkali-2.jpg",
-      "/images/dakshinkali-3.jpg",
+     
     ],
     "tags": ["Spiritual", "Pilgrimage", "Historical", "Full Day"],
     "highlights": ["Dakshinkali Temple", "Pharping Monastery", "Kirtipur Town"],

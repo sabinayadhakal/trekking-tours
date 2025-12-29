@@ -130,7 +130,7 @@ export default function Page() {
         <div className="grid md:grid-cols-3 gap-4">
            <div className="relative h-64 rounded-xl shadow-md overflow-hidden">
             <Image
-              src="/images/ktm_durbar_square-1.jpg"
+              src="/images/ktm_durbar_square-2.jpg"
               alt="Kathmandu Durbar Square"
               fill
               className="object-cover"

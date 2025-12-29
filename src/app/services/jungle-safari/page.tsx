@@ -19,11 +19,12 @@ const JUNGLE_SAFARI_TOURS: Tour[] = [
   "originalPrice": 325,
   "excerpt": "3-day Chitwan National Park jungle safari with elephant rides, wildlife spotting, and Tharu cultural experience. UNESCO World Heritage Site.",
   "description": "Experience Chitwan National Park jungle safari in Nepal's premier wildlife destination. This 3-day package offers elephant safari rides, jungle walks, canoe trips, and Tharu cultural shows. Spot one-horned rhinoceros, Bengal tigers, crocodiles, and over 500 bird species. Perfect wildlife adventure in Nepal.",
-  "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop",
+  "image": "/images/chitwan-1.jpg",
+
   "images": [
-    "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
+    "/images/chitwan-1.jpg",
+    "/images/chitwan-2.jpg",
+    "/images/chitwan-3.jpg",
   ],
   "tags": ["Chitwan National Park", "Nepal Jungle Safari", "Wildlife Tour", "Elephant Safari", "UNESCO World Heritage", "One-Horned Rhino"],
   "highlights": ["Elephant Back Safari", "Jungle Walk with Guide", "Canoe Ride Crocodile Spotting", "Tharu Cultural Dance", "One-Horned Rhinoceros Viewing", "Bird Watching 500+ Species"],

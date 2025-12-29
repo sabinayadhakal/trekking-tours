@@ -19,11 +19,11 @@ const MOUNTAIN_FLIGHT_TOURS: Tour[] = [
     originalPrice: 250,
     excerpt: "Breathtaking aerial views of Mount Everest and the Himalayan range",
     description: "Experience the ultimate adventure with a spectacular mountain flight to Mount Everest. This one-hour scenic flight offers unparalleled close-up views of the world's highest peak and other majestic mountains in the Himalayan range. Each passenger gets a window seat for optimal viewing and photography opportunities. The flight includes expert commentary about the mountains and a certificate of achievement.",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop",
+    image: "/images/mountain_flight-1.jpg",
     images: [
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
+
+"images/mountain_flight-1.jpg",
+
     ],
     tags: ["Scenic Flight", "Everest", "Bucket List"],
     highlights: ["Close-up views of Mount Everest", "Window seat guaranteed", "Himalayan panorama", "Flight certificate"],
@@ -45,110 +45,9 @@ const MOUNTAIN_FLIGHT_TOURS: Tour[] = [
     equipment: ["Camera", "Sunglasses"],
     entryRequirements: ["Valid passport for identification"]
   },
-  {
-    id: "2",
-    title: "Annapurna Mountain Flight",
-    location: "Annapurna Range, Nepal",
-    duration: "1 hour flight",
-    rating: 4.7,
-    reviewCount: 189,
-    price: 180,
-    originalPrice: 220,
-    excerpt: "Spectacular views of the Annapurna massif from Pokhara",
-    description: "Take off from Pokhara for an unforgettable aerial tour of the Annapurna mountain range. This scenic flight offers stunning views of Annapurna I, Machhapuchhre (Fishtail Mountain), Dhaulagiri, and other peaks in the Annapurna Sanctuary. Perfect for those who want to experience the Himalayas without the long trek.",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
-    ],
-    tags: ["Scenic Flight", "Annapurna", "Pokhara"],
-    highlights: ["Annapurna massif views", "Machhapuchhre close-up", "Pokhara lakeside departure", "Mountain photography"],
-    includes: ["Flight from Pokhara", "Window seat", "Mountain commentary", "Transfers"],
-    excludes: ["Kathmandu-Pokhara transport", "Personal items"],
-    itinerary: [
-      { day: 1, title: "Annapurna Flight Experience", description: "Hotel pickup in Pokhara, airport transfer, scenic flight over Annapurna range, return to hotel" }
-    ],
-    maxGroupSize: 1,
-    included: ["Pokhara airport flight", "Window seating", "Expert narration", "Hotel transfers"],
-    excluded: ["Transport to Pokhara", "Additional meals"],
-    cancellationPolicy: "24-hour cancellation policy applies.",
-    isPopular: false,
-    isSoldOut: false,
-    difficulty: "easy",
-    maxAltitude: "8,091m (Annapurna I)",
-    requirements: ["None"],
-    permits: ["None"],
-    equipment: ["Camera", "Sunglasses"],
-    entryRequirements: ["ID required"]
-  },
-  {
-    id: "3",
-    title: "Langtang Mountain Flight",
-    location: "Langtang Region, Nepal",
-    duration: "45 minutes flight",
-    rating: 4.6,
-    reviewCount: 124,
-    price: 160,
-    excerpt: "Dramatic glacier and valley views near Kathmandu",
-    description: "Experience the stunning Langtang region from the air on this shorter mountain flight. Fly over the dramatic landscapes of Langtang National Park, witness the massive Langtang Glacier, and see the peaks of Langtang Lirung and Dorje Lakpa. Perfect for those with limited time who still want Himalayan mountain views.",
-    image: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=400&h=300&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
-    ],
-    tags: ["Scenic Flight", "Langtang", "Short Flight"],
-    highlights: ["Langtang Glacier views", "Close to Kathmandu", "Shorter duration", "Valley landscapes"],
-    includes: ["Kathmandu flight", "Window seat", "Commentary", "Transfers"],
-    excludes: ["Extended services", "Personal costs"],
-    itinerary: [
-      { day: 1, title: "Langtang Scenic Flight", description: "Morning pickup, airport transfer, 45-minute Langtang flight, mountain views, return to hotel" }
-    ],
-    maxGroupSize: 1,
-    included: ["Flight experience", "Window seat", "Transfers"],
-    excluded: ["Extra services", "Food"],
-    cancellationPolicy: "Flexible cancellation available.",
-    isPopular: true,
-    isSoldOut: true,
-    difficulty: "easy",
-    maxAltitude: "7,234m (Langtang Lirung)",
-    requirements: ["None"],
-    permits: ["None"],
-    equipment: ["Camera"],
-    entryRequirements: ["None"]
-  },
-  {
-    id: "4",
-    title: "Himalayan Sunrise Flight",
-    location: "Himalayas, Nepal",
-    duration: "1 hour flight",
-    rating: 4.9,
-    reviewCount: 78,
-    price: 240,
-    originalPrice: 280,
-    excerpt: "Early morning flight with golden sunrise on the peaks",
-    description: "Experience the magic of sunrise over the Himalayas on this special early morning flight. Watch as the first rays of sunlight paint the mountain peaks in golden light, creating unforgettable photographic opportunities. This exclusive flight offers the clearest morning views and the most dramatic lighting conditions.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
-    ],
-    tags: ["Sunrise", "Photography", "Exclusive"],
-    highlights: ["Sunrise over Everest", "Golden hour photography", "Exclusive timing", "Clear morning skies"],
-    includes: ["Early morning flight", "Window seat", "Photography tips", "Breakfast box"],
-    excludes: ["Standard transfers", "Regular timing"],
-    itinerary: [
-      { day: 1, title: "Sunrise Mountain Flight", description: "Very early hotel pickup, airport transfer, sunrise flight with golden mountain views, return with breakfast" }
-    ],
-    maxGroupSize: 1,
-    included: ["Sunrise flight", "Window seat", "Breakfast package", "Priority transfers"],
-    excluded: ["Standard transfers", "Regular timing"],
-    cancellationPolicy: "Special sunrise flight cancellation terms.",
-    isPopular: true,
-    isSoldOut: false,
-    difficulty: "easy",
-    maxAltitude: "8,848m (Everest)",
-    requirements: ["Early wake-up", "Camera recommended"],
-    permits: ["None"],
-    equipment: ["Camera with good low-light capability"],
-    entryRequirements: ["None"]
-  }
+  
+  
+  
 ];
 
 export default function HomePage() {

@@ -30,8 +30,7 @@ export default function TibetPage() {
   "image": "/images/tibet_tours-1.jpg",
   "images": [
 "/images/tibet_tours-1.jpg",
-    "/images/tibet_tours-2.jpeg",
-    "/images/tibet_tours-3.jpg",
+    
   ],
   "tags": ["Cultural", "Buddhist", "Historical", "Budget-Friendly", "UNESCO"],
   "highlights": [
@@ -144,10 +143,7 @@ export default function TibetPage() {
   "images": [
         "/images/tibet_tours-4.jpg",
 
-        "/images/tibet_tours-5.jpeg",
-
-        "/images/tibet_tours-6.jpg",
-
+      
   ],
   "tags": ["Trekking", "High Altitude", "Lake", "Adventure", "Sacred Sites"],
   "highlights": [
@@ -269,8 +265,7 @@ export default function TibetPage() {
   "image": "/images/tibet_tours-7.jpg",
   "images": [
     "/images/tibet_tours-7.jpg",
-    "/images/tibet_tours-8.jpg",
-    "/images/tibet_tours-9.jpg",
+  
   ],
   "tags": ["Everest", "Base Camp", "High Altitude", "Adventure", "Cultural"],
   "highlights": [
@@ -388,9 +383,7 @@ export default function TibetPage() {
   "images": [
        "/images/tibet_tours-10.jpg",
 
-        "/images/tibet_tours-11.jpg",
-
-    "/images/tibet_tours-12.jpg",
+      
   ],
   "tags": ["Overland", "Road Trip", "Cultural", "High Altitude", "Historic Route"],
   "highlights": [
@@ -509,10 +502,7 @@ export default function TibetPage() {
   "images": [
         "/images/tibet_tours-13.jpg",
 
-        "/images/tibet_tours-14.jpg",
-
-        "/images/tibet_tours-15.jpg",
-
+       
   ],
   "tags": ["Fly-In", "Drive-Out", "Mountain Views", "Cultural", "Short Tour"],
   "highlights": [
@@ -620,8 +610,7 @@ export default function TibetPage() {
   "image": "/images/tibet_tours-16.jpg",
   "images": [
     "/images/tibet_tours-16.jpg",
-    "/images/tibet_tours-17.jpg",
-    "/images/tibet_tours-18.jpg",
+   
   ],
   "tags": ["Lhasa", "Cultural", "Short Trip", "Spiritual", "UNESCO"],
   "highlights": [
@@ -720,9 +709,7 @@ export default function TibetPage() {
   "images": [
         "/images/tibet_tours-19.jpg",
 
-    "/images/tibet_tours-20.jpg",
-    "/images/tibet_tours-21.jpg",
-    "/images/tibet_tours-22.jpg",
+   
   ],
   "tags": ["Pilgrimage", "Spiritual", "Trekking", "Sacred Sites", "Adventure"],
   "highlights": [

@@ -20,11 +20,9 @@ const HELICOPTER_TOURS: Tour[] = [
     originalPrice: 1250,
     excerpt: "Breathtaking aerial views of the world's highest peak",
     description: "Experience the ultimate adventure with a helicopter tour to Mount Everest. Fly over the majestic Himalayas, witness stunning glaciers, and land at the world's highest hotel at Everest View Point (3,880m) for breakfast with a panoramic view of Everest, Lhotse, and Ama Dablam. This once-in-a-lifetime journey offers unparalleled views of the world's highest mountains without the strenuous trek.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+    image: "/images/helicopter-1.jpg",
     images: [
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
+      
     ],
     tags: ["Helicopter", "Luxury", "Bucket List"],
     highlights: [
@@ -62,9 +60,9 @@ const HELICOPTER_TOURS: Tour[] = [
     originalPrice: 950,
     excerpt: "Spectacular Annapurna range views with ABC landing",
     description: "Soar above the Annapurna Sanctuary and land at Annapurna Base Camp (4,130m) for unparalleled close-up views of the Annapurna massif. This helicopter adventure takes you deep into the heart of the Himalayas, offering breathtaking aerial perspectives of Machhapuchhre (Fishtail Mountain), Annapurna I, and surrounding peaks.",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop",
+    image: "/images/helicopter-2.jpg",
     images: [
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop"
+    
     ],
     tags: ["Helicopter", "Annapurna", "Adventure"],
     highlights: [
@@ -101,9 +99,9 @@ const HELICOPTER_TOURS: Tour[] = [
     price: 750,
     excerpt: "Glacier-filled valley adventure with monastery landing",
     description: "Discover the stunning Langtang Valley from above with this scenic helicopter tour. Fly over dramatic glaciers, traditional Tamang villages, and land at Kyanjin Gompa (3,870m) for spectacular views of Langtang Lirung and the surrounding peaks. Experience the beauty of this less-crowded Himalayan region.",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    image: "/images/helicopter-3.jpg",
     images: [
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
+      
     ],
     tags: ["Helicopter", "Langtang", "Glaciers"],
     highlights: [

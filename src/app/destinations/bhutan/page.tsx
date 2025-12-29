@@ -30,8 +30,7 @@ export default function BhutanPage() {
   "image": "/images/bhutan_tours-1.jpg",
   "images": [
     "/images/bhutan_tours-1.jpg",
-    "/images/bhutan_tours-2.jpg",
-    "/images/bhutan_tours-3.jpg"
+    
 
   ],
   "tags": ["Cultural", "Historical", "Spiritual", "Hiking", "Comprehensive"],
@@ -108,7 +107,6 @@ export default function BhutanPage() {
 
   "images": [
     "/images/bhutan_tours-4.jpg",
-     "/images/bhutan_tours-5.jpg",
   
   ],
   "tags": ["Spiritual", "Hiking", "Pilgrimage", "Day Trip", "Sacred Site"],
@@ -186,8 +184,7 @@ export default function BhutanPage() {
   "image":  "/images/bhutan_tours-6.jpg",
   "images": [
     "/images/bhutan_tours-6.jpg",
-    "/images/bhutan_tours-7.jpg",
-    "/images/bhutan_tours-8.jpg",
+    
   ],
   "tags": ["Express Tour", "Short Trip", "Mountain Flight", "Cultural", "Spiritual"],
   "highlights": [
@@ -276,8 +273,7 @@ export default function BhutanPage() {
 
   "images": [
     "/images/bhutan_tours-9.jpg",
-    "/images/bhutan_tours-10.jpg",
-    "/images/bhutan_tours-11.jpg",
+    
   ],
   "tags": ["Cultural", "Hiking", "Heritage", "Short Trip", "Dzong Tour"],
   "highlights": [
@@ -373,11 +369,7 @@ export default function BhutanPage() {
   "images": [
         "/images/bhutan_tours-12.jpg",
 
-        "/images/bhutan_tours-13.jpg",
-
-       "/images/bhutan_tours-14.jpg",
-
-        "/images/bhutan_tours-15.jpg",
+    
 
   ],
   "tags": ["Cultural", "Comprehensive", "Spiritual", "Extended Tour", "Himalayan"],

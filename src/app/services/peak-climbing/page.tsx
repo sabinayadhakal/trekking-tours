@@ -20,11 +20,9 @@ const PEAK_CLIMBING_TOURS: Tour[] = [
     "originalPrice": 5000,
     "excerpt": "18-day Mera Peak climbing expedition to Nepal's highest trekking peak at 6476m with panoramic Everest views",
     "description": "Mera Peak climbing expedition to 6476m - the highest trekking peak in Nepal. Experience high-altitude mountaineering with panoramic Himalayan views of Everest, Kanchenjunga, Makalu, and Cho Oyu. Perfect introduction to Himalayan peak climbing in Nepal's Hinku Valley.",
-    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+    "image": "/images/mera_peak-1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
+     
     ],
     "tags": ["Mera Peak Climbing", "Highest Trekking Peak", "Nepal Peak Climbing", "6476m Expedition", "Himalayan Mountaineering", "Everest View Trek"],
     "highlights": [
@@ -71,9 +69,9 @@ const PEAK_CLIMBING_TOURS: Tour[] = [
     "originalPrice": 4200,
     "excerpt": "16-day Island Peak climbing expedition to 6189m with Everest views and glacier climbing experience",
     "description": "Island Peak climbing (Imja Tse) at 6189m - Nepal's most popular climbing peak in Everest region. Perfect introduction to Himalayan mountaineering with glacier travel, ice climbing, and spectacular views of Everest, Lhotse, and Ama Dablam.",
-    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop",
+    "image": "/images/island_peak-1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop"
+   
     ],
     "tags": ["Island Peak Climbing", "Imja Tse Expedition", "Everest Region Climbing", "6189m Peak", "Beginner Mountaineering", "Glacier Climbing"],
     "highlights": [
@@ -116,123 +114,9 @@ const PEAK_CLIMBING_TOURS: Tour[] = [
     "equipment": ["Mountaineering boots", "Ice axe", "Crampons", "Harness", "Helmet", "Ascender"],
     "entryRequirements": ["Nepal visa", "Comprehensive mountaineering insurance"]
   },
+  
   {
     "id": "3",
-    "title": "Lobuche East Peak Climbing - 6119m Technical Everest Region Expedition",
-    "location": "Everest Region, Nepal",
-    "duration": "20 days",
-    "rating": 4.7,
-    "reviewCount": 95,
-    "price": 5200,
-    "originalPrice": 5800,
-    "excerpt": "20-day Lobuche East peak climbing expedition to 6119m with technical rock and ice climbing in Everest region",
-    "description": "Lobuche East peak climbing at 6119m - technical climbing expedition in Everest region with challenging rock and ice sections. Experience advanced mountaineering with spectacular views of Everest, Lhotse, Nuptse, and Ama Dablam. Includes Everest Base Camp visit.",
-    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-    "images": [
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
-    ],
-    "tags": ["Lobuche Peak Climbing", "Technical Climbing Nepal", "6119m Expedition", "Everest Region Mountaineering", "Advanced Peak Climbing"],
-    "highlights": [
-      "Summit Lobuche East (6119m)",
-      "Technical Rock and Ice Climbing",
-      "Everest Base Camp Visit",
-      "Advanced Mountaineering Experience",
-      "Professional Expedition Support"
-    ],
-    "includes": ["Experienced Climbing Guide", "Expedition Meals", "Camping Equipment", "Lobuche Peak Permit", "National Park Permits", "Group Climbing Gear"],
-    "excludes": ["Personal Technical Gear", "International Flights", "Travel Insurance", "Nepal Visa"],
-    "included": ["Professional climbing guide", "All expedition meals", "Camping equipment", "All necessary permits", "Group climbing equipment"],
-    "excluded": ["Personal technical equipment", "International airfare", "Travel insurance", "Nepal visa"],
-    "itinerary": [
-      { "day": 1, "title": "Kathmandu Arrival", "description": "Expedition briefing and technical preparation" },
-      { "day": 2, "title": "Fly to Lukla", "description": "Scenic mountain flight to Everest region" },
-      { "day": 3, "title": "Trek to Namche", "description": "Acclimatization begins, Sherpa culture" },
-      { "day": 4, "title": "Namche Acclimatization", "description": "Altitude adjustment day, local hikes" },
-      { "day": 5, "title": "Trek to Tengboche", "description": "Monastery visit, panoramic mountain views" },
-      { "day": 6, "title": "Trek to Dingboche", "description": "High altitude approach, Imja Valley" },
-      { "day": 7, "title": "Acclimatization Hike", "description": "Chhukung Valley exploration, peak views" },
-      { "day": 8, "title": "Trek to Lobuche", "description": "Approach to Lobuche peak area" },
-      { "day": 9, "title": "Everest Base Camp", "description": "Visit EBC and return to Gorak Shep" },
-      { "day": 10, "title": "Lobuche High Camp", "description": "Establish high camp, final preparation" },
-      { "day": 11, "title": "Summit Day", "description": "Early morning technical summit attempt" },
-      { "day": 12, "title": "Contingency Day", "description": "Extra summit day if needed" },
-      { "day": 13, "title": "Descend to Pheriche", "description": "Return to lower altitude for recovery" },
-      { "day": 14, "title": "Trek to Namche", "description": "Continue descent through valleys" },
-      { "day": 15, "title": "Trek to Lukla", "description": "Final trekking day celebration" },
-      { "day": 16, "title": "Fly to Kathmandu", "description": "Return flight to Kathmandu" },
-      { "day": 17, "title": "Kathmandu", "description": "Celebration and rest day" },
-      { "day": 18, "title": "Departure", "description": "Airport transfer, expedition ends" }
-    ],
-    "maxGroupSize": 4,
-    "cancellationPolicy": "Full refund 60 days before departure. 50% refund 45-60 days prior.",
-    "isPopular": false,
-    "isSoldOut": false,
-    "difficulty": "expert",
-    "maxAltitude": "6,119m",
-    "requirements": ["Advanced climbing skills", "Previous high altitude experience", "Excellent physical fitness", "Technical climbing experience"],
-    "permits": ["Lobuche Peak Permit", "Sagarmatha National Park Permit", "TIMS Card"],
-    "equipment": ["Technical climbing gear", "Mountaineering boots", "Ice tools", "Helmet", "Harness", "Ascenders", "High-altitude clothing"],
-    "entryRequirements": ["Nepal visa", "Mountaineering insurance with high-altitude coverage"]
-  },
-  {
-    "id": "4",
-    "title": "Pisang Peak Climbing - 6091m Annapurna Circuit Pyramid Peak Expedition",
-    "location": "Annapurna Region, Nepal",
-    "duration": "17 days",
-    "rating": 4.6,
-    "reviewCount": 124,
-    "price": 3500,
-    "originalPrice": 3900,
-    "excerpt": "17-day Pisang Peak climbing expedition to 6091m in Annapurna Circuit with pyramid peak climb and Thorong La pass",
-    "description": "Pisang Peak climbing at 6091m - classic Himalayan pyramid peak in Annapurna Circuit region. Experience beautiful peak climbing with spectacular views of Annapurna II, III, IV, and Gangapurna. Combines peak climbing with complete Annapurna Circuit trekking experience.",
-    "image": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=400&h=300&fit=crop",
-    "images": [
-      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&h=600&fit=crop"
-    ],
-    "tags": ["Pisang Peak Climbing", "Annapurna Circuit Trek", "6091m Peak", "Pyramid Peak Climb", "Manang Valley Expedition"],
-    "highlights": [
-      "Summit Pisang Peak (6091m)",
-      "Complete Annapurna Circuit Trek",
-      "Pyramid Peak Technical Climb",
-      "Thorong La Pass Crossing",
-      "Manang Valley Acclimatization"
-    ],
-    "includes": ["Climbing Guide", "All Meals", "Teahouse & Camp Accommodation", "Pisang Peak Permit", "ACAP Permit", "TIMS Card"],
-    "excludes": ["Personal Expenses", "International Flights", "Travel Insurance", "Nepal Visa"],
-    "included": ["Experienced guide", "All meals on trek", "Teahouse and camping accommodation", "All required permits", "Group climbing equipment"],
-    "excluded": ["Personal climbing gear", "International travel", "Travel insurance", "Nepal visa"],
-    "itinerary": [
-      { "day": 1, "title": "Kathmandu to Besisahar", "description": "Drive to Annapurna Circuit starting point" },
-      { "day": 2, "title": "Trek to Bahundanda", "description": "Begin Annapurna Circuit trek" },
-      { "day": 3, "title": "Trek to Chamje", "description": "Follow Marsyangdi River valley" },
-      { "day": 4, "title": "Trek to Bagarchhap", "description": "Enter Manang district, traditional villages" },
-      { "day": 5, "title": "Trek to Chame", "description": "District headquarters, apple orchards" },
-      { "day": 6, "title": "Trek to Pisang", "description": "Approach Pisang Peak base area" },
-      { "day": 7, "title": "Acclimatization", "description": "Local hikes and climbing preparation" },
-      { "day": 8, "title": "Pisang Peak Base Camp", "description": "Establish base camp, technical training" },
-      { "day": 9, "title": "High Camp", "description": "Move to high camp, summit preparation" },
-      { "day": 10, "title": "Summit Day", "description": "Early morning summit attempt" },
-      { "day": 11, "title": "Contingency Day", "description": "Extra summit day if needed" },
-      { "day": 12, "title": "Return to Pisang", "description": "Descend to village, celebration" },
-      { "day": 13, "title": "Continue Circuit", "description": "Trek to Manang, high altitude acclimatization" },
-      { "day": 14, "title": "Cross Thorong La", "description": "High pass crossing at 5416m" },
-      { "day": 15, "title": "Descend to Muktinath", "description": "Sacred temple visit, lower altitude" },
-      { "day": 16, "title": "Return to Pokhara", "description": "Drive back through scenic route" },
-      { "day": 17, "title": "Departure", "description": "Airport transfer, expedition concludes" }
-    ],
-    "maxGroupSize": 6,
-    "cancellationPolicy": "Full refund 30 days before departure. 50% refund 15-30 days prior.",
-    "isPopular": true,
-    "isSoldOut": true,
-    "difficulty": "challenging",
-    "maxAltitude": "6,091m",
-    "requirements": ["Good climbing experience", "High altitude fitness", "Basic technical skills", "Medical fitness"],
-    "permits": ["Pisang Peak Permit", "Annapurna Conservation Area Permit", "TIMS Card"],
-    "equipment": ["Climbing gear", "Mountaineering boots", "Cold weather equipment", "Trekking equipment"],
-    "entryRequirements": ["Nepal visa", "Adequate insurance coverage"]
-  },
-  {
-    "id": "5",
     "title": "Yala Peak Climbing - 5500m Beginner Friendly Langtang Region Expedition",
     "location": "Langtang Region, Nepal",
     "duration": "14 days",
@@ -242,10 +126,9 @@ const PEAK_CLIMBING_TOURS: Tour[] = [
     "originalPrice": 2500,
     "excerpt": "14-day Yala Peak climbing expedition to 5500m - perfect beginner peak in Langtang region with Shishapangma views",
     "description": "Yala Peak climbing at 5500m - ideal beginner climbing peak in Langtang region near Tibet border. Non-technical snow climb with spectacular views of Shishapangma and Langtang Himal. Perfect first Himalayan peak climbing experience with cultural Tamang village visits.",
-    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+    "image": "/images/yala_peak-1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop"
+      
     ],
     "tags": ["Yala Peak Climbing", "Beginner Peak Nepal", "5500m Expedition", "Langtang Region Trek", "First Himalayan Peak", "Non-Technical Climb"],
     "highlights": [
