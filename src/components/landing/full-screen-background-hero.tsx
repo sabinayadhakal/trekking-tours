@@ -28,9 +28,11 @@ const heroData: HeroData = {
   DesktopBackgroundImage: [
     { url: "/images/landing-hero-0.jpg" },
     { url: "/images/landing-hero-1.jpg" },
+    { url: "/images/kathmandu-1.jpg" },
     { url: "/images/landing-hero-2.jpg" },
-    { url: "/images/landing-hero-3.jpg" },
     { url: "/images/landing-hero-5.jpg" },
+        
+
   ]
 };
 

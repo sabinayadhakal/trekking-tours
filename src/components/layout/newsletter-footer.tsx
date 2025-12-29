@@ -13,13 +13,19 @@ import {
 } from "@/components/ui/dialog";
 
 const images = [
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1580548259485-0c6f1cceec33?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1505832018823-50331d70d237?q=80&w=2070&auto=format&fit=crop"
-];
+  "/images/footer-1.jpg",
+  "/images/footer-2.jpg",
+  "/images/footer-3.jpg",
+    "/images/patan-1.jpg",
+
+
+  "/images/footer-4.jpg",
+  "/images/footer-5.jpg",
+    "/images/pashupati-2.jpg",
+
+  "/images/footer-6.jpg",
+
+]
 
 const socialLinks = [
   { name: "Facebook", href: "https://www.facebook.com/HimkalaAdventureNepal?ref=embed_page", icon: FaFacebook },

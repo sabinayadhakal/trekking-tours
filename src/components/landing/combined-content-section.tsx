@@ -88,12 +88,83 @@ const SafeImage = ({
   );
 };
 
-// Component to render formatted blog content with proper spacing
-const BlogContentRenderer = ({ content }: { content: string }) => {
+// Component to render formatted blog content with interspersed images (FIXED VERSION)
+const BlogContentRenderer = ({ content, images = [] }: { content: string; images?: string[] }) => {
   const sections = content.split('## ').filter(section => section.trim());
+  const availableImages = [...images];
   
+  // Helper function to determine when to insert images
+  const shouldInsertImage = (line: string, index: number): boolean => {
+    // Insert after short paragraphs (natural breaks)
+    if (line.length < 150) return true;
+    
+    // Insert after every 3rd paragraph
+    if (index % 3 === 2) return true;
+    
+    return false;
+  };
+
+  // Function to insert images at natural breakpoints
+  const renderContentWithImages = (text: string, sectionIndex: number): React.ReactNode[] => {
+    const lines = text.split('\n').filter(line => line.trim());
+    const result: React.ReactNode[] = [];
+    let imageIndex = 0;
+    let paragraphCount = 0;
+
+    lines.forEach((line, lineIndex) => {
+      // Handle bullet points
+      if (line.trim().startsWith('•')) {
+        result.push(
+          <div key={`bullet-${sectionIndex}-${lineIndex}`} className="flex items-start mb-3 ml-4">
+            <div className="h-2 w-2 bg-[#3C6AA6] rounded-full mt-2 mr-3 flex-shrink-0" />
+            <span className="text-[#2E4F7C]">{line.substring(1).trim()}</span>
+          </div>
+        );
+      } 
+      // Handle regular paragraphs
+      else if (line.trim()) {
+        paragraphCount++;
+        result.push(
+          <p key={`p-${sectionIndex}-${lineIndex}`} className="mb-4 leading-relaxed text-[#2E4F7C]">
+            {line}
+          </p>
+        );
+
+        // Insert images at natural breakpoints
+        if (availableImages.length > 0 && shouldInsertImage(line, paragraphCount)) {
+          const image = availableImages.shift();
+          if (image) {
+            result.push(
+              <motion.div
+                key={`img-${sectionIndex}-${imageIndex}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="my-8 rounded-xl overflow-hidden shadow-lg border border-[#8AB8E0]/20"
+              >
+                <div className="relative w-full aspect-[16/9] md:aspect-[21/9]">
+                  <SafeImage
+                    src={image}
+                    alt={`Content image ${imageIndex + 1}`}
+                    className="object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
+                    }}
+                  />
+                </div>
+              </motion.div>
+            );
+            imageIndex++;
+          }
+        }
+      }
+    });
+
+    return result;
+  };
+
   return (
-    <div className="space-y-4 sm:space-y-6 text-[#2E4F7C]">
+    <div className="space-y-8">
       {sections.map((section, index) => {
         const [title, ...contentLines] = section.split('\n').filter(line => line.trim());
         const contentText = contentLines.join('\n').trim();
@@ -104,42 +175,185 @@ const BlogContentRenderer = ({ content }: { content: string }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-white/70 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm border border-[#8AB8E0]/20"
+            className="space-y-4"
           >
             {title && (
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#2E4F7C] mb-3 sm:mb-4 pb-2 sm:pb-3 border-b border-[#8AB8E0]">
+              <h3 className="text-xl font-bold text-[#2E4F7C] mb-4 pb-2 border-b border-[#8AB8E0]">
                 {title}
               </h3>
             )}
             
-            <div className="prose prose-sm sm:prose-base max-w-none text-[#2E4F7C]">
-              {contentText.split('• ').map((paragraph, pIndex) => {
-                if (pIndex === 0) {
-                  return (
-                    <p key={pIndex} className="mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base md:text-lg">
-                      {paragraph}
-                    </p>
-                  );
-                }
-                
-                if (paragraph.trim()) {
-                  return (
-                    <div key={pIndex} className="flex items-start mb-2 sm:mb-3">
-                      <Star className="h-3 w-3 sm:h-4 sm:w-4 text-[#3C6AA6] mt-1 mr-2 sm:mr-3 flex-shrink-0" />
-                      <span className="text-sm sm:text-base md:text-lg leading-relaxed">
-                        {paragraph}
-                      </span>
-                    </div>
-                  );
-                }
-                
-                return null;
-              })}
+            <div className="space-y-4">
+              {renderContentWithImages(contentText, index)}
             </div>
           </motion.div>
         );
       })}
     </div>
+  );
+};
+
+// Blog Card Component - Mobile list view, Desktop grid view
+const BlogCard = ({ post, onClick }: { post: BlogPost; onClick: () => void }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Format date
+  const formatDate = (dateString: string) => {
+    try {
+      return new Date(dateString).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+    } catch {
+      return "Recent";
+    }
+  };
+
+  // Mobile view (list)
+  if (isMobile) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-[#8AB8E0]/30"
+      >
+        <div className="flex flex-col">
+          <div 
+            className="relative w-full aspect-[4/3] cursor-pointer"
+            onClick={onClick}
+          >
+            <div className="relative w-full h-full">
+              <SafeImage
+                src={post.coverImage}
+                alt={post.title}
+                className="object-cover transition-transform duration-300 hover:scale-105"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
+                }}
+              />
+            </div>
+            <div className="absolute top-3 left-3">
+              <Badge className="bg-[#CFE8FF]/90 backdrop-blur-sm text-[#2E4F7C] border border-[#8AB8E0] text-xs px-2 py-1">
+                {post.category}
+              </Badge>
+            </div>
+          </div>
+          
+          <div className="flex-1 p-4 md:p-6 flex flex-col">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2 text-sm text-[#2E4F7C]">
+                <Calendar className="h-4 w-4" />
+                <span>{formatDate(post.publishedDate)}</span>
+              </div>
+              <div className="flex items-center gap-1 text-sm text-[#2E4F7C]">
+                <Clock className="h-4 w-4" />
+                <span>{post.readTime}</span>
+              </div>
+            </div>
+            
+            <h3 
+              className="font-semibold text-lg text-[#2E4F7C] mb-3 line-clamp-2 cursor-pointer hover:text-[#1F3A5A] transition-colors"
+              onClick={onClick}
+            >
+              {post.title}
+            </h3>
+            
+            <p className="text-[#2E4F7C]/80 text-sm mb-4 line-clamp-3 flex-grow">
+              {post.excerpt}
+            </p>
+            
+            <div className="flex items-center justify-between pt-3 border-t border-[#8AB8E0]/20">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-[#2E4F7C] hover:text-[#1F3A5A] hover:bg-[#CFE8FF] px-0 text-sm font-medium"
+                onClick={onClick}
+              >
+                Read full article
+              </Button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
+
+  // Desktop view (grid)
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="group"
+    >
+      <Card className="h-full overflow-hidden border border-[#8AB8E0]/30 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-xl bg-white">
+        <div 
+          className="relative aspect-[16/9] overflow-hidden cursor-pointer"
+          onClick={onClick}
+        >
+          <div className="relative w-full h-full">
+            <SafeImage
+              src={post.coverImage}
+              alt={post.title}
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
+              }}
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/20 to-transparent" />
+          <div className="absolute top-4 left-4">
+            <Badge className="bg-[#CFE8FF]/90 backdrop-blur-sm text-[#2E4F7C] border border-[#8AB8E0]">
+              {post.category}
+            </Badge>
+          </div>
+        </div>
+        
+        <CardContent className="p-5">
+          <div className="flex items-center gap-3 text-sm text-[#2E4F7C] mb-3">
+            <div className="flex items-center gap-1">
+              <Calendar className="h-4 w-4" />
+              <span>{formatDate(post.publishedDate)}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="h-4 w-4" />
+              <span>{post.readTime}</span>
+            </div>
+          </div>
+          
+          <h3 
+            className="font-bold text-xl text-[#2E4F7C] mb-3 line-clamp-2 cursor-pointer hover:text-[#1F3A5A] transition-colors"
+            onClick={onClick}
+          >
+            {post.title}
+          </h3>
+          
+          <p className="text-[#2E4F7C]/80 mb-4 line-clamp-3">
+            {post.excerpt}
+          </p>
+          
+          <div className="flex items-center justify-between">
+            <Button
+              variant="ghost"
+              className="text-[#2E4F7C] hover:text-[#1F3A5A] hover:bg-[#CFE8FF] font-medium"
+              onClick={onClick}
+            >
+              Read more
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };
 
@@ -290,8 +504,8 @@ Edward
     }
   };
 
-  // Format date helper
-  const formatDate = (dateString: string) => {
+  // Format date helper for dialog
+  const formatDialogDate = (dateString: string) => {
     try {
       return new Date(dateString).toLocaleDateString("en-US", {
         year: "numeric",
@@ -328,7 +542,7 @@ Edward
 
         {/* Combined Content Grid */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-10 sm:mb-12">
-          {/* YouTube Videos Section */}
+          {/* YouTube Videos Section - UNCHANGED */}
           <div className="space-y-4 sm:space-y-6">
             <div className="flex items-center justify-between">
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#2E4F7C] border-b-2 border-[#2E4F7C] pb-2">
@@ -417,7 +631,7 @@ Edward
             </div>
           </div>
 
-          {/* Blog Posts Section */}
+          {/* Blog Posts Section - UPDATED with new BlogCard component */}
           <div className="space-y-4 sm:space-y-6">
             <div className="flex items-center justify-between">
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#2E4F7C] border-b-2 border-[#2E4F7C] pb-2">
@@ -429,19 +643,20 @@ Edward
             </div>
             
             {isLoading ? (
-              <div className="grid grid-cols-1 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-4 sm:gap-6">
                 {[1, 2].map((i) => (
-                  <Card key={i} className="overflow-hidden bg-white border border-[#CFE8FF] animate-pulse">
-                    <div className="aspect-[4/3] bg-gray-200"></div>
-                    <CardHeader className="pb-3 px-3 sm:px-4">
-                      <div className="h-3 bg-gray-200 rounded w-1/4 mb-2"></div>
-                      <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                    </CardHeader>
-                    <CardContent className="pt-0 px-3 sm:px-4">
+                  <div key={i} className="bg-white rounded-xl shadow-sm overflow-hidden border border-[#8AB8E0]/30 animate-pulse">
+                    <div className="aspect-[4/3] md:aspect-[16/9] bg-gray-200"></div>
+                    <div className="p-4 md:p-5">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="h-3 bg-gray-200 rounded w-1/4"></div>
+                        <div className="h-3 bg-gray-200 rounded w-1/6"></div>
+                      </div>
+                      <div className="h-5 bg-gray-200 rounded w-3/4 mb-3"></div>
                       <div className="h-3 bg-gray-200 rounded w-full mb-2"></div>
                       <div className="h-3 bg-gray-200 rounded w-2/3"></div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 ))}
               </div>
             ) : posts.length === 0 ? (
@@ -455,58 +670,11 @@ Edward
             ) : (
               <div className="grid grid-cols-1 gap-4 sm:gap-6">
                 {posts.map((post, idx) => (
-                  <motion.div
-                    key={post.id}
-                    custom={idx}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                    variants={cardVariants}
-                  >
-                    <Card
-                      className="group cursor-pointer overflow-hidden bg-white border border-[#CFE8FF] hover:shadow-md hover:border-[#8AB8E0] transition-all duration-300 h-full flex flex-col"
-                      onClick={() => setSelectedPost(post)}
-                    >
-                      <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
-                        <div className="relative w-full h-full">
-                          <SafeImage
-                            src={post.coverImage}
-                            alt={post.title}
-                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                            }}
-                          />
-                        </div>
-                        <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-                          <Badge variant="secondary" className="text-xs bg-[#CFE8FF]/90 text-[#2E4F7C] border border-[#8AB8E0] backdrop-blur-sm">
-                            {post.category}
-                          </Badge>
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </div>
-
-                      <CardHeader className="pb-3 px-3 sm:px-4 flex-grow">
-                        <h3 className="font-semibold text-base sm:text-lg leading-tight text-[#2E4F7C] group-hover:text-[#1F3A5A] transition-colors line-clamp-2">
-                          {post.title}
-                        </h3>
-                      </CardHeader>
-
-                      <CardContent className="pt-0 px-3 sm:px-4 pb-3 sm:pb-4">
-                        <p className="text-xs sm:text-sm text-[#2E4F7C]/80 mb-3 line-clamp-2 leading-relaxed">{post.excerpt}</p>
-                        <div className="flex items-center justify-between text-xs text-[#2E4F7C]">
-                          <div className="flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            <span className="text-xs">{formatDate(post.publishedDate)}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Clock className="h-3 w-3" />
-                            <span className="text-xs">{post.readTime}</span>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
+                  <BlogCard 
+                    key={post.id} 
+                    post={post} 
+                    onClick={() => setSelectedPost(post)} 
+                  />
                 ))}
               </div>
             )}
@@ -521,7 +689,7 @@ Edward
           </div>
         </div>
 
-        {/* Video Modal */}
+        {/* Video Modal - UNCHANGED */}
         {selectedVideo && (
           <div
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-3 sm:p-4"
@@ -550,7 +718,7 @@ Edward
           </div>
         )}
 
-        {/* Blog Post Dialog - Optimized for all screen sizes */}
+        {/* Blog Post Dialog - UPDATED to use BlogContentRenderer with interspersed images */}
         <Dialog open={!!selectedPost} onOpenChange={() => setSelectedPost(null)}>
           <DialogContent className="max-w-2xl sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl max-h-[85vh] sm:max-h-[90vh] overflow-y-auto bg-gradient-to-br from-[#E3F2FF] to-[#CFE8FF] p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-2xl border border-[#8AB8E0]/30">
             <div className="relative">
@@ -600,7 +768,7 @@ Edward
                         </Badge>
                         <div className="flex items-center gap-1">
                           <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                          <span>{formatDate(selectedPost.publishedDate)}</span>
+                          <span>{formatDialogDate(selectedPost.publishedDate)}</span>
                         </div>
                         <div className="flex items-center gap-1">
                           <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -608,36 +776,31 @@ Edward
                         </div>
                       </div>
 
-                      {/* Blog Content */}
-                      <div className="bg-white/70 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm border border-[#8AB8E0]/20">
-                        <BlogContentRenderer content={selectedPost.content} />
+                      {/* Excerpt */}
+                      <div className="mb-6">
+                        <p className="text-base sm:text-lg md:text-xl text-[#2E4F7C] leading-relaxed italic border-l-4 border-[#3C6AA6] pl-4 py-2 bg-white/50 rounded-r-lg">
+                          {selectedPost.excerpt}
+                        </p>
                       </div>
 
-                      {/* Additional Images */}
-                      {selectedPost.images && selectedPost.images.length > 0 && (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6">
-                          {selectedPost.images.map((image, index) => (
-                            <motion.div
-                              key={index}
-                              initial={{ opacity: 0, scale: 0.9 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: index * 0.1 }}
-                              className="relative aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden shadow-md"
-                            >
-                              <div className="relative w-full h-full">
-                                <SafeImage
-                                  src={image}
-                                  alt={`${selectedPost.title} - Image ${index + 1}`}
-                                  className="object-cover"
-                                  onError={(e) => {
-                                    (e.target as HTMLImageElement).src = "/images/default-blog.jpg";
-                                  }}
-                                />
-                              </div>
-                            </motion.div>
+                      {/* Blog Content with Images Interspersed */}
+                      <div className="bg-white/70 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm border border-[#8AB8E0]/20">
+                        <BlogContentRenderer 
+                          content={selectedPost.content} 
+                          images={selectedPost.images} 
+                        />
+                      </div>
+
+                      {/* Tags */}
+                      <div className="mt-12 pt-8 border-t border-[#8AB8E0]">
+                        <div className="flex flex-wrap gap-2">
+                          {['Travel', 'Adventure', 'Nepal', 'Himalayas', 'Trekking', 'Culture'].map((tag) => (
+                            <Badge key={tag} variant="secondary" className="rounded-full px-3 py-1 bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0]">
+                              #{tag}
+                            </Badge>
                           ))}
                         </div>
-                      )}
+                      </div>
 
                       {/* Close Button at Bottom for Mobile */}
                       <div className="flex justify-center sm:hidden pt-4">

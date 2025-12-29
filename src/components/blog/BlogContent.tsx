@@ -3,11 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, Mountain, MapPin, Users, Star, Image as ImageIcon, X } from "lucide-react";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import { Calendar, Clock, Mountain, X, ImageIcon, ChevronDown, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export interface BlogPost {
   id: string;
@@ -21,7 +20,7 @@ export interface BlogPost {
   readTime: string;
 }
 
-// Single SEO Optimized Everest Trekking Blog Post
+// Your blog array goes here
 const demoBlogPosts: BlogPost[] = [
   {
     id: "1",
@@ -882,7 +881,7 @@ The composition of Thangka paintings, like most Buddhist art, follows highly geo
 
 ## Artistic Guidelines and Spiritual Requirements
 
-Creating authentic Thangkas requires strict adherence to guidelines established in Buddhist scriptures. The artist must undergo proper training in both technical skills and spiritual understanding. The creator needs sufficient religious knowledge and background to create accurate and appropriate Thangka representations. The artwork must maintain traditional proportions and symbolic accuracy. The painting process itself becomes a meditative and spiritual practice.
+Creating authentic Thangkas requires strict adherence to guidelines established in Buddhist scriptures. The artist must undergo proper training in both technical skills and spiritual understanding. The creator needs sufficient religious knowledge and background to create accurate and appropriate Thangka representations. The painting process itself becomes a meditative and spiritual practice.
 
 ## Historical Origins in Nepal
 
@@ -1143,7 +1142,7 @@ Départ fixé à 4h du matin pour le col du Cho La. Car le soleil se levant, la 
 Journée de transition (4 heures) pour rejoindre Lobuche, sans grande difficulté.
 
 ## Jour 10 : Kala Patthar et camp de base de l'Everest
-Pour éviter de dormir au-dessus de 5000m à Gorakshep, une grosse journée nous attend. Départ à 4h du matin pour Gorakshep, où nous arrivons pour 6h afin d'y petit-déjeuner avant d'entamer l'ascension du Kala Patthar dont le sommet est à 5545m, le point le plus haut de notre trek. À cette altitude, l'air contient moitié moins d'oxygène qu'au niveau de la mer. Mieux vaut arriver tôt au Kala Patthar car le vent s'y lève au fur et à mesure de l'avancement de la journée. Redescente sur Gorakshep pour le déjeuner, avant d'enchaîner avec le camp de base de l'Everest, puis tout redescendre pour arriver à Lobuche vers 16h.
+Pour éviter de dormir au-dessus de 5000m à Gorakshep, une grosse journée nous attend. Départ à 4h du matin pour Gorakshep, où nous arrivons pour 6h afin d'y petit-déjeuner avant d'entamer l'ascension du Kala Patthar dont le sommet est à 5545m, le point le plus haut de notre trek. À cette altitude, l'air contient moitié moins d'oxygène qu'au niveau de la mer. Mieux vaut arriver tôt au Kala Patthar car le wind s'y lève au fur et à mesure de l'avancement de la journée. Redescente sur Gorakshep pour le déjeuner, avant d'enchaîner avec le camp de base de l'Everest, puis tout redescendre pour arriver à Lobuche vers 16h.
 
 ## Jour 11 : Descente vers Dingboche
 Après une bonne nuit de sommeil, il est l'heure d'entamer la descente. Direction Dingboche (4410m) où nous arrivons après une matinée de marche. Dingboche est beaucoup moins touristique que les arrêts précédents.
@@ -1438,60 +1437,139 @@ Happy trekking!
   "images": [
     "/images/blog-39.jpg",
     "/images/blog-40.jpg",
-    "/images/blog-41.jpg",
     
   ],
   "category": "Trekking Guide",
   "publishedDate": "2024-01-15",
   "readTime": "6 min"
 }
+
 ];
 
-// Improved image component with the same robust error handling as testimonials
+// Enhanced image component with better error handling
 const SafeImage = ({ 
   src, 
   alt, 
   className = "",
+  priority = false
 }: {
   src: string;
   alt: string;
   className?: string;
+  priority?: boolean;
 }) => {
   const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleError = () => {
-    if (!hasError) {
-      console.log(`Blog image failed to load: ${src}`);
-      setHasError(true);
-    }
+    console.log(`Blog image failed to load: ${src}`);
+    setHasError(true);
+    setIsLoading(false);
+  };
+
+  const handleLoad = () => {
+    setIsLoading(false);
   };
 
   return (
-    <div className={`relative ${className} ${hasError ? 'bg-gradient-to-br from-blue-100 to-blue-200' : ''}`}>
+    <div className={`relative overflow-hidden ${className} ${hasError ? 'bg-gradient-to-br from-[#E3F2FF] to-[#CFE8FF]' : ''}`}>
       {hasError ? (
-        <div className="w-full h-full flex flex-col items-center justify-center text-[#2E4F7C]">
+        <div className="w-full h-full flex flex-col items-center justify-center text-[#2E4F7C] p-4">
           <ImageIcon className="h-8 w-8 mb-2 opacity-50" />
-          <span className="text-xs opacity-70">Image not available</span>
+          <span className="text-sm text-center opacity-70">Image unavailable</span>
         </div>
       ) : (
-        // Use regular img tag instead of Next.js Image component
-        <img
-          src={src}
-          alt={alt}
-          className="w-full h-full object-cover"
-          onError={handleError}
-        />
+        <>
+          {isLoading && (
+            <div className="absolute inset-0 bg-gradient-to-r from-[#E3F2FF] via-[#CFE8FF] to-[#E3F2FF] animate-pulse" />
+          )}
+          <img
+            src={src}
+            alt={alt}
+            className={`w-full h-full object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+            onError={handleError}
+            onLoad={handleLoad}
+            loading={priority ? "eager" : "lazy"}
+            decoding="async"
+          />
+        </>
       )}
     </div>
   );
 };
 
-// Component to render formatted blog content with proper spacing
-const BlogContentRenderer = ({ content }: { content: string }) => {
+// Component to render blog content with interspersed images
+const BlogContentRenderer = ({ content, images = [] }: { content: string; images?: string[] }) => {
   const sections = content.split('## ').filter(section => section.trim());
+  const availableImages = [...images];
   
+  // Helper function to determine when to insert images
+  const shouldInsertImage = (line: string, index: number): boolean => {
+    // Insert after short paragraphs (natural breaks)
+    if (line.length < 150) return true;
+    
+    // Insert after every 3rd paragraph
+    if (index % 3 === 2) return true;
+    
+    return false;
+  };
+
+  // Function to insert images at natural breakpoints
+  const renderContentWithImages = (text: string, sectionIndex: number): React.ReactNode[] => {
+    const lines = text.split('\n').filter(line => line.trim());
+    const result: React.ReactNode[] = [];
+    let imageIndex = 0;
+    let paragraphCount = 0;
+
+    lines.forEach((line, lineIndex) => {
+      // Handle bullet points
+      if (line.trim().startsWith('•')) {
+        result.push(
+          <div key={`bullet-${sectionIndex}-${lineIndex}`} className="flex items-start mb-3 ml-4">
+            <div className="h-2 w-2 bg-[#3C6AA6] rounded-full mt-2 mr-3 flex-shrink-0" />
+            <span className="text-[#2E4F7C]">{line.substring(1).trim()}</span>
+          </div>
+        );
+      } 
+      // Handle regular paragraphs
+      else if (line.trim()) {
+        paragraphCount++;
+        result.push(
+          <p key={`p-${sectionIndex}-${lineIndex}`} className="mb-4 leading-relaxed text-[#2E4F7C]">
+            {line}
+          </p>
+        );
+
+        // Insert images at natural breakpoints
+        if (availableImages.length > 0 && shouldInsertImage(line, paragraphCount)) {
+          const image = availableImages.shift();
+          if (image) {
+            result.push(
+              <motion.div
+                key={`img-${sectionIndex}-${imageIndex}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="my-8 rounded-xl overflow-hidden shadow-lg border border-[#8AB8E0]/20"
+              >
+                <SafeImage
+                  src={image}
+                  alt={`Content image ${imageIndex + 1}`}
+                  className="w-full aspect-[16/9] md:aspect-[21/9] object-cover"
+                />
+              </motion.div>
+            );
+            imageIndex++;
+          }
+        }
+      }
+    });
+
+    return result;
+  };
+
   return (
-    <div className="space-y-6 text-[#2E4F7C]">
+    <div className="space-y-8">
       {sections.map((section, index) => {
         const [title, ...contentLines] = section.split('\n').filter(line => line.trim());
         const contentText = contentLines.join('\n').trim();
@@ -1502,37 +1580,16 @@ const BlogContentRenderer = ({ content }: { content: string }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-white/70 rounded-lg p-4 sm:p-6 shadow-sm border border-[#8AB8E0]/20"
+            className="space-y-4"
           >
             {title && (
-              <h3 className="text-xl sm:text-2xl font-bold text-[#2E4F7C] mb-4 pb-3 border-b border-[#8AB8E0]">
+              <h3 className="text-xl font-bold text-[#2E4F7C] mb-4 pb-2 border-b border-[#8AB8E0]">
                 {title}
               </h3>
             )}
             
-            <div className="prose prose-sm sm:prose-base max-w-none text-[#2E4F7C]">
-              {contentText.split('• ').map((paragraph, pIndex) => {
-                if (pIndex === 0) {
-                  return (
-                    <p key={pIndex} className="mb-4 leading-relaxed text-base sm:text-lg">
-                      {paragraph}
-                    </p>
-                  );
-                }
-                
-                if (paragraph.trim()) {
-                  return (
-                    <div key={pIndex} className="flex items-start mb-3">
-                      <Star className="h-4 w-4 text-[#3C6AA6] mt-1 mr-3 flex-shrink-0" />
-                      <span className="text-base sm:text-lg leading-relaxed">
-                        {paragraph}
-                      </span>
-                    </div>
-                  );
-                }
-                
-                return null;
-              })}
+            <div className="space-y-4">
+              {renderContentWithImages(contentText, index)}
             </div>
           </motion.div>
         );
@@ -1541,27 +1598,176 @@ const BlogContentRenderer = ({ content }: { content: string }) => {
   );
 };
 
+// Blog card component - list view on mobile, grid view on desktop
+const BlogCard = ({ post, onClick }: { post: BlogPost; onClick: () => void }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Mobile view (list)
+  if (isMobile) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-[#8AB8E0]/30"
+      >
+        <div className="flex flex-col">
+          <div 
+            className="relative w-full aspect-[4/3] cursor-pointer"
+            onClick={onClick}
+          >
+            <SafeImage
+              src={post.coverImage}
+              alt={post.title}
+              className="transition-transform duration-300 hover:scale-105"
+            />
+            <div className="absolute top-3 left-3">
+              <Badge className="bg-[#CFE8FF]/90 backdrop-blur-sm text-[#2E4F7C] border border-[#8AB8E0] text-xs px-2 py-1">
+                {post.category}
+              </Badge>
+            </div>
+          </div>
+          
+          <div className="flex-1 p-4 md:p-6 flex flex-col">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2 text-sm text-[#2E4F7C]">
+                <Calendar className="h-4 w-4" />
+                <span>{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+              </div>
+              <div className="flex items-center gap-1 text-sm text-[#2E4F7C]">
+                <Clock className="h-4 w-4" />
+                <span>{post.readTime}</span>
+              </div>
+            </div>
+            
+            <h3 
+              className="font-semibold text-lg text-[#2E4F7C] mb-3 line-clamp-2 cursor-pointer hover:text-[#1F3A5A] transition-colors"
+              onClick={onClick}
+            >
+              {post.title}
+            </h3>
+            
+            <p className="text-[#2E4F7C]/80 text-sm mb-4 line-clamp-3 flex-grow">
+              {post.excerpt}
+            </p>
+            
+            <div className="flex items-center justify-between pt-3 border-t border-[#8AB8E0]/20">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-[#2E4F7C] hover:text-[#1F3A5A] hover:bg-[#CFE8FF] px-0 text-sm font-medium"
+                onClick={onClick}
+              >
+                Read full article
+              </Button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
+
+  // Desktop view (grid)
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="group"
+    >
+      <Card className="h-full overflow-hidden border border-[#8AB8E0]/30 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-xl bg-white">
+        <div 
+          className="relative aspect-[16/9] overflow-hidden cursor-pointer"
+          onClick={onClick}
+        >
+          <SafeImage
+            src={post.coverImage}
+            alt={post.title}
+            className="transition-transform duration-700 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/20 to-transparent" />
+          <div className="absolute top-4 left-4">
+            <Badge className="bg-[#CFE8FF]/90 backdrop-blur-sm text-[#2E4F7C] border border-[#8AB8E0]">
+              {post.category}
+            </Badge>
+          </div>
+        </div>
+        
+        <CardContent className="p-5">
+          <div className="flex items-center gap-3 text-sm text-[#2E4F7C] mb-3">
+            <div className="flex items-center gap-1">
+              <Calendar className="h-4 w-4" />
+              <span>{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="h-4 w-4" />
+              <span>{post.readTime}</span>
+            </div>
+          </div>
+          
+          <h3 
+            className="font-bold text-xl text-[#2E4F7C] mb-3 line-clamp-2 cursor-pointer hover:text-[#1F3A5A] transition-colors"
+            onClick={onClick}
+          >
+            {post.title}
+          </h3>
+          
+          <p className="text-[#2E4F7C]/80 mb-4 line-clamp-3">
+            {post.excerpt}
+          </p>
+          
+          <div className="flex items-center justify-between">
+            <Button
+              variant="ghost"
+              className="text-[#2E4F7C] hover:text-[#1F3A5A] hover:bg-[#CFE8FF] font-medium"
+              onClick={onClick}
+            >
+              Read more
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+};
+
 export default function BlogContent() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [displayPosts, setDisplayPosts] = useState<BlogPost[]>([]);
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(6);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate API loading delay
+    // Simulate API loading with staggered loading
     const timer = setTimeout(() => {
-      setPosts(demoBlogPosts);
-      
-      // Reverse the array so first item appears last
-      const reversedPosts = [...demoBlogPosts].reverse();
-      setDisplayPosts(reversedPosts);
+      // Sort posts by publishedDate in descending order (newest first)
+      const sortedPosts = [...demoBlogPosts].sort((a, b) => 
+        new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
+      );
+      setPosts(sortedPosts);
       setIsLoading(false);
-    }, 1000);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, []);
 
+  const handleLoadMore = () => {
+    setVisibleCount(prev => Math.min(prev + 6, posts.length));
+  };
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Format date function
   const formatDate = (dateString: string) => {
     try {
       return new Date(dateString).toLocaleDateString("en-US", {
@@ -1575,222 +1781,194 @@ export default function BlogContent() {
     }
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({ 
-      opacity: 1, 
-      y: 0, 
-      transition: { delay: i * 0.1, duration: 0.5 } 
-    }),
-  };
-
-  const loadMore = () => setVisibleCount((prev) => Math.min(prev + 3, displayPosts.length));
-
-  if (isLoading) {
-    return (
-      <div className="w-full py-12 sm:py-16 px-3 sm:px-4 md:px-8 lg:px-16">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-8 sm:mb-12 px-2">
-          Our Latest Blogs
-        </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {[...Array(3)].map((_, i) => (
-            <Card key={i} className="overflow-hidden bg-[#E3F2FF] animate-pulse border border-[#8AB8E0]/30">
-              <div className="aspect-[4/3] bg-gray-300"></div>
-              <CardHeader className="pb-3 px-4 sm:px-6">
-                <div className="h-4 bg-gray-300 rounded w-1/4 mb-2"></div>
-                <div className="h-6 bg-gray-300 rounded w-3/4"></div>
-              </CardHeader>
-              <CardContent className="pt-0 px-4 sm:px-6">
-                <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
-                <div className="h-4 bg-gray-300 rounded w-2/3"></div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  return (
+  // Skeleton loading component
+  const SkeletonLoader = () => (
     <div className="w-full py-12 sm:py-16 px-3 sm:px-4 md:px-8 lg:px-16">
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-8 sm:mb-12 px-2">
         Our Latest Blogs
       </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+          <Card key={i} className="overflow-hidden bg-[#E3F2FF] animate-pulse border border-[#8AB8E0]/30">
+            <div className="aspect-[16/9] bg-[#CFE8FF]"></div>
+            <CardHeader className="pb-3 px-6">
+              <div className="h-4 bg-[#CFE8FF] rounded w-1/4 mb-2"></div>
+              <div className="h-6 bg-[#CFE8FF] rounded w-3/4"></div>
+            </CardHeader>
+            <CardContent className="pt-0 px-6">
+              <div className="h-4 bg-[#CFE8FF] rounded w-full mb-2"></div>
+              <div className="h-4 bg-[#CFE8FF] rounded w-2/3"></div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
 
-      {displayPosts.length === 0 ? (
-        <div className="text-center py-12">
-          <p className="text-[#3C6AA6]">No blog posts yet. Check back soon!</p>
+  if (isLoading) return <SkeletonLoader />;
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#E3F2FF] to-white">
+      {/* Header Section */}
+      <div className="w-full py-12 sm:py-16 px-3 sm:px-4 md:px-8 lg:px-16">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[#2E4F7C] mb-4 sm:mb-6 px-2">
+          Our Latest Blogs
+        </h1>
+        <p className="text-lg md:text-xl text-[#2E4F7C]/80 text-center max-w-3xl mx-auto mb-8">
+          Discover expert guides, travel stories, and insider tips for your next Himalayan adventure
+        </p>
+
+        {/* Blog Posts - Responsive grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.slice(0, visibleCount).map((post, index) => (
+            <BlogCard key={post.id} post={post} onClick={() => setSelectedPost(post)} />
+          ))}
         </div>
-      ) : (
-        <>
-          {/* Blog Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {displayPosts.slice(0, visibleCount).map((post, idx) => (
-              <motion.div
-                key={post.id}
-                custom={idx}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={cardVariants}
-              >
-                <Card
-                  className="group cursor-pointer overflow-hidden bg-[#E3F2FF] hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border border-[#8AB8E0]/30 h-full flex flex-col"
-                  onClick={() => setSelectedPost(post)}
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
-                    <SafeImage
-                      src={post.coverImage}
-                      alt={post.title}
-                      className="transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/20 to-transparent" />
-                  </div>
 
-                  <CardHeader className="pb-3 px-4 sm:px-6 flex-grow-0">
-                    <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                      <Badge variant="secondary" className="text-xs bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0] px-2 py-1">
-                        {post.category}
-                      </Badge>
-                      <div className="flex items-center gap-1 text-xs text-[#2E4F7C]">
-                        <Calendar className="h-3 w-3" />
-                        <span className="whitespace-nowrap">{formatDate(post.publishedDate)}</span>
-                      </div>
-                    </div>
-                    <h3 className="font-heading font-semibold text-lg leading-tight text-[#2E4F7C] group-hover:text-[#1F3A5A] transition-colors line-clamp-3">
-                      {post.title}
-                    </h3>
-                  </CardHeader>
-
-                  <CardContent className="pt-0 px-4 sm:px-6 pb-4 flex-grow">
-                    <p className="text-sm text-[#2E4F7C]/80 mb-4 line-clamp-3 leading-relaxed">{post.excerpt}</p>
-                    <div className="flex items-center justify-between mt-auto">
-                      <div className="flex items-center gap-1 text-xs text-[#2E4F7C]">
-                        <Clock className="h-3 w-3" />
-                        {post.readTime}
-                      </div>
-                      <Button variant="ghost" size="sm" className="text-[#2E4F7C] hover:text-[#1F3A5A] hover:bg-[#CFE8FF] p-0 h-auto font-medium text-xs sm:text-sm">
-                        Read more →
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Load More Button */}
-          {visibleCount < displayPosts.length && (
-            <motion.div 
-              className="flex justify-center mt-8 sm:mt-12" 
-              initial={{ opacity: 0, y: 20 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.6 }}
+        {/* Load More / Scroll to Top */}
+        <div className="flex flex-col items-center justify-center gap-4 mt-12 pt-8 border-t border-[#8AB8E0]/20">
+          {visibleCount < posts.length ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
             >
-              <Button 
-                className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-6 py-3 rounded-lg font-semibold text-sm sm:text-base transition-all duration-200 shadow-md hover:shadow-lg w-full max-w-xs" 
-                onClick={loadMore}
+              <Button
+                onClick={handleLoadMore}
+                className="px-8 py-3 rounded-lg bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white shadow-md hover:shadow-lg transition-all duration-300"
+                size="lg"
               >
+                <ChevronDown className="mr-2 h-5 w-5" />
                 Load More Articles
               </Button>
             </motion.div>
-          )}
-        </>
-      )}
-
-      {/* Blog Dialog - Optimized for all screen sizes */}
-      <Dialog open={!!selectedPost} onOpenChange={() => setSelectedPost(null)}>
-        <DialogContent className="max-w-2xl sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl max-h-[90vh] sm:max-h-[95vh] overflow-y-auto bg-gradient-to-br from-[#E3F2FF] to-[#CFE8FF] p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-2xl border border-[#8AB8E0]/30">
-          <div className="relative">
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedPost(null)}
-              className="absolute -top-2 -right-2 z-50 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 shadow-lg transition-all duration-200 hover:scale-110 border border-[#8AB8E0]/30"
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
             >
-              <X className="h-4 w-4 sm:h-5 sm:w-5 text-[#2E4F7C]" />
-            </button>
-            
-            {selectedPost && (
-              <>
-                <DialogHeader className="flex justify-between items-start mb-4 sm:mb-6 pr-8">
-                  <DialogTitle className="font-heading text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-[#2E4F7C] leading-tight">
-                    {selectedPost.title}
-                  </DialogTitle>
-                </DialogHeader>
+              <Button
+                onClick={handleScrollToTop}
+                variant="outline"
+                className="px-8 py-3 rounded-lg border-[#8AB8E0] text-[#2E4F7C] hover:bg-[#CFE8FF]"
+                size="lg"
+              >
+                <ChevronUp className="mr-2 h-5 w-5" />
+                Back to Top
+              </Button>
+            </motion.div>
+          )}
+          
+          <p className="text-sm text-[#2E4F7C] text-center mt-4">
+            Showing {Math.min(visibleCount, posts.length)} of {posts.length} articles
+          </p>
+        </div>
+      </div>
 
-                <DialogDescription asChild>
-                  <motion.div 
-                    className="space-y-4 sm:space-y-6 text-[#2E4F7C]" 
-                    initial={{ opacity: 0, y: 20 }} 
-                    animate={{ opacity: 1, y: 0 }} 
-                    transition={{ duration: 0.5 }}
+      {/* Blog Dialog - Fixed with proper DialogTitle */}
+      <AnimatePresence>
+        {selectedPost && (
+          <Dialog open={!!selectedPost} onOpenChange={() => setSelectedPost(null)}>
+            <DialogContent className="max-w-4xl lg:max-w-6xl p-0 gap-0 overflow-hidden bg-gradient-to-br from-[#E3F2FF] to-[#CFE8FF] rounded-xl md:rounded-2xl border border-[#8AB8E0]/30 shadow-2xl">
+              <DialogHeader className="hidden">
+                <DialogTitle>{selectedPost.title}</DialogTitle>
+              </DialogHeader>
+              
+              {/* Mobile Header */}
+              <div className="md:hidden sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-[#8AB8E0] p-4">
+                <div className="flex items-center justify-between">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setSelectedPost(null)}
+                    className="rounded-full bg-white/80 hover:bg-white"
                   >
-                    {/* Cover Image */}
-                    <div className="relative w-full aspect-[16/9] rounded-lg sm:rounded-xl overflow-hidden shadow-lg">
-                      <SafeImage
-                        src={selectedPost.coverImage} 
-                        alt={selectedPost.title}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/30 to-transparent" />
-                    </div>
-                    
-                    {/* Meta Information */}
-                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-[#2E4F7C]/80 bg-white/80 rounded-lg p-3 sm:p-4 shadow-sm">
-                      <Badge variant="secondary" className="bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0] text-xs px-2 py-1">
-                        <Mountain className="h-3 w-3 mr-1" />
+                    <X className="h-5 w-5 text-[#2E4F7C]" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="overflow-y-auto max-h-[90vh] md:max-h-[95vh]">
+                {/* Hero Image */}
+                <div className="relative aspect-[21/9] md:aspect-[3/1]">
+                  <SafeImage
+                    src={selectedPost.coverImage}
+                    alt={selectedPost.title}
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#2E4F7C]/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                    <div className="max-w-3xl mx-auto">
+                      <Badge className="mb-4 bg-[#CFE8FF]/90 backdrop-blur-sm text-[#2E4F7C] border border-[#8AB8E0]">
                         {selectedPost.category}
                       </Badge>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                        <span>{formatDate(selectedPost.publishedDate)}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
-                        <span>{selectedPost.readTime} read</span>
-                      </div>
+                      <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+                        {selectedPost.title}
+                      </h1>
                     </div>
+                  </div>
+                </div>
 
-                    {/* Blog Content */}
-                    <div className="bg-white/70 rounded-lg p-4 sm:p-6 shadow-sm border border-[#8AB8E0]/20">
-                      <BlogContentRenderer content={selectedPost.content} />
+                {/* Article Content */}
+                <div className="max-w-3xl mx-auto px-4 md:px-6 py-8 md:py-12">
+                  {/* Meta Information */}
+                  <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-[#2E4F7C] mb-8 pb-8 border-b border-[#8AB8E0]">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      <span>{formatDate(selectedPost.publishedDate)}</span>
                     </div>
-
-                    {/* Additional Images - Only show if images exist */}
-                    {selectedPost.images && selectedPost.images.length > 0 && (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8">
-                        {selectedPost.images.map((image, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="relative aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden shadow-md"
-                          >
-                            <SafeImage
-                              src={image}
-                              alt={`${selectedPost.title} - Image ${index + 1}`}
-                            />
-                          </motion.div>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Close Button at Bottom for Mobile */}
-                    <div className="flex justify-center sm:hidden pt-4">
-                      <Button 
-                        onClick={() => setSelectedPost(null)}
-                        className="bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white px-6 py-2 rounded-lg font-medium text-sm transition-all duration-200 w-full max-w-xs"
-                      >
-                        Close Article
-                      </Button>
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4" />
+                      <span>{selectedPost.readTime} read</span>
                     </div>
-                  </motion.div>
-                </DialogDescription>
-              </>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
+                    <div className="flex items-center gap-2">
+                      <Mountain className="h-4 w-4" />
+                      <span>Himalayan Adventure</span>
+                    </div>
+                  </div>
+
+                  {/* Excerpt */}
+                  <div className="mb-8">
+                    <p className="text-lg md:text-xl text-[#2E4F7C] leading-relaxed italic border-l-4 border-[#3C6AA6] pl-4 py-2 bg-white/50 rounded-r-lg">
+                      {selectedPost.excerpt}
+                    </p>
+                  </div>
+
+                  {/* Main Content with Images */}
+                  <div className="bg-white/70 rounded-lg p-6 shadow-sm border border-[#8AB8E0]/20">
+                    <BlogContentRenderer 
+                      content={selectedPost.content} 
+                      images={selectedPost.images} 
+                    />
+                  </div>
+
+                  {/* Tags */}
+                  <div className="mt-12 pt-8 border-t border-[#8AB8E0]">
+                    <div className="flex flex-wrap gap-2">
+                      {['Travel', 'Adventure', 'Nepal', 'Himalayas', 'Trekking', 'Culture'].map((tag) => (
+                        <Badge key={tag} variant="secondary" className="rounded-full px-3 py-1 bg-[#CFE8FF] text-[#2E4F7C] border border-[#8AB8E0]">
+                          #{tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Desktop Close Button */}
+                  <div className="hidden md:flex justify-center mt-12">
+                    <Button
+                      onClick={() => setSelectedPost(null)}
+                      className="rounded-lg px-8 py-3 bg-[#2E4F7C] hover:bg-[#1F3A5A] text-white"
+                    >
+                      Close Article
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
