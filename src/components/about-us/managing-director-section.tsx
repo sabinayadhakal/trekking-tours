@@ -51,16 +51,53 @@ export default function ManagingDirectorSection({
   const items = normalizeAchievements(achievements)
   const imageFirst = orientation === "image-left"
 
+  // Simplified animation variants with proper easing
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut" as const
+      }
+    }
+  }
+
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.98 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut" as const
+      }
+    }
+  }
+
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-30px" }}
-      transition={{ staggerChildren: 0.05, delayChildren: 0.1 }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={containerVariants}
       aria-labelledby="managing-director-heading"
       className={[
         "relative w-full overflow-hidden rounded-lg border border-[#6CA0DC]",
-        "bg-[#D8E6F3]/80 shadow-lg transition-colors",
+        "bg-[#D8E6F3]/80 shadow-lg",
         className || "",
       ].join(" ")}
       style={style}
@@ -77,39 +114,27 @@ export default function ManagingDirectorSection({
       <div className="grid items-stretch gap-8 p-6 sm:p-8 md:gap-10 md:grid-cols-2">
         {/* Image column */}
         <motion.div
-          initial={{ scale: 0.95, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
+          variants={imageVariants}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
           className={imageFirst ? "order-1" : "order-2 md:order-2"}
         >
-          <motion.div 
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="group relative h-64 sm:h-72 md:h-80 w-full max-h-80 overflow-hidden rounded-lg bg-[#D8E6F3]/50 ring-2 ring-[#6CA0DC]"
-          >
+          <div className="group relative h-64 sm:h-72 md:h-80 w-full max-h-80 overflow-hidden rounded-lg bg-[#D8E6F3]/50 ring-2 ring-[#6CA0DC]">
             <Image
               src={headshotSrc}
               alt={headshotAlt}
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
-              className="object-cover transition-all duration-500 ease-out group-hover:scale-105"
+              className="object-cover transition-all duration-300 ease-out group-hover:scale-[1.02]"
               priority
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#375D87]/10 via-transparent to-transparent" />
-            <div className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#4682B4]/10 to-[#6495ED]/10" />
-            </div>
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Content column */}
         <div className={imageFirst ? "order-2" : "order-1 md:order-1 relative flex flex-col justify-center"}>
           <motion.div 
-            initial={{ y: 15, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            variants={itemVariants}
             className="mb-4 inline-flex items-center gap-2"
           >
             <span className="inline-flex h-2 w-2 rounded-full bg-[#375D87]" />
@@ -117,10 +142,7 @@ export default function ManagingDirectorSection({
           </motion.div>
 
           <motion.h2 
-            initial={{ y: 15, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            variants={itemVariants}
             id="managing-director-heading" 
             className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#375D87]"
           >
@@ -129,64 +151,39 @@ export default function ManagingDirectorSection({
 
           {/* Quick facts */}
           <motion.div 
-            initial={{ y: 15, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            variants={itemVariants}
             className="mt-4 flex flex-wrap items-center gap-3 text-sm"
           >
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="inline-flex items-center gap-2 rounded-full bg-[#D8E6F3]/60 px-3 py-1.5 text-[#375D87] ring-1 ring-[#6CA0DC]"
-            >
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#D8E6F3]/60 px-3 py-1.5 text-[#375D87] ring-1 ring-[#6CA0DC] transition-transform duration-200 hover:scale-[1.02]">
               <Clock className="h-4 w-4 text-[#6CA0DC]" />
               <span className="font-medium">{yearsExperience}+ years</span>
               <span className="text-[#6CA0DC]">in adventure tourism</span>
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="inline-flex items-center gap-2 rounded-full bg-[#D8E6F3]/60 px-3 py-1.5 text-[#375D87] ring-1 ring-[#6CA0DC]"
-            >
+            </div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#D8E6F3]/60 px-3 py-1.5 text-[#375D87] ring-1 ring-[#6CA0DC] transition-transform duration-200 hover:scale-[1.02]">
               <Compass className="h-4 w-4 text-[#6CA0DC]" />
               <span className="font-medium">Vision-led growth</span>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Background & Vision */}
           <motion.div 
-            initial={{ y: 15, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            variants={itemVariants}
             className="mt-6 space-y-4 text-base leading-relaxed"
           >
             <p className="text-[#375D87]">{background}</p>
-            <motion.div 
-              whileHover={{ y: -2 }}
-              transition={{ duration: 0.2 }}
-              className="rounded-lg bg-[#D8E6F3]/40 p-4 ring-1 ring-[#6CA0DC]"
-            >
+            <div className="rounded-lg bg-[#D8E6F3]/40 p-4 ring-1 ring-[#6CA0DC] transition-all duration-200 hover:bg-[#D8E6F3]/50">
               <div className="mb-2 inline-flex items-center gap-2">
                 <Flag className="h-4 w-4 text-[#6CA0DC]" />
                 <span className="text-sm font-semibold tracking-wide text-[#375D87]">Vision for the company</span>
               </div>
               <p className="text-[#375D87]">{vision}</p>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Achievements */}
           {items.length > 0 && (
             <motion.div 
-              initial={{ y: 15, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+              variants={itemVariants}
               className="mt-6"
             >
               <div className="mb-3 flex items-center gap-2">
@@ -199,14 +196,13 @@ export default function ManagingDirectorSection({
                     key={idx}
                     initial={{ opacity: 0, y: 8 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ 
                       delay: idx * 0.08,
                       duration: 0.3,
                       ease: "easeOut"
                     }}
-                    viewport={{ once: true, margin: "-20px" }}
-                    whileHover={{ scale: 1.02 }}
-                    className="flex items-start gap-2 rounded-md bg-[#D8E6F3]/40 px-3 py-2 text-sm text-[#375D87] ring-1 ring-[#6CA0DC]"
+                    className="flex items-start gap-2 rounded-md bg-[#D8E6F3]/40 px-3 py-2 text-sm text-[#375D87] ring-1 ring-[#6CA0DC] transition-all duration-200 hover:bg-[#D8E6F3]/50"
                   >
                     <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-sm bg-[#6CA0DC] text-white">
                       ✓
@@ -223,17 +219,10 @@ export default function ManagingDirectorSection({
 
           {/* YouTube Video */}
           <motion.div 
-            initial={{ y: 15, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            variants={itemVariants}
             className="mt-6 w-full sm:w-10/12 md:w-9/12 lg:w-8/12"
           >
-            <motion.div 
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.2 }}
-              className="relative aspect-video w-full overflow-hidden rounded-lg ring-1 ring-[#6CA0DC]"
-            >
+            <div className="relative aspect-video w-full overflow-hidden rounded-lg ring-1 ring-[#6CA0DC] transition-all duration-200 hover:ring-2 hover:ring-[#4682B4]">
               <iframe
                 src="https://www.youtube.com/embed/JxiY-aG0e_c"
                 title="YouTube video"
@@ -241,26 +230,19 @@ export default function ManagingDirectorSection({
                 allowFullScreen
                 className="absolute inset-0 h-full w-full"
               />
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Quote */}
           {quote && (
             <motion.figure 
-              initial={{ y: 15, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+              variants={itemVariants}
               className="mt-8"
             >
-              <motion.blockquote 
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.2 }}
-                className="relative rounded-lg bg-[#D8E6F3]/40 px-5 py-4 text-base italic text-[#375D87] ring-1 ring-[#6CA0DC]"
-              >
+              <blockquote className="relative rounded-lg bg-[#D8E6F3]/40 px-5 py-4 text-base italic text-[#375D87] ring-1 ring-[#6CA0DC] transition-all duration-200 hover:bg-[#D8E6F3]/50">
                 <Quote className="absolute -left-2 -top-2 h-5 w-5 text-[#6CA0DC]" />
                 "{quote}"
-              </motion.blockquote>
+              </blockquote>
               {quoteAttribution && <figcaption className="mt-2 pl-6 text-sm text-[#6CA0DC]">— {quoteAttribution}</figcaption>}
             </motion.figure>
           )}

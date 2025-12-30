@@ -3,7 +3,7 @@ import ManagingDirectorSection from "@/components/about-us/managing-director-sec
 import TeamMembersGrid, { type TeamMember } from "@/components/about-us/team-members-grid"
 import LicensesCertifications from "@/components/about-us/licenses-certificates"
 import CompanyPolicySection from "@/components/about-us/company-policy"
-import BecomeAPartner from "@/components/about-us/become-a-partner" // Import the component
+import BecomeAPartner from "@/components/about-us/become-a-partner"
 
 export default function AboutPage() {
   const managingDirectorData = {
@@ -11,7 +11,7 @@ export default function AboutPage() {
     title: "Managing Director & Founder",
     headshotSrc: "/images/managing-director.jpg",
     headshotAlt: "Shiva Prasad Dhakal, Managing Director of Himkala Adventure",
-    background: "Starting his career as a porter, Shiva Prasad Dhakal has grown into a respected leader in Nepal’s tourism industry. Today, as Managing Director, he guides Himkala Adventure with a commitment to offering authentic, eco-friendly trekking experiences that honor Nepal’s natural beauty and rich cultural heritage.",
+    background: "Starting his career as a porter, Shiva Prasad Dhakal has grown into a respected leader in Nepal's tourism industry. Today, as Managing Director, he guides Himkala Adventure with a commitment to offering authentic, eco-friendly trekking experiences that honor Nepal's natural beauty and rich cultural heritage.",
     vision: "Committed to making adventure travel available to all, while safeguarding the landscapes and cultural traditions that make each journey meaningful. Our focus is on responsible travel that creates value for both visitors and local communities.",
     yearsExperience: 25,
     achievements: [
@@ -25,6 +25,7 @@ export default function AboutPage() {
     orientation: "image-left" as const
   }
 
+  // Use a placeholder first to verify the page loads, then fix the actual image
   const teamMembers: TeamMember[] = [
     {
       id: "sabinaya-dhakal",
@@ -32,10 +33,10 @@ export default function AboutPage() {
       title: "Professional Certified Trekking Guide and IT facilitator",
       years: 6,
       bio: "Sabinaya has a strong background in high-altitude trekking and also manages various IT tasks within the company. His calm approach, safety awareness, and knowledge of the region make him a dependable part of our team.",
-      photoUrl: "/images/sabinaya.jpeg",
+      // TEMPORARY: Use a placeholder or working image
+      photoUrl: "/images/sabinaya.jpg", 
       alt: "Sabinaya Dhakal, Trekking Guide and IT facilitator"
     },
-    
   ]
 
   const certificationsData = [
@@ -43,12 +44,9 @@ export default function AboutPage() {
       title: "Certificate of Incorporation Company",
       issuingOrganization: "Office of Company Registrar",
       issueDate: "January 26, 2015",
-     
       credentialId: "131462/071/072",
-     
       description: "Legal document officially establishing the company as a registered legal entity.",
       imageSrc: "/images/certificate-of-incorporation-company.jpg",
-  
     },
     {
       title: "Certificate of tourism industry division ",
@@ -70,30 +68,23 @@ export default function AboutPage() {
     {
       title: "Certicate of Trekking Agencies' Association of Nepal (TAAN)",
       issuingOrganization: "Trekking Agencies' Association of Nepal (TAAN)",
-     
       credentialId: "AMC-NMA-2020-1289",
-     description: "Certificate of TAAN declaring Himkala Adventure Pvt. Ltd. as General Member",
-        imageSrc: "/images/taan-certificate.jpg",
-     
+      description: "Certificate of TAAN declaring Himkala Adventure Pvt. Ltd. as General Member",
+      imageSrc: "/images/taan-certificate.jpg",
     },
     {
       title: "Certicates of excellence by TripAdvisor",
       issuingOrganization: "Trekking Agencies' Association of Nepal (TAAN)",
-     
-     description: "Certificate of TAAN declaring Himkala Adventure Pvt. Ltd. as General Member",
-        imageSrc: "/images/tripadvisor-awards.jpg",
-     
+      description: "Certificate of TAAN declaring Himkala Adventure Pvt. Ltd. as General Member",
+      imageSrc: "/images/tripadvisor-awards.jpg",
     },
     {
       title: "Foreign Exchange Authorization Letter",
       issuingOrganization: "Nepal Rastra Bank",
-     
       credentialId: "",
-     description: "Official permission for making payments in foreign currency",
-        imageSrc: "/images/nrb.jpg",
-     
+      description: "Official permission for making payments in foreign currency",
+      imageSrc: "/images/nrb.jpg",
     },
-    
   ]
 
   return (
@@ -102,8 +93,9 @@ export default function AboutPage() {
         imageSrc="/images/about-us-hero.jpg"
         imageAlt="Mountain landscape with adventurers"
         title="Get to Know Us"
-        description="As trusted Nepal trekking and expedition experts, we offer professional advice and comprehensive planning for adventure travel. Our team’s deep field experience ensures every trek and expedition is safe, well-organized, and tailored to your goals."
-  overlay="bg-gradient-to-b from-gray-900/80 sm:from-gray-900/70 via-gray-800/60 sm:via-gray-800/50 to-gray-900/40 sm:to-gray-900/30"        priority={true}
+        description="As trusted Nepal trekking and expedition experts, we offer professional advice and comprehensive planning for adventure travel. Our team's deep field experience ensures every trek and expedition is safe, well-organized, and tailored to your goals."
+        overlay="bg-gradient-to-b from-gray-900/80 sm:from-gray-900/70 via-gray-800/60 sm:via-gray-800/50 to-gray-900/40 sm:to-gray-900/30"
+        priority={true}
       />
 
       <div className="container mx-auto px-4 py-16 space-y-16">
@@ -112,7 +104,6 @@ export default function AboutPage() {
           className="mb-16"
         />
         
-        {/* Added BecomeAPartner component here */}
         <BecomeAPartner />
         
         <LicensesCertifications

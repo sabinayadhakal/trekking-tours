@@ -19,7 +19,6 @@ type Package = {
   groupSize: string;
   price: number;
   rating: number;
-  reviews: number;
   location: string;
   type: "trek" | "city" | "cultural-tour" | "overland-tour" | "short-tour" | "festival-tour" | "pilgrimage-trek";
   highlights: string[];
@@ -72,7 +71,6 @@ const ToggleTabsPricing = () => {
         groupSize: "2–12 people",
         price: 1450,
         rating: 4.8,
-        reviews: 320,
         location: "Khumbu Region, Nepal",
         type: "trek",
         highlights: [
@@ -85,178 +83,172 @@ const ToggleTabsPricing = () => {
         ]
       },
       {
-        id: "np-2",
-        name: "Annapurna Base Camp Trek - Himalayan Panorama Journey",
-        description: "Journey through diverse landscapes from terraced farms to high alpine terrain. Experience Gurung culture, rhododendron forests, and stunning Annapurna massif views on this moderate 10-day trek.",
-        duration: "10 Days",
-        difficulty: "Moderate",
-        groupSize: "2–15 people",
-        price: 950,
-        rating: 4.7,
-        reviews: 210,
-        location: "Annapurna Region, Nepal",
-        type: "trek",
-        highlights: [
-          "Spectacular sunrise from Poon Hill viewpoint",
-          "Walk through blooming rhododendron forests",
-          "Cultural immersion in traditional Ghandruk village",
-          "360-degree views of Annapurna Massif",
-          "Natural hot springs at Jhinu Danda",
-          "All-inclusive meals and accommodation"
-        ]
-      },
-      {
-        id: "np-3",
-        name: "Langtang Valley Trek - Hidden Himalayan Gem",
-        description: "Discover the secluded Langtang Valley, known as the 'Valley of Glaciers.' Experience Tibetan-influenced culture, ancient monasteries, and stunning mountain vistas on this moderate 8-day trek.",
-        duration: "8 Days",
-        difficulty: "Moderate",
-        groupSize: "2–10 people",
-        price: 750,
-        rating: 4.6,
-        reviews: 145,
-        location: "Langtang Region, Nepal",
-        type: "trek",
-        highlights: [
-          "Explore Tibetan-influenced culture and traditions",
-          "Visit sacred Kyanjin Gompa monastery",
-          "Spectacular views of Langtang Lirung (7,234m)",
-          "Less crowded alternative to Everest and Annapurna",
-          "Cheese factory visit in Kyanjin Gompa",
-          "All permits and national park fees included"
-        ]
-      }
+  "id": "np-2",
+  "name": "Manaslu Circuit Trek - The Forbidden Mountain Odyssey",
+  "description": "Embark on an epic journey around the world's eighth-highest peak, crossing the challenging Larkya La Pass. Experience pristine landscapes, ancient Buddhist culture, and remote villages on this demanding yet rewarding 14-day adventure.",
+  "duration": "14 Days",
+  "difficulty": "Challenging",
+  "groupSize": "2–12 people",
+  "price": 1250,
+  "rating": 4.8,
+  "location": "Manaslu Region, Nepal",
+  "type": "trek",
+  "highlights": [
+    "Circuit around Mount Manaslu (8,163m), the 'Mountain of the Spirit'",
+    "Cross the high-altitude Larkya La Pass (5,106m)",
+    "Experience Tibetan Buddhist culture in remote villages",
+    "Less crowded alternative with restricted area permits",
+    "Dramatic landscapes from subtropical to arctic zones",
+    "Visit ancient monasteries like Sama Gompa"
+  ]
+},
+{
+  "id": "np-3",
+  "name": "Tamang Heritage & Langtang Valley Trek - Culture & Wilderness Combo",
+  "description": "Experience the perfect blend of rich cultural immersion and breathtaking Himalayan wilderness. This 12-day journey combines the traditional Tamang Heritage Trail with the stunning Langtang Valley, offering ancient monasteries, glacial landscapes, and authentic village life in one unforgettable adventure.",
+  "duration": "13 Days",
+  "difficulty": "Moderate",
+  "groupSize": "2–12 people",
+  "price": 1100,
+  "rating": 4.7,
+  "location": "Langtang Region, Nepal",
+  "type": "trek",
+  "highlights": [
+    "Dual experience: Tamang culture & Langtang wilderness",
+    "Visit sacred Kyanjin Gompa monastery (3,870m)",
+    "Natural hot springs relaxation at Tatopani",
+    "Home-stay experiences in traditional Tamang villages",
+    "Spectacular views of Langtang Lirung (7,234m)",
+    "Cheese factory visit with local yak cheese tasting",
+    "Ancient monasteries, prayer walls, and cultural museums",
+    "Less crowded trails with panoramic Himalayan vistas"
+  ]
+}
     ],
-    bhutan: [
-      {
-        id: "bt-1",
-        name: "Bhutan Cultural Tour: Tigers Nest Monastery & Dzong Exploration",
-        description: "Immerse yourself in Bhutan's rich Buddhist heritage on this 7-day cultural journey. Visit iconic landmarks including the legendary Tiger's Nest Monastery, magnificent Punakha Dzong, and experience traditional Bhutanese arts, crafts, and festivals with expert local guides.",
-        duration: "7 Days",
-        difficulty: "Easy",
-        groupSize: "2–10 people",
-        price: 1850,
-        rating: 4.9,
-        reviews: 150,
-        location: "Paro, Thimphu, Punakha Valley",
-        type: "cultural-tour",
-        highlights: [
-          "Tiger's Nest Monastery hike (Paro Taktsang)",
-          "Punakha Dzong - Palace of Great Happiness",
-          "Traditional Bhutanese arts & crafts workshops",
-          "Scenic Himalayan drives through mountain passes",
-          "National Memorial Chorten and Buddha Dordenma",
-          "All Bhutan visa fees and tourism taxes included"
-        ]
-      },
-      {
-        id: "bt-2",
-        name: "Bhutan Dragon Trail: Sacred Valleys & Cultural Immersion",
-        description: "Journey deep into Bhutan's spiritual heartland on this 12-day cultural expedition. Explore sacred Bumthang Valley, witness endangered black-necked cranes in Phobjikha, and experience authentic village life, ancient monasteries, and traditional hot stone baths in remote Himalayan valleys.",
-        duration: "12 Days",
-        difficulty: "Moderate",
-        groupSize: "2–8 people",
-        price: 2850,
-        rating: 4.8,
-        reviews: 85,
-        location: "Bumthang, Gangtey, Haa Valley",
-        type: "cultural-tour",
-        highlights: [
-          "Sacred Bumthang Valley temple circuit",
-          "Black-necked crane viewing in Phobjikha Valley",
-          "Remote Haa Valley cultural immersion",
-          "Traditional hot stone bath experience",
-          "Gangtey Monastery and nature trails",
-          "All-inclusive sustainable tourism package"
-        ]
-      },
-      {
-        id: "bt-3",
-        name: "Bhutan Festival Tour: Vibrant Tshechus & Cultural Celebration",
-        description: "Experience Bhutan's vibrant living culture during our exclusive 9-day festival tour. Witness spectacular masked dance festivals (Tshechus), join local celebrations, and explore ancient dzongs and monasteries while immersed in Bhutan's most colorful cultural events with expert guides.",
-        duration: "9 Days",
-        difficulty: "Easy",
-        groupSize: "2–12 people",
-        price: 2250,
-        rating: 4.9,
-        reviews: 120,
-        location: "Paro, Thimphu, Punakha",
-        type: "festival-tour",
-        highlights: [
-          "Exclusive Tshechu festival access",
-          "Traditional masked dance performances",
-          "Festival photography opportunities",
-          "Cultural interactions with local communities",
-          "Bhutanese traditional dress experience",
-          "All festival permits and special access included"
-        ]
-      }
-    ],
-    tibet: [
-      {
-        id: "tb-1",
-        name: "Tibet Overland Adventure: Lhasa to Everest Base Camp Tour",
-        description: "Embark on an epic 9-day journey from Lhasa to Everest Base Camp. Explore ancient monasteries, cross high Himalayan passes, and witness the majestic north face of Mount Everest while immersing yourself in Tibet's rich Buddhist culture and breathtaking landscapes.",
-        duration: "9 Days",
-        difficulty: "Moderate",
-        groupSize: "4–12 people",
-        price: 1899,
-        rating: 4.7,
-        reviews: 95,
-        location: "Lhasa, Gyantse, Shigatse, Everest Base Camp",
-        type: "overland-tour",
-        highlights: [
-          "Potala Palace UNESCO World Heritage Site",
-          "Sacred Jokhang Temple and Barkhor Street",
-          "Gyantse Kumbum and Pelkor Monastery",
-          "Tashilhunpo Monastery in Shigatse",
-          "Drive across 5,000m+ Himalayan passes",
-          "North Face Everest view from Rongbuk Monastery"
-        ]
-      },
-      {
-        id: "tb-2",
-        name: "Mount Kailash Pilgrimage Trek: Sacred Kora Adventure",
-        description: "Undertake the ultimate spiritual journey to Tibet's most sacred mountain. This 15-day pilgrimage includes the challenging Mount Kailash kora (circumambulation), visits to holy Lake Manasarovar, and deep immersion in Tibetan Buddhist culture in remote western Tibet.",
-        duration: "15 Days",
-        difficulty: "Challenging",
-        groupSize: "4–10 people",
-        price: 2499,
-        rating: 4.9,
-        reviews: 72,
-        location: "Western Tibet, Mount Kailash, Lake Manasarovar",
-        type: "pilgrimage-trek",
-        highlights: [
-          "Complete 3-day Mount Kailash kora (circumambulation)",
-          "Holy dip in sacred Lake Manasarovar",
-          "Visit ancient monasteries in remote western Tibet",
-          "Experience authentic Tibetan Buddhist rituals",
-          "Cross high-altitude passes over 5,600m",
-          "All special permits and pilgrimage fees included"
-        ]
-      },
-      {
-        id: "tb-3",
-        name: "Tibetan Cultural Discovery: Lhasa, Samye and Yarlung Valley",
-        description: "Discover Tibet's cultural heartland on this 8-day immersive tour. Explore Lhasa's UNESCO sites, visit Tibet's first monastery at Samye, discover the ancient Yarlung Valley kingdom, and experience authentic Tibetan Buddhism with expert local guides.",
-        duration: "8 Days",
-        difficulty: "Easy to Moderate",
-        groupSize: "4–15 people",
-        price: 1450,
-        rating: 4.6,
-        reviews: 68,
-        location: "Lhasa, Samye Monastery, Yarlung Valley",
-        type: "cultural-tour",
-        highlights: [
-          "Potala Palace and Jokhang Temple exploration",
-          "Samye Monastery - Tibet's first Buddhist monastery",
-          "Yarlung Valley - cradle of Tibetan civilization",
-          "Trandruk Temple and Yumbulagang Palace",
-          "Tibetan Buddhist philosophy sessions",
-          "All entrance fees and travel permits included"
-        ]
-      }
+   bhutan: [
+  {
+    id: "bt-1",
+    name: "Delightful Bhutan Tour: Cultural Heartlands Exploration",
+    description: "This thoughtfully designed 5-day program merges cultural immersion, historical exploration, and spiritual discovery across Bhutan's most iconic valleys. Experience ancient temples, majestic dzongs, breathtaking mountain passes, and the legendary Tiger's Nest Monastery in Thimpu, Punakha, and Paro.",
+    duration: "5 Days",
+    difficulty: "Moderate",
+    groupSize: "2–12 people",
+    price: 1850,
+    rating: 4.9,
+    location: "Thimpu, Punakha, Paro",
+    type: "cultural-tour", // Already correct
+    highlights: [
+      "Hike to Tiger's Nest Monastery (Taktsang)",
+      "Cross Dochula Pass (3,200m) with panoramic mountain views",
+      "Visit Punakha Dzong - masterpiece of Bhutanese architecture",
+      "Explore Thimpu's cultural and historical sites",
+      "Experience traditional Archery Sports",
+      "Comprehensive cultural immersion across three valleys"
     ]
+  },
+  {
+    id: "bt-2",
+    name: "Short and Sweet Bhutan Express: Quick Himalayan Getaway",
+    description: "Designed for travelers with very limited time who want to explore Bhutan's essence. This compact 3-day tour begins with a scenic mountain flight from Kathmandu to Paro, offering breathtaking Himalayan views. Experience Bhutan's spiritual heart with visits to sacred monasteries and dzongs, including the iconic Tiger's Nest Monastery hike.",
+    duration: "3 Days",
+    difficulty: "Moderate",
+    groupSize: "2–10 people",
+    price: 899,
+    rating: 4.7,
+    location: "Paro, Thimpu",
+    type: "short-tour", // Changed from "express-tour" to "short-tour"
+    highlights: [
+      "Scenic mountain flight from Kathmandu to Paro over Himalayas",
+      "Hike to Taktsang Monastery (Tiger's Nest) at 9,678 feet",
+      "Visit Rinpung Dzong and Kichu Lhakhang (7th century temple)",
+      "Explore Thimpu - Bhutan's capital city",
+      "Witness traditional Archery sports",
+      "Perfect quick getaway for time-limited travelers"
+    ]
+  },
+  {
+    id: "bt-3",
+    name: "Bhutan Grand Cultural Expedition: Spiritual Heartlands Journey",
+    description: "An immersive 11-day journey through Bhutan's spiritual heartlands, exploring ancient dzongs, sacred monasteries, and untouched Himalayan valleys. Experience Bhutan's untouched lands and Buddhist way of life, traveling through 8 major regions including remote valleys to discover the kingdom's unique secular Buddhist culture.",
+    duration: "11 Days",
+    difficulty: "Moderate",
+    groupSize: "2–8 people",
+    price: 3499,
+    rating: 5.0,
+    location: "Paro, Thimpu, Punakha, Wangdue, Gangtey, Phobjikha, Trongsa, Bumthang",
+    type: "cultural-tour", // Changed from "expedition-tour" to "cultural-tour"
+    highlights: [
+      "Enthralling mountain flight from Kathmandu to Paro over Himalayas",
+      "Explore 8 major regions of Bhutan including remote valleys",
+      "See rare black-necked cranes in Phobjikha glacial valley",
+      "Visit ancient dzongs, monasteries, and sacred pilgrimage sites",
+      "Cross multiple high mountain passes including Dochula, Pelela, Yutong La",
+      "Experience authentic Bhutanese Buddhist way of life"
+    ]
+  }
+],
+    tibet: [
+  {
+    id: "tb-1",
+    name: "Tibet Classic Cultural Tour: Monasteries & Sacred Sites",
+    description: "This classic 7-day tour covers all major cultural centers of Tibet including Tsedang, Lhasa, Gyatse, and Shigatse. Designed for travelers with limited time and budget, it offers a deep immersion into Tibetan history, spirituality, and architecture with visits to UNESCO World Heritage sites.",
+    duration: "7 Days",
+    difficulty: "Moderate",
+    groupSize: "2–10 people",
+    price: 1899,
+    rating: 4.8,
+    location: "Lhasa, Tsedang, Gyatse, Shigatse",
+    type: "cultural-tour",
+    highlights: [
+      "Scenic flight from Kathmandu to Lhasa over Himalayas",
+      "Visit Jokhang Temple and Barkhor Square - spiritual heart of Tibet",
+      "Tour Potala Palace - iconic UNESCO World Heritage site",
+      "Explore Tsedang - cradle of Tibetan civilization (3,200m)",
+      "See Drepung Monastery - former home of Dalai Lamas",
+      "Experience Sera Monastery's monk debates"
+    ]
+  },
+  {
+    id: "tb-2",
+    name: "Namtso Lake Heavenly Trek: High Altitude Sacred Lake Adventure",
+    description: "Journey to Namtso, one of Tibet's three holy lakes, known as the 'Heavenly Lake' for its stunning turquoise waters and dramatic mountain backdrop. This 9-day expedition combines cultural exploration of Lhasa's monasteries with a challenging high-altitude trek to the remote Namtso Lake at 4,718m.",
+    duration: "9 Days",
+    difficulty: "Challenging",
+    groupSize: "2–8 people",
+    price: 2199,
+    rating: 4.9,
+    location: "Lhasa, Shigatse, Namtso Lake, Zhangmu",
+    type: "trek",
+    highlights: [
+      "Trek to Namtso Lake - Tibet's sacred turquoise lake at 4,718m",
+      "Cross Yangpachen Pass at 5,630m altitude",
+      "Scenic Trans-Himalayan flight with Mt. Everest views",
+      "Visit Potala Palace, Jokhang Temple, and Lhasa's major monasteries",
+      "Camp beside the holy lake with nomadic cultural experiences",
+      "Visit Tashilunpo Monastery in Shigatse"
+    ]
+  },
+  {
+    id: "tb-3",
+    name: "Tibet Overland Adventure: Nepal to Lhasa via Friendship Highway",
+    description: "Embark on an epic 8-day overland journey from Kathmandu to Lhasa via the historic Araniko Highway. This adventure takes you through dramatic Himalayan landscapes, crossing the Tibetan Plateau at 5,200m, visiting ancient monasteries and fortress cities along the historic Friendship Highway.",
+    duration: "8 Days",
+    difficulty: "Challenging",
+    groupSize: "2–6 people",
+    price: 1999,
+    rating: 4.7,
+    location: "Nyalam, Lhatse, Shigatse, Gyantse, Lhasa",
+    type: "overland-tour",
+    highlights: [
+      "Scenic drive on Araniko Highway from Kathmandu to Kodari border",
+      "Cross Lalung La Pass at 5,200m on Tibetan Plateau",
+      "Breathtaking mountain views of Langtang, Gaurishankar, and Melungtse",
+      "Visit Tashilunpo Monastery in Shigatse - seat of Panchen Lamas",
+      "Explore Gyantse Fortress and Pelkhor Chode Monastery",
+      "Discover Lhasa's Potala Palace, Jokhang Temple, and Barkhor Square"
+    ]
+  }
+]
   }), []);
 
   const currentPackages = packageData[activeTab as keyof typeof packageData];
@@ -491,9 +483,7 @@ const ToggleTabsPricing = () => {
                           />
                         ))}
                       </div>
-                      <span className="text-sm text-[#295d7a]/80">
-                        {pkg.rating} ({pkg.reviews} reviews)
-                      </span>
+                      
                     </div>
 
                     <Separator className="my-4" />
