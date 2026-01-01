@@ -112,7 +112,6 @@ export default function ToursGrid({
               ))}
             </div>
             <span className="text-xs sm:text-sm font-medium">{tour.rating}</span>
-            <span className="text-xs sm:text-sm text-[#5A91D1]">({tour.reviewCount} reviews)</span>
           </div>
 
           <p className="text-[#5A91D1] text-sm sm:text-base line-clamp-3">{tour.excerpt}</p>

@@ -4,7 +4,6 @@ export interface Tour {
   location: string
   duration: string
   rating: number
-  reviewCount: number
   price: number
   originalPrice?: number
   excerpt: string

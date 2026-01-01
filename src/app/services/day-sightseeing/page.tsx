@@ -9,264 +9,300 @@ import { Tour } from "@/types/tour";
 
 // Mock day sightseeing tours data
 const DAY_SIGHTSEEING_TOURS: Tour[] = [
-  {
-    "id": "1",
-    "title": "Free Walking Tour Kathmandu",
-    "location": "Kathmandu, Nepal",
-    "duration": "4 hours",
-    "rating": 4.8,
-    "reviewCount": 112,
-    "price": 0,
-    "excerpt": "Explore the cultural heart of Kathmandu on foot.",
-    "description": "Walk through Kathmandu’s historic streets, visit key heritage sites, and experience local life with an expert guide on this immersive walking tour.",
-    "image": "/images/FWT-3.jpg",
-    "images": [
-      "/images/FWT-3.jpg",
-      "/images/asan_market-1.jpg",
-"/images/swoyambhunath-2.jpg",    ],
-    "tags": ["Walking Tour", "Cultural", "Half Day"],
-    "highlights": ["Old Kathmandu Streets", "Local Markets", "Heritage Temples"],
-    "includes": ["Professional guide"],
-    "excludes": ["Meals", "Transportation"],
-    "itinerary": [
-      { "day": 1, "title": "Walking Tour", "description": "Meet in Thamel, walk through Ason, Indrachowk, Durbar Square, and surrounding heritage alleys." }
-    ],
-    "maxGroupSize": 15,
-    "included": ["Guide"],
-    "excluded": ["Food", "Transport"],
-    "cancellationPolicy": "Free cancellation anytime.",
-    "isPopular": true,
-    "isSoldOut": false,
-    "difficulty": "easy",
-    "maxAltitude": "1,350m",
-    "requirements": ["Comfortable shoes"],
-    "permits": [],
-    "equipment": [],
-    "entryRequirements": []
-  },
-  
-  {
-    "id": "2",
-    "title": "Kapan Gumba, Bouddhanath and Pashupatinath Day Tour",
-    "location": "Kathmandu Valley, Nepal",
-    "duration": "6 hours",
-    "rating": 4.9,
-    "reviewCount": 156,
-    "price": 39,
-    "excerpt": "Spiritual journey through sacred Buddhist and Hindu sites.",
-    "description": "Experience the tranquility of Kapan Gumba, the grandeur of Bouddhanath Stupa, and the spiritual significance of Pashupatinath Temple.",
-    "image":  "/images/boudhanath-1.jpg",
-    "images": [
-      "/images/boudhanath-1.jpg",
-       "/images/pashupati-1.jpg",
-
- 
-   ],
-    "tags": ["Spiritual", "Cultural", "Half Day"],
-    "highlights": ["Kapan Gumba Monastery", "Bouddhanath Stupa", "Pashupatinath Temple"],
-    "includes": ["Guide", "Transportation"],
-    "excludes": ["Meals", "Tips"],
-    "itinerary": [
-      { "day": 1, "title": "Spiritual Day Tour", "description": "Pickup, visit Kapan Gumba Monastery, Bouddhanath Stupa, and Pashupatinath Temple, then return." }
-    ],
-    "maxGroupSize": 8,
-    "included": ["Guide", "Private vehicle", "Entry fees"],
-    "excluded": ["Food", "Insurance"],
-    "cancellationPolicy": "Free cancellation up to 24 hours.",
-    "isPopular": false,
-    "isSoldOut": false,
-    "difficulty": "easy",
-    "maxAltitude": "1,350m",
-    "requirements": ["Comfortable shoes"],
-    "permits": [],
-    "equipment": [],
-    "entryRequirements": []
-  },
-  {
-    "id": "3",
-    "title": "Patan Durbar Square, Pashupatinath and Bouddhanath Day Tour",
-    "location": "Kathmandu Valley, Nepal",
-    "duration": "1 day",
-    "rating": 4.7,
-    "reviewCount": 178,
-    "price": 45,
-    "excerpt": "Explore ancient royal squares and sacred religious sites.",
-    "description": "Discover the artistic heritage of Patan Durbar Square followed by the spiritual significance of Pashupatinath and Bouddhanath.",
-    "image":       "/images/patan-1.jpg",
-
-    "images": [
-            "/images/patan-1.jpg",
-                 
-
-
-    ],
-    "tags": ["Full Day", "UNESCO", "Cultural", "Religious"],
-    "highlights": ["Patan Durbar Square", "Pashupatinath Temple", "Bouddhanath Stupa"],
-    "includes": ["Guide", "Transport"],
-    "excludes": ["Meals", "Personal expenses"],
-    "itinerary": [
-      { "day": 1, "title": "Heritage & Spiritual Tour", "description": "Visit Patan Durbar Square, Pashupatinath Temple, and Bouddhanath Stupa." }
-    ],
-    "maxGroupSize": 10,
-    "included": ["Guide", "Entry fees", "Private transportation"],
-    "excluded": ["Food", "Insurance"],
-    "cancellationPolicy": "Free cancellation 24 hours prior.",
-    "isPopular": true,
-    "isSoldOut": false,
-    "difficulty": "easy",
-    "maxAltitude": "1,350m",
-    "requirements": ["Comfortable shoes"],
-    "permits": [],
-    "equipment": [],
-    "entryRequirements": []
-  },
-  {
-    "id": "4",
-    "title": "Patan Durbar Square, Bungamati, Khokana Day Tour",
-    "location": "Kathmandu Valley, Nepal",
-    "duration": "1 day",
-    "rating": 4.9,
-    "reviewCount": 94,
-    "price": 55,
-    "excerpt": "Traditional Newari village exploration and royal heritage.",
-    "description": "Experience the charm of traditional Newari villages Bungamati and Khokana before exploring the artistic heritage of Patan Durbar Square.",
-    "image":             "/images/bungamati-1.jpg",
-
-    "images": [
-            "/images/bungamati-1.jpg",
-                
-
-
-    ],
-    "tags": ["Cultural", "Village Tour", "Full Day", "Newari"],
-    "highlights": ["Patan Durbar Square", "Bungamati Village", "Khokana Village"],
-    "includes": ["Guide", "Transport"],
-    "excludes": ["Meals"],
-    "itinerary": [
-      { "day": 1, "title": "Village and Heritage Tour", "description": "Visit Patan Durbar Square, Bungamati Village, and Khokana Village." }
-    ],
-    "maxGroupSize": 8,
-    "included": ["Guide", "Entry fees", "Vehicle"],
-    "excluded": ["Food"],
-    "cancellationPolicy": "24-hour cancellation policy.",
-    "isPopular": true,
-    "isSoldOut": false,
-    "difficulty": "easy",
-    "maxAltitude": "1,350m",
-    "requirements": ["Walking shoes"],
-    "permits": [],
-    "equipment": [],
-    "entryRequirements": []
-  },
-  {
-    "id": "5",
-    "title": "Kathmandu Durbar Square, Swayambhunath, Bouddhanath and Pashupatinath",
-    "location": "Kathmandu, Nepal",
-    "duration": "1 day",
-    "rating": 4.8,
-    "reviewCount": 103,
-    "price": 60,
-    "excerpt": "Complete cultural and spiritual tour of Kathmandu's highlights.",
-    "description": "Explore the royal heritage of Kathmandu Durbar Square, the panoramic views from Swayambhunath, and the spiritual centers of Bouddhanath and Pashupatinath.",
-    "image":             "/images/ktm_durbar_square-2.jpg",
-
-    "images": [
-       "/images/ktm_durbar_square-2.jpg",
-                 
-
-
-
-    ],
-    "tags": ["Cultural", "Spiritual", "UNESCO", "Full Day"],
-    "highlights": ["Kathmandu Durbar Square", "Swayambhunath", "Bouddhanath", "Pashupatinath"],
-    "includes": ["Guide", "Transport"],
-    "excludes": ["Meals"],
-    "itinerary": [
-      { "day": 1, "title": "Complete Kathmandu Tour", "description": "Visit Kathmandu Durbar Square, Swayambhunath, Bouddhanath, and Pashupatinath." }
-    ],
-    "maxGroupSize": 8,
-    "included": ["Guide", "Transport", "Entry fees"],
-    "excluded": ["Food", "Insurance"],
-    "cancellationPolicy": "Free cancellation 24 hours before.",
-    "isPopular": false,
-    "isSoldOut": false,
-    "difficulty": "easy",
-    "maxAltitude": "1,401m",
-    "requirements": ["Comfortable shoes"],
-    "permits": [],
-    "equipment": [],
-    "entryRequirements": []
-  },
-  {
-    "id": "6",
-    "title": "Bhaktapur Durbar Square + Patan Durbar Square",
-    "location": "Kathmandu Valley, Nepal",
-    "duration": "1 day",
-    "rating": 4.8,
-    "reviewCount": 120,
-    "price": 65,
-    "excerpt": "Medieval city exploration of two UNESCO World Heritage Sites.",
-    "description": "Discover the ancient royal squares of Bhaktapur and Patan, showcasing exquisite Newari architecture and craftsmanship.",
-    "image":  "/images/bhaktapur-1.jpg",
-    "images": [
-       "/images/bhaktapur-1.jpg",
-      
-    ],
-    "tags": ["UNESCO", "Medieval", "Architectural", "Full Day"],
-    "highlights": ["Bhaktapur Durbar Square", "Patan Durbar Square", "Newari Architecture"],
-    "includes": ["Guide", "Transport"],
-    "excludes": ["Meals"],
-    "itinerary": [
-      { "day": 1, "title": "Medieval Cities Tour", "description": "Explore Bhaktapur Durbar Square and Patan Durbar Square." }
-    ],
-    "maxGroupSize": 8,
-    "included": ["Guide", "Transport", "Entry fees"],
-    "excluded": ["Food", "Insurance"],
-    "cancellationPolicy": "Free cancellation 24 hours before.",
-    "isPopular": true,
-    "isSoldOut": false,
-    "difficulty": "easy",
-    "maxAltitude": "1,350m",
-    "requirements": ["Comfortable walking shoes"],
-    "permits": [],
-    "equipment": [],
-    "entryRequirements": []
-  },
-  {
-    "id": "7",
-    "title": "Dakshinkali, Pharping and Kirtipur",
-    "location": "Kathmandu Valley, Nepal",
-    "duration": "1 day",
-    "rating": 4.6,
-    "reviewCount": 85,
-    "price": 50,
-    "excerpt": "Spiritual pilgrimage and historical hilltop town visit.",
-    "description": "Visit the sacred Dakshinkali Temple, explore the Buddhist pilgrimage site of Pharping, and discover the ancient hilltop town of Kirtipur.",
-    "image": "/images/dakshinkali-1.jpg",
-    "images": [
-      "/images/dakshinkali-1.jpg",
-     
-    ],
-    "tags": ["Spiritual", "Pilgrimage", "Historical", "Full Day"],
-    "highlights": ["Dakshinkali Temple", "Pharping Monastery", "Kirtipur Town"],
-    "includes": ["Guide", "Transport"],
-    "excludes": ["Meals"],
-    "itinerary": [
-      { "day": 1, "title": "Spiritual & Historical Tour", "description": "Visit Dakshinkali Temple, Pharping, and Kirtipur." }
-    ],
-    "maxGroupSize": 8,
-    "included": ["Guide", "Transport", "Entry fees"],
-    "excluded": ["Food", "Insurance"],
-    "cancellationPolicy": "Free cancellation 24 hours before.",
-    "isPopular": false,
-    "isSoldOut": false,
-    "difficulty": "moderate",
-    "maxAltitude": "1,500m",
-    "requirements": ["Comfortable walking shoes", "Moderate fitness"],
-    "permits": [],
-    "equipment": [],
-    "entryRequirements": []
-  }
+ {
+  "id": "1",
+  "title": "Free Walking Tour Kathmandu",
+  "location": "Nepal (Kathmandu Valley)",
+  "duration": "4 hours",
+  "rating": 4.8,
+  "price": 0,
+  "originalPrice": 0,
+  "excerpt": "Explore the cultural heart of Kathmandu on foot with a local expert.",
+  "description": "Walk through Kathmandu's historic streets, visit key heritage sites, and experience local life with an expert guide on this immersive walking tour. Discover hidden alleys, bustling markets, and ancient temples while learning about Kathmandu's rich history and culture from a knowledgeable local.",
+  "image": "/images/FWT-3.jpg",
+  "images": [
+    "/images/FWT-3.jpg",
+    "/images/asan_market-1.jpg",
+    "/images/swoyambhunath-2.jpg"
+  ],
+  "tags": ["Walking Tour", "Cultural", "Heritage", "Free Tour", "Half Day", "Nepal", "Local Experience"],
+  "highlights": [
+    "Explore Old Kathmandu Streets and hidden alleys",
+    "Visit bustling local markets like Asan Market",
+    "Discover heritage temples and traditional architecture",
+    "Experience daily life in Kathmandu's historic neighborhoods",
+    "Learn about Kathmandu's rich history from local guide"
+  ],
+  "includes": ["Professional English-speaking Guide", "Tour of key heritage sites"],
+  "excludes": ["Food and beverages", "Transportation to meeting point", "Entry fees to monuments", "Tips for guide", "Travel insurance"],
+  "included": ["Professional English-speaking Guide", "Tour of key heritage sites"],
+  "excluded": ["Food and beverages", "Transportation to meeting point", "Entry fees to monuments", "Tips for guide", "Travel insurance"],
+  "itinerary": [
+    { "day": 1, "title": "Kathmandu Heritage Walking Tour", "description": "Meet in Thamel at designated time. Walk through Asan Market, Indrachowk, Durbar Square area, and surrounding heritage alleys. Learn about local culture, history, and architecture. Tour ends at starting point." }
+  ],
+  "maxGroupSize": 15,
+  "cancellationPolicy": "Free cancellation anytime before tour start.",
+  "isPopular": true,
+  "isSoldOut": false,
+  "difficulty": "easy",
+  "maxAltitude": "1,350m",
+  "requirements": ["Comfortable walking shoes", "Ability to walk 3-4 hours on city streets"],
+  "permits": ["None required"],
+  "equipment": ["Comfortable walking shoes", "Water bottle", "Sun protection", "Small backpack"],
+  "entryRequirements": ["Valid Passport", "Nepal Visa (obtainable on arrival)"]
+},
+{
+  "id": "2",
+  "title": "Kapan Gumba, Bouddhanath & Pashupatinath Day Tour",
+  "location": "Nepal (Kathmandu Valley)",
+  "duration": "6 hours",
+  "rating": 4.9,
+  "price": 39,
+  "originalPrice": 45,
+  "excerpt": "Spiritual journey through sacred Buddhist and Hindu sites in Kathmandu.",
+  "description": "Experience the tranquility of Kapan Gumba, the grandeur of Bouddhanath Stupa, and the spiritual significance of Pashupatinath Temple. This comprehensive tour offers insight into both Buddhist and Hindu traditions, showcasing some of Nepal's most important religious sites with comfortable transportation and expert guidance.",
+  "image": "/images/boudhanath-1.jpg",
+  "images": [
+    "/images/boudhanath-1.jpg",
+    "/images/pashupati-1.jpg",
+    "/images/kapan-1.jpg"
+  ],
+  "tags": ["Spiritual", "Cultural", "Religious Sites", "Half Day", "Heritage", "Nepal", "UNESCO"],
+  "highlights": [
+    "Visit Kapan Gumba Monastery - important Tibetan Buddhist monastery",
+    "Explore Bouddhanath Stupa - UNESCO World Heritage Site",
+    "Experience Pashupatinath Temple - sacred Hindu temple complex",
+    "Learn about Buddhist and Hindu traditions",
+    "Witness spiritual rituals and ceremonies"
+  ],
+  "includes": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley", "Bottled Water"],
+  "excludes": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "included": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley", "Bottled Water"],
+  "excluded": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "itinerary": [
+    { "day": 1, "title": "Spiritual Sites Day Tour", "description": "Morning pickup from hotel. Visit Kapan Gumba Monastery to observe Buddhist practices. Continue to Bouddhanath Stupa (UNESCO site) to explore the largest stupa in Nepal. Proceed to Pashupatinath Temple, one of Hinduism's most sacred sites. Return to hotel by afternoon." }
+  ],
+  "maxGroupSize": 8,
+  "cancellationPolicy": "Free cancellation up to 24 hours before tour. No refund within 24 hours.",
+  "isPopular": false,
+  "isSoldOut": false,
+  "difficulty": "easy",
+  "maxAltitude": "1,350m",
+  "requirements": ["Comfortable walking shoes", "Respectful attire for religious sites", "Ability to walk moderate distances"],
+  "permits": ["None required"],
+  "equipment": ["Comfortable walking shoes", "Modest clothing (shoulders and knees covered)", "Water bottle", "Camera"],
+  "entryRequirements": ["Valid Passport", "Nepal Visa (obtainable on arrival)"]
+},
+ {
+  "id": "3",
+  "title": "Patan Durbar Square, Pashupatinath and Bouddhanath Day Tour",
+  "location": "Nepal (Kathmandu Valley)",
+  "duration": "1 day",
+  "rating": 4.7,
+  "price": 45,
+  "originalPrice": 50,
+  "excerpt": "Explore ancient royal squares and sacred religious sites in one comprehensive tour.",
+  "description": "Discover the artistic heritage of Patan Durbar Square, one of the three royal squares of the Kathmandu Valley, followed by the spiritual significance of Pashupatinath Temple and Bouddhanath Stupa. This tour offers a perfect blend of cultural history and religious insight.",
+  "image": "/images/patan-1.jpg",
+  "images": [
+    "/images/patan-1.jpg",
+    "/images/patan-2.jpg",
+    "/images/boudhanath-1.jpg"
+  ],
+  "tags": ["Full Day", "UNESCO", "Cultural", "Religious", "Heritage", "Nepal"],
+  "highlights": [
+    "Patan Durbar Square - UNESCO World Heritage Site with exquisite architecture",
+    "Pashupatinath Temple - Sacred Hindu temple complex on the Bagmati River",
+    "Bouddhanath Stupa - One of the largest Buddhist stupas in the world",
+    "Newari woodcarving and metalwork",
+    "Spiritual rituals and cultural traditions"
+  ],
+  "includes": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excludes": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "included": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excluded": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "itinerary": [
+    { "day": 1, "title": "Heritage & Spiritual Tour", "description": "Morning pickup from hotel. Visit Patan Durbar Square to explore ancient palaces and temples. Continue to Pashupatinath Temple to witness Hindu rituals. Proceed to Bouddhanath Stupa for Buddhist cultural experience. Return to hotel." }
+  ],
+  "maxGroupSize": 10,
+  "cancellationPolicy": "Free cancellation up to 24 hours before tour. No refund within 24 hours.",
+  "isPopular": true,
+  "isSoldOut": false,
+  "difficulty": "easy",
+  "maxAltitude": "1,350m",
+  "requirements": ["Comfortable walking shoes", "Respectful attire for religious sites", "Ability to walk moderate distances"],
+  "permits": ["None required"],
+  "equipment": ["Comfortable walking shoes", "Water bottle", "Camera", "Sun protection"],
+  "entryRequirements": ["Valid Passport", "Nepal Visa (obtainable on arrival)"]
+},
+{
+  "id": "4",
+  "title": "Patan Durbar Square, Bungamati and Khokana Day Tour",
+  "location": "Nepal (Kathmandu Valley)",
+  "duration": "1 day",
+  "rating": 4.9,
+  "price": 55,
+  "originalPrice": 60,
+  "excerpt": "Traditional Newari village exploration combined with royal heritage discovery.",
+  "description": "Experience the authentic charm of traditional Newari villages Bungamati and Khokana, then explore the artistic heritage of Patan Durbar Square. This tour offers a deep dive into living Newari culture, traditional crafts, and preserved village life just outside Kathmandu.",
+  "image": "/images/bungamati-1.jpg",
+  "images": [
+    "/images/bungamati-1.jpg",
+    "/images/khokana-1.jpg",
+    "/images/patan-1.jpg"
+  ],
+  "tags": ["Cultural", "Village Tour", "Full Day", "Newari", "Traditional", "Nepal"],
+  "highlights": [
+    "Patan Durbar Square - UNESCO World Heritage Site",
+    "Bungamati Village - Traditional Newari settlement with Rato Machhendranath Temple",
+    "Khokana Village - Famous for mustard oil production and traditional crafts",
+    "Newari architecture and woodcarving",
+    "Authentic village life experience"
+  ],
+  "includes": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excludes": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "included": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excluded": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "itinerary": [
+    { "day": 1, "title": "Village and Heritage Tour", "description": "Morning pickup from hotel. Visit Bungamati Village to see traditional Newari houses. Continue to Khokana Village to observe traditional crafts. Conclude at Patan Durbar Square to explore royal heritage. Return to hotel." }
+  ],
+  "maxGroupSize": 8,
+  "cancellationPolicy": "Free cancellation up to 24 hours before tour. No refund within 24 hours.",
+  "isPopular": true,
+  "isSoldOut": false,
+  "difficulty": "easy",
+  "maxAltitude": "1,350m",
+  "requirements": ["Comfortable walking shoes", "Ability to walk on village trails", "Respect for local customs"],
+  "permits": ["None required"],
+  "equipment": ["Comfortable walking shoes", "Water bottle", "Camera", "Sun protection"],
+  "entryRequirements": ["Valid Passport", "Nepal Visa (obtainable on arrival)"]
+},
+{
+  "id": "5",
+  "title": "Kathmandu Durbar Square, Swayambhunath, Bouddhanath and Pashupatinath Tour",
+  "location": "Nepal (Kathmandu Valley)",
+  "duration": "1 day",
+  "rating": 4.8,
+  "price": 60,
+  "originalPrice": 65,
+  "excerpt": "Complete cultural and spiritual tour covering all major UNESCO sites in Kathmandu.",
+  "description": "Explore the royal heritage of Kathmandu Durbar Square, the panoramic views from Swayambhunath (Monkey Temple), and the spiritual centers of Bouddhanath and Pashupatinath. This comprehensive tour offers a complete overview of Kathmandu's cultural and religious diversity.",
+  "image": "/images/ktm_durbar_square-2.jpg",
+  "images": [
+    "/images/ktm_durbar_square-2.jpg",
+    "/images/swoyambhunath-1.jpg",
+    "/images/boudhanath-1.jpg"
+  ],
+  "tags": ["Cultural", "Spiritual", "UNESCO", "Full Day", "Heritage", "Nepal"],
+  "highlights": [
+    "Kathmandu Durbar Square - Ancient royal palace complex",
+    "Swayambhunath - Hilltop stupa with panoramic views of Kathmandu",
+    "Bouddhanath - Largest Buddhist stupa in Nepal",
+    "Pashupatinath - Sacred Hindu temple complex on Bagmati River",
+    "Complete cultural immersion"
+  ],
+  "includes": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excludes": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "included": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excluded": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "itinerary": [
+    { "day": 1, "title": "Complete Kathmandu Tour", "description": "Morning pickup from hotel. Visit Kathmandu Durbar Square. Continue to Swayambhunath for panoramic views. Proceed to Bouddhanath Stupa. Conclude at Pashupatinath Temple. Return to hotel." }
+  ],
+  "maxGroupSize": 8,
+  "cancellationPolicy": "Free cancellation up to 24 hours before tour. No refund within 24 hours.",
+  "isPopular": false,
+  "isSoldOut": false,
+  "difficulty": "easy to moderate",
+  "maxAltitude": "1,401m",
+  "requirements": ["Comfortable walking shoes", "Ability to climb stairs at Swayambhunath", "Modest clothing for religious sites"],
+  "permits": ["None required"],
+  "equipment": ["Comfortable walking shoes", "Water bottle", "Camera", "Sun protection", "Light jacket"],
+  "entryRequirements": ["Valid Passport", "Nepal Visa (obtainable on arrival)"]
+},
+{
+  "id": "6",
+  "title": "Bhaktapur Durbar Square + Patan Durbar Square Tour",
+  "location": "Nepal (Kathmandu Valley)",
+  "duration": "1 day",
+  "rating": 4.8,
+  "price": 65,
+  "originalPrice": 70,
+  "excerpt": "Medieval city exploration of two UNESCO World Heritage Sites showcasing Newari architecture.",
+  "description": "Discover the ancient royal squares of Bhaktapur and Patan, showcasing exquisite Newari architecture, woodcarving, and craftsmanship. These two medieval cities offer a fascinating glimpse into Nepal's artistic and cultural heritage.",
+  "image": "/images/bhaktapur-1.jpg",
+  "images": [
+    "/images/bhaktapur-1.jpg",
+    "/images/patan-1.jpg",
+    "/images/bhaktapur-2.jpg"
+  ],
+  "tags": ["UNESCO", "Medieval", "Architectural", "Full Day", "Newari", "Nepal"],
+  "highlights": [
+    "Bhaktapur Durbar Square - Best preserved medieval city in Nepal",
+    "Patan Durbar Square - City of fine arts and crafts",
+    "Newari architecture, woodcarving and metalwork",
+    "Traditional pottery square in Bhaktapur",
+    "Golden Temple and Krishna Temple in Patan"
+  ],
+  "includes": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excludes": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "included": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excluded": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "itinerary": [
+    { "day": 1, "title": "Medieval Cities Tour", "description": "Morning pickup from hotel. Visit Bhaktapur Durbar Square to explore medieval architecture. Continue to Patan Durbar Square to see fine arts and crafts. Return to hotel." }
+  ],
+  "maxGroupSize": 8,
+  "cancellationPolicy": "Free cancellation up to 24 hours before tour. No refund within 24 hours.",
+  "isPopular": true,
+  "isSoldOut": false,
+  "difficulty": "easy",
+  "maxAltitude": "1,350m",
+  "requirements": ["Comfortable walking shoes", "Ability to walk on cobblestone streets", "Interest in architecture and history"],
+  "permits": ["None required"],
+  "equipment": ["Comfortable walking shoes", "Water bottle", "Camera", "Sun protection"],
+  "entryRequirements": ["Valid Passport", "Nepal Visa (obtainable on arrival)"]
+},
+{
+  "id": "7",
+  "title": "Dakshinkali, Pharping and Kirtipur Tour",
+  "location": "Nepal (Kathmandu Valley)",
+  "duration": "1 day",
+  "rating": 4.6,
+  "price": 50,
+  "originalPrice": 55,
+  "excerpt": "Spiritual pilgrimage and historical hilltop town visit in Kathmandu's southern valley.",
+  "description": "Visit the sacred Dakshinkali Temple, explore the Buddhist pilgrimage site of Pharping, and discover the ancient hilltop town of Kirtipur. This tour combines Hindu and Buddhist spiritual sites with historical exploration.",
+  "image": "/images/dakshinkali-1.jpg",
+  "images": [
+    "/images/dakshinkali-1.jpg",
+    "/images/pharping-1.jpg",
+    "/images/kirtipur-1.jpg"
+  ],
+  "tags": ["Spiritual", "Pilgrimage", "Historical", "Full Day", "Hindu", "Buddhist", "Nepal"],
+  "highlights": [
+    "Dakshinkali Temple - Important Hindu temple dedicated to Goddess Kali",
+    "Pharping - Sacred Buddhist site with caves and monasteries",
+    "Kirtipur - Ancient hilltop town with rich history",
+    "Spiritual rituals and ceremonies",
+    "Panoramic views of Kathmandu Valley"
+  ],
+  "includes": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excludes": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "included": ["Professional English-speaking Guide", "Private Air-conditioned Vehicle", "All Monument Entry Fees", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excluded": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Lunch"],
+  "itinerary": [
+    { "day": 1, "title": "Spiritual & Historical Tour", "description": "Morning pickup from hotel. Visit Dakshinkali Temple to witness Hindu rituals. Continue to Pharping for Buddhist sites. Conclude at Kirtipur hilltop town. Return to hotel." }
+  ],
+  "maxGroupSize": 8,
+  "cancellationPolicy": "Free cancellation up to 24 hours before tour. No refund within 24 hours.",
+  "isPopular": false,
+  "isSoldOut": false,
+  "difficulty": "moderate",
+  "maxAltitude": "1,500m",
+  "requirements": ["Comfortable walking shoes", "Moderate fitness for hill walking", "Respect for religious customs"],
+  "permits": ["None required"],
+  "equipment": ["Comfortable walking shoes", "Water bottle", "Camera", "Sun protection", "Light jacket"],
+  "entryRequirements": ["Valid Passport", "Nepal Visa (obtainable on arrival)"]
+}
 
   
 ]

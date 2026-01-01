@@ -10,32 +10,34 @@ import { Tour } from "@/types/tour";
 
 const DAY_HIKING_TOURS: Tour[] = 
   [
-  {
+ {
   "id": "1",
-  "title": "Nagarkot to Changunarayan Day Hiking",
-  "location": "Kathmandu Valley, Nepal",
+  "title": "Nagarkot to Changunarayan Day Hike",
+  "location": "Nepal (Kathmandu Valley)",
   "duration": "1 day",
   "rating": 4.9,
-  "reviewCount": 210,
   "price": 50,
   "originalPrice": 60,
-  "excerpt": "Panoramic Himalayan sunrise views followed by a cultural hike to ancient heritage sites",
+  "excerpt": "Panoramic Himalayan sunrise views followed by a cultural hike to ancient heritage sites.",
   "description": "This classic day hike combines stunning Himalayan vistas with rich cultural heritage. Begin with a spectacular sunrise over the mountains from Nagarkot viewpoint, then descend through lush forests and traditional Tamang and Newari villages. The hike concludes at Changunarayan Temple, one of Nepal's oldest and most important Hindu temples and a UNESCO World Heritage Site. Perfect for those seeking both natural beauty and cultural immersion.",
   "image": "/images/nagarkot-1.jpg",
-  "images": [
-    "/images/nagarkot-1.jpg",
-    
+  "images": ["/images/nagarkot-1.jpg", "/images/nagarkot-2.jpg"],
+  "tags": ["Day Hike", "Cultural", "Sunrise", "UNESCO", "Kathmandu Valley", "Nepal"],
+  "highlights": [
+    "Sunrise Himalayan panorama from Nagarkot (2,195m)",
+    "Traditional village walk through Tamang and Newari communities",
+    "Visit UNESCO World Heritage Site Changunarayan Temple",
+    "Easy accessibility from Kathmandu",
+    "Perfect combination of nature and culture"
   ],
-  "tags": ["Day Hike", "Cultural", "Moderate", "UNESCO"],
-  "highlights": ["Sunrise Himalayan panorama", "Traditional village walk", "UNESCO Changunarayan Temple"],
-  "includes": ["Professional guide", "Private transportation", "Entry fees", "Breakfast & lunch"],
-  "excludes": ["Personal expenses", "Tips", "Travel insurance"],
+  "includes": ["Professional English-speaking Guide", "Private Transportation (pickup/dropoff)", "All Entry Fees and Permits", "Breakfast at Nagarkot Viewpoint", "Packed Lunch", "First Aid Kit", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excludes": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Extra accommodation beyond itinerary"],
+  "included": ["Professional English-speaking Guide", "Private Transportation (pickup/dropoff)", "All Entry Fees and Permits", "Breakfast at Nagarkot Viewpoint", "Packed Lunch", "First Aid Kit", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excluded": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Extra accommodation beyond itinerary"],
   "itinerary": [
-    { "day": 1, "title": "Nagarkot Sunrise to Changunarayan", "description": "Early morning pick-up, drive to Nagarkot for sunrise views over Himalayas, begin hiking through forests and villages, visit Changunarayan Temple, return to Kathmandu" }
+    { "day": 1, "title": "Nagarkot Sunrise & Hike to Changunarayan", "description": "Early morning pickup from hotel (approx 4:30 AM). Drive to Nagarkot for sunrise over Himalayan ranges including Everest, Langtang, and Ganesh Himal. After breakfast, begin hiking through forests and traditional villages. Visit Changunarayan Temple (UNESCO site). Drive back to Kathmandu. Dropoff at hotel by late afternoon." }
   ],
   "maxGroupSize": 10,
-  "included": ["Professional English-speaking guide", "Private vehicle transportation", "All entry fees and permits", "Breakfast at Nagarkot viewpoint", "Packed lunch", "First aid kit"],
-  "excluded": ["Personal expenses and souvenirs", "Gratuities for guide/driver", "Travel/medical insurance", "Additional snacks/drinks"],
   "cancellationPolicy": "Free cancellation up to 24 hours before departure. 50% refund if cancelled 12-24 hours before. No refund within 12 hours.",
   "isPopular": true,
   "isSoldOut": false,
@@ -44,35 +46,36 @@ const DAY_HIKING_TOURS: Tour[] =
   "requirements": ["Moderate fitness level", "Ability to walk 4-5 hours on varied terrain", "Comfortable with gradual descents"],
   "permits": ["None required for day hike"],
   "equipment": ["Sturdy hiking shoes", "Day pack (20-30L)", "Water bottle (2L recommended)", "Sun protection (hat, sunglasses, sunscreen)", "Light jacket/warm layer", "Camera"],
-  "entryRequirements": ["None"]
+  "entryRequirements": ["Valid Passport", "Nepal Visa (obtainable on arrival)",]
 },
 {
   "id": "2",
-  "title": "Dhulikhel to Panauti Day Hiking",
-  "location": "Kavrepalanchok District, Nepal",
+  "title": "Dhulikhel to Panauti Day Hike",
+  "location": "Nepal (Kavrepalanchok District)",
   "duration": "1 day",
   "rating": 4.6,
-  "reviewCount": 89,
   "price": 40,
   "originalPrice": 50,
-  "excerpt": "Historical trail connecting two ancient Newari towns with traditional architecture",
+  "excerpt": "Historical trail connecting two ancient Newari towns with traditional architecture.",
   "description": "Explore the living history of Nepal on this gentle day hike connecting Dhulikhel and Panauti, two beautifully preserved Newari towns. Walk through terraced farmlands, cross traditional suspension bridges, and witness daily rural life. The hike culminates in Panauti, considered one of Nepal's most important medieval towns, featuring exceptional woodcarving, metalwork, and ancient temples at the sacred confluence of two rivers.",
   "image": "/images/dhulikhel-1.jpg",
-  "images": [
-    "/images/dhulikhel-1.jpg",
- 
-
+  "images": ["/images/dhulikhel-1.jpg", "/images/dhulikhel-2.jpg"],
+  "tags": ["Day Hike", "Cultural", "Historical", "Newari Architecture", "Easy Hike", "Nepal"],
+  "highlights": [
+    "Explore Newari architecture & culture in Dhulikhel",
+    "Walk through beautiful terraced farmlands",
+    "Visit Panauti's ancient temples & sacred river confluence",
+    "Traditional suspension bridge crossings",
+    "Experience rural Nepali village life"
   ],
-  "tags": ["Day Hike", "Cultural", "Easy", "Historical"],
-  "highlights": ["Newari architecture & culture", "Terraced farmland views", "Panauti's ancient temples & river confluence"],
-  "includes": ["Guide", "Transportation", "Lunch", "Entry fees"],
-  "excludes": ["Personal expenses", "Tips", "Monastery donations"],
+  "includes": ["Professional Local Guide", "Private Transportation", "All Monument Entry Fees", "Traditional Nepali Lunch", "Bottled Water", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excludes": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Extra accommodation beyond itinerary"],
+  "included": ["Professional Local Guide", "Private Transportation", "All Monument Entry Fees", "Traditional Nepali Lunch", "Bottled Water", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excluded": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Extra accommodation beyond itinerary"],
   "itinerary": [
-    { "day": 1, "title": "Dhulikhel Exploration to Panauti", "description": "Drive to Dhulikhel, explore old town and Kali Temple, hike through villages and farms to Panauti, visit Indreshwor Temple complex, return to Kathmandu" }
+    { "day": 1, "title": "Dhulikhel Exploration to Panauti", "description": "Morning pickup from hotel (approx 7:00 AM). Drive to Dhulikhel, explore old town and Kali Temple. Begin hiking through villages and farms to Panauti. Visit Indreshwor Temple complex at sacred river confluence. Enjoy traditional Nepali lunch. Drive back to Kathmandu. Dropoff at hotel by late afternoon." }
   ],
   "maxGroupSize": 12,
-  "included": ["Knowledgeable local guide", "Round-trip private transportation", "All monument entry fees", "Traditional Nepali lunch", "Bottled water"],
-  "excluded": ["Personal shopping", "Additional donations at temples", "Travel insurance", "Alcoholic beverages"],
   "cancellationPolicy": "Free cancellation up to 48 hours before departure. 50% refund if cancelled 24-48 hours before.",
   "isPopular": false,
   "isSoldOut": false,
@@ -81,33 +84,36 @@ const DAY_HIKING_TOURS: Tour[] =
   "requirements": ["Basic fitness", "Comfortable walking on flat and gentle downhill trails"],
   "permits": ["None"],
   "equipment": ["Comfortable walking shoes", "Small day pack", "Water bottle", "Sun hat", "Light rain jacket (seasonal)"],
-  "entryRequirements": ["None"]
+  "entryRequirements": ["Valid Passport", "Nepal Visa (obtainable on arrival)",]
 },
 {
   "id": "3",
-  "title": "Pharping to Champadevi Hiking",
-  "location": "Southern Kathmandu Valley, Nepal",
+  "title": "Pharping to Champadevi Day Hike",
+  "location": "Nepal (Southern Kathmandu Valley)",
   "duration": "1 day",
   "rating": 4.7,
-  "reviewCount": 134,
   "price": 45,
   "originalPrice": 55,
-  "excerpt": "Spiritual journey to a sacred hilltop with panoramic valley views",
+  "excerpt": "Spiritual journey to a sacred hilltop with panoramic valley views.",
   "description": "A rewarding day hike combining spirituality, nature, and panoramic views. Start at the sacred Buddhist meditation sites of Pharping, then ascend through dense rhododendron and pine forests to the summit of Champadevi (2,278m). The peak is crowned with Buddhist stupas and offers one of the best 360-degree views of the Kathmandu Valley and Himalayan ranges to the north. A perfect escape for both spiritual seekers and hiking enthusiasts.",
-  "image":  "/images/pharping-1.jpg",
-  "images": [
-"/images/pharping-1.jpg",
- ],
-  "tags": ["Day Hike", "Nature", "Moderate", "Spiritual"],
-  "highlights": ["Sacred Buddhist sites of Pharping", "Champadevi summit with 360° views", "Forest walk with rhododendrons (spring)"],
-  "includes": ["Guide", "Transportation", "Lunch", "Entry fees"],
-  "excludes": ["Personal expenses", "Tips", "Travel insurance"],
+  "image": "/images/pharping-1.jpg",
+  "images": ["/images/pharping-1.jpg", "/images/pharping-2.jpg"],
+  "tags": ["Day Hike", "Nature", "Spiritual", "Panoramic Views", "Moderate Hike", "Nepal"],
+  "highlights": [
+    "Visit sacred Buddhist sites of Pharping",
+    "Champadevi summit with 360° views of Kathmandu Valley and Himalayas",
+    "Forest walk with rhododendrons (spectacular in spring)",
+    "Peaceful spiritual atmosphere",
+    "Escape from city hustle"
+  ],
+  "includes": ["Experienced Hiking Guide", "Private Transportation", "Lunch and Snacks", "All Required Permits", "First Aid Kit", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excludes": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Extra accommodation beyond itinerary"],
+  "included": ["Experienced Hiking Guide", "Private Transportation", "Lunch and Snacks", "All Required Permits", "First Aid Kit", "Hotel Pickup/Dropoff within Kathmandu Valley"],
+  "excluded": ["International Flights", "Nepal Visa", "Personal expenses & beverages", "Travel insurance", "Tips for guide & driver", "Extra accommodation beyond itinerary"],
   "itinerary": [
-    { "day": 1, "title": "Pharping Temples to Champadevi Summit", "description": "Drive to Pharping, visit sacred caves and monasteries, ascend to Champadevi summit for views, enjoy packed lunch, descend via alternative trail, return to Kathmandu" }
+    { "day": 1, "title": "Pharping Temples to Champadevi Summit", "description": "Morning pickup from hotel (approx 7:00 AM). Drive to Pharping, visit sacred caves and monasteries. Ascend to Champadevi summit for panoramic views. Enjoy packed lunch at viewpoint. Descend via alternative trail. Drive back to Kathmandu. Dropoff at hotel by late afternoon." }
   ],
   "maxGroupSize": 8,
-  "included": ["Experienced hiking guide", "Private vehicle transport", "Lunch and snacks", "All required permits", "First aid kit"],
-  "excluded": ["Personal trekking gear", "Additional drinks", "Travel/medical insurance", "Monastery donations (optional)"],
   "cancellationPolicy": "Free cancellation up to 24 hours before. No refund within 24 hours.",
   "isPopular": true,
   "isSoldOut": false,
@@ -116,7 +122,7 @@ const DAY_HIKING_TOURS: Tour[] =
   "requirements": ["Good fitness level", "Ability to hike uphill for 2-3 hours", "Comfortable with stairs and uneven trails"],
   "permits": ["None required"],
   "equipment": ["Sturdy hiking boots", "Day pack (20-30L)", "At least 2L water", "Warm layer and rain jacket", "Sun protection", "Trekking poles (optional)"],
-  "entryRequirements": ["None"]
+  "entryRequirements": ["Valid Passport", "Nepal Visa (obtainable on arrival)", ]
 }
 
   

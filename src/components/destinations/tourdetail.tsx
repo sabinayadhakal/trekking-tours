@@ -77,7 +77,6 @@ export default function TourDetailModal({ tour, isOpen, onClose }: TourDetailMod
                 <Star className="h-4 w-4 fill-[#FFD166] text-[#FFD166] transition-transform duration-300 transform hover:scale-110" />
                 <span className="font-medium">{tour.rating}</span>
               </div>
-              <span className="text-[#5A91D1]/80">({tour.reviewCount} reviews)</span>
             </div>
           </div>
 
@@ -221,7 +220,7 @@ export default function TourDetailModal({ tour, isOpen, onClose }: TourDetailMod
 
                 {tour.entryRequirements && (
                   <div>
-                    <h3 className="font-semibold mb-2 text-[#3C6AA6]">Entry Requirements</h3>
+                    <h3 className="font-semibold mb-2 text-[#3C6AA6]">Bhutan/Tibet Entry Requirements</h3>
                     <ul className="space-y-1">
                       {tour.entryRequirements.map((item, idx) => (
                         <li key={idx} className="flex items-start gap-2 transform transition-transform duration-300 hover:scale-[1.02]">

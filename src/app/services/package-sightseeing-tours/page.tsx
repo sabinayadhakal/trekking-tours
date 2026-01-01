@@ -15,15 +15,20 @@ const PACKAGE_SIGHTSEEING_TOURS: Tour[] = [
   "location": "Kathmandu Valley, Nepal",
   "duration": "5 days / 4 nights",
   "rating": 4.8,
-  "reviewCount": 342,
   "price": 650,
   "originalPrice": 720,
   "excerpt": "5-day spiritual tour of Nepal's sacred temples and stupas including Pashupatinath, Boudhanath, and Swayambhunath",
   "description": "Experience Nepal's spiritual heritage on this 5-day temples and stupas tour. Visit UNESCO World Heritage Sites including Pashupatinath Temple, Boudhanath Stupa, and Swayambhunath Monkey Temple. Perfect for spiritual seekers and cultural enthusiasts exploring Hindu and Buddhist traditions in Kathmandu Valley.",
-  "image":       "/images/pashupati-2.jpg",
-
+  "image": "/images/pashupati-2.jpg",
   "images": [
-    
+    "/images/pashupati-1.jpg",
+    "/images/pashupati-2.jpg",
+    "/images/boudhanath-1.jpg",
+    "/images/boudhanath-2.jpg",
+    "/images/swayambhunath-1.jpg",
+    "/images/swayambhunath-2.jpg",
+    "/images/dakshinkali-1.jpg",
+    "/images/patan-durbar-1.jpg"
   ],
   "tags": ["Nepal Temple Tour", "Spiritual Journey", "Kathmandu Valley Tour", "Buddhist Stupas", "Hindu Temples", "Religious Tour Nepal"],
   "highlights": ["Pashupatinath Temple", "Boudhanath Stupa", "Swayambhunath", "Dakshinkali Temple", "Patan Durbar Square"],
@@ -49,21 +54,26 @@ const PACKAGE_SIGHTSEEING_TOURS: Tour[] = [
   "equipment": ["Comfortable walking shoes", "Camera", "Sun protection"],
   "entryRequirements": ["Valid passport", "Nepal visa"]
 },
-  {
+{
   "id": "2",
   "title": "Kathmandu and Pokhara Tour - 7 Days Himalayan Panorama",
   "location": "Kathmandu Valley & Pokhara, Nepal",
   "duration": "7 days / 6 nights",
   "rating": 4.9,
-  "reviewCount": 215,
   "price": 920,
   "originalPrice": 1020,
   "excerpt": "7-day cultural and scenic tour combining the heritage of Kathmandu Valley with the natural beauty of Pokhara",
   "description": "Experience the best of Nepal's cultural heritage and natural wonders on this comprehensive 7-day tour. Explore the ancient temples and palaces of Kathmandu Valley, then travel to Pokhara for breathtaking Himalayan views, serene lakes, and adventure activities. Perfect for travelers wanting to experience both the cultural and natural highlights of Nepal.",
   "image": "/images/ktm_pokhara.jpg",
   "images": [
-
-
+    "/images/ktm_pokhara.jpg",
+    "/images/kathmandu-durbar-1.jpg",
+    "/images/phewa-lake-1.jpg",
+    "/images/sarangkot-1.jpg",
+    "/images/boudhanath-1.jpg",
+    "/images/peace-pagoda-1.jpg",
+    "/images/swayambhunath-1.jpg",
+    "/images/patan-durbar-1.jpg"
   ],
   "tags": ["Kathmandu Pokhara Tour", "Nepal Cultural Tour", "Himalayan Views", "Pokhara Lakes", "Heritage and Nature", "7 Days Nepal"],
   "highlights": ["Kathmandu Durbar Square", "Phewa Lake Boating", "Sarangkot Sunrise", "Boudhanath Stupa", "World Peace Pagoda", "Swayambhunath"],
@@ -91,22 +101,26 @@ const PACKAGE_SIGHTSEEING_TOURS: Tour[] = [
   "equipment": ["Comfortable walking shoes", "Warm layers for morning", "Camera", "Binoculars for mountain views"],
   "entryRequirements": ["Valid passport", "Nepal visa"]
 },
-  {
+{
   "id": "3",
   "title": "Kathmandu Valley Tour - 4 Days Heritage Discovery",
   "location": "Kathmandu Valley, Nepal",
   "duration": "4 days / 3 nights",
   "rating": 4.7,
-  "reviewCount": 189,
   "price": 520,
   "originalPrice": 580,
   "excerpt": "4-day immersive tour exploring the ancient royal cities, temples, and culture of the Kathmandu Valley",
   "description": "Dive deep into the living heritage of the Kathmandu Valley on this 4-day tour. Visit the three ancient royal cities of Kathmandu, Patan, and Bhaktapur, each with its own Durbar Square. Experience the blend of Hinduism and Buddhism at sacred temples and stupas, and witness traditional Newari culture in the valley's medieval towns.",
-  "image":     "/images/kathmandu-1.jpg",
-
+  "image": "/images/kathmandu-1.jpg",
   "images": [
-       
-
+    "/images/kathmandu-1.jpg",
+    "/images/kathmandu-2.jpg",
+    "/images/patan-durbar-1.jpg",
+    "/images/bhaktapur-1.jpg",
+    "/images/swayambhunath-1.jpg",
+    "/images/boudhanath-1.jpg",
+    "/images/changu-narayan-1.jpg",
+    "/images/thamel-1.jpg"
   ],
   "tags": ["Kathmandu Valley Tour", "Heritage Tour", "Durbar Squares", "UNESCO Nepal", "Cultural Tour", "Short Nepal Tour"],
   "highlights": ["Kathmandu Durbar Square", "Patan Durbar Square", "Bhaktapur Durbar Square", "Swayambhunath", "Boudhanath", "Changunarayan Temple"],
@@ -131,23 +145,28 @@ const PACKAGE_SIGHTSEEING_TOURS: Tour[] = [
   "equipment": ["Comfortable walking shoes", "Day pack", "Water bottle", "Camera", "Modest clothing for temple visits"],
   "entryRequirements": ["Valid passport", "Nepal visa (obtainable on arrival for most nationalities)"]
 },
-  {
+{
   "id": "4",
   "title": "Nepal Heritage Sites Tour - 9 Days Complete Cultural Experience",
   "location": "Kathmandu Valley, Lumbini, Pokhara, Chitwan, Nepal",
   "duration": "9 days / 8 nights",
   "rating": 4.9,
-  "reviewCount": 127,
   "price": 1450,
   "originalPrice": 1600,
   "excerpt": "Comprehensive 9-day tour covering Nepal's major UNESCO World Heritage Sites from Kathmandu to Lumbini",
   "description": "Embark on an unforgettable 9-day journey through Nepal's most significant cultural and historical treasures. This complete heritage tour covers all major UNESCO World Heritage Sites in Nepal, including the sacred birthplace of Buddha in Lumbini, the medieval cities of Kathmandu Valley, the natural wonders of Chitwan National Park, and the stunning beauty of Pokhara with Himalayan views.",
-  "image":         "/images/lumbini-1.jpg",
-
+  "image": "/images/lumbini-1.jpg",
   "images": [
-             "/images/lumbini-1.jpg",
-
-     
+    "/images/lumbini-1.jpg",
+    "/images/lumbini-2.jpg",
+    "/images/pashupati-1.jpg",
+    "/images/chitwan-1.jpg",
+    "/images/pokhara-1.jpg",
+    "/images/bhaktapur-1.jpg",
+    "/images/boudhanath-1.jpg",
+    "/images/swayambhunath-1.jpg",
+    "/images/chitwan-wildlife-1.jpg",
+    "/images/phewa-lake-1.jpg"
   ],
   "tags": ["Nepal UNESCO Tour", "Complete Heritage Nepal", "Lumbini Tour", "Chitwan National Park", "Cultural Journey", "9 Days Nepal"],
   "highlights": ["Lumbini - Birthplace of Buddha", "Kathmandu Valley 7 UNESCO Sites", "Chitwan National Park Safari", "Pokhara Himalayan Views", "All Major Heritage Sites"],
@@ -177,26 +196,28 @@ const PACKAGE_SIGHTSEEING_TOURS: Tour[] = [
   "equipment": ["Comfortable walking shoes", "Lightweight clothing", "Warm layer for mornings", "Binoculars for wildlife", "Camera", "Sun protection"],
   "entryRequirements": ["Valid passport with 6 months validity", "Nepal visa", "Vaccination certificate recommended"]
 },
-  {
+{
   "id": "5",
   "title": "City and Countryside Family Tour - 10 Days Nepal Family Adventure",
   "location": "Kathmandu, Nagarkot, Pokhara, Chitwan, Nepal",
   "duration": "10 days / 9 nights",
   "rating": 4.8,
-  "reviewCount": 94,
   "price": 1750,
   "originalPrice": 1950,
   "excerpt": "Perfect 10-day family-friendly tour combining cultural cities, mountain views, wildlife safaris, and fun activities for all ages",
   "description": "Designed specifically for families, this 10-day adventure offers the perfect balance of education, adventure, and relaxation. Experience the vibrant culture of Kathmandu, breathtaking Himalayan views from Nagarkot, the serene beauty of Pokhara, and exciting wildlife encounters in Chitwan. With child-friendly guides, comfortable pacing, and engaging activities, this tour creates unforgettable family memories in Nepal.",
-  "image":          "/images/family-2.jpg",
-
+  "image": "/images/family-2.jpg",
   "images": [
-    
-
-          
-
-
-
+    "/images/family-2.jpg",
+    "/images/family-1.jpg",
+    "/images/nagarkot-1.jpg",
+    "/images/pokhara-family-1.jpg",
+    "/images/chitwan-family-1.jpg",
+    "/images/kathmandu-family-1.jpg",
+    "/images/elephant-1.jpg",
+    "/images/craft-workshop-1.jpg",
+    "/images/tharu-village-1.jpg",
+    "/images/lakeside-family-1.jpg"
   ],
   "tags": ["Family Tour Nepal", "Kids Friendly Nepal", "Family Adventure", "Child-Friendly Activities", "Multigenerational Tour", "Nepal with Kids"],
   "highlights": ["Child-Friendly Cultural Tours", "Nagarkot Sunrise with Kids", "Pokhara Boating & Caves", "Chitwan Jungle Safari", "Elephant Interaction", "Traditional Craft Workshops"],
@@ -227,21 +248,28 @@ const PACKAGE_SIGHTSEEING_TOURS: Tour[] = [
   "equipment": ["Comfortable walking shoes for all", "Light jackets for cool mornings", "Binoculars for wildlife viewing", "Camera", "Sun hats and protection"],
   "entryRequirements": ["Valid passports for all family members", "Nepal visa", "Parental consent documents for single parents traveling with children"]
 },
-
-  {
+{
   "id": "6",
   "title": "Historical Scenic Wildlife Family Tour - 9 Days Nepal Discovery",
   "location": "Kathmandu, Pokhara, Chitwan, Nepal",
   "duration": "9 days / 8 nights",
   "rating": 4.9,
-  "reviewCount": 78,
   "price": 1620,
   "originalPrice": 1800,
   "excerpt": "Family-friendly 9-day journey through Nepal's history, stunning scenery, and incredible wildlife for unforgettable family memories",
   "description": "This specially designed 9-day family tour offers the perfect blend of Nepal's historical treasures, breathtaking landscapes, and wildlife adventures. Explore ancient temples and palaces in Kathmandu, enjoy panoramic Himalayan views in Pokhara, and embark on exciting jungle safaris in Chitwan National Park. With family-oriented pacing, engaging activities for all ages, and comfortable accommodations, this tour creates the perfect educational and adventurous family vacation.",
   "image": "/images/historic_scenic.jpg",
   "images": [
-   
+    "/images/historic_scenic.jpg",
+    "/images/family-history-1.jpg",
+    "/images/pokhara-family-2.jpg",
+    "/images/chitwan-family-2.jpg",
+    "/images/kathmandu-history-1.jpg",
+    "/images/elephant-safari-1.jpg",
+    "/images/bird-watching-1.jpg",
+    "/images/tharu-culture-1.jpg",
+    "/images/pottery-demo-1.jpg",
+    "/images/family-craft-1.jpg"
   ],
   "tags": ["Family Wildlife Tour", "Historical Nepal", "Scenic Family Vacation", "Nepal Safari Family", "Multigenerational Travel", "Educational Family Tour"],
   "highlights": ["Kathmandu Historical Sites", "Pokhara Mountain Views", "Chitwan Wildlife Safari", "Elephant Interaction", "Family-Friendly Hiking", "Cultural Experiences"],
@@ -271,30 +299,30 @@ const PACKAGE_SIGHTSEEING_TOURS: Tour[] = [
   "equipment": ["Comfortable walking shoes for all", "Light layers for changing temperatures", "Binoculars for wildlife viewing", "Cameras and chargers", "Sun protection and hats", "Small backpacks for day trips"],
   "entryRequirements": ["Valid passports for all family members", "Nepal visa (available on arrival)", "Vaccination records recommended", "Parental consent letters if applicable"]
 },
-
 {
   "id": "7",
   "title": "Nepal Photography Tour - 10 Days Through the Lens",
   "location": "Kathmandu, Nagarkot, Pokhara, Chitwan, Nepal",
   "duration": "10 days / 9 nights",
   "rating": 4.9,
-  "reviewCount": 112,
   "price": 1890,
   "originalPrice": 2100,
   "excerpt": "10-day specialized photography tour capturing Nepal's diverse landscapes, cultures, wildlife, and people through professional guidance",
   "description": "Designed for photography enthusiasts of all skill levels, this 10-day tour takes you to Nepal's most photogenic locations with expert guidance. Capture stunning Himalayan panoramas, vibrant cultural festivals, ancient architecture, and incredible wildlife. Led by professional photographer guides, you'll receive hands-on instruction while visiting golden hour spots, hidden viewpoints, and authentic local experiences perfect for your portfolio.",
-  "image":     "/images/photography-7.jpg",
-
+  "image": "/images/photography-7.jpg",
   "images": [
-"/images/photography-1.jpg",
-"/images/photography-8.jpg",
-"/images/photography-2.jpg",
-"/images/photography-3.jpg",
-"/images/photography-4.jpg",
-"/images/photography-6.jpg",
-"/images/photography-5.jpg",
-
-
+    "/images/photography-1.jpg",
+    "/images/photography-8.jpg",
+    "/images/photography-2.jpg",
+    "/images/photography-3.jpg",
+    "/images/photography-4.jpg",
+    "/images/photography-6.jpg",
+    "/images/photography-5.jpg",
+    "/images/photography-7.jpg",
+    "/images/nagarkot-sunrise-1.jpg",
+    "/images/chitwan-wildlife-2.jpg",
+    "/images/street-photography-1.jpg",
+    "/images/portrait-session-1.jpg"
   ],
   "tags": ["Photography Tour Nepal", "Photo Workshop", "Landscape Photography", "Cultural Photography", "Wildlife Photography", "Professional Photo Tour"],
   "highlights": ["Golden Hour at Nagarkot", "Monkey Temple Rituals", "Pokhara Mountain Reflections", "Chitwan Wildlife Shoots", "Street Photography in Bhaktapur", "Portrait Sessions with Locals"],

@@ -5,7 +5,7 @@ import React from "react";
 
 const BlogHero = () => {
   return (
-    <section className="relative w-full h-[55vh] sm:h-[70vh] md:h-[60vh]">
+    <section className="relative w-full h-[55vh] sm:h-[70vh] md:h-[65vh]">
       {/* Background image */}
       <img
         src="/images/blog-hero.jpg"
@@ -42,6 +42,16 @@ const BlogHero = () => {
         >
           Blogs and Articles
         </motion.h1>
+        
+        {/* Description - hidden on mobile, shown on medium screens and above */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="hidden md:block text-lg sm:text-xl lg:text-2xl text-[#f0f8ff]/90 max-w-3xl mx-auto mt-2 font-light"
+        >
+          Discover travel insights, adventure stories, and expert tips for your next Nepal journey
+        </motion.p>
       </div>
     </section>
   );

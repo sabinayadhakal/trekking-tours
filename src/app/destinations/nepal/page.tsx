@@ -33,7 +33,6 @@ export default function NepalPage() {
       location: "Kathmandu",
       duration: "4 Hours",
       rating: 4.9,
-      reviewCount: 203,
       price: 0,
 
       excerpt: "Join the first FREE WALKING TOUR in Kathmandu, Nepal! Explore the beautiful capital with experienced local guides.",
@@ -101,7 +100,6 @@ export default function NepalPage() {
       location: "Various Regions",
       duration: "Multiple Days",
       rating: 4.9,
-      reviewCount: 456,
       price: 899,
       excerpt: "Experience world-class trekking adventures in the majestic Himalayas of Nepal",
       description: "Discover the ultimate trekking experience in Nepal's breathtaking Himalayan landscapes. From Everest Base Camp to Annapurna Circuit, we offer guided treks for all skill levels.",
@@ -146,7 +144,6 @@ export default function NepalPage() {
       location: "Kathmandu Valley",
       duration: "1 Day",
       rating: 4.7,
-      reviewCount: 189,
       price: 49,
       excerpt: "Perfect short hikes around Kathmandu Valley for those with limited time",
       description: "Enjoy scenic day hikes in the beautiful hills surrounding Kathmandu Valley. Perfect for travelers who want to experience Nepal's nature without multi-day commitments.",
@@ -181,7 +178,6 @@ export default function NepalPage() {
       location: "Kathmandu, Patan, Bhaktapur",
       duration: "1 Day",
       rating: 4.6,
-      reviewCount: 234,
       price: 39,
       excerpt: "Explore UNESCO World Heritage Sites and ancient cities in day tours",
       description: "Discover the rich cultural heritage of Nepal through our guided day sightseeing tours. Visit ancient temples, palaces, and UNESCO sites with expert local guides.",
@@ -216,7 +212,6 @@ export default function NepalPage() {
       location: "Multiple Destinations",
       duration: "3-10 Days",
       rating: 4.8,
-      reviewCount: 167,
       price: 299,
       excerpt: "Comprehensive sightseeing packages covering major attractions across Nepal",
       description: "Our package sightseeing tours offer the perfect way to experience Nepal's diverse attractions. From cultural heritage to natural wonders, we've got you covered.",
@@ -251,7 +246,6 @@ export default function NepalPage() {
       location: "Chitwan, Bardia",
       duration: "2-4 Days",
       rating: 4.7,
-      reviewCount: 145,
       price: 199,
       excerpt: "Wildlife adventures in Nepal's national parks with jungle safaris",
       description: "Experience the wild side of Nepal with our jungle safari tours. Spot rhinos, tigers, and exotic birds in Chitwan and Bardia National Parks.",
@@ -286,7 +280,6 @@ export default function NepalPage() {
       location: "Himalayan Range",
       duration: "1 Hour",
       rating: 4.9,
-      reviewCount: 278,
       price: 199,
       excerpt: "Spectacular mountain flight experience over the Himalayas",
       description: "Witness the majestic Himalayas from above with our mountain flight tours. Get up close with Mount Everest and other peaks without the trekking.",
@@ -321,7 +314,6 @@ export default function NepalPage() {
       location: "Various Regions",
       duration: "2-4 Hours",
       rating: 5.0,
-      reviewCount: 89,
       price: 999,
       excerpt: "Luxury helicopter tours for breathtaking aerial views of Nepal",
       description: "Experience Nepal's most spectacular sights from the air with our helicopter sightseeing tours. Perfect for those seeking luxury and unique perspectives.",
@@ -356,7 +348,6 @@ export default function NepalPage() {
       location: "Himalayan Peaks",
       duration: "10-20 Days",
       rating: 4.8,
-      reviewCount: 78,
       price: 2499,
       excerpt: "Professional peak climbing expeditions for adventure enthusiasts",
       description: "Challenge yourself with our peak climbing expeditions in the Himalayas. We offer guided climbs to various peaks suitable for different experience levels.",
@@ -502,7 +493,13 @@ function CustomToursGrid({
       if ((e.target as HTMLElement).closest('[data-prevent-card-click]')) {
         return;
       }
-      onTourSelect?.(tour);
+      
+      // Special handling for Free Walking Tour (id: "1") - redirect directly
+      if (tour.id === "1") {
+        window.location.href = "/services/Free-Walking-Tour";
+      } else {
+        onTourSelect?.(tour);
+      }
     }
 
     const handleLearnMoreClick = (e: React.MouseEvent) => {
@@ -587,7 +584,6 @@ function CustomToursGrid({
               ))}
             </div>
             <span className="text-xs sm:text-sm font-medium">{tour.rating}</span>
-            <span className="text-xs sm:text-sm text-[#5A91D1]">({tour.reviewCount} reviews)</span>
           </div>
 
           <p className="text-[#5A91D1] text-sm sm:text-base line-clamp-3">{tour.excerpt}</p>

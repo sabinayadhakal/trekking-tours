@@ -9,43 +9,50 @@ import { Tour } from "@/types/tour";
 
 const MOUNTAIN_FLIGHT_TOURS: Tour[] = [
   {
-    id: "1",
-    title: "Everest Mountain Flight",
-    location: "Himalayas, Nepal",
-    duration: "1 hour flight",
-    rating: 4.9,
-    reviewCount: 512,
-    price: 210,
-    originalPrice: 250,
-    excerpt: "Breathtaking aerial views of Mount Everest and the Himalayan range",
-    description: "Experience the ultimate adventure with a spectacular mountain flight to Mount Everest. This one-hour scenic flight offers unparalleled close-up views of the world's highest peak and other majestic mountains in the Himalayan range. Each passenger gets a window seat for optimal viewing and photography opportunities. The flight includes expert commentary about the mountains and a certificate of achievement.",
-    image: "/images/mountain_flight-1.jpg",
-    images: [
-
-"images/mountain_flight-1.jpg",
-
-    ],
-    tags: ["Scenic Flight", "Everest", "Bucket List"],
-    highlights: ["Close-up views of Mount Everest", "Window seat guaranteed", "Himalayan panorama", "Flight certificate"],
-    includes: ["Scenic flight", "Window seat", "Expert commentary", "Certificate", "Hotel transfers"],
-    excludes: ["Personal expenses", "Tips", "Travel insurance"],
-    itinerary: [
-      { day: 1, title: "Everest Mountain Flight", description: "Early morning hotel pickup, transfer to airport, check-in, one-hour scenic flight with mountain views, return to hotel" }
-    ],
-    maxGroupSize: 1,
-    included: ["One-hour scenic mountain flight", "Guaranteed window seat", "Expert commentary during flight", "Certificate of achievement", "Hotel pick-up and drop-off", "All airport taxes"],
-    excluded: ["Personal expenses", "Meals and drinks", "Gratuities", "Travel insurance", "Visa fees"],
-    cancellationPolicy: "Free cancellation up to 24 hours before departure. No refund within 24 hours.",
-    isPopular: true,
-    isSoldOut: false,
-    difficulty: "easy",
-    maxAltitude: "8,848m (Everest)",
-    requirements: ["No special requirements", "Suitable for all ages"],
-    permits: ["None required"],
-    equipment: ["Camera", "Sunglasses"],
-    entryRequirements: ["Valid passport for identification"]
-  },
-  
+  "id": "1",
+  "title": "Everest Mountain Flight",
+  "location": "Himalayas, Nepal",
+  "duration": "1 hour flight",
+  "rating": 4.9,
+  "price": 210,
+  "originalPrice": 250,
+  "excerpt": "Breathtaking aerial views of Mount Everest and the Himalayan range",
+  "description": "Experience the ultimate adventure with a spectacular mountain flight to Mount Everest. This one-hour scenic flight offers unparalleled close-up views of the world's highest peak and other majestic mountains in the Himalayan range. Each passenger gets a window seat for optimal viewing and photography opportunities. The flight includes expert commentary about the mountains and a certificate of achievement.",
+  "image": "/images/mountain_flight-1.jpg",
+  "images": [
+    "/images/mountain_flight-1.jpg",
+    "/images/everest-flight-2.jpg",
+    "/images/himalayan-panorama-1.jpg",
+    "/images/airplane-cabin-1.jpg",
+    "/images/mountain-flight-view-1.jpg",
+    "/images/everest-closeup-1.jpg",
+    "/images/annapurna-range-1.jpg",
+    "/images/flight-certificate-1.jpg",
+    "/images/airport-transfer-1.jpg",
+    "/images/window-seat-view-1.jpg",
+    "/images/mt-everest-aerial-1.jpg",
+    "/images/himalayan-peaks-1.jpg"
+  ],
+  "tags": ["Scenic Flight", "Everest", "Bucket List", "Mountain Flight", "Aerial Tour", "Himalayan Adventure", "Sightseeing Flight", "Nepal Experience"],
+  "highlights": ["Close-up views of Mount Everest", "Window seat guaranteed", "Himalayan panorama including Lhotse, Makalu, and Cho Oyu", "Certificate of achievement", "Expert commentary about peaks", "Early morning optimal visibility"],
+  "includes": ["Scenic flight", "Window seat", "Expert commentary", "Certificate", "Hotel transfers", "Airport taxes"],
+  "excludes": ["Personal expenses", "Tips", "Travel insurance", "Meals", "Additional photography services"],
+  "included": ["One-hour scenic mountain flight", "Guaranteed window seat", "Expert commentary during flight (English)", "Certificate of achievement", "Hotel pick-up and drop-off in Kathmandu", "All airport taxes and surcharges", "Flight route covering Everest, Kanchenjunga, and other peaks"],
+  "excluded": ["Personal expenses", "Meals and drinks", "Gratuities for driver and staff", "Travel insurance", "Visa fees", "Additional activities", "Excess baggage charges"],
+  "entryRequirements": ["Valid passport for identification", "Nepal visa (obtainable on arrival for most nationalities)"],
+  "itinerary": [
+    { "day": 1, "title": "Everest Mountain Flight Experience", "description": "Early morning hotel pickup (5:30-6:00 AM), transfer to Tribhuvan International Airport, check-in and boarding, one-hour scenic flight with mountain views (Everest, Lhotse, Makalu, Cho Oyu, Kanchenjunga), return to airport, certificate distribution, return to hotel by 9:00 AM" }
+  ],
+  "maxGroupSize": 1,
+  "cancellationPolicy": "Free cancellation up to 24 hours before departure. No refund within 24 hours. Weather-dependent flights may be rescheduled.",
+  "isPopular": true,
+  "isSoldOut": false,
+  "difficulty": "easy",
+  "maxAltitude": "8,848m (Everest)",
+  "requirements": ["No special requirements", "Suitable for all ages", "Valid identification", "Ability to board small aircraft", "No serious health conditions"],
+  "permits": ["None required"],
+  "equipment": ["Camera with good zoom", "Sunglasses", "Warm clothing", "Passport/ID copy", "Binoculars (optional)", "Motion sickness medication if needed"],
+}
   
   
 ];

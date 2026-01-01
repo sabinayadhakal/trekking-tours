@@ -22,7 +22,6 @@ export default function BhutanPage() {
   "location": "Thimpu, Punakha, Paro",
   "duration": "5 Days",
   "rating": 4.9,
-  "reviewCount": 42,
   "price": 1850,
   "originalPrice": 1999,
   "excerpt": "A comprehensive cultural, historical, and spiritual journey through Bhutan's heartlands",
@@ -92,83 +91,7 @@ export default function BhutanPage() {
   "equipment": ["Comfortable hiking shoes", "Daypack", "Water bottle", "Camera", "Layered clothing", "Sun protection"]
 },
 
-  {
-  "id": "B2",
-  "title": "Tiger's Nest Monastery Day Hike",
-  "location": "Paro",
-  "duration": "1 Day",
-  "rating": 5.0,
-  "reviewCount": 56,
-  "price": 299,
-  "originalPrice": 349,
-  "excerpt": "A spiritual journey to Bhutan's most sacred monastery perched on a cliff",
-  "description": "Experience the sheer joy and spiritual satisfaction of hiking to the legendary Taktsang (Tiger's Nest) Monastery. This sacred pilgrimage site offers breathtaking views, mystical atmosphere, and profound spiritual connection. Perched dramatically on a granite cliff, the monastery is believed to be the birthplace of Buddhism in Bhutan, where Guru Padmasambhava meditated for 3 years, 3 months, and 3 days.",
-  "image":     "/images/bhutan_tours-4.jpg",
-
-  "images": [
-    "/images/bhutan_tours-4.jpg",
   
-  ],
-  "tags": ["Spiritual", "Hiking", "Pilgrimage", "Day Trip", "Sacred Site"],
-  "highlights": [
-    "Hike to the sacred Taktsang Monastery",
-    "Walk through beautiful pine forests",
-    "Pass by prayer wheels and prayer flags",
-    "Enjoy lunch at the mountain cafeteria",
-    "Stunning views of Paro Valley",
-    "See the waterfall cascading into sacred pool",
-    "Visit the meditation cave of Guru Rinpoche"
-  ],
-  "includes": [
-    "All necessary travel permits",
-    "English speaking Bhutanese Guide",
-    "Transportation to/from hike base",
-    "Lunch at mountain cafeteria",
-    "Entrance fees to monastery",
-    "Bottled water and snacks"
-  ],
-  "excludes": [
-    "Travel Insurance",
-    "Horse riding fees (optional)",
-    "Personal expenses (drinks, telephone, souvenirs)",
-    "Tips for guide and driver",
-    "Hotel accommodation",
-    "Any cost not mentioned in includes section"
-  ],
-  "included": [
-    "All necessary travel permits",
-    "English speaking Bhutanese Guide",
-    "Transportation to/from hike base",
-    "Lunch at mountain cafeteria",
-    "Entrance fees to monastery",
-    "Bottled water and snacks"
-  ],
-  "excluded": [
-    "Travel Insurance",
-    "Horse riding fees (optional)",
-    "Personal expenses (drinks, telephone, souvenirs)",
-    "Tips for guide and driver",
-    "Hotel accommodation",
-    "Any cost not mentioned in includes section"
-  ],
-  "entryRequirements": ["Valid passport", "Bhutan visa"],
-  "requirements": ["Moderate fitness level", "Hiking shoes", "Respectful clothing for monastery"],
-  "itinerary": [
-    {
-      "day": 1,
-      "title": "Tiger's Nest Monastery Hike",
-      "description": "Morning drive to the hike base. Begin the 2-hour hike through pine forests marked by prayer flags and prayer wheels. Optional horse riding available for part of the way. Stop for lunch at the mountain cafeteria with stunning valley views. Continue to the monastery complex, visit the sacred cave where Guru Padmasambhava meditated, explore the various temples and statues. Experience the mystical atmosphere of this sacred site. Descend back to base and return to hotel."
-    }
-  ],
-  "maxGroupSize": 8,
-  "cancellationPolicy": "Full refund up to 48 hours before hike. No refund within 48 hours.",
-  "isPopular": true,
-  "isSoldOut": false,
-  "difficulty": "Moderate to Challenging",
-  "maxAltitude": "3,120m",
-  "permits": ["Bhutan visa", "Monastery entry permit"],
-  "equipment": ["Sturdy hiking shoes", "Daypack", "Water bottle", "Camera", "Layered clothing", "Sun protection", "Rain jacket"]
-},
 
   {
   "id": "B3",
@@ -176,7 +99,6 @@ export default function BhutanPage() {
   "location": "Paro, Thimpu",
   "duration": "3 Days",
   "rating": 4.7,
-  "reviewCount": 38,
   "price": 899,
   "originalPrice": 999,
   "excerpt": "A perfect quick getaway to experience Bhutan's highlights when time is limited",
@@ -264,7 +186,6 @@ export default function BhutanPage() {
   "location": "Paro, Thimpu",
   "duration": "4 Days",
   "rating": 4.8,
-  "reviewCount": 45,
   "price": 1199,
   "originalPrice": 1299,
   "excerpt": "An organized 4-day journey through Bhutan's cultural landmarks and spiritual sites, culminating in the iconic Tiger's Nest hike",
@@ -359,7 +280,6 @@ export default function BhutanPage() {
   "location": "Paro, Thimpu, Punakha, Wangdue, Gangtey, Phobjikha, Trongsa, Bumthang",
   "duration": "11 Days",
   "rating": 5.0,
-  "reviewCount": 62,
   "price": 3499,
   "originalPrice": 3799,
   "excerpt": "An immersive journey through Bhutan's spiritual heartlands, exploring ancient dzongs, sacred monasteries, and untouched Himalayan valleys",
