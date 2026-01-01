@@ -186,8 +186,7 @@ export default function Page() {
               href="/contact"
               className="inline-block px-8 py-4 bg-[#2B5C6B] text-white font-semibold rounded-2xl shadow-lg hover:bg-[#246071] transition-colors duration-300"
             >
-              Contact Us to Book
-            </a>
+Contact us to Customize            </a>
             <span className="text-gray-500 hidden sm:block">or</span>
             <a
               href="https://wa.me/9779841376470"
