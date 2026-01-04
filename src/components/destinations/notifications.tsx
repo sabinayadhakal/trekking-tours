@@ -12,7 +12,7 @@ interface NotificationsProps {
 export default function Notifications({ showTestToast = false, className }: NotificationsProps) {
   useEffect(() => {
     if (showTestToast) {
-      toast.success("");
+      toast.success("Get our discounted packages today!!");
     }
   }, [showTestToast]);
 
