@@ -362,7 +362,6 @@ export default function ContactSection({ posts = [], onSubmit }: BlogContentProp
         >
           <h3 className="text-2xl font-bold mb-2">Thank you for your enquiry! 🎉</h3>
           <p>We've received your message and will respond to you within 24 hours.</p>
-          <p className="mt-2 text-sm font-normal">A confirmation has been sent to {formData.email}</p>
         </motion.div>
       )}
     </AnimatePresence>
