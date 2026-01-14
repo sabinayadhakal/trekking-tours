@@ -1,8 +1,8 @@
-// app/contact/page.tsx - Updated with optional message field
+// app/contact/page.tsx
 
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { 
   FaFacebook, FaInstagram, FaTwitter, FaYoutube, 
   FaLinkedin, FaTiktok, FaPinterest, FaWhatsapp, FaPaperPlane 
@@ -115,7 +115,8 @@ const TermsDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (ope
   </Dialog>
 );
 
-export default function ContactSection({ posts = [], onSubmit }: BlogContentProps) {
+// Contact Form Content Component (uses useSearchParams)
+function ContactFormContent() {
   const searchParams = useSearchParams()
   const trekFromUrl = searchParams.get('trek')
   
@@ -289,7 +290,6 @@ export default function ContactSection({ posts = [], onSubmit }: BlogContentProp
         message: "" 
       })
       setSuccess(true)
-      onSubmit?.()
       setTimeout(() => setSuccess(false), 4000)
       
     } catch (err: any) {
@@ -431,7 +431,6 @@ export default function ContactSection({ posts = [], onSubmit }: BlogContentProp
                 onChange={handleChange}
                 className="border border-gray-300 p-4 rounded-xl focus:outline-none focus:border-[#4b8690] focus:ring-2 focus:ring-[#4b8690] transition resize-none bg-white"
                 rows={6}
-                // Removed the required attribute
               />
             </div>
 
@@ -502,5 +501,18 @@ export default function ContactSection({ posts = [], onSubmit }: BlogContentProp
         )}
       </AnimatePresence>
     </>
+  )
+}
+
+// Main component with Suspense
+export default function ContactSection({ posts = [], onSubmit }: BlogContentProps) {
+  return (
+    <Suspense fallback={
+      <div className="mt-6 sm:mt-0 space-y-6 bg-[#f1f9fb] p-10 md:p-12 rounded-3xl shadow-lg border border-[#c9e0e5] w-full max-w-5xl mx-auto min-h-[500px] flex items-center justify-center">
+        <div className="text-[#346272]">Loading contact form...</div>
+      </div>
+    }>
+      <ContactFormContent />
+    </Suspense>
   )
 }
