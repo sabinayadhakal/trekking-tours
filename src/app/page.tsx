@@ -5,7 +5,6 @@ import { YearSelectorStats } from "@/components/landing/year-selector-stats";
 import { ToggleTabsPricing } from "@/components/landing/toggle-tabs-pricing";
 import {MasonryTestimonialGrid} from "@/components/landing/masonry-testimonial-grid";
 import { ComplexBentoGrid } from "@/components/landing/complex-bento-grid";
-import CombinedContentSection from '@/components/landing/combined-content-section';
 
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
       <YearSelectorStats />
       <div className="hidden md:block"><TabControlledGallery /></div>
      <ToggleTabsPricing />
-      <CombinedContentSection/>
     </main>
   );
 }
