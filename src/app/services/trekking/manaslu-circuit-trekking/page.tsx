@@ -24,22 +24,23 @@ import {
   ChevronDown,
   ChevronUp,
   Home,
-  Utensils,
   Compass,
   Map,
   BookOpen,
   Cloud,
   Wind,
   Sun,
-  Moon
+  MessageCircle,
+  Settings
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const ManasluCircuitTrekPage = () => {
-  const [showBookingForm, setShowBookingForm] = useState(false);
+  const router = useRouter();
   const [openFaqs, setOpenFaqs] = useState<number[]>([]);
   const [isSticky, setIsSticky] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -47,7 +48,7 @@ const ManasluCircuitTrekPage = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
-  // Image gallery for Manaslu - Lighter mountain blues
+  // Image gallery for Manaslu - Mountain-themed images
   const manasluImages = [
     "/images/manaslu-mountain-1.jpg",
     "/images/manaslu-mountain-2.jpg",
@@ -98,6 +99,41 @@ const ManasluCircuitTrekPage = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  // WhatsApp Booking Handler
+  const handleWhatsAppBooking = () => {
+    const phoneNumber = "+9779841376470";
+    
+    // Construct the message
+    let message = `Hello! I'm interested in booking the "${trekData.title}" package.\n\n`;
+    message += `I would like to know more information about:\n`;
+    message += `- Availability and dates\n`;
+    message += `- Booking process\n`;
+    message += `- Detailed itinerary\n`;
+    message += `- What's included\n\n`;
+    message += `Please provide me with more information. Thank you!`;
+    
+    // Add package details
+    message += `\n\nPackage Details:\n`;
+    message += `- Duration: ${trekData.duration}\n`;
+    message += `- Price: $${trekData.price}\n`;
+    message += `- Difficulty: ${trekData.difficulty}\n`;
+    message += `- Max Altitude: ${trekData.maxAltitude}\n`;
+    message += `- Group Size: ${trekData.groupSize}\n`;
+    
+    // Encode and open WhatsApp
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  // Customize Trip Handler - Redirect to contact page with trek name
+  const handleCustomizeTrip = () => {
+    // Encode the trek name for URL parameter
+    const trekName = encodeURIComponent(trekData.title);
+    // Redirect to contact page with trek name as query parameter
+    router.push(`/contact?trek=${trekName}`);
+  };
 
   // Data
   const trekData = {
@@ -235,132 +271,155 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-sky-50 to-blue-100/30">
-      {/* Header Section - Light Blue with Mountain Illustration */}
-      <motion.section 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-        transition={{ duration: 0.8 }}
-        className="relative overflow-hidden bg-gradient-to-br from-sky-100 to-blue-200 pt-12 pb-16"
-      >
-        {/* Mountain Illustration */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-blue-100/20 to-transparent">
-          <div className="absolute bottom-0 left-1/4 w-24 h-24 bg-gradient-to-t from-blue-300/40 to-blue-400/20 rounded-tl-full rounded-tr-full"></div>
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-32 bg-gradient-to-t from-blue-400/30 to-blue-500/20 rounded-tl-full rounded-tr-full"></div>
-          <div className="absolute bottom-0 right-1/4 w-20 h-20 bg-gradient-to-t from-blue-300/30 to-blue-400/15 rounded-tl-full rounded-tr-full"></div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-[#E3F8FF]/40 via-[#CFE8FF]/30 to-[#A6D4FF]/20">
+      {/* Image Gallery Hero Section */}
+      <section className="relative overflow-hidden">
+        <div className="grid grid-cols-3 gap-0 h-[85vh]">
+          {/* Main Image */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5 }}
+            className="col-span-2 relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#3C6AA6]/40 via-[#468faf]/20 to-transparent z-10" />
+            <img
+              src={manasluImages[0]}
+              alt="Manaslu Mountain"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute bottom-0 left-0 right-0 z-20 p-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="text-white max-w-2xl"
+              >
+                <Badge className="mb-4 bg-white/20 backdrop-blur-md text-white border-white/30">
+                  <Mountain className="mr-2 h-3 w-3" />
+                  RESTRICTED AREA TREK
+                </Badge>
+                <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">
+                  Manaslu Circuit Trek
+                </h1>
+                <p className="text-xl text-slate-200 mb-6">
+                  Complete the Circuit Around the World's Eighth Highest Mountain
+                </p>
+                <Button 
+                  size="lg" 
+                  className="bg-[#3C6AA6] hover:bg-[#468faf] text-white px-8 py-6 rounded-full text-lg font-semibold border border-white/20 shadow-xl transition-all duration-200"
+                  onClick={handleWhatsAppBooking}
+                >
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Book via WhatsApp
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </motion.div>
+            </div>
+          </motion.div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/80 backdrop-blur-sm text-blue-800 border-blue-200">
-              <Mountain className="mr-2 h-3 w-3" />
-              RESTRICTED AREA TREK • SINCE 2015
-            </Badge>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-4 leading-tight">
-              Manaslu Circuit Trek
-            </h1>
-            
-            <p className="text-xl text-blue-700 mb-8 max-w-2xl mx-auto">
-              Complete the Circuit Around the World's Eighth Highest Mountain
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full border border-blue-200">
-                <Calendar className="h-4 w-4 text-blue-600" />
-                <span className="text-blue-800 font-medium">{trekData.duration}</span>
+          {/* Right Side Images */}
+          <div className="grid grid-rows-2 gap-0">
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-[#3C6AA6]/40 to-transparent z-10" />
+              <img
+                src={manasluImages[1]}
+                alt="Mountain Trail"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute bottom-4 left-4 z-20">
+                <p className="text-white font-medium">Alpine Trail</p>
               </div>
-              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full border border-blue-200">
-                <Thermometer className="h-4 w-4 text-blue-600" />
-                <span className="text-blue-800 font-medium">{trekData.maxAltitude}</span>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-[#3C6AA6]/40 to-transparent z-10" />
+              <img
+                src={manasluImages[2]}
+                alt="Mountain Village"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute bottom-4 left-4 z-20">
+                <p className="text-white font-medium">Traditional Village</p>
               </div>
-              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full border border-blue-200">
-                <Footprints className="h-4 w-4 text-blue-600" />
-                <span className="text-blue-800 font-medium">{trekData.difficulty}</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full border border-blue-200">
-                <Users className="h-4 w-4 text-blue-600" />
-                <span className="text-blue-800 font-medium">{trekData.groupSize}</span>
-              </div>
-            </div>
-            
-            <div className="flex items-center justify-center gap-4 mb-10">
-              <div className="flex items-center gap-2">
-                {renderStars()}
-                <span className="text-blue-800 font-semibold">{trekData.rating}</span>
-                <span className="text-blue-700">(127 reviews)</span>
-              </div>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white px-10 py-6 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                onClick={() => setShowBookingForm(true)}
-              >
-                <Calendar className="mr-2 h-5 w-5" />
-                Book Your Trek
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="bg-white/80 backdrop-blur-sm hover:bg-white text-blue-800 border-blue-300 hover:border-blue-400 px-10 py-6 rounded-full text-lg hover:shadow-lg transition-all duration-300"
-                onClick={() => scrollToSection('itinerary')}
-              >
-                <Compass className="mr-2 h-5 w-5" />
-                View Itinerary
-              </Button>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </motion.section>
 
-      {/* Image Gallery Section - Vertical Arrangement */}
-      <section className="py-12 bg-gradient-to-b from-blue-50/50 to-transparent">
+        {/* Quick Stats Overlay */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="absolute bottom-8 right-8 z-30"
+        >
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-[#3C6AA6]/20">
+            <div className="text-center mb-4">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="text-3xl font-bold text-[#3C6AA6]">
+                  ${trekData.price}
+                </span>
+                <span className="text-[#468faf] line-through text-lg">
+                  ${trekData.originalPrice}
+                </span>
+              </div>
+              <Badge className="bg-[#468faf] text-white border-0">
+                {trekData.discount}
+              </Badge>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="text-center">
+                <div className="w-10 h-10 rounded-full bg-[#E3F8FF] flex items-center justify-center mx-auto mb-2">
+                  <Calendar className="h-5 w-5 text-[#3C6AA6]" />
+                </div>
+                <p className="text-sm text-[#3C6AA6]/80">Duration</p>
+                <p className="font-semibold text-[#3C6AA6]">{trekData.duration}</p>
+              </div>
+              <div className="text-center">
+                <div className="w-10 h-10 rounded-full bg-[#E3F8FF] flex items-center justify-center mx-auto mb-2">
+                  <Thermometer className="h-5 w-5 text-[#3C6AA6]" />
+                </div>
+                <p className="text-sm text-[#3C6AA6]/80">Max Altitude</p>
+                <p className="font-semibold text-[#3C6AA6]">{trekData.maxAltitude}</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Additional Gallery Grid */}
+      <section className="py-12 bg-[#E3F8FF]/40">
         <div className="container mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0 }}
-            animate={{ opacity: isVisible ? 1 : 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="max-w-5xl mx-auto"
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
           >
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-blue-900 mb-3">Visual Journey</h2>
-              <p className="text-blue-700">Experience Manaslu through stunning photography</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {manasluImages.map((image, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`relative rounded-2xl overflow-hidden shadow-lg border border-blue-200 hover:border-blue-300 transition-all duration-300 hover:shadow-xl ${
-                    index === 0 ? "md:col-span-2" : ""
-                  }`}
-                >
-                  <div className="aspect-[4/3] relative overflow-hidden group">
-                    <img
-                      src={image}
-                      alt={`Manaslu Trek ${index + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-blue-900/70 to-transparent transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="text-white text-sm">
-                        {index === 0 ? "Majestic Manaslu Peak" : 
-                         index === 1 ? "Alpine Trail" : 
-                         index === 2 ? "Glacial River Valley" :
-                         index === 3 ? "Traditional Village" :
-                         index === 4 ? "Local Culture" : "Suspension Bridge"}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            {manasluImages.slice(3).map((image, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="aspect-square rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group"
+              >
+                <img
+                  src={image}
+                  alt={`Gallery ${index + 1}`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -369,14 +428,14 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
       <div 
         ref={headerRef}
         className={`sticky top-0 z-40 transition-all duration-300 ${
-          isSticky ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-blue-200' : 'bg-transparent'
+          isSticky ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-[#3C6AA6]/20' : 'bg-transparent'
         }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center gap-3">
-              <Mountain className="h-6 w-6 text-blue-700" />
-              <span className="font-bold text-blue-800 text-lg hidden sm:inline">Manaslu Circuit</span>
+              <Mountain className="h-6 w-6 text-[#3C6AA6]" />
+              <span className="font-bold text-[#3C6AA6] text-lg hidden sm:inline">Manaslu Circuit</span>
             </div>
             
             <div className="flex items-center gap-6">
@@ -387,8 +446,8 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                     onClick={() => scrollToSection(section)}
                     className={`text-sm font-medium transition-colors ${
                       currentImageIndex === index 
-                        ? 'text-blue-600 border-b-2 border-blue-500' 
-                        : 'text-blue-800 hover:text-blue-600'
+                        ? 'text-[#3C6AA6] border-b-2 border-[#468faf]' 
+                        : 'text-[#468faf] hover:text-[#3C6AA6]'
                     }`}
                   >
                     {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -399,19 +458,20 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
               <div className="flex items-center gap-4">
                 <div className="hidden sm:block text-right">
                   <div className="flex items-center gap-2">
-                    <span className="text-xl font-bold text-blue-800">
+                    <span className="text-xl font-bold text-[#3C6AA6]">
                       ${trekData.price}
                     </span>
-                    <span className="text-blue-600 line-through text-sm">
+                    <span className="text-[#468faf] line-through text-sm">
                       ${trekData.originalPrice}
                     </span>
                   </div>
                 </div>
                 
                 <Button 
-                  className="bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
-                  onClick={() => setShowBookingForm(true)}
+                  className="bg-[#3C6AA6] hover:bg-[#468faf] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-200"
+                  onClick={handleWhatsAppBooking}
                 >
+                  <MessageCircle className="mr-2 h-4 w-4" />
                   Book Now
                 </Button>
               </div>
@@ -420,7 +480,7 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
         </div>
       </div>
 
-      {/* Main Content with Sidebar Images */}
+      {/* Main Content with Sidebar */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Main Content */}
@@ -437,20 +497,20 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <Card className="border border-blue-200 shadow-lg rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm">
-                  <div className="bg-gradient-to-r from-blue-100 to-sky-100 p-8 border-b border-blue-200">
+                <Card className="border border-[#3C6AA6]/20 shadow-lg rounded-2xl overflow-hidden bg-white">
+                  <div className="bg-gradient-to-r from-[#E3F8FF] to-[#CFE8FF] p-8 border-b border-[#3C6AA6]/20">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-sky-500 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-xl bg-[#3C6AA6] flex items-center justify-center">
                         <Compass className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h2 className="text-3xl font-bold text-blue-900">Trek Overview</h2>
-                        <p className="text-blue-700">Journey around Mount Manaslu (8,163m)</p>
+                        <h2 className="text-3xl font-bold text-[#3C6AA6]">Trek Overview</h2>
+                        <p className="text-[#468faf]">Journey around Mount Manaslu (8,163m)</p>
                       </div>
                     </div>
                   </div>
                   <CardContent className="p-8">
-                    <div className="space-y-6 text-blue-800">
+                    <div className="space-y-6 text-[#3C6AA6]">
                       {trekData.overview.split('\n\n').map((paragraph, index) => (
                         <p key={index} className="leading-relaxed text-lg">
                           {paragraph}
@@ -458,12 +518,12 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                       ))}
                     </div>
                     
-                    <div className="mt-8 p-6 rounded-xl bg-gradient-to-r from-blue-50 to-sky-50 border border-blue-200">
+                    <div className="mt-8 p-6 rounded-xl bg-gradient-to-r from-[#E3F8FF]/60 to-[#CFE8FF]/60 border border-[#3C6AA6]/20">
                       <div className="flex items-start gap-4">
-                        <Shield className="h-8 w-8 text-blue-600 flex-shrink-0" />
+                        <Shield className="h-8 w-8 text-[#3C6AA6] flex-shrink-0" />
                         <div>
-                          <h3 className="font-bold text-blue-900 text-xl mb-2">Permit Information</h3>
-                          <p className="text-blue-700">
+                          <h3 className="font-bold text-[#3C6AA6] text-xl mb-2">Permit Information</h3>
+                          <p className="text-[#468faf]">
                             Manaslu Conservation Area requires special permits and a registered guide. This regulation helps preserve the region's pristine environment and cultural heritage, ensuring a more authentic experience.
                           </p>
                         </div>
@@ -486,15 +546,15 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="border border-blue-200 shadow-lg rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm">
-                  <div className="bg-gradient-to-r from-blue-100 to-sky-100 p-8 border-b border-blue-200">
+                <Card className="border border-[#3C6AA6]/20 shadow-lg rounded-2xl overflow-hidden bg-white">
+                  <div className="bg-gradient-to-r from-[#E3F8FF] to-[#CFE8FF] p-8 border-b border-[#3C6AA6]/20">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-sky-500 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-xl bg-[#3C6AA6] flex items-center justify-center">
                         <Award className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h2 className="text-3xl font-bold text-blue-900">Trip Highlights</h2>
-                        <p className="text-blue-700">Unforgettable experiences await</p>
+                        <h2 className="text-3xl font-bold text-[#3C6AA6]">Trip Highlights</h2>
+                        <p className="text-[#468faf]">Unforgettable experiences await</p>
                       </div>
                     </div>
                   </div>
@@ -507,12 +567,12 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.4, delay: index * 0.1 }}
                           viewport={{ once: true }}
-                          className="flex items-start gap-4 bg-white p-5 rounded-xl border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all duration-300"
+                          className="flex items-start gap-4 bg-[#E3F8FF]/40 p-5 rounded-xl border border-[#3C6AA6]/20 hover:border-[#468faf] hover:shadow-md transition-all duration-300"
                         >
-                          <div className="bg-gradient-to-br from-blue-100 to-sky-100 rounded-full p-3 flex-shrink-0">
-                            <Check className="h-5 w-5 text-blue-600" />
+                          <div className="bg-[#E3F8FF] rounded-full p-3 flex-shrink-0">
+                            <Check className="h-5 w-5 text-[#3C6AA6]" />
                           </div>
-                          <span className="text-blue-800 text-lg font-medium">{highlight}</span>
+                          <span className="text-[#3C6AA6] text-lg font-medium">{highlight}</span>
                         </motion.div>
                       ))}
                     </div>
@@ -533,21 +593,21 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <Card className="border border-blue-200 shadow-lg rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm">
-                  <div className="bg-gradient-to-r from-blue-100 to-sky-100 p-8 border-b border-blue-200">
+                <Card className="border border-[#3C6AA6]/20 shadow-lg rounded-2xl overflow-hidden bg-white">
+                  <div className="bg-gradient-to-r from-[#E3F8FF] to-[#CFE8FF] p-8 border-b border-[#3C6AA6]/20">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-sky-500 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-xl bg-[#3C6AA6] flex items-center justify-center">
                           <Map className="h-6 w-6 text-white" />
                         </div>
                         <div>
-                          <h2 className="text-3xl font-bold text-blue-900">Detailed Itinerary</h2>
-                          <p className="text-blue-700">20 Days Complete Journey</p>
+                          <h2 className="text-3xl font-bold text-[#3C6AA6]">Detailed Itinerary</h2>
+                          <p className="text-[#468faf]">20 Days Complete Journey</p>
                         </div>
                       </div>
                       <Button 
                         variant="outline" 
-                        className="bg-white/80 backdrop-blur-sm hover:bg-white text-blue-800 border-blue-300"
+                        className="bg-white hover:bg-[#E3F8FF]/50 text-[#3C6AA6] border-[#3C6AA6]/30"
                       >
                         <Download className="mr-2 h-4 w-4" />
                         Download PDF
@@ -555,7 +615,7 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                     </div>
                   </div>
                   <CardContent className="p-0">
-                    <div className="divide-y divide-blue-100">
+                    <div className="divide-y divide-[#E3F8FF]">
                       {trekData.itinerary.map((day, index) => (
                         <motion.div
                           key={day.day}
@@ -563,35 +623,35 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3, delay: index * 0.05 }}
                           viewport={{ once: true }}
-                          className="p-6 hover:bg-blue-50/50 transition-colors"
+                          className="p-6 hover:bg-[#E3F8FF]/30 transition-colors"
                         >
                           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                             <div className="flex items-start gap-4">
-                              <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-sky-500 flex items-center justify-center text-white">
+                              <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-[#3C6AA6] flex items-center justify-center text-white">
                                 <div className="text-center">
                                   <div className="font-bold text-lg">{day.day}</div>
                                 </div>
                               </div>
                               <div className="flex-1">
                                 <div className="flex items-center gap-3 mb-1">
-                                  <div className="text-blue-600">
+                                  <div className="text-[#3C6AA6]">
                                     {day.icon}
                                   </div>
-                                  <h3 className="font-bold text-blue-900 text-xl">{day.title}</h3>
+                                  <h3 className="font-bold text-[#3C6AA6] text-xl">{day.title}</h3>
                                 </div>
-                                <div className="flex items-center gap-2 text-blue-700">
+                                <div className="flex items-center gap-2 text-[#468faf]">
                                   <Thermometer className="h-4 w-4" />
                                   <span className="font-medium">{day.altitude}</span>
                                 </div>
                               </div>
                             </div>
                             {day.day === 12 && (
-                              <Badge className="bg-yellow-100 text-yellow-800 border-yellow-200">
+                              <Badge className="bg-amber-100 text-amber-800 border-amber-200">
                                 Acclimatization Day
                               </Badge>
                             )}
                             {day.day === 15 && (
-                              <Badge className="bg-gradient-to-r from-red-100 to-orange-100 text-red-800 border-red-200">
+                              <Badge className="bg-gradient-to-r from-rose-100 to-orange-100 text-rose-800 border-rose-200">
                                 Challenge Day
                               </Badge>
                             )}
@@ -616,22 +676,22 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <Card className="border border-blue-200 shadow-lg rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm">
-                  <div className="bg-gradient-to-r from-blue-100 to-sky-100 p-8 border-b border-blue-200">
-                    <h2 className="text-3xl font-bold text-blue-900">Cost Details</h2>
-                    <p className="text-blue-700">Transparent pricing with no hidden fees</p>
+                <Card className="border border-[#3C6AA6]/20 shadow-lg rounded-2xl overflow-hidden bg-white">
+                  <div className="bg-gradient-to-r from-[#E3F8FF] to-[#CFE8FF] p-8 border-b border-[#3C6AA6]/20">
+                    <h2 className="text-3xl font-bold text-[#3C6AA6]">Cost Details</h2>
+                    <p className="text-[#468faf]">Transparent pricing with no hidden fees</p>
                   </div>
                   <CardContent className="p-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                       {/* Included */}
                       <div>
                         <div className="flex items-center gap-4 mb-8">
-                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-green-100 to-emerald-100 border border-green-200 flex items-center justify-center">
-                            <Check className="h-7 w-7 text-green-600" />
+                          <div className="w-14 h-14 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center">
+                            <Check className="h-7 w-7 text-emerald-600" />
                           </div>
                           <div>
-                            <h3 className="text-2xl font-bold text-blue-900">Cost Includes</h3>
-                            <p className="text-blue-700">Everything covered in your package</p>
+                            <h3 className="text-2xl font-bold text-[#3C6AA6]">Cost Includes</h3>
+                            <p className="text-[#468faf]">Everything covered in your package</p>
                           </div>
                         </div>
                         
@@ -643,10 +703,10 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                               whileInView={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.3, delay: index * 0.05 }}
                               viewport={{ once: true }}
-                              className="flex items-start gap-3 p-3 hover:bg-blue-50 rounded-lg transition-colors"
+                              className="flex items-start gap-3 p-3 hover:bg-[#E3F8FF]/30 rounded-lg transition-colors"
                             >
-                              <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                              <span className="text-blue-800">{item}</span>
+                              <Check className="h-5 w-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                              <span className="text-[#3C6AA6]">{item}</span>
                             </motion.div>
                           ))}
                         </div>
@@ -655,12 +715,12 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                       {/* Excluded */}
                       <div>
                         <div className="flex items-center gap-4 mb-8">
-                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-100 to-pink-100 border border-red-200 flex items-center justify-center">
-                            <X className="h-7 w-7 text-red-600" />
+                          <div className="w-14 h-14 rounded-xl bg-rose-50 border border-rose-200 flex items-center justify-center">
+                            <X className="h-7 w-7 text-rose-600" />
                           </div>
                           <div>
-                            <h3 className="text-2xl font-bold text-blue-900">Cost Excludes</h3>
-                            <p className="text-blue-700">Additional personal expenses</p>
+                            <h3 className="text-2xl font-bold text-[#3C6AA6]">Cost Excludes</h3>
+                            <p className="text-[#468faf]">Additional personal expenses</p>
                           </div>
                         </div>
                         
@@ -672,10 +732,10 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                               whileInView={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.3, delay: index * 0.05 }}
                               viewport={{ once: true }}
-                              className="flex items-start gap-3 p-3 hover:bg-blue-50 rounded-lg transition-colors"
+                              className="flex items-start gap-3 p-3 hover:bg-[#E3F8FF]/30 rounded-lg transition-colors"
                             >
-                              <X className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
-                              <span className="text-blue-800">{item}</span>
+                              <X className="h-5 w-5 text-rose-500 flex-shrink-0 mt-0.5" />
+                              <span className="text-[#3C6AA6]">{item}</span>
                             </motion.div>
                           ))}
                         </div>
@@ -698,15 +758,15 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <Card className="border border-blue-200 shadow-lg rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm">
-                  <div className="bg-gradient-to-r from-blue-100 to-sky-100 p-8 border-b border-blue-200">
+                <Card className="border border-[#3C6AA6]/20 shadow-lg rounded-2xl overflow-hidden bg-white">
+                  <div className="bg-gradient-to-r from-[#E3F8FF] to-[#CFE8FF] p-8 border-b border-[#3C6AA6]/20">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-sky-500 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-xl bg-[#3C6AA6] flex items-center justify-center">
                         <BookOpen className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h2 className="text-3xl font-bold text-blue-900">Frequently Asked Questions</h2>
-                        <p className="text-blue-700">Your questions answered</p>
+                        <h2 className="text-3xl font-bold text-[#3C6AA6]">Frequently Asked Questions</h2>
+                        <p className="text-[#468faf]">Your questions answered</p>
                       </div>
                     </div>
                   </div>
@@ -719,17 +779,17 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.4, delay: index * 0.1 }}
                           viewport={{ once: true }}
-                          className="border border-blue-200 rounded-xl overflow-hidden hover:border-blue-300 transition-colors duration-300"
+                          className="border border-[#3C6AA6]/20 rounded-xl overflow-hidden hover:border-[#468faf] transition-colors duration-300"
                         >
                           <button
                             onClick={() => toggleFaq(index)}
-                            className="w-full p-6 text-left flex items-center justify-between hover:bg-blue-50/50 transition-colors"
+                            className="w-full p-6 text-left flex items-center justify-between hover:bg-[#E3F8FF]/30 transition-colors"
                           >
-                            <h3 className="font-bold text-blue-900 text-lg pr-8">{faq.question}</h3>
+                            <h3 className="font-bold text-[#3C6AA6] text-lg pr-8">{faq.question}</h3>
                             {openFaqs.includes(index) ? (
-                              <ChevronUp className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                              <ChevronUp className="h-5 w-5 text-[#3C6AA6] flex-shrink-0" />
                             ) : (
-                              <ChevronDown className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                              <ChevronDown className="h-5 w-5 text-[#3C6AA6] flex-shrink-0" />
                             )}
                           </button>
                           
@@ -742,7 +802,7 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
                                 transition={{ duration: 0.3 }}
                                 className="px-6 pb-6 pt-2"
                               >
-                                <p className="text-blue-700 leading-relaxed">{faq.answer}</p>
+                                <p className="text-[#468faf] leading-relaxed">{faq.answer}</p>
                               </motion.div>
                             )}
                           </AnimatePresence>
@@ -764,48 +824,48 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Card className="border border-blue-200 shadow-lg rounded-2xl bg-white/90 backdrop-blur-sm">
+              <Card className="border border-[#3C6AA6]/20 shadow-lg rounded-2xl bg-white">
                 <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold text-blue-900 mb-6">Quick Facts</h3>
+                  <h3 className="text-2xl font-bold text-[#3C6AA6] mb-6">Quick Facts</h3>
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between py-3 border-b border-blue-100">
+                    <div className="flex items-center justify-between py-3 border-b border-[#E3F8FF]">
                       <div className="flex items-center gap-3">
-                        <Calendar className="h-5 w-5 text-blue-600" />
-                        <span className="text-blue-800 font-medium">Duration</span>
+                        <Calendar className="h-5 w-5 text-[#3C6AA6]" />
+                        <span className="text-[#3C6AA6] font-medium">Duration</span>
                       </div>
-                      <span className="font-bold text-blue-900 text-lg">{trekData.duration}</span>
+                      <span className="font-bold text-[#3C6AA6] text-lg">{trekData.duration}</span>
                     </div>
-                    <div className="flex items-center justify-between py-3 border-b border-blue-100">
+                    <div className="flex items-center justify-between py-3 border-b border-[#E3F8FF]">
                       <div className="flex items-center gap-3">
-                        <Thermometer className="h-5 w-5 text-blue-600" />
-                        <span className="text-blue-800 font-medium">Max Altitude</span>
+                        <Thermometer className="h-5 w-5 text-[#3C6AA6]" />
+                        <span className="text-[#3C6AA6] font-medium">Max Altitude</span>
                       </div>
-                      <span className="font-bold text-blue-900 text-lg">{trekData.maxAltitude}</span>
+                      <span className="font-bold text-[#3C6AA6] text-lg">{trekData.maxAltitude}</span>
                     </div>
-                    <div className="flex items-center justify-between py-3 border-b border-blue-100">
+                    <div className="flex items-center justify-between py-3 border-b border-[#E3F8FF]">
                       <div className="flex items-center gap-3">
-                        <Footprints className="h-5 w-5 text-blue-600" />
-                        <span className="text-blue-800 font-medium">Difficulty</span>
+                        <Footprints className="h-5 w-5 text-[#3C6AA6]" />
+                        <span className="text-[#3C6AA6] font-medium">Difficulty</span>
                       </div>
-                      <Badge className="bg-gradient-to-r from-red-100 to-orange-100 text-red-800 border-red-200">
+                      <Badge className="bg-gradient-to-r from-rose-100 to-orange-100 text-rose-800 border-rose-200">
                         {trekData.difficulty}
                       </Badge>
                     </div>
-                    <div className="flex items-center justify-between py-3 border-b border-blue-100">
+                    <div className="flex items-center justify-between py-3 border-b border-[#E3F8FF]">
                       <div className="flex items-center gap-3">
-                        <Users className="h-5 w-5 text-blue-600" />
-                        <span className="text-blue-800 font-medium">Group Size</span>
+                        <Users className="h-5 w-5 text-[#3C6AA6]" />
+                        <span className="text-[#3C6AA6] font-medium">Group Size</span>
                       </div>
-                      <span className="font-bold text-blue-900 text-lg">{trekData.groupSize}</span>
+                      <span className="font-bold text-[#3C6AA6] text-lg">{trekData.groupSize}</span>
                     </div>
                     <div className="flex items-center justify-between py-3">
                       <div className="flex items-center gap-3">
-                        <Globe className="h-5 w-5 text-blue-600" />
-                        <span className="text-blue-800 font-medium">Best Seasons</span>
+                        <Globe className="h-5 w-5 text-[#3C6AA6]" />
+                        <span className="text-[#3C6AA6] font-medium">Best Seasons</span>
                       </div>
                       <div className="text-right">
                         {trekData.bestSeasons.map((season, index) => (
-                          <div key={index} className="font-bold text-blue-900">{season}</div>
+                          <div key={index} className="font-bold text-[#3C6AA6]">{season}</div>
                         ))}
                       </div>
                     </div>
@@ -821,49 +881,49 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="border border-blue-200 shadow-lg rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm">
-                <div className="bg-gradient-to-r from-blue-600 to-sky-600 p-6 text-white">
+              <Card className="border border-[#3C6AA6]/20 shadow-lg rounded-2xl overflow-hidden bg-white">
+                <div className="bg-[#3C6AA6] p-6 text-white">
                   <h3 className="text-2xl font-bold">Ready to Trek?</h3>
-                  <p className="text-blue-100">Reserve your Himalayan adventure</p>
+                  <p className="text-[#CFE8FF]">Reserve your Himalayan adventure</p>
                 </div>
                 <CardContent className="p-6">
                   <div className="text-center mb-6">
                     <div className="flex items-center justify-center gap-3 mb-2">
-                      <span className="text-4xl font-bold text-blue-900">
+                      <span className="text-4xl font-bold text-[#3C6AA6]">
                         ${trekData.price}
                       </span>
                       <div>
-                        <span className="text-lg text-blue-600 line-through block">
+                        <span className="text-lg text-[#468faf] line-through block">
                           ${trekData.originalPrice}
                         </span>
-                        <Badge className="bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 border-green-200">
+                        <Badge className="bg-[#468faf] text-white border-0">
                           {trekData.discount}
                         </Badge>
                       </div>
                     </div>
-                    <p className="text-sm text-blue-700">per person • All inclusive package</p>
+                    <p className="text-sm text-[#468faf]">per person • All inclusive package</p>
                   </div>
                   
                   <div className="space-y-4 mb-6">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-blue-700">Next Available Date</span>
-                      <span className="font-bold text-blue-900">March 15, 2024</span>
+                      <span className="text-[#468faf]">Next Available Date</span>
+                      <span className="font-bold text-[#3C6AA6]">March 15, 2024</span>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-blue-700">Spots Available</span>
-                      <Badge className="bg-gradient-to-r from-red-100 to-pink-100 text-red-800 border-red-200">4 left</Badge>
+                      <span className="text-[#468faf]">Spots Available</span>
+                      <Badge className="bg-rose-500 text-white border-0">4 left</Badge>
                     </div>
                   </div>
                   
                   <Button 
-                    className="w-full bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                    onClick={() => setShowBookingForm(true)}
+                    onClick={handleWhatsAppBooking}
+                    className="w-full bg-[#3C6AA6] hover:bg-[#468faf] text-white py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
                   >
-                    <ArrowRight className="mr-2 h-5 w-5" />
-                    Book Now
+                    <MessageCircle className="mr-2 h-5 w-5" />
+                    Book via WhatsApp
                   </Button>
                   
-                  <p className="text-center text-sm text-blue-600 mt-4">
+                  <p className="text-center text-sm text-[#468faf] mt-4">
                     Free cancellation up to 30 days before
                   </p>
                 </CardContent>
@@ -877,35 +937,35 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <Card className="border border-blue-200 shadow-lg rounded-2xl bg-white/90 backdrop-blur-sm">
+              <Card className="border border-[#3C6AA6]/20 shadow-lg rounded-2xl bg-white">
                 <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold text-blue-900 mb-6">Why Himkala?</h3>
+                  <h3 className="text-2xl font-bold text-[#3C6AA6] mb-6">Why Himkala?</h3>
                   <div className="space-y-4">
-                    <div className="flex items-start gap-3 p-3 hover:bg-blue-50/50 rounded-lg transition-colors">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-100 to-sky-100 flex items-center justify-center flex-shrink-0">
-                        <Award className="h-5 w-5 text-blue-600" />
+                    <div className="flex items-start gap-3 p-3 hover:bg-[#E3F8FF]/30 rounded-lg transition-colors">
+                      <div className="w-10 h-10 rounded-lg bg-[#E3F8FF] flex items-center justify-center flex-shrink-0">
+                        <Award className="h-5 w-5 text-[#3C6AA6]" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-blue-900">Expert Guides</h4>
-                        <p className="text-sm text-blue-700">20+ years Himalayan experience</p>
+                        <h4 className="font-bold text-[#3C6AA6]">Expert Guides</h4>
+                        <p className="text-sm text-[#468faf]">10+ years Himalayan experience</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3 p-3 hover:bg-blue-50/50 rounded-lg transition-colors">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-100 to-sky-100 flex items-center justify-center flex-shrink-0">
-                        <Shield className="h-5 w-5 text-blue-600" />
+                    <div className="flex items-start gap-3 p-3 hover:bg-[#E3F8FF]/30 rounded-lg transition-colors">
+                      <div className="w-10 h-10 rounded-lg bg-[#E3F8FF] flex items-center justify-center flex-shrink-0">
+                        <Shield className="h-5 w-5 text-[#3C6AA6]" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-blue-900">Safety First</h4>
-                        <p className="text-sm text-blue-700">Medical kits & emergency protocols</p>
+                        <h4 className="font-bold text-[#3C6AA6]">Safety First</h4>
+                        <p className="text-sm text-[#468faf]">Medical kits & emergency protocols</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3 p-3 hover:bg-blue-50/50 rounded-lg transition-colors">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-100 to-sky-100 flex items-center justify-center flex-shrink-0">
-                        <Heart className="h-5 w-5 text-blue-600" />
+                    <div className="flex items-start gap-3 p-3 hover:bg-[#E3F8FF]/30 rounded-lg transition-colors">
+                      <div className="w-10 h-10 rounded-lg bg-[#E3F8FF] flex items-center justify-center flex-shrink-0">
+                        <Heart className="h-5 w-5 text-[#3C6AA6]" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-blue-900">Local Support</h4>
-                        <p className="text-sm text-blue-700">Supporting Nepalese communities</p>
+                        <h4 className="font-bold text-[#3C6AA6]">Local Support</h4>
+                        <p className="text-sm text-[#468faf]">Supporting Nepalese communities</p>
                       </div>
                     </div>
                   </div>
@@ -913,43 +973,48 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
               </Card>
             </motion.div>
 
-            {/* Contact Card */}
+            {/* Contact Card - UPDATED */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <Card className="border border-blue-200 shadow-lg rounded-2xl bg-white/90 backdrop-blur-sm">
+              <Card className="border border-[#3C6AA6]/20 shadow-lg rounded-2xl bg-white">
                 <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold text-blue-900 mb-6">Need Assistance?</h3>
+                  <h3 className="text-2xl font-bold text-[#3C6AA6] mb-6">Need Assistance?</h3>
                   <div className="space-y-4">
-                    <div className="flex items-center gap-3 p-3 hover:bg-blue-50/50 rounded-lg transition-colors">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-sky-500 flex items-center justify-center">
+                    <div className="flex items-center gap-3 p-3 hover:bg-[#E3F8FF]/30 rounded-lg transition-colors">
+                      <div className="w-12 h-12 rounded-full bg-[#3C6AA6] flex items-center justify-center">
                         <Phone className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <p className="text-sm text-blue-700">Call Us 24/7</p>
-                        <p className="font-bold text-blue-900">+977-1-4412345</p>
+                        <p className="text-sm text-[#468faf]">Call Us 24/7</p>
+                        <p className="font-bold text-[#3C6AA6]">+977-1-4412345</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 hover:bg-blue-50/50 rounded-lg transition-colors">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-sky-500 flex items-center justify-center">
+                    <div className="flex items-center gap-3 p-3 hover:bg-[#E3F8FF]/30 rounded-lg transition-colors">
+                      <div className="w-12 h-12 rounded-full bg-[#3C6AA6] flex items-center justify-center">
                         <Mail className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <p className="text-sm text-blue-700">Email Support</p>
-                        <p className="font-bold text-blue-900">info@himkala.com</p>
+                        <p className="text-sm text-[#468faf]">Email Support</p>
+                        <p className="font-bold text-[#3C6AA6]">info@himkala.com</p>
                       </div>
                     </div>
                   </div>
-                  <Button 
-                    variant="outline" 
-                    className="w-full mt-6 border-blue-300 text-blue-800 hover:bg-blue-50 hover:border-blue-400"
-                    onClick={() => setShowBookingForm(true)}
-                  >
-                    Send Quick Inquiry
-                  </Button>
+                 <Button 
+  onClick={handleCustomizeTrip}
+  className="bg-[#2C5282] hover:bg-[#3182CE] text-white px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-200 font-semibold border-0"
+>
+  <div className="flex items-center justify-center gap-2">
+    {/* Simple mountain icon */}
+    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/>
+    </svg>
+    Customize This Trip By Yourself
+  </div>
+</Button>
                 </CardContent>
               </Card>
             </motion.div>
@@ -957,155 +1022,23 @@ The Manaslu Conservation Area requires special permits and a registered guide - 
         </div>
       </div>
 
-      {/* Booking Form Modal */}
-      <AnimatePresence>
-        {showBookingForm && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto"
-            >
-              <div className="p-8">
-                <div className="flex justify-between items-center mb-8">
-                  <div>
-                    <h3 className="text-2xl font-bold text-blue-900">Book Your Trek</h3>
-                    <p className="text-blue-700">Manaslu Circuit • 20 Days</p>
-                  </div>
-                  <button 
-                    onClick={() => setShowBookingForm(false)}
-                    className="text-blue-500 hover:text-blue-700 text-2xl"
-                  >
-                    ×
-                  </button>
-                </div>
-                
-                <div className="space-y-6">
-                  <div className="bg-gradient-to-r from-blue-50 to-sky-50 rounded-xl p-4 border border-blue-200">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <p className="font-bold text-blue-900">Package Price</p>
-                        <p className="text-sm text-blue-700">All inclusive</p>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-blue-900">${trekData.price}</div>
-                        <div className="text-sm text-blue-600 line-through">${trekData.originalPrice}</div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-blue-800 mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        className="w-full px-4 py-3 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Your full name"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-blue-800 mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        className="w-full px-4 py-3 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-blue-800 mb-2">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        className="w-full px-4 py-3 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="+977 XXX XXX XXXX"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-blue-800 mb-2">
-                        Number of Travelers *
-                      </label>
-                      <select className="w-full px-4 py-3 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        <option value="1">1 person</option>
-                        <option value="2">2 people</option>
-                        <option value="3">3 people</option>
-                        <option value="4">4 people</option>
-                        <option value="5">5 people</option>
-                        <option value="6">6+ people</option>
-                      </select>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-blue-800 mb-2">
-                        Preferred Start Date *
-                      </label>
-                      <input
-                        type="date"
-                        className="w-full px-4 py-3 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-blue-800 mb-2">
-                        Special Requests
-                      </label>
-                      <textarea
-                        rows={4}
-                        className="w-full px-4 py-3 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Dietary restrictions, medical conditions, or specific requests..."
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <input 
-                      type="checkbox" 
-                      id="terms" 
-                      className="rounded mt-1 border-blue-300 text-blue-600 focus:ring-blue-500" 
-                      required 
-                    />
-                    <label htmlFor="terms" className="text-sm text-blue-700">
-                      I agree to the terms and understand this is a challenging high-altitude trek.
-                    </label>
-                  </div>
-                  
-                  <Button
-                    className="w-full bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white py-4 text-lg rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-                    onClick={() => {
-                      setShowBookingForm(false);
-                      alert('Thank you! We will contact you within 24 hours.');
-                    }}
-                  >
-                    Submit Booking Request
-                  </Button>
-                  
-                  <p className="text-center text-sm text-blue-600">
-                    We'll confirm your booking within 24 hours
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* WhatsApp Floating Button */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+        className="fixed bottom-6 right-6 z-50"
+      >
+        <Button
+          onClick={handleWhatsAppBooking}
+          className="h-14 w-14 rounded-full bg-[#25D366] hover:bg-[#1da851] shadow-lg hover:shadow-xl transition-all duration-200"
+          size="icon"
+        >
+          <MessageCircle className="h-6 w-6 text-white" />
+        </Button>
+      </motion.div>
     </div>
   );
 };
 
-export default ManasluCircuitTrekPage;
+export default ManasluCircuitTrekPage;  

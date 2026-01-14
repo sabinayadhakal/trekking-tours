@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Star, Clock, MapPin } from "lucide-react"
+import { Star, Clock, MapPin, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -25,34 +25,15 @@ export default function ToursGrid({
     if (onTourSelect) onTourSelect(tour)
   }
 
-  const handleContactBooking = (tour: Tour) => {
-    // Create WhatsApp message with tour details
-    const message = `Hello! I'm interested in booking the tour: "${tour.title}" for $${tour.price}. Please provide more information.`;
-    
-    // Encode the message for URL
-    const encodedMessage = encodeURIComponent(message);
-    
-    // WhatsApp URL with phone number and message
-    const whatsappUrl = `https://wa.me/9779841376470?text=${encodedMessage}`;
-    
-    // Open WhatsApp in a new tab
-    window.open(whatsappUrl, '_blank');
-  }
-
   const TourCard = ({ tour }: { tour: Tour }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const handleCardClick = (e: React.MouseEvent) => {
-      // Prevent triggering if click originated from booking button
+      // Prevent triggering if click originated from buttons
       if ((e.target as HTMLElement).closest('[data-prevent-card-click]')) {
         return;
       }
       handleLearnMore(tour);
-    }
-
-    const handleBookingClick = (e: React.MouseEvent) => {
-      e.stopPropagation(); // Prevent card click from triggering
-      handleContactBooking(tour);
     }
 
     return (
@@ -138,18 +119,28 @@ export default function ToursGrid({
               className="flex-1 border-[#3C6AA6] text-[#3C6AA6] hover:bg-[#BFDFFF] hover:text-[#1F4880] transform transition-transform duration-300 hover:scale-105 text-xs sm:text-sm py-2"
               onClick={(e) => {
                 e.stopPropagation();
+                // Show highlights - you might want to implement a modal or different action
                 handleLearnMore(tour);
               }}
               data-prevent-card-click
             >
-              Learn More
+              <span className="flex items-center justify-center gap-1">
+                <span>Highlights</span>
+                <ChevronRight className="w-3 h-3" />
+              </span>
             </Button>
             <Button
-              className="flex-1 bg-[#3C6AA6] text-[#EAF2FF] hover:bg-[#1F4880] transform transition-transform duration-300 hover:scale-105 text-xs sm:text-sm py-2"
-              onClick={handleBookingClick}
+              className="flex-1 bg-gradient-to-r from-[#2C5282] to-[#4299E1] hover:from-[#3182CE] hover:to-[#63B3ED] text-white transform transition-transform duration-300 hover:scale-105 text-xs sm:text-sm py-2 border-0 shadow-md hover:shadow-lg"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleLearnMore(tour);
+              }}
               data-prevent-card-click
             >
-              Book on WhatsApp
+              <span className="flex items-center justify-center gap-1">
+                <span>See Full Details</span>
+                <ChevronRight className="w-3 h-3" />
+              </span>
             </Button>
           </div>
         </CardContent>
