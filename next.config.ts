@@ -41,72 +41,44 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   compress: true,
   
-  // Critical for SEO migration - FIXED REDIRECTS
+  // Critical for SEO migration - SIMPLIFIED REDIRECTS
   async redirects() {
     return [
-      // IMPORTANT: Redirects for static files FIRST
-      // These prevent the redirect loop
-      {
-        source: '/sitemap.xml',
-        has: [
-          {
-            type: 'host',
-            value: 'himkala.com',
-          },
-        ],
-        destination: '/sitemap.xml',
-        permanent: false,
-      },
-      {
-        source: '/robots.txt',
-        has: [
-          {
-            type: 'host',
-            value: 'himkala.com',
-          },
-        ],
-        destination: '/robots.txt',
-        permanent: false,
-      },
-      
-      // Redirect old domain to new primary domain (for everything else)
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'himkalaadventure.com',
-          },
-        ],
-        destination: 'https://himkala.com/:path*',
-        permanent: true,
-      },
-      
-      // Redirect www to non-www for primary domain
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.himkala.com',
-          },
-        ],
-        destination: 'https://himkala.com/:path*',
-        permanent: true,
-      },
-      
-      // Redirect www for old domain
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.himkalaadventure.com',
-          },
-        ],
-        destination: 'https://himkala.com/:path*',
-        permanent: true,
-      },
+      // OPTION 1: Use this if you want to handle ALL redirects manually
+      // Comment out the entire redirects function for now to test
+      // {
+      //   source: '/:path*',
+      //   has: [
+      //     {
+      //       type: 'host',
+      //       value: 'himkalaadventure.com',
+      //     },
+      //   ],
+      //   destination: 'https://himkala.com/:path*',
+      //   permanent: true,
+      // },
+      // {
+      //   source: '/:path*',
+      //   has: [
+      //     {
+      //       type: 'host',
+      //       value: 'www.himkala.com',
+      //     },
+      //   ],
+      //   destination: 'https://himkala.com/:path*',
+      //   permanent: true,
+      // },
+      // {
+      //   source: '/:path*',
+      //   has: [
+      //     {
+      //       type: 'host',
+      //       value: 'www.himkalaadventure.com',
+      //     },
+      //   ],
+      //   destination: 'https://himkala.com/:path*',
+      //   permanent: true,
+      // },
     ];
   },
 
