@@ -1,14 +1,25 @@
 "use client"
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Hero from "@/components/services/Hero";
 import ToursGrid from "@/components/services/TourGrid";
 import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
+// Helper function to create URL-friendly slugs
+const createSlug = (title: string) => {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/--+/g, '-');
+};
+
+// Insert your jungle safari tours array here
 const JUNGLE_SAFARI_TOURS: Tour[] = [
-  {
+   {
   "id": "1",
   "title": "Chitwan National Park Jungle Safari - 3 Days Wildlife Tour Nepal",
   "location": "Chitwan National Park, Nepal",
@@ -55,16 +66,46 @@ const JUNGLE_SAFARI_TOURS: Tour[] = [
   "permits": ["Chitwan National Park entry permit", "Buffer zone entry permit"],
   "equipment": ["Light cotton clothing", "Warm layers for evening", "Sunscreen and hat", "Insect repellent", "Camera with zoom lens", "Water bottle", "Comfortable walking shoes"],
 }
+  // Your jungle safari tours data here
+  // Example structure for reference:
+  // {
+  //   "id": "1",
+  //   "title": "Chitwan National Park Jungle Safari - 3 Days Wildlife Tour Nepal",
+  //   ... rest of the data
+  // }
 ];
 
-export default function HomePage() {
+export default function JungleSafariPage() {
   const [tours, setTours] = useState<Tour[]>([]);
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
-  // Add the hero image path here for jungle safari
-  const heroImage = "/images/jungle-safari-hero.jpg"; // Change this to your desired image path
+  const heroImage = "/images/jungle-safari-hero.jpg";
+
+  // Handle "See Full Details" button click - redirect to detail page
+  const handleSeeDetails = (tour: Tour) => {
+    // For Chitwan National Park Jungle Safari (id: "1"), route to specific URL
+    if (tour.id === "1") {
+      router.push("/services/jungle-safari/chitwan-national-park-jungle-safari");
+    } else {
+      // For other safaris, create slug from title
+      const slug = createSlug(tour.title);
+      router.push(`/services/jungle-safari/${slug}`);
+    }
+  };
+
+  // Handle "Highlights" button click - show modal
+  const handleHighlightsClick = (tour: Tour) => {
+    setSelectedTour(tour);
+    setIsModalOpen(true);
+  };
+
+  // Handle card click - redirect to detail page
+  const handleCardClick = (tour: Tour) => {
+    handleSeeDetails(tour); // Same as "See Full Details"
+  };
 
   // Load jungle safari tours
   useEffect(() => {
@@ -84,11 +125,6 @@ export default function HomePage() {
     loadTours();
   }, []);
 
-  const handleTourSelect = (tour: Tour) => {
-    setSelectedTour(tour);
-    setIsModalOpen(true);
-  };
-
   if (loading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
@@ -102,11 +138,10 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen">
-      {/* Updated Hero section with image for jungle safari */}
       <Hero 
         title="Chitwan Jungle Safari Experiences"
         description="Discover the wild heart of Nepal at Chitwan National Park, a UNESCO World Heritage Site. Encounter rare wildlife including one-horned rhinoceros, Bengal tigers, and over 500 bird species in their natural habitat."
-        backgroundImage={heroImage} // Add this line
+        backgroundImage={heroImage}
       />
       
       <section className="py-12 bg-muted/20">
@@ -114,7 +149,10 @@ export default function HomePage() {
           {tours.length > 0 ? (
             <ToursGrid
               tours={tours}
-              onTourSelect={handleTourSelect}
+              onCardClick={handleCardClick}
+              onHighlightsClick={handleHighlightsClick}
+              onSeeDetailsClick={handleSeeDetails}
+              className="py-4"
             />
           ) : (
             <div className="text-center py-12">
@@ -124,7 +162,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Additional sections can be added here */}
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Why Choose Our Chitwan Safaris?</h2>

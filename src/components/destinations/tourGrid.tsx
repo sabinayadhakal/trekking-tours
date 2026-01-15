@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { Star, Clock, MapPin, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -10,21 +9,19 @@ import { Tour } from '@/types/tour';
 
 interface ToursGridProps {
   tours: Tour[]
-  onTourSelect?: (tour: Tour) => void
+  onCardClick: (tour: Tour) => void
+  onHighlightsClick: (tour: Tour) => void
+  onSeeDetailsClick: (tour: Tour) => void
   className?: string
 }
 
 export default function ToursGrid({
   tours,
-  onTourSelect,
+  onCardClick,
+  onHighlightsClick,
+  onSeeDetailsClick,
   className = ""
 }: ToursGridProps) {
-  const router = useRouter()
-
-  const handleLearnMore = (tour: Tour) => {
-    if (onTourSelect) onTourSelect(tour)
-  }
-
   const TourCard = ({ tour }: { tour: Tour }) => {
     const [isHovered, setIsHovered] = useState(false);
 
@@ -33,7 +30,17 @@ export default function ToursGrid({
       if ((e.target as HTMLElement).closest('[data-prevent-card-click]')) {
         return;
       }
-      handleLearnMore(tour);
+      onCardClick(tour);
+    }
+
+    const handleSeeDetails = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      onSeeDetailsClick(tour);
+    }
+
+    const handleHighlights = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      onHighlightsClick(tour);
     }
 
     return (
@@ -112,16 +119,12 @@ export default function ToursGrid({
 
           <div 
             className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2"
-            data-prevent-card-click // Add this data attribute
+            data-prevent-card-click
           >
             <Button
               variant="outline"
               className="flex-1 border-[#3C6AA6] text-[#3C6AA6] hover:bg-[#BFDFFF] hover:text-[#1F4880] transform transition-transform duration-300 hover:scale-105 text-xs sm:text-sm py-2"
-              onClick={(e) => {
-                e.stopPropagation();
-                // Show highlights - you might want to implement a modal or different action
-                handleLearnMore(tour);
-              }}
+              onClick={handleHighlights}
               data-prevent-card-click
             >
               <span className="flex items-center justify-center gap-1">
@@ -131,10 +134,7 @@ export default function ToursGrid({
             </Button>
             <Button
               className="flex-1 bg-gradient-to-r from-[#2C5282] to-[#4299E1] hover:from-[#3182CE] hover:to-[#63B3ED] text-white transform transition-transform duration-300 hover:scale-105 text-xs sm:text-sm py-2 border-0 shadow-md hover:shadow-lg"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleLearnMore(tour);
-              }}
+              onClick={handleSeeDetails}
               data-prevent-card-click
             >
               <span className="flex items-center justify-center gap-1">

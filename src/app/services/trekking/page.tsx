@@ -1,15 +1,25 @@
 "use client"
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Hero from "@/components/services/Hero";
 import ToursGrid from "@/components/services/TourGrid";
 import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
-// Sample tours data (your existing TOURS array remains the same)
+// Helper function to create URL-friendly slugs
+const createSlug = (title: string) => {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/--+/g, '-');
+};
+
+// Insert your tours array here
 const TOURS: Tour[] = [
-{
+   {
 "id": "1",
 "title": "Manaslu Circuit Trek",
 "location": "Nepal",
@@ -1032,31 +1042,46 @@ const TOURS: Tour[] = [
   "equipment": ["Expedition-quality trekking boots", "Full camping gear if personal preferred", "Crampons and trekking poles", "4-Season sleeping bag (-15°C to -20°C)", "Down jacket, waterproof shell and pants", "Headlamp with extra batteries"],
   "entryRequirements": ["Valid Passport (6+ months validity)", "Nepal Visa (obtainable on arrival)", "Mandatory Comprehensive travel insurance covering emergency evacuation from remote areas and altitudes up to 5,000m"]
 }
-
-
-]
-
+  // Your tours data here - id 1 is "Manaslu Circuit Trek"
+];
 
 export default function HomePage() {
   const [tours] = useState<Tour[]>(TOURS);
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
-  // Add the hero image path here
-  const heroImage = "/images/trekking-hero.jpg"; // Change this to your desired image path
+  const heroImage = "/images/trekking-hero.jpg";
 
-  const handleTourSelect = (tour: Tour) => {
+  // Handle "See Full Details" button click - redirect to detail page
+  const handleSeeDetails = (tour: Tour) => {
+    // For Manaslu Circuit Trek (id: "1"), route to specific URL
+    if (tour.id === "1") {
+      router.push("/services/trekking/manaslu-circuit-trekking");
+    } else {
+      // For other tours, create slug from title
+      const slug = createSlug(tour.title);
+      router.push(`/services/trekking/${slug}`);
+    }
+  };
+
+  // Handle "Highlights" button click - show modal
+  const handleHighlightsClick = (tour: Tour) => {
     setSelectedTour(tour);
     setIsModalOpen(true);
   };
 
+  // Handle card click - redirect to detail page
+  const handleCardClick = (tour: Tour) => {
+    handleSeeDetails(tour); // Same as "See Full Details"
+  };
+
   return (
     <main className="min-h-screen">
-      {/* Updated Hero section with image */}
       <Hero 
         title="Nepal Trekking Adventures"
         description="Experience the ultimate Himalayan adventure with our comprehensive trekking options. From gentle cultural walks to challenging high-altitude treks and peak climbing expeditions, we offer guided experiences for every level of adventurer in Nepal's most spectacular mountain regions."
-        backgroundImage={heroImage} // Add this line
+        backgroundImage={heroImage}
       />
       
       <section className="py-12 bg-muted/20">
@@ -1064,7 +1089,10 @@ export default function HomePage() {
           {tours.length > 0 ? (
             <ToursGrid
               tours={tours}
-              onTourSelect={handleTourSelect}
+              onCardClick={handleCardClick}
+              onHighlightsClick={handleHighlightsClick}
+              onSeeDetailsClick={handleSeeDetails}
+              className="py-4"
             />
           ) : (
             <div className="text-center py-12">
@@ -1074,7 +1102,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Additional sections remain the same */}
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Trekking Regions of Nepal</h2>

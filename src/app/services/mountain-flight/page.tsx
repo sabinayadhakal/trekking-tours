@@ -1,14 +1,25 @@
 "use client"
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Hero from "@/components/services/Hero";
 import ToursGrid from "@/components/services/TourGrid";
 import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
+// Helper function to create URL-friendly slugs
+const createSlug = (title: string) => {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/--+/g, '-');
+};
+
+// Insert your mountain flight tours array here
 const MOUNTAIN_FLIGHT_TOURS: Tour[] = [
-  {
+   {
   "id": "1",
   "title": "Everest Mountain Flight",
   "location": "Himalayas, Nepal",
@@ -54,17 +65,46 @@ const MOUNTAIN_FLIGHT_TOURS: Tour[] = [
   "equipment": ["Camera with good zoom", "Sunglasses", "Warm clothing", "Passport/ID copy", "Binoculars (optional)", "Motion sickness medication if needed"],
 }
   
-  
+  // Your mountain flight tours data here
+  // Example structure for reference:
+  // {
+  //   "id": "1",
+  //   "title": "Everest Mountain Flight",
+  //   ... rest of the data
+  // }
 ];
 
-export default function HomePage() {
+export default function MountainFlightsPage() {
   const [tours, setTours] = useState<Tour[]>([]);
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
-  // Add the hero image path here for mountain flights
-  const heroImage = "/images/mountain-flight-hero.jpg"; // Change this to your desired image path
+  const heroImage = "/images/mountain-flight-hero.jpg";
+
+  // Handle "See Full Details" button click - redirect to detail page
+  const handleSeeDetails = (tour: Tour) => {
+    // For Everest Mountain Flight (id: "1"), route to specific URL
+    if (tour.id === "1") {
+      router.push("/services/mountain-flights/everest-mountain-flight");
+    } else {
+      // For other flights, create slug from title
+      const slug = createSlug(tour.title);
+      router.push(`/services/mountain-flights/${slug}`);
+    }
+  };
+
+  // Handle "Highlights" button click - show modal
+  const handleHighlightsClick = (tour: Tour) => {
+    setSelectedTour(tour);
+    setIsModalOpen(true);
+  };
+
+  // Handle card click - redirect to detail page
+  const handleCardClick = (tour: Tour) => {
+    handleSeeDetails(tour); // Same as "See Full Details"
+  };
 
   // Load mountain flight tours
   useEffect(() => {
@@ -84,11 +124,6 @@ export default function HomePage() {
     loadTours();
   }, []);
 
-  const handleTourSelect = (tour: Tour) => {
-    setSelectedTour(tour);
-    setIsModalOpen(true);
-  };
-
   if (loading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
@@ -102,11 +137,10 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen">
-      {/* Updated Hero section with image for mountain flights */}
       <Hero 
         title="Everest Mountain Flight Experience"
         description="Witness the majesty of Mount Everest and the Himalayan range from the air. This breathtaking one-hour flight offers unparalleled views of the world's highest peak without the strenuous trekking. A once-in-a-lifetime experience that will stay with you forever."
-        backgroundImage={heroImage} // Add this line
+        backgroundImage={heroImage}
       />
       
       <section className="py-12 bg-muted/20">
@@ -114,7 +148,10 @@ export default function HomePage() {
           {tours.length > 0 ? (
             <ToursGrid
               tours={tours}
-              onTourSelect={handleTourSelect}
+              onCardClick={handleCardClick}
+              onHighlightsClick={handleHighlightsClick}
+              onSeeDetailsClick={handleSeeDetails}
+              className="py-4"
             />
           ) : (
             <div className="text-center py-12">
@@ -124,7 +161,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Additional sections can be added here */}
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Why Choose Our Everest Mountain Flight?</h2>

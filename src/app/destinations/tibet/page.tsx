@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import Hero from "@/components/destinations/hero"
 import Notifications from "@/components/destinations/notifications"
 import ThemeProvider from "@/components/destinations/themeProvider"
@@ -8,15 +9,43 @@ import ToursGrid from "@/components/destinations/tourGrid"
 import TourDetailModal from "@/components/destinations/tourdetail"
 import { Tour } from "@/types/tour"
 
+// Helper function to create URL-friendly slugs
+const createSlug = (title: string) => {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/--+/g, '-')
+}
+
 export default function TibetPage() {
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [tours, setTours] = useState<Tour[]>([])
   const [loading, setLoading] = useState(true)
+  const router = useRouter()
+
+  // Handle "See Full Details" button click - redirect to detail page
+  const handleSeeDetails = (tour: Tour) => {
+    // Create slug from title for routing
+    const slug = createSlug(tour.title)
+    router.push(`/destinations/tibet/${slug}`)
+  }
+
+  // Handle "Highlights" button click - show modal
+  const handleHighlightsClick = (tour: Tour) => {
+    setSelectedTour(tour)
+    setIsModalOpen(true)
+  }
+
+  // Handle card click - redirect to detail page
+  const handleCardClick = (tour: Tour) => {
+    handleSeeDetails(tour) // Same as "See Full Details"
+  }
 
   // Mock Tibet tours data
   const mockTibetTours: Tour[] = [
-  {
+     {
   "id": "T1",
   "title": "Tibet Classic Cultural Tour",
   "location": "Lhasa, Tsedang, Gyatse, Shigatse",
@@ -843,9 +872,7 @@ export default function TibetPage() {
   "equipment": ["Warm sleeping bag (-15°C)", "Trekking poles", "High-altitude clothing", "Headlamp", "Water purification", "Personal medication"],
   
 }
-
-]
-
+  ]
 
   useEffect(() => {
     const loadTours = async () => {
@@ -862,11 +889,6 @@ export default function TibetPage() {
 
     loadTours()
   }, [])
-
-  const handleTourSelect = (tour: Tour) => {
-    setSelectedTour(tour)
-    setIsModalOpen(true)
-  }
 
   const handleModalClose = () => {
     setIsModalOpen(false)
@@ -905,7 +927,12 @@ export default function TibetPage() {
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-3xl font-bold mb-6 text-center">Popular Tibet Journeys</h2>
         {tours.length > 0 ? (
-          <ToursGrid tours={tours} onTourSelect={handleTourSelect} />
+          <ToursGrid 
+            tours={tours} 
+            onCardClick={handleCardClick}
+            onHighlightsClick={handleHighlightsClick}
+            onSeeDetailsClick={handleSeeDetails}
+          />
         ) : (
           <div className="text-center py-12">
             <p className="text-gray-500">No tours available at the moment.</p>
@@ -914,6 +941,78 @@ export default function TibetPage() {
             </p>
           </div>
         )}
+      </section>
+
+      {/* Additional sections for Tibet */}
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">Why Choose Our Tibet Tours?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto">
+                <span className="text-white font-bold">✓</span>
+              </div>
+              <h3 className="text-xl font-semibold">Permit Expertise</h3>
+              <p className="text-muted-foreground">
+                We handle all Tibet travel permits and paperwork for a hassle-free journey to the Roof of the World.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto">
+                <span className="text-white font-bold">✓</span>
+              </div>
+              <h3 className="text-xl font-semibold">Cultural Guides</h3>
+              <p className="text-muted-foreground">
+                Our Tibetan guides provide authentic insights into Buddhism, culture, and history.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto">
+                <span className="text-white font-bold">✓</span>
+              </div>
+              <h3 className="text-xl font-semibold">Altitude Care</h3>
+              <p className="text-muted-foreground">
+                We ensure proper acclimatization and provide oxygen support for high-altitude comfort.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-muted/40">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8">Tibet Travel Highlights</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="text-center p-6 bg-background rounded-lg shadow hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary font-bold">🏯</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Sacred Monasteries</h3>
+              <p className="text-muted-foreground">Ancient monasteries with centuries of spiritual heritage and living traditions</p>
+            </div>
+            <div className="text-center p-6 bg-background rounded-lg shadow hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary font-bold">🗻</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Himalayan Vistas</h3>
+              <p className="text-muted-foreground">Breathtaking views of Everest and other 8,000m peaks from Tibetan side</p>
+            </div>
+            <div className="text-center p-6 bg-background rounded-lg shadow hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary font-bold">🏔️</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">High Altitude Lakes</h3>
+              <p className="text-muted-foreground">Turquoise holy lakes like Yamdrok and sacred Lake Mansarovar</p>
+            </div>
+            <div className="text-center p-6 bg-background rounded-lg shadow hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary font-bold">🙏</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Pilgrimage Sites</h3>
+              <p className="text-muted-foreground">Mount Kailash and other sacred sites revered by multiple religions</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Trip Detail Modal */}

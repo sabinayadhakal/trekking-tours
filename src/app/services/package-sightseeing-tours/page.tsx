@@ -1,13 +1,23 @@
 "use client"
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Hero from "@/components/services/Hero";
 import ToursGrid from "@/components/services/TourGrid";
 import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
 
-// Mock package sightseeing tours data
+// Helper function to create URL-friendly slugs
+const createSlug = (title: string) => {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/--+/g, '-');
+};
+
+// Insert your package sightseeing tours array here
 const PACKAGE_SIGHTSEEING_TOURS: Tour[] = [
   {
   "id": "1",
@@ -353,16 +363,46 @@ const PACKAGE_SIGHTSEEING_TOURS: Tour[] = [
   "equipment": ["DSLR/Mirrorless camera with lenses", "Tripod (essential)", "Filters (polarizing, ND)", "Extra batteries and memory cards", "Laptop for editing (optional)", "Weather protection for gear"],
   "entryRequirements": ["Valid passport", "Nepal visa", "Equipment list for customs", "Insurance for camera gear recommended"]
 }
-]
+  // Your package sightseeing tours data here
+  // Example structure for reference:
+  // {
+  //   "id": "1",
+  //   "title": "Nepal Temples and Stupas Tour - 5 Days Spiritual Journey Kathmandu",
+  //   ... rest of the data
+  // }
+];
 
-export default function HomePage() {
+export default function PackageSightseeingPage() {
   const [tours, setTours] = useState<Tour[]>([]);
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
-  // Add the hero image path here for package tours
-  const heroImage = "/images/numbered-cards-package.jpg"; // Change this to your desired image path
+  const heroImage = "/images/numbered-cards-package.jpg";
+
+  // Handle "See Full Details" button click - redirect to detail page
+  const handleSeeDetails = (tour: Tour) => {
+    // For Nepal Temples and Stupas Tour (id: "1"), route to specific URL
+    if (tour.id === "1") {
+      router.push("/services/package-tours/nepal-temples-and-stupas-tour");
+    } else {
+      // For other tours, create slug from title
+      const slug = createSlug(tour.title);
+      router.push(`/services/package-tours/${slug}`);
+    }
+  };
+
+  // Handle "Highlights" button click - show modal
+  const handleHighlightsClick = (tour: Tour) => {
+    setSelectedTour(tour);
+    setIsModalOpen(true);
+  };
+
+  // Handle card click - redirect to detail page
+  const handleCardClick = (tour: Tour) => {
+    handleSeeDetails(tour); // Same as "See Full Details"
+  };
 
   // Load package sightseeing tours
   useEffect(() => {
@@ -382,11 +422,6 @@ export default function HomePage() {
     loadTours();
   }, []);
 
-  const handleTourSelect = (tour: Tour) => {
-    setSelectedTour(tour);
-    setIsModalOpen(true);
-  };
-
   if (loading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
@@ -400,11 +435,10 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen">
-      {/* Updated Hero section with image for package tours */}
       <Hero 
         title="Nepal Package Sightseeing Tours"
         description="Discover the diverse beauty of Nepal with our carefully curated package tours. From cultural heritage sites and spiritual journeys to family adventures and photography expeditions, we offer comprehensive experiences that showcase the best of Nepal's treasures."
-        backgroundImage={heroImage} // Add this line
+        backgroundImage={heroImage}
       />
       
       <section className="py-12 bg-muted/20">
@@ -412,7 +446,10 @@ export default function HomePage() {
           {tours.length > 0 ? (
             <ToursGrid
               tours={tours}
-              onTourSelect={handleTourSelect}
+              onCardClick={handleCardClick}
+              onHighlightsClick={handleHighlightsClick}
+              onSeeDetailsClick={handleSeeDetails}
+              className="py-4"
             />
           ) : (
             <div className="text-center py-12">
@@ -422,7 +459,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Additional sections can be added here */}
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Why Choose Our Package Tours?</h2>

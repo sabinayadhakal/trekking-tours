@@ -1,11 +1,21 @@
 "use client"
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Hero from "@/components/services/Hero";
 import ToursGrid from "@/components/services/TourGrid";
 import TourDetailModal from "@/components/services/TourDetailModal";
 import Notifications from "@/components/services/Notifications";
 import { Tour } from "@/types/tour";
+
+// Helper function to create URL-friendly slugs
+const createSlug = (title: string) => {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/--+/g, '-');
+};
 
 // Mock day sightseeing tours data
 const DAY_SIGHTSEEING_TOURS: Tour[] = [
@@ -303,19 +313,34 @@ const DAY_SIGHTSEEING_TOURS: Tour[] = [
   "equipment": ["Comfortable walking shoes", "Water bottle", "Camera", "Sun protection", "Light jacket"],
   "entryRequirements": ["Valid Passport", "Nepal Visa (obtainable on arrival)"]
 }
-
-  
-]
-
+];
 
 export default function DaySightseeingPage() {
   const [tours, setTours] = useState<Tour[]>([]);
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
-  // Add the hero image path here for cultural tours
-  const heroImage = "/images/day-sightseeing-hero.jpg"; // Change this to your desired image path
+  const heroImage = "/images/day-sightseeing-hero.jpg";
+
+  // Handle "See Full Details" button click - redirect to detail page
+  const handleSeeDetails = (tour: Tour) => {
+    // Create slug from title for routing
+    const slug = createSlug(tour.title);
+    router.push(`/services/day-sightseeing/${slug}`);
+  };
+
+  // Handle "Highlights" button click - show modal
+  const handleHighlightsClick = (tour: Tour) => {
+    setSelectedTour(tour);
+    setIsModalOpen(true);
+  };
+
+  // Handle card click - redirect to detail page
+  const handleCardClick = (tour: Tour) => {
+    handleSeeDetails(tour); // Same as "See Full Details"
+  };
 
   // Load day sightseeing tours
   useEffect(() => {
@@ -335,11 +360,6 @@ export default function DaySightseeingPage() {
     loadTours();
   }, []);
 
-  const handleTourSelect = (tour: Tour) => {
-    setSelectedTour(tour);
-    setIsModalOpen(true);
-  };
-
   if (loading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
@@ -353,11 +373,10 @@ export default function DaySightseeingPage() {
 
   return (
     <main className="min-h-screen">
-      {/* Updated Hero section with image for cultural tours */}
       <Hero 
         title="Kathmandu Cultural Tours"
         description="Discover the rich heritage of the Kathmandu Valley with our curated cultural tours. Explore ancient temples, medieval palaces, and vibrant local traditions with expert guides."
-        backgroundImage={heroImage} // Add this line
+        backgroundImage={heroImage}
       />
       
       <section className="py-12 bg-muted/20">
@@ -365,7 +384,10 @@ export default function DaySightseeingPage() {
           {tours.length > 0 ? (
             <ToursGrid
               tours={tours}
-              onTourSelect={handleTourSelect}
+              onCardClick={handleCardClick}
+              onHighlightsClick={handleHighlightsClick}
+              onSeeDetailsClick={handleSeeDetails}
+              className="py-4"
             />
           ) : (
             <div className="text-center py-12">
@@ -375,7 +397,6 @@ export default function DaySightseeingPage() {
         </div>
       </section>
 
-      {/* Additional sections remain the same */}
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Why Choose Our Cultural Tours?</h2>

@@ -3,13 +3,14 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Search, ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // ---------------- CONFIG ----------------
 const NAV_LOGO = { url: "/", src: "/images/himkala-logo.png", alt: "Logo" };
 const NAV_ITEMS = [
-  { name: "Home", link: "/" },
+    { name: "Home", link: "/" },
+
   { name: "Our Story", link: "/about-us" },
   {
     name: "Destinations",
@@ -40,6 +41,9 @@ const NAV_ITEMS = [
 const WHATSAPP_NUMBER = "+9779841376470";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}`;
 
+// Search configuration
+const SEARCH_PLACEHOLDER = "Search adventures, destinations...";
+
 // ---------------- ANIMATED HAMBURGER ----------------
 const AnimatedHamburger = ({ isOpen }: { isOpen: boolean }) => (
   <div className="relative h-8 w-8 flex items-center justify-center">
@@ -67,13 +71,250 @@ const WhatsAppIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
   </svg>
 );
 
+// Search Modal Component with Browser Compatibility
+const SearchModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [recentSearches, setRecentSearches] = useState<string[]>(["Bhutan", "Trekking", "Kathmandu"]);
+  const [popularSearches] = useState(["Everest Base Camp", "Annapurna Circuit", "Cultural Tours", "Jungle Safari"]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // Add to recent searches
+      if (!recentSearches.includes(searchQuery)) {
+        setRecentSearches([searchQuery, ...recentSearches.slice(0, 4)]);
+      }
+      // Navigate to search results
+      window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`;
+    }
+  };
+
+  // Helper function to get quick results
+  const getQuickResults = () => {
+    if (!searchQuery.trim()) return [];
+    
+    const results: { name: string; link: string; category: string }[] = [];
+    const query = searchQuery.toLowerCase();
+    
+    NAV_ITEMS.forEach(item => {
+      // Check if item has children
+      if ('children' in item && item.children) {
+        // Filter children that match the search query
+        item.children.forEach(child => {
+          if (child.name.toLowerCase().includes(query)) {
+            results.push({
+              name: child.name,
+              link: child.link,
+              category: item.name
+            });
+          }
+        });
+      } else {
+        // Check main nav item
+        if (item.name.toLowerCase().includes(query)) {
+          results.push({
+            name: item.name,
+            link: item.link || '#',
+            category: 'Navigation'
+          });
+        }
+      }
+    });
+    
+    return results.slice(0, 5);
+  };
+
+  const quickResults = getQuickResults();
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-[9999] flex items-start justify-center pt-32 md:pt-40 px-4"
+          onClick={onClose}
+          style={{
+            backgroundColor: 'rgba(15, 23, 42, 0.95)', // Fallback for backdrop
+          }}
+        >
+          {/* Backdrop - Simple solid color for compatibility */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 bg-slate-900"
+            style={{
+              opacity: 0.95, // Manual opacity for older browsers
+            }}
+          />
+          
+          {/* Search Modal - No backdrop-blur for compatibility */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -10 }}
+            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+            className="relative w-full max-w-3xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Search Input Container */}
+            <div className="relative bg-slate-800 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden">
+              {/* Decorative elements - Simple gradients for compatibility */}
+              <div 
+                className="absolute -top-10 -right-10 w-40 h-40 rounded-full"
+                style={{
+                  background: 'radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, rgba(249, 115, 22, 0.05) 70%, transparent 100%)',
+                  filter: 'blur(20px)',
+                }}
+              />
+              <div 
+                className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full"
+                style={{
+                  background: 'radial-gradient(circle, rgba(52, 211, 153, 0.1) 0%, rgba(6, 182, 212, 0.05) 70%, transparent 100%)',
+                  filter: 'blur(20px)',
+                }}
+              />
+              
+              {/* Search Input */}
+              <form onSubmit={handleSearch} className="relative px-4 py-4 md:px-6 md:py-5">
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder={SEARCH_PLACEHOLDER}
+                    autoFocus
+                    className="w-full px-12 py-3 md:py-4 text-lg md:text-xl bg-slate-900 rounded-xl shadow-inner border border-slate-600 focus:border-amber-500 focus:outline-none focus:shadow-[0_0_0_3px_rgba(245,158,11,0.1)] text-white placeholder-slate-400 font-medium transition-all duration-200"
+                    style={{
+                      // Fallback for focus ring
+                      boxShadow: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.3)',
+                    }}
+                  />
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-400 w-5 h-5 md:w-6 md:h-6" />
+                  <button
+                    type="submit"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white p-2 rounded-lg transition-all duration-200 hover:scale-105 shadow-md"
+                    aria-label="Search"
+                    style={{
+                      background: 'linear-gradient(to right, #f59e0b, #f97316)', // Fallback gradient
+                    }}
+                  >
+                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                  </button>
+                </div>
+
+                {/* Quick tips */}
+                <div className="flex items-center gap-2 mt-3 text-slate-300 text-sm">
+                  <Sparkles className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                  <span>Try: "Everest", "Trekking", "Culture"</span>
+                </div>
+              </form>
+
+              {/* Search Suggestions */}
+              {(searchQuery.trim() || recentSearches.length > 0) && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="px-4 pb-4 md:px-6 md:pb-6 border-t border-slate-700"
+                >
+                  {/* Recent Searches */}
+                  {recentSearches.length > 0 && !searchQuery.trim() && (
+                    <div>
+                      <h3 className="text-sm font-semibold text-slate-300 mb-2">
+                        RECENT SEARCHES
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {recentSearches.map((term, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setSearchQuery(term)}
+                            className="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg text-sm transition-all duration-200 hover:scale-105 border border-slate-600"
+                          >
+                            {term}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Popular Searches */}
+                  <div className="mt-4">
+                    <h3 className="text-sm font-semibold text-slate-300 mb-2">
+                      POPULAR ADVENTURES
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {popularSearches.map((term, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setSearchQuery(term)}
+                          className="px-3 py-1.5 bg-gradient-to-r from-emerald-900/30 to-cyan-900/30 hover:from-emerald-800/40 hover:to-cyan-800/40 text-white rounded-lg text-sm transition-all duration-200 hover:scale-105 border border-emerald-800/30"
+                          style={{
+                            background: 'linear-gradient(to right, rgba(6, 78, 59, 0.3), rgba(21, 94, 117, 0.3))',
+                          }}
+                        >
+                          {term}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Quick Results */}
+                  {searchQuery.trim() && quickResults.length > 0 && (
+                    <div className="mt-4">
+                      <h3 className="text-sm font-semibold text-slate-300 mb-2">
+                        QUICK RESULTS
+                      </h3>
+                      <div className="space-y-2">
+                        {quickResults.map((result, index) => (
+                          <Link
+                            key={index}
+                            href={result.link}
+                            onClick={onClose}
+                            className="flex items-center justify-between p-3 hover:bg-slate-700/50 rounded-lg group transition-all duration-200 border border-slate-700 hover:border-amber-500/30"
+                          >
+                            <div>
+                              <div className="font-medium text-white">{result.name}</div>
+                              <div className="text-xs text-slate-400">{result.category}</div>
+                            </div>
+                            <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-amber-400 transition-colors" />
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+            </div>
+
+            {/* Close button */}
+            <button
+              onClick={onClose}
+              className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 text-slate-400 hover:text-white transition-colors text-sm flex items-center gap-2 whitespace-nowrap"
+            >
+              <span>Press ESC to close</span>
+              <span className="text-xs">•</span>
+              <span>or click anywhere</span>
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 // ---------------- MOBILE NAV ----------------
 const MobileNav = ({
   activeItem,
   setActiveItem,
+  onSearchOpen,
 }: {
   activeItem: string;
   setActiveItem: (item: string) => void;
+  onSearchOpen: () => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -89,7 +330,6 @@ const MobileNav = ({
       const navbar = navbarRef.current;
       
       if (navbar) {
-        // Only apply transform when scrolled down, not at the top
         if (currentScrollY > 10) {
           const scrollProgress = Math.min((currentScrollY - 10) / 140, 1);
           const easeOutQuart = 1 - Math.pow(1 - scrollProgress, 4);
@@ -98,7 +338,6 @@ const MobileNav = ({
           navbar.style.transform = `translateY(${translateY}%)`;
           setIsScrolled(true);
         } else {
-          // At the top - reset transform completely
           navbar.style.transform = `translateY(0%)`;
           setIsScrolled(false);
         }
@@ -145,23 +384,39 @@ const MobileNav = ({
             alt={NAV_LOGO.alt}
             className="object-contain h-35 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] transition-opacity duration-300"
             style={{
-              opacity: isScrolled ? 0.7 : 1, // Slight opacity change instead of jump
+              opacity: isScrolled ? 0.7 : 1,
             }}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           />
         </Link>
 
-        {/* Hamburger + Menu Title */}
-        <div className="flex justify-between items-center px-4 py-2 w-full bg-[#111827] -mt-11">
+        {/* Hamburger + Menu Title + Search Button */}
+        <div className="flex justify-between items-center px-4 py-2 w-full bg-slate-900 -mt-11">
           <span className="text-neutral-50 font-semibold text-3xl">Menu</span>
-          <button onClick={() => setIsOpen(true)}>
-            <AnimatedHamburger isOpen={isOpen} />
-          </button>
+          <div className="flex items-center gap-4">
+            {/* Search Button - Compatible Design */}
+            <motion.button
+              onClick={onSearchOpen}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative p-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-amber-500 shadow-lg transition-all duration-200 group"
+              aria-label="Search"
+              style={{
+                background: '#1e293b',
+              }}
+            >
+              <Search className="w-6 h-6 text-amber-400" />
+            </motion.button>
+            
+            <button onClick={() => setIsOpen(true)}>
+              <AnimatedHamburger isOpen={isOpen} />
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Spacer to prevent content jump - adjusted height */}
+      {/* Spacer to prevent content jump */}
       <div className="h-32" />
 
       {/* Mobile Menu Overlay */}
@@ -173,7 +428,7 @@ const MobileNav = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-0 bg-[#1F2937] z-50 flex flex-col max-h-[80vh] overflow-y-auto"
+            className="fixed inset-0 bg-slate-900 z-50 flex flex-col max-h-[80vh] overflow-y-auto"
           >
             {/* Close Button */}
             <div className="flex justify-end p-4">
@@ -183,7 +438,25 @@ const MobileNav = ({
             </div>
 
             {/* Nav Items */}
-            <ul className="flex flex-col gap-4 p-4 text-neutral-50 text-lg font-semibold">
+            <ul className="flex flex-col gap-3 p-4 text-neutral-50 text-lg font-semibold">
+              {/* Search Button in Menu */}
+              <li>
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    setTimeout(() => onSearchOpen(), 100);
+                  }}
+                  className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-amber-900/40 to-orange-900/40 hover:from-amber-800/50 hover:to-orange-800/50 text-amber-300 px-4 py-3 rounded-xl transition-all duration-200 border border-amber-800/40 hover:border-amber-700/60 group"
+                  style={{
+                    background: 'linear-gradient(to right, rgba(120, 53, 15, 0.4), rgba(124, 45, 18, 0.4))',
+                  }}
+                >
+                  <Search className="w-5 h-5" />
+                  <span>Explore Adventures</span>
+                  <Sparkles className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                </button>
+              </li>
+
               {NAV_ITEMS.map((item) =>
                 "children" in item && item.children ? (
                   <li key={item.name}>
@@ -191,17 +464,17 @@ const MobileNav = ({
                       onClick={() =>
                         setActiveItem(activeItem === item.name ? "" : item.name)
                       }
-                      className={`w-full text-left px-4 py-3 rounded-lg flex justify-between items-center transition-colors ${
+                      className={`w-full text-left px-4 py-3 rounded-lg flex justify-between items-center transition-colors border ${
                         activeItem === item.name
-                          ? "bg-blue-600 text-white"
-                          : "bg-gray-800 hover:bg-gray-700"
+                          ? "bg-amber-900/30 text-amber-300 border-amber-700/40"
+                          : "bg-slate-800 hover:bg-slate-700 border-slate-700"
                       }`}
                     >
                       {item.name}
                       <ChevronDown
                         size={20}
-                        className={`transition-transform duration-300 ${
-                          activeItem === item.name ? "rotate-180" : "rotate-0"
+                        className={`transition-transform duration-200 ${
+                          activeItem === item.name ? "rotate-180 text-amber-300" : "rotate-0"
                         }`}
                       />
                     </button>
@@ -215,7 +488,7 @@ const MobileNav = ({
                                 setActiveItem("");
                                 setIsOpen(false);
                               }}
-                              className="block py-3 px-4 rounded-lg bg-blue-900/40 hover:bg-blue-800/60 text-white transition-colors"
+                              className="block py-3 px-4 rounded-lg bg-amber-900/20 hover:bg-amber-800/30 text-white transition-all duration-200 border border-amber-800/30 hover:border-amber-700/50"
                             >
                               {child.name}
                             </Link>
@@ -232,7 +505,7 @@ const MobileNav = ({
                         setActiveItem(item.name);
                         setIsOpen(false);
                       }}
-                      className="w-full block bg-gray-800 hover:bg-gray-700 px-4 py-3 rounded-lg text-left transition-colors"
+                      className="w-full block bg-slate-800 hover:bg-slate-700 px-4 py-3 rounded-lg text-left transition-colors border border-slate-700"
                     >
                       {item.name}
                     </Link>
@@ -247,7 +520,7 @@ const MobileNav = ({
                   onClick={() => setIsOpen(false)}
                   className="w-full block"
                 >
-                  <Button className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-300 cursor-pointer">
+                  <Button className="w-full h-14 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-200 cursor-pointer border border-amber-500/50">
                     Start Your Journey
                   </Button>
                 </Link>
@@ -257,7 +530,7 @@ const MobileNav = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="w-full h-14 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-300 cursor-pointer"
+                  className="w-full h-14 flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-200 cursor-pointer border border-emerald-500/50"
                 >
                   <WhatsAppIcon className="w-7 h-7" />
                   WhatsApp Us
@@ -274,167 +547,176 @@ const MobileNav = ({
 // ---------------- DESKTOP NAV + HEADER ----------------
 const AnimatedIndicatorNavbar = () => {
   const [activeItem, setActiveItem] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50">
-      {/* Floating background shapes — only visible on desktop */}
-      <div className="hidden lg:block absolute inset-0 -z-10 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-slate-600/20 animate-floatSlow" />
-        <div className="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-slate-400/30 animate-floatMedium" />
-        <div className="absolute bottom-1/4 left-1/3 w-4 h-4 rounded-full bg-white/10 animate-floatFast" />
-      </div>
-
-      <div className="hidden lg:flex justify-between items-center px-12 py-4 shadow-md h-32">
-        {/* Logo + slogan */}
-        <div className="flex items-center gap-6 pl-8">
-          <Link href="/">
-            <motion.img
-              src={NAV_LOGO.src}
-              alt={NAV_LOGO.alt}
-              className="w-auto cursor-pointer drop-shadow-[0_0_20px_rgba(255,255,255,0.6)] rounded-lg"
-              style={{ height: "200px" }}
-              whileHover={{ scale: 1.05 }}
-            />
-          </Link>
-          <motion.div className="text-white font-mono text-shadow-2xs overflow-hidden whitespace-nowrap">
-            {"with each trip comes a new optimism...".split("").map((char, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, y: -5 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: index * 0.05,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  repeatDelay: 2,
-                }}
-              >
-                {char}
-              </motion.span>
-            ))}
-          </motion.div>
+    <>
+      <header className="fixed top-0 w-full z-50">
+        {/* Floating background shapes */}
+        <div className="hidden lg:block absolute inset-0 -z-10 overflow-hidden bg-slate-900">
+          <div className="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-slate-700/30" />
+          <div className="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-slate-600/40" />
+          <div className="absolute bottom-1/4 left-1/3 w-4 h-4 rounded-full bg-white/10" />
         </div>
 
-        {/* Nav Menu */}
-        <nav className="flex gap-8 items-center relative">
-          {NAV_ITEMS.map((item) =>
-            "children" in item && item.children ? (
-              <div
-                key={item.name}
-                className="relative"
-                onMouseEnter={() => setActiveItem(item.name)}
-                onMouseLeave={() => setActiveItem("")}
-              >
-                <motion.span
-                  className={`cursor-pointer font-semibold text-xl transition-colors duration-200 ${
-                    activeItem === item.name ? "text-blue-400" : "text-white hover:text-blue-400"
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  {item.name}
-                </motion.span>
-
-                <AnimatePresence>
-                  {activeItem === item.name && (
-                    <motion.ul
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute left-0 mt-2 w-64 bg-[#1F2937] shadow-lg rounded-md z-50"
-                    >
-                      {item.children.map((child, index) => (
-                        <motion.li
-                          key={child.name}
-                          className="px-4 py-3 hover:bg-blue-800/30 rounded-md transition-colors"
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.05 * index }}
-                          whileHover={{ scale: 1.03 }}
-                        >
-                          <Link
-                            href={child.link}
-                            className="text-white font-medium text-lg block cursor-pointer"
-                          >
-                            {child.name}
-                          </Link>
-                        </motion.li>
-                      ))}
-                    </motion.ul>
-                  )}
-                </AnimatePresence>
-              </div>
-            ) : (
-              <motion.div
-                key={item.name}
+        <div className="hidden lg:flex justify-between items-center px-8 py-4 shadow-md h-32">
+          {/* Logo + slogan */}
+          <div className="flex items-center gap-6 pl-4">
+            <Link href="/">
+              <motion.img
+                src={NAV_LOGO.src}
+                alt={NAV_LOGO.alt}
+                className="w-auto cursor-pointer rounded-lg"
+                style={{ height: "180px" }}
                 whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <Link
-                  href={item.link || "#"}
-                  className={`font-semibold text-xl transition-colors duration-200 ${
-                    activeItem === item.name ? "text-blue-400" : "text-white hover:text-blue-400"
-                  } cursor-pointer`}
+              />
+            </Link>
+            <motion.div className="text-white font-mono text-sm md:text-base overflow-hidden whitespace-nowrap">
+              {"with each trip comes a new optimism...".split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: index * 0.05,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    repeatDelay: 2,
+                  }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Nav Menu */}
+          <nav className="flex gap-6 items-center relative">
+            {NAV_ITEMS.map((item) =>
+              "children" in item && item.children ? (
+                <div
+                  key={item.name}
+                  className="relative"
                   onMouseEnter={() => setActiveItem(item.name)}
                   onMouseLeave={() => setActiveItem("")}
                 >
-                  {item.name}
+                  <motion.span
+                    className={`cursor-pointer font-semibold text-lg transition-colors duration-200 ${
+                      activeItem === item.name ? "text-amber-400" : "text-white hover:text-amber-400"
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    {item.name}
+                  </motion.span>
+
+                  <AnimatePresence>
+                    {activeItem === item.name && (
+                      <motion.ul
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute left-0 mt-2 w-64 bg-slate-800 shadow-2xl rounded-lg z-50 border border-slate-700"
+                      >
+                        {item.children.map((child, index) => (
+                          <motion.li
+                            key={child.name}
+                            className="px-4 py-3 hover:bg-slate-700 rounded-md transition-colors border-b border-slate-700/50 last:border-0"
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.05 * index }}
+                            whileHover={{ scale: 1.02 }}
+                          >
+                            <Link
+                              href={child.link}
+                              className="text-white font-medium text-base block cursor-pointer hover:text-amber-300 transition-colors"
+                            >
+                              {child.name}
+                            </Link>
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <motion.div
+                  key={item.name}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <Link
+                    href={item.link || "#"}
+                    className={`font-semibold text-lg transition-colors duration-200 ${
+                      activeItem === item.name ? "text-amber-400" : "text-white hover:text-amber-400"
+                    } cursor-pointer`}
+                    onMouseEnter={() => setActiveItem(item.name)}
+                    onMouseLeave={() => setActiveItem("")}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              )
+            )}
+
+            {/* CTA Buttons */}
+            <div className="flex items-center gap-3">
+              {/* Search Button - Compatible Design */}
+              <motion.button
+                onClick={() => setIsSearchOpen(true)}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg shadow-lg transition-all duration-200 cursor-pointer border border-slate-700 hover:border-amber-500 group"
+                aria-label="Search"
+                style={{
+                  background: '#1e293b',
+                }}
+              >
+                <Search className="w-4 h-4 text-amber-400" />
+                <span className="font-medium text-sm">Search</span>
+              </motion.button>
+
+              {/* WhatsApp Button */}
+              <motion.a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 text-white rounded-full shadow-lg transition-all duration-200 cursor-pointer border border-emerald-500/50"
+                aria-label="Contact via WhatsApp"
+                style={{
+                  background: 'linear-gradient(135deg, #059669, #047857)',
+                }}
+              >
+                <WhatsAppIcon className="w-7 h-7" />
+              </motion.a>
+
+              {/* Contact Button */}
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                <Link href="/contact">
+                  <Button className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold text-base px-5 py-3 rounded-lg shadow-lg transition-all duration-200 cursor-pointer border border-amber-500/50">
+                    Plan your Trip
+                  </Button>
                 </Link>
               </motion.div>
-            )
-          )}
+            </div>
+          </nav>
+        </div>
 
-          {/* CTA Buttons */}
-          <div className="flex items-center gap-4">
-            {/* WhatsApp Button */}
-            <motion.a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center w-14 h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg transition-all duration-300 cursor-pointer"
-              aria-label="Contact via WhatsApp"
-            >
-              <WhatsAppIcon className="w-8 h-8" />
-            </motion.a>
+        {/* Mobile Nav */}
+        <div className="lg:hidden">
+          <MobileNav 
+            activeItem={activeItem} 
+            setActiveItem={setActiveItem} 
+            onSearchOpen={() => setIsSearchOpen(true)} 
+          />
+        </div>
+      </header>
 
-            {/* Contact Button */}
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Link href="/contact">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-6 py-4 rounded-lg shadow-lg transition-all duration-300 cursor-pointer">
-                  Plan your Trip
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
-        </nav>
-      </div>
-
-      {/* Mobile Nav */}
-      <div className="lg:hidden">
-        <MobileNav activeItem={activeItem} setActiveItem={setActiveItem} />
-      </div>
-
-      {/* Floating animations */}
-      <style jsx>{`
-        @keyframes floatSlow {
-          0%, 100% { transform: translateY(0) translateX(0); }
-          50% { transform: translateY(-30px) translateX(20px); }
-        }
-        @keyframes floatMedium {
-          0%, 100% { transform: translateY(0) translateX(0); }
-          50% { transform: translateY(-20px) translateX(-15px); }
-        }
-        @keyframes floatFast {
-          0%, 100% { transform: translateY(0) translateX(0); }
-          50% { transform: translateY(-15px) translateX(10px); }
-        }
-        .animate-floatSlow { animation: floatSlow 8s ease-in-out infinite; }
-        .animate-floatMedium { animation: floatMedium 6s ease-in-out infinite; }
-        .animate-floatFast { animation: floatFast 4s ease-in-out infinite; }
-      `}</style>
-    </header>
+      {/* Search Modal */}
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+    </>
   );
 };
 
