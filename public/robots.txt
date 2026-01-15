@@ -19,9 +19,8 @@ Host: https://himkala.com
 # Crawl delay to prevent server overload
 Crawl-delay: 3
 
-# Sitemaps
+# Sitemap
 Sitemap: https://himkala.com/sitemap.xml
-Sitemap: https://himkala.com/sitemap-0.xml
 
 # Google-specific instructions
 User-agent: Googlebot
