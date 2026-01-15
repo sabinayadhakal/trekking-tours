@@ -377,19 +377,68 @@ const MobileNav = ({
           perspective: 1000,
         }}
       >
-        {/* Logo */}
-        <Link href={NAV_LOGO.url}>
-          <motion.img
-            src={NAV_LOGO.src}
-            alt={NAV_LOGO.alt}
-            className="object-contain h-35 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] transition-opacity duration-300"
-            style={{
-              opacity: isScrolled ? 0.7 : 1,
-            }}
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          />
-        </Link>
+        {/* Logo - Enhanced with #C5E0ED shadow */}
+        <div className="relative">
+          <Link href={NAV_LOGO.url}>
+            <motion.img
+              src={NAV_LOGO.src}
+              alt={NAV_LOGO.alt}
+              className="object-contain h-35 transition-all duration-300 relative z-10"
+              style={{
+                opacity: 1,
+                filter: isScrolled 
+                  ? 'drop-shadow(0 0 15px rgba(197, 224, 237, 0.7)) brightness(1.1)' 
+                  : 'drop-shadow(0 0 25px rgba(197, 224, 237, 0.9)) brightness(1.2)',
+              }}
+              whileHover={{ 
+                scale: 1.1,
+                filter: 'drop-shadow(0 0 35px rgba(197, 224, 237, 1)) brightness(1.3)'
+              }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 400, 
+                damping: 17,
+                filter: { duration: 0.3 }
+              }}
+            />
+            
+            {/* Glow effect behind logo with #C5E0ED */}
+            {!isScrolled && (
+              <motion.div
+                className="absolute inset-0 rounded-full blur-xl"
+                style={{
+                  background: 'radial-gradient(circle at center, rgba(197, 224, 237, 0.4) 0%, transparent 70%)',
+                }}
+                animate={{
+                  opacity: [0.3, 0.7, 0.3],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            )}
+            
+            {/* Additional outer glow */}
+            <motion.div
+              className="absolute -inset-4 rounded-full blur-2xl -z-10"
+              style={{
+                background: 'radial-gradient(circle at center, rgba(197, 224, 237, 0.2) 0%, transparent 80%)',
+              }}
+              animate={{
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+            />
+          </Link>
+        </div>
 
         {/* Hamburger + Menu Title + Search Button */}
         <div className="flex justify-between items-center px-4 py-2 w-full bg-slate-900 -mt-11">
@@ -552,25 +601,99 @@ const AnimatedIndicatorNavbar = () => {
   return (
     <>
       <header className="fixed top-0 w-full z-50">
-        {/* Floating background shapes */}
+        {/* Floating background shapes with #C5E0ED accents */}
         <div className="hidden lg:block absolute inset-0 -z-10 overflow-hidden bg-slate-900">
-          <div className="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-slate-700/30" />
-          <div className="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-slate-600/40" />
-          <div className="absolute bottom-1/4 left-1/3 w-4 h-4 rounded-full bg-white/10" />
+          <div className="absolute top-1/4 left-1/4 w-8 h-8 rounded-full" style={{ background: 'rgba(197, 224, 237, 0.2)' }} />
+          <div className="absolute top-1/3 right-1/4 w-6 h-6 rounded-full" style={{ background: 'rgba(197, 224, 237, 0.3)' }} />
+          <div className="absolute bottom-1/4 left-1/3 w-4 h-4 rounded-full" style={{ background: 'rgba(197, 224, 237, 0.4)' }} />
+          
+          {/* Animated floating particles */}
+          <motion.div
+            className="absolute top-1/5 right-1/5 w-2 h-2 rounded-full"
+            style={{ background: 'rgba(197, 224, 237, 0.5)' }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 0.7, 0.3],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/3 left-1/5 w-3 h-3 rounded-full"
+            style={{ background: 'rgba(197, 224, 237, 0.4)' }}
+            animate={{
+              y: [0, 15, 0],
+              opacity: [0.4, 0.8, 0.4],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
         </div>
 
         <div className="hidden lg:flex justify-between items-center px-8 py-4 shadow-md h-32">
-          {/* Logo + slogan */}
-          <div className="flex items-center gap-6 pl-4">
-            <Link href="/">
-              <motion.img
-                src={NAV_LOGO.src}
-                alt={NAV_LOGO.alt}
-                className="w-auto cursor-pointer rounded-lg"
-                style={{ height: "180px" }}
-                whileHover={{ scale: 1.05 }}
-              />
-            </Link>
+          {/* Logo + slogan - Enhanced with #C5E0ED */}
+          <div className="flex items-center gap-6 pl-4 relative group">
+            <div className="relative">
+              <Link href="/">
+                <motion.img
+                  src={NAV_LOGO.src}
+                  alt={NAV_LOGO.alt}
+                  className="w-auto cursor-pointer rounded-lg relative z-10"
+                  style={{ height: "180px" }}
+                  whileHover={{ 
+                    scale: 1.1,
+                    filter: 'drop-shadow(0 0 35px rgba(197, 224, 237, 0.9)) brightness(1.2)'
+                  }}
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 300,
+                    filter: { duration: 0.3 }
+                  }}
+                />
+                
+                {/* Multi-layered glow effect */}
+                <motion.div
+                  className="absolute inset-0 -z-10 rounded-lg"
+                  style={{
+                    background: 'radial-gradient(circle at center, rgba(197, 224, 237, 0.3) 0%, transparent 70%)',
+                  }}
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.7, 0.3],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                
+                {/* Outer glow layer */}
+                <motion.div
+                  className="absolute -inset-6 -z-20 rounded-lg blur-xl"
+                  style={{
+                    background: 'radial-gradient(circle at center, rgba(197, 224, 237, 0.15) 0%, transparent 80%)',
+                  }}
+                  animate={{
+                    opacity: [0.1, 0.25, 0.1],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5,
+                  }}
+                />
+              </Link>
+            </div>
+            
             <motion.div className="text-white font-mono text-sm md:text-base overflow-hidden whitespace-nowrap">
               {"with each trip comes a new optimism...".split("").map((char, index) => (
                 <motion.span
