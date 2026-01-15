@@ -38,13 +38,38 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60,
   },
 
-  // Performance optimizations - REMOVED swcMinify (default in Next.js 15)
+  // Performance optimizations
   compress: true,
   
-  // Critical for SEO migration
+  // Critical for SEO migration - FIXED REDIRECTS
   async redirects() {
     return [
-      // IMPORTANT: Redirect old domain to new primary domain
+      // IMPORTANT: Redirects for static files FIRST
+      // These prevent the redirect loop
+      {
+        source: '/sitemap.xml',
+        has: [
+          {
+            type: 'host',
+            value: 'himkala.com',
+          },
+        ],
+        destination: '/sitemap.xml',
+        permanent: false,
+      },
+      {
+        source: '/robots.txt',
+        has: [
+          {
+            type: 'host',
+            value: 'himkala.com',
+          },
+        ],
+        destination: '/robots.txt',
+        permanent: false,
+      },
+      
+      // Redirect old domain to new primary domain (for everything else)
       {
         source: '/:path*',
         has: [
@@ -54,8 +79,9 @@ const nextConfig: NextConfig = {
           },
         ],
         destination: 'https://himkala.com/:path*',
-        permanent: true, // 301 redirect
+        permanent: true,
       },
+      
       // Redirect www to non-www for primary domain
       {
         source: '/:path*',
@@ -68,6 +94,7 @@ const nextConfig: NextConfig = {
         destination: 'https://himkala.com/:path*',
         permanent: true,
       },
+      
       // Redirect www for old domain
       {
         source: '/:path*',
@@ -94,6 +121,10 @@ const nextConfig: NextConfig = {
             value: 'on',
           },
           {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
             key: 'X-Frame-Options',
             value: 'SAMEORIGIN',
           },
@@ -104,6 +135,10 @@ const nextConfig: NextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
           },
         ],
       },
@@ -129,6 +164,43 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // Cache headers for static assets
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Proper headers for XML files
+      {
+        source: '/sitemap.xml',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/xml; charset=utf-8',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/robots.txt',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain; charset=utf-8',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600, stale-while-revalidate=86400',
+          },
+        ],
+      },
     ];
   },
 
@@ -139,6 +211,9 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  
+  // Add trailing slash handling
+  trailingSlash: false,
 };
 
 export default nextConfig;
