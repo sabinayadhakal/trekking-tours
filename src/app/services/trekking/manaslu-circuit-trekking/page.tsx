@@ -1,336 +1,243 @@
 "use client";
 
-import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { ChevronDown, Mountain, Calendar, DollarSign, HelpCircle, MapPin, Clock, Users, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
-export default function Page() {
-  const [activeTab, setActiveTab] = useState("overview");
-  const [isMounted, setIsMounted] = useState(false);
+const itinerary = [
+  { day: 1, title: "Kathmandu to Soti Khola", altitude: "700m", description: "Drive through scenic hills to the trek starting point." },
+  { day: 2, title: "Soti Khola to Machha Khola", altitude: "870m", description: "Follow the Budhi Gandaki River through subtropical forests." },
+  { day: 3, title: "Machha Khola to Jagat", altitude: "1,340m", description: "Cross suspension bridges and pass through traditional villages." },
+  { day: 4, title: "Jagat to Deng", altitude: "1,860m", description: "Enter the restricted Manaslu region with permit checkpoints." },
+  { day: 5, title: "Deng to Namrung", altitude: "2,660m", description: "Witness the transition to Tibetan Buddhist culture." },
+  { day: 6, title: "Namrung to Samagaon", altitude: "3,530m", description: "Stunning views of Manaslu peak and ancient monasteries." },
+  { day: 7, title: "Acclimatization Day in Samagaon", altitude: "3,530m", description: "Explore Birendra Lake and Pungyen Monastery." },
+  { day: 8, title: "Samagaon to Samdo", altitude: "3,860m", description: "Trek through high alpine meadows near Tibet border." },
+  { day: 9, title: "Samdo to Dharamsala", altitude: "4,460m", description: "Prepare for the challenging Larkya La pass crossing." },
+  { day: 10, title: "Dharamsala to Bimthang via Larkya La Pass", altitude: "5,160m", description: "Cross the majestic Larkya La Pass - the trek highlight." },
+  { day: 11, title: "Bimthang to Tilije", altitude: "2,300m", description: "Descend through rhododendron forests to lower valleys." },
+  { day: 12, title: "Tilije to Dharapani", altitude: "1,860m", description: "Join the Annapurna Circuit trail." },
+  { day: 13, title: "Dharapani to Besisahar to Kathmandu", altitude: "760m", description: "Drive back to Kathmandu through scenic landscapes." },
+];
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+const faqs = [
+  { question: "What is the best time to do the Manaslu Circuit Trek?", answer: "The best seasons are Spring (March-May) and Autumn (September-November) when weather is stable and views are clearest." },
+  { question: "Do I need a special permit?", answer: "Yes, you need a Manaslu Restricted Area Permit and Annapurna Conservation Area Permit. These require trekking with a registered agency and in groups of minimum 2 people." },
+  { question: "How difficult is the trek?", answer: "It's a challenging trek rated moderate to difficult. The Larkya La Pass at 5,160m is demanding. Good fitness and prior trekking experience recommended." },
+  { question: "Is altitude sickness a concern?", answer: "Yes, proper acclimatization is crucial. The itinerary includes rest days and gradual ascent to minimize risks." },
+  { question: "What about accommodation and food?", answer: "Teahouse accommodation is available throughout. Rooms are basic but comfortable. Dal bhat, noodles, and Tibetan dishes are common." },
+];
 
-  const whatsappMessage = encodeURIComponent(
-    "Hello! I'm interested in booking the Manaslu Circuit Trek. Please send me more information."
-  );
+export default function ManasluTrekPage() {
+  const [activeSection, setActiveSection] = useState("overview");
 
-  // Don't render anything until mounted
-  if (!isMounted) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-[#4A8CA5] via-[#D9E6EC] to-[#FDFDFD]">
-        {/* Loading skeleton */}
-      </div>
-    );
-  }
+  const scrollToSection = (id: string) => {
+    setActiveSection(id);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#4A8CA5] via-[#D9E6EC] to-[#FDFDFD] text-gray-800">
-      {/* Hero Section - NO FRAMER-MOTION */}
-      <section 
-        className="relative w-full h-[60vh] flex items-center justify-center bg-center bg-cover bg-[#1c3c50]"
-        style={{ backgroundImage: `url('/images/manaslu-hero.jpg')` }}
+    <div className="min-h-screen bg-stone-950 text-stone-100">
+      <div 
+        className="relative h-[70vh] bg-cover bg-center"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1920&q=80')" }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1c3c50]/60 via-[#3d6678]/40 to-[#1c3c50]/20" />
-        
-        <div className="relative z-10 text-center text-white px-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
-            Manaslu Circuit Trek
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-950/30 via-stone-950/50 to-stone-950" />
+        <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+          <span className="mb-4 inline-block rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-amber-400">
+            Nepal • Restricted Area Trek
+          </span>
+          <h1 className="font-serif text-5xl font-light tracking-tight text-white md:text-7xl">
+            Manaslu Circuit
           </h1>
-          <p className="text-lg md:text-2xl font-light max-w-3xl mx-auto">
-            Trek around the world&apos;s eighth highest peak - Mount Manaslu (26,759 ft)
+          <p className="mt-4 max-w-xl text-lg text-stone-300">
+            Journey around the world&apos;s eighth highest peak through ancient Tibetan villages and over the legendary Larkya La Pass
           </p>
-          <div className="mt-8">
-            <span className="inline-block bg-[#2B5C6B]/90 px-6 py-2 rounded-full text-white font-semibold">
-              20 Days Trek • Max Altitude: 5,106m
-            </span>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-stone-400">
+            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-amber-500" /> 13 Days</span>
+            <span className="flex items-center gap-2"><TrendingUp className="h-4 w-4 text-amber-500" /> 5,160m Max</span>
+            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-amber-500" /> 177 km</span>
+            <span className="flex items-center gap-2"><Users className="h-4 w-4 text-amber-500" /> Min 2 People</span>
+          </div>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <Button className="rounded-full bg-amber-500 px-8 py-6 text-base font-medium text-stone-950 hover:bg-amber-400">
+              Book Now
+            </Button>
+            <Button variant="outline" className="rounded-full border-stone-600 bg-transparent px-8 py-6 text-base text-stone-200 hover:bg-stone-800 hover:text-white">
+              Customize for Yourself
+            </Button>
           </div>
         </div>
-      </section>
-
-      {/* Navigation Tabs */}
-      <section className="sticky top-0 z-40 bg-white/90 backdrop-blur-sm border-b">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-2 py-4">
-            {["overview", "itinerary", "cost", "faq", "gallery"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 rounded-lg font-medium capitalize transition-colors ${
-                  activeTab === tab
-                    ? "bg-[#2B5C6B] text-white"
-                    : "text-gray-600 hover:bg-[#EAF4F8]"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Content Sections */}
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        {/* Overview Tab */}
-        {activeTab === "overview" && (
-          <div className="space-y-12">
-            <section className="bg-white rounded-2xl shadow-sm p-8">
-              <h2 className="text-3xl font-semibold text-[#2B5C6B] mb-6">Trek Overview</h2>
-              <div className="space-y-4 text-lg">
-                <p>
-                  Manaslu Circuit Trekking focuses on wilderness and authentic village experiences. 
-                  This trek wraps around Mount Manaslu, the world&apos;s eighth highest peak, looming at 
-                  26,759 ft. The journey begins by climbing against the current of the Budhi Gandaki 
-                  River for nearly three vertical miles.
-                </p>
-                <p>
-                  The path sweeps through gorges where glaciers hang and drain the frozen eaves of 
-                  the planet. We cross suspension bridges and pass through fields of barley, following 
-                  an ancient route along which caravans of yaks hauling salt from Tibet have traveled 
-                  for thousands of years.
-                </p>
-                <p>
-                  Climbing higher to the last clusters of homes before the mountain wall of Himalaya, 
-                  we step into Tibetan territory. Architecture matches these ethnic lines and as altitude 
-                  rises, so does the number of monasteries, Mani walls and Chortens.
-                </p>
-              </div>
-            </section>
-
-            <section className="grid md:grid-cols-2 gap-8">
-              <div className="bg-[#EAF4F8] rounded-2xl p-8">
-                <h3 className="text-2xl font-semibold text-[#2B5C6B] mb-4">Best Seasons</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-center">
-                    <div className="w-3 h-3 bg-[#4A8CA5] rounded-full mr-3"></div>
-                    <span className="font-medium">Spring:</span> March to May
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-3 h-3 bg-[#4A8CA5] rounded-full mr-3"></div>
-                    <span className="font-medium">Autumn:</span> September to November
-                  </li>
-                  <li className="text-gray-600 text-sm mt-4">
-                    *More than half of the annual 2,000 visitors to Manaslu make their pilgrimage in October
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-[#EAF4F8] rounded-2xl p-8">
-                <h3 className="text-2xl font-semibold text-[#2B5C6B] mb-4">Trip Highlights</h3>
-                <ul className="space-y-3">
-                  {[
-                    "Sightseeing in Historical Monuments in Kathmandu",
-                    "Scenic drive from Kathmandu to Aarughat",
-                    "Breathtaking view of Manaslu and Annapurna ranges",
-                    "Natural hot spring shower",
-                    "Crossing Larkya La Pass (5,106m)",
-                    "Experience Tibetan culture and lifestyle"
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="w-2 h-2 bg-[#2B5C6B] rounded-full mt-2 mr-3"></div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </section>
-          </div>
-        )}
-
-        {/* Itinerary Tab */}
-        {activeTab === "itinerary" && (
-          <div className="space-y-8">
-            <div className="bg-white rounded-2xl shadow-sm p-8">
-              <h2 className="text-3xl font-semibold text-[#2B5C6B] mb-8">Day to Day Itinerary</h2>
-              <div className="space-y-6">
-                {[
-                  {day: "Day 01", title: "Arrival in Kathmandu", desc: "Arrive at Tribhuvan International Airport. Transfer to hotel. Evening trek briefing."},
-                  {day: "Day 02", title: "Kathmandu Sightseeing", desc: "Visit historical monuments and prepare for trek."},
-                  {day: "Day 03", title: "Drive to Aarughat Bazaar", desc: "7 hours scenic drive (570m)."},
-                  {day: "Day 04-05", title: "Trek to Machhakhola", desc: "Gradual ascent along Budhi Gandaki River."},
-                  {day: "Day 06-07", title: "Trek to Philim", desc: "Enter Manaslu Conservation Area."},
-                  {day: "Day 08-09", title: "Trek to Deng & Namrung", desc: "Pass through Tibetan influenced villages."},
-                  {day: "Day 10-11", title: "Trek to Samagaun", desc: "Close-up views of Mt. Manaslu."},
-                  {day: "Day 12", title: "Acclimatization Day", desc: "Hike to Birendra Lake and Manaslu Base Camp."},
-                  {day: "Day 13-14", title: "Trek to Samdo & Dharamsala", desc: "High altitude villages, prepare for pass crossing."},
-                  {day: "Day 15", title: "Cross Larkya La Pass", desc: "Challenging pass crossing (5,106m) to Bimthang."},
-                  {day: "Day 16-18", title: "Descent to Beshishahar", desc: "Gradual descent through forests and villages."},
-                  {day: "Day 19", title: "Drive to Kathmandu", desc: "8 hours scenic drive back to Kathmandu."},
-                  {day: "Day 20", title: "Departure", desc: "Transfer to international airport."}
-                ].map((item, index) => (
-                  <div key={index} className="flex border-l-4 border-[#2B5C6B] pl-4 py-2">
-                    <div className="w-24">
-                      <span className="font-bold text-[#2B5C6B]">{item.day}</span>
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-lg">{item.title}</h4>
-                      <p className="text-gray-600">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Cost Tab */}
-        {activeTab === "cost" && (
-          <div className="space-y-8">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-2xl shadow-sm p-8">
-                <h3 className="text-2xl font-semibold text-[#2B5C6B] mb-6">Cost Includes</h3>
-                <ul className="space-y-3">
-                  {[
-                    "Airport pick up & drop by private vehicle",
-                    "3 nights' twin sharing hotels in Kathmandu with Breakfast",
-                    "Guided city tour in Kathmandu",
-                    "Full board meals during the trek (Breakfast + Lunch + Dinner)",
-                    "Guest Houses/Lodges accommodation during trek",
-                    "Professional English speaking guide",
-                    "Required number of porters (2 Trekkers = 1 Porter)",
-                    "All staff salaries, insurance, equipment and medicine",
-                    "Manaslu Conservation Area permit and Special permit",
-                    "TIMS Card and Restricted Area Entry Permit",
-                    "Down Jacket, Duffel bag and sleeping bag if required",
-                    "All transportation as per itinerary",
-                    "Farewell dinner in traditional Nepali restaurant"
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="text-green-600 mr-3">✓</div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-white rounded-2xl shadow-sm p-8">
-                <h3 className="text-2xl font-semibold text-[#2B5C6B] mb-6">Cost Excludes</h3>
-                <ul className="space-y-3">
-                  {[
-                    "Lunch and dinner in Kathmandu",
-                    "Entrance fee in monuments during tour",
-                    "Emergency rescue and evacuation cost",
-                    "Travel insurance",
-                    "Nepal entry visa fee",
-                    "Personal expenses (phone, hot shower, laundry, etc.)",
-                    "Personal trekking equipment",
-                    "Tips for trekking staff and driver",
-                    "Any other expenses not mentioned"
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="text-red-500 mr-3">✗</div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* FAQ Tab */}
-        {activeTab === "faq" && (
-          <div className="space-y-6">
-            <div className="bg-white rounded-2xl shadow-sm p-8">
-              <h2 className="text-3xl font-semibold text-[#2B5C6B] mb-8">Frequently Asked Questions</h2>
-              <div className="space-y-6">
-                {[
-                  {
-                    q: "What physical fitness do I need?",
-                    a: "You should be in good physical shape, able to hike 7-12 miles per day with a day pack. Aerobic conditioning is important due to high altitude. We recommend at least one hour of aerobic exercise 3-4 times per week for 1 month before arrival."
-                  },
-                  {
-                    q: "Do I need a guide for Manaslu Circuit?",
-                    a: "Yes, the Nepal Government requires a registered guide for Manaslu Circuit as it's a restricted area. Guides ensure safety, provide local knowledge, and help with navigation and cultural interactions."
-                  },
-                  {
-                    q: "What's the accommodation like?",
-                    a: "In Kathmandu: 2-3 star hotels. During trek: Teahouses/guesthouses with twin sharing rooms. Facilities are basic but clean with shared bathrooms. Sleeping bag provided if needed."
-                  },
-                  {
-                    q: "Is there electricity and internet?",
-                    a: "Most teahouses have charging facilities (extra cost). Internet available in lower villages but limited at higher altitudes. Local SIM cards (NCELL/NTC) work in most areas."
-                  },
-                  {
-                    q: "What about altitude sickness?",
-                    a: "We include acclimatization days and follow proper ascent guidelines. Our guides are trained in first aid and altitude sickness recognition. Proper hydration and gradual ascent are key."
-                  },
-                  {
-                    q: "Do I need travel insurance?",
-                    a: "Yes, comprehensive travel insurance including emergency helicopter evacuation is mandatory. Ensure it covers trekking up to 5,500m altitude."
-                  }
-                ].map((faq, index) => (
-                  <div key={index} className="border-b pb-4">
-                    <h4 className="font-bold text-lg text-[#2B5C6B] mb-2">{faq.q}</h4>
-                    <p className="text-gray-600">{faq.a}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Gallery Tab */}
-        {activeTab === "gallery" && (
-          <div className="space-y-8">
-            <div className="bg-white rounded-2xl shadow-sm p-8">
-              <h2 className="text-3xl font-semibold text-[#2B5C6B] mb-8">Trek Gallery</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  {alt: "Mount Manaslu view"},
-                  {alt: "Larkya La Pass"},
-                  {alt: "Traditional village"},
-                  {alt: "Suspension bridge"},
-                  {alt: "Buddhist monastery"},
-                  {alt: "Tea house accommodation"}
-                ].map((img, index) => (
-                  <div key={index} className="relative h-64 rounded-xl overflow-hidden shadow-md bg-gradient-to-br from-[#4A8CA5] to-[#2B5C6B]">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-white font-medium text-center p-4">{img.alt}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
 
-      {/* Booking CTA */}
-      <section className="bg-[#EAF4F8] py-16 mt-8">
-        <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-3xl font-semibold mb-6 text-[#2B5C6B]">
-            Ready for Your Manaslu Adventure?
-          </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Join us for an unforgettable journey around the eighth highest mountain in the world. 
-            Experience authentic Himalayan culture and breathtaking landscapes.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-            <a
-              href="/contact"
-              className="px-8 py-4 bg-[#2B5C6B] text-white font-semibold rounded-2xl shadow-lg hover:bg-[#246071] transition-colors duration-300"
+      <nav className="sticky top-0 z-50 border-b border-stone-800 bg-stone-950/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-4xl items-center justify-center gap-2 px-6 py-4">
+          {[
+            { id: "overview", icon: Mountain, label: "Overview" },
+            { id: "itinerary", icon: Calendar, label: "Itinerary" },
+            { id: "cost", icon: DollarSign, label: "Cost" },
+            { id: "faq", icon: HelpCircle, label: "FAQ" },
+          ].map(({ id, icon: Icon, label }) => (
+            <button
+              key={id}
+              onClick={() => scrollToSection(id)}
+              className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition-all ${
+                activeSection === id
+                  ? "bg-amber-500/10 text-amber-400"
+                  : "text-stone-400 hover:bg-stone-800 hover:text-stone-200"
+              }`}
             >
-              Book Your Trek Now
-            </a>
-            <span className="text-gray-500 hidden sm:block">or</span>
-            <a
-              href={`https://wa.me/9779841376470?text=${whatsappMessage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 bg-green-500 text-white font-semibold rounded-2xl shadow-lg hover:bg-green-600 transition-colors duration-300"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.864 3.49" />
-              </svg>
-              WhatsApp Inquiry
-            </a>
-          </div>
-          <p className="mt-8 text-lg text-gray-600">
-            Contact us for customized itineraries and group discounts
-          </p>
+              <Icon className="h-4 w-4" />
+              {label}
+            </button>
+          ))}
         </div>
-      </section>
-    </main>
+      </nav>
+
+      <main className="mx-auto max-w-4xl px-6 py-16">
+        <section id="overview" className="mb-24">
+          <h2 className="mb-8 font-serif text-3xl text-white">Overview</h2>
+          <div className="space-y-6 text-stone-300 leading-relaxed">
+            <p>
+              The Manaslu Circuit Trek is one of Nepal&apos;s most rewarding and culturally rich treks, circling Mount Manaslu (8,163m), the eighth highest mountain in the world. This off-the-beaten-path adventure offers a pristine alternative to the crowded Annapurna and Everest regions.
+            </p>
+            <p>
+              Traverse through diverse landscapes—from lush subtropical forests to high alpine meadows—while experiencing the authentic Tibetan Buddhist culture of remote mountain villages. The trek culminates at the challenging Larkya La Pass (5,160m), offering breathtaking panoramic views of the Himalayan giants.
+            </p>
+            <div className="mt-10 grid gap-6 sm:grid-cols-3">
+              {[
+                { label: "Difficulty", value: "Moderate to Challenging" },
+                { label: "Best Season", value: "Mar-May, Sep-Nov" },
+                { label: "Starting Point", value: "Soti Khola" },
+              ].map(({ label, value }) => (
+                <div key={label} className="rounded-2xl border border-stone-800 bg-stone-900/50 p-6">
+                  <p className="text-xs uppercase tracking-wider text-stone-500">{label}</p>
+                  <p className="mt-2 text-lg text-white">{value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="itinerary" className="mb-24">
+          <h2 className="mb-8 font-serif text-3xl text-white">Day-by-Day Itinerary</h2>
+          <div className="space-y-4">
+            {itinerary.map((day) => (
+              <div
+                key={day.day}
+                className="group rounded-2xl border border-stone-800 bg-stone-900/30 p-5 transition-all hover:border-amber-500/30 hover:bg-stone-900/60"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-sm font-medium text-amber-400">
+                      {day.day}
+                    </span>
+                    <div>
+                      <h3 className="font-medium text-white">{day.title}</h3>
+                      <p className="mt-1 text-sm text-stone-400">{day.description}</p>
+                    </div>
+                  </div>
+                  <span className="shrink-0 rounded-full bg-stone-800 px-3 py-1 text-xs text-stone-400">
+                    {day.altitude}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="cost" className="mb-24">
+          <h2 className="mb-8 font-serif text-3xl text-white">Cost Details</h2>
+          <div className="rounded-3xl border border-stone-800 bg-gradient-to-br from-stone-900 to-stone-900/50 p-8">
+            <div className="flex items-baseline gap-2">
+              <span className="font-serif text-5xl text-white">$1,450</span>
+              <span className="text-stone-400">per person</span>
+            </div>
+            <p className="mt-2 text-sm text-stone-500">Based on group size of 2-4 people</p>
+            
+            <div className="mt-8 grid gap-8 sm:grid-cols-2">
+              <div>
+                <h4 className="mb-4 text-sm font-medium uppercase tracking-wider text-amber-400">Included</h4>
+                <ul className="space-y-3 text-sm text-stone-300">
+                  {[
+                    "All necessary permits and fees",
+                    "Experienced English-speaking guide",
+                    "Porter service (1 porter per 2 trekkers)",
+                    "Teahouse accommodation",
+                    "Three meals daily during trek",
+                    "Ground transportation",
+                    "First aid medical kit",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="mb-4 text-sm font-medium uppercase tracking-wider text-stone-500">Not Included</h4>
+                <ul className="space-y-3 text-sm text-stone-400">
+                  {[
+                    "International flights",
+                    "Nepal visa fees",
+                    "Travel insurance",
+                    "Personal trekking gear",
+                    "Tips for guides and porters",
+                    "Extra meals and beverages",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-stone-600" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="mb-24">
+          <h2 className="mb-8 font-serif text-3xl text-white">Frequently Asked Questions</h2>
+          <Accordion type="single" collapsible className="space-y-3">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`faq-${index}`}
+                className="rounded-2xl border border-stone-800 bg-stone-900/30 px-6 data-[state=open]:bg-stone-900/60"
+              >
+                <AccordionTrigger className="py-5 text-left text-white hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="pb-5 text-stone-400">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </section>
+
+        <section className="rounded-3xl bg-gradient-to-br from-amber-500/20 via-amber-600/10 to-transparent border border-amber-500/20 p-10 text-center">
+          <h2 className="font-serif text-3xl text-white">Ready for the Adventure?</h2>
+          <p className="mx-auto mt-4 max-w-lg text-stone-400">
+            Embark on an unforgettable journey through the heart of the Himalayas. Limited permits available each season.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button className="rounded-full bg-amber-500 px-8 py-6 text-base font-medium text-stone-950 hover:bg-amber-400">
+              Book Now
+            </Button>
+            <Button variant="outline" className="rounded-full border-stone-600 bg-transparent px-8 py-6 text-base text-stone-200 hover:bg-stone-800 hover:text-white">
+              Customize for Yourself
+            </Button>
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }
