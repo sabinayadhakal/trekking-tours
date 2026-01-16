@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://www.himkalaadventure.com'), // Replace with your actual domain
+  metadataBase: new URL('https://www.himkala.com'), // Replace with your actual domain
   alternates: {
     canonical: '/',
   },
