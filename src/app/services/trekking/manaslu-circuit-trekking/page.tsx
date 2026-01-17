@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, Mountain, Calendar, DollarSign, HelpCircle, MapPin, Clock, Users, TrendingUp, Menu, X } from "lucide-react";
+import { ChevronDown, Mountain, Calendar, DollarSign, HelpCircle, MapPin, Clock, Users, TrendingUp, Menu, X, Phone, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -49,219 +49,358 @@ export default function ManasluTrekPage() {
       {/* Hero Section */}
       <div 
         className="relative h-[85vh] sm:h-[75vh] bg-cover bg-center"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1920&q=80')" }}
+        style={{ backgroundImage: "url('/images/manaslu-1.jpg')" }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1c3c50]/40 via-[#3d6678]/20 to-[#1c3c50]/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1c3c50]/60 via-[#3d6678]/40 to-[#1c3c50]/20" />
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 sm:px-6 text-center">
-          <span className="mb-4 inline-block rounded-full bg-white/20 backdrop-blur-sm px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-white">
-            Nepal • Restricted Area Trek
-          </span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white px-2">
-            Manaslu Circuit
-          </h1>
-          <p className="mt-4 max-w-xl text-base sm:text-lg text-white/90 px-4">
-            Journey around the world's eighth highest peak through ancient Tibetan villages and over the legendary Larkya La Pass
-          </p>
-          <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm text-white/80">
-            <span className="flex items-center gap-2"><Clock className="h-4 w-4" /> 13 Days</span>
-            <span className="flex items-center gap-2"><TrendingUp className="h-4 w-4" /> 5,160m Max</span>
-            <span className="flex items-center gap-2"><MapPin className="h-4 w-4" /> 177 km</span>
-            <span className="flex items-center gap-2"><Users className="h-4 w-4" /> Min 2 People</span>
-          </div>
-          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none px-4 sm:px-0">
-            <Button className="rounded-full bg-[#2B5C6B] hover:bg-[#246071] text-white px-6 sm:px-8 py-5 sm:py-6 text-base font-medium w-full sm:w-auto">
-              Book Now
-            </Button>
-            <Button variant="outline" className="rounded-full border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-6 sm:px-8 py-5 sm:py-6 text-base w-full sm:w-auto">
-              Customize for Yourself
-            </Button>
+          <div className="max-w-3xl mx-auto">
+            <span className="mb-4 inline-block rounded-full bg-white/20 backdrop-blur-sm px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-white">
+              Nepal • Restricted Area Trek
+            </span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+              Manaslu Circuit
+            </h1>
+            <p className="text-lg sm:text-xl text-white/90 mb-6">
+              Journey around the world's eighth highest peak through ancient Tibetan villages and over the legendary Larkya La Pass
+            </p>
+            
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-8 text-white/80">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+                <Clock className="h-4 w-4" />
+                <span className="text-sm">13 Days</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+                <TrendingUp className="h-4 w-4" />
+                <span className="text-sm">5,160m Max</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+                <MapPin className="h-4 w-4" />
+                <span className="text-sm">177 km</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+                <Users className="h-4 w-4" />
+                <span className="text-sm">Min 2 People</span>
+              </div>
+            </div>
+            
+            {/* Centered Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <Button className="rounded-full bg-[#2B5C6B] hover:bg-[#246071] text-white px-8 py-6 text-base font-medium w-full sm:w-auto">
+                Book Now
+              </Button>
+              <Button variant="outline" className="rounded-full border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-8 py-6 text-base w-full sm:w-auto">
+                Customize for Yourself
+              </Button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Button */}
-      <button
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="fixed top-4 right-4 z-50 sm:hidden rounded-full bg-[#2B5C6B] p-3 text-white shadow-lg"
-      >
-        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+      {/* Navigation Container */}
+      <div className="relative">
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="sm:hidden absolute top-4 right-4 z-50 rounded-full bg-[#2B5C6B] p-3 text-white shadow-lg"
+        >
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
 
-      {/* Navigation - Fixed on Desktop, Mobile Menu */}
-      <nav className={`${mobileMenuOpen ? 'fixed inset-0 z-40 bg-[#1c3c50]/95 backdrop-blur-md' : 'sticky top-0 z-50 hidden sm:block'} border-b border-[#2B5C6B]/20 bg-[#1c3c50]/90 backdrop-blur-md`}>
-        <div className="mx-auto flex max-w-4xl flex-col sm:flex-row items-center justify-center gap-2 px-4 sm:px-6 py-4">
-          {[
-            { id: "overview", icon: Mountain, label: "Overview" },
-            { id: "itinerary", icon: Calendar, label: "Itinerary" },
-            { id: "cost", icon: DollarSign, label: "Cost" },
-            { id: "faq", icon: HelpCircle, label: "FAQ" },
-          ].map(({ id, icon: Icon, label }) => (
-            <button
-              key={id}
-              onClick={() => scrollToSection(id)}
-              className={`flex items-center gap-2 rounded-full px-4 py-3 sm:py-2 text-sm transition-all w-full sm:w-auto ${
-                activeSection === id
-                  ? "bg-[#2B5C6B] text-white"
-                  : "text-white/70 hover:bg-white/10 hover:text-white"
-              }`}
-            >
-              <Icon className="h-4 w-4" />
-              {label}
-            </button>
-          ))}
-        </div>
-      </nav>
-
-      <main className="mx-auto max-w-4xl px-4 sm:px-6 py-8 sm:py-16">
-        <section id="overview" className="mb-16 sm:mb-24 scroll-mt-16">
-          <h2 className="mb-6 sm:mb-8 text-2xl sm:text-3xl font-semibold text-[#2B5C6B]">Overview</h2>
-          <div className="space-y-4 sm:space-y-6 text-gray-800 leading-relaxed">
-            <p className="text-base sm:text-lg">
-              The Manaslu Circuit Trek is one of Nepal's most rewarding and culturally rich treks, circling Mount Manaslu (8,163m), the eighth highest mountain in the world. This off-the-beaten-path adventure offers a pristine alternative to the crowded Annapurna and Everest regions.
-            </p>
-            <p className="text-base sm:text-lg">
-              Traverse through diverse landscapes—from lush subtropical forests to high alpine meadows—while experiencing the authentic Tibetan Buddhist culture of remote mountain villages. The trek culminates at the challenging Larkya La Pass (5,160m), offering breathtaking panoramic views of the Himalayan giants.
-            </p>
-            <div className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+        {/* Navigation Bar - NOT sticky or fixed */}
+        <nav className={`relative z-40 ${mobileMenuOpen ? 'fixed inset-0 bg-[#1c3c50]/95 backdrop-blur-md flex items-center justify-center' : 'bg-[#1c3c50]/90 border-b border-[#2B5C6B]/20'}`}>
+          <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-4">
+            {/* Mobile close button */}
+            {mobileMenuOpen && (
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="sm:hidden absolute top-4 right-4 rounded-full bg-[#2B5C6B] p-3 text-white shadow-lg"
+              >
+                <X size={24} />
+              </button>
+            )}
+            
+            <div className={`${mobileMenuOpen ? 'flex flex-col' : 'hidden sm:flex flex-row'} items-center justify-center gap-2`}>
               {[
-                { label: "Difficulty", value: "Moderate to Challenging" },
-                { label: "Best Season", value: "Mar-May, Sep-Nov" },
-                { label: "Starting Point", value: "Soti Khola" },
-              ].map(({ label, value }) => (
-                <div key={label} className="rounded-2xl border border-[#D9E6EC] bg-white p-4 sm:p-6 shadow-sm">
-                  <p className="text-xs uppercase tracking-wider text-[#2B5C6B]">{label}</p>
-                  <p className="mt-2 text-lg font-medium text-gray-800">{value}</p>
-                </div>
+                { id: "overview", icon: Mountain, label: "Overview" },
+                { id: "itinerary", icon: Calendar, label: "Itinerary" },
+                { id: "cost", icon: DollarSign, label: "Cost" },
+                { id: "faq", icon: HelpCircle, label: "FAQ" },
+              ].map(({ id, icon: Icon, label }) => (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className={`flex items-center gap-2 rounded-full px-4 py-3 sm:py-2 text-sm transition-all w-full sm:w-auto ${
+                    activeSection === id
+                      ? "bg-[#2B5C6B] text-white"
+                      : "text-white/70 hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  <Icon className="h-4 w-4" />
+                  {label}
+                </button>
               ))}
             </div>
           </div>
-        </section>
+        </nav>
+      </div>
 
-        <section id="itinerary" className="mb-16 sm:mb-24 scroll-mt-16">
-          <h2 className="mb-6 sm:mb-8 text-2xl sm:text-3xl font-semibold text-[#2B5C6B]">Day-by-Day Itinerary</h2>
-          <div className="space-y-3 sm:space-y-4">
-            {itinerary.map((day) => (
-              <div
-                key={day.day}
-                className="group rounded-2xl border border-[#D9E6EC] bg-white p-4 sm:p-5 transition-all hover:border-[#2B5C6B]/30 hover:shadow-md"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2B5C6B] text-sm font-medium text-white">
-                      {day.day}
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-gray-800">{day.title}</h3>
-                      <p className="mt-1 text-sm text-gray-600">{day.description}</p>
-                    </div>
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-16">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Main Content */}
+          <div className="lg:w-2/3">
+            <section id="overview" className="mb-16 sm:mb-24">
+              <div className="bg-white rounded-3xl shadow-sm p-6 sm:p-8">
+                <h2 className="mb-6 text-2xl sm:text-3xl font-bold text-[#2B5C6B]">Overview</h2>
+                <div className="space-y-4 text-gray-800 leading-relaxed">
+                  <p className="text-base sm:text-lg">
+                    The Manaslu Circuit Trek is one of Nepal's most rewarding and culturally rich treks, circling Mount Manaslu (8,163m), the eighth highest mountain in the world. This off-the-beaten-path adventure offers a pristine alternative to the crowded Annapurna and Everest regions.
+                  </p>
+                  <p className="text-base sm:text-lg">
+                    Traverse through diverse landscapes—from lush subtropical forests to high alpine meadows—while experiencing the authentic Tibetan Buddhist culture of remote mountain villages. The trek culminates at the challenging Larkya La Pass (5,160m), offering breathtaking panoramic views of the Himalayan giants.
+                  </p>
+                  <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {[
+                      { label: "Difficulty", value: "Moderate to Challenging", icon: "🏔️" },
+                      { label: "Best Season", value: "Mar-May, Sep-Nov", icon: "☀️" },
+                      { label: "Starting Point", value: "Soti Khola", icon: "📍" },
+                    ].map(({ label, value, icon }) => (
+                      <div key={label} className="rounded-2xl border border-[#D9E6EC] bg-[#F4FBFF] p-5 text-center">
+                        <div className="text-2xl mb-2">{icon}</div>
+                        <p className="text-xs uppercase tracking-wider text-[#2B5C6B] font-medium">{label}</p>
+                        <p className="mt-2 text-lg font-semibold text-gray-800">{value}</p>
+                      </div>
+                    ))}
                   </div>
-                  <span className="self-start sm:self-center shrink-0 rounded-full bg-[#EAF4F8] px-3 py-1 text-xs text-[#2B5C6B] font-medium mt-2 sm:mt-0">
-                    {day.altitude}
-                  </span>
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
+            </section>
 
-        <section id="cost" className="mb-16 sm:mb-24 scroll-mt-16">
-          <h2 className="mb-6 sm:mb-8 text-2xl sm:text-3xl font-semibold text-[#2B5C6B]">Cost Details</h2>
-          <div className="rounded-3xl border border-[#D9E6EC] bg-gradient-to-br from-white to-[#EAF4F8] p-6 sm:p-8 shadow-sm">
-            <div className="flex flex-wrap items-baseline gap-2">
-              <span className="text-4xl sm:text-5xl font-bold text-[#2B5C6B]">$1,450</span>
-              <span className="text-gray-600">per person</span>
-            </div>
-            <p className="mt-2 text-sm text-gray-500">Based on group size of 2-4 people</p>
-            
-            <div className="mt-6 sm:mt-8 grid gap-6 sm:gap-8 sm:grid-cols-2">
-              <div>
-                <h4 className="mb-3 sm:mb-4 text-sm font-medium uppercase tracking-wider text-[#2B5C6B]">Included</h4>
-                <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-700">
-                  {[
-                    "All necessary permits and fees",
-                    "Experienced English-speaking guide",
-                    "Porter service (1 porter per 2 trekkers)",
-                    "Teahouse accommodation",
-                    "Three meals daily during trek",
-                    "Ground transportation",
-                    "First aid medical kit",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#2B5C6B]" />
-                      {item}
-                    </li>
+            <section id="itinerary" className="mb-16 sm:mb-24">
+              <div className="bg-white rounded-3xl shadow-sm p-6 sm:p-8">
+                <h2 className="mb-6 text-2xl sm:text-3xl font-bold text-[#2B5C6B]">Day-by-Day Itinerary</h2>
+                <div className="space-y-4">
+                  {itinerary.map((day) => (
+                    <div
+                      key={day.day}
+                      className="group rounded-2xl border border-[#D9E6EC] bg-white p-4 sm:p-5 transition-all hover:border-[#2B5C6B]/50 hover:shadow-md hover:bg-[#F4FBFF]"
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+                        <div className="flex items-start gap-4">
+                          <div className="flex flex-col items-center">
+                            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#2B5C6B] text-base font-bold text-white">
+                              {day.day}
+                            </span>
+                            <span className="mt-2 text-xs font-medium text-[#2B5C6B] bg-[#EAF4F8] px-2 py-1 rounded-full">
+                              {day.altitude}
+                            </span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-bold text-gray-800 text-lg">{day.title}</h3>
+                            <p className="mt-2 text-gray-600">{day.description}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
-              <div className="mt-6 sm:mt-0">
-                <h4 className="mb-3 sm:mb-4 text-sm font-medium uppercase tracking-wider text-gray-500">Not Included</h4>
-                <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-600">
-                  {[
-                    "International flights",
-                    "Nepal visa fees",
-                    "Travel insurance",
-                    "Personal trekking gear",
-                    "Tips for guides and porters",
-                    "Extra meals and beverages",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-gray-400" />
-                      {item}
-                    </li>
+            </section>
+
+            <section id="cost" className="mb-16 sm:mb-24">
+              <div className="bg-white rounded-3xl shadow-sm p-6 sm:p-8">
+                <h2 className="mb-6 text-2xl sm:text-3xl font-bold text-[#2B5C6B]">Cost Details</h2>
+                <div className="bg-gradient-to-r from-[#F4FBFF] to-[#EAF4F8] rounded-3xl p-6 sm:p-8">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
+                    <div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-4xl sm:text-5xl font-bold text-[#2B5C6B]">$1,450</span>
+                        <span className="text-gray-600">per person</span>
+                      </div>
+                      <p className="text-sm text-gray-500 mt-1">Based on group size of 2-4 people</p>
+                    </div>
+                    <Button className="mt-4 sm:mt-0 rounded-full bg-[#2B5C6B] hover:bg-[#246071] text-white px-6 py-5">
+                      Book This Package
+                    </Button>
+                  </div>
+                  
+                  <div className="grid gap-6 sm:gap-8 sm:grid-cols-2">
+                    <div>
+                      <h4 className="mb-4 text-base font-bold uppercase tracking-wider text-[#2B5C6B]">✅ Included</h4>
+                      <ul className="space-y-3 text-gray-700">
+                        {[
+                          "All necessary permits and fees",
+                          "Experienced English-speaking guide",
+                          "Porter service (1 porter per 2 trekkers)",
+                          "Teahouse accommodation",
+                          "Three meals daily during trek",
+                          "Ground transportation",
+                          "First aid medical kit",
+                        ].map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <div className="h-2 w-2 rounded-full bg-[#2B5C6B] mt-2 shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="mb-4 text-base font-bold uppercase tracking-wider text-gray-500">❌ Not Included</h4>
+                      <ul className="space-y-3 text-gray-600">
+                        {[
+                          "International flights",
+                          "Nepal visa fees",
+                          "Travel insurance",
+                          "Personal trekking gear",
+                          "Tips for guides and porters",
+                          "Extra meals and beverages",
+                        ].map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <div className="h-2 w-2 rounded-full bg-gray-400 mt-2 shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="faq" className="mb-16 sm:mb-24">
+              <div className="bg-white rounded-3xl shadow-sm p-6 sm:p-8">
+                <h2 className="mb-6 text-2xl sm:text-3xl font-bold text-[#2B5C6B]">Frequently Asked Questions</h2>
+                <Accordion type="single" collapsible className="space-y-3">
+                  {faqs.map((faq, index) => (
+                    <AccordionItem
+                      key={index}
+                      value={`faq-${index}`}
+                      className="rounded-2xl border border-[#D9E6EC] bg-white px-4 sm:px-6 data-[state=open]:bg-[#F4FBFF]"
+                    >
+                      <AccordionTrigger className="py-4 text-left text-gray-800 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                        <span className="text-base font-semibold">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="pb-4 text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
                   ))}
-                </ul>
+                </Accordion>
+              </div>
+            </section>
+          </div>
+
+          {/* Sidebar Contact Section */}
+          <div className="lg:w-1/3">
+            <div className="sticky top-8">
+              <div className="bg-gradient-to-b from-[#2B5C6B] to-[#4A8CA5] rounded-3xl shadow-lg p-6 sm:p-8 text-white mb-6">
+                <h3 className="text-xl font-bold mb-4">Get Expert Advice</h3>
+                <p className="text-white/90 mb-6">
+                  Have questions about permits, fitness requirements, or want to customize your trek? Our experts are here to help.
+                </p>
+                
+                <div className="space-y-4">
+                  <a 
+                    href="https://wa.me/9779841376470"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all"
+                  >
+                    <div className="h-12 w-12 rounded-full bg-green-500 flex items-center justify-center">
+                      <MessageCircle className="h-6 w-6" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-semibold">WhatsApp Chat</p>
+                      <p className="text-sm text-white/80">Instant response</p>
+                    </div>
+                    <ChevronDown className="h-5 w-5 transform rotate-270" />
+                  </a>
+                  
+                  <a 
+                    href="tel:+9779841376470"
+                    className="flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all"
+                  >
+                    <div className="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center">
+                      <Phone className="h-6 w-6" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-semibold">Call Us</p>
+                      <p className="text-sm text-white/80">+977 9841376470</p>
+                    </div>
+                    <ChevronDown className="h-5 w-5 transform rotate-270" />
+                  </a>
+                  
+                  <a 
+                    href="mailto:info@himkala.com"
+                    className="flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all"
+                  >
+                    <div className="h-12 w-12 rounded-full bg-amber-500 flex items-center justify-center">
+                      <Mail className="h-6 w-6" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-semibold">Email Us</p>
+                      <p className="text-sm text-white/80">info@himkala.com</p>
+                    </div>
+                    <ChevronDown className="h-5 w-5 transform rotate-270" />
+                  </a>
+                </div>
+                
+                <div className="mt-8 pt-6 border-t border-white/20">
+                  <h4 className="font-bold mb-3">Quick Facts</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-2 text-sm">
+                      <div className="h-2 w-2 rounded-full bg-white" />
+                      Restricted Area Permit Required
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <div className="h-2 w-2 rounded-full bg-white" />
+                      Minimum 2 People
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <div className="h-2 w-2 rounded-full bg-white" />
+                      Spring & Autumn Best Seasons
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <div className="h-2 w-2 rounded-full bg-white" />
+                      Moderate to Difficult Level
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="bg-white rounded-3xl shadow-sm p-6">
+                <h4 className="font-bold text-[#2B5C6B] mb-4">Need Customization?</h4>
+                <p className="text-gray-600 mb-4">
+                  Want to add extra days, change the route, or have special requirements?
+                </p>
+                <Button className="w-full rounded-full bg-[#2B5C6B] hover:bg-[#246071] text-white py-6">
+                  Customize Your Trek
+                </Button>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
-        <section id="faq" className="mb-16 sm:mb-24 scroll-mt-16">
-          <h2 className="mb-6 sm:mb-8 text-2xl sm:text-3xl font-semibold text-[#2B5C6B]">Frequently Asked Questions</h2>
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`faq-${index}`}
-                className="rounded-2xl border border-[#D9E6EC] bg-white px-4 sm:px-6 data-[state=open]:bg-[#F4FBFF]"
-              >
-                <AccordionTrigger className="py-4 text-left text-gray-800 hover:no-underline [&[data-state=open]>svg]:rotate-180">
-                  <span className="text-sm sm:text-base font-medium">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="pb-4 text-gray-600">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </section>
-
-        <section className="rounded-3xl bg-gradient-to-br from-[#2B5C6B] to-[#4A8CA5] border border-[#2B5C6B] p-6 sm:p-10 text-center shadow-lg">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">Ready for the Adventure?</h2>
-          <p className="mx-auto mt-3 sm:mt-4 max-w-lg text-white/90 text-sm sm:text-base">
-            Embark on an unforgettable journey through the heart of the Himalayas. Limited permits available each season.
+        {/* Bottom CTA */}
+        <section className="rounded-3xl bg-gradient-to-r from-[#2B5C6B] via-[#4A8CA5] to-[#2B5C6B] p-8 sm:p-12 text-center mt-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Ready for Your Himalayan Adventure?</h2>
+          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+            Join hundreds of trekkers who have experienced the magic of Manaslu with us. Limited permits available each season.
           </p>
-          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Button className="rounded-full bg-white hover:bg-gray-100 text-[#2B5C6B] px-6 sm:px-8 py-5 sm:py-6 text-base font-medium w-full sm:w-auto">
-              Book Now
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button className="rounded-full bg-white hover:bg-gray-100 text-[#2B5C6B] px-8 py-6 font-bold text-lg">
+              Book Your Trek Now
             </Button>
-            <Button variant="outline" className="rounded-full border-white/30 bg-transparent text-white hover:bg-white/20 px-6 sm:px-8 py-5 sm:py-6 text-base w-full sm:w-auto">
-              Customize for Yourself
-            </Button>
-          </div>
-          <div className="mt-6 pt-6 border-t border-white/20">
-            <p className="text-white/80 text-sm">Have questions?</p>
             <a 
-              href="https://wa.me/9779841376470?text=Hello! I'm interested in booking the Manaslu Circuit Trek."
+              href="https://wa.me/9779841376470"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 mt-3 px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-full font-medium transition-colors"
+              className="inline-flex items-center gap-3 px-8 py-6 bg-green-500 hover:bg-green-600 text-white rounded-full font-bold text-lg transition-colors"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.864 3.49" />
-              </svg>
-              Chat on WhatsApp
+              <MessageCircle className="h-5 w-5" />
+              Chat Now
             </a>
           </div>
+          <p className="text-white/70 text-sm mt-6">Nepal's #1 Rated Manaslu Trek Operator</p>
         </section>
       </main>
     </div>
