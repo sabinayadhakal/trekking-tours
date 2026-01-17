@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import path from "node:path";
 
 const nextConfig: NextConfig = {
   images: {
@@ -14,12 +13,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  outputFileTracingRoot: path.resolve(__dirname, '../../'),
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Remove the experimental.turbo config - it's not supported or has wrong structure
-  // If you need the component-tagger-loader, you might need to use webpack config instead
+  // The 'outputFileTracingRoot' line has been removed.
 };
 
 export default nextConfig;
