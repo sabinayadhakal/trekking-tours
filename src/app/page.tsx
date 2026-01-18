@@ -235,7 +235,9 @@ export default function Home() {
                 <Star className="w-3 h-3 md:w-4 md:h-4 mr-1.5 fill-white" /> 5000+ Adventurers Since 2012
               </Badge>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-tight mb-6 md:mb-8">
-                Himalayan Expeditions
+                Himalayan 
+                              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic"> Expeditions</span>
+
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 leading-relaxed max-w-2xl font-light">
                 Life-changing journeys across Nepal, Bhutan, and Tibet with certified expert guides.

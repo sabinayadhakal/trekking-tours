@@ -587,39 +587,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="w-16 h-16 bg-[#C5E0ED] rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Mountain className="w-8 h-8 text-[#0f2940]" />
-            </div>
-            
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4">
-              Stay Updated on Himalayan Adventures
-            </h3>
-            
-            <p className="text-slate-600 text-sm sm:text-base mb-8 leading-relaxed">
-              Subscribe for the latest trekking tips, seasonal guides, special offers, and inspiring stories.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 h-12 px-6 rounded-full border border-[#C5E0ED] bg-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED]"
-              />
-              <Button className="h-12 px-8 bg-[#0f2940] hover:bg-[#1a4166] text-white font-bold rounded-full">
-                Subscribe
-              </Button>
-            </div>
-            
-            <p className="text-xs text-slate-400 mt-4">
-              No spam, unsubscribe anytime. Read our privacy policy.
-            </p>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Add this CSS for Safari fallback - EXACTLY LIKE ABOUT PAGE */}
       <style jsx global>{`

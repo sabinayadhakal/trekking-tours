@@ -12,11 +12,12 @@ const nextConfig: NextConfig = {
         hostname: '**',
       },
     ],
+    // Add quality configuration
+    qualities: [75, 85],
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  // The 'outputFileTracingRoot' line has been removed.
 };
 
 export default nextConfig;

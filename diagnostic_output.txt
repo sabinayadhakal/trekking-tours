@@ -1,0 +1,66 @@
+=== START DIAGNOSTIC ===
+
+1. Package.json tailwind:
+        "@react-three/fiber": "^9.0.0-alpha.8",
+        "@tabler/icons-react": "^3.35.0",
+        "@tailwindcss/typography": "^0.5.19",
+        "@tsparticles/engine": "^3.8.1",
+        "@tsparticles/react": "^3.0.0",
+--
+        "swiper": "^12.0.3",
+        "tailwind-merge": "^3.3.1",
+        "tailwindcss-animate": "^1.0.7",
+        "three": "^0.178.0",
+        "three-globe": "^2.43.0",
+--
+        "react": "^19.2.3",
+        "react-dom": "^19.2.3",
+        "tailwindcss": "^3.4.19",
+        "typescript": "^5.9.3"
+    }
+
+2. Installed:
+├─┬ @tailwindcss/typography@0.5.19
+│ └── tailwindcss@3.4.19 deduped
+├─┬ tailwindcss-animate@1.0.7
+│ └── tailwindcss@3.4.19 deduped
+└── tailwindcss@3.4.19
+
+3. Files:
+-rw-r--r-- 1 sabinaya sabinaya 394 Jan 18 10:56 next.config.ts
+-rw-r--r-- 1 sabinaya sabinaya  82 Jan 18 10:54 postcss.config.js
+-rw-r--r-- 1 sabinaya sabinaya 567 Jan 18 10:59 tailwind.config.js
+
+4. globals.css first lines:
+/* Tailwind CSS v3 directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+5. Search results:
+spacing(8):
+src/components/ui/calendar.tsx:        "bg-background group/calendar p-3 [--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
+
+--cell-size:
+none
+
+[-- in className:
+none
+=== MINIMAL TEST ===
+Backing up...
+Creating minimal test...
+Clearing cache...
+=== TEST RUN ===
+Running: TURBOPACK=0 npm run dev
+(Run this command separately and share output)
