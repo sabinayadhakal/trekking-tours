@@ -30,16 +30,7 @@ import {
   Star,
   ExternalLink, 
   ArrowRight,
-  Plane,
-  Building,
-  MountainIcon,
-  Trees,
-  Bird,
-  Map,
-  Home,
-  Flag,
-  Cloud,
-  Sunrise
+  Globe as GlobeIcon
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -178,86 +169,300 @@ const affiliationLinks = [
   }
 ];
 
-// Destinations data
-const destinations = [
-  {
-    name: "Nepal",
-    href: "/destinations/nepal",
-    description: "Land of Himalayas & Everest",
-    icon: Mountain,
-    color: "from-[#FF6B6B] to-[#EE5A24]",
-    popularTreks: ["Everest Base Camp", "Annapurna Circuit", "Langtang Valley"]
-  },
-  {
-    name: "Bhutan",
-    href: "/destinations/bhutan",
-    description: "Land of Thunder Dragon",
-    icon: Flag,
-    color: "from-[#FF9F43] to-[#F36818]",
-    popularTreks: ["Druk Path Trek", "Jhomolhari Base Camp"]
-  },
-  {
-    name: "Tibet",
-    href: "/destinations/tibet",
-    description: "Roof of the World",
-    icon: Cloud,
-    color: "from-[#54A0FF] to-[#2E86DE]",
-    popularTreks: ["Everest North Face", "Mount Kailash"]
-  }
-];
+// Destination dropdown component
+const DestinationsDropdown = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-// Services data
-const services = [
-  {
-    name: "Free Walking Tour",
-    href: "/services/free-walking-tour",
-    icon: Heart,
-    description: "Explore Kathmandu's heritage",
-    color: "from-[#48DBFB] to-[#18A0FB]"
-  },
-  {
-    name: "Trekking",
-    href: "/services/trekking",
-    icon: MountainIcon,
-    description: "Himalayan adventures",
-    color: "from-[#FF9F43] to-[#F36818]"
-  },
-  {
-    name: "City Tours",
-    href: "/services/city-tours",
-    icon: Building,
-    description: "Cultural experiences",
-    color: "from-[#10AC84] to-[#0D8C6A]"
-  },
-  {
-    name: "Mountain Flight",
-    href: "/services/mountain-flight",
-    icon: Plane,
-    description: "Aerial Everest views",
-    color: "from-[#54A0FF] to-[#2E86DE]"
-  },
-  {
-    name: "Chitwan Jungle Safari",
-    href: "/services/jungle-safari",
-    icon: Trees,
-    description: "Wildlife adventure",
-    color: "from-[#00D2D3] to-[#00A8A8]"
-  },
-  {
-    name: "Helicopter Sightseeing",
-    href: "/services/helicopter-sightseeing",
-    icon: Sunrise,
-    description: "Luxury aerial tours",
-    color: "from-[#FF6B6B] to-[#EE5A24]"
-  },
-  {
-    name: "Peak Climbing",
-    href: "/services/peak-climbing",
-    icon: Mountain,
-    description: "Summit expeditions",
-    color: "from-[#5F27CD] to-[#341F97]"
-  }
-];
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-[#C5E0ED] transition-colors hover:scale-105 active:scale-95 px-3 py-1.5 rounded-lg hover:bg-white/5 backdrop-blur-sm"
+      >
+        Destinations
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute left-0 top-full mt-2 w-64 bg-[#153653]/95 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl shadow-black/30 overflow-hidden z-50"
+          >
+            <div className="py-2">
+              <Link
+                href="/destinations/nepal"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Nepal
+              </Link>
+              <Link
+                href="/destinations/bhutan"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Bhutan
+              </Link>
+              <Link
+                href="/destinations/tibet"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Tibet
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// Services dropdown component
+const ServicesDropdown = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-[#C5E0ED] transition-colors hover:scale-105 active:scale-95 px-3 py-1.5 rounded-lg hover:bg-white/5 backdrop-blur-sm"
+      >
+        Our Services
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute left-0 top-full mt-2 w-72 bg-[#153653]/95 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl shadow-black/30 overflow-hidden z-50"
+          >
+            <div className="py-2">
+              <Link
+                href="/services/free-walking-tour"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Free Walking Tour
+              </Link>
+              <Link
+                href="/services/trekking"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Trekking
+              </Link>
+              <Link
+                href="/services/city-tours"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                City Tours
+              </Link>
+              <Link
+                href="/services/mountain-flight"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Mountain Flights
+              </Link>
+              <Link
+                href="/services/jungle-safari"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Chitwan Jungle Safari
+              </Link>
+              <Link
+                href="/services/helicopter-sightseeing"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Helicopter Sightseeing
+              </Link>
+              <Link
+                href="/services/peak-climbing"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Peak Climbing
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// Mobile dropdown components
+const MobileDestinationsDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <div className="w-full">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-4 px-4 text-lg font-medium text-white/90 hover:text-[#C5E0ED] hover:bg-[#153653]/60 rounded-xl transition-all active:scale-95 flex items-center justify-between backdrop-blur-sm border border-white/10 group"
+      >
+        <span className="flex items-center gap-3">
+          <div className="w-2 h-2 bg-[#C5E0ED] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+          Destinations
+        </span>
+        <ChevronDown className={`w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="pl-8 pt-2 space-y-1">
+              <Link
+                href="/destinations/nepal"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                Nepal
+              </Link>
+              <Link
+                href="/destinations/bhutan"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                Bhutan
+              </Link>
+              <Link
+                href="/destinations/tibet"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                Tibet
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <div className="w-full">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-4 px-4 text-lg font-medium text-white/90 hover:text-[#C5E0ED] hover:bg-[#153653]/60 rounded-xl transition-all active:scale-95 flex items-center justify-between backdrop-blur-sm border border-white/10 group"
+      >
+        <span className="flex items-center gap-3">
+          <div className="w-2 h-2 bg-[#C5E0ED] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+          Our Services
+        </span>
+        <ChevronDown className={`w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="pl-8 pt-2 space-y-1">
+              <Link
+                href="/services/free-walking-tour"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                Free Walking Tour
+              </Link>
+              <Link
+                href="/services/trekking"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                Trekking
+              </Link>
+              <Link
+                href="/services/city-tours"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                City Tours
+              </Link>
+              <Link
+                href="/services/mountain-flight"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                Mountain Flights
+              </Link>
+              <Link
+                href="/services/jungle-safari"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                Chitwan Jungle Safari
+              </Link>
+              <Link
+                href="/services/helicopter-sightseeing"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                Helicopter Sightseeing
+              </Link>
+              <Link
+                href="/services/peak-climbing"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                Peak Climbing
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export default function ClientLayout({
   children,
@@ -270,12 +475,11 @@ export default function ClientLayout({
   const [searchQuery, setSearchQuery] = React.useState("");
   const [termsOpen, setTermsOpen] = React.useState(false);
   const [privacyOpen, setPrivacyOpen] = React.useState(false);
-  const [destinationsOpen, setDestinationsOpen] = React.useState(false);
-  const [servicesOpen, setServicesOpen] = React.useState(false);
 
   const searchRef = React.useRef<HTMLDivElement>(null);
-  const destinationsRef = React.useRef<HTMLDivElement>(null);
-  const servicesRef = React.useRef<HTMLDivElement>(null);
+  const phoneNumber = "+977 9841376470";
+  const whatsappMessage = "Hello Himkala Adventure! I'm interested in your services.";
+  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\s/g, '')}?text=${encodeURIComponent(whatsappMessage)}`;
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -290,37 +494,24 @@ export default function ClientLayout({
       if (isSearchOpen && searchRef.current && !searchRef.current.contains(event.target as Node)) {
         setIsSearchOpen(false);
       }
-      if (destinationsOpen && destinationsRef.current && !destinationsRef.current.contains(event.target as Node)) {
-        setDestinationsOpen(false);
-      }
-      if (servicesOpen && servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
-        setServicesOpen(false);
-      }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isSearchOpen, destinationsOpen, servicesOpen]);
+  }, [isSearchOpen]);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-    setDestinationsOpen(false);
-    setServicesOpen(false);
-  };
+  const closeMenu = () => setIsMenuOpen(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
+      // Implement search functionality here
       console.log("Searching for:", searchQuery);
       setIsSearchOpen(false);
     }
   };
-
-  // WhatsApp number
-  const whatsappNumber = "+9779841376470";
-  const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Hello%20Himkala%20Adventure!%20I'm%20interested%20in%20your%20services.`;
 
   return (
     <>
@@ -366,151 +557,12 @@ export default function ClientLayout({
             </button>
 
             {/* Destinations Dropdown */}
-            <div className="relative" ref={destinationsRef}>
-              <button
-                onClick={() => setDestinationsOpen(!destinationsOpen)}
-                className="text-sm font-medium text-white/90 hover:text-[#C5E0ED] transition-colors hover:scale-105 active:scale-95 px-3 py-1.5 rounded-lg hover:bg-white/5 backdrop-blur-sm flex items-center gap-1"
-              >
-                Destinations
-                <ChevronDown className={`w-4 h-4 transition-transform ${destinationsOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              <AnimatePresence>
-                {destinationsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-[500px] bg-[#153653]/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl shadow-black/30 overflow-hidden"
-                  >
-                    <div className="p-6">
-                      <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                        <Globe className="w-5 h-5 text-[#C5E0ED]" />
-                        Explore Our Destinations
-                      </h3>
-                      <div className="grid grid-cols-3 gap-4">
-                        {destinations.map((dest) => (
-                          <Link
-                            key={dest.name}
-                            href={dest.href}
-                            onClick={() => setDestinationsOpen(false)}
-                            className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all hover:scale-[1.02] active:scale-95"
-                          >
-                            <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${dest.color} flex items-center justify-center mb-3`}>
-                              <dest.icon className="w-6 h-6 text-white" />
-                            </div>
-                            <h4 className="font-bold text-white group-hover:text-[#C5E0ED] transition-colors mb-1">
-                              {dest.name}
-                            </h4>
-                            <p className="text-white/60 text-sm mb-2">{dest.description}</p>
-                            <div className="flex flex-wrap gap-1 mt-2">
-                              {dest.popularTreks.map((trek) => (
-                                <span key={trek} className="text-xs px-2 py-1 bg-white/5 rounded-full text-white/70">
-                                  {trek}
-                                </span>
-                              ))}
-                            </div>
-                            <div className="flex items-center gap-1 mt-3 text-[#C5E0ED] text-sm font-medium">
-                              <span>Explore</span>
-                              <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                      <div className="mt-6 pt-6 border-t border-white/10">
-                        <Link
-                          href="/destinations"
-                          onClick={() => setDestinationsOpen(false)}
-                          className="w-full py-3 bg-gradient-to-r from-[#C5E0ED]/20 to-[#9dcae0]/20 hover:from-[#C5E0ED]/30 hover:to-[#9dcae0]/30 text-white font-medium rounded-lg flex items-center justify-center gap-2 transition-all hover:scale-105 active:scale-95"
-                        >
-                          <Map className="w-4 h-4" />
-                          View All Destinations
-                        </Link>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Our Services Dropdown */}
-            <div className="relative" ref={servicesRef}>
-              <button
-                onClick={() => setServicesOpen(!servicesOpen)}
-                className="text-sm font-medium text-white/90 hover:text-[#C5E0ED] transition-colors hover:scale-105 active:scale-95 px-3 py-1.5 rounded-lg hover:bg-white/5 backdrop-blur-sm flex items-center gap-1"
-              >
-                Our Services
-                <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              <AnimatePresence>
-                {servicesOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-[700px] bg-[#153653]/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl shadow-black/30 overflow-hidden"
-                  >
-                    <div className="p-6">
-                      <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                        <Compass className="w-5 h-5 text-[#C5E0ED]" />
-                        Adventure Services & Activities
-                      </h3>
-                      <div className="grid grid-cols-4 gap-4">
-                        {services.slice(0, 4).map((service) => (
-                          <Link
-                            key={service.name}
-                            href={service.href}
-                            onClick={() => setServicesOpen(false)}
-                            className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all hover:scale-[1.02] active:scale-95"
-                          >
-                            <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-3`}>
-                              <service.icon className="w-5 h-5 text-white" />
-                            </div>
-                            <h4 className="font-bold text-white group-hover:text-[#C5E0ED] transition-colors text-sm mb-1">
-                              {service.name}
-                            </h4>
-                            <p className="text-white/60 text-xs">{service.description}</p>
-                          </Link>
-                        ))}
-                      </div>
-                      <div className="grid grid-cols-3 gap-4 mt-4">
-                        {services.slice(4).map((service) => (
-                          <Link
-                            key={service.name}
-                            href={service.href}
-                            onClick={() => setServicesOpen(false)}
-                            className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all hover:scale-[1.02] active:scale-95"
-                          >
-                            <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-3`}>
-                              <service.icon className="w-5 h-5 text-white" />
-                            </div>
-                            <h4 className="font-bold text-white group-hover:text-[#C5E0ED] transition-colors text-sm mb-1">
-                              {service.name}
-                            </h4>
-                            <p className="text-white/60 text-xs">{service.description}</p>
-                          </Link>
-                        ))}
-                      </div>
-                      <div className="mt-6 pt-6 border-t border-white/10">
-                        <Link
-                          href="/services"
-                          onClick={() => setServicesOpen(false)}
-                          className="w-full py-3 bg-gradient-to-r from-[#C5E0ED]/20 to-[#9dcae0]/20 hover:from-[#C5E0ED]/30 hover:to-[#9dcae0]/30 text-white font-medium rounded-lg flex items-center justify-center gap-2 transition-all hover:scale-105 active:scale-95"
-                        >
-                          <Compass className="w-4 h-4" />
-                          View All Services
-                        </Link>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* About Us */}
+            <DestinationsDropdown />
+            
+            {/* Services Dropdown */}
+            <ServicesDropdown />
+            
+            {/* Other Navigation Items */}
             <Link 
               href="/about-us"
               className="text-sm font-medium text-white/90 hover:text-[#C5E0ED] transition-colors hover:scale-105 active:scale-95 px-3 py-1.5 rounded-lg hover:bg-white/5 backdrop-blur-sm"
@@ -518,8 +570,7 @@ export default function ClientLayout({
             >
               About Us
             </Link>
-
-            {/* Blogs */}
+            
             <Link 
               href="/blog"
               className="text-sm font-medium text-white/90 hover:text-[#C5E0ED] transition-colors hover:scale-105 active:scale-95 px-3 py-1.5 rounded-lg hover:bg-white/5 backdrop-blur-sm"
@@ -645,85 +696,17 @@ export default function ClientLayout({
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
                     <div className="flex flex-col space-y-2">
-                      {/* Destinations Dropdown in Mobile */}
-                      <div>
-                        <button
-                          onClick={() => setDestinationsOpen(!destinationsOpen)}
-                          className="w-full py-4 px-4 text-lg font-medium text-white/90 hover:text-[#C5E0ED] hover:bg-[#153653]/60 rounded-xl transition-all active:scale-95 flex items-center justify-between backdrop-blur-sm border border-white/10 group"
-                        >
-                          <span className="flex items-center gap-3">
-                            <div className="w-2 h-2 bg-[#C5E0ED] rounded-full" />
-                            Destinations
-                          </span>
-                          <ChevronDown className={`w-4 h-4 text-white/50 transition-transform ${destinationsOpen ? 'rotate-180' : ''}`} />
-                        </button>
-                        
-                        <AnimatePresence>
-                          {destinationsOpen && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              className="ml-6 mt-2 space-y-2 overflow-hidden"
-                            >
-                              {destinations.map((dest) => (
-                                <Link
-                                  key={dest.name}
-                                  href={dest.href}
-                                  onClick={closeMenu}
-                                  className="flex items-center gap-3 py-3 px-4 text-white/70 hover:text-[#C5E0ED] rounded-lg hover:bg-white/5 transition-colors"
-                                >
-                                  <dest.icon className="w-4 h-4" />
-                                  <span>{dest.name}</span>
-                                </Link>
-                              ))}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-
-                      {/* Services Dropdown in Mobile */}
-                      <div>
-                        <button
-                          onClick={() => setServicesOpen(!servicesOpen)}
-                          className="w-full py-4 px-4 text-lg font-medium text-white/90 hover:text-[#C5E0ED] hover:bg-[#153653]/60 rounded-xl transition-all active:scale-95 flex items-center justify-between backdrop-blur-sm border border-white/10 group"
-                        >
-                          <span className="flex items-center gap-3">
-                            <div className="w-2 h-2 bg-[#C5E0ED] rounded-full" />
-                            Our Services
-                          </span>
-                          <ChevronDown className={`w-4 h-4 text-white/50 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-                        </button>
-                        
-                        <AnimatePresence>
-                          {servicesOpen && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              className="ml-6 mt-2 space-y-2 overflow-hidden"
-                            >
-                              {services.map((service) => (
-                                <Link
-                                  key={service.name}
-                                  href={service.href}
-                                  onClick={closeMenu}
-                                  className="flex items-center gap-3 py-3 px-4 text-white/70 hover:text-[#C5E0ED] rounded-lg hover:bg-white/5 transition-colors"
-                                >
-                                  <service.icon className="w-4 h-4" />
-                                  <span>{service.name}</span>
-                                </Link>
-                              ))}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-
+                      {/* Mobile Destinations Dropdown */}
+                      <MobileDestinationsDropdown closeMenu={closeMenu} />
+                      
+                      {/* Mobile Services Dropdown */}
+                      <MobileServicesDropdown closeMenu={closeMenu} />
+                      
                       {/* About Us */}
                       <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
+                        transition={{ delay: 0.1 }}
                       >
                         <Link 
                           href="/about-us"
@@ -737,12 +720,12 @@ export default function ClientLayout({
                           <ChevronRight className="w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] group-hover:translate-x-1 transition-all" />
                         </Link>
                       </motion.div>
-
+                      
                       {/* Blogs */}
                       <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.25 }}
+                        transition={{ delay: 0.15 }}
                       >
                         <Link 
                           href="/blog"
@@ -761,7 +744,7 @@ export default function ClientLayout({
                       <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ delay: 0.2 }}
                       >
                         <a 
                           href={whatsappUrl}
@@ -782,7 +765,7 @@ export default function ClientLayout({
                       <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.35 }}
+                        transition={{ delay: 0.25 }}
                       >
                         <Link 
                           href="/contact"
@@ -800,9 +783,11 @@ export default function ClientLayout({
                   </div>
                   
                   <div className="mt-auto pt-6 border-t border-white/20">
+                    
+                    
                     <div className="grid grid-cols-2 gap-3 mb-6">
                       <a 
-                        href="tel:+9779841376470" 
+                        href={`tel:${phoneNumber.replace(/\s/g, '')}`}
                         className="flex items-center justify-center gap-2 text-white/90 hover:text-[#C5E0ED] transition-colors px-4 py-3 rounded-lg hover:bg-[#153653]/60 backdrop-blur-sm border border-white/10 group"
                         onClick={closeMenu}
                       >
@@ -825,13 +810,11 @@ export default function ClientLayout({
                         <MapPin className="w-3 h-3" />
                         Thamel, Kathmandu, Nepal
                       </p>
-                      <div className="flex items-center justify-center gap-2">
-                        <Phone className="w-3 h-3" />
-                        <span>+977 9841376470</span>
-                      </div>
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center justify-center gap-4 text-white/40">
                         <Clock className="w-3 h-3" />
                         <span>Daily 9AM - 6PM</span>
+                        <Shield className="w-3 h-3" />
+                        <span>Licensed</span>
                       </div>
                       <p>© {new Date().getFullYear()} Himkala Adventure</p>
                     </div>
@@ -891,15 +874,17 @@ export default function ClientLayout({
                 </Button>
                 
                 {/* WhatsApp Us - Secondary Button */}
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/30 hover:border-white/50 h-14 sm:h-16 px-8 sm:px-10 rounded-full text-lg backdrop-blur-sm hover:scale-105 active:scale-95 transition-all w-full sm:w-auto"
+                <Button 
+                  asChild
+                  size="lg" 
+                  variant="outline"
+                  className="bg-white/10 hover:bg-white/20 text-white border-white/30 hover:border-white/50 h-14 sm:h-16 px-8 sm:px-10 rounded-full text-lg backdrop-blur-sm hover:scale-105 active:scale-95 transition-all w-full sm:w-auto"
                 >
-                  <WhatsAppIcon className="w-5 h-5" />
-                  <span className="font-medium">WhatsApp Us</span>
-                </a>
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                    <WhatsAppIcon className="mr-3 w-5 h-5" />
+                    <span className="font-medium">WhatsApp Us</span>
+                  </a>
+                </Button>
               </div>
               
               {/* Trust Indicators */}
@@ -1025,8 +1010,8 @@ export default function ClientLayout({
                 </li>
                 <li className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-[#C5E0ED] shrink-0 mt-0.5" />
-                  <a href="tel:+9779841376470" className="hover:text-[#C5E0ED] transition-colors">
-                    +977 9841376470
+                  <a href={`tel:${phoneNumber.replace(/\s/g, '')}`} className="hover:text-[#C5E0ED] transition-colors">
+                    {phoneNumber}
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
@@ -1088,6 +1073,7 @@ export default function ClientLayout({
               >
                 Terms & Conditions
               </button>
+              
             </div>
           </div>
         </div>
@@ -1112,7 +1098,7 @@ export default function ClientLayout({
       {/* Floating Call Button - Mobile Only - SOLID BLUE */}
       <div className="md:hidden fixed bottom-24 right-6 z-40">
         <a 
-          href="tel:+9779841376470"
+          href={`tel:${phoneNumber.replace(/\s/g, '')}`}
           className="w-12 h-12 rounded-full bg-gradient-to-r from-[#4285F4] via-[#3B82F6] to-[#2563EB] flex items-center justify-center shadow-2xl shadow-blue-500/50 hover:shadow-blue-500/70 hover:scale-110 active:scale-95 transition-all"
           aria-label="Call us"
         >
