@@ -21,7 +21,8 @@ import {
   CheckCircle,
   ExternalLink,
   ChevronLeft,
-  ChevronRight as RightIcon
+  ChevronRight as RightIcon,
+  Globe
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -52,18 +53,18 @@ const destinations = [
 ];
 
 const services = [
-   {
-  icon: (
-    <div className="relative w-6 h-6">
-      <div className="w-full h-full rounded-full bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] flex items-center justify-center">
-        <span className="text-[#0f2940] font-bold text-sm">1</span>
+  {
+    icon: (
+      <div className="relative w-6 h-6">
+        <div className="w-full h-full rounded-full bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] flex items-center justify-center">
+          <span className="text-[#0f2940] font-bold text-sm">1</span>
+        </div>
       </div>
-    </div>
-  ),
-  title: "Free Walking Tour, Kathmandu",
-  description: "First Free Walking Tour in Kathmandu, Nepal.",
-  color: "from-sky-100 to-blue-50"
-},
+    ),
+    title: "Free Walking Tour, Kathmandu",
+    description: "First Free Walking Tour in Kathmandu, Nepal.",
+    color: "from-sky-100 to-blue-50"
+  },
   {
     icon: <Mountain className="w-6 h-6" />,
     title: "Mountain Trekking",
@@ -82,7 +83,6 @@ const services = [
     description: "Ancient temples, monasteries, and Himalayan heritage experiences.",
     color: "from-amber-100 to-orange-50"
   },
-  
   {
     icon: <Camera className="w-6 h-6" />,
     title: "Photography Tours",
@@ -236,8 +236,7 @@ export default function Home() {
               </Badge>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-tight mb-6 md:mb-8">
                 Himalayan 
-                              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic"> Expeditions</span>
-
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic"> Expeditions</span>
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 leading-relaxed max-w-2xl font-light">
                 Life-changing journeys across Nepal, Bhutan, and Tibet with certified expert guides.
@@ -451,7 +450,7 @@ export default function Home() {
                   Our most sought-after Himalayan journeys, carefully curated for unforgettable experiences.
                 </p>
               </div>
-              <Button variant="outline" className="text-white border-white/30 hover:bg-white/10 font-bold rounded-full px-8 py-6 text-base">
+              <Button variant="outline" className=" border-white/30 hover:bg-white/10 font-bold rounded-full px-8 py-6 text-base">
                 View All Expeditions
               </Button>
             </div>
@@ -692,7 +691,7 @@ export default function Home() {
                     key={`${testimonial.name}-${i}`}
                     className="flex-shrink-0 w-[85vw] mr-6"
                   >
-                    <div className="bg-gradient-to-b from-slate-50 to-white rounded-2xl overflow-hidden border border-slate-100 p-6 h-full">
+                    <div className="bg-gradient-to-b from-white to-[#faf8f5] rounded-2xl overflow-hidden border border-[#e8d5c4] p-6 h-full">
                       <div className="flex gap-1 mb-6">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -703,8 +702,10 @@ export default function Home() {
                       </p>
                       <div className="flex flex-col gap-2">
                         <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
-                        <div className="text-slate-500 text-sm">{testimonial.country}</div>
-                        <Badge className="bg-[#C5E0ED]/10 text-[#2d6a8a] text-xs w-fit">
+                        <div className="text-slate-500 text-sm flex items-center gap-1">
+                          <Globe className="w-3 h-3" /> {testimonial.country}
+                        </div>
+                        <Badge className="bg-[#d4a574]/10 text-[#8b5a3c] text-xs w-fit">
                           {testimonial.trek}
                         </Badge>
                       </div>
@@ -722,7 +723,7 @@ export default function Home() {
                     key={`${testimonial.name}-${i}`}
                     className="flex-shrink-0 w-[400px] mr-8"
                   >
-                    <div className="bg-gradient-to-b from-slate-50 to-white rounded-3xl overflow-hidden border border-slate-100 p-8 h-full">
+                    <div className="bg-gradient-to-b from-white to-[#faf8f5] rounded-3xl overflow-hidden border border-[#e8d5c4] p-8 h-full">
                       <div className="flex gap-1 mb-6">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -733,8 +734,10 @@ export default function Home() {
                       </p>
                       <div className="flex flex-col gap-2">
                         <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
-                        <div className="text-slate-500 text-sm">{testimonial.country}</div>
-                        <Badge className="bg-[#C5E0ED]/10 text-[#2d6a8a] text-xs w-fit">
+                        <div className="text-slate-500 text-sm flex items-center gap-1">
+                          <Globe className="w-3 h-3" /> {testimonial.country}
+                        </div>
+                        <Badge className="bg-[#d4a574]/10 text-[#8b5a3c] text-xs w-fit">
                           {testimonial.trek}
                         </Badge>
                       </div>

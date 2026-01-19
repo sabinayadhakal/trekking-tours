@@ -36,7 +36,7 @@ const blogPost = {
   heroImage: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=2070&auto=format&fit=crop",
   author: {
     name: "Tshering Namgyal Sherpa",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
+    avatar: "/images/managing-director.jpg",
     bio: "Senior Trekking Guide with 15+ years of experience in the Himalayas. Summited Everest 3 times.",
     role: "Head Guide & Co-Founder"
   },
