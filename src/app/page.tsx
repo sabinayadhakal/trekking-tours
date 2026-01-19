@@ -668,132 +668,132 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials - Horizontal Flow Animation with Yellow Stars */}
-        <section className="py-16 md:py-32 bg-white overflow-hidden">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-              <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-                <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" /> TESTIMONIALS
-              </Badge>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
-                Adventurer Experiences
-              </h2>
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-                Hear from our global community of Himalayan explorers and their unforgettable journeys.
+       {/* Testimonials - Horizontal Flow Animation */}
+<section className="py-16 md:py-32 bg-white overflow-hidden">
+  <div className="container mx-auto px-4 sm:px-6">
+    <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
+      <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+        <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" /> TESTIMONIALS
+      </Badge>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
+        Adventurer Experiences
+      </h2>
+      <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+        Hear from our global community of Himalayan explorers and their unforgettable journeys.
+      </p>
+    </div>
+
+    {/* Horizontal Flow Animation for Mobile */}
+    <div className="md:hidden overflow-hidden relative py-4">
+      <div className="flex animate-infinite-scroll-slow-mobile">
+        {infiniteTestimonials.map((testimonial, i) => (
+          <div
+            key={`${testimonial.name}-${i}`}
+            className="flex-shrink-0 w-[85vw] mr-6"
+          >
+            <div className="bg-gradient-to-br from-[#f8fafc] to-[#f0f7ff] rounded-2xl overflow-hidden border border-[#C5E0ED]/40 p-6 h-full shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="flex gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-slate-700 italic mb-8 leading-relaxed text-base">
+                &ldquo;{testimonial.text}&rdquo;
               </p>
-            </div>
-
-            {/* Horizontal Flow Animation for Mobile - VERY SLOW */}
-            <div className="md:hidden overflow-hidden relative py-4">
-              <div className="flex animate-infinite-scroll-slow-mobile">
-                {infiniteTestimonials.map((testimonial, i) => (
-                  <div
-                    key={`${testimonial.name}-${i}`}
-                    className="flex-shrink-0 w-[85vw] mr-6"
-                  >
-                    <div className="bg-gradient-to-b from-white to-[#faf8f5] rounded-2xl overflow-hidden border border-[#e8d5c4] p-6 h-full">
-                      <div className="flex gap-1 mb-6">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
-                      <p className="text-slate-600 italic mb-8 leading-relaxed text-base">
-                        &ldquo;{testimonial.text}&rdquo;
-                      </p>
-                      <div className="flex flex-col gap-2">
-                        <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
-                        <div className="text-slate-500 text-sm flex items-center gap-1">
-                          <Globe className="w-3 h-3" /> {testimonial.country}
-                        </div>
-                        <Badge className="bg-[#d4a574]/10 text-[#8b5a3c] text-xs w-fit">
-                          {testimonial.trek}
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Horizontal Flow Animation for Desktop - VERY SLOW */}
-            <div className="hidden md:block overflow-hidden relative py-8">
-              <div className="flex animate-infinite-scroll-slow-desktop">
-                {infiniteTestimonials.map((testimonial, i) => (
-                  <div
-                    key={`${testimonial.name}-${i}`}
-                    className="flex-shrink-0 w-[400px] mr-8"
-                  >
-                    <div className="bg-gradient-to-b from-white to-[#faf8f5] rounded-3xl overflow-hidden border border-[#e8d5c4] p-8 h-full">
-                      <div className="flex gap-1 mb-6">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
-                      <p className="text-slate-600 italic mb-8 leading-relaxed text-base">
-                        &ldquo;{testimonial.text}&rdquo;
-                      </p>
-                      <div className="flex flex-col gap-2">
-                        <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
-                        <div className="text-slate-500 text-sm flex items-center gap-1">
-                          <Globe className="w-3 h-3" /> {testimonial.country}
-                        </div>
-                        <Badge className="bg-[#d4a574]/10 text-[#8b5a3c] text-xs w-fit">
-                          {testimonial.trek}
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* TripAdvisor Section */}
-            <div className="mt-12 sm:mt-20 bg-gradient-to-r from-[#E3F8FF] to-[#CFE8FF] rounded-2xl p-6 sm:p-8 md:p-10">
-              <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-                <div className="lg:w-2/3 text-center lg:text-left">
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#2E4F7C] mb-3">
-                    See All Reviews on Tripadvisor
-                  </h3>
-                  <p className="text-sm sm:text-base text-[#3C6AA6] mb-4">
-                    Join thousands of satisfied travelers who've shared their experiences. 
-                    Read detailed reviews, see more photos, and discover why we're rated so highly.
-                  </p>
-                  <a
-                    href={tripadvisorUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-[#3C6AA6] hover:bg-[#2E4F7C] text-white font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
-                  >
-                    <span>Visit Tripadvisor</span>
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
+              <div className="flex flex-col gap-2">
+                <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
+                <div className="text-slate-600 text-sm flex items-center gap-1">
+                  <Globe className="w-3 h-3 text-[#2d6a8a]" /> {testimonial.country}
                 </div>
-                
-                <div className="lg:w-1/3 flex justify-center">
-                  <a
-                    href={tripadvisorUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block hover:scale-105 transition-transform duration-300"
-                  >
-                    <div className="relative w-48 sm:w-56 h-48 sm:h-56">
-                      <Image
-                        src="/images/TripAdvisor-Logo.png"
-                        alt="Tripadvisor"
-                        fill
-                        className="object-contain drop-shadow-lg"
-                        unoptimized
-                      />
-                    </div>
-                  </a>
-                </div>
+                <Badge className="bg-gradient-to-r from-[#C5E0ED]/20 to-[#7fb8d4]/20 text-[#0f2940] border-[#C5E0ED]/40 text-xs w-fit">
+                  {testimonial.trek}
+                </Badge>
               </div>
             </div>
           </div>
-        </section>
+        ))}
+      </div>
+    </div>
+
+    {/* Horizontal Flow Animation for Desktop */}
+    <div className="hidden md:block overflow-hidden relative py-8">
+      <div className="flex animate-infinite-scroll-slow-desktop">
+        {infiniteTestimonials.map((testimonial, i) => (
+          <div
+            key={`${testimonial.name}-${i}`}
+            className="flex-shrink-0 w-[400px] mr-8"
+          >
+            <div className="bg-gradient-to-br from-white to-[#f8fafc] rounded-3xl overflow-hidden border border-[#C5E0ED]/40 p-8 h-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-[#7fb8d4]/60">
+              <div className="flex gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-slate-700 italic mb-8 leading-relaxed text-base">
+                &ldquo;{testimonial.text}&rdquo;
+              </p>
+              <div className="flex flex-col gap-2">
+                <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
+                <div className="text-slate-600 text-sm flex items-center gap-1">
+                  <Globe className="w-3 h-3 text-[#2d6a8a]" /> {testimonial.country}
+                </div>
+                <Badge className="bg-gradient-to-r from-[#C5E0ED]/20 to-[#7fb8d4]/20 text-[#0f2940] border-[#C5E0ED]/40 text-xs w-fit font-medium">
+                  {testimonial.trek}
+                </Badge>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* TripAdvisor Section */}
+    <div className="mt-12 sm:mt-20 bg-gradient-to-r from-[#E3F8FF] to-[#CFE8FF] rounded-2xl p-6 sm:p-8 md:p-10">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="lg:w-2/3 text-center lg:text-left">
+          <h3 className="text-xl sm:text-2xl font-bold text-[#2E4F7C] mb-3">
+            See All Reviews on Tripadvisor
+          </h3>
+          <p className="text-sm sm:text-base text-[#3C6AA6] mb-4">
+            Join thousands of satisfied travelers who've shared their experiences. 
+            Read detailed reviews, see more photos, and discover why we're rated so highly.
+          </p>
+          <a
+            href={tripadvisorUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2d6a8a] to-[#3C6AA6] hover:from-[#0f2940] hover:to-[#2d6a8a] text-white font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
+          >
+            <span>Visit Tripadvisor</span>
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        </div>
+        
+        <div className="lg:w-1/3 flex justify-center">
+          <a
+            href={tripadvisorUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block hover:scale-105 transition-transform duration-300"
+          >
+            <div className="relative w-48 sm:w-56 h-48 sm:h-56">
+              <Image
+                src="/images/TripAdvisor-Logo.png"
+                alt="Tripadvisor"
+                fill
+                className="object-contain drop-shadow-lg"
+                unoptimized
+              />
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </main>
 
-      {/* Updated CSS for VERY SLOW infinite scroll animation */}
+      {/* Updated CSS for infinite scroll animation - with hover pause for individual cards */}
       <style jsx global>{`
         @keyframes infinite-scroll {
           0% {
@@ -804,24 +804,20 @@ export default function Home() {
           }
         }
 
-        /* Very slow animations as requested */
+        /* Animation speeds matching reference code */
         .animate-infinite-scroll-slow-mobile {
           display: flex;
           width: max-content;
-          animation: infinite-scroll 120s linear infinite; /* Very slow */
+          animation: infinite-scroll 150s linear infinite; /* Matching reference mobile timing */
         }
 
         .animate-infinite-scroll-slow-desktop {
           display: flex;
           width: max-content;
-          animation: infinite-scroll 180s linear infinite; /* Very slow */
+          animation: infinite-scroll 150s linear infinite; /* Matching reference desktop timing */
         }
 
-        /* Pause animation on hover */
-        .animate-infinite-scroll-slow-mobile:hover,
-        .animate-infinite-scroll-slow-desktop:hover {
-          animation-play-state: paused;
-        }
+        
 
         /* Hide scrollbar */
         .scrollbar-hide::-webkit-scrollbar {
