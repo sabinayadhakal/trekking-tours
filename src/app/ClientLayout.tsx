@@ -256,7 +256,7 @@ const ServicesDropdown = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-[#C5E0ED] transition-colors hover:scale-105 active:scale-95 px-3 py-1.5 rounded-lg hover:bg-white/5 backdrop-blur-sm"
       >
-        Our Services
+        Our Services in Nepal
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
       
@@ -296,22 +296,16 @@ const ServicesDropdown = () => {
                 className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
                 onClick={() => setIsOpen(false)}
               >
-                Mountain Flights
+                Mountain Flights and Helicopter Sightseeings
               </Link>
               <Link
                 href="/services/jungle-safari"
                 className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
                 onClick={() => setIsOpen(false)}
               >
-                Chitwan Jungle Safari
+                Jungle Safari
               </Link>
-              <Link
-                href="/services/helicopter-sightseeing"
-                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
-                onClick={() => setIsOpen(false)}
-              >
-                Helicopter Sightseeing
-              </Link>
+              
               <Link
                 href="/services/peak-climbing"
                 className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors"
@@ -393,7 +387,7 @@ const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
       >
         <span className="flex items-center gap-3">
           <div className="w-2 h-2 bg-[#C5E0ED] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-          Our Services
+          Our Services in Nepal
         </span>
         <ChevronDown className={`w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
@@ -433,22 +427,16 @@ const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
                 className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
                 onClick={closeMenu}
               >
-                Mountain Flights
+                Mountain Flights and Helicopter Sightseeings
               </Link>
               <Link
                 href="/services/jungle-safari"
                 className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
                 onClick={closeMenu}
               >
-                Chitwan Jungle Safari
+                Jungle Safari
               </Link>
-              <Link
-                href="/services/helicopter-sightseeing"
-                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
-                onClick={closeMenu}
-              >
-                Helicopter Sightseeing
-              </Link>
+              
               <Link
                 href="/services/peak-climbing"
                 className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
