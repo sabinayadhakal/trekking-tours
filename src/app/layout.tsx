@@ -22,6 +22,20 @@ const playfairDisplay = Playfair_Display({
 export const metadata: Metadata = {
   title: "Himkala Adventure - Himalayan Trekking Tours",
   description: "Your adventure starts here",
+  icons: {
+    icon: [
+      {
+        url: '/himkala-logo.png',
+        href: '/himkala-logo.png',
+      }
+    ],
+    apple: [
+      {
+        url: '/himkala-logo.png',
+        href: '/himkala-logo.png',
+      }
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -32,6 +46,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${plusJakartaSans.variable} ${playfairDisplay.variable}`}>
       <head>
+        {/* Add favicon link tag */}
+        <link rel="icon" href="/himkala-logo.png" />
         <Script
           id="orchids-browser-logs"
           strategy="afterInteractive"
