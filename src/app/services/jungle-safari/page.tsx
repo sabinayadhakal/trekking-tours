@@ -388,75 +388,74 @@ export default function JungleSafariPage() {
       </section>
 
       {/* Search and Filter Bar */}
-      <section className="sticky top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
-            {/* Search */}
-            <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Search jungle safaris..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-sm"
-              />
-            </div>
+<section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
+      {/* Search */}
+      <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
+        <input
+          type="text"
+          placeholder="Search jungle safaris..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
+        />
+      </div>
 
-            {/* Mobile Filter Button */}
-            <Button
-              variant="outline"
-              className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
-              onClick={() => setShowFilterDrawer(true)}
+      {/* Mobile Filter Button */}
+      <Button
+        variant="outline"
+        className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
+        onClick={() => setShowFilterDrawer(true)}
+      >
+        <Filter className="w-4 h-4 mr-2" />
+        Filters
+      </Button>
+
+      {/* Desktop Filters */}
+      <div className="hidden lg:flex items-center gap-4">
+        <div className="flex flex-wrap justify-center gap-2">
+          {safariParks.slice(0, 4).map((park) => (
+            <button
+              key={park}
+              onClick={() => setSelectedPark(park)}
+              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
+                selectedPark === park
+                  ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
+                  : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
+              }`}
             >
-              <Filter className="w-4 h-4 mr-2" />
-              Filters
-            </Button>
-
-            {/* Desktop Filters */}
-            <div className="hidden lg:flex items-center gap-4">
-              <div className="flex flex-wrap justify-center gap-2">
-                {safariParks.slice(0, 4).map((park) => (
-                  <button
-                    key={park}
-                    onClick={() => setSelectedPark(park)}
-                    className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
-                      selectedPark === park
-                        ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
-                        : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-                    }`}
-                  >
-                    {park.replace(" National Park", "").replace(" Wildlife", "")}
-                  </button>
-                ))}
-              </div>
-
-              <div className="flex items-center gap-2">
-                <select
-                  value={selectedDuration}
-                  onChange={(e) => setSelectedDuration(e.target.value)}
-                  className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
-                >
-                  {safariDurations.map((duration) => (
-                    <option key={duration} value={duration}>{duration}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Active Filters */}
-          <div className="lg:hidden mt-3 flex flex-wrap gap-2">
-            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-              {selectedPark}
-            </Badge>
-            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-              {selectedDuration}
-            </Badge>
-          </div>
+              {park.replace(" National Park", "").replace(" Wildlife", "")}
+            </button>
+          ))}
         </div>
-      </section>
 
+        <div className="flex items-center gap-2">
+          <select
+            value={selectedDuration}
+            onChange={(e) => setSelectedDuration(e.target.value)}
+            className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
+          >
+            {safariDurations.map((duration) => (
+              <option key={duration} value={duration}>{duration}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+    </div>
+
+    {/* Mobile Active Filters */}
+    <div className="lg:hidden mt-3 flex flex-wrap gap-2">
+      <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
+        {selectedPark}
+      </Badge>
+      <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
+        {selectedDuration}
+      </Badge>
+    </div>
+  </div>
+</section>
       {/* Featured Safari */}
       {featuredSafari && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
