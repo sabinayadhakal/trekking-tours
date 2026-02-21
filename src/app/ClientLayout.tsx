@@ -282,17 +282,31 @@ const ServicesDropdown = () => {
                 className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
                 onClick={() => setIsOpen(false)}
               >
-                Trekking
+                Trekkings
               </Link>
               <Link
                 href="/services/city-tours"
                 className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
                 onClick={() => setIsOpen(false)}
               >
-                City Tours
+                Multi Day Cultural Tours
               </Link>
               <Link
-                href="/services/mountain-flight"
+                href="/services/day-hikings"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Day Hikings
+              </Link>
+              <Link
+                href="/services/day-sightseeings"
+                className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Day Sightseeings
+              </Link>
+              <Link
+                href="/services/mountain-flight-heli-trip"
                 className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
                 onClick={() => setIsOpen(false)}
               >

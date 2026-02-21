@@ -310,9 +310,7 @@ export default function BlogPostPage() {
                   </CardContent>
                 </Card>
 
-                <Button variant="outline" className="w-full border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/10 rounded-xl">
-                  <Bookmark className="w-4 h-4 mr-2" /> Save for Later
-                </Button>
+                
               </div>
             </aside>
 

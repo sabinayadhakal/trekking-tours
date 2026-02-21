@@ -27,218 +27,217 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-const cityCategories = [
-  "All Cities",
-  "Kathmandu",
-  "Pokhara",
-  "Bhaktapur",
-  "Lalitpur",
-  "Chitwan",
-  "Lumbini",
+const regionCategories = [
+  "All Regions",
+  "Kathmandu Valley",
+  "Annapurna Region",
+  "Langtang Region",
+  "Everest Region",
+  "Western Nepal",
+  "Eastern Nepal",
 ];
 
 const durationTypes = [
   "All Durations",
-  "Half Day",
-  "Full Day",
-  "2-3 Days",
-  "Multi-Day",
+  "3-5 Days",
+  "6-8 Days",
+  "9-12 Days",
+  "2 Weeks+",
 ];
 
-const cityTours = [
+const culturalTours = [
   {
     id: 1,
-    name: "Kathmandu Heritage Tour",
-    city: "Kathmandu",
-    duration: "8 Hours",
+    name: "Kathmandu Valley Heritage Explorer",
+    region: "Kathmandu Valley",
+    duration: "5 Days",
     difficulty: "Easy",
-    category: "Cultural",
-    groupSize: "2-12",
-    bestSeason: "Year Round",
-    price: 85,
-    originalPrice: 110,
+    category: "Heritage",
+    groupSize: "4-12",
+    bestSeason: "Sep-May",
+    price: 850,
+    originalPrice: 990,
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
     rating: 4.9,
-    reviews: 234,
-    highlights: ["Swayambhunath", "Patan Durbar", "Boudhanath", "Pashupatinath"],
-    description: "Explore UNESCO World Heritage sites and ancient temples in the cultural heart of Nepal.",
+    reviews: 156,
+    highlights: ["7 UNESCO Sites", "Newari Cuisine Workshop", "Pottery Making", "Cultural Dance Evening"],
+    description: "Immerse yourself in the living heritage of Kathmandu's ancient cities through hands-on cultural experiences.",
     featured: true,
   },
   {
     id: 2,
-    name: "Pokhara Valley Experience",
-    city: "Pokhara",
-    duration: "Full Day",
-    difficulty: "Easy",
-    category: "Scenic",
-    groupSize: "2-10",
-    bestSeason: "Sep-May",
-    price: 75,
-    originalPrice: 95,
+    name: "Annapurna Cultural Trek",
+    region: "Annapurna Region",
+    duration: "8 Days",
+    difficulty: "Moderate",
+    category: "Trekking & Culture",
+    groupSize: "6-10",
+    bestSeason: "Mar-May, Sep-Nov",
+    price: 1200,
+    originalPrice: 1450,
     image: "https://images.unsplash.com/photo-1593693397816-1c665ec8d5f3?q=80&w=2071&auto=format&fit=crop",
     rating: 4.8,
-    reviews: 189,
-    highlights: ["Phewa Lake", "World Peace Pagoda", "Devi's Fall", "Sarangkot"],
-    description: "Discover the natural beauty of Pokhara with stunning lake and mountain views.",
+    reviews: 98,
+    highlights: ["Gurung Villages", "Annapurna Views", "Home Stays", "Traditional Dances"],
+    description: "Experience the rich Gurung and Magar cultures while trekking through breathtaking Himalayan landscapes.",
     featured: true,
   },
   {
     id: 3,
-    name: "Bhaktapur Ancient City Walk",
-    city: "Bhaktapur",
-    duration: "6 Hours",
+    name: "Lumbini & Buddha Trail",
+    region: "Western Nepal",
+    duration: "4 Days",
     difficulty: "Easy",
-    category: "Historical",
-    groupSize: "2-8",
-    bestSeason: "Year Round",
-    price: 65,
-    originalPrice: 85,
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    category: "Spiritual",
+    groupSize: "4-14",
+    bestSeason: "Oct-Apr",
+    price: 650,
+    originalPrice: 780,
+    image: "https://images.unsplash.com/photo-1518991668576-85d87e6d6c6d?q=80&w=2070&auto=format&fit=crop",
     rating: 4.7,
-    reviews: 156,
-    highlights: ["Durbar Square", "Pottery Square", "Nyatapola Temple", "Local Cuisine"],
-    description: "Step back in time through medieval streets and traditional Newari architecture.",
+    reviews: 87,
+    highlights: ["Maya Devi Temple", "Monastic Meditation", "Sacred Garden", "Peace Pagoda"],
+    description: "Follow the footsteps of Buddha through sacred sites and ancient monastic zones.",
     featured: false,
   },
   {
     id: 4,
-    name: "Chitwan Jungle Safari",
-    city: "Chitwan",
-    duration: "3 Days",
-    difficulty: "Moderate",
-    category: "Wildlife",
-    groupSize: "2-12",
-    bestSeason: "Oct-Mar",
-    price: 320,
-    originalPrice: 380,
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070&auto=format&fit=crop",
+    name: "Everest Monastery Trek",
+    region: "Everest Region",
+    duration: "10 Days",
+    difficulty: "Challenging",
+    category: "Spiritual & Trekking",
+    groupSize: "6-8",
+    bestSeason: "Mar-May, Oct-Nov",
+    price: 1850,
+    originalPrice: 2100,
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
     rating: 4.9,
-    reviews: 98,
-    highlights: ["Elephant Safari", "Canoe Ride", "Bird Watching", "Tharu Culture"],
-    description: "Experience wildlife adventures in Nepal's premier national park.",
+    reviews: 64,
+    highlights: ["Tengboche Monastery", "Sherpa Villages", "Mountain Views", "Buddhist Ceremonies"],
+    description: "Discover Sherpa Buddhist culture while trekking to the world's highest monasteries.",
     featured: true,
   },
   {
     id: 5,
-    name: "Lumbini Pilgrimage Tour",
-    city: "Lumbini",
-    duration: "2 Days",
+    name: "Bandipur & Gorkha Heritage",
+    region: "Western Nepal",
+    duration: "3 Days",
     difficulty: "Easy",
-    category: "Spiritual",
-    groupSize: "2-14",
-    bestSeason: "Oct-Apr",
-    price: 180,
-    originalPrice: 220,
-    image: "https://images.unsplash.com/photo-1518991668576-85d87e6d6c6d?q=80&w=2070&auto=format&fit=crop",
+    category: "Heritage",
+    groupSize: "4-12",
+    bestSeason: "Sep-May",
+    price: 450,
+    originalPrice: 550,
+    image: "https://images.unsplash.com/photo-1536152471326-642d746f4d5a?q=80&w=2070&auto=format&fit=crop",
     rating: 4.8,
-    reviews: 212,
-    highlights: ["Maya Devi Temple", "Peace Stupa", "Monastic Zones", "Sacred Garden"],
-    description: "Visit the birthplace of Lord Buddha and explore ancient monastic complexes.",
+    reviews: 112,
+    highlights: ["Newari Architecture", "Gorkha Palace", "Traditional Crafts", "Mountain Views"],
+    description: "Step back in time in perfectly preserved hill towns with rich Newari and Gorkhali heritage.",
     featured: false,
   },
   {
     id: 6,
-    name: "Nagarkot Sunrise & Hike",
-    city: "Kathmandu",
-    duration: "10 Hours",
+    name: "Langtang Valley Cultural Trek",
+    region: "Langtang Region",
+    duration: "7 Days",
     difficulty: "Moderate",
-    category: "Adventure",
-    groupSize: "2-8",
-    bestSeason: "Sep-Jun",
-    price: 95,
-    originalPrice: 120,
+    category: "Trekking & Culture",
+    groupSize: "5-10",
+    bestSeason: "Mar-May, Sep-Nov",
+    price: 950,
+    originalPrice: 1150,
     image: "https://images.unsplash.com/photo-1549887552-23ad7caa7e14?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 87,
-    highlights: ["Himalayan Sunrise", "Nature Hike", "Local Village", "Mountain Views"],
-    description: "Witness breathtaking Himalayan sunrise followed by scenic countryside hike.",
+    rating: 4.8,
+    reviews: 76,
+    highlights: ["Tamang Heritage", "Buddhist Monasteries", "Hot Springs", "Local Home Stays"],
+    description: "Experience the unique Tamang culture and hospitality in the beautiful Langtang Valley.",
     featured: true,
   },
   {
     id: 7,
-    name: "Patan Art & Architecture",
-    city: "Lalitpur",
-    duration: "5 Hours",
+    name: "Janakpur & Mithila Art Tour",
+    region: "Eastern Nepal",
+    duration: "4 Days",
     difficulty: "Easy",
-    category: "Cultural",
-    groupSize: "2-6",
-    bestSeason: "Year Round",
-    price: 55,
-    originalPrice: 70,
+    category: "Art & Culture",
+    groupSize: "4-10",
+    bestSeason: "Oct-Mar",
+    price: 550,
+    originalPrice: 680,
     image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=2070&auto=format&fit=crop",
     rating: 4.6,
-    reviews: 324,
-    highlights: ["Golden Temple", "Metal Workshops", "Wood Carvings", "Courtyard Museums"],
-    description: "Discover the ancient art and craftsmanship of Patan's living heritage.",
+    reviews: 43,
+    highlights: ["Mithila Painting", "Janaki Temple", "Local Artisans", "Folk Music"],
+    description: "Learn the ancient art of Mithila painting from master artists in its birthplace.",
     featured: false,
   },
   {
     id: 8,
-    name: "Food Tour Kathmandu",
-    city: "Kathmandu",
-    duration: "4 Hours",
+    name: "Tansen & Ridi Cultural Journey",
+    region: "Western Nepal",
+    duration: "3 Days",
     difficulty: "Easy",
-    category: "Culinary",
-    groupSize: "2-10",
-    bestSeason: "Year Round",
-    price: 70,
-    originalPrice: 90,
+    category: "Heritage",
+    groupSize: "4-12",
+    bestSeason: "Sep-May",
+    price: 400,
+    originalPrice: 520,
     image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=1971&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 67,
-    highlights: ["Newari Cuisine", "Street Food", "Local Markets", "Cooking Demo"],
-    description: "Taste authentic Nepali flavors through local markets and hidden eateries.",
+    rating: 4.7,
+    reviews: 58,
+    highlights: ["Palpa Durbar", "Metal Crafts", "Sacred Ridi", "Magar Culture"],
+    description: "Explore the rich history and craftsmanship of this ancient Magar kingdom.",
     featured: true,
   },
   {
     id: 9,
-    name: "Bandipur Cultural Walk",
-    city: "Pokhara",
-    duration: "Full Day",
-    difficulty: "Easy",
-    category: "Cultural",
-    groupSize: "2-8",
-    bestSeason: "Sep-May",
-    price: 110,
-    originalPrice: 140,
-    image: "https://images.unsplash.com/photo-1536152471326-642d746f4d5a?q=80&w=2070&auto=format&fit=crop",
+    name: "Mustang & Lo Manthang Expedition",
+    region: "Western Nepal",
+    duration: "12 Days",
+    difficulty: "Moderate",
+    category: "Cultural Expedition",
+    groupSize: "6-8",
+    bestSeason: "May-Oct",
+    price: 2800,
+    originalPrice: 3200,
+    image: "https://images.unsplash.com/photo-1593693397816-1c665ec8d5f3?q=80&w=2071&auto=format&fit=crop",
     rating: 4.9,
-    reviews: 45,
-    highlights: ["Newari Architecture", "Mountain Views", "Silk Farm", "Cave Exploration"],
-    description: "Experience preserved Newari culture in this beautifully maintained hill town.",
-    featured: false,
+    reviews: 35,
+    highlights: ["Ancient Monasteries", "Tibetan Culture", "Cave Dwellings", "Forbidden Kingdom"],
+    description: "Journey to the legendary walled city of Lo Manthang in the trans-Himalayan kingdom of Mustang.",
+    featured: true,
   },
 ];
 
 const getCategoryColor = (category: string) => {
   switch (category) {
-    case "Cultural": return "bg-purple-100 text-purple-700";
-    case "Historical": return "bg-amber-100 text-amber-700";
-    case "Wildlife": return "bg-green-100 text-green-700";
-    case "Adventure": return "bg-blue-100 text-blue-700";
-    case "Culinary": return "bg-pink-100 text-pink-700";
+    case "Heritage": return "bg-purple-100 text-purple-700";
     case "Spiritual": return "bg-indigo-100 text-indigo-700";
-    case "Scenic": return "bg-cyan-100 text-cyan-700";
+    case "Trekking & Culture": return "bg-green-100 text-green-700";
+    case "Art & Culture": return "bg-pink-100 text-pink-700";
+    case "Cultural Expedition": return "bg-amber-100 text-amber-700";
+    case "Spiritual & Trekking": return "bg-blue-100 text-blue-700";
     default: return "bg-slate-100 text-slate-700";
   }
 };
 
-export default function CityToursPage() {
-  const [selectedCity, setSelectedCity] = React.useState("All Cities");
+export default function MultiDayCulturalToursPage() {
+  const [selectedRegion, setSelectedRegion] = React.useState("All Regions");
   const [selectedDuration, setSelectedDuration] = React.useState("All Durations");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [showFilterDrawer, setShowFilterDrawer] = React.useState(false);
 
-  const filteredTours = cityTours.filter((tour) => {
-    const matchesCity = selectedCity === "All Cities" || tour.city === selectedCity;
+  const filteredTours = culturalTours.filter((tour) => {
+    const matchesRegion = selectedRegion === "All Regions" || tour.region === selectedRegion;
     const matchesDuration = selectedDuration === "All Durations" || tour.duration.includes(selectedDuration.replace("All Durations", ""));
     const matchesSearch = tour.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          tour.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          tour.region.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           tour.category.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCity && matchesDuration && matchesSearch;
+    return matchesRegion && matchesDuration && matchesSearch;
   });
 
-  const featuredTour = cityTours.find((tour) => tour.id === 1);
+  const featuredTour = culturalTours.find((tour) => tour.id === 1);
 
   return (
     <div className="min-h-screen bg-white">
@@ -285,24 +284,24 @@ export default function CityToursPage() {
                   </div>
                 </div>
 
-                {/* City Filter */}
+                {/* Region Filter */}
                 <div>
-                  <h4 className="font-medium text-[#0f2940] mb-3">City</h4>
+                  <h4 className="font-medium text-[#0f2940] mb-3">Region</h4>
                   <div className="space-y-2">
-                    {cityCategories.map((city) => (
+                    {regionCategories.map((region) => (
                       <button
-                        key={city}
+                        key={region}
                         onClick={() => {
-                          setSelectedCity(city);
+                          setSelectedRegion(region);
                           setShowFilterDrawer(false);
                         }}
                         className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
-                          selectedCity === city
+                          selectedRegion === region
                             ? "bg-[#C5E0ED]/30 text-[#0f2940] font-medium"
                             : "text-slate-600 hover:bg-[#f0f7fa] hover:text-[#2d6a8a]"
                         }`}
                       >
-                        {city}
+                        {region}
                       </button>
                     ))}
                   </div>
@@ -322,24 +321,24 @@ export default function CityToursPage() {
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <Badge className="mb-4 md:mb-6 bg-[#C5E0ED]/20 text-white backdrop-blur-md border-[#C5E0ED]/40 py-1.5 md:py-2 px-4 md:px-5 text-xs md:text-sm">
-              <Compass className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Discover Nepal's Urban Treasures
+              <Compass className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Deep Immersion in Nepalese Traditions
             </Badge>
             <h1 className="text-2xl md:text-4xl lg:text-6xl font-serif text-white mb-4 md:mb-6">
-              City <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4]">Tours</span>
+              Multi-Day <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4]">Cultural Tours</span>
             </h1>
             <p className="text-sm md:text-base text-white/80 leading-relaxed mb-6 md:mb-8">
-              From ancient temples and royal palaces to vibrant markets and culinary adventures, 
-              explore the rich tapestry of Nepal's cities with expert local guides.
+              From remote mountain monasteries and ancient trading villages to living heritage cities and spiritual sites, 
+              embark on an immersive journey through Nepal's diverse cultural landscape.
             </p>
             <div className="flex flex-wrap justify-center gap-2 md:gap-4">
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Landmark className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 7 UNESCO Sites
+                <Landmark className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 20+ Ethnic Groups
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 4-10 Hours
+                <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 3-12 Days
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <UserCircle className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Local Guides
+                <UserCircle className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Cultural Experts
               </div>
             </div>
           </div>
@@ -347,74 +346,75 @@ export default function CityToursPage() {
       </section>
 
       {/* Search and Filter Bar */}
-<section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
-  <div className="container mx-auto px-4 md:px-6">
-    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
-      {/* Search */}
-      <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
-        <input
-          type="text"
-          placeholder="Search city tours..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
-        />
-      </div>
+      <section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
+            {/* Search */}
+            <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search cultural tours..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
+              />
+            </div>
 
-      {/* Mobile Filter Button */}
-      <Button
-        variant="outline"
-        className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
-        onClick={() => setShowFilterDrawer(true)}
-      >
-        <Filter className="w-4 h-4 mr-2" />
-        Filters
-      </Button>
-
-      {/* Desktop Filters */}
-      <div className="hidden lg:flex items-center gap-4">
-        <div className="flex flex-wrap justify-center gap-2">
-          {cityCategories.slice(0, 4).map((city) => (
-            <button
-              key={city}
-              onClick={() => setSelectedCity(city)}
-              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
-                selectedCity === city
-                  ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
-                  : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-              }`}
+            {/* Mobile Filter Button */}
+            <Button
+              variant="outline"
+              className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
+              onClick={() => setShowFilterDrawer(true)}
             >
-              {city}
-            </button>
-          ))}
-        </div>
+              <Filter className="w-4 h-4 mr-2" />
+              Filters
+            </Button>
 
-        <div className="flex items-center gap-2">
-          <select
-            value={selectedDuration}
-            onChange={(e) => setSelectedDuration(e.target.value)}
-            className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
-          >
-            {durationTypes.map((duration) => (
-              <option key={duration} value={duration}>{duration}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-    </div>
+            {/* Desktop Filters */}
+            <div className="hidden lg:flex items-center gap-4">
+              <div className="flex flex-wrap justify-center gap-2">
+                {regionCategories.slice(0, 4).map((region) => (
+                  <button
+                    key={region}
+                    onClick={() => setSelectedRegion(region)}
+                    className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
+                      selectedRegion === region
+                        ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
+                        : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
+                    }`}
+                  >
+                    {region}
+                  </button>
+                ))}
+              </div>
 
-    {/* Mobile Active Filters */}
-    <div className="lg:hidden mt-3 flex flex-wrap gap-2">
-      <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-        {selectedCity}
-      </Badge>
-      <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-        {selectedDuration}
-      </Badge>
-    </div>
-  </div>
-</section>
+              <div className="flex items-center gap-2">
+                <select
+                  value={selectedDuration}
+                  onChange={(e) => setSelectedDuration(e.target.value)}
+                  className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
+                >
+                  {durationTypes.map((duration) => (
+                    <option key={duration} value={duration}>{duration}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Active Filters */}
+          <div className="lg:hidden mt-3 flex flex-wrap gap-2">
+            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
+              {selectedRegion}
+            </Badge>
+            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
+              {selectedDuration}
+            </Badge>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Tour */}
       {featuredTour && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
@@ -440,7 +440,7 @@ export default function CityToursPage() {
                 </div>
                 <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
                   <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
-                    <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredTour.city}
+                    <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredTour.region}
                   </Badge>
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
                     {featuredTour.name}
@@ -493,7 +493,7 @@ export default function CityToursPage() {
           <div className="mb-6 md:mb-12">
             <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-2 md:mb-4">All Tours</h2>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <h3 className="text-xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">Explore City Experiences</h3>
+              <h3 className="text-xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">Multi-Day Cultural Experiences</h3>
               <p className="text-slate-500 text-sm">
                 Showing <span className="font-bold text-[#0f2940]">{filteredTours.length}</span> tours
               </p>
@@ -532,7 +532,7 @@ export default function CityToursPage() {
                 </div>
                 <CardContent className="p-4 md:p-6">
                   <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
-                    {tour.city}
+                    {tour.region}
                   </Badge>
                   <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-1 md:mb-2 group-hover:text-[#2d6a8a] transition-colors line-clamp-1">
                     {tour.name}
@@ -571,7 +571,7 @@ export default function CityToursPage() {
                 variant="outline"
                 className="mt-4 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full"
                 onClick={() => {
-                  setSelectedCity("All Cities");
+                  setSelectedRegion("All Regions");
                   setSelectedDuration("All Durations");
                   setSearchQuery("");
                 }}
@@ -596,18 +596,17 @@ export default function CityToursPage() {
             <div>
               <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-3 md:mb-4">Why Choose Our Tours</h2>
               <h3 className="text-xl md:text-3xl lg:text-4xl font-serif text-[#0f2940] mb-4 md:mb-6">
-                Authentic Experiences with Local Experts
+                Authentic Cultural Immersion with Local Experts
               </h3>
               <p className="text-slate-600 leading-relaxed mb-6 md:mb-8 text-sm md:text-base">
-                Our city tours are designed by locals who know every hidden gem, every story behind ancient walls, 
-                and every flavor that defines Nepal's urban culture.
+                Our multi-day cultural tours are designed by ethnographers and local community leaders who provide deep insights into Nepal's diverse ethnic traditions, festivals, and ways of life.
               </p>
               <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
                 {[
-                  "Certified Local Guides with Deep Cultural Knowledge",
-                  "Small Groups for Personalized Attention",
-                  "All Entrance Fees & Transportation Included",
-                  "Flexible Itineraries & Customizable Options",
+                  "Expert Cultural Guides with Anthropology Backgrounds",
+                  "Authentic Home Stays & Community-Based Tourism",
+                  "Hands-On Workshops with Local Artisans",
+                  "Small Groups for Meaningful Cultural Exchange",
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 text-slate-700">
                     <div className="w-5 h-5 md:w-6 md:h-6 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-full flex items-center justify-center shrink-0 mt-0.5">
@@ -619,14 +618,14 @@ export default function CityToursPage() {
               </div>
               <Link href="/contact">
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-3 md:py-4 text-sm md:text-base">
-                  Customize Your Tour
+                  Customize Your Journey
                 </Button>
               </Link>
             </div>
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
-                src="https://images.unsplash.com/photo-1593693397816-1c665ec8d5f3?q=80&w=2071&auto=format&fit=crop"
-                alt="Kathmandu Durbar Square"
+                src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=2070&auto=format&fit=crop"
+                alt="Traditional Nepalese Culture"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
