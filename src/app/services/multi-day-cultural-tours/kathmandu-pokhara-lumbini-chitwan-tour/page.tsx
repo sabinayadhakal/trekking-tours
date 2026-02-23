@@ -39,17 +39,10 @@ import {
   Church,
   History,
   Palette,
-  Scroll,
-  Sparkles,
-  Coffee,
-  ShoppingBag,
   TreePine,
-  Home,
-  MountainSnow,
-  Eye,
-  Sunset,
-  Droplet,
-  Building2,
+  Bird,
+  Flower2,
+  Footprints,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -58,35 +51,137 @@ import { Badge } from "@/components/ui/badge";
 const itinerary = [
   {
     day: 1,
-    title: "Kathmandu Valley Sightseeing Tour",
+    title: "Arrival in Kathmandu",
     altitude: "1,350m",
-    distance: "Full day tour (6-7 hours)",
-    description: "Your full-day cultural tour begins after breakfast at 9:00 AM when your private guide and driver will pick you up from your hotel in Kathmandu. You'll first drive to Swayambhunath Stupa (Monkey Temple), one of the most sacred Buddhist sites in Nepal. Perched on a hilltop west of Kathmandu, this ancient stupa offers panoramic views of the valley. Spend approximately 1.5 hours exploring the stupa, prayer wheels, and surrounding shrines. Next, drive to Kathmandu Durbar Square (20 minutes), the historic seat of royalty and a UNESCO World Heritage Site. Spend approximately 2 hours exploring the ancient palace complex, including the Kumari Ghar (home of the Living Goddess), Hanuman Dhoka Palace, and numerous temples. Enjoy a traditional Nepali lunch at a local restaurant. In the afternoon, continue to Pashupatinath Temple (20 minutes), one of the holiest Hindu temples dedicated to Lord Shiva. Spend approximately 1.5 hours along the banks of the Bagmati River, observing rituals and cremation ceremonies. Finally, visit Boudhanath Stupa (20 minutes), one of the largest stupas in South Asia and the center of Tibetan Buddhism in Nepal. Spend approximately 1 hour circumambulating the stupa and exploring the surrounding monasteries. Your guide will then drive you back to your hotel, arriving by approximately 5:00 PM.",
-    overnight: "Not applicable - day tour",
-    meals: "Breakfast, Lunch",
-    highlights: ["Swayambhunath Stupa (Monkey Temple)", "Kathmandu Durbar Square", "Kumari Living Goddess", "Pashupatinath Temple", "Boudhanath Stupa"],
+    distance: "-",
+    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive tour briefing where we'll discuss the itinerary, cultural significance of sites, and handle any arrangements. Evening free to explore the vibrant streets of Thamel. Welcome dinner with traditional Nepali cuisine where you'll meet your tour guide.",
+    overnight: "Hotel in Kathmandu",
+    meals: "Dinner",
+    highlights: ["Airport pickup", "Tour briefing", "Welcome dinner", "Thamel exploration"],
+  },
+  {
+    day: 2,
+    title: "Kathmandu Valley Heritage Tour",
+    altitude: "1,350m",
+    distance: "Full day tour",
+    description: "After breakfast, begin your heritage journey at Kathmandu Durbar Square, the historic seat of royalty. Explore the ancient palace complex with its intricately carved wooden windows, including the famous Kumari Ghar—home to the Living Goddess Kumari. Continue to Swayambhunath Stupa (Monkey Temple), perched on a hilltop west of the city. Climb the 365 steps past meditation shrines and prayer wheels to reach the main stupa with its all-seeing eyes of Buddha. After lunch, visit Pashupatinath Temple, one of the holiest Hindu temples dedicated to Lord Shiva. Observe afternoon rituals and the fascinating sadhus (holy men). End the day at Boudhanath Stupa, one of the largest spherical stupas in South Asia and the center of Tibetan Buddhism in Nepal. Circumambulate the massive mandala while spinning prayer wheels. Return to hotel for dinner.",
+    overnight: "Hotel in Kathmandu",
+    meals: "Breakfast, Lunch, Dinner",
+    highlights: ["Kathmandu Durbar Square", "Swayambhunath Stupa", "Pashupatinath Temple", "Boudhanath Stupa"],
+  },
+  {
+    day: 3,
+    title: "Drive to Pokhara - Lakeside Paradise",
+    altitude: "1,350m → 820m",
+    distance: "6-7 hrs drive / 200km",
+    description: "After breakfast, begin the scenic drive to Pokhara, Nepal's most beautiful lakeside city. The journey follows the Prithvi Highway through river valleys, terraced farmlands, and subtropical forests. Stop en-route at viewpoints overlooking the Marsyangdi and Trishuli Rivers. On clear days, enjoy distant views of the Annapurna and Manaslu ranges. Arrive in Pokhara by mid-afternoon and check into your lakeside hotel. Evening free to explore the Lakeside promenade with its cafes, shops, and restaurants. Optional boat ride on Phewa Lake at sunset. Overnight in Pokhara.",
+    overnight: "Hotel in Pokhara",
+    meals: "Breakfast, Lunch, Dinner",
+    highlights: ["Scenic drive", "River valley views", "Lakeside promenade", "Sunset at Phewa Lake"],
+  },
+  {
+    day: 4,
+    title: "Sarangkot Sunrise & Pokhara Valley Exploration",
+    altitude: "820m → 1,592m → 820m",
+    distance: "1 hr drive each way",
+    description: "Pre-dawn departure (4:30 AM) to Sarangkot hill station for the most spectacular sunrise photography in Nepal. Watch the first light illuminate the Annapurna range including Annapurna South, Annapurna I, Machhapuchhre (Fishtail), and Dhaulagiri. After sunrise, return to hotel for breakfast. Mid-morning, visit Davis Falls, an interesting waterfall that disappears into underground caves, and the adjacent Gupteshwor Cave with its massive shivalinga. After lunch, explore the International Mountain Museum for exhibits on Himalayan mountaineering and culture. Late afternoon, enjoy a boat ride on Phewa Lake to the Tal Barahi Temple, a two-story pagoda in the middle of the lake. Capture the reflection of Machhapuchhre mountain in the calm lake waters. Overnight in Pokhara.",
+    overnight: "Hotel in Pokhara",
+    meals: "Breakfast, Lunch, Dinner",
+    highlights: ["Sarangkot sunrise", "Annapurna panorama", "Davis Falls", "Phewa Lake boat ride"],
+  },
+  {
+    day: 5,
+    title: "Drive to Lumbini - Birthplace of Buddha",
+    altitude: "820m → 150m",
+    distance: "5-6 hrs drive / 180km",
+    description: "After breakfast, drive south to Lumbini, the birthplace of Lord Buddha and one of the holiest pilgrimage sites in the world. The journey descends from the hills to the flat Terai plains, with changing landscapes from subtropical forests to agricultural fields. Arrive in Lumbini by early afternoon. Visit the Mayadevi Temple, the sacred site where Queen Mayadevi gave birth to Siddhartha Gautama in 623 BCE. Explore the excavated remains of ancient monasteries and the marker stone depicting the exact birthplace. See the Ashoka Pillar, erected by Emperor Ashoka in 249 BCE to commemorate his pilgrimage. In the evening, visit the World Peace Pagoda and stroll through the monastic zone with temples built by Buddhist countries from around the world including Thailand, Japan, Myanmar, and Sri Lanka. Overnight in Lumbini.",
+    overnight: "Hotel in Lumbini",
+    meals: "Breakfast, Lunch, Dinner",
+    highlights: ["Mayadevi Temple", "Ashoka Pillar", "Sacred Garden", "International Monasteries"],
+  },
+  {
+    day: 6,
+    title: "Lumbini Exploration & Drive to Chitwan",
+    altitude: "150m → 415m",
+    distance: "4-5 hrs drive / 120km",
+    description: "Early morning visit to the sacred garden for meditation and peaceful atmosphere. Explore more international monasteries including the magnificent Myanmar Temple, Chinese Temple, and the Eternal Peace Flame. Visit the Lumbini Museum housing artifacts and manuscripts related to Buddha's life. After lunch, drive east to Chitwan National Park, Nepal's first national park and UNESCO World Heritage Site. The journey continues through the Terai plains with rural landscapes and traditional Tharu villages. Arrive at your jungle resort by late afternoon. Welcome drink and orientation about safari activities. Evening Tharu cultural dance performance. Overnight at jungle resort.",
+    overnight: "Jungle Resort in Chitwan",
+    meals: "Breakfast, Lunch, Dinner",
+    highlights: ["Sacred Garden meditation", "International monasteries", "Tharu cultural dance", "Jungle resort"],
+  },
+  {
+    day: 7,
+    title: "Chitwan National Park Safari - Wildlife & Nature",
+    altitude: "415m",
+    distance: "Full day safari",
+    description: "Early morning jungle walk or bird watching tour with naturalist guide. Return to resort for breakfast. After breakfast, embark on a jeep safari into Chitwan National Park for wildlife viewing. The park is home to one-horned rhinoceros, Bengal tigers (rare), leopards, sloth bears, crocodiles, and over 500 bird species. Your naturalist guide will navigate through grasslands and forests for optimal wildlife sightings. After lunch, enjoy a canoe ride along the Rapti River to photograph aquatic birds, crocodiles, and riverside wildlife. Visit the Elephant Breeding Center to learn about conservation efforts and photograph these gentle giants. Late afternoon, enjoy sunset views from the riverbank or an optional elephant safari. Overnight at jungle resort.",
+    overnight: "Jungle Resort in Chitwan",
+    meals: "Breakfast, Lunch, Dinner",
+    highlights: ["Jeep safari", "One-horned rhinos", "Canoe ride", "Elephant Breeding Center"],
+  },
+  {
+    day: 8,
+    title: "Return to Kathmandu",
+    altitude: "415m → 1,350m",
+    distance: "5-6 hrs drive / 150km + 25 min flight",
+    description: "After breakfast, transfer to Bharatpur Airport for a scenic 25-minute flight back to Kathmandu. The short flight offers aerial views of the Himalayan foothills and terraced landscapes. Alternatively, you may choose to drive (6-7 hours) through scenic countryside. Upon arrival in Kathmandu, transfer to your hotel. Free afternoon for last-minute souvenir shopping, personal exploration, or optional activities. Evening farewell dinner at a traditional Nepali restaurant with cultural music and dance performance. Celebrate your incredible journey through Nepal's cultural and natural heritage. Overnight in Kathmandu.",
+    overnight: "Hotel in Kathmandu",
+    meals: "Breakfast, Lunch, Dinner",
+    highlights: ["Scenic flight", "Kathmandu return", "Farewell dinner", "Cultural performance"],
+  },
+  {
+    day: 9,
+    title: "Departure",
+    altitude: "1,350m",
+    distance: "-",
+    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of exploring ancient temples, witnessing Himalayan sunrises, walking in the footsteps of Buddha, and encountering exotic wildlife in the jungle. Namaste and until we meet again!",
+    overnight: "-",
+    meals: "Breakfast",
+    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
   },
 ];
 
 const includes = [
-  "Private vehicle with driver for the full day",
-  "Experienced English-speaking tour guide (heritage expert)",
-  "Swayambhunath Stupa entrance fee",
+  "All airport/hotel transfers in private vehicle",
+  "7 nights hotel accommodation (3-star with breakfast) as per itinerary",
+  "1 night jungle resort accommodation in Chitwan with all meals",
+  "All meals during the tour as specified (breakfast, lunch, dinner)",
+  "Experienced English-speaking tour guide (government licensed)",
+  "Local guides for heritage sites and wildlife safaris",
+  "All ground transportation as per itinerary in private vehicle",
+  "Domestic flight: Bharatpur to Kathmandu",
+  "All monument entrance fees (UNESCO World Heritage Sites)",
   "Kathmandu Durbar Square entrance fee",
+  "Swayambhunath entrance fee",
   "Pashupatinath Temple entrance fee",
   "Boudhanath Stupa entrance fee",
-  "Traditional Nepali lunch at local restaurant",
-  "Bottled water during the tour",
-  "All government taxes and service charges",
-  "Hotel pickup and drop-off (within Kathmandu valley)",
+  "Sarangkot sunrise transport",
+  "Davis Falls and Gupteshwor Cave entrance",
+  "International Mountain Museum entrance",
+  "Phewa Lake boat ride",
+  "Lumbini Sacred Garden entrance",
+  "Mayadevi Temple entrance",
+  "Lumbini Museum entrance",
+  "All safari activities in Chitwan National Park (jeep safari, canoe ride, Elephant Breeding Center)",
+  "Tharu cultural dance performance",
+  "First aid medical kit",
+  "Farewell dinner with cultural performance",
+  "All government taxes and official expenses",
+  "Emergency contact number 24/7",
+  "Complimentary map of Nepal",
+  "Bottled water during tours",
 ];
 
 const excludes = [
-  "Meals not specified (dinner)",
+  "International airfare to/from Nepal",
+  "Nepal visa fee ($30 USD for 15 days, $50 for 30 days - available on arrival)",
+  "Travel insurance (mandatory - must cover emergency evacuation)",
+  "Meals not specified in itinerary",
   "Alcoholic beverages and soft drinks",
   "Personal expenses (phone calls, laundry, souvenirs, etc.)",
-  "Tips and gratuities for guide and driver (recommended)",
-  "Travel insurance",
+  "Tips and gratuities for guides, drivers, and safari staff (recommended)",
+  "Emergency evacuation/helicopter rescue costs (covered by insurance)",
+  "Any costs arising from unforeseen circumstances (weather, political unrest)",
   "Photography fees at certain temples (where applicable)",
   "Optional activities not mentioned in itinerary",
   "International phone calls and internet charges",
@@ -95,37 +190,37 @@ const excludes = [
 const gallery = [
   {
     src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Swayambhunath Stupa",
-    caption: "Swayambhunath Stupa (Monkey Temple) with all-seeing eyes of Buddha",
+    alt: "Boudhanath Stupa",
+    caption: "Boudhanath Stupa - Center of Tibetan Buddhism in Kathmandu",
   },
   {
     src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
-    alt: "Kathmandu Durbar Square",
-    caption: "Kathmandu Durbar Square with ancient temples and palace",
+    alt: "Sarangkot Sunrise",
+    caption: "Sunrise over Annapurna range from Sarangkot, Pokhara",
   },
   {
     src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Pashupatinath Temple",
-    caption: "Pashupatinath Temple on the banks of the Bagmati River",
+    alt: "Phewa Lake",
+    caption: "Phewa Lake with Machhapuchhre reflection, Pokhara",
   },
   {
     src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Boudhanath Stupa",
-    caption: "Boudhanath Stupa - Center of Tibetan Buddhism in Nepal",
+    alt: "Mayadevi Temple",
+    caption: "Mayadevi Temple - Birthplace of Buddha, Lumbini",
   },
   {
     src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Kumari Living Goddess",
-    caption: "Kumari Ghar - Home of the Living Goddess in Kathmandu",
+    alt: "One-horned Rhinoceros",
+    caption: "One-horned rhinoceros in Chitwan National Park",
   },
   {
     src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Prayer Wheels",
-    caption: "Spinning prayer wheels at Boudhanath Stupa",
+    alt: "Swayambhunath Stupa",
+    caption: "Swayambhunath Stupa (Monkey Temple), Kathmandu",
   },
 ];
 
-export default function KathmanduSightseeingPage() {
+export default function KathmanduPokharaLumbiniChitwanTourPage() {
   const [copied, setCopied] = React.useState(false);
   const [expandedDays, setExpandedDays] = React.useState<number[]>([1]);
   const [showMobileNav, setShowMobileNav] = React.useState(false);
@@ -138,7 +233,7 @@ export default function KathmanduSightseeingPage() {
 
   const handleShare = (platform: string) => {
     const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent("Kathmandu Sightseeing Tour - Himkala Adventure");
+    const title = encodeURIComponent("Kathmandu, Pokhara, Lumbini & Chitwan Tour - Himkala Adventure");
     let shareUrl = "";
     if (platform === "facebook") {
       shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
@@ -231,7 +326,7 @@ export default function KathmanduSightseeingPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
-            alt="Kathmandu Valley Sightseeing"
+            alt="Kathmandu Pokhara Lumbini Chitwan Tour"
             fill
             className="object-cover"
             priority
@@ -246,26 +341,26 @@ export default function KathmanduSightseeingPage() {
           <div className="max-w-5xl mx-auto text-center w-full">
             <div className="flex flex-wrap gap-2 mb-6 justify-center">
               <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-4 py-2 text-sm">
-                <MapPin className="w-4 h-4 mr-1" /> Day Sightseeing Tour
+                <MapPin className="w-4 h-4 mr-1" /> Multi-Day City Tour
               </Badge>
               <Badge className="bg-green-100 text-green-700 border-none font-bold px-4 py-2 text-sm">
                 Easy
               </Badge>
               <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-4 py-2 text-sm">
-                <Landmark className="w-4 h-4 mr-1" /> 4 UNESCO Sites
+                <Compass className="w-4 h-4 mr-1" /> 4 Destinations
               </Badge>
             </div>
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-4 md:mb-6 tracking-tight">
-              KATHMANDU VALLEY <br />
+              KATHMANDU, POKHARA, LUMBINI <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
-                SIGHTSEEING TOUR
+                & CHITWAN GRAND TOUR
               </span>
             </h1>
             
             <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light">
-              Discover the cultural heart of Nepal—explore ancient stupas, sacred Hindu temples, royal palaces, 
-              and living traditions on this comprehensive introduction to the Kathmandu Valley's UNESCO World Heritage Sites.
+              Experience the complete essence of Nepal—from ancient temples and Himalayan sunrises to the birthplace of Buddha 
+              and wildlife encounters in the jungle—on this comprehensive cultural and natural journey.
             </p>
           </div>
         </div>
@@ -280,8 +375,8 @@ export default function KathmanduSightseeingPage() {
               <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-xs text-slate-400 line-through">$75</div>
-                    <div className="text-xl font-bold text-[#0f2940]">$55</div>
+                    <div className="text-xs text-slate-400 line-through">$1,850</div>
+                    <div className="text-xl font-bold text-[#0f2940]">$1,595</div>
                   </div>
                   <Link href="/contact">
                     <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-6 py-2 text-sm">
@@ -299,32 +394,32 @@ export default function KathmanduSightseeingPage() {
                 <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
                     <div className="text-center mb-4 md:mb-6">
-                      <span className="text-white/50 text-sm line-through">$75</span>
-                      <div className="text-3xl md:text-4xl font-bold text-white mt-1">$55</div>
+                      <span className="text-white/50 text-sm line-through">$1,850</span>
+                      <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,595</div>
                       <span className="text-white/60 text-sm">per person</span>
-                      <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-xs">Save $20</Badge>
+                      <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-xs">Save $255</Badge>
                     </div>
 
                     <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                       <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
                         <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>6-7 Hours</span>
+                        <span>9 Days / 8 Nights</span>
                       </div>
                       <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
                         <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>Available Daily</span>
+                        <span>Best: Sept-May (Year-round)</span>
                       </div>
                       <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
                         <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>Group Size: 1-12</span>
+                        <span>Group Size: 2-15</span>
                       </div>
                       <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
-                        <Landmark className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>4 UNESCO Sites</span>
+                        <MapPin className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                        <span>4 Major Destinations</span>
                       </div>
                       <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
                         <Map className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>Max Altitude: 1,350m</span>
+                        <span>Max Altitude: 1,592m</span>
                       </div>
                     </div>
 
@@ -349,24 +444,24 @@ export default function KathmanduSightseeingPage() {
                     </h3>
                     <div className="space-y-2 text-xs md:text-sm">
                       <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Start Time</span>
-                        <span className="font-medium text-[#0f2940]">9:00 AM</span>
+                        <span className="text-slate-500">Start Point</span>
+                        <span className="font-medium text-[#0f2940]">Kathmandu</span>
                       </div>
                       <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">End Time</span>
-                        <span className="font-medium text-[#0f2940]">~5:00 PM</span>
+                        <span className="text-slate-500">End Point</span>
+                        <span className="font-medium text-[#0f2940]">Kathmandu</span>
                       </div>
                       <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Pickup Location</span>
-                        <span className="font-medium text-[#0f2940]">Your Hotel in Kathmandu</span>
+                        <span className="text-slate-500">Destinations</span>
+                        <span className="font-medium text-[#0f2940]">Kathmandu, Pokhara, Lumbini, Chitwan</span>
                       </div>
                       <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
                         <span className="text-slate-500">Tour Type</span>
-                        <span className="font-medium text-[#0f2940]">Cultural, Heritage, UNESCO</span>
+                        <span className="font-medium text-[#0f2940]">Cultural, Pilgrimage, Wildlife</span>
                       </div>
                       <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
                         <span className="text-slate-500">UNESCO Sites</span>
-                        <span className="font-medium text-[#0f2940]">Swayambhunath, Kathmandu Durbar Square, Pashupatinath, Boudhanath</span>
+                        <span className="font-medium text-[#0f2940]">5+ Sites</span>
                       </div>
                       <div className="flex justify-between py-1.5 md:py-2">
                         <span className="text-slate-500">Difficulty</span>
@@ -444,16 +539,13 @@ export default function KathmanduSightseeingPage() {
                 <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The <strong>Kathmandu Valley Sightseeing Tour</strong> is the perfect introduction to Nepal's rich cultural heritage, taking you to four of the valley's most significant UNESCO World Heritage Sites in a single day. This comprehensive tour offers a journey through 2,000 years of history, art, architecture, and living religious traditions that continue to shape Nepalese life today.
+                    The <strong>Kathmandu, Pokhara, Lumbini & Chitwan Grand Tour</strong> is a comprehensive 9-day journey that showcases the incredible diversity of Nepal—from ancient cultural heritage and spiritual pilgrimage to stunning mountain landscapes and wildlife adventures. This tour is designed for travelers who want to experience the complete essence of Nepal in a single, well-paced itinerary.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    Your journey begins at <strong>Swayambhunath Stupa</strong>, also known as the Monkey Temple, perched on a hilltop overlooking the Kathmandu Valley. This ancient Buddhist stupa, dating back to the 5th century, is one of the most sacred sites in Nepal. Its iconic all-seeing eyes of Buddha gaze in all four directions, symbolizing wisdom and compassion. The climb up 365 steps takes you past meditation shrines, prayer wheels, and playful monkeys, rewarding you with panoramic valley views.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    Next, you'll explore <strong>Kathmandu Durbar Square</strong>, the historic seat of royalty. This UNESCO World Heritage Site is a stunning collection of temples, palaces, and courtyards built between the 12th and 18th centuries. Here you'll visit the <strong>Kumari Ghar</strong>, home to the Living Goddess Kumari, a young girl worshipped as the incarnation of the goddess Taleju. The square's intricate woodcarvings, stone sculptures, and pagoda-style temples showcase the finest Newari craftsmanship.
+                    Begin in the Kathmandu Valley, exploring UNESCO World Heritage Sites including the living goddess Kumari, the sacred Hindu temple of Pashupatinath, and the massive Buddhist stupa of Boudhanath. Travel to the lakeside paradise of Pokhara for sunrise over the Annapurna Himalayas from Sarangkot and serene boat rides on Phewa Lake. Journey south to Lumbini, the birthplace of Lord Buddha, where you'll walk in the footsteps of the enlightened one through the sacred garden and international monasteries. Conclude in Chitwan National Park for thrilling wildlife safaris, encountering one-horned rhinoceros, exotic birds, and experiencing Tharu village culture.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                    The tour continues to <strong>Pashupatinath Temple</strong>, the holiest Hindu temple in Nepal, dedicated to Lord Shiva. Located on the banks of the sacred Bagmati River, this sprawling complex is a place of pilgrimage, ritual, and cremation. You'll observe sadhus (holy men), devotees performing puja, and the traditional cremation ceremonies that have taken place here for centuries. The final stop is <strong>Boudhanath Stupa</strong>, one of the largest spherical stupas in South Asia and the center of Tibetan Buddhism in Nepal. Circumambulating the massive mandala while spinning prayer wheels, surrounded by fluttering prayer flags and the murmur of mantras, is a profoundly moving experience.
+                    This tour offers the perfect balance of culture, nature, and adventure with comfortable accommodations, expert guiding, and seamless logistics. Whether you're a history enthusiast, spiritual seeker, nature lover, or wildlife photographer, this journey through Nepal's heartland will leave you with unforgettable memories and a deep appreciation for this remarkable country.
                   </p>
                 </div>
               </section>
@@ -463,24 +555,22 @@ export default function KathmanduSightseeingPage() {
                 <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Tour Highlights</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
                   {[
-                    "Visit Swayambhunath Stupa (Monkey Temple) with panoramic valley views",
-                    "Climb the 365 steps past meditation shrines and prayer wheels",
-                    "See the all-seeing eyes of Buddha, symbolizing wisdom and compassion",
-                    "Explore Kathmandu Durbar Square, a UNESCO World Heritage Site",
-                    "Visit the Kumari Ghar and see the Living Goddess (if she appears)",
-                    "Admire intricate woodcarvings at the Kumari Ghar and Hanuman Dhoka",
-                    "Observe Hindu rituals and cremation ceremonies at Pashupatinath Temple",
-                    "See sadhus (holy men) and learn about Hindu traditions",
-                    "Circumambulate Boudhanath Stupa, one of the largest in South Asia",
-                    "Spin prayer wheels and experience Tibetan Buddhist culture",
-                    "Enjoy a traditional Nepali lunch at a local restaurant",
-                    "Learn about Nepal's syncretic Hindu-Buddhist culture from an expert guide",
+                    "Explore UNESCO World Heritage Sites in Kathmandu Valley including Swayambhunath, Pashupatinath, and Boudhanath",
+                    "Witness spectacular sunrise over the Annapurna range from Sarangkot, Pokhara",
+                    "Boat ride on Phewa Lake with reflections of Machhapuchhre (Fishtail) mountain",
+                    "Visit Lumbini, the birthplace of Lord Buddha and walk in the sacred garden",
+                    "Explore international monasteries built by Buddhist countries from around the world",
+                    "Jeep safari in Chitwan National Park to see one-horned rhinoceros and exotic wildlife",
+                    "Canoe ride along the Rapti River to photograph crocodiles and aquatic birds",
+                    "Experience Tharu cultural dance and learn about indigenous village life",
+                    "Scenic mountain flight from Bharatpur to Kathmandu with aerial views",
+                    "Farewell dinner with traditional Nepali cultural performance",
                   ].map((highlight, i) => (
                     <div
                       key={i}
                       className="flex items-center gap-2 md:gap-3 p-3 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
                     >
-                      <Landmark className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] shrink-0" />
+                      <Compass className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] shrink-0" />
                       <span className="text-[#0f2940] font-medium text-sm md:text-base">{highlight}</span>
                     </div>
                   ))}
@@ -498,7 +588,7 @@ export default function KathmanduSightseeingPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Spring (Mar-May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Pleasant temperatures and clear mornings. Ideal for photography with soft morning light. The valley is vibrant with spring colors.
+                        Pleasant temperatures, blooming rhododendrons, and clear mountain views. Ideal for all destinations with excellent wildlife viewing in Chitwan.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
                     </CardContent>
@@ -509,7 +599,7 @@ export default function KathmanduSightseeingPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Autumn (Sep-Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crystal-clear skies, perfect temperatures, and vibrant festivals including Dashain and Tihar. The city is beautifully decorated.
+                        Crystal-clear skies, perfect temperatures, and vibrant festivals including Dashain and Tihar. Peak season for mountain views and cultural experiences.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
                     </CardContent>
@@ -521,19 +611,19 @@ export default function KathmanduSightseeingPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Winter (Dec-Feb)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Cool, clear days with excellent visibility. Fewer tourists. Morning fog may delay start but usually clears by mid-morning.
+                        Crisp clear air, excellent mountain views, and cool sunny days. Good for sightseeing with fewer crowds. Chitwan remains pleasant for wildlife viewing.
                       </p>
                       <Badge className="bg-blue-100 text-blue-700 border-none text-xs">Good</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Note: The tour operates year-round. Monsoon (Jun-Aug) brings occasional rain, but heritage sites are still accessible with umbrella/raincoat.</p>
+                <p className="text-xs text-slate-500 mt-2">Note: Monsoon (Jun-Aug) brings lush green landscapes but occasional rain. Lumbini and Chitwan are still accessible with umbrella/raincoat. Pokhara mountain views may be limited.</p>
               </section>
 
               {/* Detailed Itinerary */}
               <section className="mb-8 md:mb-12" id="itinerary">
                 <div className="flex items-center justify-between mb-4 md:mb-6">
-                  <h2 className="text-xl md:text-2xl font-serif text-[#0f2940]">Tour Itinerary</h2>
+                  <h2 className="text-xl md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
                   <Button
                     variant="outline"
                     size="sm"
@@ -560,7 +650,8 @@ export default function KathmanduSightseeingPage() {
                           onClick={() => toggleDay(day.day)}
                         >
                           <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
-                            <span className="text-[10px] font-bold text-[#0f2940] uppercase">Day Tour</span>
+                            <span className="text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
+                            <span className="text-lg md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
                           </div>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-bold text-[#0f2940] text-sm md:text-base truncate">{day.title}</h4>
@@ -569,7 +660,7 @@ export default function KathmanduSightseeingPage() {
                                 <TrendingUp className="w-3 h-3" /> {day.altitude}
                               </span>
                               <span className="flex items-center gap-1">
-                                <Clock className="w-3 h-3" /> {day.distance}
+                                <Backpack className="w-3 h-3" /> {day.distance}
                               </span>
                             </div>
                           </div>
@@ -586,8 +677,8 @@ export default function KathmanduSightseeingPage() {
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-3 md:mb-4">
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <MapPin className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
-                                <span><strong>Meeting Point:</strong> Your hotel in Kathmandu</span>
+                                <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
+                                <span><strong>Overnight:</strong> {day.overnight}</span>
                               </div>
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
                                 <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
@@ -609,98 +700,6 @@ export default function KathmanduSightseeingPage() {
                   ))}
                 </div>
               </section>
-
-              {/* Swayambhunath Details */}
-              <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-4 md:p-6 mb-8 md:mb-12">
-                <h4 className="font-bold text-amber-800 mb-3 flex items-center gap-2 text-sm md:text-base">
-                  Swayambhunath Stupa - The Monkey Temple
-                </h4>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-2">
-                      <li><strong>History:</strong> Swayambhunath is one of the oldest religious sites in Nepal, dating back to the 5th century. Legend says the Kathmandu Valley was once a lake, and Swayambhu emerged as a self-created lotus flower on a hilltop. The stupa was built on this sacred spot.</li>
-                      <li><strong>The Eyes:</strong> The all-seeing eyes of Buddha painted on all four sides of the stupa are among Nepal's most iconic images. The eyes represent wisdom and compassion, with the third eye symbolizing inner vision. The nose is shaped like the Nepali number 'one' (ek), symbolizing unity.</li>
-                      <li><strong>The 365 Steps:</strong> The eastern approach features 365 steps, one for each day of the year. The climb takes you past meditation shrines, prayer wheels, and the resident monkeys that give the temple its nickname.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-2">
-                      <li><strong>Panoramic Views:</strong> From the hilltop, you'll enjoy sweeping views of the entire Kathmandu Valley, including the cityscape, surrounding hills, and on clear days, the Himalayan range.</li>
-                      <li><strong>Surrounding Shrines:</strong> The complex includes numerous smaller shrines dedicated to Hindu and Buddhist deities, reflecting the syncretic nature of Nepalese religion. The Shantipur Temple and the Ajima shrines are particularly significant.</li>
-                      <li><strong>Vajra and Toran:</strong> The thunderbolt (vajra) and the gilded toran (metal arch) at the stupa's entrance are masterpieces of metalwork, depicting the five Buddhas and other divine figures.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Kathmandu Durbar Square Details */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg md:rounded-2xl p-4 md:p-6 mb-8 md:mb-12">
-                <h4 className="font-bold text-blue-800 mb-3 flex items-center gap-2 text-sm md:text-base">
-                 Kathmandu Durbar Square - Royal Heritage
-                </h4>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <ul className="text-blue-700 text-xs md:text-sm leading-relaxed space-y-2">
-                      <li><strong>Kumari Ghar:</strong> This ornate palace is home to the Kumari, the Living Goddess. A young girl selected from the Newari Buddhist community, she is worshipped as the incarnation of the goddess Taleju. She appears at certain times of day from the central window to bless visitors.</li>
-                      <li><strong>Hanuman Dhoka Palace:</strong> The ancient royal palace complex, named after the monkey god Hanuman whose statue guards the entrance. The palace features intricate woodcarvings, courtyards, and the historic Nasal Chowk where royal coronations took place.</li>
-                      <li><strong>Taleju Temple:</strong> The tallest temple in the square, dedicated to the royal goddess Taleju. Non-Hindus cannot enter, but its magnificent architecture can be admired from outside.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <ul className="text-blue-700 text-xs md:text-sm leading-relaxed space-y-2">
-                      <li><strong>Majipat Lhakhang:</strong> A three-story pagoda dedicated to Avalokiteshvara, featuring beautiful woodcarvings and metalwork.</li>
-                      <li><strong>Kasthamandap:</strong> Originally a rest house built from the wood of a single tree, this structure gave Kathmandu its name. Reconstructed after the 2015 earthquake, it remains a symbol of the city.</li>
-                      <li><strong>Ashok Vinayak:</strong> A small but important Ganesh shrine in the center of the square, worshiped before any major undertaking.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Pashupatinath Details */}
-              <div className="bg-green-50 border border-green-200 rounded-lg md:rounded-2xl p-4 md:p-6 mb-8 md:mb-12">
-                <h4 className="font-bold text-green-800 mb-3 flex items-center gap-2 text-sm md:text-base">
-                  <Droplet className="w-4 h-4 md:w-5 md:h-5" /> Pashupatinath Temple - Sacred Hindu Shrine
-                </h4>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <ul className="text-green-700 text-xs md:text-sm leading-relaxed space-y-2">
-                      <li><strong>Main Temple:</strong> The two-story pagoda-style temple, with its golden roof and silver doors, houses the sacred linga of Lord Shiva. Non-Hindus cannot enter the inner courtyard but can view the temple from across the Bagmati River.</li>
-                      <li><strong>Bagmati River:</strong> The river is considered sacred, and its banks are lined with cremation platforms (ghats). Arya Ghat is used for cremations of ordinary people, while the royal family was cremated at Raja Ghat. Observing the cremation rituals offers insight into Hindu beliefs about death and rebirth.</li>
-                      <li><strong>Sadhus:</strong> The temple complex is home to many sadhus (holy men), recognizable by their orange robes, dreadlocks, and face paint. They are willing to be photographed for a small donation.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <ul className="text-green-700 text-xs md:text-sm leading-relaxed space-y-2">
-                      <li><strong>Smaller Temples:</strong> The complex contains hundreds of smaller shrines, including the Guhyeshwari Temple and the Ram Temple. Each has its own significance and mythology.</li>
-                      <li><strong>Pashupatinath Area:</strong> The surrounding area is filled with ashrams, monasteries, and lodges for pilgrims. The Kailashnath Temple and the Gorakhnath Temple are also worth visiting.</li>
-                      <li><strong>Festivals:</strong> The biggest celebration is Maha Shivaratri (February/March), when hundreds of thousands of devotees gather to worship Lord Shiva. The atmosphere is electric with devotion.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Boudhanath Details */}
-              <div className="bg-purple-50 border border-purple-200 rounded-lg md:rounded-2xl p-4 md:p-6 mb-8 md:mb-12">
-                <h4 className="font-bold text-purple-800 mb-3 flex items-center gap-2 text-sm md:text-base">
-                   Boudhanath Stupa - Center of Tibetan Buddhism
-                </h4>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <ul className="text-purple-700 text-xs md:text-sm leading-relaxed space-y-2">
-                      <li><strong>History:</strong> Believed to have been built in the 5th century, Boudhanath is one of the largest stupas in South Asia. It stands at the ancient trade route to Tibet, and Tibetan merchants have offered prayers here for centuries. After the Chinese invasion of Tibet in 1959, many Tibetan refugees settled around the stupa, making it the center of Tibetan culture in Nepal.</li>
-                      <li><strong>Architecture:</strong> The stupa's massive mandala represents the Buddhist cosmos. The white dome symbolizes the entire world, while the 13 rings above represent the stages to enlightenment. The all-seeing eyes of Buddha gaze in all four directions.</li>
-                      <li><strong>Prayer Wheels:</strong> Surrounding the base are 108 small prayer wheels (a sacred number in Buddhism). Spinning them while circumambulating clockwise is believed to send prayers to the universe and bring good karma.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <ul className="text-purple-700 text-xs md:text-sm leading-relaxed space-y-2">
-                      <li><strong>Surrounding Monasteries:</strong> Boudhanath is surrounded by over 50 monasteries representing different schools of Tibetan Buddhism. The Shechen Monastery and Thrangu Tashi Yangtse Monastery are particularly beautiful and welcome visitors.</li>
-                      <li><strong>Pilgrims:</strong> Throughout the day, you'll see Tibetan monks in maroon robes, pilgrims prostrating, and locals engaged in devotion. The atmosphere is peaceful and deeply spiritual.</li>
-                      <li><strong>Evening Atmosphere:</strong> At sunset, hundreds of butter lamps are lit, and the chanting of mantras fills the air. The stupa is beautifully illuminated after dark.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
 
               {/* Includes / Excludes */}
               <section className="mb-8 md:mb-12" id="includes">
@@ -743,14 +742,14 @@ export default function KathmanduSightseeingPage() {
               <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-4 md:p-6 flex gap-3 md:gap-4 mb-8 md:mb-12">
                 <AlertTriangle className="w-5 h-5 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information for Your Visit</h4>
+                  <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
-                    <li>• <strong>Dress Code:</strong> Modest dress is required at temples. Shoulders and knees should be covered. Remove shoes before entering temple premises. Carry socks for comfort.</li>
-                    <li>• <strong>Photography:</strong> Photography is permitted in most areas. Some temple interiors may restrict it. Always ask permission before photographing sadhus or during cremation ceremonies at Pashupatinath.</li>
-                    <li>• <strong>Kumari Appearance:</strong> The Living Goddess appears at certain times from her palace window, typically in the late afternoon. Her appearance is brief and not guaranteed. Your guide will time the visit for the best chance.</li>
-                    <li>• <strong>Pashupatinath Cremations:</strong> Photography of cremation ceremonies is strictly prohibited. Observing from a distance is acceptable. Your guide will explain the rituals respectfully.</li>
-                    <li>• <strong>Physical Requirements:</strong> This tour involves moderate walking (approximately 3-4 hours total) on uneven surfaces. Suitable for most fitness levels. Inform us of mobility concerns when booking.</li>
-                    <li>• <strong>What to Bring:</strong> Comfortable walking shoes, modest clothing, sun protection, water bottle, camera, and small denomination rupees for donations or offerings.</li>
+                    <li>• <strong>Dress Code:</strong> Modest dress is required at temples and religious sites. Shoulders and knees should be covered. Remove shoes before entering temple premises.</li>
+                    <li>• <strong>Photography:</strong> Photography is permitted in most areas, but some temple interiors may restrict it. Always ask permission before photographing people, especially sadhus and during rituals.</li>
+                    <li>• <strong>Physical Requirements:</strong> This tour involves walking on uneven stone streets, climbing stairs at temples, and walking on jungle trails. Comfortable walking shoes are essential.</li>
+                    <li>• <strong>Wildlife Safari:</strong> Wildlife sightings are subject to nature. While Chitwan offers excellent opportunities, animals are wild and sightings cannot be guaranteed. Your naturalist will maximize your chances.</li>
+                    <li>• <strong>Travel Insurance:</strong> Mandatory - ensure your policy covers medical emergencies, trip cancellation, and evacuation.</li>
+                    <li>• <strong>Visa:</strong> Nepal visa available on arrival at Tribhuvan International Airport. Bring two passport photos and cash for visa fees ($30 for 15 days, $50 for 30 days).</li>
                   </ul>
                 </div>
               </div>
@@ -787,28 +786,28 @@ export default function KathmanduSightseeingPage() {
                 <div className="space-y-3 md:space-y-4">
                   {[
                     {
-                      q: "What is the Living Goddess Kumari?",
-                      a: "The Kumari is a prepubescent girl selected from the Newari Buddhist community who is worshipped as the living incarnation of the goddess Taleju. She lives in the Kumari Ghar palace and appears at certain times of day to bless visitors. The selection process involves 32 perfections, and once chosen, she lives in the palace until her first menstruation, after which a new Kumari is selected.",
+                      q: "Is this tour suitable for families with children?",
+                      a: "Yes, this tour is very family-friendly and suitable for children of all ages. The activities are varied and engaging for kids—from exploring temples and monasteries to boat rides on the lake, visiting the elephant breeding center, and jungle safaris. Children under 10 receive discounted rates. Please inquire about family pricing.",
                     },
                     {
-                      q: "Can I see cremations at Pashupatinath?",
-                      a: "Yes, open-air cremations take place daily on the banks of the Bagmati River. Photography of the cremation itself is strictly prohibited out of respect, but observing from a distance is acceptable. Your guide will explain the Hindu death rituals and their spiritual significance. The experience is profound and offers insight into Hindu beliefs about death and rebirth.",
+                      q: "What is the accommodation like?",
+                      a: "We use carefully selected 3-star hotels in Kathmandu, Pokhara, and Lumbini with modern amenities, comfortable rooms, and attached bathrooms. In Chitwan, you'll stay at a jungle resort with rustic charm and all necessary facilities. Upgrades to 4 or 5-star properties are available upon request for an additional cost.",
+                    },
+                    {
+                      q: "Can I see tigers in Chitwan National Park?",
+                      a: "While Bengal tigers are present in Chitwan, they are elusive and sightings are rare (approximately 10-15% chance). Your best chance is during early morning jeep safaris. One-horned rhinoceros sightings are almost guaranteed (95%+ chance). The park is home to many other wildlife species including deer, monkeys, crocodiles, and over 500 bird species.",
+                    },
+                    {
+                      q: "What is the significance of Lumbini?",
+                      a: "Lumbini is one of the holiest places in the world for Buddhists as it is the birthplace of Siddhartha Gautama, who became Lord Buddha, in 623 BCE. The Mayadevi Temple marks the exact spot where Queen Mayadevi gave birth. Emperor Ashoka visited in 249 BCE and erected a pillar commemorating the site. Today, countries around the world have built beautiful monasteries representing their Buddhist traditions.",
                     },
                     {
                       q: "How much walking is involved?",
-                      a: "You'll walk approximately 3-4 hours total throughout the day, with vehicle transfers between sites. The terrain is uneven with stone-paved streets and some stairs (especially at Swayambhunath). Comfortable walking shoes are essential. The pace is leisurely with plenty of time for rest and photography.",
+                      a: "This is an easy tour with moderate walking. Heritage sites require walking on uneven stone streets and climbing some stairs (approximately 2-3 hours per day). The Sarangkot sunrise involves a short walk to viewpoints. Safari activities include jeep rides and short jungle walks. Comfortable walking shoes are essential.",
                     },
                     {
-                      q: "Is this tour suitable for children?",
-                      a: "Yes, this tour is very family-friendly. Children are fascinated by the monkeys at Swayambhunath, the Living Goddess, and the colorful rituals. The tour pace is relaxed with breaks. Please let us know if you have specific needs for children.",
-                    },
-                    {
-                      q: "Can I customize this tour?",
-                      a: "Absolutely! This tour can be customized to your interests. You might want to spend more time at certain sites, add Patan or Bhaktapur, or focus more on photography. Please let us know your preferences when booking, and we'll create a personalized itinerary.",
-                    },
-                    {
-                      q: "What is the best time of day for photography?",
-                      a: "Morning light (9-11 AM) is excellent for Swayambhunath and Boudhanath. Late afternoon (3-5 PM) offers beautiful light at Pashupatinath and Kathmandu Durbar Square. Our itinerary is timed to provide good lighting at each location.",
+                      q: "Can I extend the tour with additional activities?",
+                      a: "Absolutely! Popular extensions include: trekking in the Annapurna region (3-14 days), white water rafting on the Trishuli River, paragliding in Pokhara, mountain flight over Everest, or visiting additional cities like Tansen or Janakpur. Please contact us for customization options.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
@@ -820,37 +819,6 @@ export default function KathmanduSightseeingPage() {
                   ))}
                 </div>
               </section>
-
-              {/* UNESCO Timeline */}
-              <Card className="bg-white border-[#C5E0ED]/30 rounded-lg md:rounded-xl mb-8 md:mb-12">
-                <CardContent className="p-4 md:p-6">
-                  <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                    <History className="w-4 h-4 md:w-5 md:h-5 text-[#2d6a8a]" /> UNESCO World Heritage Timeline
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="flex gap-3">
-                      <div className="w-20 text-xs font-bold text-[#2d6a8a]">5th Century</div>
-                      <div className="text-xs text-slate-600">Swayambhunath Stupa established</div>
-                    </div>
-                    <div className="flex gap-3">
-                      <div className="w-20 text-xs font-bold text-[#2d6a8a]">5th Century</div>
-                      <div className="text-xs text-slate-600">Boudhanath Stupa built</div>
-                    </div>
-                    <div className="flex gap-3">
-                      <div className="w-20 text-xs font-bold text-[#2d6a8a]">12th-18th C.</div>
-                      <div className="text-xs text-slate-600">Kathmandu Durbar Square developed by Malla kings</div>
-                    </div>
-                    <div className="flex gap-3">
-                      <div className="w-20 text-xs font-bold text-[#2d6a8a]">1979</div>
-                      <div className="text-xs text-slate-600">Kathmandu Valley designated UNESCO World Heritage Site</div>
-                    </div>
-                    <div className="flex gap-3">
-                      <div className="w-20 text-xs font-bold text-[#2d6a8a]">2003</div>
-                      <div className="text-xs text-slate-600">Pashupatinath added to UNESCO list</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </article>
           </div>
         </div>

@@ -576,13 +576,13 @@ export default function TamangHeritageLangtangTrekPage() {
                 <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The <strong>Tamang Heritage and Langtang Valley Trek</strong> is a unique combination of cultural immersion and spectacular Himalayan scenery, offering one of Nepal's most rewarding and accessible trekking experiences [citation:3][citation:5]. This 14-day journey takes you through the recently opened Tamang Heritage Trail, restricted until 2004, and into the majestic Langtang Valley, known as the "Valley of Glaciers" [citation:4].
+                    The <strong>Tamang Heritage and Langtang Valley Trek</strong> is a unique combination of cultural immersion and spectacular Himalayan scenery, offering one of Nepal's most rewarding and accessible trekking experiences. This 14-day journey takes you through the recently opened Tamang Heritage Trail, restricted until 2004, and into the majestic Langtang Valley, known as the "Valley of Glaciers."
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The trek begins with cultural exploration in traditional Tamang villages like Gatlang, Tatopani, Thuman, and Briddim, where you'll experience authentic Tibetan-influenced Buddhist culture, ancient monasteries, and warm homestay hospitality [citation:5][citation:7]. A highlight is soaking in the natural hot springs at Tatopani, believed to have healing properties [citation:5][citation:8]. From Nagthali viewpoint (3,165m), you'll enjoy panoramic views of the Langtang and Ganesh Himal ranges [citation:6].
+                    The trek begins with cultural exploration in traditional Tamang villages like Gatlang, Tatopani, Thuman, and Briddim, where you'll experience authentic Tibetan-influenced Buddhist culture, ancient monasteries, and warm homestay hospitality. A highlight is soaking in the natural hot springs at Tatopani, believed to have healing properties. From Nagthali viewpoint (3,165m), you'll enjoy panoramic views of the Langtang and Ganesh Himal ranges.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                    The second half of the trek follows the classic Langtang Valley route to <strong>Kyanjin Gompa (3,870m)</strong>, with optional hikes to Kyanjin Ri (4,773m) or Tserko Ri (4,985m) for breathtaking 360-degree Himalayan panoramas [citation:3][citation:6]. This moderate trek is perfect for those seeking authentic cultural encounters, diverse wildlife including red pandas and Himalayan black bears, and stunning mountain scenery without the crowds of Everest or Annapurna [citation:5][citation:8].
+                    The second half of the trek follows the classic Langtang Valley route to <strong>Kyanjin Gompa (3,870m)</strong>, with optional hikes to Kyanjin Ri (4,773m) or Tserko Ri (4,985m) for breathtaking 360-degree Himalayan panoramas. This moderate trek is perfect for those seeking authentic cultural encounters, diverse wildlife including red pandas and Himalayan black bears, and stunning mountain scenery without the crowds of Everest or Annapurna.
                   </p>
                 </div>
               </section>
@@ -625,7 +625,7 @@ export default function TamangHeritageLangtangTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Spring (Mar - May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Rhododendron forests burst into vibrant red, pink, and white blooms. Mild temperatures, clear skies, and excellent visibility. The most colorful time to trek [citation:5][citation:8].
+                        Rhododendron forests burst into vibrant red, pink, and white blooms. Mild temperatures, clear skies, and excellent visibility. The most colorful time to trek.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
                     </CardContent>
@@ -637,13 +637,13 @@ export default function TamangHeritageLangtangTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Autumn (Sep - Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crystal-clear skies, stable weather, and perfect trekking conditions. Lush green trails after monsoon and spectacular mountain views. Festival atmosphere with local celebrations [citation:5][citation:6].
+                        Crystal-clear skies, stable weather, and perfect trekking conditions. Lush green trails after monsoon and spectacular mountain views. Festival atmosphere with local celebrations.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is cold with possible snow but offers solitude. Monsoon (Jun-Aug) brings lush greenery but leeches and possible landslides [citation:3].</p>
+                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is cold with possible snow but offers solitude. Monsoon (Jun-Aug) brings lush greenery but leeches and possible landslides.</p>
               </section>
 
               {/* Detailed Itinerary */}
@@ -770,11 +770,11 @@ export default function TamangHeritageLangtangTrekPage() {
                 <div>
                   <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
-                    <li>• <strong>Guide Required:</strong> Since 2023, solo trekking without a guide is banned in Langtang National Park - you must trek with a licensed guide for safety [citation:1][citation:8].</li>
-                    <li>• <strong>Permits:</strong> Langtang National Park Entry Permit (NPR 3,000) and TIMS card (NPR 2,000) are required - bring two passport photos [citation:1][citation:8].</li>
-                    <li>• <strong>Travel Insurance:</strong> Mandatory - must cover high altitude trekking up to 5,000m and helicopter evacuation [citation:1][citation:8].</li>
-                    <li>• <strong>Homestay Experience:</strong> In Tamang villages, accommodation may be basic homestays with shared facilities - embrace the authentic cultural experience [citation:5][citation:7].</li>
-                    <li>• <strong>Physical Preparation:</strong> You'll trek 5-7 hours daily with some steep sections - good fitness and prior training recommended [citation:1].</li>
+                    <li>• <strong>Guide Required:</strong> Since 2023, solo trekking without a guide is banned in Langtang National Park - you must trek with a licensed guide for safety.</li>
+                    <li>• <strong>Permits:</strong> Langtang National Park Entry Permit (NPR 3,000) and TIMS card (NPR 2,000) are required - bring two passport photos.</li>
+                    <li>• <strong>Travel Insurance:</strong> Mandatory - must cover high altitude trekking up to 5,000m and helicopter evacuation.</li>
+                    <li>• <strong>Homestay Experience:</strong> In Tamang villages, accommodation may be basic homestays with shared facilities - embrace the authentic cultural experience.</li>
+                    <li>• <strong>Physical Preparation:</strong> You'll trek 5-7 hours daily with some steep sections - good fitness and prior training recommended.</li>
                   </ul>
                 </div>
               </div>
@@ -812,23 +812,23 @@ export default function TamangHeritageLangtangTrekPage() {
                   {[
                     {
                       q: "How difficult is the Tamang Heritage and Langtang Valley Trek?",
-                      a: "The trek is rated as moderate. You'll trek 5-7 hours daily on well-maintained trails with some steep sections, particularly to Nagthali and Kyanjin Ri. The highest point is 4,985m at Tserko Ri, so proper acclimatization is important. No technical experience is required, and it's suitable for beginners with good fitness [citation:3][citation:5][citation:6].",
+                      a: "The trek is rated as moderate. You'll trek 5-7 hours daily on well-maintained trails with some steep sections, particularly to Nagthali and Kyanjin Ri. The highest point is 4,985m at Tserko Ri, so proper acclimatization is important. No technical experience is required, and it's suitable for beginners with good fitness.",
                     },
                     {
                       q: "What is unique about the Tamang Heritage Trail?",
-                      a: "The Tamang Heritage Trail was restricted until 2004 and offers authentic cultural immersion in traditional Tamang villages with Tibetan Buddhist heritage [citation:4]. You'll experience homestays, cultural performances, ancient monasteries, and the famous natural hot springs at Tatopani. The Tamang people are descendants of Tibetan horse traders who have preserved their unique language and customs [citation:8].",
+                      a: "The Tamang Heritage Trail was restricted until 2004 and offers authentic cultural immersion in traditional Tamang villages with Tibetan Buddhist heritage. You'll experience homestays, cultural performances, ancient monasteries, and the famous natural hot springs at Tatopani. The Tamang people are descendants of Tibetan horse traders who have preserved their unique language and customs.",
                     },
                     {
                       q: "What is the accommodation like?",
-                      a: "Accommodation varies from basic homestays in Tamang villages to teahouses along the Langtang Valley. Rooms typically have twin beds with foam mattresses and shared bathrooms. Hot showers and charging are available for small fees. Homestays offer an authentic cultural experience with local families [citation:1][citation:5][citation:7].",
+                      a: "Accommodation varies from basic homestays in Tamang villages to teahouses along the Langtang Valley. Rooms typically have twin beds with foam mattresses and shared bathrooms. Hot showers and charging are available for small fees. Homestays offer an authentic cultural experience with local families.",
                     },
                     {
                       q: "What wildlife might I see?",
-                      a: "Langtang National Park is home to red pandas, Himalayan black bears, musk deer, langur monkeys, and over 250 bird species. The forests between Lama Hotel and Ghoda Tabela are prime red panda habitat, though sightings require luck [citation:2][citation:8].",
+                      a: "Langtang National Park is home to red pandas, Himalayan black bears, musk deer, langur monkeys, and over 250 bird species. The forests between Lama Hotel and Ghoda Tabela are prime red panda habitat, though sightings require luck.",
                     },
                     {
                       q: "Do I need special permits for this trek?",
-                      a: "You need a Langtang National Park Entry Permit and TIMS card. No special restricted area permits are required as the Tamang Heritage Trail is now open. Your trekking agency will arrange these permits for you [citation:1][citation:8].",
+                      a: "You need a Langtang National Park Entry Permit and TIMS card. No special restricted area permits are required as the Tamang Heritage Trail is now open. Your trekking agency will arrange these permits for you.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">

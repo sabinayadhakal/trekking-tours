@@ -577,20 +577,20 @@ export default function NarPhuTrekPage() {
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
                     The <strong>Nar Phu Valley Trek</strong> is one of Nepal's best-kept secrets, a remote and restricted region 
-                    that opened to trekkers only in 2003 [citation:4]. Tucked away north of the Annapurna Circuit, this hidden valley offers 
+                    that opened to trekkers only in 2003. Tucked away north of the Annapurna Circuit, this hidden valley offers 
                     an authentic adventure through dramatic landscapes, ancient Tibetan Buddhist villages, and pristine wilderness 
-                    untouched by mass tourism [citation:1].
+                    untouched by mass tourism.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
                     The journey takes you through narrow canyons, alpine meadows, and yak pastures to the villages of 
                     <strong>Phu (4,080m)</strong> and <strong>Nar (4,110m)</strong>, where time seems to have stood still. Here you'll find 
                     centuries-old monasteries like Tashi Lakhang Gompa, traditional stone houses, and warm hospitality from locals who 
-                    maintain their Tibetan-influenced culture [citation:5][citation:8].
+                    maintain their Tibetan-influenced culture.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-sm md:text-base">
                     The trek's climax is crossing the <strong>Kang La Pass (5,306m)</strong>, offering breathtaking 360-degree views of the 
-                    Annapurna range including Annapurna II, Gangapurna, and Tilicho Peak [citation:2]. This challenging trek requires special permits 
-                    and is ideal for experienced trekkers seeking solitude, cultural immersion, and raw Himalayan beauty away from crowded trails [citation:3].
+                    Annapurna range including Annapurna II, Gangapurna, and Tilicho Peak. This challenging trek requires special permits 
+                    and is ideal for experienced trekkers seeking solitude, cultural immersion, and raw Himalayan beauty away from crowded trails.
                   </p>
                 </div>
               </section>
@@ -633,7 +633,7 @@ export default function NarPhuTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Spring (Mar - May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Warmer temperatures, blooming wildflowers, and excellent visibility. Snow remains above 4,500m on Kang La Pass, adding to the scenic beauty [citation:9].
+                        Warmer temperatures, blooming wildflowers, and excellent visibility. Snow remains above 4,500m on Kang La Pass, adding to the scenic beauty.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
                     </CardContent>
@@ -645,13 +645,13 @@ export default function NarPhuTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Autumn (Sep - Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crystal-clear skies, stable weather, and perfect trekking conditions. The most reliable season for crossing Kang La Pass with spectacular mountain views [citation:9].
+                        Crystal-clear skies, stable weather, and perfect trekking conditions. The most reliable season for crossing Kang La Pass with spectacular mountain views.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is extremely cold with possible pass closures. Summer (Jun-Aug) brings monsoon rains on lower trails but the rain shadow keeps upper valleys drier [citation:9].</p>
+                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is extremely cold with possible pass closures. Summer (Jun-Aug) brings monsoon rains on lower trails but the rain shadow keeps upper valleys drier.</p>
               </section>
 
               {/* Detailed Itinerary */}
@@ -778,11 +778,11 @@ export default function NarPhuTrekPage() {
                 <div>
                   <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
-                    <li>• <strong>Restricted Area Permits Required:</strong> Nar Phu requires a special permit costing $100 (Sept-Nov) or $75 (Dec-Aug) for 7 days, plus ACAP and TIMS [citation:3][citation:6].</li>
-                    <li>• <strong>Guide is Mandatory:</strong> Independent trekking is not permitted in this restricted region - you must trek with a licensed guide [citation:3].</li>
-                    <li>• <strong>Challenging Trek:</strong> This is a strenuous trek with long days (8-9 hours), high altitude (5,306m), and remote terrain. Prior high-altitude experience recommended [citation:5][citation:8].</li>
-                    <li>• <strong>Limited Facilities:</strong> Teahouses are basic with shared bathrooms, no heating, and limited menu options. Prepare for rustic conditions [citation:5].</li>
-                    <li>• <strong>No Connectivity:</strong> Most of the trek has no mobile network or WiFi - be prepared for digital detox [citation:5].</li>
+                    <li>• <strong>Restricted Area Permits Required:</strong> Nar Phu requires a special permit costing $100 (Sept-Nov) or $75 (Dec-Aug) for 7 days, plus ACAP and TIMS.</li>
+                    <li>• <strong>Guide is Mandatory:</strong> Independent trekking is not permitted in this restricted region - you must trek with a licensed guide.</li>
+                    <li>• <strong>Challenging Trek:</strong> This is a strenuous trek with long days (8-9 hours), high altitude (5,306m), and remote terrain. Prior high-altitude experience recommended.</li>
+                    <li>• <strong>Limited Facilities:</strong> Teahouses are basic with shared bathrooms, no heating, and limited menu options. Prepare for rustic conditions.</li>
+                    <li>• <strong>No Connectivity:</strong> Most of the trek has no mobile network or WiFi - be prepared for digital detox.</li>
                   </ul>
                 </div>
               </div>
@@ -820,23 +820,23 @@ export default function NarPhuTrekPage() {
                   {[
                     {
                       q: "How difficult is the Nar Phu Valley Trek?",
-                      a: "The trek is rated as challenging. You'll trek 6-9 hours daily on rugged terrain with significant altitude gain. The Kang La Pass day is particularly demanding with 9-10 hours of trekking at over 5,000m. Prior high-altitude trekking experience and excellent fitness are essential [citation:5][citation:9].",
+                      a: "The trek is rated as challenging. You'll trek 6-9 hours daily on rugged terrain with significant altitude gain. The Kang La Pass day is particularly demanding with 9-10 hours of trekking at over 5,000m. Prior high-altitude trekking experience and excellent fitness are essential.",
                     },
                     {
                       q: "Do I need special permits for Nar Phu?",
-                      a: "Yes, Nar Phu is a restricted area requiring a special permit costing $100 per person (Sept-Nov) or $75 (Dec-Aug) for the first 7 days, plus $15 per extra day. You also need ACAP and TIMS cards. Permits must be arranged through a registered trekking agency [citation:3][citation:6].",
+                      a: "Yes, Nar Phu is a restricted area requiring a special permit costing $100 per person (Sept-Nov) or $75 (Dec-Aug) for the first 7 days, plus $15 per extra day. You also need ACAP and TIMS cards. Permits must be arranged through a registered trekking agency.",
                     },
                     {
                       q: "Is a guide mandatory for this trek?",
-                      a: "Yes, independent trekking is not permitted in the Nar Phu restricted area. You must trek with a licensed government guide. This is for your safety and to preserve the region's fragile culture and environment [citation:3][citation:5].",
+                      a: "Yes, independent trekking is not permitted in the Nar Phu restricted area. You must trek with a licensed government guide. This is for your safety and to preserve the region's fragile culture and environment.",
                     },
                     {
                       q: "What is the accommodation like?",
-                      a: "Teahouses in Nar Phu are basic compared to the Annapurna Circuit. Rooms are simple with twin beds and shared squat toilets. No heating, so a warm sleeping bag is essential. Hot showers (bucket type) are available at some lodges for an extra fee [citation:5].",
+                      a: "Teahouses in Nar Phu are basic compared to the Annapurna Circuit. Rooms are simple with twin beds and shared squat toilets. No heating, so a warm sleeping bag is essential. Hot showers (bucket type) are available at some lodges for an extra fee.",
                     },
                     {
                       q: "Can I see Annapurna from Kang La Pass?",
-                      a: "Absolutely! Kang La Pass offers spectacular 360-degree views of the Annapurna range including Annapurna II (7,937m), Gangapurna (7,455m), Tilicho Peak (7,134m), and Pisang Peak, plus distant views of Manaslu and Dhaulagiri [citation:2][citation:8].",
+                      a: "Absolutely! Kang La Pass offers spectacular 360-degree views of the Annapurna range including Annapurna II (7,937m), Gangapurna (7,455m), Tilicho Peak (7,134m), and Pisang Peak, plus distant views of Manaslu and Dhaulagiri.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">

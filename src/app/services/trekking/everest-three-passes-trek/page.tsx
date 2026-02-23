@@ -614,22 +614,22 @@ export default function EverestThreePassesTrekPage() {
                     designed for experienced trekkers seeking the complete Everest experience. This challenging 
                     circuit crosses three high-altitude passes - <strong>Kongma La (5,535m), Cho La (5,420m), and 
                     Renjo La (5,360m)</strong> - while visiting Everest Base Camp, Kala Patthar, and the stunning 
-                    Gokyo Lakes [citation:1][citation:4].
+                    Gokyo Lakes.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
                     Unlike the standard Everest Base Camp Trek which follows an "in-and-out" route, the Three Passes 
                     Trek creates a complete circuit through four major valleys: Imja Khola, Khumbu, Gokyo, and Bhote 
-                    Koshi [citation:5]. This allows trekkers to experience the full geographical diversity of the 
+                    Koshi. This allows trekkers to experience the full geographical diversity of the 
                     Sagarmatha National Park, from lush rhododendron forests to barren glacial moraines and 
-                    challenging glacier crossings [citation:2].
+                    challenging glacier crossings.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-sm md:text-base">
                     Each pass offers unique perspectives: <strong>Kongma La</strong> provides views of Makalu and 
                     Lhotse, <strong>Cho La</strong> features a thrilling glacier traverse between Cholatse and 
                     Lobuche peaks, and <strong>Renjo La</strong> rewards with the most spectacular panorama of 
-                    Everest reflected in the turquoise Gokyo Lakes [citation:3]. This trek is a true test of 
+                    Everest reflected in the turquoise Gokyo Lakes. This trek is a true test of 
                     endurance and mental resilience, but the rewards are unmatched - a lifetime of memories 
-                    standing atop the world's highest mountain passes [citation:2][citation:5].
+                    standing atop the world's highest mountain passes.
                   </p>
                 </div>
               </section>
@@ -673,7 +673,7 @@ export default function EverestThreePassesTrekPage() {
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Warmer temperatures, blooming rhododendrons, and stable weather. Pass conditions are good 
-                        but some snow may remain on Cho La glacier [citation:1].
+                        but some snow may remain on Cho La glacier.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
                     </CardContent>
@@ -686,7 +686,7 @@ export default function EverestThreePassesTrekPage() {
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         The most reliable season with crystal-clear skies, stable weather, and excellent pass 
-                        conditions. Perfect for photography and the best mountain views [citation:5].
+                        conditions. Perfect for photography and the best mountain views.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
                     </CardContent>
@@ -818,10 +818,10 @@ export default function EverestThreePassesTrekPage() {
                 <div>
                   <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
-                    <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 5,600m including glacier crossings and helicopter evacuation [citation:5].</li>
-                    <li>• This is a <strong>very strenuous trek</strong> requiring excellent physical fitness and preferably previous high-altitude experience [citation:2].</li>
-                    <li>• Pass conditions vary by season - crampons/microspikes provided for glacier sections on Cho La [citation:5].</li>
-                    <li>• We recommend <strong>3-6 months of physical preparation</strong> including cardio, strength training, and practice hikes with a weighted pack [citation:2].</li>
+                    <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 5,600m including glacier crossings and helicopter evacuation.</li>
+                    <li>• This is a <strong>very strenuous trek</strong> requiring excellent physical fitness and preferably previous high-altitude experience.</li>
+                    <li>• Pass conditions vary by season - crampons/microspikes provided for glacier sections on Cho La.</li>
+                    <li>• We recommend <strong>3-6 months of physical preparation</strong> including cardio, strength training, and practice hikes with a weighted pack.</li>
                   </ul>
                 </div>
               </div>
@@ -859,23 +859,23 @@ export default function EverestThreePassesTrekPage() {
                   {[
                     {
                       q: "How difficult is the Three Passes Trek compared to EBC?",
-                      a: "The Three Passes Trek is significantly more difficult than the standard Everest Base Camp Trek. It requires crossing three passes above 5,300m, involves glacier traverses, and spends more days at extreme altitude. Good physical fitness, previous trekking experience, and proper acclimatization are essential [citation:2][citation:5].",
+                      a: "The Three Passes Trek is significantly more difficult than the standard Everest Base Camp Trek. It requires crossing three passes above 5,300m, involves glacier traverses, and spends more days at extreme altitude. Good physical fitness, previous trekking experience, and proper acclimatization are essential.",
                     },
                     {
                       q: "Do I need technical climbing experience?",
-                      a: "No technical climbing experience is required, but you should be comfortable walking on snow and ice. The Cho La Pass involves a glacier crossing where we provide crampons or microspikes as needed. Our experienced guides will assist and ensure safety throughout [citation:5].",
+                      a: "No technical climbing experience is required, but you should be comfortable walking on snow and ice. The Cho La Pass involves a glacier crossing where we provide crampons or microspikes as needed. Our experienced guides will assist and ensure safety throughout.",
                     },
                     {
                       q: "What is the success rate for completing all three passes?",
-                      a: "With proper acclimatization and good weather, most well-prepared trekkers complete all three passes. The key is following the itinerary, listening to your guide, and not pushing too hard. Our acclimatization schedule (days at Namche, Dingboche, and Chhukhung) maximizes your chances of success [citation:7].",
+                      a: "With proper acclimatization and good weather, most well-prepared trekkers complete all three passes. The key is following the itinerary, listening to your guide, and not pushing too hard. Our acclimatization schedule (days at Namche, Dingboche, and Chhukhung) maximizes your chances of success.",
                     },
                     {
                       q: "Which pass is the most challenging?",
-                      a: "Kongma La (5,535m) is generally considered the most challenging due to its altitude and rocky terrain. Cho La is technically demanding due to the glacier crossing. Renjo La is often described as the most scenic but less technically difficult. Each presents unique challenges [citation:3][citation:4].",
+                      a: "Kongma La (5,535m) is generally considered the most challenging due to its altitude and rocky terrain. Cho La is technically demanding due to the glacier crossing. Renjo La is often described as the most scenic but less technically difficult. Each presents unique challenges.",
                     },
                     {
                       q: "Can we see Everest from all three passes?",
-                      a: "Yes! Each pass offers unique perspectives of Everest and the surrounding peaks. Renjo La provides the classic view of Everest reflected in Gokyo Lakes. Kongma La offers views of Makalu and Lhotse. Cho La has stunning views of Cholatse and Ama Dablam [citation:1][citation:3].",
+                      a: "Yes! Each pass offers unique perspectives of Everest and the surrounding peaks. Renjo La provides the classic view of Everest reflected in Gokyo Lakes. Kongma La offers views of Makalu and Lhotse. Cho La has stunning views of Cholatse and Ama Dablam.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">

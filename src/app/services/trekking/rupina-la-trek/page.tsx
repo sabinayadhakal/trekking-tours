@@ -615,13 +615,13 @@ export default function RupinaLaTrekPage() {
                 <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The <strong>Rupina La Pass Trek</strong> is a remote and adventurous trek in the lower Manaslu region, offering a true off-the-beaten-path experience for experienced trekkers seeking solitude and raw wilderness. Officially opened to tourists in 1991, this route takes you through pristine landscapes, traditional Gurung villages, and across the challenging <strong>Rupina La Pass (approx. 4,720m)</strong>, before connecting to the classic Manaslu Circuit [citation:3][citation:5].
+                    The <strong>Rupina La Pass Trek</strong> is a remote and adventurous trek in the lower Manaslu region, offering a true off-the-beaten-path experience for experienced trekkers seeking solitude and raw wilderness. Officially opened to tourists in 1991, this route takes you through pristine landscapes, traditional Gurung villages, and across the challenging <strong>Rupina La Pass (approx. 4,720m)</strong>, before connecting to the classic Manaslu Circuit.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The journey begins in <strong>Barpak Village</strong>, the largest Gurung settlement in Nepal and the epicenter of the 2015 earthquake. From here, you'll trek through dense rhododendron forests, alpine meadows, and glacial moraines, with spectacular views of <strong>Manaslu (8,163m), Himal Chuli (7,893m), Boudha Himal (6,672m), and the Ganesh Himal range</strong> [citation:5][citation:6]. The remote section between Barpak and Nyak Village requires fully outfitted camping, with no teahouses for 5-6 days [citation:7].
+                    The journey begins in <strong>Barpak Village</strong>, the largest Gurung settlement in Nepal and the epicenter of the 2015 earthquake. From here, you'll trek through dense rhododendron forests, alpine meadows, and glacial moraines, with spectacular views of <strong>Manaslu (8,163m), Himal Chuli (7,893m), Boudha Himal (6,672m), and the Ganesh Himal range</strong>. The remote section between Barpak and Nyak Village requires fully outfitted camping, with no teahouses for 5-6 days.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                    After crossing Rupina La, you join the classic Manaslu Circuit and continue to the legendary <strong>Larkya La Pass (5,106m)</strong>, one of Nepal's longest and most spectacular high passes. This trek is the ultimate adventure for those seeking to explore the raw beauty of the Himalayas far from the crowds, combining two challenging passes, rich Gurung and Tibetan culture, and some of the most pristine wilderness in Nepal [citation:8][citation:9].
+                    After crossing Rupina La, you join the classic Manaslu Circuit and continue to the legendary <strong>Larkya La Pass (5,106m)</strong>, one of Nepal's longest and most spectacular high passes. This trek is the ultimate adventure for those seeking to explore the raw beauty of the Himalayas far from the crowds, combining two challenging passes, rich Gurung and Tibetan culture, and some of the most pristine wilderness in Nepal.
                   </p>
                 </div>
               </section>
@@ -664,7 +664,7 @@ export default function RupinaLaTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Spring (Mar - May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Rhododendrons bloom in vibrant colors, warming temperatures, and excellent visibility. Ideal for crossing both passes with moderate snow conditions [citation:6][citation:7].
+                        Rhododendrons bloom in vibrant colors, warming temperatures, and excellent visibility. Ideal for crossing both passes with moderate snow conditions.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
                     </CardContent>
@@ -676,13 +676,13 @@ export default function RupinaLaTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Autumn (Sep - Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        The most popular season with crystal-clear skies, stable weather, and perfect conditions. Excellent visibility for mountain photography and pass crossings [citation:3][citation:9].
+                        The most popular season with crystal-clear skies, stable weather, and perfect conditions. Excellent visibility for mountain photography and pass crossings.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is extremely cold with heavy snow making the passes impassable. Monsoon (Jun-Aug) brings leeches and landslides - not recommended [citation:8].</p>
+                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is extremely cold with heavy snow making the passes impassable. Monsoon (Jun-Aug) brings leeches and landslides - not recommended.</p>
               </section>
 
               {/* Detailed Itinerary */}
@@ -809,11 +809,11 @@ export default function RupinaLaTrekPage() {
                 <div>
                   <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
-                    <li>• <strong>Permits Required:</strong> This trek requires multiple permits including Manaslu Restricted Area Permit, MCAP, ACAP, and TIMS card. Permit costs vary by season [citation:5][citation:7].</li>
-                    <li>• <strong>Camping Section:</strong> The trek includes 5-6 nights of fully outfitted camping with no teahouses. All camping equipment is provided [citation:7][citation:8].</li>
-                    <li>• <strong>Guide Mandatory:</strong> Independent trekking is not permitted in this region. You must trek with a licensed guide from a registered agency [citation:5].</li>
-                    <li>• <strong>Physical Fitness:</strong> This is a strenuous trek with long days (8-11 hours on pass days), high altitude (5,106m), and remote terrain. Excellent fitness and prior high-altitude experience required [citation:3][citation:8].</li>
-                    <li>• <strong>Minimum Group Size:</strong> Restricted Area Permits require a minimum group of 2 trekkers [citation:5].</li>
+                    <li>• <strong>Permits Required:</strong> This trek requires multiple permits including Manaslu Restricted Area Permit, MCAP, ACAP, and TIMS card. Permit costs vary by season.</li>
+                    <li>• <strong>Camping Section:</strong> The trek includes 5-6 nights of fully outfitted camping with no teahouses. All camping equipment is provided.</li>
+                    <li>• <strong>Guide Mandatory:</strong> Independent trekking is not permitted in this region. You must trek with a licensed guide from a registered agency.</li>
+                    <li>• <strong>Physical Fitness:</strong> This is a strenuous trek with long days (8-11 hours on pass days), high altitude (5,106m), and remote terrain. Excellent fitness and prior high-altitude experience required.</li>
+                    <li>• <strong>Minimum Group Size:</strong> Restricted Area Permits require a minimum group of 2 trekkers.</li>
                   </ul>
                 </div>
               </div>
@@ -851,23 +851,23 @@ export default function RupinaLaTrekPage() {
                   {[
                     {
                       q: "How difficult is the Rupina La Pass Trek?",
-                      a: "This trek is rated as strenuous to challenging. You'll trek 5-8 hours daily on rugged terrain with significant altitude gain. The Rupina La and Larkya La pass days involve 8-11 hours of trekking at over 4,700-5,100m with glacier crossings. Prior high-altitude trekking experience and excellent fitness are essential [citation:3][citation:8].",
+                      a: "This trek is rated as strenuous to challenging. You'll trek 5-8 hours daily on rugged terrain with significant altitude gain. The Rupina La and Larkya La pass days involve 8-11 hours of trekking at over 4,700-5,100m with glacier crossings. Prior high-altitude trekking experience and excellent fitness are essential.",
                     },
                     {
                       q: "What is the story behind the name 'Rupina La'?",
-                      a: "According to local tales from the villages of Laprak and Barpak, the Rupina La Pass derives its name from a shepherdess named Rupina. Long ago, while tending her sheep in the area, she mysteriously disappeared, leaving a legacy that lent her name to the pass [citation:9]. In the Gurung language, it is also referred to as 'Ruwala,' meaning 'horn pass' [citation:5].",
+                      a: "According to local tales from the villages of Laprak and Barpak, the Rupina La Pass derives its name from a shepherdess named Rupina. Long ago, while tending her sheep in the area, she mysteriously disappeared, leaving a legacy that lent her name to the pass. In the Gurung language, it is also referred to as 'Ruwala,' meaning 'horn pass'.",
                     },
                     {
                       q: "Do I need camping experience for this trek?",
-                      a: "No prior camping experience is necessary, but you should be prepared for basic conditions with no running water, squat toilets, and cold temperatures. Our experienced camping staff will set up tents, prepare meals, and ensure your comfort during the 5-6 nights of camping. A positive attitude and flexibility are important [citation:7][citation:8].",
+                      a: "No prior camping experience is necessary, but you should be prepared for basic conditions with no running water, squat toilets, and cold temperatures. Our experienced camping staff will set up tents, prepare meals, and ensure your comfort during the 5-6 nights of camping. A positive attitude and flexibility are important.",
                     },
                     {
                       q: "What permits are required and how much do they cost?",
-                      a: "You need: Manaslu Restricted Area Permit (USD 75-100/week + per day charges), Manaslu Conservation Area Permit (MCAP ~USD 30), Annapurna Conservation Area Permit (ACAP ~USD 30), and TIMS card (~USD 20). A local Tsum Nupri entrance fee (NPR 1,000) may also apply. Total ranges from USD 200-300 per person depending on season and itinerary length [citation:5][citation:7][citation:8].",
+                      a: "You need: Manaslu Restricted Area Permit (USD 75-100/week + per day charges), Manaslu Conservation Area Permit (MCAP ~USD 30), Annapurna Conservation Area Permit (ACAP ~USD 30), and TIMS card (~USD 20). A local Tsum Nupri entrance fee (NPR 1,000) may also apply. Total ranges from USD 200-300 per person depending on season and itinerary length.",
                     },
                     {
                       q: "What wildlife might I see on this trek?",
-                      a: "The Manaslu region is home to 33 mammal species including Himalayan tahr, blue sheep (bharal), musk deer, Himalayan marmots, and occasionally snow leopards. Over 110 bird species include the colorful Himalayan monal (Danphe), Nepal's national bird. You may also see langur monkeys in the lower forests [citation:5][citation:9].",
+                      a: "The Manaslu region is home to 33 mammal species including Himalayan tahr, blue sheep (bharal), musk deer, Himalayan marmots, and occasionally snow leopards. Over 110 bird species include the colorful Himalayan monal (Danphe), Nepal's national bird. You may also see langur monkeys in the lower forests.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">

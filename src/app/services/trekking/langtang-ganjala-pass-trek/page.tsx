@@ -585,13 +585,13 @@ export default function LangtangGanjaLaTrekPage() {
                 <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The <strong>Langtang Ganja La Trek</strong> is one of Nepal's most adventurous and rewarding high-altitude treks, connecting the beautiful Langtang Valley with the serene Helambu region via the challenging <strong>Ganja La Pass (5,130m/5,200m)</strong> [citation:5][citation:8]. This strenuous journey combines the best of both regions - the dramatic glaciers and yak pastures of Langtang with the cultural richness of Helambu's Sherpa and Hyolmo villages [citation:3][citation:10].
+                    The <strong>Langtang Ganja La Trek</strong> is one of Nepal's most adventurous and rewarding high-altitude treks, connecting the beautiful Langtang Valley with the serene Helambu region via the challenging <strong>Ganja La Pass (5,130m/5,200m)</strong>. This strenuous journey combines the best of both regions - the dramatic glaciers and yak pastures of Langtang with the cultural richness of Helambu's Sherpa and Hyolmo villages.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The trek begins in the Langtang Valley, known as the "Valley of Glaciers," where you'll trek to <strong>Kyanjin Gompa (3,870m)</strong> beneath the towering peak of Langtang Lirung (7,227m) [citation:4]. After acclimatization and optional hikes to Kyanjin Ri or Tserko Ri, the route becomes increasingly remote and wild. For the next four days, you'll camp in pristine wilderness, crossing the <strong>Ganja La Pass</strong> where crampons and ropes may be necessary depending on snow conditions [citation:7][citation:5].
+                    The trek begins in the Langtang Valley, known as the "Valley of Glaciers," where you'll trek to <strong>Kyanjin Gompa (3,870m)</strong> beneath the towering peak of Langtang Lirung (7,227m). After acclimatization and optional hikes to Kyanjin Ri or Tserko Ri, the route becomes increasingly remote and wild. For the next four days, you'll camp in pristine wilderness, crossing the <strong>Ganja La Pass</strong> where crampons and ropes may be necessary depending on snow conditions.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                    From the pass summit, you're rewarded with breathtaking 360-degree views of <strong>Langtang Lirung, Naya Kanga, Dorje Lakpa, Ganesh Himal, and even glimpses of Shisha Pangma (8,013m) in Tibet</strong> [citation:1][citation:7]. The descent leads into the lush Helambu region, with its terraced fields, apple orchards, and ancient Buddhist monasteries. This trek is designed for experienced trekkers seeking solitude, wilderness, and the satisfaction of conquering a technical high Himalayan pass [citation:8].
+                    From the pass summit, you're rewarded with breathtaking 360-degree views of <strong>Langtang Lirung, Naya Kanga, Dorje Lakpa, Ganesh Himal, and even glimpses of Shisha Pangma (8,013m) in Tibet</strong>. The descent leads into the lush Helambu region, with its terraced fields, apple orchards, and ancient Buddhist monasteries. This trek is designed for experienced trekkers seeking solitude, wilderness, and the satisfaction of conquering a technical high Himalayan pass.
                   </p>
                 </div>
               </section>
@@ -634,7 +634,7 @@ export default function LangtangGanjaLaTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Spring (Mar - May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Rhododendron forests burst into vibrant bloom, warming temperatures, and excellent visibility. The Ganja La may have snow but conditions are generally stable for crossing [citation:4][citation:7].
+                        Rhododendron forests burst into vibrant bloom, warming temperatures, and excellent visibility. The Ganja La may have snow but conditions are generally stable for crossing.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
                     </CardContent>
@@ -646,13 +646,13 @@ export default function LangtangGanjaLaTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Autumn (Sep - Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        The most reliable season with crystal-clear skies, stable weather, and perfect trekking conditions. Minimal snow on the pass, making crossing easier [citation:5][citation:9].
+                        The most reliable season with crystal-clear skies, stable weather, and perfect trekking conditions. Minimal snow on the pass, making crossing easier.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is extremely cold with heavy snow making the pass impassable. Monsoon (Jun-Aug) brings leeches and landslides - not recommended for this trek [citation:4][citation:8].</p>
+                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is extremely cold with heavy snow making the pass impassable. Monsoon (Jun-Aug) brings leeches and landslides - not recommended for this trek.</p>
               </section>
 
               {/* Detailed Itinerary */}
@@ -779,11 +779,11 @@ export default function LangtangGanjaLaTrekPage() {
                 <div>
                   <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
-                    <li>• <strong>Technical Pass Crossing:</strong> Ganja La is a challenging pass requiring crampons, ice axes, and ropes depending on conditions [citation:5][citation:7]. Basic mountaineering skills are recommended.</li>
-                    <li>• <strong>Camping Required:</strong> For 4 nights (Ngegang to Dukpu), there are no teahouses - you must be prepared for camping with all gear provided [citation:4][citation:10].</li>
-                    <li>• <strong>Guide Mandatory:</strong> Independent trekking is not recommended on this route - a licensed guide is essential for safety on the unmarked, technical pass section [citation:7][citation:8].</li>
-                    <li>• <strong>Physical Fitness:</strong> This is a strenuous trek with 6-9 hour days, high altitude (5,130m), and technical sections. Excellent fitness and prior high-altitude experience required [citation:5][citation:9].</li>
-                    <li>• <strong>Travel Insurance:</strong> Mandatory - must cover high altitude trekking up to 5,200m, glacier crossing, and helicopter evacuation [citation:8][citation:10].</li>
+                    <li>• <strong>Technical Pass Crossing:</strong> Ganja La is a challenging pass requiring crampons, ice axes, and ropes depending on conditions. Basic mountaineering skills are recommended.</li>
+                    <li>• <strong>Camping Required:</strong> For 4 nights (Ngegang to Dukpu), there are no teahouses - you must be prepared for camping with all gear provided.</li>
+                    <li>• <strong>Guide Mandatory:</strong> Independent trekking is not recommended on this route - a licensed guide is essential for safety on the unmarked, technical pass section.</li>
+                    <li>• <strong>Physical Fitness:</strong> This is a strenuous trek with 6-9 hour days, high altitude (5,130m), and technical sections. Excellent fitness and prior high-altitude experience required.</li>
+                    <li>• <strong>Travel Insurance:</strong> Mandatory - must cover high altitude trekking up to 5,200m, glacier crossing, and helicopter evacuation.</li>
                   </ul>
                 </div>
               </div>
@@ -821,23 +821,23 @@ export default function LangtangGanjaLaTrekPage() {
                   {[
                     {
                       q: "How difficult is the Ganja La Pass crossing?",
-                      a: "Ganja La is one of Nepal's more challenging trekking passes. The crossing involves steep ascents/descents, snow and ice fields, and requires crampons and possibly ropes depending on conditions [citation:5][citation:7]. The pass is not technically a climb, but basic mountaineering skills and excellent fitness are essential. Your guide will provide training and assistance [citation:8].",
+                      a: "Ganja La is one of Nepal's more challenging trekking passes. The crossing involves steep ascents/descents, snow and ice fields, and requires crampons and possibly ropes depending on conditions. The pass is not technically a climb, but basic mountaineering skills and excellent fitness are essential. Your guide will provide training and assistance.",
                     },
                     {
                       q: "Do I need previous camping experience?",
-                      a: "No prior camping experience is necessary, but you should be prepared for basic conditions with no running water, squat toilets, and cold temperatures. Our experienced camping staff will set up tents, prepare meals, and ensure your comfort. A positive attitude and flexibility are important [citation:1][citation:10].",
+                      a: "No prior camping experience is necessary, but you should be prepared for basic conditions with no running water, squat toilets, and cold temperatures. Our experienced camping staff will set up tents, prepare meals, and ensure your comfort. A positive attitude and flexibility are important.",
                     },
                     {
                       q: "What wildlife might I see on this trek?",
-                      a: "Langtang National Park is home to red pandas (rare sightings), Himalayan black bears, musk deer, Himalayan thar, and langur monkeys [citation:7][citation:8]. The forests between Lama Hotel and Langtang are prime red panda habitat. Bird watchers will enjoy over 250 species including Himalayan monals and blood pheasants.",
+                      a: "Langtang National Park is home to red pandas (rare sightings), Himalayan black bears, musk deer, Himalayan thar, and langur monkeys. The forests between Lama Hotel and Langtang are prime red panda habitat. Bird watchers will enjoy over 250 species including Himalayan monals and blood pheasants.",
                     },
                     {
                       q: "What is the accommodation like during the camping section?",
-                      a: "During the 4-day camping section (Ngegang to Dukpu), you'll sleep in spacious dome tents with sleeping mats provided. Our camping staff sets up separate kitchen and dining tents, and prepares fresh, hot meals. Facilities are basic - no showers, no electricity, and pit toilets. This is a true wilderness experience [citation:4][citation:10].",
+                      a: "During the 4-day camping section (Ngegang to Dukpu), you'll sleep in spacious dome tents with sleeping mats provided. Our camping staff sets up separate kitchen and dining tents, and prepares fresh, hot meals. Facilities are basic - no showers, no electricity, and pit toilets. This is a true wilderness experience.",
                     },
                     {
                       q: "Can I do this trek if I've never used crampons before?",
-                      a: "Yes, with proper guidance. Your guide will provide instruction on using crampons and ice axes before the pass crossing. However, you should be comfortable walking on snow and ice, and have excellent balance. The guide will assess conditions and may rope up the group if necessary for safety [citation:5][citation:7].",
+                      a: "Yes, with proper guidance. Your guide will provide instruction on using crampons and ice axes before the pass crossing. However, you should be comfortable walking on snow and ice, and have excellent balance. The guide will assess conditions and may rope up the group if necessary for safety.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">

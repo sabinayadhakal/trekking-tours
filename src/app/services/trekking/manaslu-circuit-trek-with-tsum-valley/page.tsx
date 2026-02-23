@@ -623,13 +623,13 @@ export default function ManasluTsumValleyTrekPage() {
                 <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The <strong>Manaslu Circuit with Tsum Valley Trek</strong> is one of Nepal's most authentic and rewarding Himalayan adventures, combining the sacred Tsum Valley with the classic Manaslu Circuit [citation:3]. This comprehensive journey takes you through two restricted regions rich in Tibetan Buddhist culture, culminating in the crossing of the legendary <strong>Larkya La Pass (5,106m)</strong> with spectacular views of Mount Manaslu (8,163m), the world's eighth highest peak [citation:1][citation:6].
+                    The <strong>Manaslu Circuit with Tsum Valley Trek</strong> is one of Nepal's most authentic and rewarding Himalayan adventures, combining the sacred Tsum Valley with the classic Manaslu Circuit. This comprehensive journey takes you through two restricted regions rich in Tibetan Buddhist culture, culminating in the crossing of the legendary <strong>Larkya La Pass (5,106m)</strong> with spectacular views of Mount Manaslu (8,163m), the world's eighth highest peak.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The trek begins in the subtropical forests of the Budhi Gandaki Valley before ascending to the remote <strong>Tsum Valley</strong>, a sacred Himalayan enclave opened to trekkers only in 2008 [citation:3]. Here you'll explore ancient monasteries including <strong>Rachen Gompa, Mu Gompa, and Dephyudonma Gompa</strong>, visit <strong>Milarepa's Cave</strong> where the great Tibetan sage meditated, and experience the unique 'Shyagya' tradition of non-violence that has been practiced by the Tsumbas since 1920 [citation:3][citation:6].
+                    The trek begins in the subtropical forests of the Budhi Gandaki Valley before ascending to the remote <strong>Tsum Valley</strong>, a sacred Himalayan enclave opened to trekkers only in 2008. Here you'll explore ancient monasteries including <strong>Rachen Gompa, Mu Gompa, and Dephyudonma Gompa</strong>, visit <strong>Milarepa's Cave</strong> where the great Tibetan sage meditated, and experience the unique 'Shyagya' tradition of non-violence that has been practiced by the Tsumbas since 1920.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                    After rejoining the main Manaslu Circuit, you'll trek through traditional Tibetan villages, past mani walls and chortens, with ever-present views of the towering Himalayas. The highlight is crossing <strong>Larkya La Pass</strong>, one of Nepal's longest high passes, where prayer flags flutter against a 360-degree panorama of peaks including Manaslu, Himlung Himal, Cheo Himal, Annapurna II, and Ganesh Himal [citation:1]. This challenging trek is ideal for experienced trekkers seeking deep cultural immersion, pristine wilderness, and the satisfaction of conquering a major Himalayan pass [citation:10].
+                    After rejoining the main Manaslu Circuit, you'll trek through traditional Tibetan villages, past mani walls and chortens, with ever-present views of the towering Himalayas. The highlight is crossing <strong>Larkya La Pass</strong>, one of Nepal's longest high passes, where prayer flags flutter against a 360-degree panorama of peaks including Manaslu, Himlung Himal, Cheo Himal, Annapurna II, and Ganesh Himal. This challenging trek is ideal for experienced trekkers seeking deep cultural immersion, pristine wilderness, and the satisfaction of conquering a major Himalayan pass.
                   </p>
                 </div>
               </section>
@@ -639,14 +639,14 @@ export default function ManasluTsumValleyTrekPage() {
                 <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Trek Highlights</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
                   {[
-                    "Explore the sacred Tsum Valley, opened to trekkers in 2008, with its ancient Tibetan Buddhist culture [citation:3]",
-                    "Cross the legendary Larkya La Pass (5,106m) - one of Nepal's longest and most spectacular high passes [citation:1]",
-                    "Visit ancient monasteries including Mu Gompa, Rachen Gompa, and Dephyudonma Gompa [citation:6]",
-                    "Discover Milarepa's Cave and witness the footprint of the great Tibetan sage [citation:3]",
-                    "Experience the unique 'Shyagya' tradition of non-violence practiced by Tsumba people since 1920 [citation:3]",
-                    "Panoramic views of Manaslu (8,163m), Himlung Himal, Cheo Himal, Annapurna II, and Ganesh Himal [citation:1]",
+                    "Explore the sacred Tsum Valley, opened to trekkers in 2008, with its ancient Tibetan Buddhist culture",
+                    "Cross the legendary Larkya La Pass (5,106m) - one of Nepal's longest and most spectacular high passes",
+                    "Visit ancient monasteries including Mu Gompa, Rachen Gompa, and Dephyudonma Gompa",
+                    "Discover Milarepa's Cave and witness the footprint of the great Tibetan sage",
+                    "Experience the unique 'Shyagya' tradition of non-violence practiced by Tsumba people since 1920",
+                    "Panoramic views of Manaslu (8,163m), Himlung Himal, Cheo Himal, Annapurna II, and Ganesh Himal",
                     "Walk in the footsteps of ancient trading routes to Tibet through traditional villages",
-                    "Remote wilderness with far fewer trekkers than Everest or Annapurna regions [citation:6]",
+                    "Remote wilderness with far fewer trekkers than Everest or Annapurna regions",
                     "Diverse landscapes from subtropical forests to alpine deserts and glacial moraines",
                     "Authentic cultural immersion with Tamang, Gurung, and Tibetan communities",
                   ].map((highlight, i) => (
@@ -672,7 +672,7 @@ export default function ManasluTsumValleyTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Spring (Mar - May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Rhododendrons bloom in vibrant colors, warming temperatures, and excellent visibility. Some snow may remain on Larkya La early in the season. [citation:10]
+                        Rhododendrons bloom in vibrant colors, warming temperatures, and excellent visibility. Some snow may remain on Larkya La early in the season.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
                     </CardContent>
@@ -684,13 +684,13 @@ export default function ManasluTsumValleyTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Autumn (Sep - Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        The most popular season with crystal-clear skies, stable weather, and perfect conditions for crossing Larkya La. Peak season for mountain photography. [citation:3]
+                        The most popular season with crystal-clear skies, stable weather, and perfect conditions for crossing Larkya La. Peak season for mountain photography.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is very cold with heavy snow making the pass difficult. Monsoon (Jun-Aug) brings leeches and landslides - not recommended. [citation:3]</p>
+                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is very cold with heavy snow making the pass difficult. Monsoon (Jun-Aug) brings leeches and landslides - not recommended.</p>
               </section>
 
               {/* Detailed Itinerary */}
@@ -817,12 +817,12 @@ export default function ManasluTsumValleyTrekPage() {
                 <div>
                   <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
-                    <li>• <strong>Permits Required:</strong> This trek requires four permits: Manaslu Restricted Area Permit, Tsum Valley Restricted Area Permit, Manaslu Conservation Area Permit (MCAP), and Annapurna Conservation Area Permit (ACAP). A new local permit (NPR 1000) is also required [citation:2][citation:8].</li>
-                    <li>• <strong>Guide Mandatory:</strong> Independent trekking is not permitted in these restricted areas. You must trek with a licensed guide from a registered agency [citation:8].</li>
-                    <li>• <strong>Travel Insurance:</strong> Mandatory - must cover high altitude trekking up to 5,200m and helicopter evacuation [citation:8].</li>
-                    <li>• <strong>Physical Fitness:</strong> This is a strenuous trek with long days (8-10 hours on pass day), high altitude, and remote terrain. Excellent fitness and prior high-altitude experience required [citation:10].</li>
-                    <li>• <strong>Road Construction:</strong> Some sections, especially between Machha Khola and Jagat, may have road construction and occasional blasting. Your guide will ensure safe passage [citation:7].</li>
-                    <li>• <strong>Shyagya Tradition:</strong> In Tsum Valley, respect the non-violence tradition - do not kill any animals or insects [citation:3].</li>
+                    <li>• <strong>Permits Required:</strong> This trek requires four permits: Manaslu Restricted Area Permit, Tsum Valley Restricted Area Permit, Manaslu Conservation Area Permit (MCAP), and Annapurna Conservation Area Permit (ACAP). A new local permit (NPR 1000) is also required.</li>
+                    <li>• <strong>Guide Mandatory:</strong> Independent trekking is not permitted in these restricted areas. You must trek with a licensed guide from a registered agency.</li>
+                    <li>• <strong>Travel Insurance:</strong> Mandatory - must cover high altitude trekking up to 5,200m and helicopter evacuation.</li>
+                    <li>• <strong>Physical Fitness:</strong> This is a strenuous trek with long days (8-10 hours on pass day), high altitude, and remote terrain. Excellent fitness and prior high-altitude experience required.</li>
+                    <li>• <strong>Road Construction:</strong> Some sections, especially between Machha Khola and Jagat, may have road construction and occasional blasting. Your guide will ensure safe passage.</li>
+                    <li>• <strong>Shyagya Tradition:</strong> In Tsum Valley, respect the non-violence tradition - do not kill any animals or insects.</li>
                   </ul>
                 </div>
               </div>
@@ -860,23 +860,23 @@ export default function ManasluTsumValleyTrekPage() {
                   {[
                     {
                       q: "How difficult is the Manaslu Circuit with Tsum Valley Trek?",
-                      a: "This trek is rated as challenging to strenuous. You'll trek 5-8 hours daily on rugged terrain with significant altitude gain. The Larkya La Pass day involves 10-11 hours of trekking at over 5,000m with glacier crossings. Prior high-altitude trekking experience and excellent fitness are essential [citation:3][citation:10].",
+                      a: "This trek is rated as challenging to strenuous. You'll trek 5-8 hours daily on rugged terrain with significant altitude gain. The Larkya La Pass day involves 10-11 hours of trekking at over 5,000m with glacier crossings. Prior high-altitude trekking experience and excellent fitness are essential.",
                     },
                     {
                       q: "What makes Tsum Valley special?",
-                      a: "Tsum Valley is a sacred Himalayan enclave with deep Buddhist significance. It's home to ancient monasteries like Mu Gompa and Rachen Gompa, Milarepa's Cave with the sage's footprint, and the unique 'Shyagya' tradition of non-violence practiced since 1920. The valley opened to trekkers only in 2008 and retains authentic Tibetan culture [citation:3][citation:6].",
+                      a: "Tsum Valley is a sacred Himalayan enclave with deep Buddhist significance. It's home to ancient monasteries like Mu Gompa and Rachen Gompa, Milarepa's Cave with the sage's footprint, and the unique 'Shyagya' tradition of non-violence practiced since 1920. The valley opened to trekkers only in 2008 and retains authentic Tibetan culture.",
                     },
                     {
                       q: "How much do the permits cost?",
-                      a: "Permit costs vary by season. For Manaslu: $75-100/week + $10-15/day. Tsum Valley: $35-40/week + $7/day. MCAP and ACAP: approximately $22 each. A new local permit costs NPR 1000. Total for 19 days ranges approximately $250-300 per person [citation:2][citation:8].",
+                      a: "Permit costs vary by season. For Manaslu: $75-100/week + $10-15/day. Tsum Valley: $35-40/week + $7/day. MCAP and ACAP: approximately $22 each. A new local permit costs NPR 1000. Total for 19 days ranges approximately $250-300 per person.",
                     },
                     {
                       q: "What is the accommodation like?",
-                      a: "Teahouses throughout the trek are basic but comfortable, with twin-sharing rooms and shared bathrooms. In Tsum Valley and remote sections, facilities are simpler. Hot showers and charging are available at most lodges for an extra fee ($2-5). The teahouses offer warm hospitality and hearty meals [citation:10].",
+                      a: "Teahouses throughout the trek are basic but comfortable, with twin-sharing rooms and shared bathrooms. In Tsum Valley and remote sections, facilities are simpler. Hot showers and charging are available at most lodges for an extra fee ($2-5). The teahouses offer warm hospitality and hearty meals.",
                     },
                     {
                       q: "What wildlife might I see?",
-                      a: "The Manaslu Conservation Area is home to 33 mammal species including Himalayan tahr, blue sheep (bharal), musk deer, Himalayan marmots, and occasionally snow leopards. Over 110 bird species include the colorful Himalayan monal (Danphe), Nepal's national bird [citation:8].",
+                      a: "The Manaslu Conservation Area is home to 33 mammal species including Himalayan tahr, blue sheep (bharal), musk deer, Himalayan marmots, and occasionally snow leopards. Over 110 bird species include the colorful Himalayan monal (Danphe), Nepal's national bird.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">

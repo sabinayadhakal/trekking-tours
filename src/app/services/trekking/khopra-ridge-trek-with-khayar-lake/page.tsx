@@ -547,19 +547,19 @@ export default function KhopraRidgeKhayarLakeTrekPage() {
                     This off-the-beaten-path adventure takes you through dense rhododendron forests, traditional 
                     Gurung villages, and alpine meadows to the spectacular <strong>Khopra Ridge (3,660m)</strong> - 
                     one of the best vantage points in the Himalayas with panoramic views of Dhaulagiri, Annapurna, 
-                    Nilgiri, and Machhapuchhre (Fishtail) [citation:1][citation:5].
+                    Nilgiri, and Machhapuchhre (Fishtail).
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
                     The trek's highlight is the challenging day hike to <strong>sacred Khayar Lake (4,660m)</strong>, 
                     a stunning turquoise alpine lake nestled beneath Annapurna South. The lake holds deep religious 
-                    significance for both Hindus and Buddhists, who believe that bathing in its waters fulfills wishes 
-                    [citation:3][citation:5]. The trail to the lake offers breathtaking mountain scenery and a true 
+                    significance for both Hindus and Buddhists, who believe that bathing in its waters fulfills wishes. 
+                   The trail to the lake offers breathtaking mountain scenery and a true 
                     sense of wilderness adventure.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-sm md:text-base">
                     What makes this trek truly unique is the <strong>community-based tourism model</strong> - trekkers 
                     stay in lodges managed by local communities rather than private owners, with profits contributing 
-                    to local schools and village projects [citation:1][citation:8]. Combined with natural hot springs 
+                    to local schools and village projects. Combined with natural hot springs 
                     at Tatopani, rich Gurung and Magar culture, and far fewer trekkers than mainstream routes, this 
                     trek offers an authentic and serene Himalayan experience.
                   </p>
@@ -605,7 +605,7 @@ export default function KhopraRidgeKhayarLakeTrekPage() {
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Rhododendrons bloom in vibrant colors, the forests come alive, and temperatures are warm 
-                        with excellent visibility. Khayar Lake may still have ice formations [citation:3].
+                        with excellent visibility. Khayar Lake may still have ice formations.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
                     </CardContent>
@@ -618,7 +618,7 @@ export default function KhopraRidgeKhayarLakeTrekPage() {
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         The most popular season with crystal-clear skies, stable weather, and the best mountain views. 
-                        Khayar Lake is at its most beautiful turquoise color [citation:3].
+                        Khayar Lake is at its most beautiful turquoise color.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
                     </CardContent>
@@ -750,10 +750,10 @@ export default function KhopraRidgeKhayarLakeTrekPage() {
                 <div>
                   <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
-                    <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 4,700m and emergency evacuation [citation:2][citation:7].</li>
-                    <li>• The Khayar Lake day hike is challenging with rugged terrain - good fitness and proper gear are essential [citation:5].</li>
-                    <li>• Community teahouses offer basic but clean accommodation - be prepared for shared bathrooms and limited facilities [citation:5].</li>
-                    <li>• We recommend starting physical preparation <strong>1-2 months before your trek</strong> with regular cardio and stair climbing [citation:2].</li>
+                    <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 4,700m and emergency evacuation.</li>
+                    <li>• The Khayar Lake day hike is challenging with rugged terrain - good fitness and proper gear are essential.</li>
+                    <li>• Community teahouses offer basic but clean accommodation - be prepared for shared bathrooms and limited facilities.</li>
+                    <li>• We recommend starting physical preparation <strong>1-2 months before your trek</strong> with regular cardio and stair climbing.</li>
                   </ul>
                 </div>
               </div>
@@ -791,23 +791,23 @@ export default function KhopraRidgeKhayarLakeTrekPage() {
                   {[
                     {
                       q: "How difficult is the Khopra Ridge with Khayar Lake Trek?",
-                      a: "The trek is rated as moderate. You'll trek 5-7 hours daily on forest trails with some steep ascents. The Khayar Lake day hike is the most challenging section due to altitude and rugged terrain. No technical experience is required, but good fitness is essential [citation:2][citation:5].",
+                      a: "The trek is rated as moderate. You'll trek 5-7 hours daily on forest trails with some steep ascents. The Khayar Lake day hike is the most challenging section due to altitude and rugged terrain. No technical experience is required, but good fitness is essential.",
                     },
                     {
                       q: "What makes this trek different from Annapurna Base Camp?",
-                      a: "This is a much quieter, off-the-beaten-path route with far fewer trekkers. It features community-run teahouses, the sacred Khayar Lake, and spectacular views of both Annapurna and Dhaulagiri ranges from Khopra Ridge. It offers a more authentic and serene experience [citation:1][citation:8].",
+                      a: "This is a much quieter, off-the-beaten-path route with far fewer trekkers. It features community-run teahouses, the sacred Khayar Lake, and spectacular views of both Annapurna and Dhaulagiri ranges from Khopra Ridge. It offers a more authentic and serene experience.",
                     },
                     {
                       q: "What is the accommodation like on this trek?",
-                      a: "The trek features community-run teahouses managed by local villages. Rooms are basic with twin beds and shared bathrooms. Facilities become simpler at higher altitudes, but the warm hospitality and authentic experience more than compensate [citation:5][citation:8].",
+                      a: "The trek features community-run teahouses managed by local villages. Rooms are basic with twin beds and shared bathrooms. Facilities become simpler at higher altitudes, but the warm hospitality and authentic experience more than compensate.",
                     },
                     {
                       q: "Is Khayar Lake worth the difficult day hike?",
-                      a: "Absolutely! Khayar Lake is a stunning turquoise alpine lake with deep spiritual significance. The views of Annapurna South reflected in the lake, surrounded by snow-capped peaks, create an unforgettable experience. Many trekkers consider it the highlight of their Nepal trip [citation:3][citation:5].",
+                      a: "Absolutely! Khayar Lake is a stunning turquoise alpine lake with deep spiritual significance. The views of Annapurna South reflected in the lake, surrounded by snow-capped peaks, create an unforgettable experience. Many trekkers consider it the highlight of their Nepal trip.",
                     },
                     {
                       q: "What permits do I need for this trek?",
-                      a: "You need the Annapurna Conservation Area Permit (ACAP) and TIMS card. Both are included in our package and arranged by your guide [citation:2][citation:3].",
+                      a: "You need the Annapurna Conservation Area Permit (ACAP) and TIMS card. Both are included in our package and arranged by your guide.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">

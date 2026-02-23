@@ -531,13 +531,13 @@ export default function LangtangValleyTrekPage() {
                 <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The <strong>Langtang Valley Trek</strong> is one of Nepal's most beautiful and accessible treks, located just north of Kathmandu near the Tibetan border [citation:8]. Known as the "Valley of Glaciers," this stunning region offers a perfect blend of dramatic Himalayan scenery, rich Tamang culture, and diverse wildlife - all in a compact 10-day itinerary [citation:2].
+                    The <strong>Langtang Valley Trek</strong> is one of Nepal's most beautiful and accessible treks, located just north of Kathmandu near the Tibetan border. Known as the "Valley of Glaciers," this stunning region offers a perfect blend of dramatic Himalayan scenery, rich Tamang culture, and diverse wildlife - all in a compact 10-day itinerary.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The trek takes you through lush rhododendron and bamboo forests, past traditional villages with mani walls and prayer flags, to the spectacular <strong>Kyanjin Gompa (3,870m)</strong> beneath the towering peak of Langtang Lirung (7,227m) [citation:1]. The valley was severely affected by the 2015 earthquake but has been beautifully rebuilt, with the resilience of the local Tamang community shining through [citation:8].
+                    The trek takes you through lush rhododendron and bamboo forests, past traditional villages with mani walls and prayer flags, to the spectacular <strong>Kyanjin Gompa (3,870m)</strong> beneath the towering peak of Langtang Lirung (7,227m). The valley was severely affected by the 2015 earthquake but has been beautifully rebuilt, with the resilience of the local Tamang community shining through.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                    Highlights include the challenging but rewarding ascent of <strong>Kyanjin Ri (4,773m)</strong> or <strong>Tserko Ri (5,033m)</strong> for breathtaking 360-degree mountain panoramas, visiting the famous yak cheese factory, and the chance to spot rare wildlife including red pandas and Himalayan black bears in Langtang National Park [citation:2]. This trek is perfect for those seeking an authentic Himalayan experience without the crowds of Everest or Annapurna [citation:4].
+                    Highlights include the challenging but rewarding ascent of <strong>Kyanjin Ri (4,773m)</strong> or <strong>Tserko Ri (5,033m)</strong> for breathtaking 360-degree mountain panoramas, visiting the famous yak cheese factory, and the chance to spot rare wildlife including red pandas and Himalayan black bears in Langtang National Park. This trek is perfect for those seeking an authentic Himalayan experience without the crowds of Everest or Annapurna.
                   </p>
                 </div>
               </section>
@@ -580,7 +580,7 @@ export default function LangtangValleyTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Spring (Mar - May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Rhododendron forests burst into vibrant red, pink, and white blooms. Warm temperatures, clear mornings, and excellent visibility. The most colorful time to trek [citation:4].
+                        Rhododendron forests burst into vibrant red, pink, and white blooms. Warm temperatures, clear mornings, and excellent visibility. The most colorful time to trek.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
                     </CardContent>
@@ -592,13 +592,13 @@ export default function LangtangValleyTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Autumn (Sep - Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crystal-clear skies, stable weather, and perfect trekking conditions. The best visibility for mountain photography. Peak season with vibrant teahouse atmosphere [citation:4].
+                        Crystal-clear skies, stable weather, and perfect trekking conditions. The best visibility for mountain photography. Peak season with vibrant teahouse atmosphere.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is cold with possible snow but offers solitude. Monsoon (Jun-Aug) brings lush greenery but leeches and possible landslides [citation:4].</p>
+                <p className="text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is cold with possible snow but offers solitude. Monsoon (Jun-Aug) brings lush greenery but leeches and possible landslides.</p>
               </section>
 
               {/* Detailed Itinerary */}
@@ -725,11 +725,11 @@ export default function LangtangValleyTrekPage() {
                 <div>
                   <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
-                    <li>• <strong>Guide Required:</strong> Since 2023, solo trekking without a guide is banned in Langtang National Park - you must trek with a licensed guide for safety [citation:4].</li>
-                    <li>• <strong>Permits:</strong> Langtang National Park Entry Permit (NPR 3,000) and TIMS card (NPR 2,000) are required [citation:2].</li>
-                    <li>• <strong>Travel Insurance:</strong> Mandatory - must cover high altitude trekking up to 5,100m and helicopter evacuation [citation:6].</li>
-                    <li>• <strong>Kyanjin Ri/Tserko Ri:</strong> Both optional hikes require early starts and good fitness - your guide will recommend based on conditions [citation:8].</li>
-                    <li>• <strong>Connectivity:</strong> Limited WiFi available at teahouses (paid), no signal in upper valley - prepare for digital detox [citation:2].</li>
+                    <li>• <strong>Guide Required:</strong> Since 2023, solo trekking without a guide is banned in Langtang National Park - you must trek with a licensed guide for safety.</li>
+                    <li>• <strong>Permits:</strong> Langtang National Park Entry Permit (NPR 3,000) and TIMS card (NPR 2,000) are required.</li>
+                    <li>• <strong>Travel Insurance:</strong> Mandatory - must cover high altitude trekking up to 5,100m and helicopter evacuation.</li>
+                    <li>• <strong>Kyanjin Ri/Tserko Ri:</strong> Both optional hikes require early starts and good fitness - your guide will recommend based on conditions .</li>
+                    <li>• <strong>Connectivity:</strong> Limited WiFi available at teahouses (paid), no signal in upper valley - prepare for digital detox.</li>
                   </ul>
                 </div>
               </div>
@@ -767,23 +767,23 @@ export default function LangtangValleyTrekPage() {
                   {[
                     {
                       q: "How difficult is the Langtang Valley Trek?",
-                      a: "The trek is rated as easy to moderate. You'll trek 4-7 hours daily on well-maintained trails with some steep sections. The main challenge is the altitude (up to 5,033m at Tserko Ri). No technical experience is required, and it's suitable for beginners with good fitness [citation:8].",
+                      a: "The trek is rated as easy to moderate. You'll trek 4-7 hours daily on well-maintained trails with some steep sections. The main challenge is the altitude (up to 5,033m at Tserko Ri). No technical experience is required, and it's suitable for beginners with good fitness.",
                     },
                     {
                       q: "Do I need a guide for this trek?",
-                      a: "Yes, since 2023 solo trekking without a guide is banned in Langtang National Park for foreign trekkers. You must trek with a licensed guide for safety reasons. Our package includes an experienced guide [citation:4].",
+                      a: "Yes, since 2023 solo trekking without a guide is banned in Langtang National Park for foreign trekkers. You must trek with a licensed guide for safety reasons. Our package includes an experienced guide.",
                     },
                     {
                       q: "What is the accommodation like?",
-                      a: "Teahouses are basic but comfortable, with twin-sharing rooms and shared bathrooms. Facilities become simpler at higher altitudes, but all offer warm meals and friendly service. Hot showers and charging are available for a small fee [citation:9].",
+                      a: "Teahouses are basic but comfortable, with twin-sharing rooms and shared bathrooms. Facilities become simpler at higher altitudes, but all offer warm meals and friendly service. Hot showers and charging are available for a small fee.",
                     },
                     {
                       q: "What is special about Kyanjin Gompa?",
-                      a: "Kyanjin Gompa is the last settlement in the valley, home to an ancient Buddhist monastery and the famous yak cheese factory established by Swiss experts in the 1950s. It's also the base for hiking Kyanjin Ri and Tserko Ri [citation:1].",
+                      a: "Kyanjin Gompa is the last settlement in the valley, home to an ancient Buddhist monastery and the famous yak cheese factory established by Swiss experts in the 1950s. It's also the base for hiking Kyanjin Ri and Tserko Ri.",
                     },
                     {
                       q: "Can I see red pandas on this trek?",
-                      a: "Yes, Langtang National Park is one of the best places in Nepal to spot red pandas, though sightings are rare and require luck. The bamboo forests between Lama Hotel and Ghoda Tabela are prime habitat. You may also see Himalayan black bears, langur monkeys, and various bird species [citation:2].",
+                      a: "Yes, Langtang National Park is one of the best places in Nepal to spot red pandas, though sightings are rare and require luck. The bamboo forests between Lama Hotel and Ghoda Tabela are prime habitat. You may also see Himalayan black bears, langur monkeys, and various bird species.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">

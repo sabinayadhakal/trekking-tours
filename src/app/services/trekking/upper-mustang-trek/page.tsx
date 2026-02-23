@@ -584,13 +584,13 @@ export default function UpperMustangTrekPage() {
                 <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The <strong>Upper Mustang Trek</strong> takes you to the legendary "Forbidden Kingdom," a remote and restricted region near the Tibetan border that was closed to outsiders until 1992 [citation:3]. This unique trek offers a journey through a high-altitude desert landscape of dramatic red cliffs, deep canyons, and ancient cave dwellings carved into sheer rock faces [citation:2][citation:5].
+                    The <strong>Upper Mustang Trek</strong> takes you to the legendary "Forbidden Kingdom," a remote and restricted region near the Tibetan border that was closed to outsiders until 1992. This unique trek offers a journey through a high-altitude desert landscape of dramatic red cliffs, deep canyons, and ancient cave dwellings carved into sheer rock faces.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The cultural heart of the trek is <strong>Lo Manthang</strong>, the walled capital of the former Kingdom of Mustang, where Tibetan Buddhist culture has remained remarkably preserved for centuries [citation:1][citation:8]. Here you'll explore ancient monasteries with stunning murals, visit the four-story royal palace where the king still resides, and wander through narrow streets that feel frozen in time [citation:1][citation:8].
+                    The cultural heart of the trek is <strong>Lo Manthang</strong>, the walled capital of the former Kingdom of Mustang, where Tibetan Buddhist culture has remained remarkably preserved for centuries. Here you'll explore ancient monasteries with stunning murals, visit the four-story royal palace where the king still resides, and wander through narrow streets that feel frozen in time.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                    Unlike any other trek in Nepal, Upper Mustang lies in the Himalayan rain shadow, offering dry trails even during monsoon season [citation:1][citation:4]. The landscape resembles the Tibetan plateau - barren yet stunningly beautiful, with colorful rock formations, the world's deepest gorge (Kali Gandaki), and panoramic views of Annapurna, Dhaulagiri, and Nilgiri [citation:3][citation:4]. This trek requires a special permit ($500 for 10 days) and must be arranged through a registered trekking agency [citation:6][citation:8].
+                    Unlike any other trek in Nepal, Upper Mustang lies in the Himalayan rain shadow, offering dry trails even during monsoon season. The landscape resembles the Tibetan plateau - barren yet stunningly beautiful, with colorful rock formations, the world's deepest gorge (Kali Gandaki), and panoramic views of Annapurna, Dhaulagiri, and Nilgiri. This trek requires a special permit ($500 for 10 days) and must be arranged through a registered trekking agency.
                   </p>
                 </div>
               </section>
@@ -633,7 +633,7 @@ export default function UpperMustangTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Spring (Mar - May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Pleasant temperatures, blooming wildflowers, and clear skies. The famous Tiji Festival takes place in May - a three-day Buddhist festival with masked dances and rituals in Lo Manthang [citation:1][citation:8].
+                        Pleasant temperatures, blooming wildflowers, and clear skies. The famous Tiji Festival takes place in May - a three-day Buddhist festival with masked dances and rituals in Lo Manthang.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
                     </CardContent>
@@ -645,13 +645,13 @@ export default function UpperMustangTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Autumn (Sep - Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        The most popular season with crystal-clear skies, stable weather, and perfect trekking conditions. Excellent visibility for mountain photography [citation:3][citation:8].
+                        The most popular season with crystal-clear skies, stable weather, and perfect trekking conditions. Excellent visibility for mountain photography.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Note: Upper Mustang lies in the rain shadow and can be trekked year-round, though winter (Dec-Feb) is very cold with possible snow [citation:4][citation:8].</p>
+                <p className="text-xs text-slate-500 mt-2">Note: Upper Mustang lies in the rain shadow and can be trekked year-round, though winter (Dec-Feb) is very cold with possible snow.</p>
               </section>
 
               {/* Detailed Itinerary */}
@@ -778,11 +778,11 @@ export default function UpperMustangTrekPage() {
                 <div>
                   <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
-                    <li>• <strong>Special Permit Required:</strong> Upper Mustang is a restricted area requiring a permit costing $500 per person for the first 10 days, then $50 per additional day [citation:6][citation:8].</li>
-                    <li>• <strong>Travel Insurance is Mandatory</strong> and must cover high altitude trekking up to 4,000m and emergency helicopter evacuation [citation:2][citation:7].</li>
-                    <li>• <strong>Guide Required:</strong> You must trek with a licensed guide in this restricted region - independent trekking is not permitted [citation:2][citation:5].</li>
-                    <li>• <strong>Wind & Dust:</strong> Afternoon winds are strong - bring a good quality dust mask/buff and windproof jacket [citation:5][citation:8].</li>
-                    <li>• <strong>Flight Delays:</strong> Jomsom flights can be delayed due to weather - we recommend keeping buffer days in your schedule [citation:3].</li>
+                    <li>• <strong>Special Permit Required:</strong> Upper Mustang is a restricted area requiring a permit costing $500 per person for the first 10 days, then $50 per additional day.</li>
+                    <li>• <strong>Travel Insurance is Mandatory</strong> and must cover high altitude trekking up to 4,000m and emergency helicopter evacuation.</li>
+                    <li>• <strong>Guide Required:</strong> You must trek with a licensed guide in this restricted region - independent trekking is not permitted.</li>
+                    <li>• <strong>Wind & Dust:</strong> Afternoon winds are strong - bring a good quality dust mask/buff and windproof jacket.</li>
+                    <li>• <strong>Flight Delays:</strong> Jomsom flights can be delayed due to weather - we recommend keeping buffer days in your schedule.</li>
                   </ul>
                 </div>
               </div>
@@ -820,23 +820,23 @@ export default function UpperMustangTrekPage() {
                   {[
                     {
                       q: "Why is Upper Mustang called the 'Forbidden Kingdom'?",
-                      a: "Upper Mustang was a restricted kingdom closed to outsiders until 1992 to preserve its unique Tibetan Buddhist culture. The capital, Lo Manthang, was never conquered by neighboring kingdoms and maintained its independence, with its own king, until recently [citation:3][citation:5].",
+                      a: "Upper Mustang was a restricted kingdom closed to outsiders until 1992 to preserve its unique Tibetan Buddhist culture. The capital, Lo Manthang, was never conquered by neighboring kingdoms and maintained its independence, with its own king, until recently.",
                     },
                     {
                       q: "How much does the Upper Mustang permit cost?",
-                      a: "The restricted area permit costs $500 per person for the first 10 days, then $50 per additional day. This is set by the Nepali government and must be arranged through a registered trekking agency [citation:6][citation:8].",
+                      a: "The restricted area permit costs $500 per person for the first 10 days, then $50 per additional day. This is set by the Nepali government and must be arranged through a registered trekking agency.",
                     },
                     {
                       q: "Is Upper Mustang difficult to trek?",
-                      a: "The trek is rated as moderate. Altitudes are lower than Everest or Annapurna (max 3,950m), so altitude risk is minimal. The main challenges are strong afternoon winds, dusty trails, and long walking days [citation:3][citation:5][citation:8].",
+                      a: "The trek is rated as moderate. Altitudes are lower than Everest or Annapurna (max 3,950m), so altitude risk is minimal. The main challenges are strong afternoon winds, dusty trails, and long walking days.",
                     },
                     {
                       q: "What is the accommodation like?",
-                      a: "Teahouses in Upper Mustang are basic but comfortable, with twin-sharing rooms and shared bathrooms. Facilities are simpler than in Everest or Annapurna but clean and welcoming. Hot showers are available at most lodges for an extra fee [citation:1][citation:7].",
+                      a: "Teahouses in Upper Mustang are basic but comfortable, with twin-sharing rooms and shared bathrooms. Facilities are simpler than in Everest or Annapurna but clean and welcoming. Hot showers are available at most lodges for an extra fee.",
                     },
                     {
                       q: "Can I trek Upper Mustang during monsoon?",
-                      a: "Yes! Upper Mustang lies in the Himalayan rain shadow, so it receives minimal rainfall even during monsoon (June-August). This makes it one of the few treks in Nepal that's viable during the rainy season, though clouds may obscure mountain views [citation:1][citation:4][citation:8].",
+                      a: "Yes! Upper Mustang lies in the Himalayan rain shadow, so it receives minimal rainfall even during monsoon (June-August). This makes it one of the few treks in Nepal that's viable during the rainy season, though clouds may obscure mountain views.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">

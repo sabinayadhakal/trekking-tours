@@ -521,13 +521,13 @@ export default function MardiHimalTrekPage() {
                 <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The <strong>Mardi Himal Trek</strong> is one of the Annapurna region's best-kept secrets - a hidden gem that offers spectacular mountain views, enchanting forests, and a genuine sense of wilderness without the crowds of the more famous treks. Opened to trekkers in 2012, this relatively new route takes you to the base of <strong>Mardi Himal (5,587m)</strong>, a beautiful peak nestled beside the iconic Machhapuchhre (Fishtail) [citation:10].
+                    The <strong>Mardi Himal Trek</strong> is one of the Annapurna region's best-kept secrets - a hidden gem that offers spectacular mountain views, enchanting forests, and a genuine sense of wilderness without the crowds of the more famous treks. Opened to trekkers in 2012, this relatively new route takes you to the base of <strong>Mardi Himal (5,587m)</strong>, a beautiful peak nestled beside the iconic Machhapuchhre (Fishtail).
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    The trek begins with a scenic drive to Pokhara, then to the trailhead at Kande. The trail winds through enchanting rhododendron and oak forests, past traditional villages and terraced farmlands, before emerging above the tree line onto a spectacular ridge. The views from the ridge are simply breathtaking - <strong>Machhapuchhre</strong> dominates the skyline, while Annapurna South, Hiunchuli, and the entire Annapurna range stretch out before you [citation:2].
+                    The trek begins with a scenic drive to Pokhara, then to the trailhead at Kande. The trail winds through enchanting rhododendron and oak forests, past traditional villages and terraced farmlands, before emerging above the tree line onto a spectacular ridge. The views from the ridge are simply breathtaking - <strong>Machhapuchhre</strong> dominates the skyline, while Annapurna South, Hiunchuli, and the entire Annapurna range stretch out before you.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                    The highlight is the early morning hike to <strong>Mardi Himal Base Camp (4,500m)</strong>, where you stand at the foot of the mountain with Machhapuchhre towering beside you. This trek is perfect for those with limited time who still want an authentic Himalayan experience - it's shorter and less demanding than treks like Annapurna Base Camp, but no less rewarding in terms of scenery and mountain intimacy [citation:4].
+                    The highlight is the early morning hike to <strong>Mardi Himal Base Camp (4,500m)</strong>, where you stand at the foot of the mountain with Machhapuchhre towering beside you. This trek is perfect for those with limited time who still want an authentic Himalayan experience - it's shorter and less demanding than treks like Annapurna Base Camp, but no less rewarding in terms of scenery and mountain intimacy.
                   </p>
                 </div>
               </section>
@@ -570,7 +570,7 @@ export default function MardiHimalTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Spring (Mar - May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Rhododendron forests burst into vibrant red, pink, and white blooms. Warm temperatures during the day, clear skies, and excellent visibility. The most colorful time to trek [citation:9].
+                        Rhododendron forests burst into vibrant red, pink, and white blooms. Warm temperatures during the day, clear skies, and excellent visibility. The most colorful time to trek.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
                     </CardContent>
@@ -582,7 +582,7 @@ export default function MardiHimalTrekPage() {
                         <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Autumn (Sep - Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crystal-clear skies, stable weather, and perfect trekking conditions. Lush green trails after the monsoon and spectacular mountain views. Festive atmosphere with Dashain and Tihar celebrations [citation:9].
+                        Crystal-clear skies, stable weather, and perfect trekking conditions. Lush green trails after the monsoon and spectacular mountain views. Festive atmosphere with Dashain and Tihar celebrations.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
                     </CardContent>
@@ -714,10 +714,10 @@ export default function MardiHimalTrekPage() {
                 <div>
                   <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
-                    <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 4,500m [citation:1].</li>
-                    <li>• The Mardi Himal trek is suitable for beginners but requires good fitness - 5-7 hours walking daily [citation:2].</li>
-                    <li>• The trail to Base Camp can be steep and exposed - trekking poles are highly recommended [citation:7].</li>
-                    <li>• Winter conditions may limit access beyond the Viewpoint (4,200m) - your guide will advise [citation:6].</li>
+                    <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 4,500m.</li>
+                    <li>• The Mardi Himal trek is suitable for beginners but requires good fitness - 5-7 hours walking daily.</li>
+                    <li>• The trail to Base Camp can be steep and exposed - trekking poles are highly recommended.</li>
+                    <li>• Winter conditions may limit access beyond the Viewpoint (4,200m) - your guide will advise.</li>
                   </ul>
                 </div>
               </div>
@@ -755,23 +755,23 @@ export default function MardiHimalTrekPage() {
                   {[
                     {
                       q: "How difficult is the Mardi Himal Trek?",
-                      a: "The Mardi Himal Trek is rated as easy to moderate. You'll trek 4-7 hours daily on well-defined trails with some steep sections. The highest point is 4,500m, so altitude is manageable. It's perfect for beginners with good fitness and those with limited time [citation:2][citation:10].",
+                      a: "The Mardi Himal Trek is rated as easy to moderate. You'll trek 4-7 hours daily on well-defined trails with some steep sections. The highest point is 4,500m, so altitude is manageable. It's perfect for beginners with good fitness and those with limited time.",
                     },
                     {
                       q: "Is Mardi Himal less crowded than other Annapurna treks?",
-                      a: "Yes! Mardi Himal is much less crowded than Annapurna Base Camp or Ghorepani Poon Hill. It was opened to trekkers in 2012 and remains a hidden gem, offering a more peaceful and authentic experience [citation:4][citation:10].",
+                      a: "Yes! Mardi Himal is much less crowded than Annapurna Base Camp or Ghorepani Poon Hill. It was opened to trekkers in 2012 and remains a hidden gem, offering a more peaceful and authentic experience.",
                     },
                     {
                       q: "What is the accommodation like on the trek?",
-                      a: "Teahouses along the route are basic but comfortable. Low Camp and High Camp have simple lodges with shared bathrooms and communal dining areas. Facilities become more basic at higher altitudes, but the hospitality is warm [citation:4].",
+                      a: "Teahouses along the route are basic but comfortable. Low Camp and High Camp have simple lodges with shared bathrooms and communal dining areas. Facilities become more basic at higher altitudes, but the hospitality is warm.",
                     },
                     {
                       q: "Can I see Machhapuchhre (Fishtail) from the trek?",
-                      a: "Absolutely! Machhapuchhre dominates the views throughout the trek, especially from High Camp and the ridge. The close-up views of Fishtail Mountain are among the best in the Annapurna region [citation:3][citation:10].",
+                      a: "Absolutely! Machhapuchhre dominates the views throughout the trek, especially from High Camp and the ridge. The close-up views of Fishtail Mountain are among the best in the Annapurna region.",
                     },
                     {
                       q: "How many days do I need for the Mardi Himal Trek?",
-                      a: "The trek typically takes 5 days (4 nights) from Kande to Siding. Including travel from Kathmandu, you should allow 8-9 days total. Some operators offer shorter 4-day options for experienced trekkers [citation:1][citation:4][citation:6].",
+                      a: "The trek typically takes 5 days (4 nights) from Kande to Siding. Including travel from Kathmandu, you should allow 8-9 days total. Some operators offer shorter 4-day options for experienced trekkers.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
