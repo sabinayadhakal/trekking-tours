@@ -249,32 +249,44 @@ const whyNepal = [
 const regions = [
   {
     name: "Everest Region",
-    image: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=2070&auto=format&fit=crop",
-    treks: 8,
-    peaks: 5,
-    description: "Home to the world's highest peak and legendary Sherpa people.",
+    description: "Home to the world's highest peak and the legendary Sherpa people. This sacred landscape is dotted with ancient monasteries, bustling trading villages, and the footsteps of mountaineering history.",
+    characteristics: [
+      "Sagamartha National Park - home to Everest, Lhotse, and Cho Oyu",
+      "Tengboche Monastery - spiritual heart of the Khumbu",
+      "Sherpa culture - legendary mountaineers and Buddhist traditions"
+    ],
+    culturalSignature: "Land of the Sherpas"
   },
   {
     name: "Annapurna Region",
-    image: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    treks: 12,
-    peaks: 4,
-    description: "Most diverse trekking region with iconic circuits.",
+    description: "The most diverse trekking region on Earth, where you can walk from subtropical forests to high-altitude deserts in days. Home to the world's deepest gorge and the sacred pilgrimage site of Muktinath.",
+    characteristics: [
+      "Thorong La Pass - world's highest trekking pass at 5,416m",
+      "Annapurna Circuit - circumambulation of an 8,000m peak",
+      "Gurung and Thakali cultures - ancient trade routes"
+    ],
+    culturalSignature: "The Great Diversity"
   },
   {
     name: "Langtang Region",
-    image: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    treks: 5,
-    peaks: 3,
-    description: "The 'Valley of Glaciers' offers pristine wilderness.",
+    description: "The 'Valley of Glaciers' lies just north of Kathmandu, offering pristine wilderness and warm Tamang hospitality. Rebuilding stronger after the 2015 earthquake, this region remains a hidden gem.",
+    characteristics: [
+      "Langtang National Park - red pandas and Himalayan wildlife",
+      "Tamang heritage - Tibetan-Buddhist mountain culture",
+      "Kyanjin Gompa - high-altitude monastery and cheese factory"
+    ],
+    culturalSignature: "Valley of Glaciers"
   },
   {
     name: "Manaslu Region",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    treks: 3,
-    peaks: 2,
-    description: "Remote area with authentic Tibetan culture.",
-  },
+    description: "A restricted area preserving authentic Tibetan culture and pristine landscapes. Circumnavigate the world's eighth highest mountain through remote villages and ancient trade routes to Tibet.",
+    characteristics: [
+      "Tsum Valley - 'Hidden Valley' of Buddhist meditation caves",
+      "Larkya La Pass - one of Nepal's most spectacular high passes",
+      "Tibetan heritage - untouched Buddhist traditions"
+    ],
+    culturalSignature: "The Hidden Circuit"
+  }
 ];
 
 export default function NepalPage() {
@@ -608,94 +620,86 @@ export default function NepalPage() {
         </div>
       </section>
 
-      {/* Trekking Regions - Enhanced */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-            <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-              <Compass className="w-3 h-3 mr-1.5" /> TREKKING REGIONS
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4">
-              Explore Nepal's Iconic Regions
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Each region offers unique landscapes, cultures, and trekking experiences.
-            </p>
-          </div>
+      {/* Trekking Regions */}
+<section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-[#f0f7fa] to-white">
+  <div className="container mx-auto px-4 sm:px-6">
+    {/* Header with decorative elements */}
+    <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="flex justify-center items-center gap-3 mb-4">
+        <div className="h-px w-12 bg-gradient-to-l from-[#2d6a8a]/30 to-transparent"></div>
+        <Badge className="bg-transparent text-[#2d6a8a] border-[#2d6a8a]/20 px-5 py-1.5 text-xs font-light tracking-[0.2em] uppercase rounded-full">
+          Himalayan Kingdoms
+        </Badge>
+        <div className="h-px w-12 bg-gradient-to-r from-[#2d6a8a]/30 to-transparent"></div>
+      </div>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-4">
+        Nepal's Legendary Regions
+      </h2>
+      <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        From the Sherpa kingdoms of the east to the Tibetan-influenced valleys of the west, each region tells its own story
+      </p>
+    </div>
 
-          {/* Mobile Horizontal Scroll */}
-          <div className="md:hidden relative">
-            <div 
-              className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
-              ref={regionScrollContainerRef}
-            >
-              {regions.map((region, i) => (
-                <div key={i} className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center">
-                  <div className="relative h-[350px] rounded-2xl overflow-hidden">
-                    <Image
-                      src={region.image}
-                      alt={region.name}
-                      fill
-                      className="object-cover"
-                      sizes="85vw"
-                      quality={85}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/30 to-transparent" />
-                    <div className="absolute bottom-0 p-5 w-full">
-                      <Badge className="mb-3 bg-white text-[#0f2940] border-none px-3 py-1 text-sm font-bold">
-                        {region.treks} Treks • {region.peaks} Peaks
-                      </Badge>
-                      <h3 className="text-xl font-serif text-white mb-2">{region.name}</h3>
-                      <p className="text-white/90 text-sm leading-relaxed line-clamp-2">
-                        {region.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+    {/* Regions as descriptive cards - no buttons, no trek/peak counts */}
+    <div className="max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+        {regions.map((region, index) => (
+          <div key={index} className="relative">
+            {/* Decorative element */}
+            <div className="absolute -left-6 top-0 text-6xl font-serif text-[#C5E0ED]/30 select-none">
+              {String(index + 1).padStart(2, '0')}
             </div>
-            {/* Scroll Buttons for Mobile */}
-            <button
-              onClick={scrollRegionLeft}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={scrollRegionRight}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm"
-            >
-              <ChevronRightIcon className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {regions.map((region, i) => (
-              <div key={i} className="group">
-                <div className="relative h-72 rounded-xl overflow-hidden cursor-pointer">
-                  <Image
-                    src={region.image}
-                    alt={region.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 1024px) 25vw, 25vw"
-                    quality={85}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/30 to-transparent" />
-                  <div className="absolute bottom-0 p-4">
-                    <Badge className="mb-2 bg-white text-[#0f2940] border-none text-sm font-bold">
-                      {region.treks} Treks • {region.peaks} Peaks
-                    </Badge>
-                    <h4 className="text-lg font-bold text-white mb-1.5">{region.name}</h4>
-                    <p className="text-white/70 text-sm leading-relaxed">{region.description}</p>
+            
+            <div className="relative pl-4 border-l-2 border-[#C5E0ED] group hover:border-[#2d6a8a] transition-colors duration-300">
+              <h3 className="text-2xl font-serif text-[#0f2940] mb-3 group-hover:text-[#2d6a8a] transition-colors">
+                {region.name}
+              </h3>
+              
+              <p className="text-slate-600 text-base leading-relaxed mb-4">
+                {region.description}
+              </p>
+              
+              {/* Regional characteristics - replacing treks/peaks */}
+              <div className="space-y-2">
+                {region.characteristics?.map((trait, idx) => (
+                  <div key={idx} className="flex items-start gap-2 text-sm">
+                    <span className="text-[#2d6a8a] mt-1">•</span>
+                    <span className="text-slate-600">{trait}</span>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+              
+              {/* Cultural signature */}
+              <div className="mt-4 inline-block">
+                <span className="text-xs text-[#2d6a8a] bg-[#C5E0ED]/10 px-3 py-1 rounded-full border border-[#C5E0ED]/20">
+                  {region.culturalSignature}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Cultural context footer */}
+      <div className="mt-20 text-center">
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-[#C5E0ED]/20"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <div className="bg-gradient-to-b from-[#f0f7fa] to-white px-8">
+              <span className="text-sm text-slate-500 flex items-center gap-2">
+                <Mountain className="w-4 h-4 text-[#2d6a8a]/40" />
+                Where the gods reside and legends are born
+                <Mountain className="w-4 h-4 text-[#2d6a8a]/40" />
+              </span>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Best Time to Visit - Enhanced */}
       <section className="py-12 sm:py-16 md:py-20 bg-white">

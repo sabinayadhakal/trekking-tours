@@ -98,7 +98,7 @@ const culturalTours = [
   },
   {
     name: "Tiger's Nest Day Hiking",
-    duration: "1 Day",
+    duration: "3 Day",
     difficulty: "Moderate",
     altitude: "3,120m",
     price: "$300",
@@ -125,7 +125,7 @@ const culturalTours = [
 const trekkingPackages = [
   {
     name: "Druk Path Trek",
-    duration: "6 Days",
+    duration: "10 Days",
     difficulty: "Moderate",
     altitude: "4,200m",
     price: "$1,350",
@@ -149,7 +149,7 @@ const trekkingPackages = [
   },
   {
     name: "Jomolhari Trek",
-    duration: "9 Days",
+    duration: "12 Days",
     difficulty: "Moderate-Challenging",
     altitude: "4,940m",
     price: "$2,100",
@@ -260,34 +260,45 @@ const whyBhutan = [
 const regions = [
   {
     name: "Paro Valley",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070&auto=format&fit=crop",
-    tours: 8,
-    treks: 3,
-    description: "Gateway to Bhutan with Tiger's Nest Monastery.",
+    description: "The gateway to Bhutan, where the iconic Taktsang Monastery clings to a sheer cliff face. This fertile valley is home to some of Bhutan's oldest temples and the nation's only international airport.",
+    characteristics: [
+      "Taktsang 'Tiger's Nest' Monastery - Bhutan's most sacred site",
+      "Kyichu Lhakhang - one of the two oldest temples in Bhutan",
+      "Paro Dzong - 'Fortress of the Heap of Jewels'"
+    ],
+    culturalSignature: "Sacred Gateway"
   },
   {
-    name: "Thimphu",
-    image: "https://images.unsplash.com/photo-1552465011-b4e30bf7349d?q=80&w=2069&auto=format&fit=crop",
-    tours: 12,
-    treks: 2,
-    description: "Capital city blending tradition with modernity.",
+    name: "Thimphu Valley",
+    description: "The world's only capital city without traffic lights, where tradition meets modernity. Home to the royal family, government, and a vibrant cultural scene that honors Bhutanese heritage.",
+    characteristics: [
+      "Tashichho Dzong - seat of the King and government",
+      "Buddha Dordenma - one of the largest Buddha statues in the world",
+      "Weekend market - where farmers and nomads trade"
+    ],
+    culturalSignature: "Modern Tradition"
   },
   {
-    name: "Punakha",
-    image: "https://images.unsplash.com/photo-1573935146153-f632c1f0e7f8?q=80&w=2070&auto=format&fit=crop",
-    tours: 6,
-    treks: 1,
-    description: "Ancient capital with majestic dzong at river confluence.",
+    name: "Punakha Valley",
+    description: "The ancient capital of Bhutan, nestled at the confluence of two rivers. Famous for its temperate climate, rice paddies, and the most beautiful dzong in the country.",
+    characteristics: [
+      "Punakha Dzong - 'Palace of Great Happiness' at river confluence",
+      "Chimi Lhakhang - fertility temple of the 'Divine Madman'",
+      "Subtropical climate - jacaranda blooms and orange groves"
+    ],
+    culturalSignature: "Ancient Capital"
   },
   {
-    name: "Bumthang",
-    image: "https://images.unsplash.com/photo-1588416936097-41850ab3d86d?q=80&w=2070&auto=format&fit=crop",
-    tours: 4,
-    treks: 2,
-    description: "Spiritual heartland with ancient temples.",
-  },
+    name: "Bumthang Valley",
+    description: "The spiritual heartland of Bhutan, a complex of four valleys dotted with ancient monasteries and sacred sites. Where Padmasambhava left his body print and Bhutanese Buddhism took root.",
+    characteristics: [
+      "Jambay Lhakhang - built in 659 AD by Tibetan king",
+      "Kurjey Lhakhang - where Guru Rinpoche meditated",
+      "Sacred sites - burning lake, honey harvesting traditions"
+    ],
+    culturalSignature: "Spiritual Heart"
+  }
 ];
-
 export default function BhutanPage() {
   const [trekScrollPosition, setTrekScrollPosition] = React.useState(0);
   const [peakScrollPosition, setPeakScrollPosition] = React.useState(0);
@@ -460,11 +471,7 @@ export default function BhutanPage() {
                 Discover Bhutan's rich heritage with our expert-guided tours. Minimum daily package applies.
               </p>
             </div>
-            <Link href="/bhutan-tours">
-              <Button variant="outline" className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 font-bold group rounded-full px-4 sm:px-6 text-xs sm:text-sm">
-                View All Tours <ChevronRightIcon className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
-              </Button>
-            </Link>
+            
           </div>
 
           {/* Mobile Horizontal Scroll */}
@@ -621,93 +628,85 @@ export default function BhutanPage() {
       </section>
 
       {/* Bhutan Regions */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-            <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-              <Compass className="w-3 h-3 mr-1.5" /> BHUTAN REGIONS
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4">
-              Explore Bhutan's Iconic Valleys
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Each region offers unique landscapes, dzongs, and cultural experiences.
-            </p>
-          </div>
+<section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-[#f0f7fa] to-white">
+  <div className="container mx-auto px-4 sm:px-6">
+    {/* Header with decorative elements */}
+    <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="flex justify-center items-center gap-3 mb-4">
+        <div className="h-px w-12 bg-gradient-to-l from-[#2d6a8a]/30 to-transparent"></div>
+        <Badge className="bg-transparent text-[#2d6a8a] border-[#2d6a8a]/20 px-5 py-1.5 text-xs font-light tracking-[0.2em] uppercase rounded-full">
+          Valleys of the Thunder Dragon
+        </Badge>
+        <div className="h-px w-12 bg-gradient-to-r from-[#2d6a8a]/30 to-transparent"></div>
+      </div>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-4">
+        Bhutan's Sacred Valleys
+      </h2>
+      <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        Carved by ancient rivers and blessed by saints, each valley holds its own stories, traditions, and timeless beauty
+      </p>
+    </div>
 
-          {/* Mobile Horizontal Scroll */}
-          <div className="md:hidden relative">
-            <div 
-              className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
-              ref={regionScrollContainerRef}
-            >
-              {regions.map((region, i) => (
-                <div key={i} className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center">
-                  <div className="relative h-[350px] rounded-2xl overflow-hidden">
-                    <Image
-                      src={region.image}
-                      alt={region.name}
-                      fill
-                      className="object-cover"
-                      sizes="85vw"
-                      quality={85}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/30 to-transparent" />
-                    <div className="absolute bottom-0 p-5 w-full">
-                      <Badge className="mb-3 bg-white text-[#0f2940] border-none px-3 py-1 text-sm font-bold">
-                        {region.tours} Tours • {region.treks} Treks
-                      </Badge>
-                      <h3 className="text-xl font-serif text-white mb-2">{region.name}</h3>
-                      <p className="text-white/90 text-sm leading-relaxed line-clamp-2">
-                        {region.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+    {/* Regions as descriptive cards - no buttons, no tour counts */}
+    <div className="max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+        {regions.map((region, index) => (
+          <div key={index} className="relative">
+            {/* Decorative element */}
+            <div className="absolute -left-6 top-0 text-6xl font-serif text-[#C5E0ED]/30 select-none">
+              {String(index + 1).padStart(2, '0')}
             </div>
-            {/* Scroll Buttons for Mobile */}
-            <button
-              onClick={scrollRegionLeft}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={scrollRegionRight}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm"
-            >
-              <ChevronRightIcon className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {regions.map((region, i) => (
-              <div key={i} className="group">
-                <div className="relative h-72 rounded-xl overflow-hidden cursor-pointer">
-                  <Image
-                    src={region.image}
-                    alt={region.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 1024px) 25vw, 25vw"
-                    quality={85}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/30 to-transparent" />
-                  <div className="absolute bottom-0 p-4">
-                    <Badge className="mb-2 bg-white text-[#0f2940] border-none text-sm font-bold">
-                      {region.tours} Tours • {region.treks} Treks
-                    </Badge>
-                    <h4 className="text-lg font-bold text-white mb-1.5">{region.name}</h4>
-                    <p className="text-white/70 text-sm leading-relaxed">{region.description}</p>
+            
+            <div className="relative pl-4 border-l-2 border-[#C5E0ED] group hover:border-[#2d6a8a] transition-colors duration-300">
+              <h3 className="text-2xl font-serif text-[#0f2940] mb-3 group-hover:text-[#2d6a8a] transition-colors">
+                {region.name}
+              </h3>
+              
+              <p className="text-slate-600 text-base leading-relaxed mb-4">
+                {region.description}
+              </p>
+              
+              {/* Valley characteristics - replacing tours/treks */}
+              <div className="space-y-2">
+                {region.characteristics?.map((trait, idx) => (
+                  <div key={idx} className="flex items-start gap-2 text-sm">
+                    <span className="text-[#2d6a8a] mt-1">•</span>
+                    <span className="text-slate-600">{trait}</span>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+              
+              {/* Cultural signature */}
+              <div className="mt-4 inline-block">
+                <span className="text-xs text-[#2d6a8a] bg-[#C5E0ED]/10 px-3 py-1 rounded-full border border-[#C5E0ED]/20">
+                  {region.culturalSignature}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Cultural context footer */}
+      <div className="mt-20 text-center">
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-[#C5E0ED]/20"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <div className="bg-gradient-to-b from-[#f0f7fa] to-white px-8">
+              <span className="text-sm text-slate-500 flex items-center gap-2">
+                <Mountain className="w-4 h-4 text-[#2d6a8a]/40" />
+                Where the mountains meet the sky, and ancient traditions still thrive
+                <Mountain className="w-4 h-4 text-[#2d6a8a]/40" />
+              </span>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Best Time to Visit */}
       <section className="py-12 sm:py-16 md:py-20 bg-white">
@@ -792,37 +791,36 @@ export default function BhutanPage() {
         </div>
       </section>
 
-      {/* Trekking in Bhutan */}
-      <section id="trekking" className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white">
-        <div className="container mx-auto px-4 sm:px-6">
+      {/* Bhutan Treks */}
+      <section className="py-12 sm:py-16 md:py-20 bg-[#0f2940] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-[#C5E0ED] rounded-full blur-[150px]" />
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-5">
             <div className="max-w-2xl">
-              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                <Mountain className="w-3 h-3 mr-1.5" /> BHUTAN TREKKING
+              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
+                <Mountain className="w-3 h-3 mr-1.5" /> BHUTAN TREKS
               </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940]">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white">
                 Himalayan Treks in Bhutan
               </h2>
-              <p className="text-slate-600 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">
+              <p className="text-white/70 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">
                 From moderate valley walks to challenging high-altitude expeditions.
               </p>
             </div>
-            <Link href="/bhutan-trekking">
-              <Button variant="outline" className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 font-bold group rounded-full px-4 sm:px-6 text-xs sm:text-sm">
-                View All Treks <ChevronRightIcon className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
-              </Button>
-            </Link>
+            
           </div>
 
           {/* Mobile Horizontal Scroll */}
           <div className="md:hidden relative">
             <div 
               className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
-              ref={trekScrollContainerRef}
+              ref={peakScrollContainerRef}
             >
               {trekkingPackages.map((trek, i) => (
                 <div key={i} className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center">
-                  <Card className="bg-white border-[#C5E0ED]/30 h-full rounded-xl overflow-hidden hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all">
+                  <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-lg transition-all">
                     <div className="relative h-56 overflow-hidden">
                       <Image
                         src={trek.image}
@@ -832,184 +830,43 @@ export default function BhutanPage() {
                         sizes="85vw"
                         quality={85}
                       />
-                      <div className="absolute top-3 left-3">
-                        <Badge className="bg-[#C5E0ED] text-[#0f2940] border-none font-bold text-xs">
-                          {trek.region}
+                      <div className="absolute top-3 right-3">
+                        <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold text-xs">
+                          {trek.duration}
                         </Badge>
                       </div>
-                      <div className="absolute top-3 right-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                      <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
                         <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {trek.rating}
                       </div>
                     </div>
                     <CardContent className="p-4">
-                      <h4 className="text-base font-bold text-[#0f2940] mb-2 line-clamp-1">{trek.name}</h4>
-                      <p className="text-slate-500 text-xs mb-3 line-clamp-2">{trek.description}</p>
-                      <div className="grid grid-cols-2 gap-1.5 mb-3">
-                        <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                          <Clock className="w-3 h-3 text-[#2d6a8a]" /> {trek.duration}
-                        </div>
-                        <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                          <TrendingUp className="w-3 h-3 text-[#2d6a8a]" /> {trek.altitude}
-                        </div>
-                        <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                          <Footprints className="w-3 h-3 text-[#2d6a8a]" /> {trek.difficulty}
-                        </div>
-                        <div className="text-[#0f2940] font-bold text-base">{trek.price}</div>
-                      </div>
-                      <div className="flex flex-wrap gap-1 mb-3">
-                        {trek.highlights.slice(0, 3).map((h, idx) => (
-                          <Badge key={idx} variant="secondary" className="bg-[#f0f7fa] text-[#2d6a8a] text-xs">
-                            {h}
-                          </Badge>
-                        ))}
-                      </div>
-                      <Link href="/contact">
-                        <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
-                          View Details
-                        </Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
-            {/* Scroll Buttons */}
-            <button
-              onClick={scrollTrekLeft}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={scrollTrekRight}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm"
-            >
-              <ChevronRightIcon className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-            {trekkingPackages.map((trek, i) => (
-              <Card key={i} className="bg-white border-[#C5E0ED]/30 h-full rounded-xl overflow-hidden hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all group hover:scale-[1.02]">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={trek.image}
-                    alt={trek.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 1024px) 33vw, 25vw"
-                    quality={85}
-                  />
-                  <div className="absolute top-3 left-3">
-                    <Badge className="bg-[#C5E0ED] text-[#0f2940] border-none font-bold text-sm">
-                      {trek.region}
-                    </Badge>
-                  </div>
-                  <div className="absolute top-3 right-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {trek.rating}
-                  </div>
-                </div>
-                <CardContent className="p-4 sm:p-5">
-                  <h4 className="text-base sm:text-lg font-bold text-[#0f2940] mb-2 line-clamp-1">{trek.name}</h4>
-                  <p className="text-slate-500 text-xs sm:text-sm mb-3 line-clamp-2">{trek.description}</p>
-                  <div className="grid grid-cols-2 gap-1.5 mb-3">
-                    <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                      <Clock className="w-3 h-3 text-[#2d6a8a]" /> {trek.duration}
-                    </div>
-                    <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                      <TrendingUp className="w-3 h-3 text-[#2d6a8a]" /> {trek.altitude}
-                    </div>
-                    <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                      <Footprints className="w-3 h-3 text-[#2d6a8a]" /> {trek.difficulty}
-                    </div>
-                    <div className="text-[#0f2940] font-bold text-base sm:text-lg">{trek.price}</div>
-                  </div>
-                  <div className="flex flex-wrap gap-1 mb-3">
-                    {trek.highlights.slice(0, 3).map((h, idx) => (
-                      <Badge key={idx} variant="secondary" className="bg-[#f0f7fa] text-[#2d6a8a] text-xs">
-                        {h}
-                      </Badge>
-                    ))}
-                  </div>
-                  <Link href="/contact">
-                    <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
-                      View Details
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Day Tours */}
-      <section className="py-12 sm:py-16 md:py-20 bg-[#0f2940] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-[#C5E0ED] rounded-full blur-[150px]" />
-        </div>
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-5">
-            <div className="max-w-2xl">
-              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                <Globe className="w-3 h-3 mr-1.5" /> DAY TOURS
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white">
-                Explore Bhutan Daily
-              </h2>
-              <p className="text-white/70 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">
-                Perfect additions to your Bhutan itinerary.
-              </p>
-            </div>
-            <Link href="/bhutan-day-tours">
-              <Button variant="outline" className="text-[#C5E0ED] border-[#C5E0ED]/50 hover:bg-[#C5E0ED]/10 font-bold group rounded-full px-4 sm:px-6 text-xs sm:text-sm">
-                View All <ChevronRightIcon className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
-              </Button>
-            </Link>
-          </div>
-
-          {/* Mobile Horizontal Scroll */}
-          <div className="md:hidden relative">
-            <div 
-              className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
-              ref={peakScrollContainerRef}
-            >
-              {dayTours.map((tour, i) => (
-                <div key={i} className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center">
-                  <Card className={`bg-gradient-to-br ${tour.color} border-0 rounded-xl overflow-hidden hover:shadow-lg transition-all`}>
-                    <div className="relative h-56 overflow-hidden">
-                      <Image
-                        src={tour.image}
-                        alt={tour.name}
-                        fill
-                        className="object-cover"
-                        sizes="85vw"
-                        quality={85}
-                      />
-                      <div className="absolute top-3 right-3">
-                        <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold text-xs">
-                          {tour.duration}
-                        </Badge>
-                      </div>
-                    </div>
-                    <CardContent className="p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
-                          {tour.icon}
+                        <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
+                          <Mountain className="w-5 h-5" />
                         </div>
-                        <h4 className="text-base font-bold text-[#0f2940] line-clamp-1">{tour.name}</h4>
+                        <h4 className="text-base font-bold text-white line-clamp-1">{trek.name}</h4>
                       </div>
-                      <p className="text-slate-600 text-xs mb-3 line-clamp-2">{tour.description}</p>
+                      <p className="text-white/70 text-xs mb-3 line-clamp-2">{trek.description}</p>
+                      <div className="grid grid-cols-2 gap-1.5 mb-3">
+                        <div className="flex items-center gap-1.5 text-white/70 text-xs">
+                          <Clock className="w-3 h-3 text-[#C5E0ED]" /> {trek.duration}
+                        </div>
+                        <div className="flex items-center gap-1.5 text-white/70 text-xs">
+                          <TrendingUp className="w-3 h-3 text-[#C5E0ED]" /> {trek.altitude}
+                        </div>
+                        <div className="flex items-center gap-1.5 text-white/70 text-xs">
+                          <Footprints className="w-3 h-3 text-[#C5E0ED]" /> {trek.difficulty}
+                        </div>
+                      </div>
                       <div className="flex flex-wrap gap-1 mb-3">
-                        {tour.highlights.slice(0, 2).map((h, idx) => (
-                          <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
+                        {trek.highlights.slice(0, 2).map((h, idx) => (
+                          <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
                             {h}
                           </Badge>
                         ))}
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-lg font-bold text-[#0f2940]">{tour.price}</span>
+                        <span className="text-lg font-bold text-white">{trek.price}</span>
                         <Link href="/contact">
                           <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
                             Book Now
@@ -1038,12 +895,12 @@ export default function BhutanPage() {
 
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-3 gap-5">
-            {dayTours.map((tour, i) => (
-              <Card key={i} className={`bg-gradient-to-br ${tour.color} border-0 rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]`}>
+            {trekkingPackages.map((trek, i) => (
+              <Card key={i} className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]">
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src={tour.image}
-                    alt={tour.name}
+                    src={trek.image}
+                    alt={trek.name}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-300"
                     sizes="(max-width: 1024px) 33vw, 33vw"
@@ -1051,33 +908,45 @@ export default function BhutanPage() {
                   />
                   <div className="absolute top-3 right-3">
                     <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
-                      {tour.duration}
+                      {trek.duration}
                     </Badge>
+                  </div>
+                  <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                    <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {trek.rating}
                   </div>
                 </div>
                 <CardContent className="p-4 sm:p-5">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
-                      {tour.icon}
+                    <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
+                      <Mountain className="w-5 h-5" />
                     </div>
-                    <h4 className="text-lg font-bold text-[#0f2940]">{tour.name}</h4>
+                    <h4 className="text-lg font-bold text-white">{trek.name}</h4>
                   </div>
-                  <p className="text-slate-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
+                  <p className="text-white/70 text-sm mb-4 line-clamp-2">{trek.description}</p>
+                  <div className="grid grid-cols-2 gap-2 mb-4">
+                    <div className="flex items-center gap-2 text-white/80 text-sm">
+                      <Clock className="w-4 h-4 text-[#C5E0ED]" /> {trek.duration}
+                    </div>
+                    <div className="flex items-center gap-2 text-white/80 text-sm">
+                      <TrendingUp className="w-4 h-4 text-[#C5E0ED]" /> {trek.altitude}
+                    </div>
+                    <div className="flex items-center gap-2 text-white/80 text-sm">
+                      <Footprints className="w-4 h-4 text-[#C5E0ED]" /> {trek.difficulty}
+                    </div>
+                    <div className="text-white font-bold text-lg">{trek.price}</div>
+                  </div>
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {tour.highlights.slice(0, 3).map((h, idx) => (
-                      <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
+                    {trek.highlights.slice(0, 3).map((h, idx) => (
+                      <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
                         {h}
                       </Badge>
                     ))}
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
-                    <Link href="/contact">
-                      <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full">
-                        Book Now
-                      </Button>
-                    </Link>
-                  </div>
+                  <Link href="/contact">
+                    <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
+                      Book Now
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
