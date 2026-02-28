@@ -1,54 +1,141 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
-    // Check if secret key is available
-    if (!process.env.RECAPTCHA_SECRET_KEY) {
-      console.error('RECAPTCHA_SECRET_KEY is missing')
-      return NextResponse.json(
-        { success: false, error: 'Server configuration error' }, 
-        { status: 500 }
-      )
-    }
-
-    const { token } = await request.json()
+    const { token, action, projectId } = await request.json();
+    
+    console.log('API received:', { 
+      token: token ? token.substring(0, 20) + '...' : 'missing', 
+      action, 
+      projectId 
+    });
 
     if (!token) {
       return NextResponse.json(
-        { success: false, error: 'No token provided' }, 
+        { success: false, error: 'No token provided' },
         { status: 400 }
-      )
+      );
     }
 
-    // Verify reCAPTCHA token with Google
-    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    if (!projectId) {
+      return NextResponse.json(
+        { success: false, error: 'Project ID is required' },
+        { status: 400 }
+      );
+    }
+
+    // Get your secret key from environment variables
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+    
+    if (!secretKey) {
+      console.error('RECAPTCHA_SECRET_KEY is missing');
+      return NextResponse.json(
+        { success: false, error: 'Server configuration error - missing secret key' },
+        { status: 500 }
+      );
+    }
+
+    // Get site key from environment variables
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    
+    if (!siteKey) {
+      console.error('NEXT_PUBLIC_RECAPTCHA_SITE_KEY is missing');
+      return NextResponse.json(
+        { success: false, error: 'Server configuration error - missing site key' },
+        { status: 500 }
+      );
+    }
+
+    console.log('Calling Google API with:', { projectId, siteKey });
+
+    // Call the reCAPTCHA Enterprise API
+    const apiUrl = `https://recaptchaenterprise.googleapis.com/v1/projects/${projectId}/assessments?key=${secretKey}`;
+    console.log('API URL:', apiUrl.replace(secretKey, 'HIDDEN'));
+    
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
       },
-      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
-    })
+      body: JSON.stringify({
+        event: {
+          token: token,
+          siteKey: siteKey,
+          expectedAction: action,
+        },
+      }),
+    });
 
-    const data = await response.json()
+    const data = await response.json();
+    console.log('Google API response status:', response.status);
+    console.log('Google API response data:', JSON.stringify(data, null, 2));
 
-    // Log scores for monitoring (remove in production if needed)
-    console.log('reCAPTCHA score:', data.score, 'Action:', data.action)
+    if (!response.ok) {
+      console.error('reCAPTCHA Enterprise API error:', data);
+      return NextResponse.json(
+        { 
+          success: false, 
+          error: 'reCAPTCHA verification failed', 
+          details: data.error || data 
+        },
+        { status: response.status }
+      );
+    }
+
+    // Extract the risk score and other details
+    const score = data.riskAnalysis?.score ?? 0;
+    const reasons = data.riskAnalysis?.reasons ?? [];
+    const returnedAction = data.tokenProperties?.action ?? '';
+    const valid = data.tokenProperties?.valid ?? false;
+
+    // Log for monitoring
+    console.log('reCAPTCHA Enterprise assessment:', {
+      score,
+      valid,
+      action: returnedAction,
+      reasons,
+      assessmentId: data.name
+    });
+
+    // Check if the token is valid
+    if (!valid) {
+      return NextResponse.json({
+        success: false,
+        error: 'Invalid token',
+        score,
+        action: returnedAction,
+        valid
+      });
+    }
+
+    // Check if the action matches (if provided)
+    if (action && returnedAction !== action) {
+      return NextResponse.json({
+        success: false,
+        error: 'Action mismatch',
+        score,
+        action: returnedAction,
+        valid
+      });
+    }
 
     // Adjust threshold as needed (0.5 is standard)
-    const isHuman = data.success && data.score > 0.5
+    const isHuman = score > 0.5;
 
     return NextResponse.json({ 
       success: isHuman,
-      score: data.score,
-      action: data.action,
-      hostname: data.hostname
-    })
+      score,
+      action: returnedAction,
+      valid,
+      reasons,
+      assessmentId: data.name
+    });
 
   } catch (error) {
-    console.error('reCAPTCHA verification error:', error)
+    console.error('reCAPTCHA Enterprise verification error:', error);
     return NextResponse.json(
-      { success: false, error: 'Internal server error' }, 
+      { success: false, error: 'Internal server error', details: String(error) },
       { status: 500 }
-    )
+    );
   }
 }

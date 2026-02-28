@@ -31,12 +31,31 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import Script from 'next/script';
+
+// Declare the global grecaptcha object for TypeScript
+declare global {
+  interface Window {
+    grecaptcha: {
+      enterprise: {
+        ready: (callback: () => void) => void;
+        execute: (siteKey: string, options: { action: string }) => Promise<string>;
+      };
+    };
+  }
+}
 
 // EmailJS Configuration
 const EMAILJS_CONFIG = {
   SERVICE_ID: 'service_eqhbbzb',
   TEMPLATE_ID: 'template_jg69n0b', 
   PUBLIC_KEY: 'RlgxwbPN2Im6fttW-'
+} as const;
+
+// reCAPTCHA Configuration - Using environment variables
+const RECAPTCHA_CONFIG = {
+  SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '',
+  PROJECT_ID: 'third-light-479206-p6',
 } as const;
 
 // Popular treks/tours options for clickable chips
@@ -66,50 +85,50 @@ const TermsDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (ope
     <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-[#0a1f30] border-white/20 text-white w-[95vw] sm:w-full mx-auto">
       <DialogHeader>
         <DialogTitle className="text-xl sm:text-2xl font-bold text-[#C5E0ED] mb-4 text-center">Terms and Conditions</DialogTitle>
-        <div className="mt-4 space-y-4 text-sm text-white/80 px-2 sm:px-0">
-          <p><strong className="text-[#C5E0ED]">Down Payment:</strong></p>
-          <p>To secure your place, a 20% down payment is required in advance as per company policy. For bookings more than ten weeks prior to arrival date, a 15% deposit applies. Please contact us if this causes any issues as we try to be flexible.</p>
-          <p><strong className="text-[#C5E0ED]">How to pay your deposit:</strong></p>
-          <p>You can pay via bank transfer in USD, EUR, or GBP to the following account:</p>
-          <p className="bg-white/5 p-3 sm:p-4 rounded-lg text-xs sm:text-sm">
-            FOR CREDIT TO:<br />
-            Nepal Investment Mega Bank Nepal Ltd.<br />
-            Kathmandu, Nepal<br />
-            SWIFT: NIBLNPKT
-          </p>
-          <p className="bg-white/5 p-3 sm:p-4 rounded-lg text-xs sm:text-sm">
-            BENEFICIARY FINAL CREDIT TO:<br />
-            A/C Holder's Name: Himkala Adventure Pvt. Ltd.<br />
-            A/C No: 13201100002097<br />
-            Nepal Investment Mega Bank Nepal Ltd<br />
-            Thamel, Kathmandu
-          </p>
-          <p><strong className="text-[#C5E0ED]">Payment of the balance:</strong></p>
-          <p>The remaining balance can be paid after your arrival in Nepal. Credit card payments incur a 4% handling charge on the outstanding balance. Bank transfers have no handling fee.</p>
-          <p><strong className="text-[#C5E0ED]">Last minute booking:</strong></p>
-          <p>We accept last-minute bookings for Nepal trips only, not for India, Bhutan, or Tibet trips.</p>
-          <p><strong className="text-[#C5E0ED]">Refund:</strong></p>
-          <p>The 15% deposit is non-refundable for any cancellation reason. If you've paid in full, you'll receive a refund minus cancellation charges. Written notification is required for cancellations.</p>
-          <p><strong className="text-[#C5E0ED]">Supplement charge:</strong></p>
-          <p>Rooms/tents are provided on a twin-sharing basis. Single room supplement charges apply for clients without a sharing partner.</p>
-          <p><strong className="text-[#C5E0ED]">Incomplete tour:</strong></p>
-          <p>No refunds are provided for unused portions of the itinerary if clients drop out.</p>
-          <p><strong className="text-[#C5E0ED]">Unforeseen circumstances:</strong></p>
-          <p>If Himkala Adventure cancels your trip due to war, natural disasters, conflict, or unfavorable climate, we'll offer an alternative trip or full refund. Other expenses incurred from the booking are your responsibility.</p>
-          <p><strong className="text-[#C5E0ED]">Clients' responsibility:</strong></p>
-          <p>Our tour/trek guides have full authority during tours. Any unlawful acts may result in removal from the tour.</p>
-          <p><strong className="text-[#C5E0ED]">Impact on your journey:</strong></p>
-          <p>We strive to provide the best service but note that facilities in Himalayan countries may differ from Western standards.</p>
-          <p><strong className="text-[#C5E0ED]">Travel insurance:</strong></p>
-          <p>Comprehensive travel insurance covering medical emergencies, natural calamities, helicopter evacuation, personal accidents, trip cancellation, etc., is mandatory. Ensure your policy covers your planned activities and maximum altitudes.</p>
-          <p><strong className="text-[#C5E0ED]">Tour amendment:</strong></p>
-          <p>Itinerary changes require prior notice, though adjustments may be necessary en route due to circumstances like bad weather.</p>
-          <p><strong className="text-[#C5E0ED]">Paper and documents:</strong></p>
-          <p>All necessary documents must be provided in time for visa and permit processing. We're not responsible for delays due to missing paperwork.</p>
-          <p><strong className="text-[#C5E0ED]">Flight delay/cancellation:</strong></p>
-          <p>Flight delays or cancellations may occur in Himalayan regions due to weather, requiring itinerary modifications.</p>
-        </div>
       </DialogHeader>
+      <div className="mt-4 space-y-4 text-sm text-white/80 px-2 sm:px-0">
+        <p><strong className="text-[#C5E0ED]">Down Payment:</strong></p>
+        <p>To secure your place, a 20% down payment is required in advance as per company policy. For bookings more than ten weeks prior to arrival date, a 15% deposit applies. Please contact us if this causes any issues as we try to be flexible.</p>
+        <p><strong className="text-[#C5E0ED]">How to pay your deposit:</strong></p>
+        <p>You can pay via bank transfer in USD, EUR, or GBP to the following account:</p>
+        <p className="bg-white/5 p-3 sm:p-4 rounded-lg text-xs sm:text-sm">
+          FOR CREDIT TO:<br />
+          Nepal Investment Mega Bank Nepal Ltd.<br />
+          Kathmandu, Nepal<br />
+          SWIFT: NIBLNPKT
+        </p>
+        <p className="bg-white/5 p-3 sm:p-4 rounded-lg text-xs sm:text-sm">
+          BENEFICIARY FINAL CREDIT TO:<br />
+          A/C Holder's Name: Himkala Adventure Pvt. Ltd.<br />
+          A/C No: 13201100002097<br />
+          Nepal Investment Mega Bank Nepal Ltd<br />
+          Thamel, Kathmandu
+        </p>
+        <p><strong className="text-[#C5E0ED]">Payment of the balance:</strong></p>
+        <p>The remaining balance can be paid after your arrival in Nepal. Credit card payments incur a 4% handling charge on the outstanding balance. Bank transfers have no handling fee.</p>
+        <p><strong className="text-[#C5E0ED]">Last minute booking:</strong></p>
+        <p>We accept last-minute bookings for Nepal trips only, not for India, Bhutan, or Tibet trips.</p>
+        <p><strong className="text-[#C5E0ED]">Refund:</strong></p>
+        <p>The 15% deposit is non-refundable for any cancellation reason. If you've paid in full, you'll receive a refund minus cancellation charges. Written notification is required for cancellations.</p>
+        <p><strong className="text-[#C5E0ED]">Supplement charge:</strong></p>
+        <p>Rooms/tents are provided on a twin-sharing basis. Single room supplement charges apply for clients without a sharing partner.</p>
+        <p><strong className="text-[#C5E0ED]">Incomplete tour:</strong></p>
+        <p>No refunds are provided for unused portions of the itinerary if clients drop out.</p>
+        <p><strong className="text-[#C5E0ED]">Unforeseen circumstances:</strong></p>
+        <p>If Himkala Adventure cancels your trip due to war, natural disasters, conflict, or unfavorable climate, we'll offer an alternative trip or full refund. Other expenses incurred from the booking are your responsibility.</p>
+        <p><strong className="text-[#C5E0ED]">Clients' responsibility:</strong></p>
+        <p>Our tour/trek guides have full authority during tours. Any unlawful acts may result in removal from the tour.</p>
+        <p><strong className="text-[#C5E0ED]">Impact on your journey:</strong></p>
+        <p>We strive to provide the best service but note that facilities in Himalayan countries may differ from Western standards.</p>
+        <p><strong className="text-[#C5E0ED]">Travel insurance:</strong></p>
+        <p>Comprehensive travel insurance covering medical emergencies, natural calamities, helicopter evacuation, personal accidents, trip cancellation, etc., is mandatory. Ensure your policy covers your planned activities and maximum altitudes.</p>
+        <p><strong className="text-[#C5E0ED]">Tour amendment:</strong></p>
+        <p>Itinerary changes require prior notice, though adjustments may be necessary en route due to circumstances like bad weather.</p>
+        <p><strong className="text-[#C5E0ED]">Paper and documents:</strong></p>
+        <p>All necessary documents must be provided in time for visa and permit processing. We're not responsible for delays due to missing paperwork.</p>
+        <p><strong className="text-[#C5E0ED]">Flight delay/cancellation:</strong></p>
+        <p>Flight delays or cancellations may occur in Himalayan regions due to weather, requiring itinerary modifications.</p>
+      </div>
     </DialogContent>
   </Dialog>
 );
@@ -120,15 +139,15 @@ const PrivacyDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (o
     <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-[#0a1f30] border-white/20 text-white w-[95vw] sm:w-full mx-auto">
       <DialogHeader>
         <DialogTitle className="text-xl sm:text-2xl font-bold text-[#C5E0ED] mb-4 text-center">Privacy Policy</DialogTitle>
-        <div className="mt-4 space-y-4 text-sm text-white/80 px-2 sm:px-0">
-          <p>Himkala Adventure Pvt. Ltd. takes the responsibility of your data seriously and respects your privacy concerning any information we may gather from you across this website.</p>
-          <p>Our website uses links to other websites (e.g. Facebook, Instagram, Twitter etc.) to which this data protection declaration does not apply. These sites might collect Device Information. Please be aware that we do not control the content and practices of these sites, and cannot take responsibility for their privacy policies.</p>
-          <p>We only collect personal information that we need to provide a service to you (e.g. your name, email address and phone number) when you send us an email through inquiry, booking, or contact form. We collect it by lawful means, with your knowledge and agreement.</p>
-          <p>We only keep the gathered information as long as required to provide you with the service you requested. The data we store will be protected with lawful means to prevent loss and theft, as well as unauthorized access, leak, copying, usage, or any adjustment. We don't share any personal information publicly or with third parties unless required by lawful request.</p>
-          <p>You have the right to ask that your personal information be corrected, updated, or deleted at any time; please contact us through the contact information available on the website. If you have any queries about how we handle your personal information, please do not hesitate to contact us through email.</p>
-          <p>We may update this privacy policy from time to time to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons.</p>
-        </div>
       </DialogHeader>
+      <div className="mt-4 space-y-4 text-sm text-white/80 px-2 sm:px-0">
+        <p>Himkala Adventure Pvt. Ltd. takes the responsibility of your data seriously and respects your privacy concerning any information we may gather from you across this website.</p>
+        <p>Our website uses links to other websites (e.g. Facebook, Instagram, Twitter etc.) to which this data protection declaration does not apply. These sites might collect Device Information. Please be aware that we do not control the content and practices of these sites, and cannot take responsibility for their privacy policies.</p>
+        <p>We only collect personal information that we need to provide a service to you (e.g. your name, email address and phone number) when you send us an email through inquiry, booking, or contact form. We collect it by lawful means, with your knowledge and agreement.</p>
+        <p>We only keep the gathered information as long as required to provide you with the service you requested. The data we store will be protected with lawful means to prevent loss and theft, as well as unauthorized access, leak, copying, usage, or any adjustment. We don't share any personal information publicly or with third parties unless required by lawful request.</p>
+        <p>You have the right to ask that your personal information be corrected, updated, or deleted at any time; please contact us through the contact information available on the website. If you have any queries about how we handle your personal information, please do not hesitate to contact us through email.</p>
+        <p>We may update this privacy policy from time to time to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons.</p>
+      </div>
     </DialogContent>
   </Dialog>
 );
@@ -147,6 +166,8 @@ function ContactFormContent() {
   
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [recaptchaLoaded, setRecaptchaLoaded] = React.useState(false);
+  const [recaptchaError, setRecaptchaError] = React.useState(false);
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -154,7 +175,6 @@ function ContactFormContent() {
     tour: trekFromUrl ? decodeURIComponent(trekFromUrl) : "",
     message: "",
   });
-  const [recaptchaError, setRecaptchaError] = React.useState(false);
   const [privacyOpen, setPrivacyOpen] = React.useState(false);
   const [termsOpen, setTermsOpen] = React.useState(false);
   const [showMoreTreks, setShowMoreTreks] = React.useState(false);
@@ -175,12 +195,101 @@ function ContactFormContent() {
     emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
   }, []);
 
+  // Check if reCAPTCHA site key is available
+  React.useEffect(() => {
+    if (!RECAPTCHA_CONFIG.SITE_KEY) {
+      console.error('reCAPTCHA site key is missing. Check your NEXT_PUBLIC_RECAPTCHA_SITE_KEY environment variable.');
+      setRecaptchaError(true);
+    }
+  }, []);
+
   const handleChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleTrekClick = (trek: string) => {
     setFormData((prev) => ({ ...prev, tour: trek }));
+  };
+
+  // Execute reCAPTCHA and get token
+  const executeRecaptcha = async (action: string): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      if (!window.grecaptcha || !recaptchaLoaded) {
+        reject(new Error('reCAPTCHA not loaded'));
+        return;
+      }
+
+      if (!RECAPTCHA_CONFIG.SITE_KEY) {
+        reject(new Error('reCAPTCHA site key not configured'));
+        return;
+      }
+
+      window.grecaptcha.enterprise.ready(async () => {
+        try {
+          const token = await window.grecaptcha.enterprise.execute(
+            RECAPTCHA_CONFIG.SITE_KEY,
+            { action }
+          );
+          resolve(token);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    });
+  };
+
+  // Verify token with backend API
+  const verifyRecaptchaToken = async (token: string, action: string): Promise<boolean> => {
+    try {
+      console.log('Sending to API:', { 
+        token: token.substring(0, 20) + '...', 
+        action, 
+        projectId: RECAPTCHA_CONFIG.PROJECT_ID 
+      });
+      
+      const response = await fetch('/api/verify-recaptcha', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          action,
+          projectId: RECAPTCHA_CONFIG.PROJECT_ID,
+        }),
+      });
+
+      const data = await response.json();
+      console.log('API Response:', data);
+      
+      if (!response.ok) {
+        console.error('reCAPTCHA verification failed:', data);
+        return false;
+      }
+
+      // Check if the token is valid
+      if (!data.valid) {
+        console.warn('reCAPTCHA token is invalid');
+        return false;
+      }
+
+      // Check if the score is above threshold (0.5 is a common threshold)
+      if (data.score < 0.5) {
+        console.warn('reCAPTCHA score too low:', data.score);
+        return false;
+      }
+
+      // Verify the action matches
+      if (data.action !== action) {
+        console.warn('reCAPTCHA action mismatch');
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      console.error('Error verifying reCAPTCHA:', error);
+      return false;
+    }
   };
 
   const sendEmail = async (data: any) => {
@@ -252,7 +361,40 @@ function ContactFormContent() {
     setIsSubmitting(true);
     
     try {
-      // Send email
+      // Check if reCAPTCHA is configured
+      if (!RECAPTCHA_CONFIG.SITE_KEY) {
+        console.warn('reCAPTCHA not configured, skipping verification');
+        // Still allow form submission if reCAPTCHA is not configured
+        await sendEmail(formData);
+        setIsSubmitted(true);
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Execute reCAPTCHA
+      let token;
+      try {
+        token = await executeRecaptcha('submit_contact_form');
+        console.log('reCAPTCHA token generated:', token.substring(0, 20) + '...');
+      } catch (recaptchaError) {
+        console.error('reCAPTCHA execution failed:', recaptchaError);
+        setRecaptchaError(true);
+        alert('Security verification failed. Please try again or contact us directly.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Verify token with backend
+      const isValid = await verifyRecaptchaToken(token, 'submit_contact_form');
+      
+      if (!isValid) {
+        setRecaptchaError(true);
+        alert('Security verification failed. Please try again or contact us directly.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Send email only if reCAPTCHA passes
       await sendEmail(formData);
       
       console.log("Form submitted successfully!");
@@ -333,6 +475,21 @@ function ContactFormContent() {
     <>
       <TermsDialog open={termsOpen} onOpenChange={setTermsOpen} />
       <PrivacyDialog open={privacyOpen} onOpenChange={setPrivacyOpen} />
+
+      {/* Load reCAPTCHA Enterprise script only if site key exists */}
+      {RECAPTCHA_CONFIG.SITE_KEY && (
+        <Script
+          src={`https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_CONFIG.SITE_KEY}`}
+          onLoad={() => {
+            console.log('reCAPTCHA script loaded successfully');
+            setRecaptchaLoaded(true);
+          }}
+          onError={(e) => {
+            console.error('Failed to load reCAPTCHA:', e);
+            setRecaptchaError(true);
+          }}
+        />
+      )}
 
       <form onSubmit={handleSubmit} className="w-full">
         {trekFromUrl && (
@@ -496,15 +653,29 @@ function ContactFormContent() {
             </div>
           </div>
 
+          {/* reCAPTCHA Error Message */}
+          {recaptchaError && (
+            <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-xs text-red-600">
+                Security verification failed. Please refresh the page and try again, or contact us directly.
+              </p>
+            </div>
+          )}
+
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-12 sm:h-14 bg-[#0f2940] hover:bg-[#1a4166] text-white font-bold rounded-lg sm:rounded-xl text-sm sm:text-base shadow-md sm:shadow-lg shadow-[#0f2940]/10 sm:shadow-[#0f2940]/20 transition-colors"
+            className="w-full h-12 sm:h-14 bg-[#0f2940] hover:bg-[#1a4166] text-white font-bold rounded-lg sm:rounded-xl text-sm sm:text-base shadow-md sm:shadow-lg shadow-[#0f2940]/10 sm:shadow-[#0f2940]/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center gap-2">
                 <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 Sending...
+              </span>
+            ) : !recaptchaLoaded && RECAPTCHA_CONFIG.SITE_KEY ? (
+              <span className="flex items-center justify-center gap-2">
+                <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                Loading security...
               </span>
             ) : (
               <span className="flex items-center justify-center gap-2">
