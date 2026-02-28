@@ -238,7 +238,7 @@ function ContactFormContent() {
     });
   };
 
-  // Verify token with backend API
+  // Verify token with backend API - UPDATED WITH BETTER ERROR LOGGING
   const verifyRecaptchaToken = async (token: string, action: string): Promise<boolean> => {
     try {
       console.log('Sending to API:', { 
@@ -263,31 +263,53 @@ function ContactFormContent() {
       console.log('API Response:', data);
       
       if (!response.ok) {
-        console.error('reCAPTCHA verification failed:', data);
+        console.error('reCAPTCHA verification failed - Full error:', data);
+        
+        // Show more details in alert
+        let errorMsg = 'Unknown error';
+        if (data.details) {
+          if (typeof data.details === 'string') {
+            errorMsg = data.details;
+          } else if (data.details.message) {
+            errorMsg = data.details.message;
+          } else if (data.details.error) {
+            errorMsg = data.details.error.message || JSON.stringify(data.details.error);
+          }
+        } else if (data.error) {
+          errorMsg = data.error;
+        }
+        
+        alert(`Verification failed: ${errorMsg} (Status: ${response.status})`);
         return false;
       }
 
       // Check if the token is valid
       if (!data.valid) {
-        console.warn('reCAPTCHA token is invalid');
+        console.warn('reCAPTCHA token is invalid:', data);
+        const reason = data.invalidReason ? ` (${data.invalidReason})` : '';
+        alert(`Invalid token${reason}. Please refresh and try again.`);
         return false;
       }
 
       // Check if the score is above threshold (0.5 is a common threshold)
       if (data.score < 0.5) {
         console.warn('reCAPTCHA score too low:', data.score);
+        alert(`Score too low: ${data.score}. Please try again.`);
         return false;
       }
 
       // Verify the action matches
       if (data.action !== action) {
-        console.warn('reCAPTCHA action mismatch');
+        console.warn('reCAPTCHA action mismatch:', data.action, 'vs', action);
+        alert('Action mismatch. Please refresh and try again.');
         return false;
       }
 
+      console.log('reCAPTCHA verification successful! Score:', data.score);
       return true;
     } catch (error) {
       console.error('Error verifying reCAPTCHA:', error);
+      alert(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
       return false;
     }
   };
@@ -389,7 +411,7 @@ function ContactFormContent() {
       
       if (!isValid) {
         setRecaptchaError(true);
-        alert('Security verification failed. Please try again or contact us directly.');
+        // Don't show another alert here since verifyRecaptchaToken already shows one
         setIsSubmitting(false);
         return;
       }

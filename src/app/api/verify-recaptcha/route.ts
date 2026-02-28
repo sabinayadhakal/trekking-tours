@@ -72,11 +72,16 @@ export async function POST(request: NextRequest) {
 
     if (!response.ok) {
       console.error('reCAPTCHA Enterprise API error:', data);
+      
+      // More detailed error response
       return NextResponse.json(
         { 
           success: false, 
-          error: 'reCAPTCHA verification failed', 
-          details: data.error || data 
+          error: 'reCAPTCHA verification failed',
+          statusCode: response.status,
+          statusText: response.statusText,
+          details: data.error || data,
+          fullResponse: data
         },
         { status: response.status }
       );
@@ -87,11 +92,13 @@ export async function POST(request: NextRequest) {
     const reasons = data.riskAnalysis?.reasons ?? [];
     const returnedAction = data.tokenProperties?.action ?? '';
     const valid = data.tokenProperties?.valid ?? false;
+    const invalidReason = data.tokenProperties?.invalidReason ?? null;
 
     // Log for monitoring
     console.log('reCAPTCHA Enterprise assessment:', {
       score,
       valid,
+      invalidReason,
       action: returnedAction,
       reasons,
       assessmentId: data.name
@@ -102,6 +109,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         success: false,
         error: 'Invalid token',
+        invalidReason: invalidReason,
         score,
         action: returnedAction,
         valid
@@ -134,7 +142,11 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('reCAPTCHA Enterprise verification error:', error);
     return NextResponse.json(
-      { success: false, error: 'Internal server error', details: String(error) },
+      { 
+        success: false, 
+        error: 'Internal server error', 
+        details: error instanceof Error ? error.message : String(error) 
+      },
       { status: 500 }
     );
   }
