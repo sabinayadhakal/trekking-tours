@@ -184,6 +184,7 @@ const itinerary = [
     day: 15,
     title: "Trek to Lungdhen via Renjo La Pass",
     altitude: "4,790m → 5,360m → 4,380m",
+    distance: "10km / 6-7 hrs",
     description: "Today we cross the final pass - Renjo La (5,360m). The climb offers spectacular views back over the Gokyo Lakes. At the summit, prayer flags flutter in the wind with a breathtaking panorama of Everest, Lhotse, Makalu, and Cho Oyu. The descent leads into the remote Bhote Koshi Valley, a peaceful region with traditional Sherpa settlements.",
     overnight: "Teahouse in Lungdhen",
     meals: "Breakfast, Lunch, Dinner",
@@ -321,7 +322,7 @@ export default function EverestThreePassesTrekPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Mobile Navigation Drawer */}
       {showMobileNav && (
         <div className="lg:hidden fixed inset-0 z-50">
@@ -410,26 +411,26 @@ export default function EverestThreePassesTrekPage() {
 
         <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
           <div className="max-w-5xl mx-auto text-center w-full">
-            <div className="flex flex-wrap gap-2 mb-6 justify-center">
-              <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-4 py-2 text-sm">
-                <MapPin className="w-4 h-4 mr-1" /> Everest Region
+            <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
+              <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                <MapPin className="w-3 h-3 mr-1" /> Everest Region
               </Badge>
-              <Badge className="bg-red-100 text-red-700 border-none font-bold px-4 py-2 text-sm">
-                <Flag className="w-4 h-4 mr-1" /> Very Strenuous
+              <Badge className="bg-red-100 text-red-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                <Flag className="w-3 h-3 mr-1" /> Very Strenuous
               </Badge>
-              <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-4 py-2 text-sm">
-                <Mountain className="w-4 h-4 mr-1" /> Three Passes
+              <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                <Mountain className="w-3 h-3 mr-1" /> Three Passes
               </Badge>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-4 md:mb-6 tracking-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-3 md:mb-6 tracking-tight">
               EVEREST <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
                 THREE PASSES TREK
               </span>
             </h1>
             
-            <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
+            <p className="text-sm sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
               The ultimate Everest challenge - cross Kongma La, Cho La, and Renjo La, 
               trek to Everest Base Camp, Gokyo Lakes, and Kala Patthar in one epic circuit.
             </p>
@@ -439,26 +440,26 @@ export default function EverestThreePassesTrekPage() {
 
       {/* Main Content */}
       <section className="py-6 md:py-12">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-12 gap-6 md:gap-10">
+        <div className="container mx-auto px-3 md:px-6 max-w-full overflow-hidden">
+          <div className="grid lg:grid-cols-12 gap-4 md:gap-10">
             {/* Mobile Sticky Book Now Bar */}
-            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-3">
-              <div className="container mx-auto px-4">
+            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2">
+              <div className="container mx-auto px-3">
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-xs text-slate-400 line-through">$2,150</div>
-                    <div className="text-xl font-bold text-[#0f2940]">$1,850</div>
+                    <div className="text-lg font-bold text-[#0f2940]">$1,850</div>
                   </div>
                   <Link href="/contact">
-                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-6 py-2 text-sm">
-                      <Heart className="w-4 h-4 mr-2" /> Book Now
+                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs">
+                      <Heart className="w-3 h-3 mr-1" /> Book Now
                     </Button>
                   </Link>
                 </div>
               </div>
             </div>
 
-            {/* Sidebar */}
+            {/* Sidebar - Hidden on mobile */}
             <aside className="hidden lg:block lg:col-span-4">
               <div className="sticky top-24 space-y-4 md:space-y-6">
                 {/* Price Card */}
@@ -468,39 +469,39 @@ export default function EverestThreePassesTrekPage() {
                       <span className="text-white/50 text-sm line-through">$2,150</span>
                       <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,850</div>
                       <span className="text-white/60 text-sm">per person</span>
-                      <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-xs">Save $300</Badge>
+                      <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $300</Badge>
                     </div>
 
                     <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>18 Days / 17 Nights</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>Best: Mar-May, Sep-Nov</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>Group Size: 2-8</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>Teahouse Accommodation</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>All Meals Included</span>
                       </div>
                     </div>
 
                     <Link href="/contact">
-                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-sm md:text-base">
+                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
                         <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Trek
                       </Button>
                     </Link>
                     <Link href="/contact">
-                      <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/10 rounded-full h-10 md:h-12 text-sm md:text-base">
+                      <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/10 rounded-full h-10 md:h-12 text-xs md:text-base">
                         <Phone className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Enquire Now
                       </Button>
                     </Link>
@@ -510,10 +511,10 @@ export default function EverestThreePassesTrekPage() {
                 {/* Quick Facts */}
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
+                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
                       <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
                     </h3>
-                    <div className="space-y-2 text-xs md:text-sm">
+                    <div className="space-y-2 text-[10px] md:text-sm">
                       <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
                         <span className="text-slate-500">Start/End</span>
                         <span className="font-medium text-[#0f2940]">Kathmandu</span>
@@ -545,20 +546,20 @@ export default function EverestThreePassesTrekPage() {
                 {/* Share */}
                 <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
+                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
                       <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
                     </h3>
                     <div className="flex gap-2">
                       <Button
                         size="sm"
-                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={() => handleShare("facebook")}
                       >
                         <Facebook className="w-3 h-3 md:w-4 md:h-4" />
                       </Button>
                       <Button
                         size="sm"
-                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={() => handleShare("twitter")}
                       >
                         <Twitter className="w-3 h-3 md:w-4 md:h-4" />
@@ -566,7 +567,7 @@ export default function EverestThreePassesTrekPage() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={handleCopyLink}
                       >
                         {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
@@ -578,19 +579,19 @@ export default function EverestThreePassesTrekPage() {
             </aside>
 
             {/* Main Content */}
-            <article className="lg:col-span-8">
+            <article className="lg:col-span-8 w-full overflow-hidden">
               {/* Mobile Share Buttons */}
               <div className="lg:hidden flex gap-2 mb-6">
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-xs"
+                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5"
                   onClick={() => handleShare("facebook")}
                 >
                   <Facebook className="w-3 h-3 mr-1" /> Share
                 </Button>
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-xs"
+                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5"
                   onClick={() => handleShare("twitter")}
                 >
                   <Twitter className="w-3 h-3 mr-1" /> Tweet
@@ -598,7 +599,7 @@ export default function EverestThreePassesTrekPage() {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-xs"
+                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5"
                   onClick={handleCopyLink}
                 >
                   {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
@@ -606,24 +607,24 @@ export default function EverestThreePassesTrekPage() {
               </div>
 
               {/* Overview */}
-              <section className="mb-8 md:mb-12" id="overview">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Overview</h2>
+              <section className="mb-6 md:mb-12" id="overview">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
-                  <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
+                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     The <strong>Everest Three Passes Trek</strong> is the ultimate adventure in the Khumbu region, 
                     designed for experienced trekkers seeking the complete Everest experience. This challenging 
                     circuit crosses three high-altitude passes - <strong>Kongma La (5,535m), Cho La (5,420m), and 
                     Renjo La (5,360m)</strong> - while visiting Everest Base Camp, Kala Patthar, and the stunning 
                     Gokyo Lakes.
                   </p>
-                  <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
+                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     Unlike the standard Everest Base Camp Trek which follows an "in-and-out" route, the Three Passes 
                     Trek creates a complete circuit through four major valleys: Imja Khola, Khumbu, Gokyo, and Bhote 
                     Koshi. This allows trekkers to experience the full geographical diversity of the 
                     Sagarmatha National Park, from lush rhododendron forests to barren glacial moraines and 
                     challenging glacier crossings.
                   </p>
-                  <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+                  <p className="text-slate-600 leading-relaxed text-xs md:text-base">
                     Each pass offers unique perspectives: <strong>Kongma La</strong> provides views of Makalu and 
                     Lhotse, <strong>Cho La</strong> features a thrilling glacier traverse between Cholatse and 
                     Lobuche peaks, and <strong>Renjo La</strong> rewards with the most spectacular panorama of 
@@ -635,8 +636,8 @@ export default function EverestThreePassesTrekPage() {
               </section>
 
               {/* Highlights */}
-              <section className="mb-8 md:mb-12" id="highlights">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Trek Highlights</h2>
+              <section className="mb-6 md:mb-12" id="highlights">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Trek Highlights</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
                   {[
                     "Cross all three high passes: Kongma La (5,535m), Cho La (5,420m), Renjo La (5,360m)",
@@ -652,56 +653,56 @@ export default function EverestThreePassesTrekPage() {
                   ].map((highlight, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-2 md:gap-3 p-3 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
+                      className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
                     >
                       <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" />
-                      <span className="text-[#0f2940] font-medium text-sm md:text-base">{highlight}</span>
+                      <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
                     </div>
                   ))}
                 </div>
               </section>
 
               {/* Best Season */}
-              <section className="mb-8 md:mb-12">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Best Time to Trek</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+              <section className="mb-6 md:mb-12">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Trek</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
                   <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-4 md:p-5">
-                      <div className="flex items-center gap-2 mb-2 md:mb-3">
+                    <CardContent className="p-3 md:p-5">
+                      <div className="flex items-center gap-2 mb-1 md:mb-3">
                         <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Spring (Mar - May)</h4>
+                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar - May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Warmer temperatures, blooming rhododendrons, and stable weather. Pass conditions are good 
                         but some snow may remain on Cho La glacier.
                       </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
+                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Excellent</Badge>
                     </CardContent>
                   </Card>
                   <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-4 md:p-5">
-                      <div className="flex items-center gap-2 mb-2 md:mb-3">
+                    <CardContent className="p-3 md:p-5">
+                      <div className="flex items-center gap-2 mb-1 md:mb-3">
                         <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-blue-500" />
-                        <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Autumn (Sep - Nov)</h4>
+                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         The most reliable season with crystal-clear skies, stable weather, and excellent pass 
                         conditions. Perfect for photography and the best mountain views.
                       </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
+                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
                     </CardContent>
                   </Card>
                 </div>
               </section>
 
               {/* Detailed Itinerary */}
-              <section className="mb-8 md:mb-12" id="itinerary">
-                <div className="flex items-center justify-between mb-4 md:mb-6">
-                  <h2 className="text-xl md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
+              <section className="mb-6 md:mb-12" id="itinerary">
+                <div className="flex items-center justify-between mb-3 md:mb-6">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm"
+                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4"
                     onClick={() =>
                       setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
                     }
@@ -720,49 +721,49 @@ export default function EverestThreePassesTrekPage() {
                     >
                       <CardContent className="p-0">
                         <button
-                          className="w-full flex items-center gap-3 md:gap-4 p-3 md:p-4 text-left"
+                          className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
                           onClick={() => toggleDay(day.day)}
                         >
-                          <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
-                            <span className="text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
-                            <span className="text-lg md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
+                          <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
+                            <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
+                            <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-sm md:text-base truncate">{day.title}</h4>
-                            <div className="flex flex-wrap gap-2 md:gap-3 text-xs text-slate-500 mt-1">
-                              <span className="flex items-center gap-1">
-                                <TrendingUp className="w-3 h-3" /> {day.altitude}
+                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
+                            <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
+                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
+                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
                               </span>
-                              <span className="flex items-center gap-1">
-                                <Backpack className="w-3 h-3" /> {day.distance}
+                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
+                                <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.distance}
                               </span>
                             </div>
                           </div>
                           <ChevronDown
-                            className={`w-4 h-4 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
+                            className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
                               expandedDays.includes(day.day) ? "rotate-180" : ""
                             }`}
                           />
                         </button>
 
                         {expandedDays.includes(day.day) && (
-                          <div className="px-3 md:px-4 pb-3 md:pb-4 border-t border-[#C5E0ED]/20">
-                            <p className="text-slate-600 text-xs md:text-sm leading-relaxed pt-3 md:pt-4 mb-3 md:mb-4">{day.description}</p>
+                          <div className="px-2 md:px-4 pb-2 md:pb-4 border-t border-[#C5E0ED]/20">
+                            <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed pt-2 md:pt-4 mb-2 md:mb-4">{day.description}</p>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-3 md:mb-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
                                 <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
-                                <span><strong>Overnight:</strong> {day.overnight}</span>
+                                <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
                               </div>
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
                                 <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
-                                <span><strong>Meals:</strong> {day.meals}</span>
+                                <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
                               </div>
                             </div>
 
-                            <div className="flex flex-wrap gap-1.5 md:gap-2">
+                            <div className="flex flex-wrap gap-1 md:gap-2">
                               {day.highlights.map((h, i) => (
-                                <Badge key={i} variant="secondary" className="bg-[#C5E0ED]/20 text-[#2d6a8a] text-xs">
+                                <Badge key={i} variant="secondary" className="bg-[#C5E0ED]/20 text-[#2d6a8a] text-[8px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1">
                                   {h}
                                 </Badge>
                               ))}
@@ -776,34 +777,34 @@ export default function EverestThreePassesTrekPage() {
               </section>
 
               {/* Includes / Excludes */}
-              <section className="mb-8 md:mb-12" id="includes">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">What's Included</h2>
-                <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+              <section className="mb-6 md:mb-12" id="includes">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included</h2>
+                <div className="grid md:grid-cols-2 gap-3 md:gap-6">
                   <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-4 md:p-6">
-                      <h3 className="font-bold text-green-800 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
+                    <CardContent className="p-3 md:p-6">
+                      <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
                         <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> Cost Includes
                       </h3>
-                      <ul className="space-y-1.5 md:space-y-2">
+                      <ul className="space-y-1 md:space-y-2">
                         {includes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-slate-600">
-                            <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" />
-                            {item}
+                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
+                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" />
+                            <span className="leading-tight">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </CardContent>
                   </Card>
                   <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-4 md:p-6">
-                      <h3 className="font-bold text-red-800 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
+                    <CardContent className="p-3 md:p-6">
+                      <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
                         <XCircle className="w-4 h-4 md:w-5 md:h-5" /> Cost Excludes
                       </h3>
-                      <ul className="space-y-1.5 md:space-y-2">
+                      <ul className="space-y-1 md:space-y-2">
                         {excludes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-slate-600">
-                            <XCircle className="w-3 h-3 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" />
-                            {item}
+                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
+                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" />
+                            <span className="leading-tight">{item}</span>
                           </li>
                         ))}
                       </ul>
@@ -813,11 +814,11 @@ export default function EverestThreePassesTrekPage() {
               </section>
 
               {/* Important Note */}
-              <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-4 md:p-6 flex gap-3 md:gap-4 mb-8 md:mb-12">
-                <AlertTriangle className="w-5 h-5 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
+              <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
+                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information</h4>
-                  <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
+                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information</h4>
+                  <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
                     <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 5,600m including glacier crossings and helicopter evacuation.</li>
                     <li>• This is a <strong>very strenuous trek</strong> requiring excellent physical fitness and preferably previous high-altitude experience.</li>
                     <li>• Pass conditions vary by season - crampons/microspikes provided for glacier sections on Cho La.</li>
@@ -827,13 +828,13 @@ export default function EverestThreePassesTrekPage() {
               </div>
 
               {/* Photo Gallery */}
-              <section className="mb-8 md:mb-12" id="gallery">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Photo Gallery</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
+              <section className="mb-6 md:mb-12" id="gallery">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
                   {gallery.map((image, i) => (
                     <div
                       key={i}
-                      className="relative h-32 md:h-48 rounded-lg md:rounded-xl overflow-hidden group cursor-pointer"
+                      className="relative h-24 md:h-48 rounded-lg md:rounded-xl overflow-hidden group cursor-pointer"
                     >
                       <Image
                         src={image.src}
@@ -843,8 +844,8 @@ export default function EverestThreePassesTrekPage() {
                         sizes="(max-width: 768px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3">
-                          <p className="text-white text-xs font-medium truncate">{image.caption}</p>
+                        <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
+                          <p className="text-white text-[8px] md:text-xs font-medium truncate">{image.caption}</p>
                         </div>
                       </div>
                     </div>
@@ -853,9 +854,9 @@ export default function EverestThreePassesTrekPage() {
               </section>
 
               {/* FAQ Section */}
-              <section className="mb-8 md:mb-12" id="faq">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Frequently Asked Questions</h2>
-                <div className="space-y-3 md:space-y-4">
+              <section className="mb-6 md:mb-12" id="faq">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions</h2>
+                <div className="space-y-2 md:space-y-4">
                   {[
                     {
                       q: "How difficult is the Three Passes Trek compared to EBC?",
@@ -879,9 +880,9 @@ export default function EverestThreePassesTrekPage() {
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
-                      <CardContent className="p-4 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1.5 md:mb-2 text-sm md:text-base">{faq.q}</h4>
-                        <p className="text-slate-600 text-xs md:text-sm leading-relaxed">{faq.a}</p>
+                      <CardContent className="p-2 md:p-5">
+                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
+                        <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
                       </CardContent>
                     </Card>
                   ))}

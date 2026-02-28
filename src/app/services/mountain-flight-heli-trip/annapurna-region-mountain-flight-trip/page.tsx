@@ -214,7 +214,7 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Mobile Navigation Drawer */}
       {showMobileNav && (
         <div className="lg:hidden fixed inset-0 z-50">
@@ -303,26 +303,26 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
 
         <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
           <div className="max-w-5xl mx-auto text-center w-full">
-            <div className="flex flex-wrap gap-2 mb-6 justify-center">
-              <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-4 py-2 text-sm">
-                <MapPin className="w-4 h-4 mr-1" /> Mountain Flight
+            <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
+              <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                <MapPin className="w-3 h-3 mr-1" /> Mountain Flight
               </Badge>
-              <Badge className="bg-blue-100 text-blue-700 border-none font-bold px-4 py-2 text-sm">
+              <Badge className="bg-blue-100 text-blue-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
                 Easy
               </Badge>
-              <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-4 py-2 text-sm">
-                <Plane className="w-4 h-4 mr-1" /> Scenic Flight
+              <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                <Plane className="w-3 h-3 mr-1" /> Scenic Flight
               </Badge>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-4 md:mb-6 tracking-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-3 md:mb-6 tracking-tight">
               ANNAPURNA REGION <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
                 MOUNTAIN FLIGHT TRIP
               </span>
             </h1>
             
-            <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-sm sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light">
               Soar among the giants of the Annapurna Himalayas on an unforgettable 1-hour mountain flight—getting closer 
               to Machhapuchhre, Annapurna I, and Dhaulagiri than ever before, with guaranteed window seats for every passenger.
             </p>
@@ -332,26 +332,26 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
 
       {/* Main Content */}
       <section className="py-6 md:py-12">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-12 gap-6 md:gap-10">
+        <div className="container mx-auto px-3 md:px-6 max-w-full overflow-hidden">
+          <div className="grid lg:grid-cols-12 gap-4 md:gap-10">
             {/* Mobile Sticky Book Now Bar */}
-            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-3">
-              <div className="container mx-auto px-4">
+            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2">
+              <div className="container mx-auto px-3">
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-xs text-slate-400 line-through">$1,250</div>
-                    <div className="text-xl font-bold text-[#0f2940]">$1,095</div>
+                    <div className="text-lg font-bold text-[#0f2940]">$1,095</div>
                   </div>
                   <Link href="/contact">
-                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-6 py-2 text-sm">
-                      <Heart className="w-4 h-4 mr-2" /> Book Now
+                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs">
+                      <Heart className="w-3 h-3 mr-1" /> Book Now
                     </Button>
                   </Link>
                 </div>
               </div>
             </div>
 
-            {/* Sidebar */}
+            {/* Sidebar - Hidden on mobile */}
             <aside className="hidden lg:block lg:col-span-4">
               <div className="sticky top-24 space-y-4 md:space-y-6">
                 {/* Price Card */}
@@ -361,39 +361,39 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
                       <span className="text-white/50 text-sm line-through">$1,250</span>
                       <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,095</div>
                       <span className="text-white/60 text-sm">per person</span>
-                      <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-xs">Save $155</Badge>
+                      <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
                     </div>
 
                     <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>6 Days / 5 Nights</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>Best: Oct-May (Year-round)</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>Group Size: 1-15</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Plane className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>1 Hour Mountain Flight</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Gauge className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>Flight Altitude: 4,000-5,000m</span>
                       </div>
                     </div>
 
                     <Link href="/contact">
-                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-sm md:text-base">
+                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
                         <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Flight
                       </Button>
                     </Link>
                     <Link href="/contact">
-                      <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/10 rounded-full h-10 md:h-12 text-sm md:text-base">
+                      <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/10 rounded-full h-10 md:h-12 text-xs md:text-base">
                         <Phone className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Enquire Now
                       </Button>
                     </Link>
@@ -403,10 +403,10 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
                 {/* Quick Facts */}
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
+                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
                       <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
                     </h3>
-                    <div className="space-y-2 text-xs md:text-sm">
+                    <div className="space-y-2 text-[10px] md:text-sm">
                       <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
                         <span className="text-slate-500">Start Point</span>
                         <span className="font-medium text-[#0f2940]">Kathmandu</span>
@@ -438,20 +438,20 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
                 {/* Share */}
                 <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
+                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
                       <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
                     </h3>
                     <div className="flex gap-2">
                       <Button
                         size="sm"
-                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={() => handleShare("facebook")}
                       >
                         <Facebook className="w-3 h-3 md:w-4 md:h-4" />
                       </Button>
                       <Button
                         size="sm"
-                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={() => handleShare("twitter")}
                       >
                         <Twitter className="w-3 h-3 md:w-4 md:h-4" />
@@ -459,7 +459,7 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={handleCopyLink}
                       >
                         {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
@@ -471,19 +471,19 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
             </aside>
 
             {/* Main Content */}
-            <article className="lg:col-span-8">
+            <article className="lg:col-span-8 w-full overflow-hidden">
               {/* Mobile Share Buttons */}
               <div className="lg:hidden flex gap-2 mb-6">
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-xs"
+                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5"
                   onClick={() => handleShare("facebook")}
                 >
                   <Facebook className="w-3 h-3 mr-1" /> Share
                 </Button>
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-xs"
+                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5"
                   onClick={() => handleShare("twitter")}
                 >
                   <Twitter className="w-3 h-3 mr-1" /> Tweet
@@ -491,7 +491,7 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-xs"
+                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5"
                   onClick={handleCopyLink}
                 >
                   {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
@@ -499,27 +499,27 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
               </div>
 
               {/* Overview */}
-              <section className="mb-8 md:mb-12" id="overview">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Overview</h2>
+              <section className="mb-6 md:mb-12" id="overview">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
-                  <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
+                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     The <strong>Annapurna Region Mountain Flight Trip</strong> offers a once-in-a-lifetime opportunity to experience the majesty of the Himalayas from the air. This 6-day journey combines the thrill of a dedicated mountain flight over the Annapurna range with the cultural and natural attractions of Pokhara, creating a perfect short itinerary for those who want to witness Nepal's greatest peaks without extensive trekking.
                   </p>
-                  <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
+                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     The centerpiece of this trip is a <strong>1-hour mountain flight from Pokhara</strong> that takes you into the heart of the Annapurna Himalayas. Unlike Everest flights that remain at a distance, Annapurna flights fly incredibly close to the mountains, offering intimate views of peaks like <strong>Machhapuchhre (Fishtail), Annapurna I (8,091m), Annapurna South, Hiunchuli, and Dhaulagiri (8,167m)</strong>. Every passenger is guaranteed a window seat, ensuring unobstructed photography opportunities throughout the flight.
                   </p>
-                  <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
+                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     Beyond the flight, you'll explore the beautiful lakeside city of Pokhara, with its serene Phewa Lake, hilltop viewpoints like Sarangkot, the World Peace Pagoda, and sacred caves. The itinerary is designed for comfort and relaxation, with ample free time to absorb the stunning surroundings. Whether you're a photographer seeking the ultimate Himalayan images, a traveler with limited time, or someone who simply wants to experience the mountains without trekking, this tour delivers an unforgettable experience.
                   </p>
-                  <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+                  <p className="text-slate-600 leading-relaxed text-xs md:text-base">
                     With experienced guides, comfortable accommodations, and seamless logistics, this mountain flight trip offers the perfect introduction to Nepal's Himalayan wonders. No previous experience is required—just bring your camera and your sense of wonder.
                   </p>
                 </div>
               </section>
 
               {/* Highlights */}
-              <section className="mb-8 md:mb-12" id="highlights">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Trip Highlights</h2>
+              <section className="mb-6 md:mb-12" id="highlights">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Trip Highlights</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
                   {[
                     "1-hour dedicated mountain flight over the Annapurna range",
@@ -539,66 +539,66 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
                   ].map((highlight, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-2 md:gap-3 p-3 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
+                      className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
                     >
                       <Plane className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] shrink-0" />
-                      <span className="text-[#0f2940] font-medium text-sm md:text-base">{highlight}</span>
+                      <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
                     </div>
                   ))}
                 </div>
               </section>
 
               {/* Best Season */}
-              <section className="mb-8 md:mb-12">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Best Time for Mountain Flight</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+              <section className="mb-6 md:mb-12">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time for Mountain Flight</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4">
                   <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-4 md:p-5">
-                      <div className="flex items-center gap-2 mb-2 md:mb-3">
+                    <CardContent className="p-3 md:p-5">
+                      <div className="flex items-center gap-2 mb-1 md:mb-3">
                         <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Spring (Mar-May)</h4>
+                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Excellent visibility, warming temperatures, and clear skies. Ideal for photography with optimal lighting conditions. Rhododendrons bloom in the hills below.
                       </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
+                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Excellent</Badge>
                     </CardContent>
                   </Card>
                   <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-4 md:p-5">
-                      <div className="flex items-center gap-2 mb-2 md:mb-3">
-                        <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Autumn (Sep-Nov)</h4>
+                    <CardContent className="p-3 md:p-5">
+                      <div className="flex items-center gap-2 mb-1 md:mb-3">
+                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Crystal-clear skies, stable weather, and perfect mountain views. Peak season with the highest flight success rates. Post-monsoon clarity is exceptional.
                       </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
+                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
                     </CardContent>
                   </Card>
                   <Card className="bg-gradient-to-br from-amber-50 to-yellow-50 border-amber-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-4 md:p-5">
-                      <div className="flex items-center gap-2 mb-2 md:mb-3">
+                    <CardContent className="p-3 md:p-5">
+                      <div className="flex items-center gap-2 mb-1 md:mb-3">
                         <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-amber-500" />
-                        <h4 className="font-bold text-[#0f2940] text-sm md:text-base">Winter (Dec-Feb)</h4>
+                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Crisp clear air and excellent visibility. Cold but clear mornings with snow-covered peaks. Flights may be delayed due to fog but often operate successfully.
                       </p>
-                      <Badge className="bg-blue-100 text-blue-700 border-none text-xs">Good</Badge>
+                      <Badge className="bg-blue-100 text-blue-700 border-none text-[8px] md:text-xs">Good</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Note: Monsoon (Jun-Aug) brings clouds and rain, significantly reducing visibility. Flights are often cancelled during this period. We do not recommend mountain flights during monsoon season.</p>
+                <p className="text-[10px] md:text-xs text-slate-500 mt-2">Note: Monsoon (Jun-Aug) brings clouds and rain, significantly reducing visibility. Flights are often cancelled during this period. We do not recommend mountain flights during monsoon season.</p>
               </section>
 
               {/* Detailed Itinerary */}
-              <section className="mb-8 md:mb-12" id="itinerary">
-                <div className="flex items-center justify-between mb-4 md:mb-6">
-                  <h2 className="text-xl md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
+              <section className="mb-6 md:mb-12" id="itinerary">
+                <div className="flex items-center justify-between mb-3 md:mb-6">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm"
+                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4"
                     onClick={() =>
                       setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
                     }
@@ -617,49 +617,49 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
                     >
                       <CardContent className="p-0">
                         <button
-                          className="w-full flex items-center gap-3 md:gap-4 p-3 md:p-4 text-left"
+                          className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
                           onClick={() => toggleDay(day.day)}
                         >
-                          <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
-                            <span className="text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
-                            <span className="text-lg md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
+                          <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
+                            <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
+                            <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-sm md:text-base truncate">{day.title}</h4>
-                            <div className="flex flex-wrap gap-2 md:gap-3 text-xs text-slate-500 mt-1">
-                              <span className="flex items-center gap-1">
-                                <TrendingUp className="w-3 h-3" /> {day.altitude}
+                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
+                            <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
+                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
+                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
                               </span>
-                              <span className="flex items-center gap-1">
-                                <Backpack className="w-3 h-3" /> {day.distance}
+                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
+                                <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.distance}
                               </span>
                             </div>
                           </div>
                           <ChevronDown
-                            className={`w-4 h-4 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
+                            className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
                               expandedDays.includes(day.day) ? "rotate-180" : ""
                             }`}
                           />
                         </button>
 
                         {expandedDays.includes(day.day) && (
-                          <div className="px-3 md:px-4 pb-3 md:pb-4 border-t border-[#C5E0ED]/20">
-                            <p className="text-slate-600 text-xs md:text-sm leading-relaxed pt-3 md:pt-4 mb-3 md:mb-4">{day.description}</p>
+                          <div className="px-2 md:px-4 pb-2 md:pb-4 border-t border-[#C5E0ED]/20">
+                            <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed pt-2 md:pt-4 mb-2 md:mb-4">{day.description}</p>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-3 md:mb-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
                                 <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
-                                <span><strong>Overnight:</strong> {day.overnight}</span>
+                                <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
                               </div>
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
                                 <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
-                                <span><strong>Meals:</strong> {day.meals}</span>
+                                <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
                               </div>
                             </div>
 
-                            <div className="flex flex-wrap gap-1.5 md:gap-2">
+                            <div className="flex flex-wrap gap-1 md:gap-2">
                               {day.highlights.map((h, i) => (
-                                <Badge key={i} variant="secondary" className="bg-[#C5E0ED]/20 text-[#2d6a8a] text-xs">
+                                <Badge key={i} variant="secondary" className="bg-[#C5E0ED]/20 text-[#2d6a8a] text-[8px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1">
                                   {h}
                                 </Badge>
                               ))}
@@ -673,34 +673,34 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
               </section>
 
               {/* Includes / Excludes */}
-              <section className="mb-8 md:mb-12" id="includes">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">What's Included</h2>
-                <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+              <section className="mb-6 md:mb-12" id="includes">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included</h2>
+                <div className="grid md:grid-cols-2 gap-3 md:gap-6">
                   <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-4 md:p-6">
-                      <h3 className="font-bold text-green-800 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
+                    <CardContent className="p-3 md:p-6">
+                      <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
                         <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> Cost Includes
                       </h3>
-                      <ul className="space-y-1.5 md:space-y-2">
+                      <ul className="space-y-1 md:space-y-2">
                         {includes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-slate-600">
-                            <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" />
-                            {item}
+                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
+                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" />
+                            <span className="leading-tight">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </CardContent>
                   </Card>
                   <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-4 md:p-6">
-                      <h3 className="font-bold text-red-800 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
+                    <CardContent className="p-3 md:p-6">
+                      <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
                         <XCircle className="w-4 h-4 md:w-5 md:h-5" /> Cost Excludes
                       </h3>
-                      <ul className="space-y-1.5 md:space-y-2">
+                      <ul className="space-y-1 md:space-y-2">
                         {excludes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-slate-600">
-                            <XCircle className="w-3 h-3 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" />
-                            {item}
+                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
+                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" />
+                            <span className="leading-tight">{item}</span>
                           </li>
                         ))}
                       </ul>
@@ -710,11 +710,11 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
               </section>
 
               {/* Important Note */}
-              <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-4 md:p-6 flex gap-3 md:gap-4 mb-8 md:mb-12">
-                <AlertTriangle className="w-5 h-5 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
+              <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
+                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1.5 md:mb-2 text-sm md:text-base">Important Information for Mountain Flights</h4>
-                  <ul className="text-amber-700 text-xs md:text-sm leading-relaxed space-y-1.5 md:space-y-2">
+                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information for Mountain Flights</h4>
+                  <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
                     <li>• <strong>Weather Dependency:</strong> Mountain flights are weather-dependent. Flights operate only in clear visibility. If weather prevents the flight, you will be offered a refund (minus domestic flight costs) or rescheduling. We monitor conditions closely and advise accordingly.</li>
                     <li>• <strong>Best Time:</strong> Early morning flights (sunrise time) offer the clearest skies and best lighting for photography. Be prepared for an early start (around 6:00 AM).</li>
                     <li>• <strong>Photography Tips:</strong> Bring a camera with a zoom lens (70-200mm recommended) for close-up peak shots. Polarizing filter helps reduce glare. Clean your lens before flight and have extra memory cards and batteries ready.</li>
@@ -726,13 +726,13 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
               </div>
 
               {/* Photo Gallery */}
-              <section className="mb-8 md:mb-12" id="gallery">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Photo Gallery</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
+              <section className="mb-6 md:mb-12" id="gallery">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
                   {gallery.map((image, i) => (
                     <div
                       key={i}
-                      className="relative h-32 md:h-48 rounded-lg md:rounded-xl overflow-hidden group cursor-pointer"
+                      className="relative h-24 md:h-48 rounded-lg md:rounded-xl overflow-hidden group cursor-pointer"
                     >
                       <Image
                         src={image.src}
@@ -742,8 +742,8 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
                         sizes="(max-width: 768px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3">
-                          <p className="text-white text-xs font-medium truncate">{image.caption}</p>
+                        <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
+                          <p className="text-white text-[8px] md:text-xs font-medium truncate">{image.caption}</p>
                         </div>
                       </div>
                     </div>
@@ -752,9 +752,9 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
               </section>
 
               {/* FAQ Section */}
-              <section className="mb-8 md:mb-12" id="faq">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Frequently Asked Questions</h2>
-                <div className="space-y-3 md:space-y-4">
+              <section className="mb-6 md:mb-12" id="faq">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions</h2>
+                <div className="space-y-2 md:space-y-4">
                   {[
                     {
                       q: "How close do we get to the mountains?",
@@ -782,9 +782,9 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
-                      <CardContent className="p-4 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1.5 md:mb-2 text-sm md:text-base">{faq.q}</h4>
-                        <p className="text-slate-600 text-xs md:text-sm leading-relaxed">{faq.a}</p>
+                      <CardContent className="p-2 md:p-5">
+                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
+                        <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
                       </CardContent>
                     </Card>
                   ))}

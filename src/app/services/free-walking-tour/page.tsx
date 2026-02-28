@@ -130,7 +130,7 @@ export default function FreeWalkingTourKathmanduPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Mobile Navigation Drawer */}
       {showMobileNav && (
         <div className="lg:hidden fixed inset-0 z-50">
@@ -216,26 +216,26 @@ export default function FreeWalkingTourKathmanduPage() {
 
         <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
           <div className="max-w-5xl mx-auto text-center w-full">
-            <div className="flex flex-wrap gap-2 mb-6 justify-center">
-              <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-4 py-2 text-sm">
-                <MapPin className="w-4 h-4 mr-1" /> Tips‑based · Free Tour
+            <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
+              <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                <MapPin className="w-3 h-3 mr-1" /> Tips‑based · Free Tour
               </Badge>
-              <Badge className="bg-green-100 text-green-700 border-none font-bold px-4 py-2 text-sm">
+              <Badge className="bg-green-100 text-green-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
                 Easy · 4‑5 hours
               </Badge>
-              <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-4 py-2 text-sm">
-                <Landmark className="w-4 h-4 mr-1" /> Local expert guide
+              <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                <Landmark className="w-3 h-3 mr-1" /> Local expert guide
               </Badge>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-4 md:mb-6 tracking-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-3 md:mb-6 tracking-tight">
               FREE WALKING TOUR <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
                 KATHMANDU
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-sm sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light">
               The first tips‑based walking tour in the valley. Led by decades‑experienced guides,
               discover hidden temples, lively markets, and living culture — completely free to join.
             </p>
@@ -245,26 +245,26 @@ export default function FreeWalkingTourKathmanduPage() {
 
       {/* Main Content */}
       <section className="py-6 md:py-12">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-12 gap-6 md:gap-10">
+        <div className="container mx-auto px-3 md:px-6 max-w-full overflow-hidden">
+          <div className="grid lg:grid-cols-12 gap-4 md:gap-10">
             {/* Mobile Sticky Info Bar */}
-            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-3">
-              <div className="container mx-auto px-4">
+            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2">
+              <div className="container mx-auto px-3">
                 <div className="flex items-center justify-between">
                   <div className="text-sm text-[#0f2940] font-medium">
-                    <span className="text-slate-500 text-xs">tips‑based</span>
-                    <div className="font-bold">free to join</div>
+                    <span className="text-slate-500 text-[10px]">tips‑based</span>
+                    <div className="font-bold text-xs">free to join</div>
                   </div>
                   <Link href="/contact">
-                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-6 py-2 text-sm">
-                      <Heart className="w-4 h-4 mr-2" /> Join Free
+                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs">
+                      <Heart className="w-3 h-3 mr-1" /> Join Free
                     </Button>
                   </Link>
                 </div>
               </div>
             </div>
 
-            {/* Sidebar */}
+            {/* Sidebar - Hidden on mobile */}
             <aside className="hidden lg:block lg:col-span-4">
               <div className="sticky top-24 space-y-4 md:space-y-6">
                 {/* Info Card */}
@@ -272,49 +272,49 @@ export default function FreeWalkingTourKathmanduPage() {
                   <CardContent className="p-4 md:p-6">
                     <div className="text-center mb-4 md:mb-6">
                       <div className="text-3xl md:text-4xl font-bold text-white mt-1">FREE</div>
-                      <span className="text-white/60 text-sm">tips‑based tour</span>
-                      <Badge className="ml-2 bg-amber-500/20 text-amber-300 border-none text-xs">you decide</Badge>
+                      <span className="text-white/60 text-[10px] md:text-sm">tips‑based tour</span>
+                      <Badge className="ml-2 bg-amber-500/20 text-amber-300 border-none text-[8px] md:text-xs">you decide</Badge>
                     </div>
 
                     <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>4‑5 hours · 9am & 2pm daily</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <MapPin className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>Start: Garden of Dreams</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>Group: any size (intimate)</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Footprints className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>End: Monkey Temple (Swoyambhu)</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Landmark className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
                         <span>No reservation needed</span>
                       </div>
                     </div>
 
                     <Link href="/contact">
-                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-sm md:text-base">
+                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
                         <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Confirm attendance
                       </Button>
                     </Link>
-                    <p className="text-[10px] text-white/40 text-center">please arrive 5‑10 min early</p>
+                    <p className="text-[8px] md:text-[10px] text-white/40 text-center">please arrive 5‑10 min early</p>
                   </CardContent>
                 </Card>
 
                 {/* Quick Facts */}
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
+                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
                       <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
                     </h3>
-                    <div className="space-y-2 text-xs md:text-sm">
+                    <div className="space-y-2 text-[10px] md:text-sm">
                       <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
                         <span className="text-slate-500">Start times</span>
                         <span className="font-medium text-[#0f2940]">9:00 & 14:00</span>
@@ -342,20 +342,20 @@ export default function FreeWalkingTourKathmanduPage() {
                 {/* Share */}
                 <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
+                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
                       <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
                     </h3>
                     <div className="flex gap-2">
                       <Button
                         size="sm"
-                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={() => handleShare("facebook")}
                       >
                         <Facebook className="w-3 h-3 md:w-4 md:h-4" />
                       </Button>
                       <Button
                         size="sm"
-                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={() => handleShare("twitter")}
                       >
                         <Twitter className="w-3 h-3 md:w-4 md:h-4" />
@@ -363,7 +363,7 @@ export default function FreeWalkingTourKathmanduPage() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={handleCopyLink}
                       >
                         {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
@@ -375,19 +375,19 @@ export default function FreeWalkingTourKathmanduPage() {
             </aside>
 
             {/* Main Content */}
-            <article className="lg:col-span-8">
+            <article className="lg:col-span-8 w-full overflow-hidden">
               {/* Mobile Share Buttons */}
               <div className="lg:hidden flex gap-2 mb-6">
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-xs"
+                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5"
                   onClick={() => handleShare("facebook")}
                 >
                   <Facebook className="w-3 h-3 mr-1" /> Share
                 </Button>
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-xs"
+                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5"
                   onClick={() => handleShare("twitter")}
                 >
                   <Twitter className="w-3 h-3 mr-1" /> Tweet
@@ -395,7 +395,7 @@ export default function FreeWalkingTourKathmanduPage() {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-xs"
+                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5"
                   onClick={handleCopyLink}
                 >
                   {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
@@ -403,54 +403,54 @@ export default function FreeWalkingTourKathmanduPage() {
               </div>
 
               {/* Overview */}
-              <section className="mb-8 md:mb-12" id="overview">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Experience</h2>
+              <section className="mb-6 md:mb-12" id="overview">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Experience</h2>
                 <div className="prose prose-slate max-w-none">
-                  <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
+                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     <strong>Free Tour Kathmandu</strong> is the first of its kind in the Kathmandu Valley. While other walking tours exist,
                     this is the only one that provides a free glimpse of the highlights of Kathmandu, led and narrated by a dedicated tour guide with decades of experience.
                     Winding through the heart of the old centre, the tour encompasses iconic temples, stupas, monasteries, palaces and local Newar architecture.
                   </p>
-                  <p className="text-slate-600 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
+                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     Departing from just outside the <strong>Garden of Dreams</strong> at 9:00 and 14:00 daily, the tour passes through southern Thamel
                     via Kathesimbhu Stupa and Buddhist monasteries, then enters local streets towards Indra Chowk market.
                     From there, the tour passes around Durbar Square and through a sleepy Newar neighbourhood towards the local cremation centre near the sacred Vishnumati River.
                   </p>
-                  <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+                  <p className="text-slate-600 leading-relaxed text-xs md:text-base">
                     Crossing the river, the tour passes through Swoyambhunath suburb and finishes at the top of picturesque <strong>Monkey Temple</strong>.
                     Your guide will either walk you back to Thamel or direct you to a bus or taxi.
                   </p>
                 </div>
-                <div className="mt-4 p-4 bg-amber-50 border-l-4 border-amber-400 text-amber-800 text-sm rounded">
-                  <AlertTriangle className="w-4 h-4 inline mr-2" />
+                <div className="mt-3 md:mt-4 p-2 md:p-4 bg-amber-50 border-l-4 border-amber-400 text-amber-800 text-[10px] md:text-sm rounded">
+                  <AlertTriangle className="w-3 h-3 md:w-4 md:h-4 inline mr-1 md:mr-2" />
                   <strong>Tips‑based model:</strong> you award the time and experience of the guide. No fixed fee — gratitude welcomed.
                 </div>
               </section>
 
               {/* Highlights */}
-              <section className="mb-8 md:mb-12" id="highlights">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Trip Highlights</h2>
+              <section className="mb-6 md:mb-12" id="highlights">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Trip Highlights</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
                   {highlightsList.map((highlight, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-2 md:gap-3 p-3 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
+                      className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
                     >
                       <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] shrink-0" />
-                      <span className="text-[#0f2940] font-medium text-sm md:text-base">{highlight}</span>
+                      <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
                     </div>
                   ))}
                 </div>
               </section>
 
               {/* Tour Stops (like itinerary but as expandable cards) */}
-              <section className="mb-8 md:mb-12" id="stops">
-                <div className="flex items-center justify-between mb-4 md:mb-6">
-                  <h2 className="text-xl md:text-2xl font-serif text-[#0f2940]">Stops along the way</h2>
+              <section className="mb-6 md:mb-12" id="stops">
+                <div className="flex items-center justify-between mb-3 md:mb-6">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Stops along the way</h2>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm"
+                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4"
                     onClick={() =>
                       setExpandedStops(expandedStops.length === tourStops.length ? [] : tourStops.map((_, i) => i))
                     }
@@ -471,25 +471,25 @@ export default function FreeWalkingTourKathmanduPage() {
                       >
                         <CardContent className="p-0">
                           <button
-                            className="w-full flex items-center gap-3 md:gap-4 p-3 md:p-4 text-left"
+                            className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
                             onClick={() => toggleStop(idx)}
                           >
-                            <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center shrink-0">
-                              <Icon className="w-5 h-5 md:w-6 md:h-6 text-[#0f2940]" />
+                            <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center shrink-0">
+                              <Icon className="w-4 h-4 md:w-6 md:h-6 text-[#0f2940]" />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <h4 className="font-bold text-[#0f2940] text-sm md:text-base truncate">{stop.name}</h4>
+                              <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{stop.name}</h4>
                             </div>
                             <ChevronDown
-                              className={`w-4 h-4 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
+                              className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
                                 expandedStops.includes(idx) ? "rotate-180" : ""
                               }`}
                             />
                           </button>
 
                           {expandedStops.includes(idx) && (
-                            <div className="px-3 md:px-4 pb-3 md:pb-4 border-t border-[#C5E0ED]/20">
-                              <p className="text-slate-600 text-xs md:text-sm leading-relaxed pt-3 md:pt-4">
+                            <div className="px-2 md:px-4 pb-2 md:pb-4 border-t border-[#C5E0ED]/20">
+                              <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed pt-2 md:pt-4">
                                 {stop.description}
                               </p>
                             </div>
@@ -502,59 +502,57 @@ export default function FreeWalkingTourKathmanduPage() {
               </section>
 
               {/* Reviews & Tips box */}
-              <section className="mb-8 md:mb-12" id="reviews">
+              <section className="mb-6 md:mb-12" id="reviews">
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-5 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 flex items-center gap-2 text-base md:text-lg">
-                      <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" /> Reviews
+                  <CardContent className="p-3 md:p-6">
+                    <h3 className="font-bold text-[#0f2940] mb-2 flex items-center gap-2 text-sm md:text-lg">
+                      <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-500 fill-yellow-500" /> Reviews
                     </h3>
-                    <p className="text-slate-700 mb-2">
+                    <p className="text-slate-700 mb-2 text-[10px] md:text-sm">
                       Out of over <strong>{reviews.total}+ reviews on TripAdvisor</strong>, {reviews.excellent}% rate the Free Walking Tour as ‘Excellent’ or ({reviews.veryGood}% ‘Very Good’).
                     </p>
-                    <p className="text-slate-600 italic text-sm">“{reviews.quote}”</p>
-                    <div className="mt-4 text-xs text-slate-500 flex items-center gap-1">
-                      <Users className="w-3 h-3" /> solo, couples, families – all welcome
+                    <p className="text-slate-600 italic text-[10px] md:text-sm">“{reviews.quote}”</p>
+                    <div className="mt-3 md:mt-4 text-[8px] md:text-xs text-slate-500 flex items-center gap-1">
+                      <Users className="w-2.5 h-2.5 md:w-3 md:h-3" /> solo, couples, families – all welcome
                     </div>
                   </CardContent>
                 </Card>
               </section>
 
               {/* Practical info (monkey temple note, entrance fee) */}
-              <section className="mb-8 md:mb-12" id="practical">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Note & Practical</h2>
-                <div className="bg-blue-50 border border-blue-200 rounded-lg md:rounded-2xl p-4 md:p-6">
-                  <div className="flex gap-3">
+              <section className="mb-6 md:mb-12" id="practical">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Note & Practical</h2>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg md:rounded-2xl p-2 md:p-6">
+                  <div className="flex gap-2 md:gap-3">
                     <div>
-                      <p className="text-blue-800 text-sm mb-2">
+                      <p className="text-blue-800 text-[10px] md:text-sm mb-1 md:mb-2">
                         <strong>Please confirm prior to joining:</strong> The Free Walking Tour is tips‑based — you award the guide for their time and experience. Please show up at the Garden of Dreams 5‑10 minutes before start.
                       </p>
-                      <p className="text-blue-700 text-sm">
+                      <p className="text-blue-700 text-[10px] md:text-sm">
                         <strong>Monkey Temple entrance:</strong> NPR 200 per person (not included, payable on the spot). Bring small cash for refreshments like lassi or souvenirs.
                       </p>
-                      <p className="text-blue-700 text-sm mt-2">Namaste 🙏</p>
+                      <p className="text-blue-700 text-[10px] md:text-sm mt-1 md:mt-2">Namaste 🙏</p>
                     </div>
                   </div>
                 </div>
               </section>
 
               {/* Photo Gallery - minimal version */}
-              <section className="mb-8 md:mb-12" id="gallery">
-                <h2 className="text-xl md:text-2xl font-serif text-[#0f2940] mb-3 md:mb-4">Glances of the route</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+              <section className="mb-6 md:mb-12" id="gallery">
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Glances of the route</h2>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-3">
                   {[
                     "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&auto=format",
                     "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&auto=format",
                     "https://images.unsplash.com/photo-1486911278844-a81c5267e227?w=400&auto=format",
                     "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&auto=format",
                   ].map((src, i) => (
-                    <div key={i} className="relative h-24 md:h-32 rounded-lg overflow-hidden">
+                    <div key={i} className="relative h-20 md:h-32 rounded-lg overflow-hidden">
                       <Image src={src} alt="tour preview" fill className="object-cover" />
                     </div>
                   ))}
                 </div>
               </section>
-
-              
             </article>
           </div>
         </div>
