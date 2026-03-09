@@ -434,13 +434,27 @@ const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
                 className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
                 onClick={closeMenu}
               >
-                City Tours
+                Multi Day Cultural Tours
               </Link>
               <Link
                 href="/services/mountain-flight"
                 className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
                 onClick={closeMenu}
               >
+                <Link
+                href="/services/trekking"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+                Day Hikings
+              </Link>
+              <Link
+                href="/services/city-tours"
+                className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
+                onClick={closeMenu}
+              >
+Day Sightseeings              </Link>
+              
                 Mountain Flights and Helicopter Sightseeings
               </Link>
               <Link
