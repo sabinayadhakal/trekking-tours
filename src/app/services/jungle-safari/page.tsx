@@ -68,6 +68,7 @@ const jungleSafaris = [
     featured: true,
     activities: ["Elephant Safari", "Jungle Walk", "Canoe", "Cultural Show"],
     wildlife: ["Rhino", "Tiger", "Crocodile", "Birds"],
+    link: "/destinations/safari/chitwan-classic-safari",
   },
   {
     id: 2,
@@ -87,6 +88,7 @@ const jungleSafaris = [
     featured: true,
     activities: ["Jeep Safari", "Tiger Tracking", "Birding", "Village Visit"],
     wildlife: ["Tiger", "Elephant", "Gangetic Dolphin", "Deer"],
+    link: "/destinations/safari/bardiya-wilderness-safari",
   },
   {
     id: 3,
@@ -106,6 +108,7 @@ const jungleSafaris = [
     featured: false,
     activities: ["Bird Watching", "River Safari", "Nature Walk", "Photography"],
     wildlife: ["Birds", "Water Buffalo", "Dolphin", "Gharial"],
+    link: "/destinations/safari/koshi-tappu-birding-safari",
   },
   {
     id: 4,
@@ -125,6 +128,7 @@ const jungleSafaris = [
     featured: true,
     activities: ["Elephant Safari", "Jeep Drive", "Tower Watch", "Grassland Tour"],
     wildlife: ["Rhino", "Swamp Deer", "Tiger", "Elephant"],
+    link: "/destinations/safari/shuklaphanta-rhino-safari",
   },
   {
     id: 5,
@@ -144,6 +148,7 @@ const jungleSafaris = [
     featured: false,
     activities: ["Private Safari", "Spa Treatment", "Fine Dining", "Cultural Tour"],
     wildlife: ["Rhino", "Tiger", "Bear", "Crocodile"],
+    link: "/destinations/safari/chitwan-luxury-safari",
   },
   {
     id: 6,
@@ -163,6 +168,7 @@ const jungleSafaris = [
     featured: true,
     activities: ["Tracking", "Camera Traps", "Research Visit", "Night Safari"],
     wildlife: ["Tiger", "Leopard", "Wild Elephant", "Dolphin"],
+    link: "/destinations/safari/bardiya-tiger-special",
   },
   {
     id: 7,
@@ -182,6 +188,7 @@ const jungleSafaris = [
     featured: false,
     activities: ["Elephant Bath", "Craft Workshop", "Nature Games", "Campfire"],
     wildlife: ["Rhino", "Monkey", "Deer", "Birds"],
+    link: "/destinations/safari/family-jungle-adventure",
   },
   {
     id: 8,
@@ -201,6 +208,7 @@ const jungleSafaris = [
     featured: true,
     activities: ["Hide Photography", "Editing Workshop", "Golden Hour Shoots", "Review Sessions"],
     wildlife: ["Tiger", "Birds", "Landscapes", "Macro"],
+    link: "/destinations/safari/photography-safari",
   },
   {
     id: 9,
@@ -220,6 +228,7 @@ const jungleSafaris = [
     featured: false,
     activities: ["Volunteering", "Research Help", "Community Work", "Monitoring"],
     wildlife: ["Rhino", "Elephant", "Birds", "Reptiles"],
+    link: "/destinations/safari/conservation-volunteer-safari",
   },
 ];
 
@@ -460,86 +469,93 @@ export default function JungleSafariPage() {
       {featuredSafari && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
-              <div className="grid lg:grid-cols-2">
-                <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
-                  <Image
-                    src={featuredSafari.image}
-                    alt={featuredSafari.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1 text-xs md:text-sm">
-                      Most Popular
+            <div 
+              onClick={() => window.location.href = featuredSafari.link}
+              className="cursor-pointer"
+            >
+              <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
+                <div className="grid lg:grid-cols-2">
+                  <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
+                    <Image
+                      src={featuredSafari.image}
+                      alt={featuredSafari.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1 text-xs md:text-sm">
+                        Most Popular
+                      </Badge>
+                    </div>
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" /> {featuredSafari.rating} ({featuredSafari.reviews})
+                    </div>
+                  </div>
+                  <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
+                    <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
+                      <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredSafari.park}
                     </Badge>
-                  </div>
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" /> {featuredSafari.rating} ({featuredSafari.reviews})
-                  </div>
-                </div>
-                <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
-                  <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
-                    <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredSafari.park}
-                  </Badge>
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
-                    {featuredSafari.name}
-                  </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
-                    {featuredSafari.description}
-                  </p>
-                  <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredSafari.duration}
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
+                      {featuredSafari.name}
+                    </h2>
+                    <p className="text-slate-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
+                      {featuredSafari.description}
+                    </p>
+                    <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredSafari.duration}
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Trees className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredSafari.difficulty}
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredSafari.groupSize} People
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredSafari.bestSeason}
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Trees className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredSafari.difficulty}
+                    
+                    {/* Wildlife Icons */}
+                    <div className="mb-4 md:mb-6">
+                      <h4 className="text-sm font-medium text-[#0f2940] mb-2">Spot These Animals:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {featuredSafari.wildlife.map((animal, idx) => {
+                          const Icon = getWildlifeIcon(animal);
+                          return (
+                            <span key={idx} className="flex items-center gap-1.5 text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
+                              <Icon className="w-3 h-3" /> {animal}
+                            </span>
+                          );
+                        })}
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredSafari.groupSize} People
-                    </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredSafari.bestSeason}
-                    </div>
-                  </div>
-                  
-                  {/* Wildlife Icons */}
-                  <div className="mb-4 md:mb-6">
-                    <h4 className="text-sm font-medium text-[#0f2940] mb-2">Spot These Animals:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {featuredSafari.wildlife.map((animal, idx) => {
-                        const Icon = getWildlifeIcon(animal);
-                        return (
-                          <span key={idx} className="flex items-center gap-1.5 text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
-                            <Icon className="w-3 h-3" /> {animal}
-                          </span>
-                        );
-                      })}
-                    </div>
-                  </div>
 
-                  <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
-                    {featuredSafari.highlights.map((h, idx) => (
-                      <span key={idx} className="text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
-                        {h}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 md:pt-6 border-t border-slate-100 gap-4">
-                    <div>
-                      <span className="text-slate-400 text-sm line-through">${featuredSafari.originalPrice}</span>
-                      <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredSafari.price}</span>
-                      <span className="text-slate-500 text-sm">/person</span>
+                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
+                      {featuredSafari.highlights.map((h, idx) => (
+                        <span key={idx} className="text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
+                          {h}
+                        </span>
+                      ))}
                     </div>
-                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
-                      Book Safari
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 md:pt-6 border-t border-slate-100 gap-4">
+                      <div>
+                        <span className="text-slate-400 text-sm line-through">${featuredSafari.originalPrice}</span>
+                        <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredSafari.price}</span>
+                        <span className="text-slate-500 text-sm">/person</span>
+                      </div>
+                      <Link href={`/contact?trek=${encodeURIComponent(featuredSafari.name)}`} onClick={(e) => e.stopPropagation()}>
+                        <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
+                          Book Safari
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            </div>
           </div>
         </section>
       )}
@@ -559,79 +575,84 @@ export default function JungleSafariPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredSafaris.map((safari, i) => (
-              <Card 
+              <div 
                 key={safari.id} 
-                className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group cursor-pointer"
+                onClick={() => window.location.href = safari.link}
+                className="cursor-pointer"
               >
-                <div className="relative h-40 md:h-52 overflow-hidden">
-                  <Image
-                    src={safari.image}
-                    alt={safari.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <Badge className={`border-none text-xs font-medium ${getDifficultyColor(safari.difficulty)}`}>
-                      {safari.difficulty}
-                    </Badge>
-                  </div>
-                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {safari.rating}
-                  </div>
-                  {safari.featured && (
-                    <div className="absolute bottom-3 left-3">
-                      <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none text-xs font-bold">
-                        Featured
+                <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
+                  <div className="relative h-40 md:h-52 overflow-hidden">
+                    <Image
+                      src={safari.image}
+                      alt={safari.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <Badge className={`border-none text-xs font-medium ${getDifficultyColor(safari.difficulty)}`}>
+                        {safari.difficulty}
                       </Badge>
                     </div>
-                  )}
-                </div>
-                <CardContent className="p-4 md:p-6">
-                  <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
-                    {safari.park.replace(" National Park", "")}
-                  </Badge>
-                  <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-1 md:mb-2 group-hover:text-[#2d6a8a] transition-colors line-clamp-1">
-                    {safari.name}
-                  </h4>
-                  <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
-                    {safari.description}
-                  </p>
-                  
-                  {/* Wildlife Mini Icons */}
-                  <div className="flex items-center gap-1.5 mb-3 md:mb-4">
-                    {safari.wildlife.slice(0, 3).map((animal, idx) => {
-                      const Icon = getWildlifeIcon(animal);
-                      return (
-                        <span key={idx} className="text-xs bg-[#C5E0ED]/10 text-[#2d6a8a] p-1 rounded-full">
-                          <Icon className="w-3 h-3" />
-                        </span>
-                      );
-                    })}
-                    {safari.wildlife.length > 3 && (
-                      <span className="text-xs text-slate-500">+{safari.wildlife.length - 3} more</span>
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {safari.rating}
+                    </div>
+                    {safari.featured && (
+                      <div className="absolute bottom-3 left-3">
+                        <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none text-xs font-bold">
+                          Featured
+                        </Badge>
+                      </div>
                     )}
                   </div>
-                  
-                  <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
-                    <div className="flex items-center gap-1.5 text-slate-500">
-                      <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {safari.duration}
+                  <CardContent className="p-4 md:p-6">
+                    <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
+                      {safari.park.replace(" National Park", "")}
+                    </Badge>
+                    <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-1 md:mb-2 group-hover:text-[#2d6a8a] transition-colors line-clamp-1">
+                      {safari.name}
+                    </h4>
+                    <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
+                      {safari.description}
+                    </p>
+                    
+                    {/* Wildlife Mini Icons */}
+                    <div className="flex items-center gap-1.5 mb-3 md:mb-4">
+                      {safari.wildlife.slice(0, 3).map((animal, idx) => {
+                        const Icon = getWildlifeIcon(animal);
+                        return (
+                          <span key={idx} className="text-xs bg-[#C5E0ED]/10 text-[#2d6a8a] p-1 rounded-full">
+                            <Icon className="w-3 h-3" />
+                          </span>
+                        );
+                      })}
+                      {safari.wildlife.length > 3 && (
+                        <span className="text-xs text-slate-500">+{safari.wildlife.length - 3} more</span>
+                      )}
                     </div>
-                    <div className="flex items-center gap-1.5 text-slate-500">
-                      <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {safari.groupSize}
+                    
+                    <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {safari.duration}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {safari.groupSize}
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
-                    <div>
-                      <span className="text-slate-400 text-xs line-through">${safari.originalPrice}</span>
-                      <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${safari.price}</span>
+                    <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
+                      <div>
+                        <span className="text-slate-400 text-xs line-through">${safari.originalPrice}</span>
+                        <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${safari.price}</span>
+                      </div>
+                      <Link href={`/contact?trek=${encodeURIComponent(safari.name)}`} onClick={(e) => e.stopPropagation()}>
+                        <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
+                          Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                        </Button>
+                      </Link>
                     </div>
-                    <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
-                      Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
 
@@ -655,9 +676,11 @@ export default function JungleSafariPage() {
           )}
 
           <div className="text-center mt-8 md:mt-12">
-            <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
-              View All Safari Packages
-            </Button>
+            <Link href="/safari">
+              <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
+                View All Safari Packages
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

@@ -63,6 +63,7 @@ const culturalTours = [
     highlights: ["7 UNESCO Sites", "Newari Cuisine Workshop", "Pottery Making", "Cultural Dance Evening"],
     description: "Immerse yourself in the living heritage of Kathmandu's ancient cities through hands-on cultural experiences.",
     featured: true,
+    link: "/destinations/cultural-tours/kathmandu-valley-heritage-explorer",
   },
   {
     id: 2,
@@ -81,6 +82,7 @@ const culturalTours = [
     highlights: ["Gurung Villages", "Annapurna Views", "Home Stays", "Traditional Dances"],
     description: "Experience the rich Gurung and Magar cultures while trekking through breathtaking Himalayan landscapes.",
     featured: true,
+    link: "/destinations/cultural-tours/annapurna-cultural-trek",
   },
   {
     id: 3,
@@ -99,6 +101,7 @@ const culturalTours = [
     highlights: ["Maya Devi Temple", "Monastic Meditation", "Sacred Garden", "Peace Pagoda"],
     description: "Follow the footsteps of Buddha through sacred sites and ancient monastic zones.",
     featured: false,
+    link: "/destinations/cultural-tours/lumbini-buddha-trail",
   },
   {
     id: 4,
@@ -117,6 +120,7 @@ const culturalTours = [
     highlights: ["Tengboche Monastery", "Sherpa Villages", "Mountain Views", "Buddhist Ceremonies"],
     description: "Discover Sherpa Buddhist culture while trekking to the world's highest monasteries.",
     featured: true,
+    link: "/destinations/cultural-tours/everest-monastery-trek",
   },
   {
     id: 5,
@@ -135,6 +139,7 @@ const culturalTours = [
     highlights: ["Newari Architecture", "Gorkha Palace", "Traditional Crafts", "Mountain Views"],
     description: "Step back in time in perfectly preserved hill towns with rich Newari and Gorkhali heritage.",
     featured: false,
+    link: "/destinations/cultural-tours/bandipur-gorkha-heritage",
   },
   {
     id: 6,
@@ -153,6 +158,7 @@ const culturalTours = [
     highlights: ["Tamang Heritage", "Buddhist Monasteries", "Hot Springs", "Local Home Stays"],
     description: "Experience the unique Tamang culture and hospitality in the beautiful Langtang Valley.",
     featured: true,
+    link: "/destinations/cultural-tours/langtang-valley-cultural-trek",
   },
   {
     id: 7,
@@ -171,6 +177,7 @@ const culturalTours = [
     highlights: ["Mithila Painting", "Janaki Temple", "Local Artisans", "Folk Music"],
     description: "Learn the ancient art of Mithila painting from master artists in its birthplace.",
     featured: false,
+    link: "/destinations/cultural-tours/janakpur-mithila-art",
   },
   {
     id: 8,
@@ -189,6 +196,7 @@ const culturalTours = [
     highlights: ["Palpa Durbar", "Metal Crafts", "Sacred Ridi", "Magar Culture"],
     description: "Explore the rich history and craftsmanship of this ancient Magar kingdom.",
     featured: true,
+    link: "/destinations/cultural-tours/tansen-ridi-journey",
   },
   {
     id: 9,
@@ -207,6 +215,7 @@ const culturalTours = [
     highlights: ["Ancient Monasteries", "Tibetan Culture", "Cave Dwellings", "Forbidden Kingdom"],
     description: "Journey to the legendary walled city of Lo Manthang in the trans-Himalayan kingdom of Mustang.",
     featured: true,
+    link: "/destinations/cultural-tours/mustang-lo-manthang-expedition",
   },
 ];
 
@@ -419,70 +428,77 @@ export default function MultiDayCulturalToursPage() {
       {featuredTour && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
-              <div className="grid lg:grid-cols-2">
-                <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
-                  <Image
-                    src={featuredTour.image}
-                    alt={featuredTour.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1 text-xs md:text-sm">
-                      Most Popular
+            <div 
+              onClick={() => window.location.href = featuredTour.link}
+              className="cursor-pointer"
+            >
+              <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
+                <div className="grid lg:grid-cols-2">
+                  <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
+                    <Image
+                      src={featuredTour.image}
+                      alt={featuredTour.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1 text-xs md:text-sm">
+                        Most Popular
+                      </Badge>
+                    </div>
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" /> {featuredTour.rating} ({featuredTour.reviews})
+                    </div>
+                  </div>
+                  <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
+                    <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
+                      <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredTour.region}
                     </Badge>
-                  </div>
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" /> {featuredTour.rating} ({featuredTour.reviews})
-                  </div>
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
+                      {featuredTour.name}
+                    </h2>
+                    <p className="text-slate-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
+                      {featuredTour.description}
+                    </p>
+                    <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredTour.duration}
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Landmark className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredTour.category}
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredTour.groupSize} People
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredTour.bestSeason}
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
+                      {featuredTour.highlights.map((h, idx) => (
+                        <span key={idx} className="text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
+                          {h}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 md:pt-6 border-t border-slate-100 gap-4">
+                      <div>
+                        <span className="text-slate-400 text-sm line-through">${featuredTour.originalPrice}</span>
+                        <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredTour.price}</span>
+                        <span className="text-slate-500 text-sm">/person</span>
+                      </div>
+                      <Link href={`/contact?trek=${encodeURIComponent(featuredTour.name)}`} onClick={(e) => e.stopPropagation()}>
+                        <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
+                          Book Now
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
                 </div>
-                <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
-                  <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
-                    <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredTour.region}
-                  </Badge>
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
-                    {featuredTour.name}
-                  </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
-                    {featuredTour.description}
-                  </p>
-                  <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredTour.duration}
-                    </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Landmark className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredTour.category}
-                    </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredTour.groupSize} People
-                    </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredTour.bestSeason}
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
-                    {featuredTour.highlights.map((h, idx) => (
-                      <span key={idx} className="text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
-                        {h}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 md:pt-6 border-t border-slate-100 gap-4">
-                    <div>
-                      <span className="text-slate-400 text-sm line-through">${featuredTour.originalPrice}</span>
-                      <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredTour.price}</span>
-                      <span className="text-slate-500 text-sm">/person</span>
-                    </div>
-                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
-                      Book Now
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
+              </Card>
+            </div>
           </div>
         </section>
       )}
@@ -502,63 +518,68 @@ export default function MultiDayCulturalToursPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredTours.map((tour, i) => (
-              <Card 
+              <div 
                 key={tour.id} 
-                className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group cursor-pointer"
+                onClick={() => window.location.href = tour.link}
+                className="cursor-pointer"
               >
-                <div className="relative h-40 md:h-52 overflow-hidden">
-                  <Image
-                    src={tour.image}
-                    alt={tour.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <Badge className={`border-none text-xs font-medium ${getCategoryColor(tour.category)}`}>
-                      {tour.category}
-                    </Badge>
-                  </div>
-                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {tour.rating}
-                  </div>
-                  {tour.featured && (
-                    <div className="absolute bottom-3 left-3">
-                      <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none text-xs font-bold">
-                        Featured
+                <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
+                  <div className="relative h-40 md:h-52 overflow-hidden">
+                    <Image
+                      src={tour.image}
+                      alt={tour.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <Badge className={`border-none text-xs font-medium ${getCategoryColor(tour.category)}`}>
+                        {tour.category}
                       </Badge>
                     </div>
-                  )}
-                </div>
-                <CardContent className="p-4 md:p-6">
-                  <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
-                    {tour.region}
-                  </Badge>
-                  <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-1 md:mb-2 group-hover:text-[#2d6a8a] transition-colors line-clamp-1">
-                    {tour.name}
-                  </h4>
-                  <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
-                    {tour.description}
-                  </p>
-                  <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
-                    <div className="flex items-center gap-1.5 text-slate-500">
-                      <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {tour.duration}
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {tour.rating}
                     </div>
-                    <div className="flex items-center gap-1.5 text-slate-500">
-                      <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {tour.groupSize}
-                    </div>
+                    {tour.featured && (
+                      <div className="absolute bottom-3 left-3">
+                        <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none text-xs font-bold">
+                          Featured
+                        </Badge>
+                      </div>
+                    )}
                   </div>
-                  <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
-                    <div>
-                      <span className="text-slate-400 text-xs line-through">${tour.originalPrice}</span>
-                      <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${tour.price}</span>
+                  <CardContent className="p-4 md:p-6">
+                    <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
+                      {tour.region}
+                    </Badge>
+                    <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-1 md:mb-2 group-hover:text-[#2d6a8a] transition-colors line-clamp-1">
+                      {tour.name}
+                    </h4>
+                    <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
+                      {tour.description}
+                    </p>
+                    <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {tour.duration}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {tour.groupSize}
+                      </div>
                     </div>
-                    <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
-                      Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                    <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
+                      <div>
+                        <span className="text-slate-400 text-xs line-through">${tour.originalPrice}</span>
+                        <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${tour.price}</span>
+                      </div>
+                      <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
+                        <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
+                          Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
 
@@ -582,9 +603,11 @@ export default function MultiDayCulturalToursPage() {
           )}
 
           <div className="text-center mt-8 md:mt-12">
-            <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
-              View All Experiences
-            </Button>
+            <Link href="/cultural-tours">
+              <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
+                View All Experiences
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

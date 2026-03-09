@@ -123,6 +123,9 @@ export default function BhaktapurPatanSightseeingPage() {
   const [copied, setCopied] = React.useState(false);
   const [expandedDays, setExpandedDays] = React.useState<number[]>([1]);
   const [showMobileNav, setShowMobileNav] = React.useState(false);
+  
+  // Tour name constant for auto-fill functionality
+  const tourName = "Bhaktapur & Patan Sightseeing Tour";
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -277,7 +280,7 @@ export default function BhaktapurPatanSightseeingPage() {
                     <div className="text-xs text-slate-400 line-through">$120</div>
                     <div className="text-lg font-bold text-[#0f2940]">$95</div>
                   </div>
-                  <Link href="/contact">
+                  <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
                     <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs">
                       <Heart className="w-3 h-3 mr-1" /> Book Now
                     </Button>
@@ -322,12 +325,12 @@ export default function BhaktapurPatanSightseeingPage() {
                       </div>
                     </div>
 
-                    <Link href="/contact">
+                    <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
                       <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
                         <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Tour
                       </Button>
                     </Link>
-                    <Link href="/contact">
+                    <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
                       <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/10 rounded-full h-10 md:h-12 text-xs md:text-base">
                         <Phone className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Enquire Now
                       </Button>

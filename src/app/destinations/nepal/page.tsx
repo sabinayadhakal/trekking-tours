@@ -53,6 +53,7 @@ const trekkingPackages = [
     region: "Everest Region",
     highlights: ["Everest Base Camp", "Kala Patthar", "Namche Bazaar", "Tengboche Monastery"],
     description: "Walk in the footsteps of legends to the base of the world's highest peak.",
+    link: "/services/trekking/everest-base-camp-trek",
   },
   {
     name: "Annapurna Circuit Trek",
@@ -65,6 +66,7 @@ const trekkingPackages = [
     region: "Annapurna Region",
     highlights: ["Thorong La Pass", "Muktinath Temple", "Manang Valley", "Tatopani Hot Springs"],
     description: "The classic Himalayan circuit crossing the legendary Thorong La Pass.",
+    link: "/services/trekking/annapurna-circuit-trek",
   },
   {
     name: "Manaslu Circuit Trek",
@@ -77,7 +79,7 @@ const trekkingPackages = [
     region: "Manaslu Region",
     highlights: ["Larkya La Pass", "Tibetan Villages", "Remote Trails", "Buddhist Monasteries"],
     description: "Circle the world's eighth highest mountain through pristine wilderness.",
-    link: "/trekking-in-nepal/manaslu-circuit-trek",
+    link: "/services/trekking/manaslu-circuit-trek",
   },
   {
     name: "Langtang Valley Trek",
@@ -90,6 +92,7 @@ const trekkingPackages = [
     region: "Langtang Region",
     highlights: ["Kyanjin Gompa", "Langtang Village", "Cheese Factory", "Tserko Ri"],
     description: "Explore the 'Valley of Glaciers' just north of Kathmandu.",
+    link: "/services/trekking/langtang-valley-trek",
   },
   {
     name: "Upper Mustang Trek",
@@ -102,6 +105,7 @@ const trekkingPackages = [
     region: "Mustang Region",
     highlights: ["Lo Manthang", "Ancient Caves", "Tibetan Culture", "Desert Landscape"],
     description: "Journey to the forbidden kingdom of Lo in the rain shadow of the Himalayas.",
+    link: "/services/trekking/upper-mustang-trek",
   },
   {
     name: "Ghorepani Poon Hill Trek",
@@ -114,6 +118,7 @@ const trekkingPackages = [
     region: "Annapurna Region",
     highlights: ["Poon Hill Sunrise", "Rhododendron Forests", "Gurung Villages", "Mountain Panorama"],
     description: "The perfect short trek with stunning sunrise views over the Annapurna range.",
+    link: "/services/trekking/ghorepani-poon-hill-trek",
   },
 ];
 
@@ -127,6 +132,7 @@ const peakClimbing = [
     image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
     rating: 4.8,
     highlights: ["Summit Experience", "Technical Training", "Everest Views", "Glacier Crossing"],
+    link: "/services/peak-climbing/island-peak-climbing",
   },
   {
     name: "Mera Peak Expedition",
@@ -137,30 +143,33 @@ const peakClimbing = [
     image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2076&auto=format&fit=crop",
     rating: 4.9,
     highlights: ["Highest Trekking Peak", "5 x 8000m Views", "Remote Wilderness", "Non-technical Summit"],
+    link: "/services/peak-climbing/mera-peak-expedition",
   },
   {
-    name: "Lobuche Peak Climbing",
-    duration: "16 Days",
-    difficulty: "Technical",
-    altitude: "6,119m",
-    price: "$2,350",
-    image: "https://images.unsplash.com/photo-1549492423-400259a2e574?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.7,
-    highlights: ["Technical Challenge", "EBC Trail", "Khumbu Glacier", "Stunning Views"],
-  },
+    name: "Yala Peak Climbing",
+    duration: "12 Days",
+    difficulty: "Moderate",
+    altitude: "5,520m",
+    price: "$1,850",
+    image: "https://images.unsplash.com/photo-1589633124421-5b27c6d2b47d?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.5,
+    highlights: ["Beginner Friendly", "Langtang Valley", "Tibetan Border Views", "Cultural Experience"],
+    link: "/services/peak-climbing/yala-peak-climbing",
+}
 ];
 
 const cityTours = [
-  {
-    name: "Kathmandu Heritage Tour",
-    duration: "1 Day",
-    price: "$85",
-    image: "https://images.unsplash.com/photo-1558799401-1dcba79f095c?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["Pashupatinath", "Boudhanath Stupa", "Swayambhunath", "Kathmandu Durbar Square"],
-    description: "Explore 4 UNESCO World Heritage Sites in one day.",
-    icon: <Landmark className="w-5 h-5" />,
-    color: "from-blue-100 to-blue-50",
-  },
+ {
+    name: "Free Walking Tour Kathmandu",
+    duration: "4-5 Hours",
+    difficulty: "Easy",
+    altitude: "1,400m",
+    price: "Tips-based",
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.8,
+    highlights: ["Kathe Swoyambhu", "Glass Beads Market", "Local Lassi", "Monkey Temple", "Newar Architecture"],
+    link: "/services/free-walking-tour",
+},
   {
     name: "Bhaktapur & Patan Day Tour",
     duration: "1 Day",
@@ -170,47 +179,54 @@ const cityTours = [
     description: "Discover ancient Newari architecture and living culture.",
     icon: <Castle className="w-5 h-5" />,
     color: "from-amber-100 to-amber-50",
+    link: "/services/day-sightseeings/bhaktapur-patan-sightseeing",
   },
   {
-    name: "Nagarkot Sunrise Tour",
+    name: "Nagarkot Changunarayan Hiking",
     duration: "1 Day",
-    price: "$120",
-    image: "https://images.unsplash.com/photo-1627900749201-c6bc7226a3a0?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["Sunrise over Himalayas", "Everest Range View", "Countryside Drive", "Breakfast with View"],
-    description: "Witness breathtaking sunrise over the Himalayan range.",
-    icon: <Sunrise className="w-5 h-5" />,
-    color: "from-orange-100 to-orange-50",
-  },
-  {
-    name: "Pokhara City Tour",
-    duration: "1 Day",
+    difficulty: "Easy",
+    altitude: "2,195m",
     price: "$75",
-    image: "https://images.unsplash.com/photo-1605640840605-14ac1855827b?q=80&w=2032&auto=format&fit=crop",
-    highlights: ["Phewa Lake Boating", "World Peace Pagoda", "Davis Falls", "Gupteshwor Cave"],
-    description: "Experience the beauty of Nepal's adventure capital.",
-    icon: <Globe className="w-5 h-5" />,
-    color: "from-teal-100 to-teal-50",
-  },
+    image: "https://images.unsplash.com/photo-1624962904597-6e6ee6a8d648?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.8,
+    highlights: ["Himalayan Sunrise", "Mt. Everest Views", "UNESCO Temple", "Village Walk", "Downhill Trail", "Rural Life Experience"],
+    link: "/services/day-hikings/nagarkot-changunarayan-hiking",
+},
   {
-    name: "Lumbini Day Tour",
-    duration: "1 Day",
-    price: "$180",
-    image: "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["Maya Devi Temple", "Ashoka Pillar", "World Peace Pagoda", "Monastic Zone"],
-    description: "Pilgrimage to the birthplace of Lord Buddha.",
-    icon: <Church className="w-5 h-5" />,
-    color: "from-green-100 to-green-50",
-  },
-  {
-    name: "Chitwan Safari Day Tour",
-    duration: "1 Day",
-    price: "$150",
-    image: "https://images.unsplash.com/photo-1585016495481-91613a3ab2f1?q=80&w=2071&auto=format&fit=crop",
-    highlights: ["Elephant Safari", "One-horned Rhino", "Tharu Culture", "Bird Watching"],
-    description: "Wildlife adventure in Nepal's famous jungle.",
-    icon: <Bird className="w-5 h-5" />,
-    color: "from-emerald-100 to-emerald-50",
-  },
+    name: "Nepal Heritage Sites Tour",
+    duration: "10 Days",
+    difficulty: "Easy",
+    altitude: "1,400m",
+    price: "$850",
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.8,
+    highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
+    link: "/services/multi-day-cultural-tours/nepal-heritage-sites-tour",
+},
+
+{
+    name: "Kathmandu Pokhara Lumbini Chitwan Tour",
+    duration: "10 Days",
+    difficulty: "Easy",
+    altitude: "1,400m",
+    price: "$850",
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.8,
+    highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
+    link: "/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour",
+},
+
+{
+    name: "Historic Nature Scenic Photography Tour",
+    duration: "11 Days",
+    difficulty: "Easy",
+    altitude: "2,100m",
+    price: "$900",
+    image: "https://images.unsplash.com/photo-1624962904597-6e6ee6a8d648?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.9,
+    highlights: ["Historic Sites", "Nature", "Scenic Views", "Photography"],
+    link: "/services/multi-day-cultural-tours/historic-nature-scenic-photography-tour",
+}
 ];
 
 const whyNepal = [
@@ -474,8 +490,12 @@ export default function NepalPage() {
               ref={cityTourScrollContainerRef}
             >
               {cityTours.map((tour, i) => (
-                <div key={i} className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center">
-                  <Card className={`bg-gradient-to-br ${tour.color} border-0 h-full rounded-xl overflow-hidden shadow-lg`}>
+                <div 
+                  key={i} 
+                  className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center cursor-pointer"
+                  onClick={() => window.location.href = tour.link}
+                >
+                  <Card className={`bg-gradient-to-br ${tour.color} border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all`}>
                     <div className="relative h-40 overflow-hidden">
                       <Image
                         src={tour.image}
@@ -508,7 +528,7 @@ export default function NepalPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold text-[#0f2940]">{tour.price}</span>
-                        <Link href={`/city-tours/${tour.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                        <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
                           <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
                             Book Now
                           </Button>
@@ -537,47 +557,53 @@ export default function NepalPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {cityTours.map((tour, i) => (
-              <Card key={i} className={`bg-gradient-to-br ${tour.color} border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]`}>
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={tour.image}
-                    alt={tour.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 33vw, 33vw"
-                    quality={85}
-                  />
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
-                      {tour.duration}
-                    </Badge>
-                  </div>
-                </div>
-                <CardContent className="p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
-                      {tour.icon}
-                    </div>
-                    <h4 className="text-lg font-bold text-[#0f2940]">{tour.name}</h4>
-                  </div>
-                  <p className="text-slate-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {tour.highlights.slice(0, 3).map((h, idx) => (
-                      <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
-                        {h}
+              <div 
+                key={i}
+                onClick={() => window.location.href = tour.link}
+                className="cursor-pointer"
+              >
+                <Card className={`bg-gradient-to-br ${tour.color} border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]`}>
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={tour.image}
+                      alt={tour.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 33vw, 33vw"
+                      quality={85}
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
+                        {tour.duration}
                       </Badge>
-                    ))}
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
-                    <Link href={`/city-tours/${tour.name.toLowerCase().replace(/\s+/g, '-')}`}>
-                      <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full">
-                        Book Now
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
+                        {tour.icon}
+                      </div>
+                      <h4 className="text-lg font-bold text-[#0f2940]">{tour.name}</h4>
+                    </div>
+                    <p className="text-slate-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {tour.highlights.slice(0, 3).map((h, idx) => (
+                        <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
+                          {h}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
+                      <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
+                        <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full">
+                          Book Now
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -813,7 +839,11 @@ export default function NepalPage() {
               ref={trekScrollContainerRef}
             >
               {trekkingPackages.map((trek, i) => (
-                <div key={i} className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center">
+                <div 
+                  key={i} 
+                  className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
+                  onClick={() => window.location.href = trek.link}
+                >
                   <Card className="bg-white border-[#C5E0ED]/30 h-full rounded-xl overflow-hidden hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all">
                     <div className="relative h-56 overflow-hidden">
                       <Image
@@ -855,7 +885,7 @@ export default function NepalPage() {
                           </Badge>
                         ))}
                       </div>
-                      <Link href={trek.link || "/contact"}>
+                      <Link href={`/contact?trek=${encodeURIComponent(trek.name)}`} onClick={(e) => e.stopPropagation()}>
                         <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
                           View Details
                         </Button>
@@ -883,54 +913,60 @@ export default function NepalPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             {trekkingPackages.map((trek, i) => (
-              <Card key={i} className="bg-white border-[#C5E0ED]/30 h-full rounded-xl overflow-hidden hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all group hover:scale-[1.02]">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={trek.image}
-                    alt={trek.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 1024px) 33vw, 25vw"
-                    quality={85}
-                  />
-                  <div className="absolute top-3 left-3">
-                    <Badge className="bg-[#C5E0ED] text-[#0f2940] border-none font-bold text-sm">
-                      {trek.region}
-                    </Badge>
-                  </div>
-                  <div className="absolute top-3 right-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {trek.rating}
-                  </div>
-                </div>
-                <CardContent className="p-4 sm:p-5">
-                  <h4 className="text-base sm:text-lg font-bold text-[#0f2940] mb-2 line-clamp-1">{trek.name}</h4>
-                  <p className="text-slate-500 text-xs sm:text-sm mb-3 line-clamp-2">{trek.description}</p>
-                  <div className="grid grid-cols-2 gap-1.5 mb-3">
-                    <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                      <Clock className="w-3 h-3 text-[#2d6a8a]" /> {trek.duration}
-                    </div>
-                    <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                      <TrendingUp className="w-3 h-3 text-[#2d6a8a]" /> {trek.altitude}
-                    </div>
-                    <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                      <Footprints className="w-3 h-3 text-[#2d6a8a]" /> {trek.difficulty}
-                    </div>
-                    <div className="text-[#0f2940] font-bold text-base sm:text-lg">{trek.price}</div>
-                  </div>
-                  <div className="flex flex-wrap gap-1 mb-3">
-                    {trek.highlights.slice(0, 3).map((h, idx) => (
-                      <Badge key={idx} variant="secondary" className="bg-[#f0f7fa] text-[#2d6a8a] text-xs">
-                        {h}
+              <div 
+                key={i}
+                onClick={() => window.location.href = trek.link}
+                className="cursor-pointer"
+              >
+                <Card className="bg-white border-[#C5E0ED]/30 h-full rounded-xl overflow-hidden hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all group hover:scale-[1.02]">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={trek.image}
+                      alt={trek.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      sizes="(max-width: 1024px) 33vw, 25vw"
+                      quality={85}
+                    />
+                    <div className="absolute top-3 left-3">
+                      <Badge className="bg-[#C5E0ED] text-[#0f2940] border-none font-bold text-sm">
+                        {trek.region}
                       </Badge>
-                    ))}
+                    </div>
+                    <div className="absolute top-3 right-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {trek.rating}
+                    </div>
                   </div>
-                  <Link href={trek.link || "/contact"}>
-                    <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
-                      View Details
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-4 sm:p-5">
+                    <h4 className="text-base sm:text-lg font-bold text-[#0f2940] mb-2 line-clamp-1">{trek.name}</h4>
+                    <p className="text-slate-500 text-xs sm:text-sm mb-3 line-clamp-2">{trek.description}</p>
+                    <div className="grid grid-cols-2 gap-1.5 mb-3">
+                      <div className="flex items-center gap-1.5 text-slate-600 text-xs">
+                        <Clock className="w-3 h-3 text-[#2d6a8a]" /> {trek.duration}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-slate-600 text-xs">
+                        <TrendingUp className="w-3 h-3 text-[#2d6a8a]" /> {trek.altitude}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-slate-600 text-xs">
+                        <Footprints className="w-3 h-3 text-[#2d6a8a]" /> {trek.difficulty}
+                      </div>
+                      <div className="text-[#0f2940] font-bold text-base sm:text-lg">{trek.price}</div>
+                    </div>
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      {trek.highlights.slice(0, 3).map((h, idx) => (
+                        <Badge key={idx} variant="secondary" className="bg-[#f0f7fa] text-[#2d6a8a] text-xs">
+                          {h}
+                        </Badge>
+                      ))}
+                    </div>
+                    <Link href={`/contact?trek=${encodeURIComponent(trek.name)}`} onClick={(e) => e.stopPropagation()}>
+                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
+                        View Details
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -968,7 +1004,11 @@ export default function NepalPage() {
               ref={peakScrollContainerRef}
             >
               {peakClimbing.map((peak, i) => (
-                <div key={i} className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center">
+                <div 
+                  key={i} 
+                  className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
+                  onClick={() => window.location.href = peak.link}
+                >
                   <Card className="bg-white/5 backdrop-blur-sm border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all">
                     <div className="relative h-56 overflow-hidden">
                       <Image
@@ -1007,7 +1047,7 @@ export default function NepalPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-xl font-bold text-[#C5E0ED]">{peak.price}</span>
-                        <Link href="/contact">
+                        <Link href={`/contact?trek=${encodeURIComponent(peak.name)}`} onClick={(e) => e.stopPropagation()}>
                           <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
                             Book Now
                           </Button>
@@ -1036,52 +1076,58 @@ export default function NepalPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-3 gap-5">
             {peakClimbing.map((peak, i) => (
-              <Card key={i} className="bg-white/5 backdrop-blur-sm border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all group hover:scale-[1.02]">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={peak.image}
-                    alt={peak.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 1024px) 33vw, 33vw"
-                    quality={85}
-                  />
-                  <div className="absolute top-3 right-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" /> {peak.rating}
-                  </div>
-                  <div className="absolute bottom-3 left-3">
-                    <Badge className="bg-orange-500 text-white border-none font-bold text-sm">
-                      {peak.difficulty}
-                    </Badge>
-                  </div>
-                </div>
-                <CardContent className="p-4 sm:p-5">
-                  <h4 className="text-base sm:text-lg font-bold text-white mb-3">{peak.name}</h4>
-                  <div className="grid grid-cols-2 gap-2 mb-3">
-                    <div className="flex items-center gap-1.5 text-white/70 text-xs">
-                      <Clock className="w-3 h-3 text-[#C5E0ED]" /> {peak.duration}
+              <div 
+                key={i}
+                onClick={() => window.location.href = peak.link}
+                className="cursor-pointer"
+              >
+                <Card className="bg-white/5 backdrop-blur-sm border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all group hover:scale-[1.02]">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={peak.image}
+                      alt={peak.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      sizes="(max-width: 1024px) 33vw, 33vw"
+                      quality={85}
+                    />
+                    <div className="absolute top-3 right-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" /> {peak.rating}
                     </div>
-                    <div className="flex items-center gap-1.5 text-white/70 text-xs">
-                      <TrendingUp className="w-3 h-3 text-[#C5E0ED]" /> {peak.altitude}
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1 mb-3">
-                    {peak.highlights.map((h, idx) => (
-                      <Badge key={idx} variant="secondary" className="bg-white/10 text-white/80 text-xs">
-                        {h}
+                    <div className="absolute bottom-3 left-3">
+                      <Badge className="bg-orange-500 text-white border-none font-bold text-sm">
+                        {peak.difficulty}
                       </Badge>
-                    ))}
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold text-[#C5E0ED]">{peak.price}</span>
-                    <Link href="/contact">
-                      <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
-                        Book Now
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-4 sm:p-5">
+                    <h4 className="text-base sm:text-lg font-bold text-white mb-3">{peak.name}</h4>
+                    <div className="grid grid-cols-2 gap-2 mb-3">
+                      <div className="flex items-center gap-1.5 text-white/70 text-xs">
+                        <Clock className="w-3 h-3 text-[#C5E0ED]" /> {peak.duration}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-white/70 text-xs">
+                        <TrendingUp className="w-3 h-3 text-[#C5E0ED]" /> {peak.altitude}
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      {peak.highlights.map((h, idx) => (
+                        <Badge key={idx} variant="secondary" className="bg-white/10 text-white/80 text-xs">
+                          {h}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xl font-bold text-[#C5E0ED]">{peak.price}</span>
+                      <Link href={`/contact?trek=${encodeURIComponent(peak.name)}`} onClick={(e) => e.stopPropagation()}>
+                        <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
+                          Book Now
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>

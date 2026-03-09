@@ -69,12 +69,12 @@ const POPULAR_TREKS = [
   "Mardi Himal Trek",
   "Bhutan Cultural Tour",
   "Tibet Overland Tour",
-  "Kanchenjunga Base Camp Trek",
-  "Makalu Base Camp Trek",
-  "Dolpo Trek",
-  "Rara Lake Trek",
-  "Helambu Trek",
-  "Gokyo Lakes Trek",
+  "Free Walking Tour, Kathmandu",
+  "Kathmandu, Pokhara, Lumbini, Chitwan Tour",
+  "Chitwan National Park Jungle Safari",
+  "Annapurna Region Mountain Flight Trip",
+  "Everest Region Helicopter Trip",
+  "Namobuddha Day Hiking",
   "Island Peak Climbing",
   "Mera Peak Climbing",
 ];
@@ -517,7 +517,7 @@ function ContactFormContent() {
         {trekFromUrl && (
           <div className="bg-gradient-to-r from-[#C5E0ED]/20 to-transparent border border-[#C5E0ED]/30 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-4 w-full">
             <p className="text-[#0f2940] font-medium text-sm sm:text-base">
-              You&apos;re customizing: <span className="font-bold">{decodeURIComponent(trekFromUrl)}</span>
+              You&apos;re booking: <span className="font-bold">{decodeURIComponent(trekFromUrl)}</span>
             </p>
             <p className="text-slate-600 text-xs sm:text-sm mt-1">
               Tell us how you&apos;d like to customize this trip

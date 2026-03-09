@@ -58,7 +58,7 @@ const culturalTours = [
     region: "Paro • Thimphu",
     highlights: ["Tiger's Nest", "Thimphu Dzong", "Buddha Dordenma", "Traditional Markets"],
     description: "Perfect introduction to Bhutan's cultural highlights.",
-    link: "/bhutan-tours/delightful-bhutan-tour",
+    link: "/destinations/bhutan/delightful-bhutan-tour",
   },
   {
     name: "Bhutan Cultural Tour",
@@ -71,6 +71,7 @@ const culturalTours = [
     region: "Western Bhutan",
     highlights: ["Punakha Dzong", "Gangtey Valley", "Haa Valley", "Dochula Pass"],
     description: "Comprehensive exploration of Bhutan's cultural heritage.",
+    link: "/destinations/bhutan/bhutan-cultural-tour",
   },
   {
     name: "Short and Sweet Bhutan Tour",
@@ -83,6 +84,7 @@ const culturalTours = [
     region: "Paro Valley",
     highlights: ["Tiger's Nest Hike", "Paro Dzong", "National Museum", "Farmhouse Visit"],
     description: "Perfect short visit to experience Bhutan's essence.",
+    link: "/destinations/bhutan/short-and-sweet-bhutan-tour",
   },
   {
     name: "3 Nights 4 Days Bhutan Tour",
@@ -95,6 +97,7 @@ const culturalTours = [
     region: "Paro • Thimphu",
     highlights: ["Tiger's Nest", "Thimphu City", "Cheri Monastery", "Traditional Arts"],
     description: "Extended cultural experience in Bhutan.",
+    link: "/destinations/bhutan/3-nights-4-days-bhutan-tour",
   },
   {
     name: "Tiger's Nest Day Hiking",
@@ -107,6 +110,7 @@ const culturalTours = [
     region: "Paro Valley",
     highlights: ["Taktsang Monastery", "Cliffside Temple", "Sacred Caves", "Panoramic Views"],
     description: "Iconic hike to Bhutan's most famous monastery.",
+    link: "/destinations/bhutan/tigers-nest-day-hiking",
   },
   {
     name: "Bhutan Festival Tour",
@@ -119,6 +123,7 @@ const culturalTours = [
     region: "Various Dzongs",
     highlights: ["Paro Tshechu", "Thimphu Festival", "Mask Dances", "Cultural Performances"],
     description: "Experience Bhutan's vibrant religious festivals.",
+    link: "/destinations/bhutan/bhutan-festival-tour",
   },
 ];
 
@@ -134,6 +139,7 @@ const trekkingPackages = [
     region: "Paro to Thimphu",
     highlights: ["Jele Dzong", "Jangchu Lakha", "Jimilang Tsho", "Thimphu Valley"],
     description: "Classic trek connecting Paro and Thimphu through alpine lakes.",
+    link: "/destinations/bhutan/druk-path-trek",
   },
   {
     name: "Snowman Trek",
@@ -146,6 +152,7 @@ const trekkingPackages = [
     region: "Lunana Region",
     highlights: ["Laya Village", "Lunana Region", "14 High Passes", "Remote Valleys"],
     description: "One of the world's most difficult and rewarding treks.",
+    link: "/destinations/bhutan/snowman-trek",
   },
   {
     name: "Jomolhari Trek",
@@ -158,71 +165,11 @@ const trekkingPackages = [
     region: "Paro Region",
     highlights: ["Jomolhari Base Camp", "Jichu Drake", "Lingzhi Village", "Yak Herder Camps"],
     description: "Trek to the base of Bhutan's sacred mountain.",
+    link: "/destinations/bhutan/jomolhari-trek",
   },
 ];
 
-const dayTours = [
-  {
-    name: "Thimphu City Tour",
-    duration: "1 Day",
-    price: "$120",
-    image: "https://images.unsplash.com/photo-1552465011-b4e30bf7349d?q=80&w=2069&auto=format&fit=crop",
-    highlights: ["Buddha Dordenma", "Tashichho Dzong", "Folk Heritage Museum", "National Memorial Chorten"],
-    description: "Explore Bhutan's capital city and its landmarks.",
-    icon: <Building className="w-5 h-5" />,
-    color: "from-blue-100 to-blue-50",
-  },
-  {
-    name: "Punakha Valley Tour",
-    duration: "1 Day",
-    price: "$150",
-    image: "https://images.unsplash.com/photo-1573935146153-f632c1f0e7f8?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["Punakha Dzong", "Phochu-Mochu Confluence", "Suspension Bridge", "Chimi Lhakhang"],
-    description: "Visit Bhutan's ancient capital and fertility temple.",
-    icon: <Castle className="w-5 h-5" />,
-    color: "from-amber-100 to-amber-50",
-  },
-  {
-    name: "Paro Valley Exploration",
-    duration: "1 Day",
-    price: "$110",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["Paro Dzong", "National Museum", "Kyichu Lhakhang", "Traditional Farmhouse"],
-    description: "Discover the cultural heart of Bhutan.",
-    icon: <Home className="w-5 h-5" />,
-    color: "from-green-100 to-green-50",
-  },
-  {
-    name: "Dochula Pass & Temple",
-    duration: "1 Day",
-    price: "$130",
-    image: "https://images.unsplash.com/photo-1588416936097-41850ab3d86d?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["108 Chortens", "Himalayan Views", "Druk Wangyal Temple", "Rhododendron Forests"],
-    description: "Scenic drive to the sacred mountain pass.",
-    icon: <Mountain className="w-5 h-5" />,
-    color: "from-purple-100 to-purple-50",
-  },
-  {
-    name: "Gangtey Valley Nature",
-    duration: "1 Day",
-    price: "$180",
-    image: "https://images.unsplash.com/photo-1575517111478-7b6f4746d1a9?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["Black-necked Cranes", "Gangtey Monastery", "Nature Trails", "Valley Views"],
-    description: "Visit the beautiful Phobjikha Valley.",
-    icon: <Bird className="w-5 h-5" />,
-    color: "from-emerald-100 to-emerald-50",
-  },
-  {
-    name: "Bhutanese Cooking Class",
-    duration: "1 Day",
-    price: "$95",
-    image: "https://images.unsplash.com/photo-1552465011-b4e30bf7349d?q=80&w=2069&auto=format&fit=crop",
-    highlights: ["Ema Datshi", "Red Rice", "Momos", "Butter Tea"],
-    description: "Learn to cook authentic Bhutanese cuisine.",
-    icon: <Utensils className="w-5 h-5" />,
-    color: "from-red-100 to-red-50",
-  },
-];
+
 
 const whyBhutan = [
   {
@@ -299,6 +246,7 @@ const regions = [
     culturalSignature: "Spiritual Heart"
   }
 ];
+
 export default function BhutanPage() {
   const [trekScrollPosition, setTrekScrollPosition] = React.useState(0);
   const [peakScrollPosition, setPeakScrollPosition] = React.useState(0);
@@ -481,8 +429,12 @@ export default function BhutanPage() {
               ref={cityTourScrollContainerRef}
             >
               {culturalTours.map((tour, i) => (
-                <div key={i} className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center">
-                  <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-0 h-full rounded-xl overflow-hidden shadow-lg">
+                <div 
+                  key={i} 
+                  className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center cursor-pointer"
+                  onClick={() => window.location.href = tour.link}
+                >
+                  <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
                     <div className="relative h-40 overflow-hidden">
                       <Image
                         src={tour.image}
@@ -515,7 +467,7 @@ export default function BhutanPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold text-[#0f2940]">{tour.price}</span>
-                        <Link href={tour.link || "/contact"}>
+                        <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`}>
                           <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
                             Book Now
                           </Button>
@@ -544,47 +496,53 @@ export default function BhutanPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {culturalTours.map((tour, i) => (
-              <Card key={i} className="bg-gradient-to-br from-green-50 to-emerald-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={tour.image}
-                    alt={tour.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 33vw, 33vw"
-                    quality={85}
-                  />
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
-                      {tour.duration}
-                    </Badge>
-                  </div>
-                </div>
-                <CardContent className="p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
-                      <Castle className="w-5 h-5" />
-                    </div>
-                    <h4 className="text-lg font-bold text-[#0f2940]">{tour.name}</h4>
-                  </div>
-                  <p className="text-slate-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {tour.highlights.slice(0, 3).map((h, idx) => (
-                      <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
-                        {h}
+              <div 
+                key={i}
+                onClick={() => window.location.href = tour.link}
+                className="cursor-pointer"
+              >
+                <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={tour.image}
+                      alt={tour.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 33vw, 33vw"
+                      quality={85}
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
+                        {tour.duration}
                       </Badge>
-                    ))}
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
-                    <Link href={tour.link || "/contact"}>
-                      <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full">
-                        Book Now
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
+                        <Castle className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-lg font-bold text-[#0f2940]">{tour.name}</h4>
+                    </div>
+                    <p className="text-slate-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {tour.highlights.slice(0, 3).map((h, idx) => (
+                        <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
+                          {h}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
+                      <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`}>
+                        <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full">
+                          Book Now
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -628,85 +586,85 @@ export default function BhutanPage() {
       </section>
 
       {/* Bhutan Regions */}
-<section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-[#f0f7fa] to-white">
-  <div className="container mx-auto px-4 sm:px-6">
-    {/* Header with decorative elements */}
-    <div className="text-center max-w-3xl mx-auto mb-16">
-      <div className="flex justify-center items-center gap-3 mb-4">
-        <div className="h-px w-12 bg-gradient-to-l from-[#2d6a8a]/30 to-transparent"></div>
-        <Badge className="bg-transparent text-[#2d6a8a] border-[#2d6a8a]/20 px-5 py-1.5 text-xs font-light tracking-[0.2em] uppercase rounded-full">
-          Valleys of the Thunder Dragon
-        </Badge>
-        <div className="h-px w-12 bg-gradient-to-r from-[#2d6a8a]/30 to-transparent"></div>
-      </div>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-4">
-        Bhutan's Sacred Valleys
-      </h2>
-      <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-        Carved by ancient rivers and blessed by saints, each valley holds its own stories, traditions, and timeless beauty
-      </p>
-    </div>
-
-    {/* Regions as descriptive cards - no buttons, no tour counts */}
-    <div className="max-w-5xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-        {regions.map((region, index) => (
-          <div key={index} className="relative">
-            {/* Decorative element */}
-            <div className="absolute -left-6 top-0 text-6xl font-serif text-[#C5E0ED]/30 select-none">
-              {String(index + 1).padStart(2, '0')}
+      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-[#f0f7fa] to-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          {/* Header with decorative elements */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="flex justify-center items-center gap-3 mb-4">
+              <div className="h-px w-12 bg-gradient-to-l from-[#2d6a8a]/30 to-transparent"></div>
+              <Badge className="bg-transparent text-[#2d6a8a] border-[#2d6a8a]/20 px-5 py-1.5 text-xs font-light tracking-[0.2em] uppercase rounded-full">
+                Valleys of the Thunder Dragon
+              </Badge>
+              <div className="h-px w-12 bg-gradient-to-r from-[#2d6a8a]/30 to-transparent"></div>
             </div>
-            
-            <div className="relative pl-4 border-l-2 border-[#C5E0ED] group hover:border-[#2d6a8a] transition-colors duration-300">
-              <h3 className="text-2xl font-serif text-[#0f2940] mb-3 group-hover:text-[#2d6a8a] transition-colors">
-                {region.name}
-              </h3>
-              
-              <p className="text-slate-600 text-base leading-relaxed mb-4">
-                {region.description}
-              </p>
-              
-              {/* Valley characteristics - replacing tours/treks */}
-              <div className="space-y-2">
-                {region.characteristics?.map((trait, idx) => (
-                  <div key={idx} className="flex items-start gap-2 text-sm">
-                    <span className="text-[#2d6a8a] mt-1">•</span>
-                    <span className="text-slate-600">{trait}</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-4">
+              Bhutan's Sacred Valleys
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              Carved by ancient rivers and blessed by saints, each valley holds its own stories, traditions, and timeless beauty
+            </p>
+          </div>
+
+          {/* Regions as descriptive cards */}
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+              {regions.map((region, index) => (
+                <div key={index} className="relative">
+                  {/* Decorative element */}
+                  <div className="absolute -left-6 top-0 text-6xl font-serif text-[#C5E0ED]/30 select-none">
+                    {String(index + 1).padStart(2, '0')}
                   </div>
-                ))}
-              </div>
-              
-              {/* Cultural signature */}
-              <div className="mt-4 inline-block">
-                <span className="text-xs text-[#2d6a8a] bg-[#C5E0ED]/10 px-3 py-1 rounded-full border border-[#C5E0ED]/20">
-                  {region.culturalSignature}
-                </span>
-              </div>
+                  
+                  <div className="relative pl-4 border-l-2 border-[#C5E0ED] group hover:border-[#2d6a8a] transition-colors duration-300">
+                    <h3 className="text-2xl font-serif text-[#0f2940] mb-3 group-hover:text-[#2d6a8a] transition-colors">
+                      {region.name}
+                    </h3>
+                    
+                    <p className="text-slate-600 text-base leading-relaxed mb-4">
+                      {region.description}
+                    </p>
+                    
+                    {/* Valley characteristics */}
+                    <div className="space-y-2">
+                      {region.characteristics?.map((trait, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-sm">
+                          <span className="text-[#2d6a8a] mt-1">•</span>
+                          <span className="text-slate-600">{trait}</span>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Cultural signature */}
+                    <div className="mt-4 inline-block">
+                      <span className="text-xs text-[#2d6a8a] bg-[#C5E0ED]/10 px-3 py-1 rounded-full border border-[#C5E0ED]/20">
+                        {region.culturalSignature}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-        ))}
-      </div>
 
-      {/* Cultural context footer */}
-      <div className="mt-20 text-center">
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-[#C5E0ED]/20"></div>
-          </div>
-          <div className="relative flex justify-center">
-            <div className="bg-gradient-to-b from-[#f0f7fa] to-white px-8">
-              <span className="text-sm text-slate-500 flex items-center gap-2">
-                <Mountain className="w-4 h-4 text-[#2d6a8a]/40" />
-                Where the mountains meet the sky, and ancient traditions still thrive
-                <Mountain className="w-4 h-4 text-[#2d6a8a]/40" />
-              </span>
+            {/* Cultural context footer */}
+            <div className="mt-20 text-center">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-[#C5E0ED]/20"></div>
+                </div>
+                <div className="relative flex justify-center">
+                  <div className="bg-gradient-to-b from-[#f0f7fa] to-white px-8">
+                    <span className="text-sm text-slate-500 flex items-center gap-2">
+                      <Mountain className="w-4 h-4 text-[#2d6a8a]/40" />
+                      Where the mountains meet the sky, and ancient traditions still thrive
+                      <Mountain className="w-4 h-4 text-[#2d6a8a]/40" />
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Best Time to Visit */}
       <section className="py-12 sm:py-16 md:py-20 bg-white">
@@ -819,7 +777,11 @@ export default function BhutanPage() {
               ref={peakScrollContainerRef}
             >
               {trekkingPackages.map((trek, i) => (
-                <div key={i} className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center">
+                <div 
+                  key={i} 
+                  className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
+                  onClick={() => window.location.href = trek.link}
+                >
                   <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-lg transition-all">
                     <div className="relative h-56 overflow-hidden">
                       <Image
@@ -867,7 +829,7 @@ export default function BhutanPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold text-white">{trek.price}</span>
-                        <Link href="/contact">
+                        <Link href={`/contact?trek=${encodeURIComponent(trek.name)}`}>
                           <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
                             Book Now
                           </Button>
@@ -896,59 +858,65 @@ export default function BhutanPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-3 gap-5">
             {trekkingPackages.map((trek, i) => (
-              <Card key={i} className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={trek.image}
-                    alt={trek.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 1024px) 33vw, 33vw"
-                    quality={85}
-                  />
-                  <div className="absolute top-3 right-3">
-                    <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
-                      {trek.duration}
-                    </Badge>
-                  </div>
-                  <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {trek.rating}
-                  </div>
-                </div>
-                <CardContent className="p-4 sm:p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
-                      <Mountain className="w-5 h-5" />
-                    </div>
-                    <h4 className="text-lg font-bold text-white">{trek.name}</h4>
-                  </div>
-                  <p className="text-white/70 text-sm mb-4 line-clamp-2">{trek.description}</p>
-                  <div className="grid grid-cols-2 gap-2 mb-4">
-                    <div className="flex items-center gap-2 text-white/80 text-sm">
-                      <Clock className="w-4 h-4 text-[#C5E0ED]" /> {trek.duration}
-                    </div>
-                    <div className="flex items-center gap-2 text-white/80 text-sm">
-                      <TrendingUp className="w-4 h-4 text-[#C5E0ED]" /> {trek.altitude}
-                    </div>
-                    <div className="flex items-center gap-2 text-white/80 text-sm">
-                      <Footprints className="w-4 h-4 text-[#C5E0ED]" /> {trek.difficulty}
-                    </div>
-                    <div className="text-white font-bold text-lg">{trek.price}</div>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {trek.highlights.slice(0, 3).map((h, idx) => (
-                      <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
-                        {h}
+              <div 
+                key={i}
+                onClick={() => window.location.href = trek.link}
+                className="cursor-pointer"
+              >
+                <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={trek.image}
+                      alt={trek.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      sizes="(max-width: 1024px) 33vw, 33vw"
+                      quality={85}
+                    />
+                    <div className="absolute top-3 right-3">
+                      <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
+                        {trek.duration}
                       </Badge>
-                    ))}
+                    </div>
+                    <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {trek.rating}
+                    </div>
                   </div>
-                  <Link href="/contact">
-                    <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
-                      Book Now
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-4 sm:p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
+                        <Mountain className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-lg font-bold text-white">{trek.name}</h4>
+                    </div>
+                    <p className="text-white/70 text-sm mb-4 line-clamp-2">{trek.description}</p>
+                    <div className="grid grid-cols-2 gap-2 mb-4">
+                      <div className="flex items-center gap-2 text-white/80 text-sm">
+                        <Clock className="w-4 h-4 text-[#C5E0ED]" /> {trek.duration}
+                      </div>
+                      <div className="flex items-center gap-2 text-white/80 text-sm">
+                        <TrendingUp className="w-4 h-4 text-[#C5E0ED]" /> {trek.altitude}
+                      </div>
+                      <div className="flex items-center gap-2 text-white/80 text-sm">
+                        <Footprints className="w-4 h-4 text-[#C5E0ED]" /> {trek.difficulty}
+                      </div>
+                      <div className="text-white font-bold text-lg">{trek.price}</div>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {trek.highlights.slice(0, 3).map((h, idx) => (
+                        <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
+                          {h}
+                        </Badge>
+                      ))}
+                    </div>
+                    <Link href={`/contact?trek=${encodeURIComponent(trek.name)}`}>
+                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
+                        Book Now
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -1054,6 +1022,6 @@ const DollarSign = ({ className }: { className?: string }) => (
 
 const Leaf = ({ className }: { className?: string }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
   </svg>
 );

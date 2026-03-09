@@ -59,7 +59,7 @@ const culturalTours = [
     region: "Lhasa • Gyantse",
     highlights: ["Potala Palace", "Jokhang Temple", "Barkhor Street", "Drepung Monastery"],
     description: "Experience Tibet's rich cultural heritage and spiritual traditions.",
-    link: "/tibet-tours/unique-cultural-tour",
+    link: "/destinations/tibet/tibet-unique-cultural-tour",
   },
   {
     name: "Tibet Tour with Namtso Lake",
@@ -72,6 +72,7 @@ const culturalTours = [
     region: "Lhasa • Namtso",
     highlights: ["Namtso Lake", "Turquoise Waters", "Yangpachen", "Nyenchen Tanglha Range"],
     description: "Visit the heavenly lake at the roof of the world.",
+    link: "/destinations/tibet/tibet-tour-namtso-lake",
   },
   {
     name: "Tibet Overland Tour",
@@ -84,6 +85,7 @@ const culturalTours = [
     region: "Kathmandu to Lhasa",
     highlights: ["Friendship Highway", "Himalayan Views", "Gyantse Kumbum", "Yamdrok Lake"],
     description: "Spectacular overland journey through the Himalayas.",
+    link: "/destinations/tibet/tibet-overland-tour",
   },
   {
     name: "Lhasa City Tour",
@@ -96,6 +98,7 @@ const culturalTours = [
     region: "Lhasa",
     highlights: ["Potala Palace", "Jokhang Temple", "Barkhor Circuit", "Sera Monastery"],
     description: "Explore the forbidden city's most sacred sites.",
+    link: "/destinations/tibet/lhasa-city-tour",
   },
   {
     name: "Kailash Mansarovar Yatra",
@@ -108,6 +111,7 @@ const culturalTours = [
     region: "Western Tibet",
     highlights: ["Mount Kailash", "Lake Mansarovar", "Parikrama", "Sacred Sites"],
     description: "Pilgrimage to the most sacred mountain in Asia.",
+    link: "/destinations/tibet/kailash-mansarovar-yatra",
   },
   {
     name: "Everest Base Camp Tibet",
@@ -120,6 +124,7 @@ const culturalTours = [
     region: "Tingri • Rongbuk",
     highlights: ["North Face Everest", "Rongbuk Monastery", "Tingri Plains", "Base Camp"],
     description: "See the world's highest peak from the Tibetan side.",
+    link: "/destinations/tibet/everest-base-camp-tibet",
   },
 ];
 
@@ -135,6 +140,7 @@ const monasteryTours = [
     region: "Central Tibet",
     highlights: ["Drepung Monastery", "Sera Monastery", "Ganden Monastery", "Monk Debates"],
     description: "Explore Tibet's great monastic universities.",
+    link: "/destinations/tibet/monastery-discovery-tour",
   },
   {
     name: "Ancient Kingdoms Tour",
@@ -147,6 +153,7 @@ const monasteryTours = [
     region: "Tsang Province",
     highlights: ["Shigatse", "Sakya Monastery", "Gyantse Dzong", "Tashilhunpo"],
     description: "Journey through Tibet's historical kingdoms.",
+    link: "/destinations/tibet/ancient-kingdoms-tour",
   },
   {
     name: "Tibetan Plateau Adventure",
@@ -159,71 +166,11 @@ const monasteryTours = [
     region: "Changtang Plateau",
     highlights: ["Nomadic Culture", "High-altitude Lakes", "Wildlife", "Remote Valleys"],
     description: "Explore the vast Tibetan plateau wilderness.",
+    link: "/destinations/tibet/tibetan-plateau-adventure",
   },
 ];
 
-const dayTours = [
-  {
-    name: "Potala Palace Tour",
-    duration: "1 Day",
-    price: "$120",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["White Palace", "Red Palace", "Dalai Lama Quarters", "Golden Tombs"],
-    description: "Explore the iconic palace that towers above Lhasa.",
-    icon: <Castle className="w-5 h-5" />,
-    color: "from-red-100 to-orange-50",
-  },
-  {
-    name: "Jokhang Temple & Barkhor",
-    duration: "1 Day",
-    price: "$95",
-    image: "https://images.unsplash.com/photo-1519237390444-8838a2ea7e49?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["Jokhang Temple", "Barkhor Circuit", "Pilgrims", "Market Stalls"],
-    description: "Experience Tibet's spiritual heart and bustling market.",
-    icon: <Church className="w-5 h-5" />,
-    color: "from-amber-100 to-yellow-50",
-  },
-  {
-    name: "Sera Monastery Debate",
-    duration: "1 Day",
-    price: "$85",
-    image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["Monk Debates", "Philosophical Discussions", "Ancient Texts", "Prayer Halls"],
-    description: "Witness the famous afternoon philosophical debates.",
-    icon: <Users className="w-5 h-5" />,
-    color: "from-blue-100 to-cyan-50",
-  },
-  {
-    name: "Drepung Monastery",
-    duration: "1 Day",
-    price: "$90",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    highlights: ["World's Largest Monastery", "Ancient Scriptures", "Mountain Setting", "Prayer Wheels"],
-    description: "Visit what was once the world's largest monastery.",
-    icon: <Building className="w-5 h-5" />,
-    color: "from-purple-100 to-violet-50",
-  },
-  {
-    name: "Yamdrok Lake Excursion",
-    duration: "1 Day",
-    price: "$150",
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["Turquoise Lake", "Sacred Waters", "Mountain Views", "Photography"],
-    description: "Day trip to Tibet's most sacred turquoise lake.",
-    icon: <Globe className="w-5 h-5" />,
-    color: "from-cyan-100 to-blue-50",
-  },
-  {
-    name: "Tibetan Cooking Class",
-    duration: "1 Day",
-    price: "$75",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    highlights: ["Tsampa", "Butter Tea", "Momos", "Traditional Methods"],
-    description: "Learn to prepare authentic Tibetan cuisine.",
-    icon: <Utensils className="w-5 h-5" />,
-    color: "from-orange-100 to-red-50",
-  },
-];
+
 
 const whyTibet = [
   {
@@ -483,8 +430,12 @@ export default function TibetPage() {
               ref={cityTourScrollContainerRef}
             >
               {culturalTours.map((tour, i) => (
-                <div key={i} className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center">
-                  <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0 h-full rounded-xl overflow-hidden shadow-lg">
+                <div 
+                  key={i} 
+                  className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center cursor-pointer"
+                  onClick={() => window.location.href = tour.link}
+                >
+                  <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
                     <div className="relative h-40 overflow-hidden">
                       <Image
                         src={tour.image}
@@ -517,7 +468,7 @@ export default function TibetPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold text-[#0f2940]">{tour.price}</span>
-                        <Link href={tour.link || "/contact"}>
+                        <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
                           <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
                             Book Now
                           </Button>
@@ -546,47 +497,53 @@ export default function TibetPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {culturalTours.map((tour, i) => (
-              <Card key={i} className="bg-gradient-to-br from-red-50 to-orange-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={tour.image}
-                    alt={tour.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 33vw, 33vw"
-                    quality={85}
-                  />
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
-                      {tour.duration}
-                    </Badge>
-                  </div>
-                </div>
-                <CardContent className="p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
-                      <Castle className="w-5 h-5" />
-                    </div>
-                    <h4 className="text-lg font-bold text-[#0f2940]">{tour.name}</h4>
-                  </div>
-                  <p className="text-slate-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {tour.highlights.slice(0, 3).map((h, idx) => (
-                      <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
-                        {h}
+              <div 
+                key={i}
+                onClick={() => window.location.href = tour.link}
+                className="cursor-pointer"
+              >
+                <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={tour.image}
+                      alt={tour.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 33vw, 33vw"
+                      quality={85}
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
+                        {tour.duration}
                       </Badge>
-                    ))}
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
-                    <Link href={tour.link || "/contact"}>
-                      <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full">
-                        Book Now
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
+                        <Castle className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-lg font-bold text-[#0f2940]">{tour.name}</h4>
+                    </div>
+                    <p className="text-slate-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {tour.highlights.slice(0, 3).map((h, idx) => (
+                        <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
+                          {h}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
+                      <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
+                        <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full">
+                          Book Now
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -821,7 +778,11 @@ export default function TibetPage() {
               ref={monasteryScrollContainerRef}
             >
               {monasteryTours.map((tour, i) => (
-                <div key={i} className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center">
+                <div 
+                  key={i} 
+                  className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
+                  onClick={() => window.location.href = tour.link}
+                >
                   <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-lg transition-all">
                     <div className="relative h-56 overflow-hidden">
                       <Image
@@ -869,7 +830,7 @@ export default function TibetPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold text-white">{tour.price}</span>
-                        <Link href="/contact">
+                        <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
                           <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
                             Book Now
                           </Button>
@@ -898,59 +859,65 @@ export default function TibetPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-3 gap-5">
             {monasteryTours.map((tour, i) => (
-              <Card key={i} className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={tour.image}
-                    alt={tour.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 1024px) 33vw, 33vw"
-                    quality={85}
-                  />
-                  <div className="absolute top-3 right-3">
-                    <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
-                      {tour.duration}
-                    </Badge>
-                  </div>
-                  <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {tour.rating}
-                  </div>
-                </div>
-                <CardContent className="p-4 sm:p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
-                      <Building className="w-5 h-5" />
-                    </div>
-                    <h4 className="text-lg font-bold text-white">{tour.name}</h4>
-                  </div>
-                  <p className="text-white/70 text-sm mb-4 line-clamp-2">{tour.description}</p>
-                  <div className="grid grid-cols-2 gap-2 mb-4">
-                    <div className="flex items-center gap-2 text-white/80 text-sm">
-                      <Clock className="w-4 h-4 text-[#C5E0ED]" /> {tour.duration}
-                    </div>
-                    <div className="flex items-center gap-2 text-white/80 text-sm">
-                      <TrendingUp className="w-4 h-4 text-[#C5E0ED]" /> {tour.altitude}
-                    </div>
-                    <div className="flex items-center gap-2 text-white/80 text-sm">
-                      <Footprints className="w-4 h-4 text-[#C5E0ED]" /> {tour.difficulty}
-                    </div>
-                    <div className="text-white font-bold text-lg">{tour.price}</div>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {tour.highlights.slice(0, 3).map((h, idx) => (
-                      <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
-                        {h}
+              <div 
+                key={i}
+                onClick={() => window.location.href = tour.link}
+                className="cursor-pointer"
+              >
+                <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={tour.image}
+                      alt={tour.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      sizes="(max-width: 1024px) 33vw, 33vw"
+                      quality={85}
+                    />
+                    <div className="absolute top-3 right-3">
+                      <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
+                        {tour.duration}
                       </Badge>
-                    ))}
+                    </div>
+                    <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {tour.rating}
+                    </div>
                   </div>
-                  <Link href="/contact">
-                    <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
-                      Book Now
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-4 sm:p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
+                        <Building className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-lg font-bold text-white">{tour.name}</h4>
+                    </div>
+                    <p className="text-white/70 text-sm mb-4 line-clamp-2">{tour.description}</p>
+                    <div className="grid grid-cols-2 gap-2 mb-4">
+                      <div className="flex items-center gap-2 text-white/80 text-sm">
+                        <Clock className="w-4 h-4 text-[#C5E0ED]" /> {tour.duration}
+                      </div>
+                      <div className="flex items-center gap-2 text-white/80 text-sm">
+                        <TrendingUp className="w-4 h-4 text-[#C5E0ED]" /> {tour.altitude}
+                      </div>
+                      <div className="flex items-center gap-2 text-white/80 text-sm">
+                        <Footprints className="w-4 h-4 text-[#C5E0ED]" /> {tour.difficulty}
+                      </div>
+                      <div className="text-white font-bold text-lg">{tour.price}</div>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {tour.highlights.slice(0, 3).map((h, idx) => (
+                        <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
+                          {h}
+                        </Badge>
+                      ))}
+                    </div>
+                    <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
+                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
+                        Book Now
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>

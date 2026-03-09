@@ -66,6 +66,7 @@ const peakClimbs = [
     featured: true,
     successRate: "95%",
     trainingDays: 3,
+    link: "/destinations/peak-climbing/island-peak",
   },
   {
     id: 2,
@@ -86,6 +87,7 @@ const peakClimbs = [
     featured: true,
     successRate: "92%",
     trainingDays: 4,
+    link: "/destinations/peak-climbing/mera-peak",
   },
   {
     id: 3,
@@ -106,6 +108,7 @@ const peakClimbs = [
     featured: false,
     successRate: "85%",
     trainingDays: 5,
+    link: "/destinations/peak-climbing/lobuche-east",
   },
   {
     id: 4,
@@ -126,6 +129,7 @@ const peakClimbs = [
     featured: true,
     successRate: "90%",
     trainingDays: 3,
+    link: "/destinations/peak-climbing/pisang-peak",
   },
   {
     id: 5,
@@ -146,6 +150,7 @@ const peakClimbs = [
     featured: false,
     successRate: "80%",
     trainingDays: 6,
+    link: "/destinations/peak-climbing/chulu-west",
   },
   {
     id: 6,
@@ -166,6 +171,7 @@ const peakClimbs = [
     featured: false,
     successRate: "98%",
     trainingDays: 2,
+    link: "/destinations/peak-climbing/yala-peak",
   },
   {
     id: 7,
@@ -186,6 +192,7 @@ const peakClimbs = [
     featured: true,
     successRate: "93%",
     trainingDays: 3,
+    link: "/destinations/peak-climbing/tent-peak",
   },
   {
     id: 8,
@@ -206,6 +213,7 @@ const peakClimbs = [
     featured: true,
     successRate: "100%",
     trainingDays: 5,
+    link: "/destinations/peak-climbing/ama-dablam-base-camp",
   },
   {
     id: 9,
@@ -226,6 +234,7 @@ const peakClimbs = [
     featured: false,
     successRate: "88%",
     trainingDays: 3,
+    link: "/destinations/peak-climbing/naya-kanga",
   },
 ];
 
@@ -443,50 +452,54 @@ export default function PeakClimbingPage() {
       {featuredClimb && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
-              <div className="grid lg:grid-cols-2">
-                <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
-                  <Image
-                    src={featuredClimb.image}
-                    alt={featuredClimb.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1 text-xs md:text-sm">
-                      Most Popular
+            <div 
+              onClick={() => window.location.href = featuredClimb.link}
+              className="cursor-pointer"
+            >
+              <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
+                <div className="grid lg:grid-cols-2">
+                  <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
+                    <Image
+                      src={featuredClimb.image}
+                      alt={featuredClimb.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1 text-xs md:text-sm">
+                        Most Popular
+                      </Badge>
+                    </div>
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" /> {featuredClimb.rating} ({featuredClimb.reviews})
+                    </div>
+                  </div>
+                  <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
+                    <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
+                      <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredClimb.region}
                     </Badge>
-                  </div>
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" /> {featuredClimb.rating} ({featuredClimb.reviews})
-                  </div>
-                </div>
-                <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
-                  <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
-                    <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredClimb.region}
-                  </Badge>
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
-                    {featuredClimb.name}
-                  </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
-                    {featuredClimb.description}
-                  </p>
-                  <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.duration}
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
+                      {featuredClimb.name}
+                    </h2>
+                    <p className="text-slate-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
+                      {featuredClimb.description}
+                    </p>
+                    <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.duration}
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Flag className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.altitude}
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Target className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.difficulty}
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.groupSize} People
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Flag className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.altitude}
-                    </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Target className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.difficulty}
-                    </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.groupSize} People
-                    </div>
-                  </div>
-                  
+                    
                   {/* Success Rate & Training */}
                   <div className="grid grid-cols-2 gap-4 mb-4 md:mb-6">
                     <div className="bg-[#C5E0ED]/10 rounded-lg p-3 md:p-4">
@@ -522,14 +535,17 @@ export default function PeakClimbingPage() {
                       <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredClimb.price}</span>
                       <span className="text-slate-500 text-sm">/person</span>
                     </div>
-                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
-                      View Expedition Details
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
+                    <Link href={`/contact?trek=${encodeURIComponent(featuredClimb.name)}`} onClick={(e) => e.stopPropagation()}>
+                      <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
+                        View Expedition Details
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </div>
             </Card>
+            </div>
           </div>
         </section>
       )}
@@ -549,77 +565,82 @@ export default function PeakClimbingPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredClimbs.map((climb, i) => (
-              <Card 
+              <div 
                 key={climb.id} 
-                className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group cursor-pointer"
+                onClick={() => window.location.href = climb.link}
+                className="cursor-pointer"
               >
-                <div className="relative h-40 md:h-52 overflow-hidden">
-                  <Image
-                    src={climb.image}
-                    alt={climb.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <Badge className={`border-none text-xs font-medium ${getDifficultyColor(climb.difficulty)}`}>
-                      {climb.difficulty}
-                    </Badge>
-                  </div>
-                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {climb.rating}
-                  </div>
-                  {climb.featured && (
-                    <div className="absolute bottom-3 left-3">
-                      <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none text-xs font-bold">
-                        Featured
+                <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
+                  <div className="relative h-40 md:h-52 overflow-hidden">
+                    <Image
+                      src={climb.image}
+                      alt={climb.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <Badge className={`border-none text-xs font-medium ${getDifficultyColor(climb.difficulty)}`}>
+                        {climb.difficulty}
                       </Badge>
                     </div>
-                  )}
-                </div>
-                <CardContent className="p-4 md:p-6">
-                  <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
-                    {climb.region}
-                  </Badge>
-                  <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-1 md:mb-2 group-hover:text-[#2d6a8a] transition-colors line-clamp-1">
-                    {climb.name}
-                  </h4>
-                  <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
-                    {climb.description}
-                  </p>
-                  
-                  {/* Altitude & Success Rate */}
-                  <div className="flex items-center justify-between mb-3 md:mb-4 text-xs md:text-sm">
-                    <div className="flex items-center gap-1.5 text-slate-500">
-                      <Flag className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {climb.altitude}
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {climb.rating}
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <Award className={`w-3 h-3 md:w-4 md:h-4 ${getSuccessRateColor(climb.successRate)}`} />
-                      <span className={`font-medium ${getSuccessRateColor(climb.successRate)}`}>
-                        {climb.successRate}
-                      </span>
-                    </div>
+                    {climb.featured && (
+                      <div className="absolute bottom-3 left-3">
+                        <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none text-xs font-bold">
+                          Featured
+                        </Badge>
+                      </div>
+                    )}
                   </div>
-                  
-                  <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
-                    <div className="flex items-center gap-1.5 text-slate-500">
-                      <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {climb.duration}
+                  <CardContent className="p-4 md:p-6">
+                    <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
+                      {climb.region}
+                    </Badge>
+                    <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-1 md:mb-2 group-hover:text-[#2d6a8a] transition-colors line-clamp-1">
+                      {climb.name}
+                    </h4>
+                    <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
+                      {climb.description}
+                    </p>
+                    
+                    {/* Altitude & Success Rate */}
+                    <div className="flex items-center justify-between mb-3 md:mb-4 text-xs md:text-sm">
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <Flag className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {climb.altitude}
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Award className={`w-3 h-3 md:w-4 md:h-4 ${getSuccessRateColor(climb.successRate)}`} />
+                        <span className={`font-medium ${getSuccessRateColor(climb.successRate)}`}>
+                          {climb.successRate}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1.5 text-slate-500">
-                      <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {climb.groupSize}
+                    
+                    <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {climb.duration}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {climb.groupSize}
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
-                    <div>
-                      <span className="text-slate-400 text-xs line-through">${climb.originalPrice}</span>
-                      <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${climb.price}</span>
+                    <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
+                      <div>
+                        <span className="text-slate-400 text-xs line-through">${climb.originalPrice}</span>
+                        <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${climb.price}</span>
+                      </div>
+                      <Link href={`/contact?trek=${encodeURIComponent(climb.name)}`} onClick={(e) => e.stopPropagation()}>
+                        <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
+                          Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                        </Button>
+                      </Link>
                     </div>
-                    <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
-                      Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
 
@@ -643,9 +664,11 @@ export default function PeakClimbingPage() {
           )}
 
           <div className="text-center mt-8 md:mt-12">
-            <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
-              View All Climbing Expeditions
-            </Button>
+            <Link href="/peak-climbing">
+              <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
+                View All Climbing Expeditions
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

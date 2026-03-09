@@ -57,6 +57,7 @@ const trekkingPackages = [
     highlights: ["Khumbu Glacier", "Tengboche Monastery", "Sherpa Culture", "Kala Patthar"],
     description: "Trek to the foot of the world's highest mountain through legendary Sherpa villages and breathtaking Himalayan landscapes.",
     featured: true,
+    link: "/destinations/trekking/everest-base-camp",
   },
   {
     id: 2,
@@ -75,6 +76,7 @@ const trekkingPackages = [
     highlights: ["Thorong La Pass", "Muktinath Temple", "Manang Valley", "Diverse Landscapes"],
     description: "The classic Himalayan trek circumnavigating the Annapurna massif, crossing the legendary Thorong La Pass.",
     featured: true,
+    link: "/destinations/trekking/annapurna-circuit",
   },
   {
     id: 3,
@@ -93,6 +95,7 @@ const trekkingPackages = [
     highlights: ["Kyanjin Gompa", "Langtang Glacier", "Tamang Culture", "Cheese Factory"],
     description: "A shorter trek perfect for those with limited time, offering stunning mountain views and rich Tamang heritage.",
     featured: false,
+    link: "/destinations/trekking/langtang-valley",
   },
   {
     id: 4,
@@ -111,6 +114,7 @@ const trekkingPackages = [
     highlights: ["Larkya La Pass", "Remote Villages", "Buddhist Monasteries", "Wildlife"],
     description: "A remote and pristine alternative to the Annapurna Circuit, offering solitude and authentic cultural experiences.",
     featured: true,
+    link: "/destinations/trekking/manaslu-circuit",
   },
   {
     id: 5,
@@ -129,6 +133,7 @@ const trekkingPackages = [
     highlights: ["Annapurna Sanctuary", "Machapuchare Views", "Hot Springs", "Gurung Villages"],
     description: "Journey into the heart of the Annapurna Sanctuary, surrounded by towering peaks in a natural amphitheater.",
     featured: false,
+    link: "/destinations/trekking/annapurna-base-camp",
   },
   {
     id: 6,
@@ -147,6 +152,7 @@ const trekkingPackages = [
     highlights: ["Gokyo Ri", "Cho La Pass", "Turquoise Lakes", "Ngozumpa Glacier"],
     description: "The ultimate Everest region adventure combining the stunning Gokyo Lakes with the classic EBC route.",
     featured: true,
+    link: "/destinations/trekking/gokyo-lakes-everest",
   },
   {
     id: 7,
@@ -165,6 +171,7 @@ const trekkingPackages = [
     highlights: ["Poon Hill Sunrise", "Ghorepani", "Rhododendron Forests", "Gurung Culture"],
     description: "The perfect introductory trek offering spectacular sunrise views over the Annapurna and Dhaulagiri ranges.",
     featured: false,
+    link: "/destinations/trekking/poon-hill",
   },
   {
     id: 8,
@@ -183,6 +190,7 @@ const trekkingPackages = [
     highlights: ["Lo Manthang", "Cave Monasteries", "Tibetan Culture", "Desert Landscapes"],
     description: "Explore the forbidden kingdom of Mustang, a preserved Tibetan enclave with ancient monasteries.",
     featured: true,
+    link: "/destinations/trekking/upper-mustang",
   },
   {
     id: 9,
@@ -201,6 +209,7 @@ const trekkingPackages = [
     highlights: ["Kongma La", "Cho La", "Renjo La", "Gokyo Lakes"],
     description: "The ultimate challenge for experienced trekkers, crossing three high passes above 5,300m.",
     featured: false,
+    link: "/destinations/trekking/three-passes",
   },
 ];
 
@@ -409,70 +418,77 @@ export default function TrekkingNepalPage() {
       {featuredPackage && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
-              <div className="grid lg:grid-cols-2">
-                <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
-                  <Image
-                    src={featuredPackage.image}
-                    alt={featuredPackage.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1 text-xs md:text-sm">
-                      Most Popular
+            <div 
+              onClick={() => window.location.href = featuredPackage.link}
+              className="cursor-pointer"
+            >
+              <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
+                <div className="grid lg:grid-cols-2">
+                  <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
+                    <Image
+                      src={featuredPackage.image}
+                      alt={featuredPackage.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1 text-xs md:text-sm">
+                        Most Popular
+                      </Badge>
+                    </div>
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" /> {featuredPackage.rating} ({featuredPackage.reviews})
+                    </div>
+                  </div>
+                  <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
+                    <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
+                      <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredPackage.region}
                     </Badge>
-                  </div>
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" /> {featuredPackage.rating} ({featuredPackage.reviews})
-                  </div>
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
+                      {featuredPackage.name}
+                    </h2>
+                    <p className="text-slate-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
+                      {featuredPackage.description}
+                    </p>
+                    <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.duration}
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.maxAltitude}
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Footprints className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.difficulty}
+                      </div>
+                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.groupSize} People
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
+                      {featuredPackage.highlights.map((h, idx) => (
+                        <span key={idx} className="text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
+                          {h}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 md:pt-6 border-t border-slate-100 gap-4">
+                      <div>
+                        <span className="text-slate-400 text-sm line-through">${featuredPackage.originalPrice}</span>
+                        <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredPackage.price}</span>
+                        <span className="text-slate-500 text-sm">/person</span>
+                      </div>
+                      <Link href={`/contact?trek=${encodeURIComponent(featuredPackage.name)}`} onClick={(e) => e.stopPropagation()}>
+                        <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
+                          View Details
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
                 </div>
-                <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
-                  <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
-                    <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredPackage.region}
-                  </Badge>
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
-                    {featuredPackage.name}
-                  </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
-                    {featuredPackage.description}
-                  </p>
-                  <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.duration}
-                    </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.maxAltitude}
-                    </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Footprints className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.difficulty}
-                    </div>
-                    <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                      <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.groupSize} People
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
-                    {featuredPackage.highlights.map((h, idx) => (
-                      <span key={idx} className="text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
-                        {h}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 md:pt-6 border-t border-slate-100 gap-4">
-                    <div>
-                      <span className="text-slate-400 text-sm line-through">${featuredPackage.originalPrice}</span>
-                      <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredPackage.price}</span>
-                      <span className="text-slate-500 text-sm">/person</span>
-                    </div>
-                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
-                      View Details
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
+              </Card>
+            </div>
           </div>
         </section>
       )}
@@ -492,63 +508,68 @@ export default function TrekkingNepalPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredPackages.map((pkg, i) => (
-              <Card 
+              <div 
                 key={pkg.id} 
-                className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group cursor-pointer"
+                onClick={() => window.location.href = pkg.link}
+                className="cursor-pointer"
               >
-                <div className="relative h-40 md:h-52 overflow-hidden">
-                  <Image
-                    src={pkg.image}
-                    alt={pkg.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <Badge className={`border-none text-xs font-medium ${getDifficultyColor(pkg.difficulty)}`}>
-                      {pkg.difficulty}
-                    </Badge>
-                  </div>
-                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {pkg.rating}
-                  </div>
-                  {pkg.featured && (
-                    <div className="absolute bottom-3 left-3">
-                      <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none text-xs font-bold">
-                        Featured
+                <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
+                  <div className="relative h-40 md:h-52 overflow-hidden">
+                    <Image
+                      src={pkg.image}
+                      alt={pkg.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <Badge className={`border-none text-xs font-medium ${getDifficultyColor(pkg.difficulty)}`}>
+                        {pkg.difficulty}
                       </Badge>
                     </div>
-                  )}
-                </div>
-                <CardContent className="p-4 md:p-6">
-                  <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
-                    {pkg.region}
-                  </Badge>
-                  <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-1 md:mb-2 group-hover:text-[#2d6a8a] transition-colors line-clamp-1">
-                    {pkg.name}
-                  </h4>
-                  <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
-                    {pkg.description}
-                  </p>
-                  <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
-                    <div className="flex items-center gap-1.5 text-slate-500">
-                      <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {pkg.duration}
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {pkg.rating}
                     </div>
-                    <div className="flex items-center gap-1.5 text-slate-500">
-                      <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {pkg.maxAltitude}
-                    </div>
+                    {pkg.featured && (
+                      <div className="absolute bottom-3 left-3">
+                        <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none text-xs font-bold">
+                          Featured
+                        </Badge>
+                      </div>
+                    )}
                   </div>
-                  <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
-                    <div>
-                      <span className="text-slate-400 text-xs line-through">${pkg.originalPrice}</span>
-                      <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${pkg.price}</span>
+                  <CardContent className="p-4 md:p-6">
+                    <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
+                      {pkg.region}
+                    </Badge>
+                    <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-1 md:mb-2 group-hover:text-[#2d6a8a] transition-colors line-clamp-1">
+                      {pkg.name}
+                    </h4>
+                    <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
+                      {pkg.description}
+                    </p>
+                    <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {pkg.duration}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {pkg.maxAltitude}
+                      </div>
                     </div>
-                    <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
-                      Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                    <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
+                      <div>
+                        <span className="text-slate-400 text-xs line-through">${pkg.originalPrice}</span>
+                        <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${pkg.price}</span>
+                      </div>
+                      <Link href={`/contact?trek=${encodeURIComponent(pkg.name)}`} onClick={(e) => e.stopPropagation()}>
+                        <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
+                          Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
 
@@ -572,9 +593,11 @@ export default function TrekkingNepalPage() {
           )}
 
           <div className="text-center mt-8 md:mt-12">
-            <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
-              Load More Packages
-            </Button>
+            <Link href="/trekking">
+              <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
+                Load More Packages
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
