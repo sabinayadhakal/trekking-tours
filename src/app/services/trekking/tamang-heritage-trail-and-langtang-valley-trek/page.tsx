@@ -37,6 +37,7 @@ import {
   Droplets,
   Flower,
   Compass,
+  MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -262,6 +263,9 @@ export default function TamangHeritageLangtangTrekPage() {
   const [expandedDays, setExpandedDays] = React.useState<number[]>([1]);
   const [showMobileNav, setShowMobileNav] = React.useState(false);
 
+  // Trek name constant for auto-fill functionality
+  const trekName = "Tamang Heritage & Langtang Valley Trek";
+
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
     setCopied(true);
@@ -406,25 +410,24 @@ export default function TamangHeritageLangtangTrekPage() {
       {/* Main Content */}
       <section className="py-6 md:py-12">
         <div className="container mx-auto px-3 md:px-6 max-w-full overflow-hidden">
-          <div className="grid lg:grid-cols-12 gap-4 md:gap-10">
-            {/* Mobile Sticky Book Now Bar */}
-            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2">
-              <div className="container mx-auto px-3">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-xs text-slate-400 line-through">$1,450</div>
-                    <div className="text-lg font-bold text-[#0f2940]">$1,295</div>
-                  </div>
-                  <Link href="/contact">
-                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs">
-                      <Heart className="w-3 h-3 mr-1" /> Book Now
-                    </Button>
-                  </Link>
-                </div>
+          {/* Mobile Sticky Book Now Bar */}
+          <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xs text-slate-400 line-through">$1,450</div>
+                <div className="text-lg font-bold text-[#0f2940]">$1,295</div>
               </div>
+              <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
+                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
+                  <Heart className="w-3 h-3 mr-1" /> Book Now
+                </Button>
+              </Link>
             </div>
+          </div>
 
-            {/* Sidebar */}
+          {/* Desktop Layout - Grid with sticky sidebar */}
+          <div className="lg:grid lg:grid-cols-12 lg:gap-4 lg:gap-10">
+            {/* Sidebar - Sticky on desktop */}
             <aside className="hidden lg:block lg:col-span-4">
               <div className="sticky top-24 space-y-4 md:space-y-6">
                 {/* Price Card */}
@@ -460,16 +463,23 @@ export default function TamangHeritageLangtangTrekPage() {
                       </div>
                     </div>
 
-                    <Link href="/contact">
+                    {/* Book Now Button */}
+                    <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                       <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
                         <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Trek
                       </Button>
                     </Link>
-                    <Link href="/contact">
-                      <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/10 rounded-full h-10 md:h-12 text-xs md:text-base">
-                        <Phone className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Enquire Now
+                    
+                    {/* WhatsApp Now Button */}
+                    <a 
+                      href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${trekName}.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
+                        <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
                       </Button>
-                    </Link>
+                    </a>
                   </CardContent>
                 </Card>
 
@@ -549,14 +559,14 @@ export default function TamangHeritageLangtangTrekPage() {
               <div className="lg:hidden flex gap-2 mb-6">
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5"
+                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("facebook")}
                 >
                   <Facebook className="w-3 h-3 mr-1" /> Share
                 </Button>
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5"
+                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("twitter")}
                 >
                   <Twitter className="w-3 h-3 mr-1" /> Tweet
@@ -564,7 +574,7 @@ export default function TamangHeritageLangtangTrekPage() {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5"
+                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={handleCopyLink}
                 >
                   {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}

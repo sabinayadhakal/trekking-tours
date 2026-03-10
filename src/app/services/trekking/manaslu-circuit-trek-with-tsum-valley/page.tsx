@@ -35,6 +35,7 @@ import {
   Landmark,
   Compass,
   Droplets,
+  MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -308,6 +309,9 @@ export default function ManasluTsumValleyTrekPage() {
   const [copied, setCopied] = React.useState(false);
   const [expandedDays, setExpandedDays] = React.useState<number[]>([1]);
   const [showMobileNav, setShowMobileNav] = React.useState(false);
+  
+  // Trek name constant for auto-fill functionality
+  const trekName = "Manaslu Circuit with Tsum Valley Trek";
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -405,7 +409,7 @@ export default function ManasluTsumValleyTrekPage() {
         </div>
       )}
 
-      {/* Hero Section - Simplified & Larger Heading */}
+      {/* Hero Section */}
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
@@ -450,160 +454,168 @@ export default function ManasluTsumValleyTrekPage() {
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-6 md:py-12">
-        <div className="container mx-auto px-3 md:px-6 max-w-full overflow-hidden">
-          <div className="grid lg:grid-cols-12 gap-4 md:gap-10">
-            {/* Mobile Sticky Book Now Bar */}
-            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2">
-              <div className="container mx-auto px-3">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-xs text-slate-400 line-through">$2,550</div>
-                    <div className="text-lg font-bold text-[#0f2940]">$2,295</div>
-                  </div>
-                  <Link href="/contact">
-                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs">
-                      <Heart className="w-3 h-3 mr-1" /> Book Now
-                    </Button>
-                  </Link>
-                </div>
+      {/* Main Content - with proper sticky sidebar */}
+      <section className="py-6 md:py-12 relative">
+        <div className="container mx-auto px-3 md:px-6 max-w-full">
+          {/* Mobile Sticky Book Now Bar */}
+          <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xs text-slate-400 line-through">$2,550</div>
+                <div className="text-lg font-bold text-[#0f2940]">$2,295</div>
               </div>
+              <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
+                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
+                  <Heart className="w-3 h-3 mr-1" /> Book Now
+                </Button>
+              </Link>
             </div>
+          </div>
 
-            {/* Sidebar - Hidden on mobile */}
+          {/* Desktop Layout - Grid with sticky sidebar */}
+          <div className="lg:grid lg:grid-cols-12 lg:gap-4 lg:gap-10">
+            {/* Sidebar - Sticky on desktop */}
             <aside className="hidden lg:block lg:col-span-4">
-              <div className="sticky top-24 space-y-4 md:space-y-6">
-                {/* Price Card */}
-                <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-4 md:p-6">
-                    <div className="text-center mb-4 md:mb-6">
-                      <span className="text-white/50 text-sm line-through">$2,550</span>
-                      <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,295</div>
-                      <span className="text-white/60 text-sm">per person</span>
-                      <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $255</Badge>
-                    </div>
+              <div className="sticky top-24">
+                <div className="space-y-4 md:space-y-6">
+                  {/* Price Card */}
+                  <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
+                    <CardContent className="p-4 md:p-6">
+                      <div className="text-center mb-4 md:mb-6">
+                        <span className="text-white/50 text-sm line-through">$2,550</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,295</div>
+                        <span className="text-white/60 text-sm">per person</span>
+                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $255</Badge>
+                      </div>
 
-                    <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>19 Days / 18 Nights</span>
+                      <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                          <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <span>19 Days / 18 Nights</span>
+                        </div>
+                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                          <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <span>Best: Mar-May, Sep-Nov</span>
+                        </div>
+                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                          <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <span>Group Size: 2-8</span>
+                        </div>
+                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                          <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <span>Teahouse Accommodation</span>
+                        </div>
+                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                          <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <span>All Meals Included</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>Best: Mar-May, Sep-Nov</span>
-                      </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>Group Size: 2-8</span>
-                      </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>Teahouse Accommodation</span>
-                      </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>All Meals Included</span>
-                      </div>
-                    </div>
 
-                    <Link href="/contact">
-                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
-                        <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Trek
-                      </Button>
-                    </Link>
-                    <Link href="/contact">
-                      <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/10 rounded-full h-10 md:h-12 text-xs md:text-base">
-                        <Phone className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Enquire Now
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-
-                {/* Quick Facts */}
-                <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                      <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
-                    </h3>
-                    <div className="space-y-2 text-[10px] md:text-sm">
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Start Point</span>
-                        <span className="font-medium text-[#0f2940]">Kathmandu</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">End Point</span>
-                        <span className="font-medium text-[#0f2940]">Kathmandu</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Trek Start</span>
-                        <span className="font-medium text-[#0f2940]">Machha Khola</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Trek End</span>
-                        <span className="font-medium text-[#0f2940]">Dharapani</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Highest Point</span>
-                        <span className="font-medium text-[#0f2940]">Larkya La (5,106m)</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2">
-                        <span className="text-slate-500">Trekking Days</span>
-                        <span className="font-medium text-[#0f2940]">16 Days</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Share */}
-                <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                      <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
-                    </h3>
-                    <div className="flex gap-2">
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                        onClick={() => handleShare("facebook")}
+                      {/* Book Now Button */}
+                      <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
+                        <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
+                          <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Trek
+                        </Button>
+                      </Link>
+                      
+                      {/* WhatsApp Now Button */}
+                      <a 
+                        href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${trekName}.`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <Facebook className="w-3 h-3 md:w-4 md:h-4" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                        onClick={() => handleShare("twitter")}
-                      >
-                        <Twitter className="w-3 h-3 md:w-4 md:h-4" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                        onClick={handleCopyLink}
-                      >
-                        {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                        <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
+                          <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
+                        </Button>
+                      </a>
+                    </CardContent>
+                  </Card>
+
+                  {/* Quick Facts */}
+                  <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
+                    <CardContent className="p-4 md:p-6">
+                      <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
+                        <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
+                      </h3>
+                      <div className="space-y-2 text-[10px] md:text-sm">
+                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                          <span className="text-slate-500">Start Point</span>
+                          <span className="font-medium text-[#0f2940]">Kathmandu</span>
+                        </div>
+                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                          <span className="text-slate-500">End Point</span>
+                          <span className="font-medium text-[#0f2940]">Kathmandu</span>
+                        </div>
+                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                          <span className="text-slate-500">Trek Start</span>
+                          <span className="font-medium text-[#0f2940]">Machha Khola</span>
+                        </div>
+                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                          <span className="text-slate-500">Trek End</span>
+                          <span className="font-medium text-[#0f2940]">Dharapani</span>
+                        </div>
+                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                          <span className="text-slate-500">Highest Point</span>
+                          <span className="font-medium text-[#0f2940]">Larkya La (5,106m)</span>
+                        </div>
+                        <div className="flex justify-between py-1.5 md:py-2">
+                          <span className="text-slate-500">Trekking Days</span>
+                          <span className="font-medium text-[#0f2940]">16 Days</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Share */}
+                  <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
+                    <CardContent className="p-4 md:p-6">
+                      <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
+                        <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
+                      </h3>
+                      <div className="flex gap-2">
+                        <Button
+                          size="sm"
+                          className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                          onClick={() => handleShare("facebook")}
+                        >
+                          <Facebook className="w-3 h-3 md:w-4 md:h-4" />
+                        </Button>
+                        <Button
+                          size="sm"
+                          className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                          onClick={() => handleShare("twitter")}
+                        >
+                          <Twitter className="w-3 h-3 md:w-4 md:h-4" />
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                          onClick={handleCopyLink}
+                        >
+                          {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </aside>
 
             {/* Main Content */}
-            <article className="lg:col-span-8 w-full overflow-hidden">
+            <article className="lg:col-span-8 w-full overflow-hidden mt-6 lg:mt-0">
               {/* Mobile Share Buttons */}
               <div className="lg:hidden flex gap-2 mb-6">
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5"
+                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("facebook")}
                 >
                   <Facebook className="w-3 h-3 mr-1" /> Share
                 </Button>
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5"
+                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("twitter")}
                 >
                   <Twitter className="w-3 h-3 mr-1" /> Tweet
@@ -611,7 +623,7 @@ export default function ManasluTsumValleyTrekPage() {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5"
+                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={handleCopyLink}
                 >
                   {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
