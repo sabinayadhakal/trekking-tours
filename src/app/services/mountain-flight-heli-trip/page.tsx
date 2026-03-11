@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   Plane,
@@ -26,28 +27,28 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+// Minimal route options based on actual flights in your folder structure
 const flightRoutes = [
   "All Routes",
-  "Everest Experience",
-  "Annapurna Panorama",
-  "Langtang Range",
-  "Manaslu Circuit",
-  "All Himalayas",
+  "Everest Region",
+  "Annapurna Region",
+  "Langtang Region",
 ];
 
+// Minimal duration options
 const flightDurations = [
   "All Durations",
   "1 Hour",
   "1.5 Hours",
-  "2 Hours",
-  "Full Day",
+  "4 Hours",
 ];
 
+// Only include mountain flights that exist in your folder structure
 const mountainFlights = [
   {
     id: 1,
-    name: "Everest Mountain Flight",
-    route: "Everest Experience",
+    name: "Everest Region Mountain Flight Trip",
+    route: "Everest Region",
     duration: "1 Hour",
     altitude: "8,848m",
     groupSize: "1-25",
@@ -62,132 +63,12 @@ const mountainFlights = [
     featured: true,
     aircraft: "Beechcraft 1900D",
     departure: "06:00 AM",
-    link: "/destinations/flights/everest-mountain-flight",
+    link: "/services/mountain-flight-heli-trip/everest-region-mountain-flight-trip",
   },
   {
     id: 2,
-    name: "Annapurna Panorama Flight",
-    route: "Annapurna Panorama",
-    duration: "1 Hour",
-    altitude: "8,091m",
-    groupSize: "1-20",
-    bestSeason: "Year Round",
-    price: 320,
-    originalPrice: 380,
-    image: "https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=2074&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 312,
-    highlights: ["Annapurna I", "Dhaulagiri", "Machapuchare", "Manaslu"],
-    description: "Spectacular views of the entire Annapurna range with crystal-clear mountain vistas.",
-    featured: true,
-    aircraft: "Beechcraft 1900D",
-    departure: "07:00 AM",
-    link: "/destinations/flights/annapurna-panorama-flight",
-  },
-  {
-    id: 3,
-    name: "Langtang Scenic Flight",
-    route: "Langtang Range",
-    duration: "45 Minutes",
-    altitude: "7,234m",
-    groupSize: "1-15",
-    bestSeason: "Oct-Apr",
-    price: 280,
-    originalPrice: 340,
-    image: "https://images.unsplash.com/photo-1528164344705-47542687000d?q=80&w=2092&auto=format&fit=crop",
-    rating: 4.7,
-    reviews: 189,
-    highlights: ["Langtang Lirung", "Ganesh Himal", "Dorje Lakpa", "Shisha Pangma"],
-    description: "A shorter flight perfect for those with limited time, offering stunning views of Langtang region.",
-    featured: false,
-    aircraft: "Twin Otter",
-    departure: "08:00 AM",
-    link: "/destinations/flights/langtang-scenic-flight",
-  },
-  {
-    id: 4,
-    name: "Manaslu & Ganesh Himal Flight",
-    route: "Manaslu Circuit",
-    duration: "1.5 Hours",
-    altitude: "8,163m",
-    groupSize: "1-12",
-    bestSeason: "Sep-May",
-    price: 380,
-    originalPrice: 450,
-    image: "https://images.unsplash.com/photo-1473496169904-658ba7c44f8a?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 134,
-    highlights: ["Manaslu", "Ganesh Himal", "Himalchuli", "Baudha Peak"],
-    description: "Explore the remote and pristine Manaslu region from the air with extended flight time.",
-    featured: true,
-    aircraft: "Beechcraft 1900D",
-    departure: "06:30 AM",
-    link: "/destinations/flights/manaslu-ganesh-himal-flight",
-  },
-  {
-    id: 5,
-    name: "Complete Himalayan Flight",
-    route: "All Himalayas",
-    duration: "2 Hours",
-    altitude: "8,848m",
-    groupSize: "1-10",
-    bestSeason: "Oct-Mar",
-    price: 450,
-    originalPrice: 550,
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 267,
-    highlights: ["Everest", "Kanchenjunga", "Makalu", "Cho Oyu", "Dhaulagiri"],
-    description: "The ultimate Himalayan aerial tour covering all major peaks from east to west.",
-    featured: false,
-    aircraft: "Beechcraft 1900D",
-    departure: "05:30 AM",
-    link: "/destinations/flights/complete-himalayan-flight",
-  },
-  {
-    id: 6,
-    name: "Sunrise Mountain Flight",
-    route: "Everest Experience",
-    duration: "1 Hour",
-    altitude: "8,848m",
-    groupSize: "1-15",
-    bestSeason: "Oct-Apr",
-    price: 420,
-    originalPrice: 500,
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 178,
-    highlights: ["Golden Sunrise", "Everest", "Nuptse", "Pumori"],
-    description: "Witness the magical sunrise over the Himalayas with golden light painting the peaks.",
-    featured: true,
-    aircraft: "Beechcraft 1900D",
-    departure: "05:00 AM",
-    link: "/destinations/flights/sunrise-mountain-flight",
-  },
-  {
-    id: 7,
-    name: "Private Charter Flight",
-    route: "All Routes",
-    duration: "Custom",
-    altitude: "8,848m",
-    groupSize: "1-8",
-    bestSeason: "Year Round",
-    price: 2500,
-    originalPrice: 3000,
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 89,
-    highlights: ["Fully Customizable", "Flexible Timing", "VIP Service", "Photography Focus"],
-    description: "Exclusive private charter with custom route planning and flexible scheduling.",
-    featured: false,
-    aircraft: "Private Jet",
-    departure: "Flexible",
-    link: "/destinations/flights/private-charter-flight",
-  },
-  {
-    id: 8,
-    name: "Helicopter Tour to Everest",
-    route: "Everest Experience",
+    name: "Everest Region Helicopter Trip",
+    route: "Everest Region",
     duration: "4 Hours",
     altitude: "8,848m",
     groupSize: "1-5",
@@ -202,45 +83,68 @@ const mountainFlights = [
     featured: true,
     aircraft: "AS350 B3",
     departure: "07:00 AM",
-    link: "/destinations/flights/helicopter-tour-everest",
+    link: "/services/mountain-flight-heli-trip/everest-region-helicopter-trip",
   },
   {
-    id: 9,
-    name: "Photography Special Flight",
-    route: "All Himalayas",
-    duration: "1.5 Hours",
+    id: 3,
+    name: "Annapurna Region Mountain Flight Trip",
+    route: "Annapurna Region",
+    duration: "1 Hour",
     altitude: "8,091m",
-    groupSize: "1-6",
-    bestSeason: "Oct-Dec, Mar-May",
-    price: 500,
-    originalPrice: 600,
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    groupSize: "1-20",
+    bestSeason: "Year Round",
+    price: 320,
+    originalPrice: 380,
+    image: "https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=2074&auto=format&fit=crop",
     rating: 4.8,
-    reviews: 67,
-    highlights: ["Photo Windows", "Expert Guide", "Optimal Lighting", "Multiple Passes"],
-    description: "Special flight designed for photographers with optimal lighting and multiple passes.",
+    reviews: 312,
+    highlights: ["Annapurna I", "Dhaulagiri", "Machapuchare", "Manaslu"],
+    description: "Spectacular views of the entire Annapurna range with crystal-clear mountain vistas.",
     featured: false,
     aircraft: "Beechcraft 1900D",
-    departure: "08:30 AM",
-    link: "/destinations/flights/photography-special-flight",
+    departure: "07:00 AM",
+    link: "/services/mountain-flight-heli-trip/annapurna-region-mountain-flight-trip",
+  },
+  {
+    id: 4,
+    name: "Langtang Region Helicopter Trip",
+    route: "Langtang Region",
+    duration: "1.5 Hours",
+    altitude: "7,234m",
+    groupSize: "1-6",
+    bestSeason: "Oct-Apr",
+    price: 950,
+    originalPrice: 1150,
+    image: "https://images.unsplash.com/photo-1528164344705-47542687000d?q=80&w=2092&auto=format&fit=crop",
+    rating: 4.8,
+    reviews: 89,
+    highlights: ["Langtang Lirung", "Ganesh Himal", "Dorje Lakpa", "Kyanjin Gompa"],
+    description: "Helicopter exploration of the beautiful Langtang Valley with landing at Kyanjin Gompa.",
+    featured: false,
+    aircraft: "AS350 B3",
+    departure: "08:00 AM",
+    link: "/services/mountain-flight-heli-trip/langtang-region-helicopter-trip",
   },
 ];
 
 const getAircraftColor = (aircraft: string) => {
   switch (aircraft) {
     case "Beechcraft 1900D": return "bg-blue-100 text-blue-700";
-    case "Twin Otter": return "bg-green-100 text-green-700";
-    case "Private Jet": return "bg-purple-100 text-purple-700";
     case "AS350 B3": return "bg-red-100 text-red-700";
     default: return "bg-slate-100 text-slate-700";
   }
 };
 
 export default function MountainFlightsPage() {
+  const router = useRouter();
   const [selectedRoute, setSelectedRoute] = React.useState("All Routes");
   const [selectedDuration, setSelectedDuration] = React.useState("All Durations");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [showFilterDrawer, setShowFilterDrawer] = React.useState(false);
+
+  const handleBookNow = (flightName: string) => {
+    router.push(`/contact?trek=${encodeURIComponent(flightName)}`);
+  };
 
   const filteredFlights = mountainFlights.filter((flight) => {
     const matchesRoute = selectedRoute === "All Routes" || flight.route === selectedRoute;
@@ -274,7 +178,7 @@ export default function MountainFlightsPage() {
               </div>
               
               <div className="space-y-6">
-                {/* Duration Filter */}
+                {/* Duration Filter - Minimal */}
                 <div>
                   <h4 className="font-medium text-[#0f2940] mb-3">Flight Duration</h4>
                   <div className="flex flex-wrap gap-2">
@@ -297,7 +201,7 @@ export default function MountainFlightsPage() {
                   </div>
                 </div>
 
-                {/* Route Filter */}
+                {/* Route Filter - Minimal */}
                 <div>
                   <h4 className="font-medium text-[#0f2940] mb-3">Flight Route</h4>
                   <div className="space-y-2">
@@ -345,10 +249,10 @@ export default function MountainFlightsPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-2 md:gap-4">
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Plane className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 9 Flight Options
+                <Plane className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 4 Flight Options
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 45 min - 4 hours
+                <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 1-4 hours
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
                 <Eye className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Guaranteed Window Seat
@@ -359,82 +263,82 @@ export default function MountainFlightsPage() {
       </section>
 
       {/* Search and Filter Bar */}
-<section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
-  <div className="container mx-auto px-4 md:px-6">
-    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
-      {/* Search */}
-      <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
-        <input
-          type="text"
-          placeholder="Search mountain flights..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
-        />
-      </div>
+      <section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
+            {/* Search */}
+            <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search mountain flights..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
+              />
+            </div>
 
-      {/* Mobile Filter Button */}
-      <Button
-        variant="outline"
-        className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
-        onClick={() => setShowFilterDrawer(true)}
-      >
-        <Filter className="w-4 h-4 mr-2" />
-        Filters
-      </Button>
-
-      {/* Desktop Filters */}
-      <div className="hidden lg:flex items-center gap-4">
-        <div className="flex flex-wrap justify-center gap-2">
-          {flightRoutes.slice(0, 4).map((route) => (
-            <button
-              key={route}
-              onClick={() => setSelectedRoute(route)}
-              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
-                selectedRoute === route
-                  ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
-                  : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-              }`}
+            {/* Mobile Filter Button */}
+            <Button
+              variant="outline"
+              className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
+              onClick={() => setShowFilterDrawer(true)}
             >
-              {route.replace(" Experience", "").replace(" Panorama", "").replace(" Range", "").replace(" Circuit", "")}
-            </button>
-          ))}
-        </div>
+              <Filter className="w-4 h-4 mr-2" />
+              Filters
+            </Button>
 
-        <div className="flex items-center gap-2">
-          <select
-            value={selectedDuration}
-            onChange={(e) => setSelectedDuration(e.target.value)}
-            className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
-          >
-            {flightDurations.map((duration) => (
-              <option key={duration} value={duration}>{duration}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-    </div>
+            {/* Desktop Filters - Minimal */}
+            <div className="hidden lg:flex items-center gap-4">
+              <div className="flex flex-wrap justify-center gap-2">
+                {flightRoutes.slice(1).map((route) => (
+                  <button
+                    key={route}
+                    onClick={() => setSelectedRoute(route)}
+                    className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
+                      selectedRoute === route
+                        ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
+                        : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
+                    }`}
+                  >
+                    {route}
+                  </button>
+                ))}
+              </div>
 
-    {/* Mobile Active Filters */}
-    <div className="lg:hidden mt-3 flex flex-wrap gap-2">
-      <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-        {selectedRoute}
-      </Badge>
-      <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-        {selectedDuration}
-      </Badge>
-    </div>
-  </div>
-</section>
+              <div className="flex items-center gap-2">
+                <select
+                  value={selectedDuration}
+                  onChange={(e) => setSelectedDuration(e.target.value)}
+                  className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
+                >
+                  {flightDurations.map((duration) => (
+                    <option key={duration} value={duration}>{duration}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Active Filters */}
+          <div className="lg:hidden mt-3 flex flex-wrap gap-2">
+            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
+              {selectedRoute}
+            </Badge>
+            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
+              {selectedDuration}
+            </Badge>
+          </div>
+        </div>
+      </section>
 
       {/* Featured Flight */}
       {featuredFlight && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div 
-              onClick={() => window.location.href = featuredFlight.link}
-              className="cursor-pointer"
+            <Link 
+              href={featuredFlight.link}
+              className="cursor-pointer block"
             >
               <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
                 <div className="grid lg:grid-cols-2">
@@ -492,17 +396,21 @@ export default function MountainFlightsPage() {
                         <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredFlight.price}</span>
                         <span className="text-slate-500 text-sm">/person</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(featuredFlight.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
-                          Book Now
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(featuredFlight.name);
+                        }}
+                      >
+                        Book Now
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
                     </div>
                   </CardContent>
                 </div>
               </Card>
-            </div>
+            </Link>
           </div>
         </section>
       )}
@@ -522,10 +430,10 @@ export default function MountainFlightsPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredFlights.map((flight, i) => (
-              <div 
+              <Link 
                 key={flight.id} 
-                onClick={() => window.location.href = flight.link}
-                className="cursor-pointer"
+                href={flight.link}
+                className="cursor-pointer block"
               >
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
                   <div className="relative h-40 md:h-52 overflow-hidden">
@@ -575,15 +483,21 @@ export default function MountainFlightsPage() {
                         <span className="text-slate-400 text-xs line-through">${flight.originalPrice}</span>
                         <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${flight.price}</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(flight.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
-                          Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        variant="ghost" 
+                        className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(flight.name);
+                        }}
+                      >
+                        Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -607,7 +521,7 @@ export default function MountainFlightsPage() {
           )}
 
           <div className="text-center mt-8 md:mt-12">
-            <Link href="/flights">
+            <Link href="/services/mountain-flight-heli-trip">
               <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
                 View All Flight Options
               </Button>

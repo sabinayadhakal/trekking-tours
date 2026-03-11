@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   Mountain,
@@ -24,6 +25,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+// Region options based on actual treks
 const trekRegions = [
   "Everest Region",
   "Annapurna Region",
@@ -31,14 +33,16 @@ const trekRegions = [
   "Langtang Region"
 ];
 
+// Difficulty options based on actual treks
 const difficultyLevels = [
   "All Levels",
-  "Easy",
+  "Easy-Moderate",
   "Moderate",
   "Challenging",
-  "Strenuous",
+  "Easy"
 ];
 
+// Only include treks that exist in your folder structure
 const trekkingPackages = [
   {
     id: 1,
@@ -57,7 +61,7 @@ const trekkingPackages = [
     highlights: ["Khumbu Glacier", "Tengboche Monastery", "Sherpa Culture", "Kala Patthar"],
     description: "Trek to the foot of the world's highest mountain through legendary Sherpa villages and breathtaking Himalayan landscapes.",
     featured: true,
-    link: "/destinations/trekking/everest-base-camp",
+    link: "/services/trekking/everest-base-camp-trek",
   },
   {
     id: 2,
@@ -76,14 +80,33 @@ const trekkingPackages = [
     highlights: ["Thorong La Pass", "Muktinath Temple", "Manang Valley", "Diverse Landscapes"],
     description: "The classic Himalayan trek circumnavigating the Annapurna massif, crossing the legendary Thorong La Pass.",
     featured: true,
-    link: "/destinations/trekking/annapurna-circuit",
+    link: "/services/trekking/annapurna-circuit-trek",
   },
   {
     id: 3,
+    name: "Annapurna Circuit Trek with Tilicho Lake",
+    region: "Annapurna Region",
+    duration: "20 Days",
+    difficulty: "Challenging",
+    maxAltitude: "5,416m",
+    groupSize: "2-12",
+    bestSeason: "Mar-May, Oct-Nov",
+    price: 1450,
+    originalPrice: 1650,
+    image: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
+    rating: 4.9,
+    reviews: 98,
+    highlights: ["Thorong La Pass", "Tilicho Lake", "Muktinath Temple", "Manang Valley"],
+    description: "Extended Annapurna Circuit with a side trip to the world's highest lake - Tilicho.",
+    featured: false,
+    link: "/services/trekking/annapurna-circuit-trek-with-tilicho-lake",
+  },
+  {
+    id: 4,
     name: "Langtang Valley Trek",
     region: "Langtang Region",
     duration: "10 Days",
-    difficulty: "Easy",
+    difficulty: "Easy-Moderate",
     maxAltitude: "4,984m",
     groupSize: "2-14",
     bestSeason: "Mar-May, Sep-Dec",
@@ -92,13 +115,13 @@ const trekkingPackages = [
     image: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
     rating: 4.7,
     reviews: 156,
-    highlights: ["Kyanjin Gompa", "Langtang Glacier", "Tamang Culture", "Cheese Factory"],
-    description: "A shorter trek perfect for those with limited time, offering stunning mountain views and rich Tamang heritage.",
+    highlights: ["Kyanjin Gompa", "Langtang Village", "Cheese Factory", "Tserko Ri"],
+    description: "Explore the 'Valley of Glaciers' just north of Kathmandu with rich Tamang culture.",
     featured: false,
-    link: "/destinations/trekking/langtang-valley",
+    link: "/services/trekking/langtang-valley-trek",
   },
   {
-    id: 4,
+    id: 5,
     name: "Manaslu Circuit Trek",
     region: "Manaslu Region",
     duration: "16 Days",
@@ -111,13 +134,32 @@ const trekkingPackages = [
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
     rating: 4.9,
     reviews: 98,
-    highlights: ["Larkya La Pass", "Remote Villages", "Buddhist Monasteries", "Wildlife"],
-    description: "A remote and pristine alternative to the Annapurna Circuit, offering solitude and authentic cultural experiences.",
+    highlights: ["Larkya La Pass", "Tibetan Villages", "Remote Trails", "Buddhist Monasteries"],
+    description: "Circle the world's eighth highest mountain through pristine wilderness and authentic Tibetan culture.",
     featured: true,
-    link: "/destinations/trekking/manaslu-circuit",
+    link: "/services/trekking/manaslu-circuit-trek",
   },
   {
-    id: 5,
+    id: 6,
+    name: "Manaslu Circuit Trek with Tsum Valley",
+    region: "Manaslu Region",
+    duration: "21 Days",
+    difficulty: "Challenging",
+    maxAltitude: "5,106m",
+    groupSize: "2-10",
+    bestSeason: "Mar-May, Sep-Nov",
+    price: 1850,
+    originalPrice: 2100,
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    rating: 4.9,
+    reviews: 67,
+    highlights: ["Tsum Valley", "Larkya La Pass", "Ancient Monasteries", "Remote Villages"],
+    description: "Combine the Manaslu Circuit with the sacred Tsum Valley for an extended cultural adventure.",
+    featured: false,
+    link: "/services/trekking/manaslu-circuit-trek-with-tsum-valley",
+  },
+  {
+    id: 7,
     name: "Annapurna Base Camp Trek",
     region: "Annapurna Region",
     duration: "12 Days",
@@ -125,38 +167,57 @@ const trekkingPackages = [
     maxAltitude: "4,130m",
     groupSize: "2-14",
     bestSeason: "Mar-May, Sep-Dec",
-    price: 1050,
-    originalPrice: 1200,
+    price: 1150,
+    originalPrice: 1350,
     image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2076&auto=format&fit=crop",
     rating: 4.8,
     reviews: 212,
-    highlights: ["Annapurna Sanctuary", "Machapuchare Views", "Hot Springs", "Gurung Villages"],
-    description: "Journey into the heart of the Annapurna Sanctuary, surrounded by towering peaks in a natural amphitheater.",
-    featured: false,
-    link: "/destinations/trekking/annapurna-base-camp",
+    highlights: ["Annapurna Sanctuary", "Machapuchare Base Camp", "Hot Springs", "Gurung Villages"],
+    description: "Journey into the heart of the Annapurna Sanctuary, surrounded by towering peaks.",
+    featured: true,
+    link: "/services/trekking/annapurna-base-camp-trek",
   },
   {
-    id: 6,
-    name: "Gokyo Lakes & Everest Base Camp",
+    id: 8,
+    name: "Gokyo Trek",
     region: "Everest Region",
-    duration: "18 Days",
-    difficulty: "Challenging",
-    maxAltitude: "5,545m",
+    duration: "14 Days",
+    difficulty: "Moderate",
+    maxAltitude: "5,357m",
     groupSize: "2-12",
     bestSeason: "Mar-May, Sep-Nov",
-    price: 1650,
-    originalPrice: 1850,
+    price: 1450,
+    originalPrice: 1650,
     image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 87,
-    highlights: ["Gokyo Ri", "Cho La Pass", "Turquoise Lakes", "Ngozumpa Glacier"],
-    description: "The ultimate Everest region adventure combining the stunning Gokyo Lakes with the classic EBC route.",
-    featured: true,
-    link: "/destinations/trekking/gokyo-lakes-everest",
+    rating: 4.8,
+    reviews: 134,
+    highlights: ["Gokyo Lakes", "Gokyo Ri", "Ngozumpa Glacier", "Everest Views"],
+    description: "Trek to the stunning turquoise Gokyo Lakes and climb Gokyo Ri for panoramic Everest views.",
+    featured: false,
+    link: "/services/trekking/gokyo-trek",
   },
   {
-    id: 7,
-    name: "Poon Hill Trek",
+    id: 9,
+    name: "Everest Three Passes Trek",
+    region: "Everest Region",
+    duration: "21 Days",
+    difficulty: "Strenuous",
+    maxAltitude: "5,545m",
+    groupSize: "2-10",
+    bestSeason: "Apr-May, Oct-Nov",
+    price: 1850,
+    originalPrice: 2100,
+    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.9,
+    reviews: 89,
+    highlights: ["Kongma La", "Cho La", "Renjo La", "Gokyo Lakes"],
+    description: "The ultimate challenge for experienced trekkers, crossing three high passes above 5,300m.",
+    featured: true,
+    link: "/services/trekking/everest-three-passes-trek",
+  },
+  {
+    id: 10,
+    name: "Gorepani Poon Hill Trek",
     region: "Annapurna Region",
     duration: "5 Days",
     difficulty: "Easy",
@@ -168,15 +229,167 @@ const trekkingPackages = [
     image: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
     rating: 4.6,
     reviews: 324,
-    highlights: ["Poon Hill Sunrise", "Ghorepani", "Rhododendron Forests", "Gurung Culture"],
-    description: "The perfect introductory trek offering spectacular sunrise views over the Annapurna and Dhaulagiri ranges.",
+    highlights: ["Poon Hill Sunrise", "Rhododendron Forests", "Gurung Villages", "Mountain Panorama"],
+    description: "The perfect short trek with stunning sunrise views over the Annapurna and Dhaulagiri ranges.",
     featured: false,
-    link: "/destinations/trekking/poon-hill",
+    link: "/services/trekking/gorepani-poon-hill-trek",
   },
   {
-    id: 8,
+    id: 11,
+    name: "Khopra Ridge Trek with Khayar Lake",
+    region: "Annapurna Region",
+    duration: "12 Days",
+    difficulty: "Moderate",
+    maxAltitude: "4,660m",
+    groupSize: "2-10",
+    bestSeason: "Mar-May, Sep-Nov",
+    price: 1250,
+    originalPrice: 1450,
+    image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2076&auto=format&fit=crop",
+    rating: 4.8,
+    reviews: 78,
+    highlights: ["Khopra Ridge", "Khayar Lake", "Annapurna South", "Dhaulagiri Views"],
+    description: "Off-the-beaten-path trek offering stunning mountain views and the sacred Khayar Lake.",
+    featured: false,
+    link: "/services/trekking/khopra-ridge-trek-with-khayar-lake",
+  },
+  {
+    id: 12,
+    name: "Langtang Ganjala Pass Trek",
+    region: "Langtang Region",
+    duration: "14 Days",
+    difficulty: "Challenging",
+    maxAltitude: "5,106m",
+    groupSize: "2-10",
+    bestSeason: "Mar-May, Sep-Nov",
+    price: 1350,
+    originalPrice: 1550,
+    image: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.8,
+    reviews: 67,
+    highlights: ["Ganjala Pass", "Langtang Valley", "Helambu Region", "Panoramic Views"],
+    description: "Cross the challenging Ganjala Pass connecting Langtang with Helambu for a complete adventure.",
+    featured: false,
+    link: "/services/trekking/langtang-ganjala-pass-trek",
+  },
+  {
+    id: 13,
+    name: "Langtang Gosainkunda Trek",
+    region: "Langtang Region",
+    duration: "12 Days",
+    difficulty: "Moderate",
+    maxAltitude: "4,380m",
+    groupSize: "2-12",
+    bestSeason: "Mar-May, Sep-Nov",
+    price: 1150,
+    originalPrice: 1350,
+    image: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.7,
+    reviews: 112,
+    highlights: ["Gosainkunda Lake", "Sacred Pilgrimage", "Langtang Valley", "Mountain Views"],
+    description: "Trek to the sacred alpine lakes of Gosainkunda, an important Hindu pilgrimage site.",
+    featured: false,
+    link: "/services/trekking/langtang-gosainkunda-trek",
+  },
+  {
+    id: 14,
+    name: "Langtang Helambu Trek",
+    region: "Langtang Region",
+    duration: "14 Days",
+    difficulty: "Moderate",
+    maxAltitude: "4,380m",
+    groupSize: "2-12",
+    bestSeason: "Mar-May, Sep-Nov",
+    price: 1250,
+    originalPrice: 1450,
+    image: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.7,
+    reviews: 98,
+    highlights: ["Helambu Valley", "Tamang Culture", "Langtang National Park", "Village Life"],
+    description: "Explore the scenic Helambu region with its unique Tamang culture and Buddhist monasteries.",
+    featured: false,
+    link: "/services/trekking/langtang-helambu-trek",
+  },
+  {
+    id: 15,
+    name: "Mardi Himal Trek",
+    region: "Annapurna Region",
+    duration: "10 Days",
+    difficulty: "Moderate",
+    maxAltitude: "4,500m",
+    groupSize: "2-12",
+    bestSeason: "Mar-May, Sep-Nov",
+    price: 950,
+    originalPrice: 1150,
+    image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2076&auto=format&fit=crop",
+    rating: 4.8,
+    reviews: 145,
+    highlights: ["Mardi Himal Base Camp", "Machapuchare Views", "Forest Trails", "Camping Experience"],
+    description: "A hidden gem offering spectacular close-up views of Machapuchare and Annapurna South.",
+    featured: true,
+    link: "/services/trekking/mardi-himal-trek",
+  },
+  {
+    id: 16,
+    name: "Nar Phu Trek",
+    region: "Annapurna Region",
+    duration: "14 Days",
+    difficulty: "Challenging",
+    maxAltitude: "5,300m",
+    groupSize: "2-10",
+    bestSeason: "Mar-May, Sep-Nov",
+    price: 1650,
+    originalPrice: 1850,
+    image: "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.9,
+    reviews: 56,
+    highlights: ["Nar Village", "Phu Village", "Tibetan Culture", "Kang La Pass"],
+    description: "Explore the remote and restricted Nar-Phu valleys with their ancient Tibetan Buddhist culture.",
+    featured: true,
+    link: "/services/trekking/nar-phu-trek",
+  },
+  {
+    id: 17,
+    name: "Rupina La Trek",
+    region: "Manaslu Region",
+    duration: "14 Days",
+    difficulty: "Challenging",
+    maxAltitude: "4,620m",
+    groupSize: "2-10",
+    bestSeason: "Mar-May, Sep-Nov",
+    price: 1450,
+    originalPrice: 1650,
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    rating: 4.7,
+    reviews: 45,
+    highlights: ["Rupina La Pass", "Remote Villages", "Mountain Views", "Cultural Experience"],
+    description: "An off-the-beaten-path trek in the Manaslu region offering pristine nature and authentic culture.",
+    featured: false,
+    link: "/services/trekking/rupina-la-trek",
+  },
+  {
+    id: 18,
+    name: "Tamang Heritage Trail and Langtang Valley Trek",
+    region: "Langtang Region",
+    duration: "12 Days",
+    difficulty: "Moderate",
+    maxAltitude: "4,984m",
+    groupSize: "2-12",
+    bestSeason: "Mar-May, Sep-Nov",
+    price: 1250,
+    originalPrice: 1450,
+    image: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.8,
+    reviews: 89,
+    highlights: ["Tamang Heritage Trail", "Gatlang Village", "Briddim Village", "Langtang Valley"],
+    description: "Combine the cultural Tamang Heritage Trail with the stunning Langtang Valley trek.",
+    featured: false,
+    link: "/services/trekking/tamang-heritage-trail-and-langtang-valley-trek",
+  },
+  {
+    id: 19,
     name: "Upper Mustang Trek",
-    region: "Remote Trails",
+    region: "Annapurna Region",
     duration: "14 Days",
     difficulty: "Moderate",
     maxAltitude: "3,840m",
@@ -186,36 +399,18 @@ const trekkingPackages = [
     originalPrice: 2100,
     image: "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=2070&auto=format&fit=crop",
     rating: 4.9,
-    reviews: 67,
-    highlights: ["Lo Manthang", "Cave Monasteries", "Tibetan Culture", "Desert Landscapes"],
-    description: "Explore the forbidden kingdom of Mustang, a preserved Tibetan enclave with ancient monasteries.",
+    reviews: 112,
+    highlights: ["Lo Manthang", "Ancient Caves", "Tibetan Culture", "Desert Landscape"],
+    description: "Journey to the forbidden kingdom of Lo in the rain shadow of the Himalayas.",
     featured: true,
-    link: "/destinations/trekking/upper-mustang",
-  },
-  {
-    id: 9,
-    name: "Three Passes Trek",
-    region: "Everest Region",
-    duration: "20 Days",
-    difficulty: "Strenuous",
-    maxAltitude: "5,545m",
-    groupSize: "2-10",
-    bestSeason: "Apr-May, Oct-Nov",
-    price: 1950,
-    originalPrice: 2200,
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 45,
-    highlights: ["Kongma La", "Cho La", "Renjo La", "Gokyo Lakes"],
-    description: "The ultimate challenge for experienced trekkers, crossing three high passes above 5,300m.",
-    featured: false,
-    link: "/destinations/trekking/three-passes",
+    link: "/services/trekking/upper-mustang-trek",
   },
 ];
 
 const getDifficultyColor = (difficulty: string) => {
   switch (difficulty) {
     case "Easy": return "bg-green-100 text-green-700";
+    case "Easy-Moderate": return "bg-green-100 text-green-700";
     case "Moderate": return "bg-yellow-100 text-yellow-700";
     case "Challenging": return "bg-orange-100 text-orange-700";
     case "Strenuous": return "bg-red-100 text-red-700";
@@ -224,10 +419,15 @@ const getDifficultyColor = (difficulty: string) => {
 };
 
 export default function TrekkingNepalPage() {
+  const router = useRouter();
   const [selectedRegion, setSelectedRegion] = React.useState("All Regions");
   const [selectedDifficulty, setSelectedDifficulty] = React.useState("All Levels");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [showFilterDrawer, setShowFilterDrawer] = React.useState(false);
+
+  const handleBookNow = (trekName: string) => {
+    router.push(`/contact?trek=${encodeURIComponent(trekName)}`);
+  };
 
   const filteredPackages = trekkingPackages.filter((pkg) => {
     const matchesRegion = selectedRegion === "All Regions" || pkg.region === selectedRegion;
@@ -332,10 +532,10 @@ export default function TrekkingNepalPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-2 md:gap-4">
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 9 Trekking Routes
+                <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 19 Trekking Routes
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 5 to 20 Days
+                <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 5 to 21 Days
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
                 <TrendingUp className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Up to 5,545m
@@ -346,81 +546,82 @@ export default function TrekkingNepalPage() {
       </section>
 
       {/* Search and Filter Bar */}
-<section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
-  <div className="container mx-auto px-4 md:px-6">
-    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
-      {/* Search */}
-      <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
-        <input
-          type="text"
-          placeholder="Search treks..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
-        />
-      </div>
+      <section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
+            {/* Search */}
+            <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search treks..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
+              />
+            </div>
 
-      {/* Mobile Filter Button */}
-      <Button
-        variant="outline"
-        className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
-        onClick={() => setShowFilterDrawer(true)}
-      >
-        <Filter className="w-4 h-4 mr-2" />
-        Filters
-      </Button>
-
-      {/* Desktop Filters */}
-      <div className="hidden lg:flex items-center gap-4">
-        <div className="flex flex-wrap justify-center gap-2">
-          {trekRegions.slice(0, 4).map((region) => (
-            <button
-              key={region}
-              onClick={() => setSelectedRegion(region)}
-              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
-                selectedRegion === region
-                  ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
-                  : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-              }`}
+            {/* Mobile Filter Button */}
+            <Button
+              variant="outline"
+              className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
+              onClick={() => setShowFilterDrawer(true)}
             >
-              {region.replace(" Region", "")}
-            </button>
-          ))}
-        </div>
+              <Filter className="w-4 h-4 mr-2" />
+              Filters
+            </Button>
 
-        <div className="flex items-center gap-2">
-          <select
-            value={selectedDifficulty}
-            onChange={(e) => setSelectedDifficulty(e.target.value)}
-            className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
-          >
-            {difficultyLevels.map((level) => (
-              <option key={level} value={level}>{level}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-    </div>
+            {/* Desktop Filters */}
+            <div className="hidden lg:flex items-center gap-4">
+              <div className="flex flex-wrap justify-center gap-2">
+                {trekRegions.slice(0, 4).map((region) => (
+                  <button
+                    key={region}
+                    onClick={() => setSelectedRegion(region)}
+                    className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
+                      selectedRegion === region
+                        ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
+                        : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
+                    }`}
+                  >
+                    {region.replace(" Region", "")}
+                  </button>
+                ))}
+              </div>
 
-    {/* Mobile Active Filters */}
-    <div className="lg:hidden mt-3 flex flex-wrap gap-2">
-      <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-        {selectedRegion}
-      </Badge>
-      <Badge className={`border-none text-xs font-medium ${getDifficultyColor(selectedDifficulty)}`}>
-        {selectedDifficulty}
-      </Badge>
-    </div>
-  </div>
-</section>
+              <div className="flex items-center gap-2">
+                <select
+                  value={selectedDifficulty}
+                  onChange={(e) => setSelectedDifficulty(e.target.value)}
+                  className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
+                >
+                  {difficultyLevels.map((level) => (
+                    <option key={level} value={level}>{level}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Active Filters */}
+          <div className="lg:hidden mt-3 flex flex-wrap gap-2">
+            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
+              {selectedRegion}
+            </Badge>
+            <Badge className={`border-none text-xs font-medium ${getDifficultyColor(selectedDifficulty)}`}>
+              {selectedDifficulty}
+            </Badge>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Package */}
       {featuredPackage && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div 
-              onClick={() => window.location.href = featuredPackage.link}
-              className="cursor-pointer"
+            <Link 
+              href={featuredPackage.link}
+              className="cursor-pointer block"
             >
               <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
                 <div className="grid lg:grid-cols-2">
@@ -478,17 +679,21 @@ export default function TrekkingNepalPage() {
                         <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredPackage.price}</span>
                         <span className="text-slate-500 text-sm">/person</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(featuredPackage.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
-                          View Details
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(featuredPackage.name);
+                        }}
+                      >
+                        View Details
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
                     </div>
                   </CardContent>
                 </div>
               </Card>
-            </div>
+            </Link>
           </div>
         </section>
       )}
@@ -508,10 +713,10 @@ export default function TrekkingNepalPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredPackages.map((pkg, i) => (
-              <div 
+              <Link 
                 key={pkg.id} 
-                onClick={() => window.location.href = pkg.link}
-                className="cursor-pointer"
+                href={pkg.link}
+                className="cursor-pointer block"
               >
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
                   <div className="relative h-40 md:h-52 overflow-hidden">
@@ -561,15 +766,21 @@ export default function TrekkingNepalPage() {
                         <span className="text-slate-400 text-xs line-through">${pkg.originalPrice}</span>
                         <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${pkg.price}</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(pkg.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
-                          Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        variant="ghost" 
+                        className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(pkg.name);
+                        }}
+                      >
+                        Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -593,9 +804,9 @@ export default function TrekkingNepalPage() {
           )}
 
           <div className="text-center mt-8 md:mt-12">
-            <Link href="/trekking">
+            <Link href="/services/trekking">
               <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
-                Load More Packages
+                View All Treks
               </Button>
             </Link>
           </div>
@@ -648,8 +859,6 @@ export default function TrekkingNepalPage() {
           </div>
         </div>
       </section>
-
-     
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { 
   Mountain, 
   Compass, 
@@ -34,21 +35,24 @@ const destinations = [
     image: "/images/nepal-1.jpg",
     description: "Birthplace of Buddha, home to Everest and Annapurna.",
     tours: "15+ Treks",
-    highlights: ["Everest Base Camp", "Annapurna Circuit", "Langtang"]
+    highlights: ["Everest Base Camp", "Annapurna Circuit", "Langtang"],
+    link: "/destinations/nepal"
   },
   {
     name: "Bhutan",
     image: "https://images.unsplash.com/photo-1578503173325-452778794828?q=80&w=2070&auto=format&fit=crop",
     description: "Land of Thunder Dragon, ancient monasteries, happiness measured.",
     tours: "8+ Cultural",
-    highlights: ["Tiger's Nest", "Punakha Dzong", "Paro"]
+    highlights: ["Tiger's Nest", "Punakha Dzong", "Paro"],
+    link: "/destinations/bhutan"
   },
   {
     name: "Tibet",
     image: "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=2070&auto=format&fit=crop",
     description: "Roof of the World, spiritual awakening, vast plateaus.",
     tours: "5+ Expeditions",
-    highlights: ["Mount Kailash", "Lhasa", "Everest North"]
+    highlights: ["Mount Kailash", "Lhasa", "Everest North"],
+    link: "/destinations/tibet"
   }
 ];
 
@@ -63,31 +67,43 @@ const services = [
     ),
     title: "Free Walking Tour, Kathmandu",
     description: "First Free Walking Tour in Kathmandu, Nepal.",
-    color: "from-sky-100 to-blue-50"
+    color: "from-sky-100 to-blue-50",
+    link: "/services/free-walking-tour"
   },
   {
     icon: <Mountain className="w-6 h-6" />,
     title: "Mountain Trekking",
     description: "Guided treks through Everest, Annapurna, Langtang with Sherpa guides.",
-    color: "from-blue-100 to-cyan-50"
+    color: "from-blue-100 to-cyan-50",
+    link: "/services/trekking"
   },
   {
     icon: <Award className="w-6 h-6" />,
     title: "Peak Climbing",
     description: "Climbing expeditions to Island Peak, Mera Peak, Lobuche summits.",
-    color: "from-emerald-100 to-teal-50"
+    color: "from-emerald-100 to-teal-50",
+    link: "/services/peak-climbing"
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: "Cultural Tours",
     description: "Ancient temples, monasteries, and Himalayan heritage experiences.",
-    color: "from-amber-100 to-orange-50"
+    color: "from-amber-100 to-orange-50",
+    link: "/services/multi-day-cultural-tours"
   },
   {
     icon: <Camera className="w-6 h-6" />,
-    title: "Photography Tours",
-    description: "Capture the Himalayas in all their glory.",
-    color: "from-rose-100 to-pink-50"
+    title: "Day Sightseeings",
+    description: "Explore Kathmandu Valley's UNESCO heritage sites and hidden gems.",
+    color: "from-rose-100 to-pink-50",
+    link: "/services/day-sightseeings"
+  },
+  {
+    icon: <Tent className="w-6 h-6" />,
+    title: "Jungle Safari",
+    description: "Wildlife adventures in Chitwan National Park.",
+    color: "from-green-100 to-emerald-50",
+    link: "/services/jungle-safari"
   },
 ];
 
@@ -99,7 +115,8 @@ const popularTreks = [
     altitude: "5,364m",
     price: "$1,450",
     image: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9
+    rating: 4.9,
+    link: "/services/trekking/everest-base-camp-trek"
   },
   {
     name: "Annapurna Circuit",
@@ -108,7 +125,8 @@ const popularTreks = [
     altitude: "5,416m",
     price: "$1,250",
     image: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    rating: 4.8
+    rating: 4.8,
+    link: "/services/trekking/annapurna-circuit-trek"
   },
   {
     name: "Langtang Valley",
@@ -117,7 +135,8 @@ const popularTreks = [
     altitude: "4,984m",
     price: "$950",
     image: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.7
+    rating: 4.7,
+    link: "/services/trekking/langtang-valley-trek"
   },
   {
     name: "Manaslu Circuit",
@@ -126,7 +145,8 @@ const popularTreks = [
     altitude: "5,106m",
     price: "$1,350",
     image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8
+    rating: 4.8,
+    link: "/services/trekking/manaslu-circuit-trek"
   },
   {
     name: "Upper Mustang",
@@ -135,8 +155,20 @@ const popularTreks = [
     altitude: "4,010m",
     price: "$1,650",
     image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.7
-  }
+    rating: 4.7,
+    link: "/services/trekking/upper-mustang-trek"
+  },
+  {
+    name: "Annapurna Base Camp",
+    duration: "12 Days",
+    difficulty: "Moderate",
+    altitude: "4,130m",
+    price: "$1,150",
+    image: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.8,
+    link: "/services/trekking/annapurna-base-camp-trek"
+  },
+ 
 ];
 
 const testimonials = [
@@ -145,42 +177,48 @@ const testimonials = [
     country: "UK",
     text: "Himkala made my Everest dream come true. Guides were incredibly knowledgeable!",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
-    trek: "Everest Base Camp"
+    trek: "Everest Base Camp",
+    trekLink: "/services/trekking/everest-base-camp-trek"
   },
   {
     name: "Michael Chen",
     country: "Canada",
     text: "Bhutan tour exceeded expectations. Perfectly arranged, profound insights.",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
-    trek: "Bhutan Cultural"
+    trek: "Bhutan Cultural",
+    trekLink: "/destinations/bhutan/bhutan-cultural-tour"
   },
   {
     name: "Emma Rodriguez",
     country: "Spain",
     text: "Professional, friendly, passionate. The gold standard for Himalayan adventures!",
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop",
-    trek: "Annapurna Circuit"
+    trek: "Annapurna Circuit",
+    trekLink: "/services/trekking/annapurna-circuit-trek"
   },
   {
     name: "James Wilson",
     country: "Australia",
     text: "Best trekking experience of my life! The organization was flawless from start to finish.",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
-    trek: "Langtang Valley"
+    trek: "Langtang Valley",
+    trekLink: "/services/trekking/langtang-valley-trek"
   },
   {
     name: "Lisa Tanaka",
     country: "Japan",
     text: "The attention to detail and safety measures were outstanding. Highly recommended!",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
-    trek: "Manaslu Circuit"
+    trek: "Manaslu Circuit",
+    trekLink: "/services/trekking/manaslu-circuit-trek"
   },
   {
     name: "David Müller",
     country: "Germany",
     text: "An authentic cultural experience combined with world-class trekking. Will be back!",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
-    trek: "Tibet Expedition"
+    trek: "Tibet Expedition",
+    trekLink: "/destinations/tibet/tibet-overland-tour"
   }
 ];
 
@@ -242,38 +280,42 @@ export default function Home() {
                 Life-changing journeys across Nepal, Bhutan, and Tibet with certified expert guides.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12 md:mb-16">
-                <Button size="lg" className="
-                  bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4]
-                  hover:from-[#b3d6e6] hover:to-[#6baac9]
-                  text-[#0f2940] font-bold 
-                  h-14 sm:h-16 md:h-18
-                  px-8 sm:px-10 md:px-12
-                  rounded-full
-                  text-base sm:text-lg md:text-xl
-                  shadow-2xl shadow-[#C5E0ED]/40
-                  border-2 border-white/30
-                  w-full sm:w-auto
-                  transition-all duration-300
-                  hover:scale-[1.02]
-                ">
-                  <Compass className="mr-2 w-5 h-5 md:w-6 md:h-6" /> Explore Expeditions
-                </Button>
-                <Button size="lg" variant="outline" className="
-                  bg-white/15 backdrop-blur-sm
-                  text-white 
-                  border-white/40
-                  hover:bg-white/25 
-                  hover:border-white/60
-                  h-14 sm:h-16 md:h-18
-                  px-8 sm:px-10 md:px-12
-                  rounded-full
-                  text-base sm:text-lg md:text-xl
-                  border-2
-                  w-full sm:w-auto
-                  transition-all duration-300
-                ">
-                  <Phone className="mr-2 w-5 h-5 md:w-6 md:h-6" /> Book Consultation
-                </Button>
+                <Link href="/services/trekking">
+                  <Button size="lg" className="
+                    bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4]
+                    hover:from-[#b3d6e6] hover:to-[#6baac9]
+                    text-[#0f2940] font-bold 
+                    h-14 sm:h-16 md:h-18
+                    px-8 sm:px-10 md:px-12
+                    rounded-full
+                    text-base sm:text-lg md:text-xl
+                    shadow-2xl shadow-[#C5E0ED]/40
+                    border-2 border-white/30
+                    w-full sm:w-auto
+                    transition-all duration-300
+                    hover:scale-[1.02]
+                  ">
+                    <Compass className="mr-2 w-5 h-5 md:w-6 md:h-6" /> Explore Expeditions
+                  </Button>
+                </Link>
+                <Link href="/contact">
+                  <Button size="lg" variant="outline" className="
+                    bg-white/15 backdrop-blur-sm
+                    text-white 
+                    border-white/40
+                    hover:bg-white/25 
+                    hover:border-white/60
+                    h-14 sm:h-16 md:h-18
+                    px-8 sm:px-10 md:px-12
+                    rounded-full
+                    text-base sm:text-lg md:text-xl
+                    border-2
+                    w-full sm:w-auto
+                    transition-all duration-300
+                  ">
+                    <Phone className="mr-2 w-5 h-5 md:w-6 md:h-6" /> Book Consultation
+                  </Button>
+                </Link>
               </div>
 
               {/* Quick Stats */}
@@ -319,8 +361,9 @@ export default function Home() {
             <div className="md:hidden">
               <div className="flex overflow-x-auto pb-8 -mx-4 px-4 scrollbar-hide">
                 {destinations.map((dest, i) => (
-                  <div
+                  <Link
                     key={`${dest.name}-${i}`}
+                    href={dest.link}
                     className="flex-shrink-0 w-[85vw] mr-6 last:mr-0"
                   >
                     <div className="relative h-[400px] rounded-2xl overflow-hidden">
@@ -350,7 +393,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -358,15 +401,16 @@ export default function Home() {
             {/* Desktop Grid */}
             <div className="hidden md:grid grid-cols-3 gap-8">
               {destinations.map((dest, i) => (
-                <div
+                <Link
                   key={dest.name}
-                  className="relative h-[500px] rounded-3xl overflow-hidden"
+                  href={dest.link}
+                  className="relative h-[500px] rounded-3xl overflow-hidden group"
                 >
                   <Image
                     src={dest.image}
                     alt={dest.name}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 1200px) 33vw, 400px"
                     quality={85}
                   />
@@ -387,7 +431,7 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -410,8 +454,9 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {services.map((service, i) => (
-                <div
+                <Link
                   key={i}
+                  href={service.link}
                   className="group bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-[#C5E0ED]/30"
                 >
                   <CardContent className="p-6 md:p-8 h-full">
@@ -424,12 +469,12 @@ export default function Home() {
                     <p className="text-slate-600 leading-relaxed text-sm md:text-base mb-6">
                       {service.description}
                     </p>
-                    <Button variant="ghost" className="text-[#2d6a8a] hover:text-[#0f2940] hover:bg-[#C5E0ED]/20 px-0 group">
+                    <div className="text-[#2d6a8a] hover:text-[#0f2940] inline-flex items-center group">
                       Learn More
                       <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    </div>
                   </CardContent>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -450,17 +495,32 @@ export default function Home() {
                   Our most sought-after Himalayan journeys, carefully curated for unforgettable experiences.
                 </p>
               </div>
-              <Button variant="outline" className=" border-white/30 hover:bg-white/10 font-bold rounded-full px-8 py-6 text-base">
-                View All Expeditions
-              </Button>
+              
+              <div className="flex gap-4">
+                <Button
+                  onClick={scrollLeft}
+                  className="bg-white/10 hover:bg-white/20 border-white/30 text-white rounded-full p-3"
+                  size="icon"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </Button>
+                <Button
+                  onClick={scrollRight}
+                  className="bg-white/10 hover:bg-white/20 border-white/30 text-white rounded-full p-3"
+                  size="icon"
+                >
+                  <RightIcon className="h-6 w-6" />
+                </Button>
+              </div>
             </div>
 
             {/* Mobile: Always horizontal scroll */}
             <div className="md:hidden">
               <div className="flex overflow-x-auto pb-8 -mx-4 px-4 scrollbar-hide">
                 {popularTreks.map((trek, i) => (
-                  <div
+                  <Link
                     key={trek.name}
+                    href={trek.link}
                     className="flex-shrink-0 w-[85vw] mr-6 last:mr-0"
                   >
                     <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
@@ -496,36 +556,18 @@ export default function Home() {
                             {trek.price}
                           </div>
                         </div>
-                        <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full hover:from-[#b3d6e6] hover:to-[#6baac9] py-6">
-                          View Itinerary
-                        </Button>
+                        <div className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full hover:from-[#b3d6e6] hover:to-[#6baac9] py-4 text-center transition-all duration-300">
+                          View Details
+                        </div>
                       </CardContent>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
 
             {/* Desktop with arrow navigation */}
             <div className="hidden md:block relative">
-              {/* Navigation Arrows */}
-              <div className="flex justify-end gap-4 mb-8">
-                <Button
-                  onClick={scrollLeft}
-                  className="bg-white/10 hover:bg-white/20 border-white/30 text-white rounded-full p-3"
-                  size="icon"
-                >
-                  <ChevronLeft className="h-6 w-6" />
-                </Button>
-                <Button
-                  onClick={scrollRight}
-                  className="bg-white/10 hover:bg-white/20 border-white/30 text-white rounded-full p-3"
-                  size="icon"
-                >
-                  <RightIcon className="h-6 w-6" />
-                </Button>
-              </div>
-
               {/* Scrollable Container */}
               <div 
                 ref={scrollContainerRef}
@@ -534,8 +576,9 @@ export default function Home() {
               >
                 <div className="flex gap-8 pr-8">
                   {popularTreks.map((trek, i) => (
-                    <div
+                    <Link
                       key={trek.name}
+                      href={trek.link}
                       className="flex-shrink-0 w-[400px]"
                     >
                       <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-all duration-300">
@@ -571,12 +614,12 @@ export default function Home() {
                               {trek.price}
                             </div>
                           </div>
-                          <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full hover:from-[#b3d6e6] hover:to-[#6baac9] py-6 text-base">
-                            View Itinerary
-                          </Button>
+                          <div className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full hover:from-[#b3d6e6] hover:to-[#6baac9] py-4 text-center transition-all duration-300">
+                            View Details
+                          </div>
                         </CardContent>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -584,7 +627,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Why Choose Us - Removed avatars */}
+        {/* Why Choose Us */}
         <section className="py-16 md:py-32 bg-gradient-to-b from-slate-50 to-white">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -647,7 +690,6 @@ export default function Home() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                     quality={85}
                   />
-                  {/* Removed the avatar section from here */}
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0f2940] to-transparent p-6 md:p-8">
                     <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 md:p-6 border border-white/20">
                       <div className="text-white mb-4">
@@ -668,132 +710,136 @@ export default function Home() {
           </div>
         </section>
 
-       {/* Testimonials - Horizontal Flow Animation */}
-<section className="py-16 md:py-32 bg-white overflow-hidden">
-  <div className="container mx-auto px-4 sm:px-6">
-    <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-      <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-        <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" /> TESTIMONIALS
-      </Badge>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
-        Adventurer Experiences
-      </h2>
-      <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-        Hear from our global community of Himalayan explorers and their unforgettable journeys.
-      </p>
-    </div>
+        {/* Testimonials - Horizontal Flow Animation */}
+        <section className="py-16 md:py-32 bg-white overflow-hidden">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
+              <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+                <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" /> TESTIMONIALS
+              </Badge>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
+                Adventurer Experiences
+              </h2>
+              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+                Hear from our global community of Himalayan explorers and their unforgettable journeys.
+              </p>
+            </div>
 
-    {/* Horizontal Flow Animation for Mobile */}
-    <div className="md:hidden overflow-hidden relative py-4">
-      <div className="flex animate-infinite-scroll-slow-mobile">
-        {infiniteTestimonials.map((testimonial, i) => (
-          <div
-            key={`${testimonial.name}-${i}`}
-            className="flex-shrink-0 w-[85vw] mr-6"
-          >
-            <div className="bg-gradient-to-br from-[#f8fafc] to-[#f0f7ff] rounded-2xl overflow-hidden border border-[#C5E0ED]/40 p-6 h-full shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="flex gap-1 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+            {/* Horizontal Flow Animation for Mobile */}
+            <div className="md:hidden overflow-hidden relative py-4">
+              <div className="flex animate-infinite-scroll-slow-mobile">
+                {infiniteTestimonials.map((testimonial, i) => (
+                  <div
+                    key={`${testimonial.name}-${i}`}
+                    className="flex-shrink-0 w-[85vw] mr-6"
+                  >
+                    <div className="bg-gradient-to-br from-[#f8fafc] to-[#f0f7ff] rounded-2xl overflow-hidden border border-[#C5E0ED]/40 p-6 h-full shadow-lg hover:shadow-xl transition-all duration-300">
+                      <div className="flex gap-1 mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      <p className="text-slate-700 italic mb-8 leading-relaxed text-base">
+                        &ldquo;{testimonial.text}&rdquo;
+                      </p>
+                      <div className="flex flex-col gap-2">
+                        <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
+                        <div className="text-slate-600 text-sm flex items-center gap-1">
+                          <Globe className="w-3 h-3 text-[#2d6a8a]" /> {testimonial.country}
+                        </div>
+                        <Link href={testimonial.trekLink}>
+                          <Badge className="bg-gradient-to-r from-[#C5E0ED]/20 to-[#7fb8d4]/20 text-[#0f2940] border-[#C5E0ED]/40 text-xs w-fit hover:bg-[#C5E0ED]/40 cursor-pointer transition-colors">
+                            {testimonial.trek}
+                          </Badge>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
-              <p className="text-slate-700 italic mb-8 leading-relaxed text-base">
-                &ldquo;{testimonial.text}&rdquo;
-              </p>
-              <div className="flex flex-col gap-2">
-                <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
-                <div className="text-slate-600 text-sm flex items-center gap-1">
-                  <Globe className="w-3 h-3 text-[#2d6a8a]" /> {testimonial.country}
+            </div>
+
+            {/* Horizontal Flow Animation for Desktop */}
+            <div className="hidden md:block overflow-hidden relative py-8">
+              <div className="flex animate-infinite-scroll-slow-desktop">
+                {infiniteTestimonials.map((testimonial, i) => (
+                  <div
+                    key={`${testimonial.name}-${i}`}
+                    className="flex-shrink-0 w-[400px] mr-8"
+                  >
+                    <div className="bg-gradient-to-br from-white to-[#f8fafc] rounded-3xl overflow-hidden border border-[#C5E0ED]/40 p-8 h-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-[#7fb8d4]/60">
+                      <div className="flex gap-1 mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      <p className="text-slate-700 italic mb-8 leading-relaxed text-base">
+                        &ldquo;{testimonial.text}&rdquo;
+                      </p>
+                      <div className="flex flex-col gap-2">
+                        <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
+                        <div className="text-slate-600 text-sm flex items-center gap-1">
+                          <Globe className="w-3 h-3 text-[#2d6a8a]" /> {testimonial.country}
+                        </div>
+                        <Link href={testimonial.trekLink}>
+                          <Badge className="bg-gradient-to-r from-[#C5E0ED]/20 to-[#7fb8d4]/20 text-[#0f2940] border-[#C5E0ED]/40 text-xs w-fit font-medium hover:bg-[#C5E0ED]/40 cursor-pointer transition-colors">
+                            {testimonial.trek}
+                          </Badge>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* TripAdvisor Section */}
+            <div className="mt-12 sm:mt-20 bg-gradient-to-r from-[#E3F8FF] to-[#CFE8FF] rounded-2xl p-6 sm:p-8 md:p-10">
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+                <div className="lg:w-2/3 text-center lg:text-left">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#2E4F7C] mb-3">
+                    See All Reviews on Tripadvisor
+                  </h3>
+                  <p className="text-sm sm:text-base text-[#3C6AA6] mb-4">
+                    Join thousands of satisfied travelers who've shared their experiences. 
+                    Read detailed reviews, see more photos, and discover why we're rated so highly.
+                  </p>
+                  <a
+                    href={tripadvisorUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2d6a8a] to-[#3C6AA6] hover:from-[#0f2940] hover:to-[#2d6a8a] text-white font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
+                  >
+                    <span>Visit Tripadvisor</span>
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
                 </div>
-                <Badge className="bg-gradient-to-r from-[#C5E0ED]/20 to-[#7fb8d4]/20 text-[#0f2940] border-[#C5E0ED]/40 text-xs w-fit">
-                  {testimonial.trek}
-                </Badge>
+                
+                <div className="lg:w-1/3 flex justify-center">
+                  <a
+                    href={tripadvisorUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block hover:scale-105 transition-transform duration-300"
+                  >
+                    <div className="relative w-48 sm:w-56 h-48 sm:h-56">
+                      <Image
+                        src="/images/TripAdvisor-Logo.png"
+                        alt="Tripadvisor"
+                        fill
+                        className="object-contain drop-shadow-lg"
+                        unoptimized
+                      />
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-
-    {/* Horizontal Flow Animation for Desktop */}
-    <div className="hidden md:block overflow-hidden relative py-8">
-      <div className="flex animate-infinite-scroll-slow-desktop">
-        {infiniteTestimonials.map((testimonial, i) => (
-          <div
-            key={`${testimonial.name}-${i}`}
-            className="flex-shrink-0 w-[400px] mr-8"
-          >
-            <div className="bg-gradient-to-br from-white to-[#f8fafc] rounded-3xl overflow-hidden border border-[#C5E0ED]/40 p-8 h-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-[#7fb8d4]/60">
-              <div className="flex gap-1 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <p className="text-slate-700 italic mb-8 leading-relaxed text-base">
-                &ldquo;{testimonial.text}&rdquo;
-              </p>
-              <div className="flex flex-col gap-2">
-                <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
-                <div className="text-slate-600 text-sm flex items-center gap-1">
-                  <Globe className="w-3 h-3 text-[#2d6a8a]" /> {testimonial.country}
-                </div>
-                <Badge className="bg-gradient-to-r from-[#C5E0ED]/20 to-[#7fb8d4]/20 text-[#0f2940] border-[#C5E0ED]/40 text-xs w-fit font-medium">
-                  {testimonial.trek}
-                </Badge>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    {/* TripAdvisor Section */}
-    <div className="mt-12 sm:mt-20 bg-gradient-to-r from-[#E3F8FF] to-[#CFE8FF] rounded-2xl p-6 sm:p-8 md:p-10">
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-        <div className="lg:w-2/3 text-center lg:text-left">
-          <h3 className="text-xl sm:text-2xl font-bold text-[#2E4F7C] mb-3">
-            See All Reviews on Tripadvisor
-          </h3>
-          <p className="text-sm sm:text-base text-[#3C6AA6] mb-4">
-            Join thousands of satisfied travelers who've shared their experiences. 
-            Read detailed reviews, see more photos, and discover why we're rated so highly.
-          </p>
-          <a
-            href={tripadvisorUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2d6a8a] to-[#3C6AA6] hover:from-[#0f2940] hover:to-[#2d6a8a] text-white font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
-          >
-            <span>Visit Tripadvisor</span>
-            <ExternalLink className="h-4 w-4" />
-          </a>
-        </div>
-        
-        <div className="lg:w-1/3 flex justify-center">
-          <a
-            href={tripadvisorUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block hover:scale-105 transition-transform duration-300"
-          >
-            <div className="relative w-48 sm:w-56 h-48 sm:h-56">
-              <Image
-                src="/images/TripAdvisor-Logo.png"
-                alt="Tripadvisor"
-                fill
-                className="object-contain drop-shadow-lg"
-                unoptimized
-              />
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
       </main>
 
-      {/* Updated CSS for infinite scroll animation - with hover pause for individual cards */}
+      {/* Updated CSS for infinite scroll animation */}
       <style jsx global>{`
         @keyframes infinite-scroll {
           0% {
@@ -808,16 +854,14 @@ export default function Home() {
         .animate-infinite-scroll-slow-mobile {
           display: flex;
           width: max-content;
-          animation: infinite-scroll 150s linear infinite; /* Matching reference mobile timing */
+          animation: infinite-scroll 150s linear infinite;
         }
 
         .animate-infinite-scroll-slow-desktop {
           display: flex;
           width: max-content;
-          animation: infinite-scroll 150s linear infinite; /* Matching reference desktop timing */
+          animation: infinite-scroll 150s linear infinite;
         }
-
-        
 
         /* Hide scrollbar */
         .scrollbar-hide::-webkit-scrollbar {

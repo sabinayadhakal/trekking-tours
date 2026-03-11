@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Mountain,
   MapPin,
@@ -169,8 +170,6 @@ const trekkingPackages = [
   },
 ];
 
-
-
 const whyBhutan = [
   {
     icon: <Smile className="w-5 h-5" />,
@@ -248,6 +247,7 @@ const regions = [
 ];
 
 export default function BhutanPage() {
+  const router = useRouter();
   const [trekScrollPosition, setTrekScrollPosition] = React.useState(0);
   const [peakScrollPosition, setPeakScrollPosition] = React.useState(0);
   const [cityTourScrollPosition, setCityTourScrollPosition] = React.useState(0);
@@ -257,6 +257,10 @@ export default function BhutanPage() {
   const peakScrollContainerRef = React.useRef<HTMLDivElement>(null);
   const cityTourScrollContainerRef = React.useRef<HTMLDivElement>(null);
   const regionScrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const handleBookNow = (tourName: string) => {
+    router.push(`/contact?trek=${encodeURIComponent(tourName)}`);
+  };
 
   const scrollLeft = (ref: React.RefObject<HTMLDivElement | null>, setPosition?: React.Dispatch<React.SetStateAction<number>>) => {
     if (ref.current) {
@@ -360,44 +364,52 @@ export default function BhutanPage() {
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               <div className="space-y-3 sm:space-y-4">
-                <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1552465011-b4e30bf7349d?q=80&w=2069&auto=format&fit=crop"
-                    alt="Tiger's Nest Monastery"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
-                <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1573935146153-f632c1f0e7f8?q=80&w=2070&auto=format&fit=crop"
-                    alt="Bhutanese Culture"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
+                <Link href="/destinations/bhutan/tigers-nest-day-hiking">
+                  <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1552465011-b4e30bf7349d?q=80&w=2069&auto=format&fit=crop"
+                      alt="Tiger's Nest Monastery"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
+                <Link href="/destinations/bhutan/bhutan-festival-tour">
+                  <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1573935146153-f632c1f0e7f8?q=80&w=2070&auto=format&fit=crop"
+                      alt="Bhutanese Culture"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
               </div>
               <div className="space-y-3 sm:space-y-4 pt-8 sm:pt-12">
-                <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1588416936097-41850ab3d86d?q=80&w=2070&auto=format&fit=crop"
-                    alt="Bhutan Dzong"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
-                <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1575517111478-7b6f4746d1a9?q=80&w=2070&auto=format&fit=crop"
-                    alt="Bhutan Landscape"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
+                <Link href="/destinations/bhutan/bhutan-cultural-tour">
+                  <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1588416936097-41850ab3d86d?q=80&w=2070&auto=format&fit=crop"
+                      alt="Bhutan Dzong"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
+                <Link href="/destinations/bhutan/druk-path-trek">
+                  <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1575517111478-7b6f4746d1a9?q=80&w=2070&auto=format&fit=crop"
+                      alt="Bhutan Landscape"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -429,10 +441,10 @@ export default function BhutanPage() {
               ref={cityTourScrollContainerRef}
             >
               {culturalTours.map((tour, i) => (
-                <div 
+                <Link 
                   key={i} 
+                  href={tour.link}
                   className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center cursor-pointer"
-                  onClick={() => window.location.href = tour.link}
                 >
                   <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
                     <div className="relative h-40 overflow-hidden">
@@ -467,15 +479,17 @@ export default function BhutanPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold text-[#0f2940]">{tour.price}</span>
-                        <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`}>
-                          <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
-                            Book Now
-                          </Button>
-                        </Link>
+                        <Button 
+                          size="sm" 
+                          className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs"
+                          onClick={() => handleBookNow(tour.name)}
+                        >
+                          Book Now
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
-                </div>
+                </Link>
               ))}
             </div>
             {/* Scroll Buttons */}
@@ -496,9 +510,9 @@ export default function BhutanPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {culturalTours.map((tour, i) => (
-              <div 
+              <Link 
                 key={i}
-                onClick={() => window.location.href = tour.link}
+                href={tour.link}
                 className="cursor-pointer"
               >
                 <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
@@ -534,15 +548,17 @@ export default function BhutanPage() {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
-                      <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`}>
-                        <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full">
-                          Book Now
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full"
+                        onClick={() => handleBookNow(tour.name)}
+                      >
+                        Book Now
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -777,10 +793,10 @@ export default function BhutanPage() {
               ref={peakScrollContainerRef}
             >
               {trekkingPackages.map((trek, i) => (
-                <div 
+                <Link 
                   key={i} 
+                  href={trek.link}
                   className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
-                  onClick={() => window.location.href = trek.link}
                 >
                   <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-lg transition-all">
                     <div className="relative h-56 overflow-hidden">
@@ -829,15 +845,17 @@ export default function BhutanPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold text-white">{trek.price}</span>
-                        <Link href={`/contact?trek=${encodeURIComponent(trek.name)}`}>
-                          <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
-                            Book Now
-                          </Button>
-                        </Link>
+                        <Button 
+                          size="sm" 
+                          className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs"
+                          onClick={() => handleBookNow(trek.name)}
+                        >
+                          Book Now
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
-                </div>
+                </Link>
               ))}
             </div>
             {/* Scroll Buttons */}
@@ -858,9 +876,9 @@ export default function BhutanPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-3 gap-5">
             {trekkingPackages.map((trek, i) => (
-              <div 
+              <Link 
                 key={i}
-                onClick={() => window.location.href = trek.link}
+                href={trek.link}
                 className="cursor-pointer"
               >
                 <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]">
@@ -909,14 +927,15 @@ export default function BhutanPage() {
                         </Badge>
                       ))}
                     </div>
-                    <Link href={`/contact?trek=${encodeURIComponent(trek.name)}`}>
-                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
-                        Book Now
-                      </Button>
-                    </Link>
+                    <Button 
+                      className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm"
+                      onClick={() => handleBookNow(trek.name)}
+                    >
+                      Book Now
+                    </Button>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

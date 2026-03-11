@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   Landmark,
@@ -27,195 +28,117 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+// Minimal region options based on actual tours
 const regionCategories = [
   "All Regions",
   "Kathmandu Valley",
-  "Annapurna Region",
-  "Langtang Region",
-  "Everest Region",
   "Western Nepal",
-  "Eastern Nepal",
 ];
 
+// Minimal duration options
 const durationTypes = [
   "All Durations",
   "3-5 Days",
   "6-8 Days",
-  "9-12 Days",
-  "2 Weeks+",
+  "10-11 Days",
 ];
 
+// Only include cultural tours that exist in your folder structure
 const culturalTours = [
   {
     id: 1,
-    name: "Kathmandu Valley Heritage Explorer",
+    name: "Historic Nature Scenic Photography Tour",
+    region: "Western Nepal",
+    duration: "11 Days",
+    difficulty: "Easy",
+    category: "Photography",
+    groupSize: "4-8",
+    bestSeason: "Sep-May",
+    price: 900,
+    originalPrice: 1050,
+    image: "https://images.unsplash.com/photo-1624962904597-6e6ee6a8d648?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.9,
+    reviews: 67,
+    highlights: ["Historic Sites", "Nature", "Scenic Views", "Photography"],
+    description: "Capture Nepal's stunning landscapes and cultural heritage with expert photography guidance.",
+    featured: true,
+    link: "/services/multi-day-cultural-tours/historic-nature-scenic-photography-tour",
+  },
+  {
+    id: 2,
+    name: "Kathmandu Bhaktapur Lalitpur Tour",
     region: "Kathmandu Valley",
     duration: "5 Days",
     difficulty: "Easy",
     category: "Heritage",
     groupSize: "4-12",
+    bestSeason: "Year Round",
+    price: 650,
+    originalPrice: 780,
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    rating: 4.8,
+    reviews: 156,
+    highlights: ["Kathmandu Durbar Square", "Bhaktapur", "Patan", "Newari Culture"],
+    description: "Explore the three medieval kingdoms of the Kathmandu Valley and their rich cultural heritage.",
+    featured: true,
+    link: "/services/multi-day-cultural-tours/kathmandu-bhaktapur-lalitpur-tour",
+  },
+  {
+    id: 3,
+    name: "Kathmandu Pokhara Lumbini Chitwan Tour",
+    region: "Western Nepal",
+    duration: "10 Days",
+    difficulty: "Easy",
+    category: "Heritage & Nature",
+    groupSize: "4-10",
     bestSeason: "Sep-May",
     price: 850,
     originalPrice: 990,
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
     rating: 4.9,
-    reviews: 156,
-    highlights: ["7 UNESCO Sites", "Newari Cuisine Workshop", "Pottery Making", "Cultural Dance Evening"],
-    description: "Immerse yourself in the living heritage of Kathmandu's ancient cities through hands-on cultural experiences.",
-    featured: true,
-    link: "/destinations/cultural-tours/kathmandu-valley-heritage-explorer",
-  },
-  {
-    id: 2,
-    name: "Annapurna Cultural Trek",
-    region: "Annapurna Region",
-    duration: "8 Days",
-    difficulty: "Moderate",
-    category: "Trekking & Culture",
-    groupSize: "6-10",
-    bestSeason: "Mar-May, Sep-Nov",
-    price: 1200,
-    originalPrice: 1450,
-    image: "https://images.unsplash.com/photo-1593693397816-1c665ec8d5f3?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 98,
-    highlights: ["Gurung Villages", "Annapurna Views", "Home Stays", "Traditional Dances"],
-    description: "Experience the rich Gurung and Magar cultures while trekking through breathtaking Himalayan landscapes.",
-    featured: true,
-    link: "/destinations/cultural-tours/annapurna-cultural-trek",
-  },
-  {
-    id: 3,
-    name: "Lumbini & Buddha Trail",
-    region: "Western Nepal",
-    duration: "4 Days",
-    difficulty: "Easy",
-    category: "Spiritual",
-    groupSize: "4-14",
-    bestSeason: "Oct-Apr",
-    price: 650,
-    originalPrice: 780,
-    image: "https://images.unsplash.com/photo-1518991668576-85d87e6d6c6d?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.7,
-    reviews: 87,
-    highlights: ["Maya Devi Temple", "Monastic Meditation", "Sacred Garden", "Peace Pagoda"],
-    description: "Follow the footsteps of Buddha through sacred sites and ancient monastic zones.",
+    reviews: 112,
+    highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
+    description: "The ultimate Nepal experience covering cultural heritage, natural beauty, and wildlife.",
     featured: false,
-    link: "/destinations/cultural-tours/lumbini-buddha-trail",
+    link: "/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour",
   },
   {
     id: 4,
-    name: "Everest Monastery Trek",
-    region: "Everest Region",
-    duration: "10 Days",
-    difficulty: "Challenging",
-    category: "Spiritual & Trekking",
-    groupSize: "6-8",
-    bestSeason: "Mar-May, Oct-Nov",
-    price: 1850,
-    originalPrice: 2100,
+    name: "Nepal Heritage Sites Tour",
+    region: "Kathmandu Valley",
+    duration: "8 Days",
+    difficulty: "Easy",
+    category: "Heritage",
+    groupSize: "4-12",
+    bestSeason: "Year Round",
+    price: 750,
+    originalPrice: 890,
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 64,
-    highlights: ["Tengboche Monastery", "Sherpa Villages", "Mountain Views", "Buddhist Ceremonies"],
-    description: "Discover Sherpa Buddhist culture while trekking to the world's highest monasteries.",
+    rating: 4.8,
+    reviews: 134,
+    highlights: ["UNESCO Sites", "Durbar Squares", "Stupas", "Temples"],
+    description: "Comprehensive tour of Nepal's cultural heritage sites with expert guides.",
     featured: true,
-    link: "/destinations/cultural-tours/everest-monastery-trek",
+    link: "/services/multi-day-cultural-tours/nepal-heritage-sites-tour",
   },
   {
     id: 5,
-    name: "Bandipur & Gorkha Heritage",
-    region: "Western Nepal",
-    duration: "3 Days",
-    difficulty: "Easy",
-    category: "Heritage",
-    groupSize: "4-12",
-    bestSeason: "Sep-May",
-    price: 450,
-    originalPrice: 550,
-    image: "https://images.unsplash.com/photo-1536152471326-642d746f4d5a?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 112,
-    highlights: ["Newari Architecture", "Gorkha Palace", "Traditional Crafts", "Mountain Views"],
-    description: "Step back in time in perfectly preserved hill towns with rich Newari and Gorkhali heritage.",
-    featured: false,
-    link: "/destinations/cultural-tours/bandipur-gorkha-heritage",
-  },
-  {
-    id: 6,
-    name: "Langtang Valley Cultural Trek",
-    region: "Langtang Region",
+    name: "Nepal Temples and Stupas Tour",
+    region: "Kathmandu Valley",
     duration: "7 Days",
-    difficulty: "Moderate",
-    category: "Trekking & Culture",
-    groupSize: "5-10",
-    bestSeason: "Mar-May, Sep-Nov",
-    price: 950,
-    originalPrice: 1150,
-    image: "https://images.unsplash.com/photo-1549887552-23ad7caa7e14?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 76,
-    highlights: ["Tamang Heritage", "Buddhist Monasteries", "Hot Springs", "Local Home Stays"],
-    description: "Experience the unique Tamang culture and hospitality in the beautiful Langtang Valley.",
-    featured: true,
-    link: "/destinations/cultural-tours/langtang-valley-cultural-trek",
-  },
-  {
-    id: 7,
-    name: "Janakpur & Mithila Art Tour",
-    region: "Eastern Nepal",
-    duration: "4 Days",
     difficulty: "Easy",
-    category: "Art & Culture",
-    groupSize: "4-10",
-    bestSeason: "Oct-Mar",
-    price: 550,
-    originalPrice: 680,
-    image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.6,
-    reviews: 43,
-    highlights: ["Mithila Painting", "Janaki Temple", "Local Artisans", "Folk Music"],
-    description: "Learn the ancient art of Mithila painting from master artists in its birthplace.",
-    featured: false,
-    link: "/destinations/cultural-tours/janakpur-mithila-art",
-  },
-  {
-    id: 8,
-    name: "Tansen & Ridi Cultural Journey",
-    region: "Western Nepal",
-    duration: "3 Days",
-    difficulty: "Easy",
-    category: "Heritage",
+    category: "Spiritual",
     groupSize: "4-12",
-    bestSeason: "Sep-May",
-    price: 400,
-    originalPrice: 520,
-    image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=1971&auto=format&fit=crop",
-    rating: 4.7,
-    reviews: 58,
-    highlights: ["Palpa Durbar", "Metal Crafts", "Sacred Ridi", "Magar Culture"],
-    description: "Explore the rich history and craftsmanship of this ancient Magar kingdom.",
-    featured: true,
-    link: "/destinations/cultural-tours/tansen-ridi-journey",
-  },
-  {
-    id: 9,
-    name: "Mustang & Lo Manthang Expedition",
-    region: "Western Nepal",
-    duration: "12 Days",
-    difficulty: "Moderate",
-    category: "Cultural Expedition",
-    groupSize: "6-8",
-    bestSeason: "May-Oct",
-    price: 2800,
-    originalPrice: 3200,
-    image: "https://images.unsplash.com/photo-1593693397816-1c665ec8d5f3?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 35,
-    highlights: ["Ancient Monasteries", "Tibetan Culture", "Cave Dwellings", "Forbidden Kingdom"],
-    description: "Journey to the legendary walled city of Lo Manthang in the trans-Himalayan kingdom of Mustang.",
-    featured: true,
-    link: "/destinations/cultural-tours/mustang-lo-manthang-expedition",
+    bestSeason: "Year Round",
+    price: 720,
+    originalPrice: 850,
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    rating: 4.8,
+    reviews: 98,
+    highlights: ["Pashupatinath", "Boudhanath", "Swayambhunath", "Ancient Temples"],
+    description: "Spiritual journey through Nepal's most sacred temples and stupas.",
+    featured: false,
+    link: "/services/multi-day-cultural-tours/nepal-temples-and-stupas-tour",
   },
 ];
 
@@ -223,23 +146,26 @@ const getCategoryColor = (category: string) => {
   switch (category) {
     case "Heritage": return "bg-purple-100 text-purple-700";
     case "Spiritual": return "bg-indigo-100 text-indigo-700";
-    case "Trekking & Culture": return "bg-green-100 text-green-700";
-    case "Art & Culture": return "bg-pink-100 text-pink-700";
-    case "Cultural Expedition": return "bg-amber-100 text-amber-700";
-    case "Spiritual & Trekking": return "bg-blue-100 text-blue-700";
+    case "Photography": return "bg-blue-100 text-blue-700";
+    case "Heritage & Nature": return "bg-green-100 text-green-700";
     default: return "bg-slate-100 text-slate-700";
   }
 };
 
 export default function MultiDayCulturalToursPage() {
+  const router = useRouter();
   const [selectedRegion, setSelectedRegion] = React.useState("All Regions");
   const [selectedDuration, setSelectedDuration] = React.useState("All Durations");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [showFilterDrawer, setShowFilterDrawer] = React.useState(false);
 
+  const handleBookNow = (tourName: string) => {
+    router.push(`/contact?trek=${encodeURIComponent(tourName)}`);
+  };
+
   const filteredTours = culturalTours.filter((tour) => {
     const matchesRegion = selectedRegion === "All Regions" || tour.region === selectedRegion;
-    const matchesDuration = selectedDuration === "All Durations" || tour.duration.includes(selectedDuration.replace("All Durations", ""));
+    const matchesDuration = selectedDuration === "All Durations" || tour.duration.includes(selectedDuration.replace("All Durations", "").split("-")[0]);
     const matchesSearch = tour.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           tour.region.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           tour.category.toLowerCase().includes(searchQuery.toLowerCase());
@@ -344,7 +270,7 @@ export default function MultiDayCulturalToursPage() {
                 <Landmark className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 20+ Ethnic Groups
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 3-12 Days
+                <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 5-11 Days
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
                 <UserCircle className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Cultural Experts
@@ -383,7 +309,7 @@ export default function MultiDayCulturalToursPage() {
             {/* Desktop Filters */}
             <div className="hidden lg:flex items-center gap-4">
               <div className="flex flex-wrap justify-center gap-2">
-                {regionCategories.slice(0, 4).map((region) => (
+                {regionCategories.slice(1).map((region) => (
                   <button
                     key={region}
                     onClick={() => setSelectedRegion(region)}
@@ -428,9 +354,9 @@ export default function MultiDayCulturalToursPage() {
       {featuredTour && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div 
-              onClick={() => window.location.href = featuredTour.link}
-              className="cursor-pointer"
+            <Link 
+              href={featuredTour.link}
+              className="cursor-pointer block"
             >
               <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
                 <div className="grid lg:grid-cols-2">
@@ -488,17 +414,21 @@ export default function MultiDayCulturalToursPage() {
                         <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredTour.price}</span>
                         <span className="text-slate-500 text-sm">/person</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(featuredTour.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
-                          Book Now
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(featuredTour.name);
+                        }}
+                      >
+                        Book Now
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
                     </div>
                   </CardContent>
                 </div>
               </Card>
-            </div>
+            </Link>
           </div>
         </section>
       )}
@@ -518,10 +448,10 @@ export default function MultiDayCulturalToursPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredTours.map((tour, i) => (
-              <div 
+              <Link 
                 key={tour.id} 
-                onClick={() => window.location.href = tour.link}
-                className="cursor-pointer"
+                href={tour.link}
+                className="cursor-pointer block"
               >
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
                   <div className="relative h-40 md:h-52 overflow-hidden">
@@ -571,15 +501,21 @@ export default function MultiDayCulturalToursPage() {
                         <span className="text-slate-400 text-xs line-through">${tour.originalPrice}</span>
                         <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${tour.price}</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
-                          Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        variant="ghost" 
+                        className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(tour.name);
+                        }}
+                      >
+                        Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -603,7 +539,7 @@ export default function MultiDayCulturalToursPage() {
           )}
 
           <div className="text-center mt-8 md:mt-12">
-            <Link href="/cultural-tours">
+            <Link href="/services/multi-day-cultural-tours">
               <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
                 View All Experiences
               </Button>

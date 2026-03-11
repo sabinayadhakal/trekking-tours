@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   Landmark,
@@ -35,12 +36,9 @@ import { Badge } from "@/components/ui/badge";
 const cityCategories = [
   "All Cities",
   "Kathmandu",
-  "Pokhara",
   "Bhaktapur",
   "Lalitpur",
-  "Patan",
-  "Baudha",
-  "Swayambhu",
+ 
 ];
 
 const tourTypes = [
@@ -48,17 +46,15 @@ const tourTypes = [
   "Heritage",
   "Spiritual",
   "Photography",
-  "Food",
-  "Museum",
-  "Architecture",
-  "Markets",
+ 
 ];
 
+// Only include sightseeing tours that exist in your folder structure
 const dayTours = [
   {
     id: 1,
-    name: "UNESCO Heritage Sites Tour",
-    city: "Kathmandu",
+    name: "Bhaktapur Patan Sightseeing",
+    city: "Bhaktapur",
     duration: "6 Hours",
     difficulty: "Easy",
     category: "Heritage",
@@ -69,162 +65,105 @@ const dayTours = [
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
     rating: 4.9,
     reviews: 312,
-    highlights: ["Swayambhunath Stupa", "Boudhanath Stupa", "Pashupatinath Temple", "Patan Durbar Square"],
-    description: "Visit four UNESCO World Heritage sites in one day with expert guided commentary.",
+    highlights: ["Bhaktapur Durbar Square", "Patan Durbar Square", "Golden Temple", "Traditional Crafts"],
+    description: "Discover ancient Newari architecture and living culture in two of Nepal's most historic cities.",
     featured: true,
-    link: "/destinations/sightseeing/unesco-heritage-tour",
+    link: "/services/day-sightseeings/bhaktapur-patan-sightseeing",
   },
   {
     id: 2,
-    name: "Pokhara Valley Panorama",
-    city: "Pokhara",
+    name: "Bungamati Khokana Patan Sightseeing",
+    city: "Patan",
     duration: "5 Hours",
     difficulty: "Easy",
-    category: "Scenic",
+    category: "Heritage",
     groupSize: "2-15",
-    bestSeason: "Sep-May",
-    price: 55,
-    originalPrice: 70,
+    bestSeason: "Year Round",
+    price: 65,
+    originalPrice: 85,
     image: "https://images.unsplash.com/photo-1593693397816-1c665ec8d5f3?q=80&w=2071&auto=format&fit=crop",
     rating: 4.8,
-    reviews: 234,
-    highlights: ["Phewa Lake Boat Ride", "World Peace Pagoda", "Devi's Fall", "Gupteshwor Cave"],
-    description: "Discover the natural and spiritual highlights of Nepal's most beautiful lakeside city.",
-    featured: true,
-    link: "/destinations/sightseeing/pokhara-valley-panorama",
+    reviews: 156,
+    highlights: ["Bungamati Village", "Khokana Village", "Patan Durbar Square", "Traditional Newari Life"],
+    description: "Explore authentic Newari villages and the historic city of Patan in one immersive tour.",
+    featured: false,
+    link: "/services/day-sightseeings/bungamati-khokana-patan-sightseeing",
   },
   {
     id: 3,
-    name: "Bhaktapur Medieval City Walk",
-    city: "Bhaktapur",
-    duration: "4 Hours",
-    difficulty: "Easy",
-    category: "Architecture",
-    groupSize: "2-10",
-    bestSeason: "Year Round",
-    price: 45,
-    originalPrice: 60,
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 187,
-    highlights: ["Durbar Square", "Nyatapola Temple", "Pottery Square", "Dattatreya Temple"],
-    description: "Step back in time through medieval streets and traditional Newari architecture.",
-    featured: false,
-    link: "/destinations/sightseeing/bhaktapur-medieval-walk",
-  },
-  {
-    id: 4,
-    name: "Patan Art & Architecture Tour",
-    city: "Patan",
-    duration: "3 Hours",
-    difficulty: "Easy",
-    category: "Art",
-    groupSize: "2-8",
-    bestSeason: "Year Round",
-    price: 40,
-    originalPrice: 55,
-    image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.7,
-    reviews: 156,
-    highlights: ["Golden Temple", "Mahabouddha", "Metal Workshops", "Pat Museum"],
-    description: "Explore the city of fine arts and discover centuries of Newari craftsmanship.",
-    featured: false,
-    link: "/destinations/sightseeing/patan-art-architecture",
-  },
-  {
-    id: 5,
-    name: "Boudha Stupa & Monasteries",
+    name: "Bouddhanath Kapan Sightseeing",
     city: "Baudha",
     duration: "3 Hours",
     difficulty: "Easy",
     category: "Spiritual",
-    groupSize: "2-12",
+    groupSize: "2-10",
     bestSeason: "Year Round",
-    price: 35,
-    originalPrice: 45,
+    price: 45,
+    originalPrice: 60,
     image: "https://images.unsplash.com/photo-1518991668576-85d87e6d6c6d?q=80&w=2070&auto=format&fit=crop",
     rating: 4.8,
     reviews: 203,
-    highlights: ["Great Stupa", "Tibetan Monasteries", "Butter Lamp Ceremony", "Thangka Painting"],
-    description: "Immerse yourself in Tibetan Buddhist culture at one of the largest stupas in the world.",
+    highlights: ["Great Bouddhanath Stupa", "Kapan Monastery", "Tibetan Buddhist Culture", "Monastery Visit"],
+    description: "Experience Tibetan Buddhist culture at one of the largest stupas in the world and nearby monasteries.",
     featured: true,
-    link: "/destinations/sightseeing/boudha-stupa-tour",
+    link: "/services/day-sightseeings/bouddhanath-kapan-sightseeing",
   },
   {
-    id: 6,
-    name: "Swayambhu Monkey Temple Tour",
-    city: "Swayambhu",
-    duration: "2.5 Hours",
+    id: 4,
+    name: "Changunarayan Bhaktapur Sanga Sightseeing",
+    city: "Bhaktapur",
+    duration: "5 Hours",
+    difficulty: "Easy",
+    category: "Heritage",
+    groupSize: "2-8",
+    bestSeason: "Year Round",
+    price: 55,
+    originalPrice: 70,
+    image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=2070&auto=format&fit=crop",
+    rating: 4.7,
+    reviews: 134,
+    highlights: ["Changunarayan Temple", "Bhaktapur Durbar Square", "Sanga Viewpoint", "Traditional Villages"],
+    description: "Visit Nepal's oldest temple and explore the medieval city of Bhaktapur with panoramic views.",
+    featured: false,
+    link: "/services/day-sightseeings/changunarayan-bhaktapur-sanga-sightseeing",
+  },
+  {
+    id: 5,
+    name: "Dakshinkali Pharping Kirtipur Sightseeing",
+    city: "Kathmandu",
+    duration: "5 Hours",
     difficulty: "Moderate",
     category: "Spiritual",
-    groupSize: "2-10",
-    bestSeason: "Year Round",
-    price: 30,
-    originalPrice: 40,
-    image: "https://images.unsplash.com/photo-1549887552-23ad7caa7e14?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.7,
-    reviews: 267,
-    highlights: ["Stupa & Shrines", "Monkey Encounters", "Valley Views", "Prayer Wheels"],
-    description: "Climb the 365 steps to this ancient hilltop stupa with resident monkeys and panoramic views.",
-    featured: false,
-    link: "/destinations/sightseeing/swayambhu-monkey-temple",
-  },
-  {
-    id: 7,
-    name: "Kathmandu Food Walk",
-    city: "Kathmandu",
-    duration: "3.5 Hours",
-    difficulty: "Easy",
-    category: "Food",
-    groupSize: "2-8",
+    groupSize: "2-12",
     bestSeason: "Year Round",
     price: 50,
     originalPrice: 65,
-    image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=1971&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 145,
-    highlights: ["Newari Cuisine", "Street Food Tasting", "Local Markets", "Traditional Drinks"],
-    description: "Taste your way through Kathmandu's hidden eateries and discover authentic local flavors.",
-    featured: true,
-    link: "/destinations/sightseeing/kathmandu-food-walk",
-  },
-  {
-    id: 8,
-    name: "Ason Market & Durbar Square",
-    city: "Kathmandu",
-    duration: "4 Hours",
-    difficulty: "Easy",
-    category: "Markets",
-    groupSize: "2-8",
-    bestSeason: "Year Round",
-    price: 40,
-    originalPrice: 50,
     image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.6,
+    rating: 4.7,
     reviews: 98,
-    highlights: ["Spice Market", "Kumari Temple", "Hanuman Dhoka", "Local Shopping"],
-    description: "Experience the vibrant chaos of Kathmandu's oldest market and historic royal square.",
+    highlights: ["Dakshinkali Temple", "Pharping Caves", "Kirtipur Old Town", "Vajrayogini Temple"],
+    description: "Discover sacred temples, meditation caves, and a historic hilltop town in one spiritual journey.",
     featured: false,
-    link: "/destinations/sightseeing/ason-market-tour",
+    link: "/services/day-sightseeings/dakshinkali-pharping-kirtipur-sightseeing",
   },
   {
-    id: 9,
-    name: "Pokhara Photography Tour",
-    city: "Pokhara",
-    duration: "4 Hours",
+    id: 6,
+    name: "Kathmandu Sightseeing",
+    city: "Kathmandu",
+    duration: "6 Hours",
     difficulty: "Easy",
-    category: "Photography",
-    groupSize: "2-6",
-    bestSeason: "Oct-Apr",
+    category: "Heritage",
+    groupSize: "2-10",
+    bestSeason: "Year Round",
     price: 60,
     originalPrice: 80,
-    image: "https://images.unsplash.com/photo-1593693397816-1c665ec8d5f3?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 76,
-    highlights: ["Sunrise Spots", "Lakeside Views", "Mountain Reflections", "Village Life"],
-    description: "Capture Pokhara's beauty at golden hour with guidance from a professional photographer.",
-    featured: false,
-    link: "/destinations/sightseeing/pokhara-photography-tour",
+    image: "https://images.unsplash.com/photo-1549887552-23ad7caa7e14?q=80&w=2071&auto=format&fit=crop",
+    rating: 4.9,
+    reviews: 267,
+    highlights: ["Swayambhunath Stupa", "Kathmandu Durbar Square", "Pashupatinath Temple", "Bouddhanath Stupa"],
+    description: "Complete introduction to Kathmandu's UNESCO World Heritage sites and spiritual heart.",
+    featured: true,
+    link: "/services/day-sightseeings/kathmandu-sightseeing",
   },
 ];
 
@@ -243,10 +182,15 @@ const getCategoryColor = (category: string) => {
 };
 
 export default function DaySightseeingPage() {
+  const router = useRouter();
   const [selectedCity, setSelectedCity] = React.useState("All Cities");
   const [selectedType, setSelectedType] = React.useState("All Types");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [showFilterDrawer, setShowFilterDrawer] = React.useState(false);
+
+  const handleBookNow = (tourName: string) => {
+    router.push(`/contact?trek=${encodeURIComponent(tourName)}`);
+  };
 
   const filteredTours = dayTours.filter((tour) => {
     const matchesCity = selectedCity === "All Cities" || tour.city === selectedCity;
@@ -355,7 +299,7 @@ export default function DaySightseeingPage() {
                 <Landmark className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> UNESCO Heritage
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 2-6 Hours
+                <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 3-6 Hours
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
                 <Camera className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Photo Friendly
@@ -439,9 +383,9 @@ export default function DaySightseeingPage() {
       {featuredTour && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div 
-              onClick={() => window.location.href = featuredTour.link}
-              className="cursor-pointer"
+            <Link 
+              href={featuredTour.link}
+              className="cursor-pointer block"
             >
               <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
                 <div className="grid lg:grid-cols-2">
@@ -499,17 +443,21 @@ export default function DaySightseeingPage() {
                         <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredTour.price}</span>
                         <span className="text-slate-500 text-sm">/person</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(featuredTour.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
-                          Book Now
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(featuredTour.name);
+                        }}
+                      >
+                        Book Now
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
                     </div>
                   </CardContent>
                 </div>
               </Card>
-            </div>
+            </Link>
           </div>
         </section>
       )}
@@ -529,10 +477,10 @@ export default function DaySightseeingPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredTours.map((tour, i) => (
-              <div 
+              <Link 
                 key={tour.id} 
-                onClick={() => window.location.href = tour.link}
-                className="cursor-pointer"
+                href={tour.link}
+                className="cursor-pointer block"
               >
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
                   <div className="relative h-40 md:h-52 overflow-hidden">
@@ -582,15 +530,21 @@ export default function DaySightseeingPage() {
                         <span className="text-slate-400 text-xs line-through">${tour.originalPrice}</span>
                         <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${tour.price}</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
-                          Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        variant="ghost" 
+                        className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(tour.name);
+                        }}
+                      >
+                        Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -614,9 +568,9 @@ export default function DaySightseeingPage() {
           )}
 
           <div className="text-center mt-8 md:mt-12">
-            <Link href="/sightseeing">
+            <Link href="/services/day-sightseeings">
               <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
-                View All Experiences
+                View All Tours
               </Button>
             </Link>
           </div>

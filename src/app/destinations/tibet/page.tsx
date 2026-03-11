@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Mountain,
   MapPin,
@@ -170,8 +171,6 @@ const monasteryTours = [
   },
 ];
 
-
-
 const whyTibet = [
   {
     icon: <Mountain className="w-5 h-5" />,
@@ -249,6 +248,7 @@ const regions = [
 ];
 
 export default function TibetPage() {
+  const router = useRouter();
   const [trekScrollPosition, setTrekScrollPosition] = React.useState(0);
   const [monasteryScrollPosition, setMonasteryScrollPosition] = React.useState(0);
   const [cityTourScrollPosition, setCityTourScrollPosition] = React.useState(0);
@@ -258,6 +258,10 @@ export default function TibetPage() {
   const monasteryScrollContainerRef = React.useRef<HTMLDivElement>(null);
   const cityTourScrollContainerRef = React.useRef<HTMLDivElement>(null);
   const regionScrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const handleBookNow = (itemName: string) => {
+    router.push(`/contact?trek=${encodeURIComponent(itemName)}`);
+  };
 
   const scrollLeft = (ref: React.RefObject<HTMLDivElement | null>, setPosition?: React.Dispatch<React.SetStateAction<number>>) => {
     if (ref.current) {
@@ -361,44 +365,52 @@ export default function TibetPage() {
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               <div className="space-y-3 sm:space-y-4">
-                <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070&auto=format&fit=crop"
-                    alt="Potala Palace"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
-                <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1519237390444-8838a2ea7e49?q=80&w=2070&auto=format&fit=crop"
-                    alt="Tibetan Monastery"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
+                <Link href="/destinations/tibet/lhasa-city-tour">
+                  <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070&auto=format&fit=crop"
+                      alt="Potala Palace"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
+                <Link href="/destinations/tibet/monastery-discovery-tour">
+                  <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1519237390444-8838a2ea7e49?q=80&w=2070&auto=format&fit=crop"
+                      alt="Tibetan Monastery"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
               </div>
               <div className="space-y-3 sm:space-y-4 pt-8 sm:pt-12">
-                <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=2070&auto=format&fit=crop"
-                    alt="Tibetan Landscape"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
-                <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop"
-                    alt="Prayer Flags"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
+                <Link href="/destinations/tibet/tibet-overland-tour">
+                  <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=2070&auto=format&fit=crop"
+                      alt="Tibetan Landscape"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
+                <Link href="/destinations/tibet/kailash-mansarovar-yatra">
+                  <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop"
+                      alt="Prayer Flags"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -430,10 +442,10 @@ export default function TibetPage() {
               ref={cityTourScrollContainerRef}
             >
               {culturalTours.map((tour, i) => (
-                <div 
+                <Link 
                   key={i} 
+                  href={tour.link}
                   className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center cursor-pointer"
-                  onClick={() => window.location.href = tour.link}
                 >
                   <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
                     <div className="relative h-40 overflow-hidden">
@@ -468,15 +480,20 @@ export default function TibetPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold text-[#0f2940]">{tour.price}</span>
-                        <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
-                          <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
-                            Book Now
-                          </Button>
-                        </Link>
+                        <Button 
+                          size="sm" 
+                          className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleBookNow(tour.name);
+                          }}
+                        >
+                          Book Now
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
-                </div>
+                </Link>
               ))}
             </div>
             {/* Scroll Buttons */}
@@ -497,9 +514,9 @@ export default function TibetPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {culturalTours.map((tour, i) => (
-              <div 
+              <Link 
                 key={i}
-                onClick={() => window.location.href = tour.link}
+                href={tour.link}
                 className="cursor-pointer"
               >
                 <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
@@ -535,15 +552,20 @@ export default function TibetPage() {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
-                      <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full">
-                          Book Now
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(tour.name);
+                        }}
+                      >
+                        Book Now
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -778,10 +800,10 @@ export default function TibetPage() {
               ref={monasteryScrollContainerRef}
             >
               {monasteryTours.map((tour, i) => (
-                <div 
+                <Link 
                   key={i} 
+                  href={tour.link}
                   className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
-                  onClick={() => window.location.href = tour.link}
                 >
                   <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-lg transition-all">
                     <div className="relative h-56 overflow-hidden">
@@ -830,15 +852,20 @@ export default function TibetPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold text-white">{tour.price}</span>
-                        <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
-                          <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
-                            Book Now
-                          </Button>
-                        </Link>
+                        <Button 
+                          size="sm" 
+                          className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleBookNow(tour.name);
+                          }}
+                        >
+                          Book Now
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
-                </div>
+                </Link>
               ))}
             </div>
             {/* Scroll Buttons */}
@@ -859,9 +886,9 @@ export default function TibetPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-3 gap-5">
             {monasteryTours.map((tour, i) => (
-              <div 
+              <Link 
                 key={i}
-                onClick={() => window.location.href = tour.link}
+                href={tour.link}
                 className="cursor-pointer"
               >
                 <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]">
@@ -910,14 +937,18 @@ export default function TibetPage() {
                         </Badge>
                       ))}
                     </div>
-                    <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
-                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
-                        Book Now
-                      </Button>
-                    </Link>
+                    <Button 
+                      className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleBookNow(tour.name);
+                      }}
+                    >
+                      Book Now
+                    </Button>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

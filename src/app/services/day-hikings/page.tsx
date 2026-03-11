@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   Landmark,
@@ -33,13 +34,7 @@ import { Badge } from "@/components/ui/badge";
 
 const regionCategories = [
   "All Regions",
-  "Kathmandu Valley",
-  "Pokhara Valley",
-  "Nagarkot",
-  "Dhulikhel",
-  "Shivapuri",
-  "Phulchowki",
-  "Champadevi",
+  
 ];
 
 const difficultyLevels = [
@@ -49,10 +44,11 @@ const difficultyLevels = [
   "Challenging",
 ];
 
+// Only include day hikes that exist in your folder structure
 const dayHikes = [
   {
     id: 1,
-    name: "Nagarkot Sunrise Hike",
+    name: "Nagarkot Changunarayan Hiking",
     region: "Nagarkot",
     duration: "5-6 Hours",
     difficulty: "Easy",
@@ -67,71 +63,33 @@ const dayHikes = [
     highlights: ["Himalayan Sunrise", "Panoramic Views", "Photo Points", "Breakfast with a View"],
     description: "Watch the sunrise paint the Himalayas in golden hues from one of Nepal's best viewpoints.",
     featured: true,
-    link: "/destinations/day-hikes/nagarkot-sunrise-hike",
+    link: "/services/day-hikings/nagarkot-changunarayan-hiking",
   },
   {
     id: 2,
-    name: "Shivapuri National Park Hike",
-    region: "Shivapuri",
-    duration: "6-7 Hours",
-    difficulty: "Moderate",
-    category: "Nature",
+    name: "Champa Devi Hiking",
+    region: "Champadevi",
+    duration: "5-6 Hours",
+    difficulty: "Easy",
+    category: "Forest",
     groupSize: "2-10",
     bestSeason: "Mar-May, Sep-Nov",
-    price: 55,
-    originalPrice: 70,
+    price: 50,
+    originalPrice: 65,
     image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
     rating: 4.7,
-    reviews: 134,
-    highlights: ["Forest Trails", "Bird Watching", "Buddhist Monastery", "Waterfall"],
-    description: "Escape to lush forests and encounter diverse wildlife just north of Kathmandu.",
+    reviews: 89,
+    highlights: ["Oak Forest", "Wildlife Spotting", "Temple Visit", "Valley Views"],
+    description: "Traverse through dense forests home to monkeys, deer, and colorful birds.",
     featured: false,
-    link: "/destinations/day-hikes/shivapuri-national-park-hike",
+    link: "/services/day-hikings/champa-devi-hiking",
   },
   {
     id: 3,
-    name: "Sarangkot & Peace Pagoda Hike",
-    region: "Pokhara Valley",
-    duration: "4-5 Hours",
-    difficulty: "Easy",
-    category: "Scenic",
-    groupSize: "2-15",
-    bestSeason: "Sep-May",
-    price: 45,
-    originalPrice: 60,
-    image: "https://images.unsplash.com/photo-1593693397816-1c665ec8d5f3?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 198,
-    highlights: ["Annapurna Views", "Phewa Lake", "World Peace Pagoda", "Paragliding Spot"],
-    description: "Hike to Pokhara's famous viewpoints for spectacular mountain and lake panoramas.",
-    featured: true,
-    link: "/destinations/day-hikes/sarangkot-peace-pagoda-hike",
-  },
-  {
-    id: 4,
-    name: "Phulchowki Peak Challenge",
-    region: "Phulchowki",
-    duration: "7-8 Hours",
-    difficulty: "Challenging",
-    category: "Summit",
-    groupSize: "3-8",
-    bestSeason: "Oct-May",
-    price: 75,
-    originalPrice: 95,
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.6,
-    reviews: 67,
-    highlights: ["Highest Peak Valley", "Rhododendron Forest", "360° Views", "Rare Birds"],
-    description: "Conquer the highest hill around Kathmandu Valley for breathtaking panoramic views.",
-    featured: false,
-    link: "/destinations/day-hikes/phulchowki-peak-challenge",
-  },
-  {
-    id: 5,
-    name: "Dhulikhel & Namo Buddha",
+    name: "Namobuddha Hiking",
     region: "Dhulikhel",
     duration: "6 Hours",
-    difficulty: "Moderate",
+    difficulty: "Easy",
     category: "Cultural",
     groupSize: "2-12",
     bestSeason: "Sep-May",
@@ -141,85 +99,9 @@ const dayHikes = [
     rating: 4.8,
     reviews: 112,
     highlights: ["Buddhist Monastery", "Newari Villages", "Himalayan Views", "Sacred Site"],
-    description: "Visit one of Tibet's most important pilgrimage sites with stunning mountain backdrops.",
+    description: "Visit one of Nepal's most important pilgrimage sites with stunning mountain backdrops.",
     featured: true,
-    link: "/destinations/day-hikes/dhulikhel-namo-buddha",
-  },
-  {
-    id: 6,
-    name: "Champadevi Forest Trail",
-    region: "Champadevi",
-    duration: "5-6 Hours",
-    difficulty: "Moderate",
-    category: "Forest",
-    groupSize: "2-10",
-    bestSeason: "Mar-Nov",
-    price: 50,
-    originalPrice: 65,
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.7,
-    reviews: 89,
-    highlights: ["Oak Forest", "Wildlife Spotting", "Temple Visit", "Valley Views"],
-    description: "Traverse through dense forests home to monkeys, deer, and colorful birds.",
-    featured: false,
-    link: "/destinations/day-hikes/champadevi-forest-trail",
-  },
-  {
-    id: 7,
-    name: "Kakani Ridge Walk",
-    region: "Kathmandu Valley",
-    duration: "4 Hours",
-    difficulty: "Easy",
-    category: "Family",
-    groupSize: "2-15",
-    bestSeason: "Year Round",
-    price: 40,
-    originalPrice: 55,
-    image: "https://images.unsplash.com/photo-1593693397816-1c665ec8d5f3?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.5,
-    reviews: 156,
-    highlights: ["Strawberry Farms", "Mountain Views", "Picnic Spots", "Easy Trail"],
-    description: "Perfect family hike through farmland with ever-present Himalayan views.",
-    featured: false,
-    link: "/destinations/day-hikes/kakani-ridge-walk",
-  },
-  {
-    id: 8,
-    name: "Taudaha Lake & Forest Hike",
-    region: "Kathmandu Valley",
-    duration: "3-4 Hours",
-    difficulty: "Easy",
-    category: "Nature",
-    groupSize: "2-12",
-    bestSeason: "Year Round",
-    price: 35,
-    originalPrice: 45,
-    image: "https://images.unsplash.com/photo-1549887552-23ad7caa7e14?q=80&w=2071&auto=format&fit=crop",
-    rating: 4.6,
-    reviews: 203,
-    highlights: ["Sacred Lake", "Bird Sanctuary", "Snake Temple", "Forest Walk"],
-    description: "Gentle walk to a serene lake surrounded by forests and local legends.",
-    featured: true,
-    link: "/destinations/day-hikes/taudaha-lake-forest-hike",
-  },
-  {
-    id: 9,
-    name: "Jamacho Monastery Hike",
-    region: "Shivapuri",
-    duration: "4-5 Hours",
-    difficulty: "Moderate",
-    category: "Spiritual",
-    groupSize: "2-8",
-    bestSeason: "Sep-May",
-    price: 45,
-    originalPrice: 60,
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 78,
-    highlights: ["Hilltop Monastery", "Forest Meditation", "City Views", "Wild Monkeys"],
-    description: "Hike through Shivapuri forest to a peaceful monastery with panoramic valley views.",
-    featured: false,
-    link: "/destinations/day-hikes/jamacho-monastery-hike",
+    link: "/services/day-hikings/namobuddha-hiking",
   },
 ];
 
@@ -238,10 +120,15 @@ const getCategoryColor = (category: string) => {
 };
 
 export default function DayHikesPage() {
+  const router = useRouter();
   const [selectedRegion, setSelectedRegion] = React.useState("All Regions");
   const [selectedDifficulty, setSelectedDifficulty] = React.useState("All Difficulties");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [showFilterDrawer, setShowFilterDrawer] = React.useState(false);
+
+  const handleBookNow = (hikeName: string) => {
+    router.push(`/contact?trek=${encodeURIComponent(hikeName)}`);
+  };
 
   const filteredHikes = dayHikes.filter((hike) => {
     const matchesRegion = selectedRegion === "All Regions" || hike.region === selectedRegion;
@@ -434,9 +321,9 @@ export default function DayHikesPage() {
       {featuredHike && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div 
-              onClick={() => window.location.href = featuredHike.link}
-              className="cursor-pointer"
+            <Link 
+              href={featuredHike.link}
+              className="cursor-pointer block"
             >
               <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
                 <div className="grid lg:grid-cols-2">
@@ -494,17 +381,21 @@ export default function DayHikesPage() {
                         <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredHike.price}</span>
                         <span className="text-slate-500 text-sm">/person</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(featuredHike.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
-                          Book Now
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(featuredHike.name);
+                        }}
+                      >
+                        Book Now
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
                     </div>
                   </CardContent>
                 </div>
               </Card>
-            </div>
+            </Link>
           </div>
         </section>
       )}
@@ -524,10 +415,10 @@ export default function DayHikesPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredHikes.map((hike, i) => (
-              <div 
+              <Link 
                 key={hike.id} 
-                onClick={() => window.location.href = hike.link}
-                className="cursor-pointer"
+                href={hike.link}
+                className="cursor-pointer block"
               >
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
                   <div className="relative h-40 md:h-52 overflow-hidden">
@@ -577,15 +468,21 @@ export default function DayHikesPage() {
                         <span className="text-slate-400 text-xs line-through">${hike.originalPrice}</span>
                         <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${hike.price}</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(hike.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
-                          Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        variant="ghost" 
+                        className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(hike.name);
+                        }}
+                      >
+                        Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -609,7 +506,7 @@ export default function DayHikesPage() {
           )}
 
           <div className="text-center mt-8 md:mt-12">
-            <Link href="/day-hikes">
+            <Link href="/services/day-hikings">
               <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
                 View All Hikes
               </Button>

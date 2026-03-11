@@ -30,7 +30,108 @@ import {
   Star,
   ExternalLink, 
   ArrowRight,
-  Globe as GlobeIcon
+  Globe as GlobeIcon,
+  FileText,
+  Sparkles,
+  TrendingUp,
+  Briefcase,
+  Landmark,
+  Trees,
+  Plane,
+  MountainSnow,
+  Tent,
+  Map,
+  Camera,
+  Utensils,
+  Coffee,
+  Sun,
+  Cloud,
+  Wind,
+  Snowflake,
+  Flame,
+  Droplets,
+  Waves,
+  Leaf,
+  Flower2,
+  Bird,
+  Rabbit,
+  Turtle,
+  Fish,
+  TreePine,
+  Cherry,
+  Apple,
+  Grape,
+  Wheat,
+  Carrot,
+  Citrus,
+  Banana,
+  Pizza,
+  Beer,
+  Wine,
+  Music,
+  Drama,
+  Theater,
+  Palette,
+  Brush,
+  Pen,
+  Book,
+  GraduationCap,
+  School,
+  Church,
+  Building2,
+  Castle,
+  Home,
+  Warehouse,
+  Store,
+  ShoppingBag,
+  ShoppingCart,
+  Gift,
+  Gem,
+  Diamond,
+  Medal,
+  Trophy,
+  Target,
+  Flag,
+  FlagTriangleRight,
+  FlagTriangleLeft,
+  Palmtree,
+  TreeDeciduous,
+  UtensilsCrossed,
+  GlassWater,
+  LandPlot,
+  MountainIcon,
+  TentTree,
+  Sunrise,
+  Sunset,
+  Thermometer,
+  Umbrella,
+  Tornado,
+  Rainbow,
+  Moon,
+  Stars,
+  Eclipse,
+  Zap,
+  Battery,
+  Power,
+  Plug,
+  Laptop,
+  Smartphone,
+  Tablet,
+  Watch,
+  Clock3,
+  Clock4,
+  Clock5,
+  Clock6,
+  Clock7,
+  Clock8,
+  Clock9,
+  Clock10,
+  Clock11,
+  Clock12,
+  AlarmClock,
+  Timer,
+  TimerOff,
+  TimerReset
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -41,6 +142,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useRouter } from "next/navigation";
 
 // Import React Icons
 import { 
@@ -59,6 +161,131 @@ const WhatsAppIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.864 3.49" />
   </svg>
 );
+
+// Define types for search results
+interface SearchResult {
+  title: string;
+  url: string;
+  category: 'destination' | 'service' | 'trek' | 'day-hiking' | 'sightseeing' | 'jungle-safari' | 'mountain-flight' | 'cultural-tour' | 'peak-climbing' | 'page';
+  description?: string;
+  icon?: React.ReactNode;
+  subCategory?: string;
+}
+
+// Search data - comprehensive list of all your pages
+const searchData: SearchResult[] = [
+  // Main pages
+  { title: "About Us", url: "/about-us", category: "page", icon: <FileText className="w-4 h-4" /> },
+  { title: "Blog", url: "/blog", category: "page", icon: <BookOpen className="w-4 h-4" /> },
+  { title: "Contact", url: "/contact", category: "page", icon: <Mail className="w-4 h-4" /> },
+
+  // Destinations
+  { title: "Bhutan", url: "/destinations/bhutan", category: "destination", icon: <Globe className="w-4 h-4" /> },
+  { title: "Tibet", url: "/destinations/tibet", category: "destination", icon: <Globe className="w-4 h-4" /> },
+  { title: "Nepal", url: "/destinations/nepal", category: "destination", icon: <Globe className="w-4 h-4" /> },
+
+  // Bhutan Packages
+  { title: "3 Nights 4 Days Bhutan Tour", url: "/destinations/bhutan/3-nights-4-days-bhutan-tour", category: "destination", subCategory: "bhutan", icon: <Landmark className="w-4 h-4" /> },
+  { title: "Bhutan Cultural Tour", url: "/destinations/bhutan/bhutan-cultural-tour", category: "destination", subCategory: "bhutan", icon: <Landmark className="w-4 h-4" /> },
+  { title: "Bhutan Festival Tour", url: "/destinations/bhutan/bhutan-festival-tour", category: "destination", subCategory: "bhutan", icon: <Music className="w-4 h-4" /> },
+  { title: "Delightful Bhutan Tour", url: "/destinations/bhutan/delightful-bhutan-tour", category: "destination", subCategory: "bhutan", icon: <Sparkles className="w-4 h-4" /> },
+  { title: "Druk Path Trek", url: "/destinations/bhutan/druk-path-trek", category: "destination", subCategory: "bhutan", icon: <Map className="w-4 h-4" /> },
+  { title: "Jomolhari Trek", url: "/destinations/bhutan/jomolhari-trek", category: "destination", subCategory: "bhutan", icon: <MountainSnow className="w-4 h-4" /> },
+  { title: "Short and Sweet Bhutan Tour", url: "/destinations/bhutan/short-and-sweet-bhutan-tour", category: "destination", subCategory: "bhutan", icon: <Sparkles className="w-4 h-4" /> },
+  { title: "Snowman Trek", url: "/destinations/bhutan/snowman-trek", category: "destination", subCategory: "bhutan", icon: <Snowflake className="w-4 h-4" /> },
+  { title: "Tiger's Nest Day Hiking", url: "/destinations/bhutan/tigers-nest-day-hiking", category: "destination", subCategory: "bhutan", icon: <Flag className="w-4 h-4" /> },
+
+  // Tibet Packages
+  { title: "Ancient Kingdoms Tour", url: "/destinations/tibet/ancient-kingdoms-tour", category: "destination", subCategory: "tibet", icon: <Castle className="w-4 h-4" /> },
+  { title: "Everest Base Camp Tibet", url: "/destinations/tibet/everest-base-camp-tibet", category: "destination", subCategory: "tibet", icon: <Mountain className="w-4 h-4" /> },
+  { title: "Kailash Mansarovar Yatra", url: "/destinations/tibet/kailash-mansarovar-yatra", category: "destination", subCategory: "tibet", icon: <Church className="w-4 h-4" /> },
+  { title: "Lhasa City Tour", url: "/destinations/tibet/lhasa-city-tour", category: "destination", subCategory: "tibet", icon: <Building2 className="w-4 h-4" /> },
+  { title: "Monastery Discovery Tour", url: "/destinations/tibet/monastery-discovery-tour", category: "destination", subCategory: "tibet", icon: <Church className="w-4 h-4" /> },
+  { title: "Tibet Overland Tour", url: "/destinations/tibet/tibet-overland-tour", category: "destination", subCategory: "tibet", icon: <Map className="w-4 h-4" /> },
+  { title: "Tibet Tour Namtso Lake", url: "/destinations/tibet/tibet-tour-namtso-lake", category: "destination", subCategory: "tibet", icon: <Waves className="w-4 h-4" /> },
+  { title: "Tibet Unique Cultural Tour", url: "/destinations/tibet/tibet-unique-cultural-tour", category: "destination", subCategory: "tibet", icon: <Landmark className="w-4 h-4" /> },
+  { title: "Tibetan Plateau Adventure", url: "/destinations/tibet/tibetan-plateau-adventure", category: "destination", subCategory: "tibet", icon: <Compass className="w-4 h-4" /> },
+
+  // Services main pages
+  { title: "Day Hikings", url: "/services/day-hikings", category: "service", icon: <Sun className="w-4 h-4" /> },
+  { title: "Day Sightseeings", url: "/services/day-sightseeings", category: "service", icon: <Camera className="w-4 h-4" /> },
+  { title: "Free Walking Tour", url: "/services/free-walking-tour", category: "service", icon: <Map className="w-4 h-4" /> },
+  { title: "Jungle Safari", url: "/services/jungle-safari", category: "service", icon: <Trees className="w-4 h-4" /> },
+  { title: "Mountain Flight & Heli Trip", url: "/services/mountain-flight-heli-trip", category: "service", icon: <Plane className="w-4 h-4" /> },
+  { title: "Multi Day Cultural Tours", url: "/services/multi-day-cultural-tours", category: "service", icon: <Landmark className="w-4 h-4" /> },
+  { title: "Peak Climbing", url: "/services/peak-climbing", category: "service", icon: <Mountain className="w-4 h-4" /> },
+  { title: "Trekking", url: "/services/trekking", category: "service", icon: <Map className="w-4 h-4" /> },
+
+  // Day Hikings
+  { title: "Champa Devi Hiking", url: "/services/day-hikings/champa-devi-hiking", category: "day-hiking", icon: <Flag className="w-4 h-4" /> },
+  { title: "Nagarkot Changunarayan Hiking", url: "/services/day-hikings/nagarkot-changunarayan-hiking", category: "day-hiking", icon: <Flag className="w-4 h-4" /> },
+  { title: "Namobuddha Hiking", url: "/services/day-hikings/namobuddha-hiking", category: "day-hiking", icon: <Flag className="w-4 h-4" /> },
+
+  // Day Sightseeings
+  { title: "Bhaktapur Patan Sightseeing", url: "/services/day-sightseeings/bhaktapur-patan-sightseeing", category: "sightseeing", icon: <Camera className="w-4 h-4" /> },
+  { title: "Bungamati Khokana Patan Sightseeing", url: "/services/day-sightseeings/bungamati-khokana-patan-sightseeing", category: "sightseeing", icon: <Camera className="w-4 h-4" /> },
+  { title: "Bouddhanath Kapan Sightseeing", url: "/services/day-sightseeings/bouddhanath-kapan-sightseeing", category: "sightseeing", icon: <Camera className="w-4 h-4" /> },
+  { title: "Changunarayan Bhaktapur Sanga Sightseeing", url: "/services/day-sightseeings/changunarayan-bhaktapur-sanga-sightseeing", category: "sightseeing", icon: <Camera className="w-4 h-4" /> },
+  { title: "Dakshinkali Pharping Kirtipur Sightseeing", url: "/services/day-sightseeings/dakshinkali-pharping-kirtipur-sightseeing", category: "sightseeing", icon: <Camera className="w-4 h-4" /> },
+  { title: "Kathmandu Sightseeing", url: "/services/day-sightseeings/kathmandu-sightseeing", category: "sightseeing", icon: <Camera className="w-4 h-4" /> },
+
+  // Jungle Safari
+  { title: "Chitwan National Park Jungle Safari", url: "/services/jungle-safari/chitwan-np-jungle-safari", category: "jungle-safari", icon: <Trees className="w-4 h-4" /> },
+
+  // Mountain Flight & Heli Trip
+  { title: "Annapurna Region Mountain Flight", url: "/services/mountain-flight-heli-trip/annapurna-region-mountain-flight-trip", category: "mountain-flight", icon: <Plane className="w-4 h-4" /> },
+  { title: "Everest Region Helicopter Trip", url: "/services/mountain-flight-heli-trip/everest-region-helicopter-trip", category: "mountain-flight", icon: <Plane className="w-4 h-4" /> },
+  { title: "Everest Region Mountain Flight", url: "/services/mountain-flight-heli-trip/everest-region-mountain-flight-trip", category: "mountain-flight", icon: <Plane className="w-4 h-4" /> },
+  { title: "Langtang Region Helicopter Trip", url: "/services/mountain-flight-heli-trip/langtang-region-helicopter-trip", category: "mountain-flight", icon: <Plane className="w-4 h-4" /> },
+
+  // Multi Day Cultural Tours
+  { title: "Historic Nature Scenic Photography Tour", url: "/services/multi-day-cultural-tours/historic-nature-scenic-photography-tour", category: "cultural-tour", icon: <Camera className="w-4 h-4" /> },
+  { title: "Kathmandu Bhaktapur Lalitpur Tour", url: "/services/multi-day-cultural-tours/kathmandu-bhaktapur-lalitpur-tour", category: "cultural-tour", icon: <Landmark className="w-4 h-4" /> },
+  { title: "Kathmandu Pokhara Lumbini Chitwan Tour", url: "/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour", category: "cultural-tour", icon: <Map className="w-4 h-4" /> },
+  { title: "Nepal Heritage Sites Tour", url: "/services/multi-day-cultural-tours/nepal-heritage-sites-tour", category: "cultural-tour", icon: <Landmark className="w-4 h-4" /> },
+  { title: "Nepal Temples and Stupas Tour", url: "/services/multi-day-cultural-tours/nepal-temples-and-stupas-tour", category: "cultural-tour", icon: <Church className="w-4 h-4" /> },
+
+  // Peak Climbing
+  { title: "Island Peak Climbing", url: "/services/peak-climbing/island-peak-climbing", category: "peak-climbing", icon: <Mountain className="w-4 h-4" /> },
+  { title: "Mera Peak Climbing", url: "/services/peak-climbing/mera-peak-climbing", category: "peak-climbing", icon: <Mountain className="w-4 h-4" /> },
+  { title: "Pisang Peak Climbing", url: "/services/peak-climbing/pisang-peak-climbing", category: "peak-climbing", icon: <Mountain className="w-4 h-4" /> },
+  { title: "Yala Peak Climbing", url: "/services/peak-climbing/yala-peak-climbing", category: "peak-climbing", icon: <Mountain className="w-4 h-4" /> },
+
+  // Trekking
+  { title: "Annapurna Base Camp Trek", url: "/services/trekking/annapurna-base-camp-trek", category: "trek", icon: <Map className="w-4 h-4" /> },
+  { title: "Annapurna Circuit Trek", url: "/services/trekking/annapurna-circuit-trek", category: "trek", icon: <Map className="w-4 h-4" /> },
+  { title: "Annapurna Circuit with Tilicho Lake", url: "/services/trekking/annapurna-circuit-trek-with-tilicho-lake", category: "trek", icon: <Map className="w-4 h-4" /> },
+  { title: "Everest Base Camp Trek", url: "/services/trekking/everest-base-camp-trek", category: "trek", icon: <Mountain className="w-4 h-4" /> },
+  { title: "Everest Gokyo Trek", url: "/services/trekking/gokyo-trek", category: "trek", icon: <Mountain className="w-4 h-4" /> },
+  { title: "Everest Three Passes Trek", url: "/services/trekking/everest-three-passes-trek", category: "trek", icon: <Mountain className="w-4 h-4" /> },
+  { title: "Gorepani Poon Hill Trek", url: "/services/trekking/gorepani-poon-hill-trek", category: "trek", icon: <Flag className="w-4 h-4" /> },
+  { title: "Khopra Ridge with Khayar Lake", url: "/services/trekking/khopra-ridge-trek-with-khayar-lake", category: "trek", icon: <Flag className="w-4 h-4" /> },
+  { title: "Langtang Ganjala Pass Trek", url: "/services/trekking/langtang-ganjala-pass-trek", category: "trek", icon: <Flag className="w-4 h-4" /> },
+  { title: "Langtang Gosainkunda Trek", url: "/services/trekking/langtang-gosainkunda-trek", category: "trek", icon: <Flag className="w-4 h-4" /> },
+  { title: "Langtang Helambu Trek", url: "/services/trekking/langtang-helambu-trek", category: "trek", icon: <Flag className="w-4 h-4" /> },
+  { title: "Langtang Valley Trek", url: "/services/trekking/langtang-valley-trek", category: "trek", icon: <Flag className="w-4 h-4" /> },
+  { title: "Manaslu Circuit Trek", url: "/services/trekking/manaslu-circuit-trek", category: "trek", icon: <Map className="w-4 h-4" /> },
+  { title: "Manaslu Circuit with Tsum Valley", url: "/services/trekking/manaslu-circuit-trek-with-tsum-valley", category: "trek", icon: <Map className="w-4 h-4" /> },
+  { title: "Mardi Himal Trek", url: "/services/trekking/mardi-himal-trek", category: "trek", icon: <Flag className="w-4 h-4" /> },
+  { title: "Nar Phu Trek", url: "/services/trekking/nar-phu-trek", category: "trek", icon: <Flag className="w-4 h-4" /> },
+  { title: "Rupina La Trek", url: "/services/trekking/rupina-la-trek", category: "trek", icon: <Flag className="w-4 h-4" /> },
+  { title: "Tamang Heritage Trail with Langtang", url: "/services/trekking/tamang-heritage-trail-and-langtang-valley-trek", category: "trek", icon: <Flag className="w-4 h-4" /> },
+  { title: "Upper Mustang Trek", url: "/services/trekking/upper-mustang-trek", category: "trek", icon: <Flag className="w-4 h-4" /> },
+];
+
+// Group results by category for better organization
+const categoryLabels: Record<string, string> = {
+  destination: 'Destinations',
+  service: 'Services',
+  trek: 'Trekking Packages',
+  'day-hiking': 'Day Hikings',
+  sightseeing: 'Day Sightseeings',
+  'jungle-safari': 'Jungle Safari',
+  'mountain-flight': 'Mountain Flights & Heli Trips',
+  'cultural-tour': 'Multi Day Cultural Tours',
+  'peak-climbing': 'Peak Climbing',
+  page: 'Pages'
+};
 
 // Separate component for Terms Dialog
 const TermsDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) => (
@@ -285,7 +512,7 @@ const ServicesDropdown = () => {
                 Trekkings
               </Link>
               <Link
-                href="/services/city-tours"
+                href="/services/multi-day-cultural-tours"
                 className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
                 onClick={() => setIsOpen(false)}
               >
@@ -430,31 +657,28 @@ const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
                 Trekking
               </Link>
               <Link
-                href="/services/city-tours"
+                href="/services/multi-day-cultural-tours"
                 className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
                 onClick={closeMenu}
               >
-                Multi Day CUltural Tours
+                Multi Day Cultural Tours
               </Link>
-
               <Link
-                href="/services/city-tours"
+                href="/services/day-hikings"
                 className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
                 onClick={closeMenu}
               >
                 Day Hikings
               </Link>
-
               <Link
-                href="/services/city-tours"
+                href="/services/day-sightseeings"
                 className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
                 onClick={closeMenu}
               >
                 Day Sightseeings
               </Link>
-
               <Link
-                href="/services/mountain-flight"
+                href="/services/mountain-flight-heli-trip"
                 className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
                 onClick={closeMenu}
               >
@@ -483,6 +707,225 @@ const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
   );
 };
 
+// Search Component
+const SearchModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [results, setResults] = React.useState<SearchResult[]>([]);
+  const [selectedIndex, setSelectedIndex] = React.useState(-1);
+  const searchRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+    }
+  }, [isOpen]);
+
+  React.useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setResults([]);
+      setSelectedIndex(-1);
+      return;
+    }
+
+    const query = searchQuery.toLowerCase();
+    const filtered = searchData.filter(item => 
+      item.title.toLowerCase().includes(query)
+    );
+    
+    // Sort results: exact matches first, then starts with, then includes
+    filtered.sort((a, b) => {
+      const aTitle = a.title.toLowerCase();
+      const bTitle = b.title.toLowerCase();
+      
+      if (aTitle === query) return -1;
+      if (bTitle === query) return 1;
+      if (aTitle.startsWith(query) && !bTitle.startsWith(query)) return -1;
+      if (bTitle.startsWith(query) && !aTitle.startsWith(query)) return 1;
+      return aTitle.indexOf(query) - bTitle.indexOf(query);
+    });
+    
+    setResults(filtered.slice(0, 10)); // Limit to 10 results
+    setSelectedIndex(-1);
+  }, [searchQuery]);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSelectedIndex(prev => 
+        prev < results.length - 1 ? prev + 1 : prev
+      );
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSelectedIndex(prev => prev > 0 ? prev - 1 : -1);
+    } else if (e.key === 'Enter' && selectedIndex >= 0) {
+      handleResultClick(results[selectedIndex]);
+    } else if (e.key === 'Escape') {
+      onClose();
+    }
+  };
+
+  const handleResultClick = (result: SearchResult) => {
+    router.push(result.url);
+    onClose();
+    setSearchQuery("");
+  };
+
+  // Group results by category
+  const groupedResults = results.reduce((acc, result) => {
+    if (!acc[result.category]) {
+      acc[result.category] = [];
+    }
+    acc[result.category].push(result);
+    return acc;
+  }, {} as Record<string, SearchResult[]>);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, onClose]);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          ref={searchRef}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
+          className="absolute inset-x-0 top-full bg-[#153653]/95 backdrop-blur-xl border-t border-white/20 shadow-xl z-50"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="container mx-auto px-4 py-4">
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              if (results.length > 0) {
+                handleResultClick(results[0]);
+              }
+            }} className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50" />
+              <input
+                ref={inputRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Search destinations, treks, tours, packages..."
+                className="w-full pl-12 pr-12 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#C5E0ED] focus:border-transparent backdrop-blur-sm"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 rounded-lg hover:bg-white/10 text-white/60 hover:text-white transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </form>
+
+            {/* Search Results */}
+            {searchQuery && (
+              <div className="mt-4 max-h-[60vh] overflow-y-auto">
+                {results.length > 0 ? (
+                  <div className="space-y-4">
+                    {Object.entries(groupedResults).map(([category, categoryResults]) => (
+                      <div key={category} className="space-y-2">
+                        <h3 className="text-xs font-semibold text-[#C5E0ED] uppercase tracking-wider px-3">
+                          {categoryLabels[category] || category}
+                        </h3>
+                        <div className="space-y-1">
+                          {categoryResults.map((result, index) => {
+                            const globalIndex = results.indexOf(result);
+                            return (
+                              <button
+                                key={result.url}
+                                onClick={() => handleResultClick(result)}
+                                onMouseEnter={() => setSelectedIndex(globalIndex)}
+                                className={`w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${
+                                  selectedIndex === globalIndex
+                                    ? 'bg-[#C5E0ED]/20 text-white border border-[#C5E0ED]/30'
+                                    : 'text-white/80 hover:bg-white/10'
+                                }`}
+                              >
+                                <span className="text-[#C5E0ED]">
+                                  {result.icon}
+                                </span>
+                                <div className="flex-1">
+                                  <div className="font-medium text-sm">{result.title}</div>
+                                  {result.subCategory && (
+                                    <div className="text-xs text-white/40 mt-0.5 capitalize">
+                                      {result.subCategory}
+                                    </div>
+                                  )}
+                                </div>
+                                <ChevronRight className="w-4 h-4 text-white/40" />
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8 text-white/50">
+                    <Search className="w-12 h-12 mx-auto mb-3 opacity-30" />
+                    <p>No results found for "{searchQuery}"</p>
+                    <p className="text-sm mt-1">Try searching with different keywords</p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Search Suggestions */}
+            {!searchQuery && (
+              <div className="mt-4 text-white/70 text-sm">
+                <p className="mb-3 text-xs text-[#C5E0ED] uppercase tracking-wider">Popular Searches</p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Everest Base Camp", 
+                    "Annapurna Circuit", 
+                    "Bhutan Tour", 
+                    "Tibet Tour", 
+                    "Island Peak", 
+                    "Chitwan Safari",
+                    "Kathmandu Sightseeing",
+                    "Free Walking Tour"
+                  ].map((term) => (
+                    <button
+                      key={term}
+                      onClick={() => {
+                        setSearchQuery(term);
+                      }}
+                      className="px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg backdrop-blur-sm border border-white/10 transition-colors text-sm"
+                    >
+                      {term}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 export default function ClientLayout({
   children,
 }: {
@@ -491,13 +934,11 @@ export default function ClientLayout({
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
-  const [searchQuery, setSearchQuery] = React.useState("");
   const [termsOpen, setTermsOpen] = React.useState(false);
   const [privacyOpen, setPrivacyOpen] = React.useState(false);
 
-  const searchRef = React.useRef<HTMLDivElement>(null);
   const phoneNumber = "+977 9841376470";
-  const whatsappMessage = "Hello Himkala Adventure! I'm interested in your services.";
+  const whatsappMessage = "";
   const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\s/g, '')}?text=${encodeURIComponent(whatsappMessage)}`;
 
   React.useEffect(() => {
@@ -508,29 +949,7 @@ export default function ClientLayout({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (isSearchOpen && searchRef.current && !searchRef.current.contains(event.target as Node)) {
-        setIsSearchOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isSearchOpen]);
-
   const closeMenu = () => setIsMenuOpen(false);
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      // Implement search functionality here
-      console.log("Searching for:", searchQuery);
-      setIsSearchOpen(false);
-    }
-  };
 
   return (
     <>
@@ -556,12 +975,12 @@ export default function ClientLayout({
               </div>
             </div>
             <div className="hidden sm:block backdrop-blur-sm bg-white/5 rounded-lg px-3 py-2 border border-white/10">
-  <span className="text-xl md:text-2xl font-bold tracking-tight text-white block leading-tight drop-shadow-lg">Himkala Adventure</span>
-  <span className="text-[10px] md:text-[11px] uppercase tracking-[0.15em] text-[#C5E0ED] font-medium leading-none drop-shadow-lg">Private Limited</span>
-</div>
-<div className="sm:hidden backdrop-blur-sm bg-white/5 rounded-lg px-3 py-1.5 border border-white/10">
-  <span className="text-base font-bold tracking-tight text-white drop-shadow-lg">Himkala Adventure</span>
-</div>
+              <span className="text-xl md:text-2xl font-bold tracking-tight text-white block leading-tight drop-shadow-lg">Himkala Adventure</span>
+              <span className="text-[10px] md:text-[11px] uppercase tracking-[0.15em] text-[#C5E0ED] font-medium leading-none drop-shadow-lg">Private Limited</span>
+            </div>
+            <div className="sm:hidden backdrop-blur-sm bg-white/5 rounded-lg px-3 py-1.5 border border-white/10">
+              <span className="text-base font-bold tracking-tight text-white drop-shadow-lg">Himkala Adventure</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation with Glass Effect */}
@@ -649,56 +1068,7 @@ export default function ClientLayout({
         </div>
 
         {/* Search Modal */}
-        <AnimatePresence>
-          {isSearchOpen && (
-            <motion.div
-              ref={searchRef}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-x-0 top-full bg-[#153653]/95 backdrop-blur-xl border-t border-white/20 shadow-xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="container mx-auto px-4 py-4">
-                <form onSubmit={handleSearch} className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search destinations, treks, packages..."
-                    className="w-full pl-12 pr-24 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#C5E0ED] focus:border-transparent backdrop-blur-sm"
-                    autoFocus
-                  />
-                  <button
-                    type="submit"
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#153653] font-bold rounded-lg px-4 py-2 text-sm backdrop-blur-sm hover:opacity-90 transition-opacity"
-                  >
-                    Search
-                  </button>
-                </form>
-                {/* Search Suggestions */}
-                <div className="mt-4 text-white/70 text-sm">
-                  <p className="mb-2">Popular searches:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {["Everest Base Camp", "Annapurna Circuit", "Bhutan Tour", "Trekking Gear", "Best Season"].map((term) => (
-                      <button
-                        key={term}
-                        onClick={() => {
-                          setSearchQuery(term);
-                          setIsSearchOpen(false);
-                        }}
-                        className="px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg backdrop-blur-sm border border-white/10 transition-colors"
-                      >
-                        {term}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
         {/* Mobile Menu - Blue Translucent Frosted Glass Overlay */}
         <AnimatePresence>
@@ -711,7 +1081,7 @@ export default function ClientLayout({
               className="md:hidden bg-[#153653]/95 backdrop-blur-xl border-t border-white/20"
               style={{ height: "calc(100vh - 64px)" }}
             >
-              <div className="container mx-auto px-4 sm:px-6 py-6 h-full">
+              <div className="container mx-auto px-4 sm:px-6 py-6 h-full overflow-y-auto">
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
                     <div className="flex flex-col space-y-2">
@@ -802,8 +1172,6 @@ export default function ClientLayout({
                   </div>
                   
                   <div className="mt-auto pt-6 border-t border-white/20">
-                    
-                    
                     <div className="grid grid-cols-2 gap-3 mb-6">
                       <a 
                         href={`tel:${phoneNumber.replace(/\s/g, '')}`}
@@ -952,8 +1320,7 @@ You dream it. We plan it. Let's build your adventure together.              </p>
                 </div>
               </div>
               <p className="text-white/60 text-sm leading-relaxed mb-6">
-                Trusted Himalayan adventures across Nepal, Bhutan, and Tibet since 2012.
-              </p>
+Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.             </p>
               <div className="flex gap-3 flex-wrap">
                 {socialLinks.map((social) => (
                   <a 
@@ -972,22 +1339,34 @@ You dream it. We plan it. Let's build your adventure together.              </p>
             </div>
 
             {/* Popular Treks */}
-            <div>
-              <h5 className="font-bold text-white mb-6 text-lg flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-[#C5E0ED]" />
-                Popular Treks/Tours
-              </h5>
-              <ul className="space-y-3 text-sm text-white/60">
-                {["Everest Base Camp", "Annapurna Circuit", "Langtang Valley", "Manaslu Circuit", "Upper Mustang"].map((trek) => (
-                  <li key={trek}>
-                    <a href="#" className="hover:text-[#C5E0ED] transition-colors flex items-center gap-2 py-1 group">
-                      <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      {trek}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+<div>
+  <h5 className="font-bold text-white mb-6 text-lg flex items-center gap-2">
+    <BookOpen className="w-5 h-5 text-[#C5E0ED]" />
+    Popular Treks/Tours
+  </h5>
+  <ul className="space-y-3 text-sm text-white/60">
+    {[
+       { name: "Free Walking Tour", url: "/services/free-walking-tour" },
+        { name: "Manaslu Circuit", url: "/services/trekking/manaslu-circuit-trek" },
+
+      { name: "Everest Base Camp", url: "/services/trekking/everest-base-camp-trek" },
+      { name: "Annapurna Circuit", url: "/services/trekking/annapurna-circuit-trek" },
+      { name: "Langtang Valley", url: "/services/trekking/langtang-valley-trek" },
+      { name: "Kathmandu, Pokhara, Lumbini, Chitwan Tour", url: "/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour" },
+
+    ].map((trek) => (
+      <li key={trek.name}>
+        <Link 
+          href={trek.url}
+          className="hover:text-[#C5E0ED] transition-colors flex items-center gap-2 py-1 group"
+        >
+          <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+          {trek.name}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
 
             {/* Quick Links */}
             <div>
@@ -1090,7 +1469,6 @@ You dream it. We plan it. Let's build your adventure together.              </p>
               >
                 Terms & Conditions
               </button>
-              
             </div>
           </div>
         </div>

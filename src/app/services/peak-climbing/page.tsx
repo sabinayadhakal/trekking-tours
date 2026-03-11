@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   Mountain,
@@ -28,222 +29,119 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+// Minimal region options based on actual peaks
 const peakRegions = [
   "All Regions",
   "Everest Region",
   "Annapurna Region",
   "Langtang Region",
-  "Manaslu Region",
-  "Island Peak",
-  "Mera Peak",
 ];
 
+// Minimal difficulty levels based on actual peaks
 const difficultyLevels = [
   "All Levels",
-  "Beginner",
-  "Intermediate",
-  "Advanced",
-  "Expedition",
+  "Moderate",
+  "Challenging",
+  "Technical",
+  "Moderate-Challenging",
+  "Moderate-Technical",
 ];
 
+// Only include peak climbs that exist in your folder structure
 const peakClimbs = [
   {
     id: 1,
     name: "Island Peak Climbing",
-    region: "Island Peak",
-    duration: "20 Days",
-    difficulty: "Intermediate",
+    region: "Everest Region",
+    duration: "18 Days",
+    difficulty: "Technical",
     altitude: "6,189m",
     groupSize: "2-8",
     bestSeason: "Apr-May, Oct-Nov",
-    price: 3200,
-    originalPrice: 3800,
+    price: 2450,
+    originalPrice: 2800,
     image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 187,
-    highlights: ["Ice Climbing", "Everest Views", "High Camp", "Glacier Traverse"],
-    description: "The most popular trekking peak in Nepal, perfect for first-time climbers with previous trekking experience.",
+    rating: 4.8,
+    reviews: 156,
+    highlights: ["Summit Experience", "Technical Training", "Everest Views", "Glacier Crossing"],
+    description: "Climb the most popular trekking peak in Nepal with expert guides and technical training.",
     featured: true,
-    successRate: "95%",
+    successRate: "92%",
     trainingDays: 3,
-    link: "/destinations/peak-climbing/island-peak",
+    link: "/services/peak-climbing/island-peak-climbing",
   },
   {
     id: 2,
-    name: "Mera Peak Expedition",
-    region: "Mera Peak",
-    duration: "22 Days",
-    difficulty: "Intermediate",
+    name: "Mera Peak Climbing",
+    region: "Everest Region",
+    duration: "18 Days",
+    difficulty: "Moderate-Technical",
     altitude: "6,476m",
     groupSize: "2-6",
     bestSeason: "Apr-May, Oct-Nov",
-    price: 3800,
-    originalPrice: 4500,
+    price: 2650,
+    originalPrice: 3100,
     image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 134,
-    highlights: ["Highest Trekking Peak", "Panoramic Views", "Remote Valleys", "Snow Climb"],
-    description: "Climb Nepal's highest trekking peak with spectacular 360° views of five 8,000m peaks.",
+    rating: 4.9,
+    reviews: 124,
+    highlights: ["Highest Trekking Peak", "5 x 8000m Views", "Remote Wilderness", "Non-technical Summit"],
+    description: "Stand on Nepal's highest trekking peak with spectacular panoramic views of five 8,000m peaks.",
     featured: true,
-    successRate: "92%",
+    successRate: "95%",
     trainingDays: 4,
-    link: "/destinations/peak-climbing/mera-peak",
+    link: "/services/peak-climbing/mera-peak-climbing",
   },
   {
     id: 3,
-    name: "Lobuche East Peak",
-    region: "Everest Region",
-    duration: "24 Days",
-    difficulty: "Advanced",
-    altitude: "6,119m",
-    groupSize: "2-6",
-    bestSeason: "Apr-May, Sep-Oct",
-    price: 4500,
-    originalPrice: 5200,
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 89,
-    highlights: ["Technical Climb", "Everest Base Camp", "Ice Wall", "Summit Ridge"],
-    description: "A challenging climb in the Everest region with technical sections and stunning high mountain scenery.",
-    featured: false,
-    successRate: "85%",
-    trainingDays: 5,
-    link: "/destinations/peak-climbing/lobuche-east",
-  },
-  {
-    id: 4,
     name: "Pisang Peak Climbing",
     region: "Annapurna Region",
     duration: "18 Days",
-    difficulty: "Intermediate",
+    difficulty: "Moderate-Challenging",
     altitude: "6,091m",
     groupSize: "2-8",
-    bestSeason: "Mar-May, Sep-Nov",
-    price: 2800,
-    originalPrice: 3400,
+    bestSeason: "Apr-May, Oct-Nov",
+    price: 2350,
+    originalPrice: 2800,
     image: "https://images.unsplash.com/photo-1511317559916-56d5ddb3e3e3?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.7,
-    reviews: 156,
-    highlights: ["Annapurna Circuit", "Rock Climbing", "Panorama Views", "Alpine Style"],
+    rating: 4.8,
+    reviews: 98,
+    highlights: ["Rock Climbing", "Annapurna Circuit", "Panorama Views", "Alpine Style"],
     description: "Combine the classic Annapurna Circuit with an exciting climb up this beautiful pyramid-shaped peak.",
-    featured: true,
+    featured: false,
     successRate: "90%",
     trainingDays: 3,
-    link: "/destinations/peak-climbing/pisang-peak",
+    link: "/services/peak-climbing/pisang-peak-climbing",
   },
   {
-    id: 5,
-    name: "Chulu West Peak",
-    region: "Annapurna Region",
-    duration: "25 Days",
-    difficulty: "Advanced",
-    altitude: "6,419m",
-    groupSize: "2-6",
-    bestSeason: "Apr-May, Oct-Nov",
-    price: 4200,
-    originalPrice: 4900,
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 67,
-    highlights: ["Technical Ascent", "Manang Valley", "Fixed Lines", "Summit Ridge"],
-    description: "A more technical climb requiring previous mountaineering experience and good physical fitness.",
-    featured: false,
-    successRate: "80%",
-    trainingDays: 6,
-    link: "/destinations/peak-climbing/chulu-west",
-  },
-  {
-    id: 6,
+    id: 4,
     name: "Yala Peak Climbing",
     region: "Langtang Region",
-    duration: "16 Days",
-    difficulty: "Beginner",
-    altitude: "5,732m",
-    groupSize: "2-10",
+    duration: "12 Days",
+    difficulty: "Moderate",
+    altitude: "5,520m",
+    groupSize: "2-8",
     bestSeason: "Mar-May, Sep-Dec",
-    price: 2200,
-    originalPrice: 2700,
+    price: 1850,
+    originalPrice: 2200,
     image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.6,
-    reviews: 198,
-    highlights: ["Non-Technical", "Langtang Valley", "Shishapangma Views", "First Peak"],
+    rating: 4.5,
+    reviews: 112,
+    highlights: ["Beginner Friendly", "Langtang Valley", "Tibetan Border Views", "Cultural Experience"],
     description: "Perfect introduction to peak climbing with no technical climbing required, just basic snow skills.",
     featured: false,
     successRate: "98%",
     trainingDays: 2,
-    link: "/destinations/peak-climbing/yala-peak",
-  },
-  {
-    id: 7,
-    name: "Tent Peak (Tharpu Chuli)",
-    region: "Annapurna Region",
-    duration: "19 Days",
-    difficulty: "Intermediate",
-    altitude: "5,663m",
-    groupSize: "2-8",
-    bestSeason: "Mar-May, Oct-Nov",
-    price: 2600,
-    originalPrice: 3100,
-    image: "https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=2074&auto=format&fit=crop",
-    rating: 4.7,
-    reviews: 123,
-    highlights: ["Annapurna Sanctuary", "Machapuchare Base", "Snow Skills", "360° Views"],
-    description: "A superb climb in the heart of the Annapurna Sanctuary with moderate technical difficulty.",
-    featured: true,
-    successRate: "93%",
-    trainingDays: 3,
-    link: "/destinations/peak-climbing/tent-peak",
-  },
-  {
-    id: 8,
-    name: "Ama Dablam Base Camp",
-    region: "Everest Region",
-    duration: "21 Days",
-    difficulty: "Beginner",
-    altitude: "4,570m",
-    groupSize: "2-12",
-    bestSeason: "Mar-May, Sep-Nov",
-    price: 2900,
-    originalPrice: 3500,
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 145,
-    highlights: ["Ama Dablam Views", "Icefall Training", "High Camp", "Climbing Workshop"],
-    description: "Base camp trek with technical climbing workshops - perfect preparation for bigger peaks.",
-    featured: true,
-    successRate: "100%",
-    trainingDays: 5,
-    link: "/destinations/peak-climbing/ama-dablam-base-camp",
-  },
-  {
-    id: 9,
-    name: "Naya Kanga Peak",
-    region: "Langtang Region",
-    duration: "17 Days",
-    difficulty: "Intermediate",
-    altitude: "5,846m",
-    groupSize: "2-6",
-    bestSeason: "Mar-May, Oct-Nov",
-    price: 2700,
-    originalPrice: 3200,
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.7,
-    reviews: 78,
-    highlights: ["Langtang Valley", "Snow Ridge", "Summit Push", "Cultural Villages"],
-    description: "A challenging climb in the Langtang region with stunning views of the Tibetan border peaks.",
-    featured: false,
-    successRate: "88%",
-    trainingDays: 3,
-    link: "/destinations/peak-climbing/naya-kanga",
+    link: "/services/peak-climbing/yala-peak-climbing",
   },
 ];
 
 const getDifficultyColor = (difficulty: string) => {
   switch (difficulty) {
-    case "Beginner": return "bg-green-100 text-green-700";
-    case "Intermediate": return "bg-yellow-100 text-yellow-700";
-    case "Advanced": return "bg-orange-100 text-orange-700";
-    case "Expedition": return "bg-red-100 text-red-700";
+    case "Moderate": return "bg-green-100 text-green-700";
+    case "Moderate-Challenging": return "bg-yellow-100 text-yellow-700";
+    case "Challenging": return "bg-orange-100 text-orange-700";
+    case "Technical": return "bg-red-100 text-red-700";
+    case "Moderate-Technical": return "bg-purple-100 text-purple-700";
     default: return "bg-slate-100 text-slate-700";
   }
 };
@@ -257,10 +155,15 @@ const getSuccessRateColor = (rate: string) => {
 };
 
 export default function PeakClimbingPage() {
+  const router = useRouter();
   const [selectedRegion, setSelectedRegion] = React.useState("All Regions");
   const [selectedDifficulty, setSelectedDifficulty] = React.useState("All Levels");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [showFilterDrawer, setShowFilterDrawer] = React.useState(false);
+
+  const handleBookNow = (climbName: string) => {
+    router.push(`/contact?trek=${encodeURIComponent(climbName)}`);
+  };
 
   const filteredClimbs = peakClimbs.filter((climb) => {
     const matchesRegion = selectedRegion === "All Regions" || climb.region === selectedRegion;
@@ -365,13 +268,13 @@ export default function PeakClimbingPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-2 md:gap-4">
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 9 Climbing Peaks
+                <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 4 Climbing Peaks
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Flag className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 5,732m - 6,476m
+                <Flag className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 5,520m - 6,476m
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Award className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 80-98% Success Rate
+                <Award className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 90-98% Success Rate
               </div>
             </div>
           </div>
@@ -379,82 +282,82 @@ export default function PeakClimbingPage() {
       </section>
 
       {/* Search and Filter Bar */}
-<section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
-  <div className="container mx-auto px-4 md:px-6">
-    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
-      {/* Search */}
-      <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
-        <input
-          type="text"
-          placeholder="Search climbing peaks..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
-        />
-      </div>
+      <section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
+            {/* Search */}
+            <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search climbing peaks..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
+              />
+            </div>
 
-      {/* Mobile Filter Button */}
-      <Button
-        variant="outline"
-        className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
-        onClick={() => setShowFilterDrawer(true)}
-      >
-        <Filter className="w-4 h-4 mr-2" />
-        Filters
-      </Button>
-
-      {/* Desktop Filters */}
-      <div className="hidden lg:flex items-center gap-4">
-        <div className="flex flex-wrap justify-center gap-2">
-          {peakRegions.slice(0, 4).map((region) => (
-            <button
-              key={region}
-              onClick={() => setSelectedRegion(region)}
-              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
-                selectedRegion === region
-                  ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
-                  : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-              }`}
+            {/* Mobile Filter Button */}
+            <Button
+              variant="outline"
+              className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
+              onClick={() => setShowFilterDrawer(true)}
             >
-              {region.replace(" Region", "")}
-            </button>
-          ))}
-        </div>
+              <Filter className="w-4 h-4 mr-2" />
+              Filters
+            </Button>
 
-        <div className="flex items-center gap-2">
-          <select
-            value={selectedDifficulty}
-            onChange={(e) => setSelectedDifficulty(e.target.value)}
-            className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
-          >
-            {difficultyLevels.map((level) => (
-              <option key={level} value={level}>{level}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-    </div>
+            {/* Desktop Filters */}
+            <div className="hidden lg:flex items-center gap-4">
+              <div className="flex flex-wrap justify-center gap-2">
+                {peakRegions.slice(1).map((region) => (
+                  <button
+                    key={region}
+                    onClick={() => setSelectedRegion(region)}
+                    className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
+                      selectedRegion === region
+                        ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
+                        : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
+                    }`}
+                  >
+                    {region.replace(" Region", "")}
+                  </button>
+                ))}
+              </div>
 
-    {/* Mobile Active Filters */}
-    <div className="lg:hidden mt-3 flex flex-wrap gap-2">
-      <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-        {selectedRegion}
-      </Badge>
-      <Badge className={`border-none text-xs font-medium ${getDifficultyColor(selectedDifficulty)}`}>
-        {selectedDifficulty}
-      </Badge>
-    </div>
-  </div>
-</section>
+              <div className="flex items-center gap-2">
+                <select
+                  value={selectedDifficulty}
+                  onChange={(e) => setSelectedDifficulty(e.target.value)}
+                  className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
+                >
+                  {difficultyLevels.map((level) => (
+                    <option key={level} value={level}>{level}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Active Filters */}
+          <div className="lg:hidden mt-3 flex flex-wrap gap-2">
+            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
+              {selectedRegion}
+            </Badge>
+            <Badge className={`border-none text-xs font-medium ${getDifficultyColor(selectedDifficulty)}`}>
+              {selectedDifficulty}
+            </Badge>
+          </div>
+        </div>
+      </section>
 
       {/* Featured Climb */}
       {featuredClimb && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div 
-              onClick={() => window.location.href = featuredClimb.link}
-              className="cursor-pointer"
+            <Link 
+              href={featuredClimb.link}
+              className="cursor-pointer block"
             >
               <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
                 <div className="grid lg:grid-cols-2">
@@ -500,52 +403,56 @@ export default function PeakClimbingPage() {
                       </div>
                     </div>
                     
-                  {/* Success Rate & Training */}
-                  <div className="grid grid-cols-2 gap-4 mb-4 md:mb-6">
-                    <div className="bg-[#C5E0ED]/10 rounded-lg p-3 md:p-4">
-                      <div className="flex items-center gap-2 mb-1">
-                        <Award className="w-4 h-4 text-[#2d6a8a]" />
-                        <span className="text-xs md:text-sm font-medium text-[#0f2940]">Success Rate</span>
+                    {/* Success Rate & Training */}
+                    <div className="grid grid-cols-2 gap-4 mb-4 md:mb-6">
+                      <div className="bg-[#C5E0ED]/10 rounded-lg p-3 md:p-4">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Award className="w-4 h-4 text-[#2d6a8a]" />
+                          <span className="text-xs md:text-sm font-medium text-[#0f2940]">Success Rate</span>
+                        </div>
+                        <div className={`text-lg md:text-xl font-bold ${getSuccessRateColor(featuredClimb.successRate)}`}>
+                          {featuredClimb.successRate}
+                        </div>
                       </div>
-                      <div className={`text-lg md:text-xl font-bold ${getSuccessRateColor(featuredClimb.successRate)}`}>
-                        {featuredClimb.successRate}
+                      <div className="bg-[#C5E0ED]/10 rounded-lg p-3 md:p-4">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Snowflake className="w-4 h-4 text-[#2d6a8a]" />
+                          <span className="text-xs md:text-sm font-medium text-[#0f2940]">Training Days</span>
+                        </div>
+                        <div className="text-lg md:text-xl font-bold text-[#0f2940]">
+                          {featuredClimb.trainingDays} Days
+                        </div>
                       </div>
                     </div>
-                    <div className="bg-[#C5E0ED]/10 rounded-lg p-3 md:p-4">
-                      <div className="flex items-center gap-2 mb-1">
-                        <Snowflake className="w-4 h-4 text-[#2d6a8a]" />
-                        <span className="text-xs md:text-sm font-medium text-[#0f2940]">Training Days</span>
-                      </div>
-                      <div className="text-lg md:text-xl font-bold text-[#0f2940]">
-                        {featuredClimb.trainingDays} Days
-                      </div>
-                    </div>
-                  </div>
 
-                  <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
-                    {featuredClimb.highlights.map((h, idx) => (
-                      <span key={idx} className="text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
-                        {h}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 md:pt-6 border-t border-slate-100 gap-4">
-                    <div>
-                      <span className="text-slate-400 text-sm line-through">${featuredClimb.originalPrice}</span>
-                      <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredClimb.price}</span>
-                      <span className="text-slate-500 text-sm">/person</span>
+                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
+                      {featuredClimb.highlights.map((h, idx) => (
+                        <span key={idx} className="text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
+                          {h}
+                        </span>
+                      ))}
                     </div>
-                    <Link href={`/contact?trek=${encodeURIComponent(featuredClimb.name)}`} onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 md:pt-6 border-t border-slate-100 gap-4">
+                      <div>
+                        <span className="text-slate-400 text-sm line-through">${featuredClimb.originalPrice}</span>
+                        <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredClimb.price}</span>
+                        <span className="text-slate-500 text-sm">/person</span>
+                      </div>
+                      <Button 
+                        className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(featuredClimb.name);
+                        }}
+                      >
                         View Expedition Details
                         <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
-            </div>
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            </Link>
           </div>
         </section>
       )}
@@ -565,10 +472,10 @@ export default function PeakClimbingPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredClimbs.map((climb, i) => (
-              <div 
+              <Link 
                 key={climb.id} 
-                onClick={() => window.location.href = climb.link}
-                className="cursor-pointer"
+                href={climb.link}
+                className="cursor-pointer block"
               >
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
                   <div className="relative h-40 md:h-52 overflow-hidden">
@@ -632,15 +539,21 @@ export default function PeakClimbingPage() {
                         <span className="text-slate-400 text-xs line-through">${climb.originalPrice}</span>
                         <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${climb.price}</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(climb.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
-                          Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        variant="ghost" 
+                        className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(climb.name);
+                        }}
+                      >
+                        Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -664,7 +577,7 @@ export default function PeakClimbingPage() {
           )}
 
           <div className="text-center mt-8 md:mt-12">
-            <Link href="/peak-climbing">
+            <Link href="/services/peak-climbing">
               <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
                 View All Climbing Expeditions
               </Button>

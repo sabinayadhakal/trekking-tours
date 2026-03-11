@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   Trees,
@@ -35,26 +36,22 @@ import { Badge } from "@/components/ui/badge";
 const safariParks = [
   "All Parks",
   "Chitwan National Park",
-  "Bardiya National Park",
-  "Koshi Tappu Wildlife",
-  "Shuklaphanta Wildlife",
-  "Parsa National Park",
+ 
 ];
 
 const safariDurations = [
   "All Durations",
-  "1 Day",
   "2-3 Days",
-  "4-5 Days",
-  "Week Long",
+  
 ];
 
+// Only include jungle safaris that exist in your folder structure
 const jungleSafaris = [
   {
     id: 1,
-    name: "Chitwan Classic Safari",
+    name: "Chitwan NP Jungle Safari",
     park: "Chitwan National Park",
-    duration: "3 Days",
+    duration: "2-3 Days",
     difficulty: "Easy",
     groupSize: "2-12",
     bestSeason: "Oct-Mar",
@@ -68,167 +65,7 @@ const jungleSafaris = [
     featured: true,
     activities: ["Elephant Safari", "Jungle Walk", "Canoe", "Cultural Show"],
     wildlife: ["Rhino", "Tiger", "Crocodile", "Birds"],
-    link: "/destinations/safari/chitwan-classic-safari",
-  },
-  {
-    id: 2,
-    name: "Bardiya Wilderness Safari",
-    park: "Bardiya National Park",
-    duration: "4 Days",
-    difficulty: "Moderate",
-    groupSize: "2-8",
-    bestSeason: "Oct-Apr",
-    price: 650,
-    originalPrice: 780,
-    image: "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?q=80&w=2072&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 189,
-    highlights: ["Tiger Tracking", "River Dolphin", "Jeep Safari", "Remote Wilderness"],
-    description: "Explore Nepal's largest and most remote national park with excellent tiger spotting opportunities.",
-    featured: true,
-    activities: ["Jeep Safari", "Tiger Tracking", "Birding", "Village Visit"],
-    wildlife: ["Tiger", "Elephant", "Gangetic Dolphin", "Deer"],
-    link: "/destinations/safari/bardiya-wilderness-safari",
-  },
-  {
-    id: 3,
-    name: "Koshi Tappu Birding Safari",
-    park: "Koshi Tappu Wildlife",
-    duration: "2 Days",
-    difficulty: "Easy",
-    groupSize: "2-10",
-    bestSeason: "Nov-Mar",
-    price: 320,
-    originalPrice: 390,
-    image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.7,
-    reviews: 156,
-    highlights: ["Bird Watching", "Water Buffalo", "River Safari", "Migrant Birds"],
-    description: "A paradise for bird watchers with over 500 species recorded in this wetland reserve.",
-    featured: false,
-    activities: ["Bird Watching", "River Safari", "Nature Walk", "Photography"],
-    wildlife: ["Birds", "Water Buffalo", "Dolphin", "Gharial"],
-    link: "/destinations/safari/koshi-tappu-birding-safari",
-  },
-  {
-    id: 4,
-    name: "Shuklaphanta Rhino Safari",
-    park: "Shuklaphanta Wildlife",
-    duration: "3 Days",
-    difficulty: "Easy",
-    groupSize: "2-8",
-    bestSeason: "Oct-Mar",
-    price: 480,
-    originalPrice: 580,
-    image: "https://images.unsplash.com/photo-1550358864-518f202c02ba?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 98,
-    highlights: ["Rhino Viewing", "Swamp Deer", "Elephant Ride", "Grasslands"],
-    description: "Home to Nepal's largest herd of swamp deer and endangered one-horned rhinoceros.",
-    featured: true,
-    activities: ["Elephant Safari", "Jeep Drive", "Tower Watch", "Grassland Tour"],
-    wildlife: ["Rhino", "Swamp Deer", "Tiger", "Elephant"],
-    link: "/destinations/safari/shuklaphanta-rhino-safari",
-  },
-  {
-    id: 5,
-    name: "Chitwan Luxury Safari",
-    park: "Chitwan National Park",
-    duration: "4 Days",
-    difficulty: "Easy",
-    groupSize: "2-6",
-    bestSeason: "Oct-Apr",
-    price: 950,
-    originalPrice: 1150,
-    image: "https://images.unsplash.com/photo-1536152471326-642d746f4d5a?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 78,
-    highlights: ["Luxury Lodge", "Private Guide", "Spa", "Gourmet Dining"],
-    description: "Premium safari experience with luxury accommodation and personalized service.",
-    featured: false,
-    activities: ["Private Safari", "Spa Treatment", "Fine Dining", "Cultural Tour"],
-    wildlife: ["Rhino", "Tiger", "Bear", "Crocodile"],
-    link: "/destinations/safari/chitwan-luxury-safari",
-  },
-  {
-    id: 6,
-    name: "Bardiya Tiger Special",
-    park: "Bardiya National Park",
-    duration: "5 Days",
-    difficulty: "Moderate",
-    groupSize: "2-6",
-    bestSeason: "Feb-May",
-    price: 850,
-    originalPrice: 1000,
-    image: "https://images.unsplash.com/photo-1562552476-8ac4a2d1d6a0?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 56,
-    highlights: ["Tiger Focus", "Expert Tracker", "Camera Traps", "Research Visit"],
-    description: "Specialized safari focusing on tiger conservation and research with expert trackers.",
-    featured: true,
-    activities: ["Tracking", "Camera Traps", "Research Visit", "Night Safari"],
-    wildlife: ["Tiger", "Leopard", "Wild Elephant", "Dolphin"],
-    link: "/destinations/safari/bardiya-tiger-special",
-  },
-  {
-    id: 7,
-    name: "Family Jungle Adventure",
-    park: "Chitwan National Park",
-    duration: "2 Days",
-    difficulty: "Easy",
-    groupSize: "2-12",
-    bestSeason: "Year Round",
-    price: 380,
-    originalPrice: 450,
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.6,
-    reviews: 234,
-    highlights: ["Family Friendly", "Elephant Bathing", "Nature Crafts", "Junior Ranger"],
-    description: "Perfect introduction to wildlife for families with child-friendly activities.",
-    featured: false,
-    activities: ["Elephant Bath", "Craft Workshop", "Nature Games", "Campfire"],
-    wildlife: ["Rhino", "Monkey", "Deer", "Birds"],
-    link: "/destinations/safari/family-jungle-adventure",
-  },
-  {
-    id: 8,
-    name: "Photography Safari",
-    park: "Bardiya National Park",
-    duration: "4 Days",
-    difficulty: "Moderate",
-    groupSize: "2-4",
-    bestSeason: "Nov-Feb",
-    price: 1200,
-    originalPrice: 1450,
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2068&auto=format&fit=crop",
-    rating: 4.9,
-    reviews: 45,
-    highlights: ["Photo Guide", "Hide Photography", "Golden Hours", "Editing Workshop"],
-    description: "Professional photography safari with expert guides and specialized hides.",
-    featured: true,
-    activities: ["Hide Photography", "Editing Workshop", "Golden Hour Shoots", "Review Sessions"],
-    wildlife: ["Tiger", "Birds", "Landscapes", "Macro"],
-    link: "/destinations/safari/photography-safari",
-  },
-  {
-    id: 9,
-    name: "Conservation Volunteer Safari",
-    park: "Chitwan National Park",
-    duration: "7 Days",
-    difficulty: "Moderate",
-    groupSize: "2-8",
-    bestSeason: "Sep-May",
-    price: 750,
-    originalPrice: 900,
-    image: "https://images.unsplash.com/photo-1550358864-518f202c02ba?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 67,
-    highlights: ["Volunteer Work", "Conservation Talk", "Community Visit", "Research"],
-    description: "Combine wildlife viewing with conservation work and community interaction.",
-    featured: false,
-    activities: ["Volunteering", "Research Help", "Community Work", "Monitoring"],
-    wildlife: ["Rhino", "Elephant", "Birds", "Reptiles"],
-    link: "/destinations/safari/conservation-volunteer-safari",
+    link: "/services/jungle-safari/chitwan-np-jungle-safari",
   },
 ];
 
@@ -274,10 +111,15 @@ const getWildlifeIcon = (animal: string) => {
 };
 
 export default function JungleSafariPage() {
+  const router = useRouter();
   const [selectedPark, setSelectedPark] = React.useState("All Parks");
   const [selectedDuration, setSelectedDuration] = React.useState("All Durations");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [showFilterDrawer, setShowFilterDrawer] = React.useState(false);
+
+  const handleBookNow = (safariName: string) => {
+    router.push(`/contact?trek=${encodeURIComponent(safariName)}`);
+  };
 
   const filteredSafaris = jungleSafaris.filter((safari) => {
     const matchesPark = selectedPark === "All Parks" || safari.park === selectedPark;
@@ -397,81 +239,82 @@ export default function JungleSafariPage() {
       </section>
 
       {/* Search and Filter Bar */}
-<section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
-  <div className="container mx-auto px-4 md:px-6">
-    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
-      {/* Search */}
-      <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
-        <input
-          type="text"
-          placeholder="Search jungle safaris..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
-        />
-      </div>
+      <section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
+            {/* Search */}
+            <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search jungle safaris..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
+              />
+            </div>
 
-      {/* Mobile Filter Button */}
-      <Button
-        variant="outline"
-        className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
-        onClick={() => setShowFilterDrawer(true)}
-      >
-        <Filter className="w-4 h-4 mr-2" />
-        Filters
-      </Button>
-
-      {/* Desktop Filters */}
-      <div className="hidden lg:flex items-center gap-4">
-        <div className="flex flex-wrap justify-center gap-2">
-          {safariParks.slice(0, 4).map((park) => (
-            <button
-              key={park}
-              onClick={() => setSelectedPark(park)}
-              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
-                selectedPark === park
-                  ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
-                  : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-              }`}
+            {/* Mobile Filter Button */}
+            <Button
+              variant="outline"
+              className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
+              onClick={() => setShowFilterDrawer(true)}
             >
-              {park.replace(" National Park", "").replace(" Wildlife", "")}
-            </button>
-          ))}
-        </div>
+              <Filter className="w-4 h-4 mr-2" />
+              Filters
+            </Button>
 
-        <div className="flex items-center gap-2">
-          <select
-            value={selectedDuration}
-            onChange={(e) => setSelectedDuration(e.target.value)}
-            className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
-          >
-            {safariDurations.map((duration) => (
-              <option key={duration} value={duration}>{duration}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-    </div>
+            {/* Desktop Filters */}
+            <div className="hidden lg:flex items-center gap-4">
+              <div className="flex flex-wrap justify-center gap-2">
+                {safariParks.slice(0, 4).map((park) => (
+                  <button
+                    key={park}
+                    onClick={() => setSelectedPark(park)}
+                    className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
+                      selectedPark === park
+                        ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
+                        : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
+                    }`}
+                  >
+                    {park.replace(" National Park", "").replace(" Wildlife", "")}
+                  </button>
+                ))}
+              </div>
 
-    {/* Mobile Active Filters */}
-    <div className="lg:hidden mt-3 flex flex-wrap gap-2">
-      <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-        {selectedPark}
-      </Badge>
-      <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-        {selectedDuration}
-      </Badge>
-    </div>
-  </div>
-</section>
+              <div className="flex items-center gap-2">
+                <select
+                  value={selectedDuration}
+                  onChange={(e) => setSelectedDuration(e.target.value)}
+                  className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
+                >
+                  {safariDurations.map((duration) => (
+                    <option key={duration} value={duration}>{duration}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Active Filters */}
+          <div className="lg:hidden mt-3 flex flex-wrap gap-2">
+            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
+              {selectedPark}
+            </Badge>
+            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
+              {selectedDuration}
+            </Badge>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Safari */}
       {featuredSafari && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div 
-              onClick={() => window.location.href = featuredSafari.link}
-              className="cursor-pointer"
+            <Link 
+              href={featuredSafari.link}
+              className="cursor-pointer block"
             >
               <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
                 <div className="grid lg:grid-cols-2">
@@ -545,17 +388,21 @@ export default function JungleSafariPage() {
                         <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredSafari.price}</span>
                         <span className="text-slate-500 text-sm">/person</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(featuredSafari.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base">
-                          Book Safari
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(featuredSafari.name);
+                        }}
+                      >
+                        Book Safari
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
                     </div>
                   </CardContent>
                 </div>
               </Card>
-            </div>
+            </Link>
           </div>
         </section>
       )}
@@ -575,10 +422,10 @@ export default function JungleSafariPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredSafaris.map((safari, i) => (
-              <div 
+              <Link 
                 key={safari.id} 
-                onClick={() => window.location.href = safari.link}
-                className="cursor-pointer"
+                href={safari.link}
+                className="cursor-pointer block"
               >
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
                   <div className="relative h-40 md:h-52 overflow-hidden">
@@ -644,15 +491,21 @@ export default function JungleSafariPage() {
                         <span className="text-slate-400 text-xs line-through">${safari.originalPrice}</span>
                         <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${safari.price}</span>
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(safari.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button size="sm" variant="ghost" className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm">
-                          Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        variant="ghost" 
+                        className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(safari.name);
+                        }}
+                      >
+                        Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -676,7 +529,7 @@ export default function JungleSafariPage() {
           )}
 
           <div className="text-center mt-8 md:mt-12">
-            <Link href="/safari">
+            <Link href="/services/jungle-safari">
               <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
                 View All Safari Packages
               </Button>

@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Mountain,
   MapPin,
@@ -143,7 +144,7 @@ const peakClimbing = [
     image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2076&auto=format&fit=crop",
     rating: 4.9,
     highlights: ["Highest Trekking Peak", "5 x 8000m Views", "Remote Wilderness", "Non-technical Summit"],
-    link: "/services/peak-climbing/mera-peak-expedition",
+    link: "/services/peak-climbing/mera-peak-climbing",
   },
   {
     name: "Yala Peak Climbing",
@@ -168,6 +169,9 @@ const cityTours = [
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop",
     rating: 4.8,
     highlights: ["Kathe Swoyambhu", "Glass Beads Market", "Local Lassi", "Monkey Temple", "Newar Architecture"],
+    description: "First Free Walking Tour in Kathmandu, Nepal.",
+    icon: <Compass className="w-5 h-5" />,
+    color: "from-sky-100 to-blue-50",
     link: "/services/free-walking-tour",
 },
   {
@@ -190,6 +194,9 @@ const cityTours = [
     image: "https://images.unsplash.com/photo-1624962904597-6e6ee6a8d648?q=80&w=2070&auto=format&fit=crop",
     rating: 4.8,
     highlights: ["Himalayan Sunrise", "Mt. Everest Views", "UNESCO Temple", "Village Walk", "Downhill Trail", "Rural Life Experience"],
+    description: "Scenic day hike with panoramic mountain views.",
+    icon: <Sunrise className="w-5 h-5" />,
+    color: "from-orange-100 to-amber-50",
     link: "/services/day-hikings/nagarkot-changunarayan-hiking",
 },
   {
@@ -201,6 +208,9 @@ const cityTours = [
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop",
     rating: 4.8,
     highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
+    description: "Explore Nepal's rich cultural heritage across the country.",
+    icon: <Landmark className="w-5 h-5" />,
+    color: "from-emerald-100 to-teal-50",
     link: "/services/multi-day-cultural-tours/nepal-heritage-sites-tour",
 },
 
@@ -213,6 +223,9 @@ const cityTours = [
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2070&auto=format&fit=crop",
     rating: 4.8,
     highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
+    description: "Complete Nepal experience covering all major destinations.",
+    icon: <Map className="w-5 h-5" />,
+    color: "from-blue-100 to-cyan-50",
     link: "/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour",
 },
 
@@ -225,6 +238,9 @@ const cityTours = [
     image: "https://images.unsplash.com/photo-1624962904597-6e6ee6a8d648?q=80&w=2070&auto=format&fit=crop",
     rating: 4.9,
     highlights: ["Historic Sites", "Nature", "Scenic Views", "Photography"],
+    description: "Perfect tour for photography enthusiasts.",
+    icon: <Camera className="w-5 h-5" />,
+    color: "from-purple-100 to-pink-50",
     link: "/services/multi-day-cultural-tours/historic-nature-scenic-photography-tour",
 }
 ];
@@ -306,6 +322,7 @@ const regions = [
 ];
 
 export default function NepalPage() {
+  const router = useRouter();
   const [trekScrollPosition, setTrekScrollPosition] = React.useState(0);
   const [peakScrollPosition, setPeakScrollPosition] = React.useState(0);
   const [cityTourScrollPosition, setCityTourScrollPosition] = React.useState(0);
@@ -315,6 +332,10 @@ export default function NepalPage() {
   const peakScrollContainerRef = React.useRef<HTMLDivElement>(null);
   const cityTourScrollContainerRef = React.useRef<HTMLDivElement>(null);
   const regionScrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const handleBookNow = (itemName: string) => {
+    router.push(`/contact?trek=${encodeURIComponent(itemName)}`);
+  };
 
   // Fixed scroll functions - handle null refs properly
   const scrollLeft = (ref: React.RefObject<HTMLDivElement | null>, setPosition?: React.Dispatch<React.SetStateAction<number>>) => {
@@ -417,44 +438,52 @@ export default function NepalPage() {
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               <div className="space-y-3 sm:space-y-4">
-                <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1558799401-1dcba79f095c?q=80&w=2070&auto=format&fit=crop"
-                    alt="Kathmandu Temple"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
-                <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1585016495481-91613a3ab2f1?q=80&w=2071&auto=format&fit=crop"
-                    alt="Chitwan Wildlife"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
+                <Link href="/services/day-sightseeings/kathmandu-sightseeing">
+                  <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1558799401-1dcba79f095c?q=80&w=2070&auto=format&fit=crop"
+                      alt="Kathmandu Temple"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
+                <Link href="/services/jungle-safari/chitwan-np-jungle-safari">
+                  <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1585016495481-91613a3ab2f1?q=80&w=2071&auto=format&fit=crop"
+                      alt="Chitwan Wildlife"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
               </div>
               <div className="space-y-3 sm:space-y-4 pt-8 sm:pt-12">
-                <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop"
-                    alt="Prayer Flags"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
-                <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1605640840605-14ac1855827b?q=80&w=2032&auto=format&fit=crop"
-                    alt="Pokhara Lake"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
+                <Link href="/destinations/nepal">
+                  <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop"
+                      alt="Prayer Flags"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
+                <Link href="/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour">
+                  <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1605640840605-14ac1855827b?q=80&w=2032&auto=format&fit=crop"
+                      alt="Pokhara Lake"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -476,7 +505,7 @@ export default function NepalPage() {
                 Discover Nepal's rich heritage with our expert-guided day tours.
               </p>
             </div>
-            <Link href="/city-tours">
+            <Link href="/services/day-sightseeings">
               <Button variant="outline" className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 font-bold group rounded-full px-4 sm:px-6 text-xs sm:text-sm">
                 View All Tours <ChevronRightIcon className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
               </Button>
@@ -490,10 +519,10 @@ export default function NepalPage() {
               ref={cityTourScrollContainerRef}
             >
               {cityTours.map((tour, i) => (
-                <div 
+                <Link 
                   key={i} 
+                  href={tour.link}
                   className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center cursor-pointer"
-                  onClick={() => window.location.href = tour.link}
                 >
                   <Card className={`bg-gradient-to-br ${tour.color} border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all`}>
                     <div className="relative h-40 overflow-hidden">
@@ -520,7 +549,7 @@ export default function NepalPage() {
                       </div>
                       <p className="text-slate-600 text-xs mb-3 line-clamp-2">{tour.description}</p>
                       <div className="flex flex-wrap gap-1 mb-3">
-                        {tour.highlights.slice(0, 2).map((h, idx) => (
+                        {tour.highlights?.slice(0, 2).map((h, idx) => (
                           <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
                             {h}
                           </Badge>
@@ -528,15 +557,20 @@ export default function NepalPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold text-[#0f2940]">{tour.price}</span>
-                        <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
-                          <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
-                            Book Now
-                          </Button>
-                        </Link>
+                        <Button 
+                          size="sm" 
+                          className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleBookNow(tour.name);
+                          }}
+                        >
+                          Book Now
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
-                </div>
+                </Link>
               ))}
             </div>
             {/* Scroll Buttons */}
@@ -557,9 +591,9 @@ export default function NepalPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {cityTours.map((tour, i) => (
-              <div 
+              <Link 
                 key={i}
-                onClick={() => window.location.href = tour.link}
+                href={tour.link}
                 className="cursor-pointer"
               >
                 <Card className={`bg-gradient-to-br ${tour.color} border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]`}>
@@ -587,7 +621,7 @@ export default function NepalPage() {
                     </div>
                     <p className="text-slate-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
                     <div className="flex flex-wrap gap-1.5 mb-4">
-                      {tour.highlights.slice(0, 3).map((h, idx) => (
+                      {tour.highlights?.slice(0, 3).map((h, idx) => (
                         <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
                           {h}
                         </Badge>
@@ -595,15 +629,20 @@ export default function NepalPage() {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
-                      <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full">
-                          Book Now
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(tour.name);
+                        }}
+                      >
+                        Book Now
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -825,7 +864,7 @@ export default function NepalPage() {
                 From easy hill walks to challenging high-altitude circuits.
               </p>
             </div>
-            <Link href="/trekking-in-nepal">
+            <Link href="/services/trekking">
               <Button variant="outline" className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 font-bold group rounded-full px-4 sm:px-6 text-xs sm:text-sm">
                 View All Treks <ChevronRightIcon className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
               </Button>
@@ -839,10 +878,10 @@ export default function NepalPage() {
               ref={trekScrollContainerRef}
             >
               {trekkingPackages.map((trek, i) => (
-                <div 
+                <Link 
                   key={i} 
+                  href={trek.link}
                   className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
-                  onClick={() => window.location.href = trek.link}
                 >
                   <Card className="bg-white border-[#C5E0ED]/30 h-full rounded-xl overflow-hidden hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all">
                     <div className="relative h-56 overflow-hidden">
@@ -885,14 +924,18 @@ export default function NepalPage() {
                           </Badge>
                         ))}
                       </div>
-                      <Link href={`/contact?trek=${encodeURIComponent(trek.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
-                          View Details
-                        </Button>
-                      </Link>
+                      <Button 
+                        className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(trek.name);
+                        }}
+                      >
+                        View Details
+                      </Button>
                     </CardContent>
                   </Card>
-                </div>
+                </Link>
               ))}
             </div>
             {/* Scroll Buttons */}
@@ -913,9 +956,9 @@ export default function NepalPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             {trekkingPackages.map((trek, i) => (
-              <div 
+              <Link 
                 key={i}
-                onClick={() => window.location.href = trek.link}
+                href={trek.link}
                 className="cursor-pointer"
               >
                 <Card className="bg-white border-[#C5E0ED]/30 h-full rounded-xl overflow-hidden hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all group hover:scale-[1.02]">
@@ -959,14 +1002,18 @@ export default function NepalPage() {
                         </Badge>
                       ))}
                     </div>
-                    <Link href={`/contact?trek=${encodeURIComponent(trek.name)}`} onClick={(e) => e.stopPropagation()}>
-                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm">
-                        View Details
-                      </Button>
-                    </Link>
+                    <Button 
+                      className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleBookNow(trek.name);
+                      }}
+                    >
+                      View Details
+                    </Button>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -1004,10 +1051,10 @@ export default function NepalPage() {
               ref={peakScrollContainerRef}
             >
               {peakClimbing.map((peak, i) => (
-                <div 
+                <Link 
                   key={i} 
+                  href={peak.link}
                   className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
-                  onClick={() => window.location.href = peak.link}
                 >
                   <Card className="bg-white/5 backdrop-blur-sm border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all">
                     <div className="relative h-56 overflow-hidden">
@@ -1047,15 +1094,20 @@ export default function NepalPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-xl font-bold text-[#C5E0ED]">{peak.price}</span>
-                        <Link href={`/contact?trek=${encodeURIComponent(peak.name)}`} onClick={(e) => e.stopPropagation()}>
-                          <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
-                            Book Now
-                          </Button>
-                        </Link>
+                        <Button 
+                          size="sm" 
+                          className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleBookNow(peak.name);
+                          }}
+                        >
+                          Book Now
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
-                </div>
+                </Link>
               ))}
             </div>
             {/* Scroll Buttons */}
@@ -1076,9 +1128,9 @@ export default function NepalPage() {
           {/* Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-3 gap-5">
             {peakClimbing.map((peak, i) => (
-              <div 
+              <Link 
                 key={i}
-                onClick={() => window.location.href = peak.link}
+                href={peak.link}
                 className="cursor-pointer"
               >
                 <Card className="bg-white/5 backdrop-blur-sm border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all group hover:scale-[1.02]">
@@ -1119,15 +1171,20 @@ export default function NepalPage() {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-xl font-bold text-[#C5E0ED]">{peak.price}</span>
-                      <Link href={`/contact?trek=${encodeURIComponent(peak.name)}`} onClick={(e) => e.stopPropagation()}>
-                        <Button size="sm" className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs">
-                          Book Now
-                        </Button>
-                      </Link>
+                      <Button 
+                        size="sm" 
+                        className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleBookNow(peak.name);
+                        }}
+                      >
+                        Book Now
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
