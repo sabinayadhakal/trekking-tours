@@ -254,7 +254,7 @@ export default function AboutPage() {
             {/* Badge with Safari-safe styling */}
             <div className="mb-4 sm:mb-6 inline-block">
               <Badge className="bg-[#0f2940]/95 bg-[#0a1e32] text-white border-[#C5E0ED]/40 border-[#C5E0ED] py-1.5 sm:py-2 px-4 sm:px-5 text-xs sm:text-sm">
-                <Mountain className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" /> Est. 2012
+                <Mountain className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" /> Est. 2015
               </Badge>
             </div>
             
@@ -266,15 +266,11 @@ export default function AboutPage() {
             {/* Description with Safari-safe high contrast */}
             <div className="relative">
               <p className="text-sm sm:text-base lg:text-lg text-white leading-relaxed px-2 safari-text-fallback">
-                As trusted Nepal trekking and expedition experts, we offer professional advice and comprehensive 
-                planning for adventure travel. Our team's deep field experience ensures every trek and expedition 
-                is safe, well-organized, and tailored to your goals.
+               With years of field experience, Himkala Adventure provides expert guidance for travelers seeking more than just a trek. We are specialists in Nepal’s legendary trekking routes and vibrant city tours, and we have expanded our expertise to include curated cultural journeys in Bhutan and Tibet. Our philosophy remains the same: professional advice, comprehensive planning, and a commitment to your safety ensures your trip is perfectly tailored to your dreams.
               </p>
               {/* Modern browser version with opacity */}
               <p className="text-sm sm:text-base lg:text-lg text-white/95 leading-relaxed px-2 modern-text absolute top-0 left-0 w-full">
-                As trusted Nepal trekking and expedition experts, we offer professional advice and comprehensive 
-                planning for adventure travel. Our team's deep field experience ensures every trek and expedition 
-                is safe, well-organized, and tailored to your goals.
+               With years of field experience, Himkala Adventure provides expert guidance for travelers seeking more than just a trek. We are specialists in Nepal’s legendary trekking routes and vibrant city tours, and we have expanded our expertise to include curated cultural journeys in Bhutan and Tibet. Our philosophy remains the same: professional advice, comprehensive planning, and a commitment to your safety ensures your trip is perfectly tailored to your dreams.
               </p>
             </div>
           </div>
@@ -291,24 +287,15 @@ export default function AboutPage() {
                 <Mountain className="w-3 h-3 mr-1.5" /> OUR STORY
               </Badge>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4 sm:mb-6 leading-tight">
-                Born in the Shadow of the Himalayas
-              </h2>
+Streets, Stories & the Himalayas              </h2>
               <div className="space-y-3 sm:space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
                 <p>
-                  Himkala Adventure was founded in 2012 by a group of passionate mountaineers and local Sherpa guides 
-                  who shared a common vision: to showcase the breathtaking beauty of the Himalayas while providing 
-                  safe, authentic, and transformative experiences for travelers from around the world.
+                  Himkala Adventure was founded in 2015 by a native of Gorkha with a deep-rooted passion for the Himalayas and a dream to share Nepal's beauty with the world. What began as a small operation has grown into a locally trusted guiding service, known today for our immersive city tours and the highly popular Free Walking Tours in Kathmandu.
                 </p>
                 <p>
-                  What started as a small trekking operation in Kathmandu has grown into one of Nepal&apos;s most trusted 
-                  adventure companies, with operations extending to Bhutan and Tibet. Our team has guided over 5,000 
-                  trekkers and climbers, maintaining a perfect safety record throughout our journey.
+                  While we are steadily building our name in trekking, our focus remains on authentic cultural connections, helping travelers fall in love with Nepal's vibrant streets, stories, and traditions. We are proud to have extended our expertise into Bhutan and Tibet, and our vision remains clear: to grow into one of the region's most trusted names in adventure, one authentic experience at a time.
                 </p>
-                <p>
-                  Today, we continue to operate with the same principles that guided our founders: respect for the 
-                  mountains, commitment to local communities, and an unwavering dedication to making every adventure 
-                  safe and memorable.
-                </p>
+               
               </div>
             </div>
 
@@ -327,12 +314,12 @@ export default function AboutPage() {
                 <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 bg-white/20 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-white/30">
                   <div className="grid grid-cols-3 gap-3 sm:gap-4 text-center">
                     <div>
-                      <div className="text-xl sm:text-2xl font-bold text-[#C5E0ED]">12+</div>
+                      <div className="text-xl sm:text-2xl font-bold text-[#C5E0ED]">11+</div>
                       <div className="text-xs text-white/90">Years</div>
                     </div>
                     <div>
-                      <div className="text-xl sm:text-2xl font-bold text-[#C5E0ED]">5000+</div>
-                      <div className="text-xs text-white/90">Trekkers</div>
+                      <div className="text-xl sm:text-2xl font-bold text-[#C5E0ED]">2500+</div>
+                      <div className="text-xs text-white/90">Travelers</div>
                     </div>
                     <div>
                       <div className="text-xl sm:text-2xl font-bold text-[#C5E0ED]">100%</div>
@@ -396,19 +383,16 @@ export default function AboutPage() {
               <div className="relative mb-4 sm:mb-6">
                 <Quote className="absolute -top-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 text-[#C5E0ED]" />
                 <p className="text-slate-600 italic leading-relaxed pl-6 sm:pl-8 text-sm sm:text-base">
-                  &quot;Adventure is shaped not just by where you go, but by the people, culture, and meaningful moments you encounter along the way.&quot;
+                  &quot;Beyond the trails and temples lie the real treasures: the conversations, the kindness of strangers, and the feeling of being truly welcomed somewhere new.&quot;
                 </p>
               </div>
 
               <div className="space-y-3 sm:space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
                 <p>
-                  Starting his career as a porter, Shiva Prasad Dhakal has grown into a respected leader in Nepal&apos;s tourism industry. 
-                  Today, as Managing Director, he guides Himkala Adventure with a commitment to offering authentic, eco-friendly trekking 
-                  experiences that honor Nepal&apos;s natural beauty and rich cultural heritage.
+                  A native of Gorkha with a deep connection to the Himalayas, Shiva Prasad Dhakal founded Himkala Adventure to share Nepal's beauty in a more personal way. A true pioneer in Kathmandu's tourism scene, he introduced the city's first Free Walking Tours creating opportunities for travelers to experience local life beyond the usual tourist paths. Today, as Managing Director, he brings that same thoughtful approach to every journey, blending his passion for the mountains with a commitment to authentic cultural connection.
                 </p>
                 <p>
-                  Committed to making adventure travel available to all, while safeguarding the landscapes and cultural traditions 
-                  that make each journey meaningful. Our focus is on responsible travel that creates value for both visitors and local communities.
+                 Our approach is simple: create meaningful experiences while giving back to the communities and landscapes that make them possible. We travel with care, respect, and a commitment to leaving things better than we found them.
                 </p>
               </div>
 
@@ -440,7 +424,7 @@ export default function AboutPage() {
                   <div className="text-xs text-slate-500">Years Experience</div>
                 </div>
                 <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 shadow-sm border border-[#C5E0ED]/30 text-center">
-                  <div className="text-lg sm:text-xl md:text-2xl font-bold text-[#0f2940]">5000+</div>
+                  <div className="text-lg sm:text-xl md:text-2xl font-bold text-[#0f2940]">2500+</div>
                   <div className="text-xs text-slate-500">Clients Served</div>
                 </div>
                 <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 shadow-sm border border-[#C5E0ED]/30 text-center">
@@ -469,7 +453,7 @@ export default function AboutPage() {
                     </div>
                     <div>
                       <div className="text-white font-bold text-xs sm:text-sm">Founded</div>
-                      <div className="text-[#C5E0ED] text-lg sm:text-xl md:text-2xl font-bold">2012</div>
+                      <div className="text-[#C5E0ED] text-lg sm:text-xl md:text-2xl font-bold">2015</div>
                     </div>
                   </div>
                 </div>
@@ -728,7 +712,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
               { icon: <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />, label: "Address", value: "Thamel, Kathmandu, Nepal" },
-              { icon: <Phone className="w-5 h-5 sm:w-6 sm:h-6" />, label: "Phone", value: "+977 1 4123456" },
+              { icon: <Phone className="w-5 h-5 sm:w-6 sm:h-6" />, label: "Phone", value: "+977 9841376470" },
               { icon: <Mail className="w-5 h-5 sm:w-6 sm:h-6" />, label: "Email", value: "info@himkalaadventure.com" },
               { icon: <Clock className="w-5 h-5 sm:w-6 sm:h-6" />, label: "Hours", value: "Sun - Fri, 9AM - 6PM" },
             ].map((item, i) => (

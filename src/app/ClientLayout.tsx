@@ -556,12 +556,12 @@ export default function ClientLayout({
               </div>
             </div>
             <div className="hidden sm:block backdrop-blur-sm bg-white/5 rounded-lg px-3 py-2 border border-white/10">
-              <span className="text-xl md:text-2xl font-bold tracking-tight text-white block leading-tight drop-shadow-lg">Himkala Adventure</span>
-              <span className="text-[10px] md:text-[11px] uppercase tracking-[0.15em] text-[#C5E0ED] font-medium leading-none drop-shadow-lg">SnowArt Pvt. Ltd.</span>
-            </div>
-            <div className="sm:hidden backdrop-blur-sm bg-white/5 rounded-lg px-3 py-1.5 border border-white/10">
-              <span className="text-lg font-bold tracking-tight text-white drop-shadow-lg">Himkala Adventure</span>
-            </div>
+  <span className="text-xl md:text-2xl font-bold tracking-tight text-white block leading-tight drop-shadow-lg">Himkala Adventure</span>
+  <span className="text-[10px] md:text-[11px] uppercase tracking-[0.15em] text-[#C5E0ED] font-medium leading-none drop-shadow-lg">Private Limited</span>
+</div>
+<div className="sm:hidden backdrop-blur-sm bg-white/5 rounded-lg px-3 py-1.5 border border-white/10">
+  <span className="text-base font-bold tracking-tight text-white drop-shadow-lg">Himkala Adventure</span>
+</div>
           </Link>
 
           {/* Desktop Navigation with Glass Effect */}
@@ -868,16 +868,14 @@ export default function ClientLayout({
             >
               <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
                 <Star className="w-4 h-4 text-[#C5E0ED]" />
-                <span className="text-white/90 text-sm font-medium">Start Your Adventure Today</span>
+                <span className="text-white/90 text-sm font-medium">With every trip comes new optimism...</span>
               </div>
               
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                Ready for Your <span className="text-[#C5E0ED]">Himalayan</span><br className="hidden sm:block" /> Journey?
-              </h2>
+What's Your <span className="text-[#C5E0ED]">Perfect</span><br className="hidden sm:block" /> Adventure?              </h2>
               
               <p className="text-white/80 text-base sm:text-lg mb-10 max-w-2xl mx-auto leading-relaxed px-4">
-                Let our experts craft your perfect adventure. From Everest treks to Bhutan tours, we handle every detail.
-              </p>
+You dream it. We plan it. Let's build your adventure together.              </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 {/* Plan My Trip - Primary Button */}
@@ -909,11 +907,11 @@ export default function ClientLayout({
               {/* Trust Indicators */}
               <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div className="text-white/70">
-                  <div className="text-2xl font-bold text-[#C5E0ED]">12+</div>
+                  <div className="text-2xl font-bold text-[#C5E0ED]">11+</div>
                   <div className="text-sm">Years Experience</div>
                 </div>
                 <div className="text-white/70">
-                  <div className="text-2xl font-bold text-[#C5E0ED]">5000+</div>
+                  <div className="text-2xl font-bold text-[#C5E0ED]">2500+</div>
                   <div className="text-sm">Happy Travelers</div>
                 </div>
                 <div className="text-white/70">

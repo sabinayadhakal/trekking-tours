@@ -155,7 +155,7 @@ const PrivacyDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (o
 const contactInfo = [
   { icon: <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />, label: "Address", value: "Thamel, Kathmandu, Nepal" },
   { icon: <Phone className="w-4 h-4 sm:w-5 sm:h-5" />, label: "Phone", value: "+977 9841376470" },
-  { icon: <Mail className="w-4 h-4 sm:w-5 sm:h-5" />, label: "Email", value: "himkalaadventure@gmail.com" },
+  { icon: <Mail className="w-4 h-4 sm:w-5 sm:h-5" />, label: "Email", value: "info@himkalaadventure.com" },
   { icon: <Clock className="w-4 h-4 sm:w-5 sm:h-5" />, label: "Hours", value: "Sun - Fri, 9AM - 6PM" },
 ];
 
@@ -534,7 +534,7 @@ function ContactFormContent() {
             </Label>
             <Input
               id="name"
-              placeholder="John Doe"
+              placeholder="Your Name"
               value={formData.name}
               onChange={(e) => handleChange("name", e.target.value)}
               className="h-10 sm:h-12 rounded-lg sm:rounded-xl border-slate-200 focus:border-[#C5E0ED] focus:ring-1 focus:ring-[#C5E0ED]/20 bg-[#f8fbfc] text-sm sm:text-base w-full"
@@ -737,8 +737,7 @@ export default function ContactPage() {
             
             {/* Description */}
             <p className="text-white/80 text-sm sm:text-base leading-relaxed text-center px-2 sm:px-0">
-              Ready to explore the Himalayas? Share your travel dreams with us and we&apos;ll craft the perfect journey.
-            </p>
+Where would you like to go? Share your ideas with us, and we'll create an experience that feels like it was made just for you.            </p>
           </div>
         </div>
       </section>
