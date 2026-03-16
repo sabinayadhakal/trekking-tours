@@ -492,7 +492,7 @@ export default function MountainFlightsPage() {
                           handleBookNow(flight.name);
                         }}
                       >
-                        Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                        Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
                       </Button>
                     </div>
                   </CardContent>
@@ -520,13 +520,7 @@ export default function MountainFlightsPage() {
             </div>
           )}
 
-          <div className="text-center mt-8 md:mt-12">
-            <Link href="/services/mountain-flight-heli-trip">
-              <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
-                View All Flight Options
-              </Button>
-            </Link>
-          </div>
+          
         </div>
       </section>
 

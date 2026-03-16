@@ -445,8 +445,7 @@ export default function PeakClimbingPage() {
                           handleBookNow(featuredClimb.name);
                         }}
                       >
-                        View Expedition Details
-                        <ArrowRight className="ml-2 w-4 h-4" />
+Book Now                        <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>
                     </div>
                   </CardContent>
@@ -548,7 +547,7 @@ export default function PeakClimbingPage() {
                           handleBookNow(climb.name);
                         }}
                       >
-                        Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                        Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
                       </Button>
                     </div>
                   </CardContent>

@@ -500,7 +500,7 @@ export default function JungleSafariPage() {
                           handleBookNow(safari.name);
                         }}
                       >
-                        Details <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                        Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
                       </Button>
                     </div>
                   </CardContent>
@@ -528,13 +528,7 @@ export default function JungleSafariPage() {
             </div>
           )}
 
-          <div className="text-center mt-8 md:mt-12">
-            <Link href="/services/jungle-safari">
-              <Button variant="outline" className="border-[#0f2940] text-[#0f2940] hover:bg-[#0f2940] hover:text-white font-bold rounded-full px-6 md:px-10 py-4 md:py-6 text-sm md:text-base">
-                View All Safari Packages
-              </Button>
-            </Link>
-          </div>
+          
         </div>
       </section>
 

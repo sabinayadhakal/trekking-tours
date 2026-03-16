@@ -931,7 +931,7 @@ export default function NepalPage() {
                           handleBookNow(trek.name);
                         }}
                       >
-                        View Details
+                        Book Now
                       </Button>
                     </CardContent>
                   </Card>
@@ -1009,7 +1009,7 @@ export default function NepalPage() {
                         handleBookNow(trek.name);
                       }}
                     >
-                      View Details
+                      Book Now
                     </Button>
                   </CardContent>
                 </Card>
