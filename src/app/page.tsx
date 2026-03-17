@@ -23,7 +23,8 @@ import {
   ExternalLink,
   ChevronLeft,
   ChevronRight as RightIcon,
-  Globe
+  Globe,
+  MessageCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -33,25 +34,22 @@ const destinations = [
   {
     name: "Nepal",
     image: "/images/nepal-1.jpg",
-    description: "Birthplace of Buddha, home to Everest and Annapurna.",
-    tours: "15+ Treks",
-    highlights: ["Everest Base Camp", "Annapurna Circuit", "Langtang"],
+    description: "Himalayan peaks, ancient cities, and legendary trekking routes.",
+    highlights: ["Everest Base Camp", "Annapurna Circuit", "Kathmandu Valley"],
     link: "/destinations/nepal"
   },
   {
     name: "Bhutan",
     image: "https://images.unsplash.com/photo-1578503173325-452778794828?q=80&w=2070&auto=format&fit=crop",
-    description: "Land of Thunder Dragon, ancient monasteries, happiness measured.",
-    tours: "8+ Cultural",
-    highlights: ["Tiger's Nest", "Punakha Dzong", "Paro"],
+    description: "Monasteries, mountain fortresses, and a commitment to happiness.",
+    highlights: ["Tiger's Nest", "Punakha Dzong", "Paro Valley"],
     link: "/destinations/bhutan"
   },
   {
     name: "Tibet",
     image: "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=2070&auto=format&fit=crop",
-    description: "Roof of the World, spiritual awakening, vast plateaus.",
-    tours: "5+ Expeditions",
-    highlights: ["Mount Kailash", "Lhasa", "Everest North"],
+    description: "High-altitude plains, sacred peaks, and centuries-old Buddhist traditions.",
+    highlights: ["Mount Kailash", "Lhasa", "Everest Base Camp (North)"],
     link: "/destinations/tibet"
   }
 ];
@@ -173,54 +171,92 @@ const popularTreks = [
 
 const testimonials = [
   {
-    name: "Sarah Mitchell",
-    country: "UK",
-    text: "Himkala made my Everest dream come true. Guides were incredibly knowledgeable!",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
-    trek: "Everest Base Camp",
-    trekLink: "/services/trekking/everest-base-camp-trek"
+    name: "Carole Munanoa",
+    country: "France",
+    text: "What truly set this tour apart was the way Shiva explained the coexistence of Hinduism and Buddhism in Kathmandu. He carefully unpacked the history, symbols, and everyday practices of both faiths.",
+    trek: "Kathmandu City Tour",
+    trekLink: "/nepal-travel-packages"
   },
   {
-    name: "Michael Chen",
-    country: "Canada",
-    text: "Bhutan tour exceeded expectations. Perfectly arranged, profound insights.",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
-    trek: "Bhutan Cultural",
-    trekLink: "/destinations/bhutan/bhutan-cultural-tour"
+    name: "Arian Asgari",
+    country: "Iran",
+    text: "The Muldai trek is an underrated gem... What really made it special, though, were the people. Shiva and his son are just fantastic; they were so much more than guides, and the whole group felt like a family.",
+    trek: "Muldai Trek",
+    trekLink: "/services/trekking"
   },
   {
-    name: "Emma Rodriguez",
-    country: "Spain",
-    text: "Professional, friendly, passionate. The gold standard for Himalayan adventures!",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop",
-    trek: "Annapurna Circuit",
-    trekLink: "/services/trekking/annapurna-circuit-trek"
+    name: "Sandra Andermatt",
+    country: "Switzerland",
+    text: "If you're in Kathmandu, do not miss out on the incredible free walking tour... It takes you off the beaten path, offering a chance to explore hidden gems and unusual places that most tourists never get to see.",
+    trek: "Free Walking Tour",
+    trekLink: "/nepal-travel-packages"
   },
   {
-    name: "James Wilson",
-    country: "Australia",
-    text: "Best trekking experience of my life! The organization was flawless from start to finish.",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
-    trek: "Langtang Valley",
-    trekLink: "/services/trekking/langtang-valley-trek"
-  },
-  {
-    name: "Lisa Tanaka",
-    country: "Japan",
-    text: "The attention to detail and safety measures were outstanding. Highly recommended!",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
+    name: "Anna Michelle Goksøyr",
+    country: "Norway",
+    text: "We did the Manaslu Circuit trek and it has been an amazing experience... The guides treated us like princesses, picked flowers for us, and have become friends for life. I deeply recommend traveling with Himkala Adventures.",
     trek: "Manaslu Circuit",
     trekLink: "/services/trekking/manaslu-circuit-trek"
   },
   {
-    name: "David Müller",
+    name: "Aránzazu Gs",
+    country: "Spain",
+    text: "Shiva is a professional, passionate, friendly, empathetic and excellent guide... he made me discover the Nepalese culture and their way of life, food, superstitions, customs... He transmits good vibes.",
+    trek: "Nepal Cultural Tour",
+    trekLink: "/nepal-travel-packages"
+  },
+  {
+    name: "Krystsina Babets",
+    country: "Belarus",
+    text: "I did Annapurna Base Camp trekking... It was my third trekking experience with Himkala Adventure. Shiva is a very caring, knowledgeable guide and genuinely honest person. You will really have a great experience!",
+    trek: "Annapurna Base Camp",
+    trekLink: "/services/trekking/annapurna-base-camp-trek"
+  },
+  {
+    name: "Novitri Esna",
+    country: "Indonesia",
+    text: "I’m a beginner trekker, but Shiva made the Langtang trek feel possible. He was so patient and always checked in... He pointed out langurs, yaks, and special places I would’ve missed. I felt supported the whole way.",
+    trek: "Langtang Valley",
+    trekLink: "/services/trekking/langtang-valley-trek"
+  },
+  {
+    name: "Cangiamila Arianna",
+    country: "Italy",
+    text: "Nepal is a country rich in history and culture and Shiva is the best person you could ever ask to take you through all of that... Another great thing about Shiva is that he devolves part of his earnings towards the rebuilding of his village.",
+    trek: "Kathmandu City Tour",
+    trekLink: "/nepal-travel-packages"
+  },
+
+    {
+    name: "Sébastien Schillé",
+    country: "UK",
+    text: "I had an amazing and unforgettable experience with Himkala Adventure!... I came to Shiva, Himkala Adventure's director, to ask him what he thought was the best next step. Before I knew it, he had come up with a complete itinerary... Shiva was an excellent guide! He is easy going, kind and very knowledgeable.",
+    trek: "Valley Fringe Trek",
+    trekLink: "/services/trekking"
+  },
+  {
+    name: "Suffel Schatz",
     country: "Germany",
-    text: "An authentic cultural experience combined with world-class trekking. Will be back!",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
-    trek: "Tibet Expedition",
-    trekLink: "/destinations/tibet/tibet-overland-tour"
+    text: "We did a 7day hiking tour with Himkala adventures... We had an amazing time, great conversations with our guide Sabinaya about Nepal's culture, history, everyday life, etc. Personal yet always professional. Thanks for that outstanding experience which we will never forget.",
+    trek: "Ghorepani Poonhill Trek",
+    trekLink: "/services/trekking/poon-hill-trek"
+  },
+  {
+    name: "Nina Dupuy",
+    country: "France",
+    text: "I had the incredible opportunity to do the Everest Base Camp with this company... The organization was impeccable. My guide, Khadga, was extremely attentive and helpful... Reaching Base Camp was a triumphant moment. I will 100% do it again!",
+    trek: "Everest Base Camp",
+    trekLink: "/services/trekking/everest-base-camp-trek"
+  },
+  {
+    name: "Dorota Grabek",
+    country: "Spain",
+    text: "Himkala Adventure organized for me and my friends 10 days trekking to Annapurna Base Camp. Our guide was very supportive and professional, he afforded us unforgettable and safe Himalayan trekking!",
+    trek: "Annapurna Base Camp",
+    trekLink: "/services/trekking/annapurna-base-camp-trek"
   }
 ];
+
 
 // Duplicate testimonials for infinite scroll effect
 const infiniteTestimonials = [...testimonials, ...testimonials, ...testimonials];
@@ -270,15 +306,15 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 relative z-10 pt-20 pb-16 md:pt-32 md:pb-24">
             <div className="max-w-4xl">
               <Badge className="mb-6 bg-white/20 backdrop-blur-sm text-white border-white/30 py-2 px-4 text-xs md:text-sm font-medium">
-                <Star className="w-3 h-3 md:w-4 md:h-4 mr-1.5 fill-white" /> 5000+ Adventurers Since 2012
+                <Star className="w-3 h-3 md:w-4 md:h-4 mr-1.5 fill-white" /> 2500+ Adventurers Since 2015
               </Badge>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-tight mb-6 md:mb-8">
-                Himalayan 
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic"> Expeditions</span>
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 leading-relaxed max-w-2xl font-light">
-                Life-changing journeys across Nepal, Bhutan, and Tibet with certified expert guides.
-              </p>
+             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-tight mb-6 md:mb-8">
+  Nepal Trekking & 
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic"> Cultural Tours</span>
+</h1>
+<p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 leading-relaxed max-w-2xl font-light">
+  Expert-guided adventures in Nepal, Bhutan, and Tibet; from Everest treks to Kathmandu city walks.
+</p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12 md:mb-16">
                 <Link href="/services/trekking">
                   <Button size="lg" className="
@@ -295,7 +331,7 @@ export default function Home() {
                     transition-all duration-300
                     hover:scale-[1.02]
                   ">
-                    <Compass className="mr-2 w-5 h-5 md:w-6 md:h-6" /> Explore Expeditions
+                    <Compass className="mr-2 w-5 h-5 md:w-6 md:h-6" /> Explore Treks
                   </Button>
                 </Link>
                 <Link href="/contact">
@@ -313,7 +349,7 @@ export default function Home() {
                     w-full sm:w-auto
                     transition-all duration-300
                   ">
-                    <Phone className="mr-2 w-5 h-5 md:w-6 md:h-6" /> Book Consultation
+                    <MessageCircle className="mr-2 w-5 h-5 md:w-6 md:h-6" /> Customize Your Trip
                   </Button>
                 </Link>
               </div>
@@ -321,9 +357,8 @@ export default function Home() {
               {/* Quick Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {[
-                  { value: "12+", label: "Years Experience", icon: <Award className="w-4 h-4" /> },
-                  { value: "5000+", label: "Happy Trekkers", icon: <Users className="w-4 h-4" /> },
-                  { value: "150+", label: "Expeditions", icon: <Mountain className="w-4 h-4" /> },
+                  { value: "11+", label: "Years Experience", icon: <Award className="w-4 h-4" /> },
+                  { value: "2500+", label: "Happy Travelers", icon: <Users className="w-4 h-4" /> },
                   { value: "100%", label: "Safety Record", icon: <ShieldCheck className="w-4 h-4" /> }
                 ].map((stat, i) => (
                   <div
@@ -343,19 +378,19 @@ export default function Home() {
         </section>
 
         {/* Destinations */}
-        <section id="destinations" className="py-16 md:py-32 bg-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-              <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-                <MapPin className="w-3 h-3 mr-1.5" /> PREMIUM DESTINATIONS
-              </Badge>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
-                Himalayan Kingdoms
-              </h2>
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-                Explore the world's most majestic mountain regions with our expertly crafted journeys.
-              </p>
-            </div>
+<section id="destinations" className="py-16 md:py-32 bg-white">
+  <div className="container mx-auto px-4 sm:px-6">
+    <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
+      <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+        <MapPin className="w-3 h-3 mr-1.5" /> WHERE WE GO
+      </Badge>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
+        Nepal, Bhutan & Tibet
+      </h2>
+      <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+        Trekking, city tours, and cultural experiences across the Himalayas.
+      </p>
+    </div>
 
             {/* Mobile Horizontal Scroll */}
             <div className="md:hidden">
@@ -377,9 +412,7 @@ export default function Home() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/30 to-transparent" />
                       <div className="absolute bottom-0 p-6 w-full">
-                        <Badge className="mb-3 bg-white text-[#0f2940] border-none px-4 py-1.5 text-sm font-bold">
-                          {dest.tours}
-                        </Badge>
+                        
                         <h3 className="text-2xl font-serif text-white mb-3">{dest.name}</h3>
                         <p className="text-white/90 text-sm mb-4 leading-relaxed">
                           {dest.description}
@@ -416,9 +449,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/30 to-transparent" />
                   <div className="absolute bottom-0 p-8 w-full">
-                    <Badge className="mb-3 bg-white text-[#0f2940] border-none px-4 py-1.5 text-sm font-bold">
-                      {dest.tours}
-                    </Badge>
+                    
                     <h3 className="text-3xl font-serif text-white mb-3">{dest.name}</h3>
                     <p className="text-white/90 text-sm mb-4 leading-relaxed">
                       {dest.description}
@@ -438,19 +469,19 @@ export default function Home() {
         </section>
 
         {/* Our Services */}
-        <section id="services" className="py-16 md:py-32 bg-gradient-to-b from-white to-slate-50">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-              <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-                <CheckCircle className="w-3 h-3 mr-1.5" /> OUR SERVICES
-              </Badge>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
-                Comprehensive Expedition Services
-              </h2>
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-                From guided treks to cultural immersions, we provide complete Himalayan adventure solutions with safety and expertise.
-              </p>
-            </div>
+<section id="services" className="py-16 md:py-32 bg-gradient-to-b from-white to-slate-50">
+  <div className="container mx-auto px-4 sm:px-6">
+    <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
+      <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+        <CheckCircle className="w-3 h-3 mr-1.5" /> WHAT WE OFFER
+      </Badge>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
+        Treks, Tours & Cultural Experiences
+      </h2>
+      <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+        Guided trekking in Nepal, city tours in Kathmandu, and cultural journeys through Bhutan and Tibet.
+      </p>
+    </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {services.map((service, i) => (
@@ -481,20 +512,20 @@ export default function Home() {
         </section>
 
         {/* Popular Treks - Desktop with arrow navigation */}
-        <section id="treks" className="py-16 md:py-32 bg-[#0f2940]">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 md:mb-16 gap-6">
-              <div className="max-w-2xl">
-                <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-                  <Star className="w-3 h-3 mr-1.5 fill-[#C5E0ED]" /> POPULAR TREKS
-                </Badge>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4">
-                  Signature Adventures
-                </h2>
-                <p className="text-white/70 text-base">
-                  Our most sought-after Himalayan journeys, carefully curated for unforgettable experiences.
-                </p>
-              </div>
+<section id="treks" className="py-16 md:py-32 bg-[#0f2940]">
+  <div className="container mx-auto px-4 sm:px-6">
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 md:mb-16 gap-6">
+      <div className="max-w-2xl">
+        <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+          <Star className="w-3 h-3 mr-1.5 fill-[#C5E0ED]" /> TREKKING ROUTES
+        </Badge>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4">
+          Nepal's Finest Treks
+        </h2>
+        <p className="text-white/70 text-base">
+          Everest Base Camp, Annapurna Circuit, and classic Himalayan trails.
+        </p>
+      </div>
               
               <div className="flex gap-4">
                 <Button
@@ -628,57 +659,57 @@ export default function Home() {
         </section>
 
         {/* Why Choose Us */}
-        <section className="py-16 md:py-32 bg-gradient-to-b from-slate-50 to-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
-              <div>
-                <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-                  <ShieldCheck className="w-3 h-3 mr-1.5" /> WHY CHOOSE US
-                </Badge>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
-                  Expedition Excellence
-                </h2>
-                <p className="text-slate-600 text-base md:text-lg mb-8 leading-relaxed">
-                  With over a decade of Himalayan expertise, we prioritize safety, sustainability, and exceptional experiences.
-                </p>
+<section className="py-16 md:py-32 bg-gradient-to-b from-slate-50 to-white">
+  <div className="container mx-auto px-4 sm:px-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div>
+        <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+          <ShieldCheck className="w-3 h-3 mr-1.5" /> WHY CHOOSE US
+        </Badge>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
+          Local Knowledge, Global Standards
+        </h2>
+        <p className="text-slate-600 text-base md:text-lg mb-8 leading-relaxed">
+          Born in Gorkha, based in Kathmandu, we offer authentic Himalayan experiences with professional service.
+        </p>
 
-                <div className="space-y-6">
-                  {[
-                    { 
-                      title: "Certified Expertise", 
-                      desc: "Fully licensed with Nepal Tourism Board and international mountaineering certifications.",
-                      icon: <Award className="w-5 h-5" />
-                    },
-                    { 
-                      title: "Local Guide Network", 
-                      desc: "Experienced Sherpa guides with extensive knowledge of Himalayan terrain.",
-                      icon: <Users className="w-5 h-5" />
-                    },
-                    { 
-                      title: "Safety First Approach", 
-                      desc: "24/7 emergency support, satellite communication, and comprehensive insurance.",
-                      icon: <ShieldCheck className="w-5 h-5" />
-                    },
-                    { 
-                      title: "Sustainable Tourism", 
-                      desc: "Eco-friendly practices and direct community support initiatives.",
-                      icon: <Heart className="w-5 h-5" />
-                    }
-                  ].map((item, i) => (
-                    <div key={i} className="flex gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-xl flex items-center justify-center shrink-0">
-                        <div className="text-[#0f2940]">
-                          {item.icon}
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg text-[#0f2940] mb-2">{item.title}</h4>
-                        <p className="text-slate-600 text-sm">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
+        <div className="space-y-6">
+          {[
+            { 
+              title: "Local Experts", 
+              desc: "Nepali guides with deep knowledge of trails, culture, and hidden gems.",
+              icon: <Users className="w-5 h-5" />
+            },
+            { 
+              title: "Authentic City Tours", 
+              desc: "Pioneers of Kathmandu's Free Walking Tours, see the real Nepal beyond the guidebooks.",
+              icon: <MapPin className="w-5 h-5" />
+            },
+            { 
+              title: "Reliable & Safe", 
+              desc: "24/7 support, experienced guides, and careful planning for peace of mind.",
+              icon: <ShieldCheck className="w-5 h-5" />
+            },
+            { 
+              title: "Community Focused", 
+              desc: "We support local families and sustainable tourism across Nepal, Bhutan, and Tibet.",
+              icon: <Heart className="w-5 h-5" />
+            }
+          ].map((item, i) => (
+            <div key={i} className="flex gap-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-xl flex items-center justify-center shrink-0">
+                <div className="text-[#0f2940]">
+                  {item.icon}
                 </div>
               </div>
+              <div>
+                <h4 className="font-bold text-lg text-[#0f2940] mb-2">{item.title}</h4>
+                <p className="text-slate-600 text-sm">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
               <div className="relative">
                 <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
@@ -691,19 +722,19 @@ export default function Home() {
                     quality={85}
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0f2940] to-transparent p-6 md:p-8">
-                    <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 md:p-6 border border-white/20">
-                      <div className="text-white mb-4">
-                        <div className="font-bold text-lg mb-2">5000+ Adventurers Trust Us</div>
-                        <div className="text-white/70 text-sm">from 50+ countries worldwide</div>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                        ))}
-                        <span className="text-white font-bold ml-2 text-lg">4.9/5 Rating</span>
-                      </div>
-                    </div>
-                  </div>
+  <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 md:p-6 border border-white/20">
+    <div className="text-white mb-4">
+      <div className="font-bold text-lg mb-2">2500+ Travelers Since 2015</div>
+      <div className="text-white/70 text-sm">from 30+ countries around the world</div>
+    </div>
+    <div className="flex items-center gap-1">
+      {[...Array(5)].map((_, i) => (
+        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+      ))}
+      <span className="text-white font-bold ml-2 text-lg">4.8/5 Rating</span>
+    </div>
+  </div>
+</div>
                 </div>
               </div>
             </div>
@@ -711,20 +742,19 @@ export default function Home() {
         </section>
 
         {/* Testimonials - Horizontal Flow Animation */}
-        <section className="py-16 md:py-32 bg-white overflow-hidden">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-              <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-                <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" /> TESTIMONIALS
-              </Badge>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
-                Adventurer Experiences
-              </h2>
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-                Hear from our global community of Himalayan explorers and their unforgettable journeys.
-              </p>
-            </div>
-
+<section className="py-16 md:py-32 bg-white overflow-hidden">
+  <div className="container mx-auto px-4 sm:px-6">
+    <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
+      <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+        <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" /> TRAVELER STORIES
+      </Badge>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
+        Real Travelers, Real Experiences
+      </h2>
+      <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+        What guests say about their treks, city tours, and cultural journeys with us.
+      </p>
+    </div>
             {/* Horizontal Flow Animation for Mobile */}
             <div className="md:hidden overflow-hidden relative py-4">
               <div className="flex animate-infinite-scroll-slow-mobile">
@@ -801,7 +831,7 @@ export default function Home() {
                     See All Reviews on Tripadvisor
                   </h3>
                   <p className="text-sm sm:text-base text-[#3C6AA6] mb-4">
-                    Join thousands of satisfied travelers who've shared their experiences. 
+                    Join hundreds of satisfied travelers who've shared their experiences. 
                     Read detailed reviews, see more photos, and discover why we're rated so highly.
                   </p>
                   <a

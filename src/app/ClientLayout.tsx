@@ -1272,25 +1272,7 @@ You dream it. We plan it. Let's build your adventure together.              </p>
                 </Button>
               </div>
               
-              {/* Trust Indicators */}
-              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div className="text-white/70">
-                  <div className="text-2xl font-bold text-[#C5E0ED]">11+</div>
-                  <div className="text-sm">Years Experience</div>
-                </div>
-                <div className="text-white/70">
-                  <div className="text-2xl font-bold text-[#C5E0ED]">2500+</div>
-                  <div className="text-sm">Happy Travelers</div>
-                </div>
-                <div className="text-white/70">
-                  <div className="text-2xl font-bold text-[#C5E0ED]">24/7</div>
-                  <div className="text-sm">Support</div>
-                </div>
-                <div className="text-white/70">
-                  <div className="text-2xl font-bold text-[#C5E0ED]">100%</div>
-                  <div className="text-sm">Safety Record</div>
-                </div>
-              </div>
+             
             </motion.div>
           </div>
         </div>
