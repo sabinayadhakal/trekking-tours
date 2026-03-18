@@ -4,7 +4,6 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import {
   Trees,
   Calendar,
@@ -14,14 +13,9 @@ import {
   ChevronRight,
   Star,
   Compass,
-  Filter,
-  Search,
   ArrowRight,
   PawPrint,
-  X,
   Eye,
-  Tent,
-  Binoculars,
   Camera,
   Bird,
   Cat,
@@ -32,18 +26,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
-const safariParks = [
-  "All Parks",
-  "Chitwan National Park",
- 
-];
-
-const safariDurations = [
-  "All Durations",
-  "2-3 Days",
-  
-];
 
 // Only include jungle safaris that exist in your folder structure
 const jungleSafaris = [
@@ -84,7 +66,7 @@ const getWildlifeIcon = (animal: string) => {
   if (animalLower.includes("tiger") || animalLower.includes("leopard") || animalLower.includes("cat")) {
     return Cat;
   } else if (animalLower.includes("elephant")) {
-    return Search;
+    return Eye;
   } else if (animalLower.includes("rhino") || animalLower.includes("buffalo")) {
     return Eye;
   } else if (animalLower.includes("bird")) {
@@ -101,8 +83,6 @@ const getWildlifeIcon = (animal: string) => {
     return Cat;
   } else if (animalLower.includes("landscape")) {
     return Camera;
-  } else if (animalLower.includes("macro")) {
-    return Search;
   } else if (animalLower.includes("reptile")) {
     return Turtle;
   } else {
@@ -112,99 +92,15 @@ const getWildlifeIcon = (animal: string) => {
 
 export default function JungleSafariPage() {
   const router = useRouter();
-  const [selectedPark, setSelectedPark] = React.useState("All Parks");
-  const [selectedDuration, setSelectedDuration] = React.useState("All Durations");
-  const [searchQuery, setSearchQuery] = React.useState("");
-  const [showFilterDrawer, setShowFilterDrawer] = React.useState(false);
 
   const handleBookNow = (safariName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(safariName)}`);
   };
 
-  const filteredSafaris = jungleSafaris.filter((safari) => {
-    const matchesPark = selectedPark === "All Parks" || safari.park === selectedPark;
-    const matchesDuration = selectedDuration === "All Durations" || safari.duration.includes(selectedDuration.replace("All Durations", ""));
-    const matchesSearch = safari.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          safari.park.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          safari.wildlife.some(w => w.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesPark && matchesDuration && matchesSearch;
-  });
-
   const featuredSafari = jungleSafaris.find((safari) => safari.id === 1);
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Mobile Filter Drawer */}
-      {showFilterDrawer && (
-        <div className="lg:hidden fixed inset-0 z-50">
-          <div 
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setShowFilterDrawer(false)}
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl">
-            <div className="p-6 max-h-[80vh] overflow-y-auto">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg text-[#0f2940]">Filter Safaris</h3>
-                <button 
-                  onClick={() => setShowFilterDrawer(false)}
-                  className="p-2 rounded-lg hover:bg-slate-100"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              
-              <div className="space-y-6">
-                {/* Duration Filter */}
-                <div>
-                  <h4 className="font-medium text-[#0f2940] mb-3">Safari Duration</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {safariDurations.map((duration) => (
-                      <button
-                        key={duration}
-                        onClick={() => {
-                          setSelectedDuration(duration);
-                          setShowFilterDrawer(false);
-                        }}
-                        className={`px-3 py-2 rounded-full text-sm font-medium transition-all ${
-                          selectedDuration === duration
-                            ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white"
-                            : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-                        }`}
-                      >
-                        {duration}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Park Filter */}
-                <div>
-                  <h4 className="font-medium text-[#0f2940] mb-3">National Park</h4>
-                  <div className="space-y-2">
-                    {safariParks.map((park) => (
-                      <button
-                        key={park}
-                        onClick={() => {
-                          setSelectedPark(park);
-                          setShowFilterDrawer(false);
-                        }}
-                        className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
-                          selectedPark === park
-                            ? "bg-[#C5E0ED]/30 text-[#0f2940] font-medium"
-                            : "text-slate-600 hover:bg-[#f0f7fa] hover:text-[#2d6a8a]"
-                        }`}
-                      >
-                        {park}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Page Header */}
       <section className="pt-6 pb-12 md:pt-8 md:pb-16 bg-gradient-to-br from-[#0f2940] to-[#1a4166] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -234,76 +130,6 @@ export default function JungleSafariPage() {
                 <Camera className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Photography Focus
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Search and Filter Bar */}
-      <section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
-            {/* Search */}
-            <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Search jungle safaris..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
-              />
-            </div>
-
-            {/* Mobile Filter Button */}
-            <Button
-              variant="outline"
-              className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
-              onClick={() => setShowFilterDrawer(true)}
-            >
-              <Filter className="w-4 h-4 mr-2" />
-              Filters
-            </Button>
-
-            {/* Desktop Filters */}
-            <div className="hidden lg:flex items-center gap-4">
-              <div className="flex flex-wrap justify-center gap-2">
-                {safariParks.slice(0, 4).map((park) => (
-                  <button
-                    key={park}
-                    onClick={() => setSelectedPark(park)}
-                    className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
-                      selectedPark === park
-                        ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
-                        : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-                    }`}
-                  >
-                    {park.replace(" National Park", "").replace(" Wildlife", "")}
-                  </button>
-                ))}
-              </div>
-
-              <div className="flex items-center gap-2">
-                <select
-                  value={selectedDuration}
-                  onChange={(e) => setSelectedDuration(e.target.value)}
-                  className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
-                >
-                  {safariDurations.map((duration) => (
-                    <option key={duration} value={duration}>{duration}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Active Filters */}
-          <div className="lg:hidden mt-3 flex flex-wrap gap-2">
-            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-              {selectedPark}
-            </Badge>
-            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-              {selectedDuration}
-            </Badge>
           </div>
         </div>
       </section>
@@ -415,13 +241,13 @@ export default function JungleSafariPage() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <h3 className="text-xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">Explore Wildlife Adventures</h3>
               <p className="text-slate-500 text-sm">
-                Showing <span className="font-bold text-[#0f2940]">{filteredSafaris.length}</span> safaris
+                Showing <span className="font-bold text-[#0f2940]">{jungleSafaris.length}</span> safaris
               </p>
             </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-            {filteredSafaris.map((safari, i) => (
+            {jungleSafaris.map((safari) => (
               <Link 
                 key={safari.id} 
                 href={safari.link}
@@ -508,27 +334,6 @@ export default function JungleSafariPage() {
               </Link>
             ))}
           </div>
-
-          {filteredSafaris.length === 0 && (
-            <div className="text-center py-12 md:py-16">
-              <Trees className="w-12 h-12 md:w-16 md:h-16 text-[#C5E0ED] mx-auto mb-3 md:mb-4" />
-              <h4 className="text-lg md:text-xl font-bold text-[#0f2940] mb-1 md:mb-2">No safaris found</h4>
-              <p className="text-slate-600 text-sm md:text-base">Try adjusting your filters to see more results.</p>
-              <Button
-                variant="outline"
-                className="mt-4 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full"
-                onClick={() => {
-                  setSelectedPark("All Parks");
-                  setSelectedDuration("All Durations");
-                  setSearchQuery("");
-                }}
-              >
-                Reset Filters
-              </Button>
-            </div>
-          )}
-
-          
         </div>
       </section>
 

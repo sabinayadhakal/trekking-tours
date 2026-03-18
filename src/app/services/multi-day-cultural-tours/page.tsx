@@ -4,7 +4,6 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import {
   Landmark,
   Calendar,
@@ -14,34 +13,12 @@ import {
   ChevronRight,
   Star,
   Compass,
-  TrendingUp,
-  Filter,
-  Search,
   ArrowRight,
-  Utensils,
-  X,
-  Bus,
-  Ticket,
   UserCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
-// Minimal region options based on actual tours
-const regionCategories = [
-  "All Regions",
-  "Kathmandu Valley",
-  "Western Nepal",
-];
-
-// Minimal duration options
-const durationTypes = [
-  "All Durations",
-  "3-5 Days",
-  "6-8 Days",
-  "10-11 Days",
-];
 
 // Only include cultural tours that exist in your folder structure
 const culturalTours = [
@@ -154,99 +131,15 @@ const getCategoryColor = (category: string) => {
 
 export default function MultiDayCulturalToursPage() {
   const router = useRouter();
-  const [selectedRegion, setSelectedRegion] = React.useState("All Regions");
-  const [selectedDuration, setSelectedDuration] = React.useState("All Durations");
-  const [searchQuery, setSearchQuery] = React.useState("");
-  const [showFilterDrawer, setShowFilterDrawer] = React.useState(false);
 
   const handleBookNow = (tourName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(tourName)}`);
   };
 
-  const filteredTours = culturalTours.filter((tour) => {
-    const matchesRegion = selectedRegion === "All Regions" || tour.region === selectedRegion;
-    const matchesDuration = selectedDuration === "All Durations" || tour.duration.includes(selectedDuration.replace("All Durations", "").split("-")[0]);
-    const matchesSearch = tour.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          tour.region.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          tour.category.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesRegion && matchesDuration && matchesSearch;
-  });
-
   const featuredTour = culturalTours.find((tour) => tour.id === 1);
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Mobile Filter Drawer */}
-      {showFilterDrawer && (
-        <div className="lg:hidden fixed inset-0 z-50">
-          <div 
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setShowFilterDrawer(false)}
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl">
-            <div className="p-6 max-h-[80vh] overflow-y-auto">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg text-[#0f2940]">Filter Tours</h3>
-                <button 
-                  onClick={() => setShowFilterDrawer(false)}
-                  className="p-2 rounded-lg hover:bg-slate-100"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              
-              <div className="space-y-6">
-                {/* Duration Filter */}
-                <div>
-                  <h4 className="font-medium text-[#0f2940] mb-3">Duration</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {durationTypes.map((duration) => (
-                      <button
-                        key={duration}
-                        onClick={() => {
-                          setSelectedDuration(duration);
-                          setShowFilterDrawer(false);
-                        }}
-                        className={`px-3 py-2 rounded-full text-sm font-medium transition-all ${
-                          selectedDuration === duration
-                            ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white"
-                            : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-                        }`}
-                      >
-                        {duration}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Region Filter */}
-                <div>
-                  <h4 className="font-medium text-[#0f2940] mb-3">Region</h4>
-                  <div className="space-y-2">
-                    {regionCategories.map((region) => (
-                      <button
-                        key={region}
-                        onClick={() => {
-                          setSelectedRegion(region);
-                          setShowFilterDrawer(false);
-                        }}
-                        className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
-                          selectedRegion === region
-                            ? "bg-[#C5E0ED]/30 text-[#0f2940] font-medium"
-                            : "text-slate-600 hover:bg-[#f0f7fa] hover:text-[#2d6a8a]"
-                        }`}
-                      >
-                        {region}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Page Header */}
       <section className="pt-6 pb-12 md:pt-8 md:pb-16 bg-gradient-to-br from-[#0f2940] to-[#1a4166] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -276,76 +169,6 @@ export default function MultiDayCulturalToursPage() {
                 <UserCircle className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Cultural Experts
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Search and Filter Bar */}
-      <section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
-            {/* Search */}
-            <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Search cultural tours..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
-              />
-            </div>
-
-            {/* Mobile Filter Button */}
-            <Button
-              variant="outline"
-              className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
-              onClick={() => setShowFilterDrawer(true)}
-            >
-              <Filter className="w-4 h-4 mr-2" />
-              Filters
-            </Button>
-
-            {/* Desktop Filters */}
-            <div className="hidden lg:flex items-center gap-4">
-              <div className="flex flex-wrap justify-center gap-2">
-                {regionCategories.slice(1).map((region) => (
-                  <button
-                    key={region}
-                    onClick={() => setSelectedRegion(region)}
-                    className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
-                      selectedRegion === region
-                        ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
-                        : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-                    }`}
-                  >
-                    {region}
-                  </button>
-                ))}
-              </div>
-
-              <div className="flex items-center gap-2">
-                <select
-                  value={selectedDuration}
-                  onChange={(e) => setSelectedDuration(e.target.value)}
-                  className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
-                >
-                  {durationTypes.map((duration) => (
-                    <option key={duration} value={duration}>{duration}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Active Filters */}
-          <div className="lg:hidden mt-3 flex flex-wrap gap-2">
-            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-              {selectedRegion}
-            </Badge>
-            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-              {selectedDuration}
-            </Badge>
           </div>
         </div>
       </section>
@@ -441,13 +264,13 @@ export default function MultiDayCulturalToursPage() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <h3 className="text-xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">Multi-Day Cultural Experiences</h3>
               <p className="text-slate-500 text-sm">
-                Showing <span className="font-bold text-[#0f2940]">{filteredTours.length}</span> tours
+                Showing <span className="font-bold text-[#0f2940]">{culturalTours.length}</span> tours
               </p>
             </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-            {filteredTours.map((tour, i) => (
+            {culturalTours.map((tour) => (
               <Link 
                 key={tour.id} 
                 href={tour.link}
@@ -518,27 +341,6 @@ export default function MultiDayCulturalToursPage() {
               </Link>
             ))}
           </div>
-
-          {filteredTours.length === 0 && (
-            <div className="text-center py-12 md:py-16">
-              <Landmark className="w-12 h-12 md:w-16 md:h-16 text-[#C5E0ED] mx-auto mb-3 md:mb-4" />
-              <h4 className="text-lg md:text-xl font-bold text-[#0f2940] mb-1 md:mb-2">No tours found</h4>
-              <p className="text-slate-600 text-sm md:text-base">Try adjusting your filters to see more results.</p>
-              <Button
-                variant="outline"
-                className="mt-4 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full"
-                onClick={() => {
-                  setSelectedRegion("All Regions");
-                  setSelectedDuration("All Durations");
-                  setSearchQuery("");
-                }}
-              >
-                Reset Filters
-              </Button>
-            </div>
-          )}
-
-         
         </div>
       </section>
 

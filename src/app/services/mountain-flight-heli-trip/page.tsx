@@ -4,7 +4,6 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import {
   Plane,
   Calendar,
@@ -14,11 +13,7 @@ import {
   ChevronRight,
   Star,
   Compass,
-  Filter,
-  Search,
   ArrowRight,
-  Cloud,
-  X,
   Eye,
   Mountain,
   Camera,
@@ -26,22 +21,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
-// Minimal route options based on actual flights in your folder structure
-const flightRoutes = [
-  "All Routes",
-  "Everest Region",
-  "Annapurna Region",
-  "Langtang Region",
-];
-
-// Minimal duration options
-const flightDurations = [
-  "All Durations",
-  "1 Hour",
-  "1.5 Hours",
-  "4 Hours",
-];
 
 // Only include mountain flights that exist in your folder structure
 const mountainFlights = [
@@ -137,98 +116,15 @@ const getAircraftColor = (aircraft: string) => {
 
 export default function MountainFlightsPage() {
   const router = useRouter();
-  const [selectedRoute, setSelectedRoute] = React.useState("All Routes");
-  const [selectedDuration, setSelectedDuration] = React.useState("All Durations");
-  const [searchQuery, setSearchQuery] = React.useState("");
-  const [showFilterDrawer, setShowFilterDrawer] = React.useState(false);
 
   const handleBookNow = (flightName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(flightName)}`);
   };
 
-  const filteredFlights = mountainFlights.filter((flight) => {
-    const matchesRoute = selectedRoute === "All Routes" || flight.route === selectedRoute;
-    const matchesDuration = selectedDuration === "All Durations" || flight.duration.includes(selectedDuration.replace("All Durations", ""));
-    const matchesSearch = flight.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          flight.route.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesRoute && matchesDuration && matchesSearch;
-  });
-
   const featuredFlight = mountainFlights.find((flight) => flight.id === 1);
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Mobile Filter Drawer */}
-      {showFilterDrawer && (
-        <div className="lg:hidden fixed inset-0 z-50">
-          <div 
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setShowFilterDrawer(false)}
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl">
-            <div className="p-6 max-h-[80vh] overflow-y-auto">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg text-[#0f2940]">Filter Flights</h3>
-                <button 
-                  onClick={() => setShowFilterDrawer(false)}
-                  className="p-2 rounded-lg hover:bg-slate-100"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              
-              <div className="space-y-6">
-                {/* Duration Filter - Minimal */}
-                <div>
-                  <h4 className="font-medium text-[#0f2940] mb-3">Flight Duration</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {flightDurations.map((duration) => (
-                      <button
-                        key={duration}
-                        onClick={() => {
-                          setSelectedDuration(duration);
-                          setShowFilterDrawer(false);
-                        }}
-                        className={`px-3 py-2 rounded-full text-sm font-medium transition-all ${
-                          selectedDuration === duration
-                            ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white"
-                            : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-                        }`}
-                      >
-                        {duration}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Route Filter - Minimal */}
-                <div>
-                  <h4 className="font-medium text-[#0f2940] mb-3">Flight Route</h4>
-                  <div className="space-y-2">
-                    {flightRoutes.map((route) => (
-                      <button
-                        key={route}
-                        onClick={() => {
-                          setSelectedRoute(route);
-                          setShowFilterDrawer(false);
-                        }}
-                        className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${
-                          selectedRoute === route
-                            ? "bg-[#C5E0ED]/30 text-[#0f2940] font-medium"
-                            : "text-slate-600 hover:bg-[#f0f7fa] hover:text-[#2d6a8a]"
-                        }`}
-                      >
-                        {route}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Page Header */}
       <section className="pt-6 pb-12 md:pt-8 md:pb-16 bg-gradient-to-br from-[#0f2940] to-[#1a4166] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -258,76 +154,6 @@ export default function MountainFlightsPage() {
                 <Eye className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Guaranteed Window Seat
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Search and Filter Bar */}
-      <section className="lg:sticky lg:top-0 z-30 py-4 bg-white border-b border-[#C5E0ED]/30 shadow-sm">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-between">
-            {/* Search */}
-            <div className="relative w-full sm:w-auto sm:flex-1 max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Search mountain flights..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-10 md:h-12 pl-10 md:pl-12 pr-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 focus:border-[#C5E0ED] text-base md:text-sm"
-              />
-            </div>
-
-            {/* Mobile Filter Button */}
-            <Button
-              variant="outline"
-              className="lg:hidden border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full px-4"
-              onClick={() => setShowFilterDrawer(true)}
-            >
-              <Filter className="w-4 h-4 mr-2" />
-              Filters
-            </Button>
-
-            {/* Desktop Filters - Minimal */}
-            <div className="hidden lg:flex items-center gap-4">
-              <div className="flex flex-wrap justify-center gap-2">
-                {flightRoutes.slice(1).map((route) => (
-                  <button
-                    key={route}
-                    onClick={() => setSelectedRoute(route)}
-                    className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all ${
-                      selectedRoute === route
-                        ? "bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white shadow-sm"
-                        : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-                    }`}
-                  >
-                    {route}
-                  </button>
-                ))}
-              </div>
-
-              <div className="flex items-center gap-2">
-                <select
-                  value={selectedDuration}
-                  onChange={(e) => setSelectedDuration(e.target.value)}
-                  className="h-9 md:h-10 px-3 md:px-4 rounded-full border border-[#C5E0ED]/50 bg-white focus:outline-none focus:ring-2 focus:ring-[#C5E0ED]/50 text-xs md:text-sm cursor-pointer"
-                >
-                  {flightDurations.map((duration) => (
-                    <option key={duration} value={duration}>{duration}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Active Filters */}
-          <div className="lg:hidden mt-3 flex flex-wrap gap-2">
-            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-              {selectedRoute}
-            </Badge>
-            <Badge className="bg-[#C5E0ED]/20 text-[#2d6a8a] border-none text-xs">
-              {selectedDuration}
-            </Badge>
           </div>
         </div>
       </section>
@@ -423,13 +249,13 @@ export default function MountainFlightsPage() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <h3 className="text-xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">Choose Your Aerial Adventure</h3>
               <p className="text-slate-500 text-sm">
-                Showing <span className="font-bold text-[#0f2940]">{filteredFlights.length}</span> flights
+                Showing <span className="font-bold text-[#0f2940]">{mountainFlights.length}</span> flights
               </p>
             </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-            {filteredFlights.map((flight, i) => (
+            {mountainFlights.map((flight) => (
               <Link 
                 key={flight.id} 
                 href={flight.link}
@@ -500,27 +326,6 @@ export default function MountainFlightsPage() {
               </Link>
             ))}
           </div>
-
-          {filteredFlights.length === 0 && (
-            <div className="text-center py-12 md:py-16">
-              <Plane className="w-12 h-12 md:w-16 md:h-16 text-[#C5E0ED] mx-auto mb-3 md:mb-4" />
-              <h4 className="text-lg md:text-xl font-bold text-[#0f2940] mb-1 md:mb-2">No flights found</h4>
-              <p className="text-slate-600 text-sm md:text-base">Try adjusting your filters to see more results.</p>
-              <Button
-                variant="outline"
-                className="mt-4 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-full"
-                onClick={() => {
-                  setSelectedRoute("All Routes");
-                  setSelectedDuration("All Durations");
-                  setSearchQuery("");
-                }}
-              >
-                Reset Filters
-              </Button>
-            </div>
-          )}
-
-          
         </div>
       </section>
 
