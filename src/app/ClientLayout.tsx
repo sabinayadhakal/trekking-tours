@@ -1222,7 +1222,7 @@ export default function ClientLayout({
       <section className="py-16 sm:py-20 md:py-24 bg-[#153653]/90 backdrop-blur-sm relative overflow-hidden border-t border-white/20">
         {/* Animated Background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
+          <div className="absolute inset-0 bg-[url('/images/used/cta.avif')] bg-cover bg-center opacity-20"></div>
           <div className="absolute inset-0 bg-gradient-to-br from-[#153653]/90 via-[#153653]/80 to-[#153653]/95"></div>
         </div>
         

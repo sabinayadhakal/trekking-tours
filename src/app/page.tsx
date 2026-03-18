@@ -33,21 +33,21 @@ import { Badge } from "@/components/ui/badge";
 const destinations = [
   {
     name: "Nepal",
-    image: "/images/nepal-1.jpg",
+    image: "/images/used/nepal-main-page.avif",
     description: "Himalayan peaks, ancient cities, and legendary trekking routes.",
     highlights: ["Everest Base Camp", "Annapurna Circuit", "Kathmandu Valley"],
     link: "/destinations/nepal"
   },
   {
     name: "Bhutan",
-    image: "https://images.unsplash.com/photo-1578503173325-452778794828?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/bhutan-main-page-1.avif",
     description: "Monasteries, mountain fortresses, and a commitment to happiness.",
     highlights: ["Tiger's Nest", "Punakha Dzong", "Paro Valley"],
     link: "/destinations/bhutan"
   },
   {
     name: "Tibet",
-    image: "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/tibet-main-page.avif",
     description: "High-altitude plains, sacred peaks, and centuries-old Buddhist traditions.",
     highlights: ["Mount Kailash", "Lhasa", "Everest Base Camp (North)"],
     link: "/destinations/tibet"
@@ -291,7 +291,7 @@ export default function Home() {
         <section className="relative min-h-[95vh] md:min-h-screen flex items-center overflow-hidden bg-[#0f2940]">
           <div className="absolute inset-0 z-0">
             <Image
-              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop"
+              src="/images/used/hero.avif"
               alt="Himalayan Mountains"
               fill
               className="object-cover"
@@ -714,7 +714,7 @@ export default function Home() {
               <div className="relative">
                 <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop"
+                    src="/images/used/why_choose_us.avif"
                     alt="Professional Himalayan Expedition Team"
                     fill
                     className="object-cover"
