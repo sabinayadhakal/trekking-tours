@@ -107,12 +107,22 @@ const services = [
 
 const popularTreks = [
   {
+    name: "Manaslu Circuit",
+    duration: "16 Days",
+    difficulty: "Challenging",
+    altitude: "5,106m",
+    price: "$1,350",
+    image: "/images/used/manaslu-main-page.avif",
+    rating: 4.8,
+    link: "/services/trekking/manaslu-circuit-trek"
+  },
+  {
     name: "Everest Base Camp",
     duration: "14 Days",
     difficulty: "Moderate",
     altitude: "5,364m",
     price: "$1,450",
-    image: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/everest-main-page.avif",
     rating: 4.9,
     link: "/services/trekking/everest-base-camp-trek"
   },
@@ -122,7 +132,7 @@ const popularTreks = [
     difficulty: "Challenging",
     altitude: "5,416m",
     price: "$1,250",
-    image: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
+    image: "/images/used/annapurna-circuit-main-page.avif",
     rating: 4.8,
     link: "/services/trekking/annapurna-circuit-trek"
   },
@@ -132,27 +142,18 @@ const popularTreks = [
     difficulty: "Easy-Moderate",
     altitude: "4,984m",
     price: "$950",
-    image: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/langtang-main-page.avif",
     rating: 4.7,
     link: "/services/trekking/langtang-valley-trek"
   },
-  {
-    name: "Manaslu Circuit",
-    duration: "16 Days",
-    difficulty: "Challenging",
-    altitude: "5,106m",
-    price: "$1,350",
-    image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8,
-    link: "/services/trekking/manaslu-circuit-trek"
-  },
+  
   {
     name: "Upper Mustang",
     duration: "12 Days",
     difficulty: "Moderate",
     altitude: "4,010m",
     price: "$1,650",
-    image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/upper-mustang-main-page.avif",
     rating: 4.7,
     link: "/services/trekking/upper-mustang-trek"
   },
@@ -162,7 +163,7 @@ const popularTreks = [
     difficulty: "Moderate",
     altitude: "4,130m",
     price: "$1,150",
-    image: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/abc-main-page.avif",
     rating: 4.8,
     link: "/services/trekking/annapurna-base-camp-trek"
   },

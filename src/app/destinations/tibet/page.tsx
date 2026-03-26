@@ -55,7 +55,7 @@ const culturalTours = [
     difficulty: "Easy",
     altitude: "3,650m",
     price: "$1,450",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    image: "/images/used/tibet-cultural-1.avif",
     rating: 4.9,
     region: "Lhasa • Gyantse",
     highlights: ["Potala Palace", "Jokhang Temple", "Barkhor Street", "Drepung Monastery"],
@@ -68,7 +68,7 @@ const culturalTours = [
     difficulty: "Moderate",
     altitude: "4,718m",
     price: "$1,250",
-    image: "https://images.unsplash.com/photo-1519237390444-8838a2ea7e49?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/tibet-2.avif",
     rating: 4.8,
     region: "Lhasa • Namtso",
     highlights: ["Namtso Lake", "Turquoise Waters", "Yangpachen", "Nyenchen Tanglha Range"],
@@ -81,7 +81,7 @@ const culturalTours = [
     difficulty: "Moderate",
     altitude: "5,200m",
     price: "$1,850",
-    image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/tibet-overland.avif",
     rating: 4.9,
     region: "Kathmandu to Lhasa",
     highlights: ["Friendship Highway", "Himalayan Views", "Gyantse Kumbum", "Yamdrok Lake"],
@@ -94,7 +94,7 @@ const culturalTours = [
     difficulty: "Easy",
     altitude: "3,650m",
     price: "$850",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/tibet-lhasa.avif",
     rating: 4.7,
     region: "Lhasa",
     highlights: ["Potala Palace", "Jokhang Temple", "Barkhor Circuit", "Sera Monastery"],
@@ -107,7 +107,7 @@ const culturalTours = [
     difficulty: "Challenging",
     altitude: "5,638m",
     price: "$3,200",
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/tibet-4.avif",
     rating: 4.9,
     region: "Western Tibet",
     highlights: ["Mount Kailash", "Lake Mansarovar", "Parikrama", "Sacred Sites"],
@@ -120,7 +120,7 @@ const culturalTours = [
     difficulty: "Moderate-Challenging",
     altitude: "5,200m",
     price: "$2,100",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/tibet-everest.avif",
     rating: 4.8,
     region: "Tingri • Rongbuk",
     highlights: ["North Face Everest", "Rongbuk Monastery", "Tingri Plains", "Base Camp"],
@@ -136,7 +136,7 @@ const monasteryTours = [
     difficulty: "Easy",
     altitude: "3,900m",
     price: "$1,150",
-    image: "https://images.unsplash.com/photo-1519237390444-8838a2ea7e49?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/tibet-1.avif",
     rating: 4.8,
     region: "Central Tibet",
     highlights: ["Drepung Monastery", "Sera Monastery", "Ganden Monastery", "Monk Debates"],
@@ -149,7 +149,7 @@ const monasteryTours = [
     difficulty: "Moderate",
     altitude: "4,500m",
     price: "$1,650",
-    image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/tibet-kingdom.avif",
     rating: 4.7,
     region: "Tsang Province",
     highlights: ["Shigatse", "Sakya Monastery", "Gyantse Dzong", "Tashilhunpo"],
@@ -162,7 +162,7 @@ const monasteryTours = [
     difficulty: "Challenging",
     altitude: "5,000m",
     price: "$2,450",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    image: "/images/used/tibet-plateau.avif",
     rating: 4.9,
     region: "Changtang Plateau",
     highlights: ["Nomadic Culture", "High-altitude Lakes", "Wildlife", "Remote Valleys"],
@@ -298,7 +298,7 @@ export default function TibetPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/tibet-main-page.avif"
             alt="Tibet Himalayas"
             fill
             className="object-cover"
@@ -368,7 +368,7 @@ export default function TibetPage() {
                 <Link href="/destinations/tibet/lhasa-city-tour">
                   <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                     <Image
-                      src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070&auto=format&fit=crop"
+                      src="/images/used/tibet-1.avif"
                       alt="Potala Palace"
                       fill
                       className="object-cover"
@@ -379,7 +379,7 @@ export default function TibetPage() {
                 <Link href="/destinations/tibet/monastery-discovery-tour">
                   <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                     <Image
-                      src="https://images.unsplash.com/photo-1519237390444-8838a2ea7e49?q=80&w=2070&auto=format&fit=crop"
+                      src="/images/used/tibet-3.avif"
                       alt="Tibetan Monastery"
                       fill
                       className="object-cover"
@@ -392,7 +392,7 @@ export default function TibetPage() {
                 <Link href="/destinations/tibet/tibet-overland-tour">
                   <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                     <Image
-                      src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=2070&auto=format&fit=crop"
+                      src="/images/used/tibet-2.avif"
                       alt="Tibetan Landscape"
                       fill
                       className="object-cover"
@@ -403,7 +403,7 @@ export default function TibetPage() {
                 <Link href="/destinations/tibet/kailash-mansarovar-yatra">
                   <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                     <Image
-                      src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop"
+                      src="/images/used/tibet-4.avif"
                       alt="Prayer Flags"
                       fill
                       className="object-cover"
