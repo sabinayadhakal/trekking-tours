@@ -130,7 +130,7 @@ const peakClimbing = [
     difficulty: "Technical",
     altitude: "6,189m",
     price: "$2,450",
-    image: "/images/used/island-peak-nepal.avif",
+    image: "/images/used/island-peak-nepal-1.avif",
     rating: 4.8,
     highlights: ["Summit Experience", "Technical Training", "Everest Views", "Glacier Crossing"],
     link: "/services/peak-climbing/island-peak-climbing",

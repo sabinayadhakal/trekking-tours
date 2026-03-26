@@ -40,7 +40,7 @@ const destinations = [
   },
   {
     name: "Bhutan",
-    image: "/images/used/bhutan-main-page-1.avif",
+    image: "/images/used/bhutan-main-page-2.avif",
     description: "Monasteries, mountain fortresses, and a commitment to happiness.",
     highlights: ["Tiger's Nest", "Punakha Dzong", "Paro Valley"],
     link: "/destinations/bhutan"
