@@ -218,50 +218,16 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Mount Jomolhari",
+    src: "/images/used/bhutan-jomolhari-1.avif",
+    alt: "Way to Jomolhari Base Camp",
+    caption: "Way to Mount Jomolhari (7,314m) - Bhutan's Second Highest Peak",
+  },
+
+   {
+    src: "/images/used/bhutan-jomolhari.avif",
+    alt: "Jomolhari Base Camp",
     caption: "Mount Jomolhari (7,314m) - Bhutan's Second Highest Peak",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Jangothang",
-    caption: "Jangothang - Jomolhari Base Camp",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Nyile La Pass",
-    caption: "Nyile La Pass (4,830m) with Prayer Flags",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Yak Herders",
-    caption: "Yak Herders in Alpine Pastures",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Lingshi Dzong",
-    caption: "Lingshi Dzong on Hilltop",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Alpine Lake",
-    caption: "Tshophu Lake near Jangothang",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Rhododendron Forest",
-    caption: "Rhododendron Forest in Bloom",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Mountain Camp",
-    caption: "Camping Under Jomolhari",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Prayer Flags",
-    caption: "Prayer Flags at Mountain Pass",
-  },
+  }
 ];
 
 export default function JomolhariTrekPage() {
@@ -372,7 +338,7 @@ export default function JomolhariTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop"
+            src="/images/used/bhutan-jomolhari-1.avif"
             alt="Jomolhari Trek"
             fill
             className="object-cover"

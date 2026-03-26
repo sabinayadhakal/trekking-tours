@@ -201,50 +201,21 @@ const excludes = [
 ];
 
 const gallery = [
+  
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Punakha Dzong",
-    caption: "Punakha Dzong - Bhutan's Most Beautiful Fortress",
+    src: "/images/used/cultural-bhutan.avif",
+    alt: "Tashicho Dzong",
+    caption: "Tashicho Dzong- Fortress of the glorious religion",
   },
   {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Taktsang Monastery",
-    caption: "Taktsang Monastery - The Tiger's Nest",
+    src: "/images/used/bhutan-culture.avif",
+    alt: "Masked Festival CUlture of Bhutan",
+    caption: "Mask Festival- Where culture wears a mask.",
   },
   {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Tashichho Dzong",
-    caption: "Tashichho Dzong, Thimphu",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401905206-6d0b9b6f4b4d?q=80&w=2070&auto=format&fit=crop",
-    alt: "Traditional Architecture",
-    caption: "Traditional Bhutanese Architecture",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Buddha Dordenma",
-    caption: "Buddha Dordenma - Thimphu Valley",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Prayer Flags",
-    caption: "Prayer Flags at Dochula Pass",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Gangtey Valley",
-    caption: "Gangtey Valley - Winter Home of Black-Necked Cranes",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Bumthang Valley",
-    caption: "Bumthang - Spiritual Heartland of Bhutan",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Chimi Lhakhang",
-    caption: "Chimi Lhakhang - Fertility Temple",
+    src: "/images/used/bhutan-dochula.avif",
+    alt: "Dochula, Bhutan",
+    caption: "Dochula, Bhutan- 108 stupas, one breathtaking view",
   },
 ];
 
@@ -356,7 +327,7 @@ export default function BhutanCulturalTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop"
+            src="/images/used/cultural-bhutan.avif"
             alt="Bhutan Cultural Tour"
             fill
             className="object-cover"

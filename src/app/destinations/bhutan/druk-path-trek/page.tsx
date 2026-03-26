@@ -187,49 +187,20 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/bhutan-druk.avif",
     alt: "Druk Path Trek",
-    caption: "Druk Path Trek - Himalayan Panorama",
+    caption: "Druk Path Trek",
+  },
+  
+  {
+    src: "/images/used/bhutan-culture.avif",
+    alt: "Sangaygang, Thimpu",
+    caption: "Thimphu from above. 🏔️✨ Sangaygang views.",
   },
   {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Mountain Lake",
-    caption: "Alpine Lake on Druk Path",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Camping",
-    caption: "Camping Under the Stars",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Rhododendron Forest",
-    caption: "Rhododendron Forest in Bloom",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Yak Herd",
-    caption: "Yaks in Alpine Pastures",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Phajoding Monastery",
-    caption: "Phajoding Monastery",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Mountain Views",
-    caption: "Views of Mount Chomolhari",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Paro Valley",
-    caption: "Paro Valley from the Trail",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Prayer Flags",
-    caption: "Prayer Flags on the Druk Path",
+    src: "/images/used/wangchuk-bhutan.avif",
+    alt: "Wangdicholding Palace",
+    caption: "Where the Wangchuck dynasty began.",
   },
 ];
 
@@ -341,7 +312,7 @@ export default function DrukPathTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop"
+            src="/images/used/bhutan-druk.avif"
             alt="Druk Path Trek"
             fill
             className="object-cover"

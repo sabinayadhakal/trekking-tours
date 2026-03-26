@@ -352,50 +352,17 @@ const excludes = [
 ];
 
 const gallery = [
+ 
+
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/bhutan-snowman.avif",
     alt: "Snowman Trek",
-    caption: "The Legendary Snowman Trek - Highest Trek in the World",
+    caption: "Snowman Trek Way",
   },
   {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "High Pass",
-    caption: "Crossing a High Himalayan Pass (5,320m)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Gangla Karchung La",
-    caption: "Gangla Karchung La - Highest Point at 5,320m",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Alpine Lake",
-    caption: "Pristine Alpine Lakes Along the Trail",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Laya Village",
-    caption: "Laya Village - Home of the Layap People",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Yak Herders",
-    caption: "Yak Herders in Remote Alpine Pastures",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Mountain Camp",
-    caption: "Camping Under the Stars at High Altitude",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Prayer Flags",
-    caption: "Prayer Flags Marking a High Pass",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Himalayan Panorama",
-    caption: "360-degree Himalayan Panorama from the Top",
+    src: "/images/used/thimpu-bhutan.avif",
+    alt: "Glimpse of hills from Thimpu",
+    caption: "Glimpse of hills from Thimpu",
   },
 ];
 
@@ -507,7 +474,7 @@ export default function SnowmanTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop"
+            src="/images/used/bhutan-snowman.avif"
             alt="Snowman Trek"
             fill
             className="object-cover"
