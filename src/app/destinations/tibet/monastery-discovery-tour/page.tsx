@@ -175,51 +175,26 @@ const excludes = [
 ];
 
 const gallery = [
+ 
+  
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Jokhang Temple",
-    caption: "Jokhang Temple - Tibet's Holiest Shrine",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Drepung Monastery",
-    caption: "Drepung Monastery - Once the World's Largest",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Sera Monastery Debate",
-    caption: "Monk Debates at Sera Monastery",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Ganden Monastery",
-    caption: "Ganden Monastery on Mountain Ridge",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Barkhor Pilgrims",
-    caption: "Pilgrims at Barkhor Circuit",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/prayer-wheels.avif",
     alt: "Prayer Wheels",
     caption: "Prayer Wheels at Monastery",
   },
+ 
   {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Ramoche Monastery",
-    caption: "Ramoche Monastery - Jokhang's Sister Temple",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/jokhang-monk.avif",
     alt: "Monk in Prayer",
     caption: "Monk in Prayer at Monastery",
   },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Tibetan Buddhist Art",
-    caption: "Traditional Buddhist Murals",
+  
+    {
+    src: "/images/used/tibet-prayers.avif",
+    alt: "Butter Lamps in Jokhang Monastery",
+    caption: "Lamps at Monastery",
   },
+  
 ];
 
 const monasteryInfo = [
@@ -410,7 +385,7 @@ export default function MonasteryDiscoveryTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop"
+            src="/images/used/tibet-main-page.avif"
             alt="Monastery Discovery Tour Tibet"
             fill
             className="object-cover"

@@ -202,50 +202,23 @@ const excludes = [
 ];
 
 const gallery = [
+ 
+ 
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Potala Palace",
-    caption: "Potala Palace - Iconic Landmark of Lhasa",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Yamdrok Lake",
-    caption: "Turquoise Waters of Yamdrok Lake",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Everest Base Camp",
-    caption: "Everest Base Camp (5,200m) - North Side",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Mount Everest",
-    caption: "Mount Everest (8,848m) from Tibet",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Kumbum Stupa",
-    caption: "Kumbum Stupa at Pelkor Chode, Gyantse",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Tashilhunpo Monastery",
-    caption: "Tashilhunpo Monastery, Shigatse",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Yumbulagang Palace",
-    caption: "Yumbulagang - Tibet's Oldest Building",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Tibetan Plateau",
-    caption: "Vast Tibetan Plateau Landscape",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/tibet-overland.avif",
     alt: "Friendship Highway",
-    caption: "Friendship Highway to Everest",
+    caption: "Friendship Highway",
+  },
+
+  {
+    src: "/images/used/tibet-road.avif",
+    alt: "Roads of TIbet",
+    caption: "Roads of Tibet",
+  },
+  {
+    src: "/images/used/views-tibet-train.avif",
+    alt: "Views of Tibet from a train",
+    caption: "Views of Tibet from a train",
   },
 ];
 
@@ -441,7 +414,7 @@ export default function TibetOverlandTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop"
+            src="/images/used/tibet-overland.avif"
             alt="Tibet Overland Tour"
             fill
             className="object-cover"

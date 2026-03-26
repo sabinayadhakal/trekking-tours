@@ -286,47 +286,15 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/tibet-4.avif",
     alt: "Mount Kailash",
     caption: "Mount Kailash - Sacred Mountain of Asia",
   },
+ 
+  
+  
   {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Lake Manasarovar",
-    caption: "Holy Lake Manasarovar - Sacred Waters",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Kailash South Face",
-    caption: "South Face of Mount Kailash",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Dolma La Pass",
-    caption: "Dolma La Pass (5,630m) - Highest Point of Kora",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Pilgrims at Kailash",
-    caption: "Pilgrims Performing Kora",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Prayer Flags",
-    caption: "Prayer Flags at Dolma La",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Gauri Kund",
-    caption: "Gauri Kund - Sacred Lake of Compassion",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Pashupatinath",
-    caption: "Pashupatinath Temple, Kathmandu",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/tibet-plateau.avif",
     alt: "Tibetan Plateau",
     caption: "Vast Tibetan Plateau",
   },
@@ -520,7 +488,7 @@ export default function KailashMansarovarTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop"
+            src="/images/used/tibet-4.avif"
             alt="Kailash Mansarovar Tour"
             fill
             className="object-cover"

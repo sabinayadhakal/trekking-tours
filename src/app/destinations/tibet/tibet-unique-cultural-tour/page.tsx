@@ -172,50 +172,27 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/tibet-1.avif",
     alt: "Potala Palace",
     caption: "Potala Palace - Iconic Landmark of Lhasa",
   },
   {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/yamdrok-lake.avif",
     alt: "Yamdrok Lake",
     caption: "Turquoise Waters of Yamdrok Lake",
   },
   {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Jokhang Temple",
+    src: "/images/used/jokhang-monk.avif",
+    alt: "Monks Jokhang Temple",
     caption: "Jokhang Temple - Tibet's Holiest Temple",
   },
+  
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Sera Monastery Debate",
-    caption: "Monk Debates at Sera Monastery",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Tashilhunpo Monastery",
-    caption: "Tashilhunpo Monastery in Shigatse",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Kumbum Stupa",
-    caption: "Kumbum Stupa at Pelkor Chode, Gyantse",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Barkhor Pilgrims",
-    caption: "Pilgrims at Barkhor Circuit",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/tibet-plateau.avif",
     alt: "Tibetan Plateau",
     caption: "Vast Tibetan Plateau Landscape",
   },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Drepung Monastery",
-    caption: "Drepung Monastery - Former Monastic University",
-  },
+  
 ];
 
 const altitudeInfo = [
@@ -356,7 +333,7 @@ export default function TibetUniqueCulturalTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop"
+            src="/images/used/tibet-cultural-1.avif"
             alt="Tibet Cultural Tour"
             fill
             className="object-cover"

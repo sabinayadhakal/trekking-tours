@@ -204,50 +204,30 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/tibet-everest.avif",
     alt: "Mount Everest",
     caption: "Mount Everest (8,848m) - World's Highest Peak",
   },
+ 
+  
+  
   {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Everest Base Camp Tibet",
-    caption: "Everest Base Camp (5,200m) - North Side",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Rongbuk Monastery",
-    caption: "Rongbuk Monastery - Highest Monastery in the World",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/tibet-kingdom-1.avif",
     alt: "Himalayan Panorama",
     caption: "Himalayan Range from Tibet Side",
   },
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/yamdrok-lake.avif",
     alt: "Yamdrok Lake",
     caption: "Turquoise Yamdrok Lake",
   },
+  
   {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Potala Palace",
-    caption: "Potala Palace, Lhasa",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/tibet-plateau.avif",
     alt: "Tibetan Plateau",
     caption: "Vast Tibetan Plateau",
   },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Everest Prayer Flags",
-    caption: "Prayer Flags at Everest Base Camp",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Friendship Highway",
-    caption: "Friendship Highway to Everest",
-  },
+ 
 ];
 
 const altitudeInfo = [
@@ -430,7 +410,7 @@ export default function EverestBaseCampTibetPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop"
+            src="/images/used/tibet-everest.avif"
             alt="Everest Base Camp Tibet"
             fill
             className="object-cover"

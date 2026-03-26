@@ -199,50 +199,24 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/tibet-1.avif",
     alt: "Potala Palace",
     caption: "Potala Palace - Symbol of Tibetan Civilization",
   },
+  
+  
   {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Yumbulagang Palace",
-    caption: "Yumbulagang - Tibet's Oldest Building",
+    src: "/images/used/tibet-kingdom-1.avif",
+    alt: "Himalayan Landscape",
+    caption: "Tibet-Where the sky touches the earth",
   },
   {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Sakya Monastery",
-    caption: "Sakya Monastery - Ancient Kingdom Seat",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/yamdrok-lake.avif",
     alt: "Yamdrok Lake",
     caption: "Sacred Yamdrok Lake",
   },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Kumbum Stupa",
-    caption: "Kumbum Stupa - Gyantse",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Tashilhunpo Monastery",
-    caption: "Tashilhunpo Monastery, Shigatse",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Ganden Monastery",
-    caption: "Ganden Monastery on Mountain Ridge",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Gyantse Dzong",
-    caption: "Gyantse Dzong - Ancient Fortress",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Yarlung Valley",
-    caption: "Yarlung Valley - Cradle of Tibetan Civilization",
-  },
+
+  
 ];
 
 const kingdomInfo = [
@@ -429,7 +403,7 @@ export default function TibetanAncientKingdomsTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop"
+            src="/images/used/tibet-kingdom.avif"
             alt="Tibetan Ancient Kingdoms Tour"
             fill
             className="object-cover"

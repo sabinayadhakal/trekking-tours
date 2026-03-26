@@ -173,50 +173,26 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/tibet-2.avif",
     alt: "Namtso Lake",
     caption: "Namtso Lake - Heaven's Lake at 4,718m",
   },
   {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/tibet-1.avif",
     alt: "Potala Palace",
     caption: "Potala Palace - Iconic Landmark of Lhasa",
   },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Namtso Sunrise",
-    caption: "Sunrise over Sacred Namtso Lake",
+   {
+    src: "/images/used/tibet-lake-1.avif",
+    alt: "Stones Stacked Besides the Lake",
+    caption: "Stones Stacked Besides the Lake",
   },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Tashi Dor Island",
-    caption: "Tashi Dor Island with Meditation Caves",
+   {
+    src: "/images/used/tibet-lake-2.avif",
+    alt: "Yak beside the lake",
+    caption: "Yak beside the lake",
   },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Jokhang Temple",
-    caption: "Jokhang Temple - Tibet's Holiest Shrine",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401916060-e734a3c4d42a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Tibetan Nomads",
-    caption: "Tibetan Nomads on the Way to Namtso",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612611345910-17b9560f6e93?q=80&w=2070&auto=format&fit=crop",
-    alt: "Barkhor Pilgrims",
-    caption: "Pilgrims at Barkhor Circuit",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop",
-    alt: "Nyenchen Tanglha",
-    caption: "Nyenchen Tanglha Range from Namtso",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Tibetan Plateau",
-    caption: "Vast Tibetan Plateau Landscape",
-  },
+  
 ];
 
 const namtsoFacts = [
@@ -386,7 +362,7 @@ export default function TibetTourWithNamtsoLakePage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1625401878753-0b2d4d99790a?q=80&w=2070&auto=format&fit=crop"
+            src="/images/used/tibet-2.avif"
             alt="Tibet Tour with Namtso Lake"
             fill
             className="object-cover"
