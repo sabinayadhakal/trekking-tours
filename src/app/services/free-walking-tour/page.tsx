@@ -206,7 +206,8 @@ export default function FreeWalkingTourKathmanduPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src=                    "/images/used/fwt-1.avif"
+
             alt="Free Walking Tour Kathmandu"
             fill
             className="object-cover"
@@ -557,10 +558,18 @@ export default function FreeWalkingTourKathmanduPage() {
                 <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Glances of the route</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-3">
                   {[
-                    "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&auto=format",
-                    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&auto=format",
-                    "https://images.unsplash.com/photo-1486911278844-a81c5267e227?w=400&auto=format",
-                    "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&auto=format",
+                    "/images/used/beads.avif",
+                    "/images/used/ancient_temple.avif",
+                    "/images/used/buddhist_temple-1.avif",
+                    "/images/used/cremation-1.avif",
+                                        "/images/used/indrachowk.avif",
+                                                            "/images/used/kathesimbu.avif",
+                                                                                "/images/used/monkey_temple.avif",
+                                                                                                    "/images/used/teeth.avif",
+
+
+
+
                   ].map((src, i) => (
                     <div key={i} className="relative h-20 md:h-32 rounded-lg overflow-hidden">
                       <Image src={src} alt="tour preview" fill className="object-cover" />
