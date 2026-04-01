@@ -33,7 +33,7 @@ const culturalTours = [
     bestSeason: "Sep-May",
     price: 900,
     originalPrice: 1050,
-    image: "https://images.unsplash.com/photo-1624962904597-6e6ee6a8d648?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/historic-scenic-photography-nepal.avif",
     rating: 4.9,
     reviews: 67,
     highlights: ["Historic Sites", "Nature", "Scenic Views", "Photography"],
@@ -52,7 +52,7 @@ const culturalTours = [
     bestSeason: "Year Round",
     price: 650,
     originalPrice: 780,
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    image: "/images/used/durbar_square.avif",
     rating: 4.8,
     reviews: 156,
     highlights: ["Kathmandu Durbar Square", "Bhaktapur", "Patan", "Newari Culture"],
@@ -71,7 +71,7 @@ const culturalTours = [
     bestSeason: "Sep-May",
     price: 850,
     originalPrice: 990,
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    image: "/images/used/kathmandu-lumbini-pokhara-nepal.avif",
     rating: 4.9,
     reviews: 112,
     highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
@@ -90,7 +90,7 @@ const culturalTours = [
     bestSeason: "Year Round",
     price: 750,
     originalPrice: 890,
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    image: "/images/used/nepal-heritage-sites-tour-nepal.avif",
     rating: 4.8,
     reviews: 134,
     highlights: ["UNESCO Sites", "Durbar Squares", "Stupas", "Temples"],
@@ -109,7 +109,7 @@ const culturalTours = [
     bestSeason: "Year Round",
     price: 720,
     originalPrice: 850,
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    image: "/images/used/monkey_temple.avif",
     rating: 4.8,
     reviews: 98,
     highlights: ["Pashupatinath", "Boudhanath", "Swayambhunath", "Ancient Temples"],
@@ -379,7 +379,7 @@ export default function MultiDayCulturalToursPage() {
             </div>
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
-                src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=2070&auto=format&fit=crop"
+                src="/images/used/patan-1.avif"
                 alt="Traditional Nepalese Culture"
                 fill
                 className="object-cover"

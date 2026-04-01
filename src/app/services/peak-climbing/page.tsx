@@ -36,7 +36,7 @@ const peakClimbs = [
     bestSeason: "Apr-May, Oct-Nov",
     price: 2450,
     originalPrice: 2800,
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/island-peak-climbing-nepal.avif",
     rating: 4.8,
     reviews: 156,
     highlights: ["Summit Experience", "Technical Training", "Everest Views", "Glacier Crossing"],
@@ -57,7 +57,7 @@ const peakClimbs = [
     bestSeason: "Apr-May, Oct-Nov",
     price: 2650,
     originalPrice: 3100,
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/mera-peak-nepal.avif",
     rating: 4.9,
     reviews: 124,
     highlights: ["Highest Trekking Peak", "5 x 8000m Views", "Remote Wilderness", "Non-technical Summit"],
@@ -67,29 +67,9 @@ const peakClimbs = [
     trainingDays: 4,
     link: "/services/peak-climbing/mera-peak-climbing",
   },
+  
   {
     id: 3,
-    name: "Pisang Peak Climbing",
-    region: "Annapurna Region",
-    duration: "18 Days",
-    difficulty: "Moderate-Challenging",
-    altitude: "6,091m",
-    groupSize: "2-8",
-    bestSeason: "Apr-May, Oct-Nov",
-    price: 2350,
-    originalPrice: 2800,
-    image: "https://images.unsplash.com/photo-1511317559916-56d5ddb3e3e3?q=80&w=2070&auto=format&fit=crop",
-    rating: 4.8,
-    reviews: 98,
-    highlights: ["Rock Climbing", "Annapurna Circuit", "Panorama Views", "Alpine Style"],
-    description: "Combine the classic Annapurna Circuit with an exciting climb up this beautiful pyramid-shaped peak.",
-    featured: false,
-    successRate: "90%",
-    trainingDays: 3,
-    link: "/services/peak-climbing/pisang-peak-climbing",
-  },
-  {
-    id: 4,
     name: "Yala Peak Climbing",
     region: "Langtang Region",
     duration: "12 Days",
@@ -99,7 +79,7 @@ const peakClimbs = [
     bestSeason: "Mar-May, Sep-Dec",
     price: 1850,
     originalPrice: 2200,
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/yala-peak-nepal.avif",
     rating: 4.5,
     reviews: 112,
     highlights: ["Beginner Friendly", "Langtang Valley", "Tibetan Border Views", "Cultural Experience"],
@@ -418,7 +398,7 @@ export default function PeakClimbingPage() {
             </div>
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
-                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop"
+                src="/images/used/island-peak-climbing-nepal.avif"
                 alt="Mountain climbers on peak"
                 fill
                 className="object-cover"

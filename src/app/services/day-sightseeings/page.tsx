@@ -33,7 +33,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 75,
     originalPrice: 95,
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    image: "/images/used/bhaktapur-patan-nepal.avif",
     rating: 4.9,
     reviews: 312,
     highlights: ["Bhaktapur Durbar Square", "Patan Durbar Square", "Golden Temple", "Traditional Crafts"],
@@ -52,7 +52,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 65,
     originalPrice: 85,
-    image: "https://images.unsplash.com/photo-1593693397816-1c665ec8d5f3?q=80&w=2071&auto=format&fit=crop",
+    image: "/images/used/bungamati-1.avif",
     rating: 4.8,
     reviews: 156,
     highlights: ["Bungamati Village", "Khokana Village", "Patan Durbar Square", "Traditional Newari Life"],
@@ -71,7 +71,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 45,
     originalPrice: 60,
-    image: "https://images.unsplash.com/photo-1518991668576-85d87e6d6c6d?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/nepal-heritage-sites-tour-nepal.avif",
     rating: 4.8,
     reviews: 203,
     highlights: ["Great Bouddhanath Stupa", "Kapan Monastery", "Tibetan Buddhist Culture", "Monastery Visit"],
@@ -90,7 +90,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 55,
     originalPrice: 70,
-    image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/changunarayan-1.avif",
     rating: 4.7,
     reviews: 134,
     highlights: ["Changunarayan Temple", "Bhaktapur Durbar Square", "Sanga Viewpoint", "Traditional Villages"],
@@ -109,7 +109,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 50,
     originalPrice: 65,
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/dakshinkali-1.avif",
     rating: 4.7,
     reviews: 98,
     highlights: ["Dakshinkali Temple", "Pharping Caves", "Kirtipur Old Town", "Vajrayogini Temple"],
@@ -128,7 +128,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 60,
     originalPrice: 80,
-    image: "https://images.unsplash.com/photo-1549887552-23ad7caa7e14?q=80&w=2071&auto=format&fit=crop",
+    image: "/images/used/monkey_temple.avif",
     rating: 4.9,
     reviews: 267,
     highlights: ["Swayambhunath Stupa", "Kathmandu Durbar Square", "Pashupatinath Temple", "Bouddhanath Stupa"],
@@ -403,7 +403,7 @@ export default function DaySightseeingPage() {
             </div>
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
-                src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=2070&auto=format&fit=crop"
+                src="/images/used/nepal-stupa.avif"
                 alt="Kathmandu Durbar Square"
                 fill
                 className="object-cover"

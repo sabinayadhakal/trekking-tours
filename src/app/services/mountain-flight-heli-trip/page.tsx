@@ -34,7 +34,7 @@ const mountainFlights = [
     bestSeason: "Sep-May",
     price: 350,
     originalPrice: 420,
-    image: "https://images.unsplash.com/photo-1511317559916-56d5ddb3e3e3?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/everest-flight-1.avif",
     rating: 4.9,
     reviews: 456,
     highlights: ["Mount Everest", "Lhotse", "Makalu", "Ama Dablam"],
@@ -54,7 +54,7 @@ const mountainFlights = [
     bestSeason: "Sep-May",
     price: 1200,
     originalPrice: 1500,
-    image: "https://images.unsplash.com/photo-1562329261-38b6b9d4efd8?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/everest-heli-1.avif",
     rating: 4.9,
     reviews: 156,
     highlights: ["Landing at Kalapatthar", "Everest Base Camp", "Gokyo Lakes", "Helicopter Landing"],
@@ -74,7 +74,7 @@ const mountainFlights = [
     bestSeason: "Year Round",
     price: 320,
     originalPrice: 380,
-    image: "https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=2074&auto=format&fit=crop",
+    image: "/images/used/annapurna-flight-1.avif",
     rating: 4.8,
     reviews: 312,
     highlights: ["Annapurna I", "Dhaulagiri", "Machapuchare", "Manaslu"],
@@ -94,7 +94,7 @@ const mountainFlights = [
     bestSeason: "Oct-Apr",
     price: 950,
     originalPrice: 1150,
-    image: "https://images.unsplash.com/photo-1528164344705-47542687000d?q=80&w=2092&auto=format&fit=crop",
+    image: "/images/used/langtang-heli.avif",
     rating: 4.8,
     reviews: 89,
     highlights: ["Langtang Lirung", "Ganesh Himal", "Dorje Lakpa", "Kyanjin Gompa"],
@@ -365,7 +365,7 @@ export default function MountainFlightsPage() {
             </div>
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
-                src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop"
+                src="/images/used/everest-flight-1.avif"
                 alt="Mountain flight view"
                 fill
                 className="object-cover"

@@ -191,7 +191,7 @@ const cityTours = [
     difficulty: "Easy",
     altitude: "2,195m",
     price: "$75",
-    image: "https://images.unsplash.com/photo-1624962904597-6e6ee6a8d648?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/nagarkot-changu.avif",
     rating: 4.8,
     highlights: ["Himalayan Sunrise", "Mt. Everest Views", "UNESCO Temple", "Village Walk", "Downhill Trail", "Rural Life Experience"],
     description: "Scenic day hike with panoramic mountain views.",

@@ -39,7 +39,7 @@ const jungleSafaris = [
     bestSeason: "Oct-Mar",
     price: 450,
     originalPrice: 550,
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/nepal-chitwan.avif",
     rating: 4.9,
     reviews: 342,
     highlights: ["Elephant Safari", "Canoe Ride", "Bird Watching", "Tharu Culture"],
@@ -373,7 +373,7 @@ export default function JungleSafariPage() {
             </div>
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
-                src="https://images.unsplash.com/photo-1562552476-8ac4a2d1d6a0?q=80&w=2070&auto=format&fit=crop"
+                src="/images/used/chitwan-1.avif"
                 alt="Jungle safari elephant ride"
                 fill
                 className="object-cover"

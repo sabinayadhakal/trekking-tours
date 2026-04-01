@@ -33,7 +33,7 @@ const dayHikes = [
     bestSeason: "Sep-May",
     price: 65,
     originalPrice: 85,
-    image: "https://images.unsplash.com/photo-1549887552-23ad7caa7e14?q=80&w=2071&auto=format&fit=crop",
+    image: "/images/used/nagarkot-changu.avif",
     rating: 4.9,
     reviews: 245,
     highlights: ["Himalayan Sunrise", "Panoramic Views", "Photo Points", "Breakfast with a View"],
@@ -52,7 +52,7 @@ const dayHikes = [
     bestSeason: "Mar-May, Sep-Nov",
     price: 50,
     originalPrice: 65,
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/champadevi-1.avif",
     rating: 4.7,
     reviews: 89,
     highlights: ["Oak Forest", "Wildlife Spotting", "Temple Visit", "Valley Views"],
@@ -71,7 +71,7 @@ const dayHikes = [
     bestSeason: "Sep-May",
     price: 60,
     originalPrice: 80,
-    image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/used/namobuddha-1.avif",
     rating: 4.8,
     reviews: 112,
     highlights: ["Buddhist Monastery", "Newari Villages", "Himalayan Views", "Sacred Site"],
@@ -346,7 +346,7 @@ export default function DayHikesPage() {
             </div>
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
-                src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop"
+                src="/images/used/hiking-1.avif"
                 alt="Hiking in Nepal"
                 fill
                 className="object-cover"
