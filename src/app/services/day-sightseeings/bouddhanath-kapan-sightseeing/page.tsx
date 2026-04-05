@@ -87,35 +87,23 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/nepal-heritage-sites-tour-nepal.avif",
     alt: "Bouddhanath Stupa",
     caption: "Bouddhanath Stupa - One of the largest stupas in South Asia",
   },
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
+    src: "/images/used/kapan-1.avif",
     alt: "Kapan Monastery",
     caption: "Kapan Monastery perched on a hilltop overlooking Kathmandu Valley",
   },
+ 
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Prayer Wheels",
-    caption: "Spinning prayer wheels at Bouddhanath Stupa",
+    src: "/images/used/kapan-2.avif",
+    alt: "Buddha Statue inside Kapan Monastery",
+    caption: "Big Buddha Statue inside the main Monastery",
   },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Monks at Kapan",
-    caption: "Buddhist monks in meditation at Kapan Monastery",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Bouddhanath Eyes",
-    caption: "All-seeing eyes of Buddha at Bouddhanath Stupa",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Kapan Panorama",
-    caption: "Panoramic view of Kathmandu Valley from Kapan Monastery",
-  },
+  
+ 
 ];
 
 export default function BouddhanathKapanSightseeingPage() {
@@ -226,7 +214,7 @@ export default function BouddhanathKapanSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/nepal-stupa.avif"
             alt="Bouddhanath Stupa and Kapan Monastery"
             fill
             className="object-cover"

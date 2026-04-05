@@ -231,35 +231,23 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/gokyo-1.avif",
     alt: "Gokyo Lakes",
     caption: "Turquoise Gokyo Lakes",
   },
   {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
+    src: "/images/used/gokyo-2.avif",
     alt: "Gokyo Ri",
     caption: "Gokyo Ri Summit View",
   },
+  
+  
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Cho La Pass",
-    caption: "Cho La Pass (5,420m)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Ngozumpa Glacier",
-    caption: "Ngozumpa Glacier",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
+    src: "/images/used/gokyo-3.avif",
     alt: "Everest from Gokyo",
     caption: "Everest from Gokyo Ri",
   },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Gokyo Village",
-    caption: "Gokyo Village",
-  },
+ 
 ];
 
 export default function EverestGokyoTrekPage() {
@@ -370,7 +358,7 @@ export default function EverestGokyoTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/gokyo-1.avif"
             alt="Everest Gokyo Lakes Trek"
             fill
             className="object-cover"

@@ -109,7 +109,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 50,
     originalPrice: 65,
-    image: "/images/used/dakshinkali-1.avif",
+    image: "/images/used/dakshinkali-2.avif",
     rating: 4.7,
     reviews: 98,
     highlights: ["Dakshinkali Temple", "Pharping Caves", "Kirtipur Old Town", "Vajrayogini Temple"],

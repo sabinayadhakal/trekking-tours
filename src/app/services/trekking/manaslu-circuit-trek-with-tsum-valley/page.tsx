@@ -273,36 +273,29 @@ const excludes = [
 ];
 
 const gallery = [
+  
+  
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Larkya La Pass",
-    caption: "Larkya La Pass (5,106m)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    alt: "Mu Gompa",
-    caption: "Mu Gompa - Largest Monastery in Tsum Valley",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/tsum-4.avif",
     alt: "Tsum Valley",
     caption: "Sacred Tsum Valley with Ganesh Himal",
   },
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/manaslu-main-page.avif",
     alt: "Manaslu Mountain",
     caption: "Mount Manaslu (8,163m)",
   },
   {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
-    alt: "Rachen Gompa",
-    caption: "Rachen Gompa - Ancient Tsum Monastery",
+    src: "/images/used/tsum-3.avif",
+    alt: "Way to Tsum Valley",
+    caption: "Way to Sacred Tsum Valley",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Samagaon Village",
-    caption: "Samagaon with Manaslu",
+    src: "/images/used/tsum-valley-1.avif",
+    alt: "Tsum Valley",
+    caption: "Sacred Tsum Valley with Ganesh Himal",
   },
+  
 ];
 
 export default function ManasluTsumValleyTrekPage() {
@@ -413,7 +406,7 @@ export default function ManasluTsumValleyTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/tsum-valley-1.avif"
             alt="Manaslu Circuit with Tsum Valley Trek"
             fill
             className="object-cover"

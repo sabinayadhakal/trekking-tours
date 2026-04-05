@@ -261,33 +261,19 @@ const excludes = [
 ];
 
 const gallery = [
+  
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Kongma La Pass",
-    caption: "Kongma La Pass (5,535m) - Highest Pass",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    alt: "Cho La Pass Glacier",
-    caption: "Cho La Pass Glacier Crossing",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Renjo La Pass View",
-    caption: "Renjo La Pass with Gokyo Lakes",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/3-passes-1.avif",
     alt: "Three Passes Trail",
     caption: "Trail to Kongma La",
   },
   {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
+    src: "/images/used/everest-3.avif",
     alt: "Everest from Kala Patthar",
     caption: "Everest from Kala Patthar",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/gokyo-1.avif",
     alt: "Gokyo Lakes",
     caption: "Gokyo Lakes from Renjo La",
   },

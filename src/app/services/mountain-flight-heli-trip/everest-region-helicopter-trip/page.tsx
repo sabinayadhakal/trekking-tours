@@ -142,35 +142,18 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/everest-heli-2.avif",
     alt: "Mount Everest",
     caption: "Mount Everest (8,848m) viewed from helicopter",
   },
+  
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
-    alt: "Kala Patthar Landing",
-    caption: "Helicopter landing at Kala Patthar (5,545m) with Everest behind",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/everest-heli-1.avif",
     alt: "Everest Massif",
     caption: "The entire Everest massif including Lhotse and Nuptse",
   },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Khumbu Glacier",
-    caption: "Khumbu Glacier and icefall viewed from helicopter",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Helicopter in Mountains",
-    caption: "Helicopter flying through the Himalayan peaks",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Champagne Celebration",
-    caption: "Champagne toast at Kala Patthar with Everest backdrop",
-  },
+  
+ 
 ];
 
 export default function EverestRegionHelicopterTripPage() {
@@ -281,7 +264,7 @@ export default function EverestRegionHelicopterTripPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/everest-heli-1.avif"
             alt="Everest Region Helicopter Trip"
             fill
             className="object-cover"

@@ -266,35 +266,16 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1562832135-14a35d25edef?q=80&w=2045&auto=format&fit=crop",
+    src: "/images/used/island-peak-1.avif",
     alt: "Island Peak Summit",
     caption: "Island Peak Summit (6,189m) with Everest behind",
   },
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/island-peak-2.avif",
     alt: "Island Peak Climb",
     caption: "Climbing the headwall on Island Peak",
   },
-  {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    alt: "Base Camp",
-    caption: "Island Peak Base Camp with training session",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Ama Dablam",
-    caption: "Ama Dablam view from Tengboche",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Namche Bazaar",
-    caption: "Namche Bazaar - Sherpa capital",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Everest Region",
-    caption: "Tengboche Monastery with Everest",
-  },
+  
 ];
 
 export default function IslandPeakClimbingPage() {
@@ -405,7 +386,7 @@ export default function IslandPeakClimbingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1562832135-14a35d25edef?q=80&w=2045&auto=format&fit=crop"
+            src="/images/used/island-peak-climbing-nepal.avif"
             alt="Island Peak Climbing"
             fill
             className="object-cover"

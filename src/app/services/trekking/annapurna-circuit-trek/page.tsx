@@ -252,35 +252,31 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Thorong La Pass",
-    caption: "Thorong La Pass (5,416m) - World's Highest Pass",
+    src: "/images/used/annapurna-circuit-main-page.avif",
+    alt: "Manang town",
+    caption: "Beautiful Manang Town from a cliff",
   },
   {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
+    src: "/images/used/annapurna-circuit-1.avif",
+    alt: "Chulu Himal",
+    caption: "View from Thorang High Camp",
+  },
+   {
+    src: "/images/used/annapurna-circuit-2.avif",
+    alt: "Ngawal town",
+    caption: "Small town on the way to Manang-- Ngawal",
+  },
+   {
+    src: "/images/used/annapurna-circuit-3.avif",
     alt: "Annapurna Range",
     caption: "Annapurna Range from Manang",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Muktinath Temple",
-    caption: "Sacred Muktinath Temple",
+    src: "/images/used/annapurna-circuit-4.avif",
+    alt: "Thorang La",
+    caption: "Thorang La- 5416m",
   },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Poon Hill Sunrise",
-    caption: "Poon Hill Sunrise Panorama",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
-    alt: "Marsyangdi Valley",
-    caption: "Marsyangdi River Valley",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Ghandruk Village",
-    caption: "Traditional Gurung Village - Ghandruk",
-  },
+  
 ];
 
 export default function AnnapurnaCircuitTrekPage() {
@@ -391,7 +387,7 @@ export default function AnnapurnaCircuitTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/annapurna-circuit-2.avif"
             alt="Annapurna Circuit Trek"
             fill
             className="object-cover"

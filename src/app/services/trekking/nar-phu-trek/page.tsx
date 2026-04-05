@@ -227,35 +227,23 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/narphu-1.avif",
     alt: "Phu Village",
     caption: "Phu Village - Remote Tibetan Settlement",
   },
+  
   {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    alt: "Nar Phu Valley",
-    caption: "Dramatic Nar Phu Valley Landscape",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/narphu-3.avif",
     alt: "Kang La Pass",
     caption: "Kang La Pass (5,306m)",
   },
+ 
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Tashi Lakhang Gompa",
-    caption: "Ancient Tashi Lakhang Monastery",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
+    src: "/images/used/narphu-4.avif",
     alt: "Nar Village",
     caption: "Nar Village with Mountain Views",
   },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Annapurna Range",
-    caption: "Annapurna Range from Kang La",
-  },
+  
 ];
 
 export default function NarPhuTrekPage() {
@@ -366,7 +354,7 @@ export default function NarPhuTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/narphu-2.avif"
             alt="Nar Phu Valley Trek"
             fill
             className="object-cover"

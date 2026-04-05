@@ -235,35 +235,27 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/ganjala-pass-1.avif",
     alt: "Kyanjin Gompa",
     caption: "Kyanjin Gompa with Langtang Lirung",
   },
   {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
+    src: "/images/used/gosaikunda-1.avif",
     alt: "Gosaikunda Lake",
     caption: "Sacred Gosaikunda Lake (4,380m)",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/langtang-1.avif",
     alt: "Langtang Valley",
     caption: "Langtang Valley - Valley of Glaciers",
   },
+  
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Chisapani Sunrise",
-    caption: "Sunrise from Chisapani",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
+    src: "/images/used/helambu-1.avif",
     alt: "Tarkeghyang Village",
     caption: "Traditional Village in Helambu",
   },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Rhododendron Forest",
-    caption: "Rhododendron Forests in Spring",
-  },
+  
 ];
 
 export default function LangtangHelambuTrekPage() {
@@ -374,7 +366,7 @@ export default function LangtangHelambuTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/helambu-1.avif"
             alt="Langtang Helambu Trek"
             fill
             className="object-cover"

@@ -274,35 +274,21 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/tilicho-lake-1.avif",
     alt: "Tilicho Lake",
     caption: "Tilicho Lake (4,920m) - World's Highest Lake",
   },
   {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    alt: "Thorong La Pass",
-    caption: "Thorong La Pass (5,416m)",
+    src: "/images/used/annapurna-circuit-1.avif",
+    alt: "Chulu Mountain from Thorang High Camp",
+    caption: "Chulu Mountain from Thorang High Camp",
   },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Mesokanto La Pass",
-    caption: "Mesokanto La Pass (5,100m)",
+   {
+    src: "/images/used/annapurna-circuit-4.avif",
+    alt: "Thorang La",
+    caption: "Thorang La- 5416m",
   },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Tilicho Base Camp",
-    caption: "Trail to Tilicho Lake",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
-    alt: "Muktinath Temple",
-    caption: "Sacred Muktinath Temple",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Poon Hill Sunrise",
-    caption: "Poon Hill Sunrise Panorama",
-  },
+  
 ];
 
 export default function AnnapurnaCircuitTilichoTrekPage() {
@@ -413,7 +399,7 @@ export default function AnnapurnaCircuitTilichoTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/tilicho-lake-1.avif"
             alt="Annapurna Circuit with Tilicho Lake Trek"
             fill
             className="object-cover"

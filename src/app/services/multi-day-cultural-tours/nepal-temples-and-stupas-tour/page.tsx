@@ -219,35 +219,31 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/nepal-stupa.avif",
     alt: "Boudhanath Stupa",
     caption: "Boudhanath Stupa - Sacred Buddhist Stupa in Kathmandu",
   },
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
+    src: "/images/used/monkey_temple.avif",
     alt: "Swayambhunath Stupa",
     caption: "Swayambhunath Stupa (Monkey Temple) with all-seeing eyes",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/pashupati-1.avif",
     alt: "Pashupatinath Temple",
     caption: "Pashupatinath Temple on the banks of Bagmati River",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/bhaktapur-5.avif",
     alt: "Nyatapola Temple Bhaktapur",
     caption: "Nyatapola Temple - Nepal's tallest pagoda in Bhaktapur",
   },
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/lumbini-1.avif",
     alt: "Mayadevi Temple Lumbini",
     caption: "Mayadevi Temple - Birthplace of Lord Buddha, Lumbini",
   },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "World Peace Pagoda Pokhara",
-    caption: "World Peace Pagoda (Shanti Stupa) overlooking Pokhara",
-  },
+ 
 ];
 
 export default function NepalTemplesAndStupasTourPage() {
@@ -358,7 +354,7 @@ export default function NepalTemplesAndStupasTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/monkey_temple.avif"
             alt="Nepal Temples and Stupas Tour"
             fill
             className="object-cover"

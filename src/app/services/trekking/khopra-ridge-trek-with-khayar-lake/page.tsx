@@ -193,35 +193,21 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/khopra-2.avif",
     alt: "Khayar Lake",
     caption: "Sacred Khayar Lake (4,660m)",
   },
   {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
+    src: "/images/used/khopra-trek-1.avif",
     alt: "Khopra Ridge Panorama",
     caption: "Khopra Ridge - Annapurna & Dhaulagiri Views",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/ghandruk-1.avif",
     alt: "Ghandruk Village",
     caption: "Traditional Gurung Village - Ghandruk",
   },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Rhododendron Forest",
-    caption: "Rhododendron Forests in Spring",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
-    alt: "Tatopani Hot Springs",
-    caption: "Natural Hot Springs at Tatopani",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Annapurna South",
-    caption: "Annapurna South from Khopra Ridge",
-  },
+  
 ];
 
 export default function KhopraRidgeKhayarLakeTrekPage() {
@@ -332,7 +318,7 @@ export default function KhopraRidgeKhayarLakeTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/khopra-trek-1.avif"
             alt="Khopra Ridge with Khayar Lake Trek"
             fill
             className="object-cover"

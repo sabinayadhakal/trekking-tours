@@ -173,7 +173,7 @@ const trekkingPackages = [
     highlights: ["Gokyo Lakes", "Gokyo Ri", "Ngozumpa Glacier", "Everest Views"],
     description: "Trek to the stunning turquoise Gokyo Lakes and climb Gokyo Ri for panoramic Everest views.",
     featured: false,
-    link: "/services/trekking/gokyo-trek",
+    link: "/services/trekking/everest-gokyo-trek",
   },
   {
     id: 9,
@@ -211,7 +211,7 @@ const trekkingPackages = [
     highlights: ["Poon Hill Sunrise", "Rhododendron Forests", "Gurung Villages", "Mountain Panorama"],
     description: "The perfect short trek with stunning sunrise views over the Annapurna and Dhaulagiri ranges.",
     featured: false,
-    link: "/services/trekking/gorepani-poon-hill-trek",
+    link: "/services/trekking/ghorepani-poon-hill-trek",
   },
   {
     id: 11,

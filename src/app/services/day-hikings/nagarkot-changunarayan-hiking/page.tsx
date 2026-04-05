@@ -94,35 +94,31 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
+    src: "/images/used/nagarkot-hike-1.avif",
     alt: "Sunrise over Himalayas from Nagarkot",
     caption: "Spectacular sunrise over the Himalayas from Nagarkot viewpoint",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Himalayan Panorama",
-    caption: "Panoramic Himalayan views including Ganesh Himal and Langtang",
+    src: "/images/used/changunarayan-temple-2.avif",
+    alt: "Changunarayan Temple",
+    caption: "Changunarayan Temple",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/changunarayan-temple-1.avif",
     alt: "Changunarayan Temple",
     caption: "Changunarayan Temple - Nepal's oldest temple (4th century)",
   },
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/nagarkot-3.avif",
     alt: "Hiking Trail",
     caption: "Beautiful hiking trail through forests and villages",
   },
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/nagarkot-4.avif",
     alt: "Traditional Village",
     caption: "Traditional village along the hiking route",
   },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Everest View",
-    caption: "Mount Everest visible from Nagarkot on clear days",
-  },
+
 ];
 
 export default function NagarkotChangunarayanHikingPage() {
@@ -233,7 +229,7 @@ export default function NagarkotChangunarayanHikingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop"
+            src="/images/used/nagarkot-changu.avif"
             alt="Nagarkot-Changunarayan Hiking"
             fill
             className="object-cover"

@@ -89,35 +89,31 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
+    src: "/images/used/bhaktapur-2.avif",
     alt: "Bhaktapur Durbar Square",
     caption: "Bhaktapur Durbar Square with Nyatapola Temple",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/patan-1.avif",
     alt: "Patan Durbar Square",
     caption: "Patan Durbar Square - City of Fine Arts",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/bhaktapur-4.avif",
     alt: "Pottery Square Bhaktapur",
     caption: "Traditional potters at work in Bhaktapur's Pottery Square",
   },
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/patan-2.avif",
     alt: "Krishna Temple Patan",
     caption: "Krishna Temple built entirely of stone in Patan",
   },
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/bhaktapur-3.avif",
     alt: "Palace of 55 Windows",
     caption: "Palace of 55 Windows in Bhaktapur Durbar Square",
   },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Golden Temple Patan",
-    caption: "Hiranya Varna Mahavihar (Golden Temple) in Patan",
-  },
+ 
 ];
 
 export default function BhaktapurPatanSightseeingPage() {
@@ -228,7 +224,7 @@ export default function BhaktapurPatanSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop"
+            src="/images/used/bhaktapur-patan-nepal.avif"
             alt="Bhaktapur and Patan Sightseeing"
             fill
             className="object-cover"

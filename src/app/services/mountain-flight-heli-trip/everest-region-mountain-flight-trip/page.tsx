@@ -142,35 +142,17 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/everest-flight-2.avif",
     alt: "Mount Everest",
     caption: "Mount Everest (8,848m) - The world's highest peak viewed from mountain flight",
   },
+ 
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
-    alt: "Everest Massif",
-    caption: "The entire Everest massif including Lhotse and Nuptse",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Lhotse and Nuptse",
-    caption: "Lhotse (8,516m) and Nuptse (7,861m) from mountain flight",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Mountain Flight Aircraft",
-    caption: "Twin Otter aircraft designed for Himalayan mountain flights",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/everest-flight-1.avif",
     alt: "Window View",
     caption: "Unobstructed window view of Himalayan peaks during flight",
   },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Makalu",
-    caption: "Makalu (8,485m) - The world's fifth highest peak",
-  },
+  
 ];
 
 export default function EverestRegionMountainFlightTripPage() {
@@ -281,7 +263,7 @@ export default function EverestRegionMountainFlightTripPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/everest-flight-1.avif"
             alt="Everest Region Mountain Flight"
             fill
             className="object-cover"

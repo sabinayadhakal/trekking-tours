@@ -265,36 +265,28 @@ const excludes = [
 ];
 
 const gallery = [
+ 
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Rupina La Pass",
-    caption: "Rupina La Pass (approx. 4,720m)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    alt: "Larkya La Pass",
-    caption: "Larkya La Pass (5,106m)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/manaslu-main-page.avif",
     alt: "Manaslu Mountain",
     caption: "Mount Manaslu (8,163m) from Samagaon",
   },
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Barpak Village",
-    caption: "Barpak Village - Epicenter of 2015 Earthquake",
+    src: "/images/used/rupinala-1.avif",
+    alt: "Way to Rupina- La",
+    caption: "Way to Rupina La",
   },
   {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
-    alt: "Camping in Himalayas",
-    caption: "Camping in Remote Section of Rupina La",
+    src: "/images/used/rupinala-3.avif",
+    alt: "Village Before Rupina La",
+    caption: "Village before Rupina La",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Gurung Village",
-    caption: "Traditional Gurung Village",
+    src: "/images/used/rupinala-4.avif",
+    alt: "Yak on the Way",
+    caption: "Yak on the Way to Samagaon",
   },
+  
 ];
 
 export default function RupinaLaTrekPage() {
@@ -405,7 +397,7 @@ export default function RupinaLaTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/rupinala-4.avif"
             alt="Rupina La Pass Trek"
             fill
             className="object-cover"

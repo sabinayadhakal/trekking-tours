@@ -241,35 +241,26 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/manaslu-main-page.avif",
     alt: "Manaslu Mountain View",
     caption: "Mount Manaslu (8,163m)",
   },
   {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    alt: "Himalayan Valley",
-    caption: "Nubri Valley",
+    src: "/images/used/manaslu-3.avif",
+    alt: "Pungyen Gompa",
+    caption: "Pungyen Gompa located at the base of Manaslu",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Mountain Trail",
-    caption: "Trail through forests",
+    src: "/images/used/manaslu-4.avif",
+    alt: "Birendra Lake",
+    caption: "Birendra Lake-- Manaslu glacial lake",
   },
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Trekkers on Trail",
-    caption: "Trekking to Larkya La",
+    src: "/images/used/manaslu-2.avif",
+    alt: "Way to Namrung",
+    caption: "Way to Namrung",
   },
-  {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
-    alt: "Prayer Flags",
-    caption: "Prayer flags at pass",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Mountain Peaks",
-    caption: "Panoramic views",
-  },
+ 
 ];
 
 export default function ManasluCircuitTrekPage() {
@@ -380,7 +371,7 @@ export default function ManasluCircuitTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/manaslu-1.avif"
             alt="Manaslu Circuit Trek"
             fill
             className="object-cover"

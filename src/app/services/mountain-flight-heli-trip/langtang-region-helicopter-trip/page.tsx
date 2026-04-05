@@ -149,35 +149,19 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/langtang-flight-2.avif",
     alt: "Langtang Lirung",
     caption: "Langtang Lirung (7,227m) - The highest peak in the Langtang range",
   },
+  
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
-    alt: "Kyanjin Gompa",
-    caption: "Kyanjin Gompa village at 3,950m with ancient monastery",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Langtang Valley",
-    caption: "The 'Valley of Glaciers' - Langtang Valley viewed from helicopter",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Gosaikunda Lake",
-    caption: "Sacred Gosaikunda Lake at 4,380m viewed from above",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/langtang-flight-1.avif",
     alt: "Helicopter in Langtang",
     caption: "Helicopter landing at Kyanjin Gompa with mountain backdrop",
   },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Ganesh Himal",
-    caption: "Ganesh Himal (7,407m) viewed during Langtang helicopter tour",
-  },
+   
+
+  
 ];
 
 export default function LangtangRegionHelicopterTripPage() {
@@ -288,7 +272,7 @@ export default function LangtangRegionHelicopterTripPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/langtang-heli.avif"
             alt="Langtang Region Helicopter Trip"
             fill
             className="object-cover"

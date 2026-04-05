@@ -162,35 +162,21 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/ghorepani-2.avif",
     alt: "Poon Hill Sunrise",
-    caption: "Poon Hill Sunrise - Annapurna & Dhaulagiri Range",
+    caption: "Annapurna & Dhaulagiri Range",
   },
-  {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    alt: "Machhapuchhre Fishtail",
-    caption: "Machhapuchhre (Fishtail) from Poon Hill",
+    {
+    src: "/images/used/ghorepani-1.avif",
+    alt: "Machhapuchhre view with stacked stones",
+    caption: "Annapurna & Machhapuchrey Range with stones stacked",
   },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Ghorepani Village",
-    caption: "Ghorepani Village with Mountain Views",
+    {
+    src: "/images/used/ghorepani-poon-hill-1.avif",
+    alt: "Poon hill viewpoint",
+    caption: "Poon hill viewpoint tower",
   },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Ulleri Steps",
-    caption: "Ulleri Stone Steps (3,000+ steps)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
-    alt: "Rhododendron Forest",
-    caption: "Rhododendron Forests in Spring",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Ghandruk Village",
-    caption: "Traditional Gurung Village - Ghandruk",
-  },
+  
 ];
 
 export default function GhorepaniPoonHillTrekPage() {
@@ -301,7 +287,7 @@ export default function GhorepaniPoonHillTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/ghorepani-1.avif"
             alt="Ghorepani Poon Hill Trek"
             fill
             className="object-cover"

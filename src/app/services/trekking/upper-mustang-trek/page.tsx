@@ -235,35 +235,16 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/upper-mustang-1.avif",
     alt: "Lo Manthang Walled City",
     caption: "Lo Manthang - The Walled Capital",
   },
   {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
+    src: "/images/used/upper-mustang-2.avif",
     alt: "Upper Mustang Landscape",
     caption: "High-Altitude Desert of Mustang",
   },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Sky Caves",
-    caption: "Ancient Sky Caves of Chhoser",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Kagbeni Village",
-    caption: "Kagbeni - Gateway to Upper Mustang",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
-    alt: "Thubchen Gompa",
-    caption: "Thubchen Gompa - Lo Manthang",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Kali Gandaki Valley",
-    caption: "Kali Gandaki - World's Deepest Gorge",
-  },
+
 ];
 
 export default function UpperMustangTrekPage() {
@@ -374,7 +355,7 @@ export default function UpperMustangTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/upper-mustang-main-page.avif"
             alt="Upper Mustang Trek"
             fill
             className="object-cover"

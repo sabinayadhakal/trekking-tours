@@ -91,32 +91,32 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
+    src: "/images/used/changunarayan-1.avif",
     alt: "Changunarayan Temple",
     caption: "Changunarayan Temple - The oldest Hindu temple in Nepal (4th century)",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/bhaktapur-2.avif",
     alt: "Bhaktapur Durbar Square",
     caption: "Bhaktapur Durbar Square with Nyatapola Temple",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/sanga-1.avif",
     alt: "Sanga Viewpoint",
     caption: "Panoramic Himalayan views from Sanga hilltop",
   },
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/bhaktapur-5.avif",
     alt: "Nyatapola Temple",
     caption: "Nyatapola Temple - Nepal's tallest pagoda",
   },
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/bhaktapur-3.avif",
     alt: "Palace of 55 Windows",
     caption: "Palace of 55 Windows in Bhaktapur Durbar Square",
   },
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/bhaktapur-4.avif",
     alt: "Pottery Square",
     caption: "Traditional potters at work in Bhaktapur's Pottery Square",
   },
@@ -230,7 +230,7 @@ export default function ChangunarayanBhaktapurSangaSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop"
+            src="/images/used/changunarayan-1.avif"
             alt="Changunarayan, Bhaktapur and Sanga Sightseeing"
             fill
             className="object-cover"

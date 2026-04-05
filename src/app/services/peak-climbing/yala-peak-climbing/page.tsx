@@ -222,35 +222,16 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/yala-peak-2.avif",
     alt: "Yala Peak Summit",
     caption: "Yala Peak Summit (5,732m) with Langtang range behind",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/langtang-2.avif",
     alt: "Kyanjin Gompa",
     caption: "Kyanjin Gompa with Langtang Lirung",
   },
-  {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
-    alt: "Langtang Valley",
-    caption: "Beautiful Langtang Valley trek",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Langtang Village",
-    caption: "Traditional Langtang village",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Yala Base Camp",
-    caption: "Yala Peak Base Camp at 4,800m",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Sunrise Summit",
-    caption: "Sunrise from Yala Peak summit",
-  },
+ 
 ];
 
 export default function YalaPeakClimbingPage() {
@@ -361,7 +342,7 @@ export default function YalaPeakClimbingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/yala-peak-nepal.avif"
             alt="Yala Peak Climbing"
             fill
             className="object-cover"

@@ -94,32 +94,32 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
+    src: "/images/used/bungamati-1.avif",
     alt: "Bungamati Village",
     caption: "Traditional Newari village of Bungamati with its temple",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Khokana Village",
-    caption: "Medieval Khokana village known for mustard oil production",
+    src: "/images/used/bungamati-2.avif",
+    alt: "Dhime Baja",
+    caption: "Newari men playing Dhime Baaja",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/patan-2.avif",
     alt: "Patan Durbar Square",
     caption: "Patan Durbar Square - UNESCO World Heritage Site",
   },
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Mustard Oil Press",
-    caption: "Traditional mustard oil press in Khokana village",
+    src: "/images/used/bungamati-4.avif",
+    alt: "Local Newari Food",
+    caption: "Local Newari Food in Bungamati, Khokana",
   },
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/bungamati-5.avif",
     alt: "Woodcarving Bungamati",
     caption: "Traditional woodcarving workshops in Bungamati",
   },
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/patan-1.avif",
     alt: "Krishna Temple Patan",
     caption: "Krishna Temple in Patan Durbar Square",
   },
@@ -233,7 +233,7 @@ export default function BungamatiKhokanaPatanSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop"
+            src="/images/used/bungamati-1.avif"
             alt="Bungamati, Khokana and Patan Sightseeing"
             fill
             className="object-cover"

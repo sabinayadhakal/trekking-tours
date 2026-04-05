@@ -172,35 +172,27 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Mardi Himal Base Camp",
-    caption: "Mardi Himal Base Camp (4,500m)",
+    src: "/images/used/mardi-himal-1.avif",
+    alt: "Way to Mardi Himal Base Camp",
+    caption: "Way to Mardi Himal Base Camp (4,500m)",
   },
   {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    alt: "Machhapuchhre Fishtail",
-    caption: "Machhapuchhre - Fishtail Mountain",
+    src: "/images/used/mardi-1.avif",
+    alt: "Mardi High Camp",
+    caption: "High Camp Mardi",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/mardi-3.avif",
     alt: "High Camp Ridge",
     caption: "Ridge Trail to High Camp",
   },
+  
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Rhododendron Forest",
-    caption: "Rhododendron Forests in Spring",
+    src: "/images/used/mardi-2.avif",
+    alt: "Viewpoint",
+    caption: "Forest Camp",
   },
-  {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
-    alt: "Sunrise Viewpoint",
-    caption: "Sunrise from Mardi Viewpoint (4,200m)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Annapurna South",
-    caption: "Annapurna South from High Camp",
-  },
+  
 ];
 
 export default function MardiHimalTrekPage() {
@@ -311,7 +303,7 @@ export default function MardiHimalTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/mardi-1.avif"
             alt="Mardi Himal Trek"
             fill
             className="object-cover"

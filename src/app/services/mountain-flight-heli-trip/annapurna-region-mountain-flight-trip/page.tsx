@@ -154,35 +154,18 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/annapurna-mountain-flight-2.avif",
     alt: "Annapurna Range",
     caption: "Spectacular Annapurna range viewed from mountain flight",
   },
+  
+  
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
-    alt: "Machhapuchhre Fishtail",
-    caption: "Machhapuchhre (Fishtail) peak up close during flight",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Annapurna I",
-    caption: "Annapurna I (8,091m) - 10th highest mountain in the world",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Mountain Flight Aircraft",
-    caption: "Small aircraft designed for optimal mountain viewing",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/annapurna-flight-1.avif",
     alt: "Window View",
     caption: "Unobstructed window view of Himalayan peaks",
   },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Dhaulagiri",
-    caption: "Dhaulagiri (8,167m) viewed from Annapurna flight",
-  },
+  
 ];
 
 export default function AnnapurnaRegionMountainFlightTripPage() {
@@ -293,7 +276,7 @@ export default function AnnapurnaRegionMountainFlightTripPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/annapurna-flight-1.avif"
             alt="Annapurna Region Mountain Flight"
             fill
             className="object-cover"

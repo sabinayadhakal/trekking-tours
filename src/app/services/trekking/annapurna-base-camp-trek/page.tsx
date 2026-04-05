@@ -200,35 +200,16 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/abc-1.avif",
     alt: "Annapurna Base Camp",
     caption: "Annapurna Base Camp (4,130m)",
   },
   {
-    src: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
+    src: "/images/used/abc-3.avif",
     alt: "Machhapuchhre Fishtail",
     caption: "Machhapuchhre - Fishtail Mountain",
   },
-  {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Annapurna Sanctuary",
-    caption: "Annapurna Sanctuary Amphitheater",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Ghandruk Village",
-    caption: "Traditional Gurung Village - Ghandruk",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1571401835393-8c5f35328320?q=80&w=2048&auto=format&fit=crop",
-    alt: "Rhododendron Forest",
-    caption: "Rhododendron Forests in Spring",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
-    alt: "Jhinu Hot Springs",
-    caption: "Natural Hot Springs at Jhinu Danda",
-  },
+  
 ];
 
 export default function AnnapurnaBaseCampTrekPage() {
@@ -339,7 +320,7 @@ export default function AnnapurnaBaseCampTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/abc-main-page.avif"
             alt="Annapurna Base Camp Trek"
             fill
             className="object-cover"

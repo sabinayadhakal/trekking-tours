@@ -89,35 +89,31 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
+    src: "/images/used/champadevi-1.avif",
     alt: "Champa Devi Summit",
     caption: "Panoramic view of Kathmandu Valley from Champa Devi summit",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/champa-1.avif",
     alt: "Hiking Trail",
     caption: "Beautiful trail through oak and rhododendron forests",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    alt: "Himalayan Views",
-    caption: "Himalayan range visible from Champa Devi on clear days",
+    src: "/images/used/champa-2.avif",
+    alt: "Map Board in the hike",
+    caption: "Board for the ChampaDevi hiking trail",
   },
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Terraced Farms",
-    caption: "Traditional terraced farmlands along the hiking route",
+    src: "/images/used/champa-3.avif",
+    alt: "Forest",
+    caption: "Traditional forest way along the hiking route",
   },
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Summit Temple",
-    caption: "Small temple dedicated to goddess Champa Devi at the summit",
+    src: "/images/used/champa-4.avif",
+    alt: "Path towards the summit of ChampaDevi",
+    caption: "Path towards the summit of ChampaDevi",
   },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Forest Trail",
-    caption: "Lush forest trail on the slopes of Champa Devi",
-  },
+ 
 ];
 
 export default function ChampaDeviHikingPage() {
@@ -228,7 +224,7 @@ export default function ChampaDeviHikingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop"
+            src="/images/used/champadevi-1.avif"
             alt="Champa Devi Hiking"
             fill
             className="object-cover"

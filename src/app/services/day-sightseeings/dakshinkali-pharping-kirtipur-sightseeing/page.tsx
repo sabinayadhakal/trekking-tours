@@ -93,35 +93,21 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
+    src: "/images/used/dakshinkali-1.avif",
     alt: "Dakshinkali Temple",
     caption: "Dakshinkali Temple - Sacred Hindu shrine dedicated to Goddess Kali",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/pharping-2.avif",
     alt: "Pharping Monastery",
     caption: "Buddhist monastery in Pharping, important pilgrimage site",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/kirtipur-2.avif",
     alt: "Kirtipur Hilltop",
     caption: "Historic Kirtipur town with panoramic valley views",
   },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Meditation Cave",
-    caption: "Sacred meditation cave where Guru Rinpoche practiced",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Kirtipur Temple",
-    caption: "Ancient temple in Kirtipur with traditional Newari architecture",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Pharping Village",
-    caption: "Traditional Newari village of Pharping",
-  },
+  
 ];
 
 export default function DakshinkaliPharpingKirtipurSightseeingPage() {
@@ -232,7 +218,7 @@ export default function DakshinkaliPharpingKirtipurSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop"
+            src="/images/used/dakshinkali-2.avif"
             alt="Dakshinkali, Pharping and Kirtipur Sightseeing"
             fill
             className="object-cover"

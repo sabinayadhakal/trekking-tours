@@ -95,35 +95,27 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/monkey_temple.avif",
     alt: "Swayambhunath Stupa",
     caption: "Swayambhunath Stupa (Monkey Temple) with all-seeing eyes of Buddha",
   },
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
+    src: "/images/used/ktm-durbar-1.avif ",
     alt: "Kathmandu Durbar Square",
     caption: "Kathmandu Durbar Square with ancient temples and palace",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/pashupati-1.avif",
     alt: "Pashupatinath Temple",
     caption: "Pashupatinath Temple on the banks of the Bagmati River",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/nepal-stupa.avif",
     alt: "Boudhanath Stupa",
     caption: "Boudhanath Stupa - Center of Tibetan Buddhism in Nepal",
   },
-  {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    alt: "Kumari Living Goddess",
-    caption: "Kumari Ghar - Home of the Living Goddess in Kathmandu",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
-    alt: "Prayer Wheels",
-    caption: "Spinning prayer wheels at Boudhanath Stupa",
-  },
+ 
+  
 ];
 
 export default function KathmanduSightseeingPage() {
@@ -234,7 +226,7 @@ export default function KathmanduSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+            src="/images/used/monkey_temple.avif"
             alt="Kathmandu Valley Sightseeing"
             fill
             className="object-cover"

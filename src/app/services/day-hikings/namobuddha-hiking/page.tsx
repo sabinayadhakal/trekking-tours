@@ -93,32 +93,32 @@ const excludes = [
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop",
+    src: "/images/used/namobuddha-8.avif",
     alt: "Namobuddha Stupa",
     caption: "The sacred Namobuddha stupa marking the site of the prince's self-sacrifice",
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/namobuddha-7.avif",
     alt: "Thrangu Tashi Yangtse Monastery",
     caption: "Beautiful Thrangu Tashi Yangtse Monastery at Namobuddha",
   },
   {
-    src: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/namobuddha-5.avif",
     alt: "Himalayan Views",
-    caption: "Panoramic Himalayan views from Namobuddha hilltop",
+    caption: "Panoramic views from Namobuddha hilltop",
   },
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    src: "/images/used/namobuddha-4.avif",
     alt: "Prayer Flags",
     caption: "Colorful prayer flags fluttering at the monastery",
   },
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/namobuddha-3.avif",
     alt: "Hiking Trail",
     caption: "Beautiful hiking trail through pine forests",
   },
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    src: "/images/used/namobuddha-6.avif",
     alt: "Monks at Prayer",
     caption: "Buddhist monks in prayer at the monastery",
   },
@@ -232,7 +232,7 @@ export default function NamobuddhaHikingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?q=80&w=2072&auto=format&fit=crop"
+            src="/images/used/namobuddha-1.avif"
             alt="Namobuddha Hiking"
             fill
             className="object-cover"
