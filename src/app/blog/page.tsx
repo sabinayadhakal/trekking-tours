@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Mountain,
   Calendar,
@@ -11,22 +12,36 @@ import {
   BookOpen,
   Play,
   Youtube,
-  Eye,
-  Tag,
   Search,
   Menu,
   X,
-  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 
+// Function to get YouTube thumbnail from video URL
+const getYouTubeThumbnail = (url: string) => {
+  let videoId = "";
+  
+  // Extract video ID from different YouTube URL formats
+  if (url.includes("youtube.com/watch?v=")) {
+    videoId = url.split("v=")[1]?.split("&")[0];
+  } else if (url.includes("youtu.be/")) {
+    videoId = url.split("youtu.be/")[1]?.split("?")[0];
+  }
+  
+  // Return high quality thumbnail URL
+  return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : "/images/fallback.jpg";
+};
+
 const featuredPost = {
+  id: "everest-base-camp-guide",
+  slug: "everest-base-camp-guide",
   title: "The Ultimate Guide to Everest Base Camp Trek",
   excerpt: "Planning your dream trek to the foot of the world's highest peak? This comprehensive guide covers preparation, best seasons, packing lists, acclimatization tips, and what to expect on this life-changing journey.",
-  image: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=2070&auto=format&fit=crop",
+  image: "/images/used/everest-1.avif",
   author: "Tshering Namgyal Sherpa",
   date: "January 15, 2025",
   readTime: "12 min",
@@ -35,104 +50,44 @@ const featuredPost = {
 
 const blogPosts = [
   {
+    id: "best-time-to-visit-nepal",
+    slug: "best-time-to-visit-nepal",
     title: "Best Time to Visit Nepal: Season Breakdown",
     excerpt: "Discover the ideal months for trekking, wildlife safaris, and cultural exploration in Nepal.",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop",
+    image: "/images/used/nepal-stupa.avif",
     author: "Pemba Dorje",
     date: "January 10, 2025",
     readTime: "8 min",
     category: "Travel Tips",
   },
-  {
-    title: "Annapurna Circuit vs Everest Base Camp",
-    excerpt: "A detailed comparison of Nepal's two most iconic treks. We help you choose your perfect adventure.",
-    image: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=2069&auto=format&fit=crop",
-    author: "Mingma Tenzing",
-    date: "January 5, 2025",
-    readTime: "10 min",
-    category: "Trek Comparison",
-  },
-  {
-    title: "Understanding Altitude Sickness",
-    excerpt: "High altitude trekking requires proper acclimatization. Learn the symptoms of AMS and prevention strategies.",
-    image: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?q=80&w=2070&auto=format&fit=crop",
-    author: "Dr. Lakpa Sherpa",
-    date: "December 28, 2024",
-    readTime: "7 min",
-    category: "Health & Safety",
-  },
-  {
-    title: "Bhutan's Sacred Tiger's Nest",
-    excerpt: "The iconic Paro Taktsang monastery clings to a cliff. Everything you need to know before your visit.",
-    image: "https://images.unsplash.com/photo-1578503173325-452778794828?q=80&w=2070&auto=format&fit=crop",
-    author: "Dorji Wangchuk",
-    date: "December 20, 2024",
-    readTime: "9 min",
-    category: "Cultural Heritage",
-  },
-  {
-    title: "Packing List for Himalayan Treks",
-    excerpt: "From base layers to trekking poles, we cover every piece of equipment you'll need for a safe trek.",
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    author: "Lakpa Doma",
-    date: "December 15, 2024",
-    readTime: "11 min",
-    category: "Gear & Equipment",
-  },
-  {
-    title: "The Spiritual Journey to Mount Kailash",
-    excerpt: "Mount Kailash is sacred to four religions. Experience the powerful kora pilgrimage around this peak.",
-    image: "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=2070&auto=format&fit=crop",
-    author: "Tshering Namgyal",
-    date: "December 10, 2024",
-    readTime: "13 min",
-    category: "Spiritual Journeys",
-  },
-];
-
-const categories = [
-  "All Posts",
-  "Trekking Guide",
-  "Travel Tips",
-  "Health & Safety",
-  "Cultural Heritage",
-  "Gear & Equipment",
-  "Spiritual Journeys",
+  
 ];
 
 const youtubeVideos = [
   {
-    title: "Everest Base Camp Trek Documentary",
-    thumbnail: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=800&auto=format&fit=crop",
-    duration: "28:45",
-    views: "125K",
-    description: "Follow our team on the iconic 14-day journey to Everest Base Camp.",
+    title: "Himkala Adventure | Kathmandu, Nepal",
+    url: "https://www.youtube.com/watch?v=JxiY-aG0e_c&t=10s",
   },
   {
-    title: "Inside Bhutan: Land of Thunder Dragon",
-    thumbnail: "https://images.unsplash.com/photo-1578503173325-452778794828?q=80&w=800&auto=format&fit=crop",
-    duration: "22:30",
-    views: "89K",
-    description: "Explore the mystical kingdom of Bhutan and its sacred monasteries.",
+    title: "Ritual Thread Ceremony | Himkala Adventure",
+    url: "https://www.youtube.com/watch?v=a0P-e9MRRpY&pp=0gcJCdkKAYcqIYzv",
   },
   {
-    title: "Annapurna Circuit: World's Best Trek",
-    thumbnail: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?q=80&w=800&auto=format&fit=crop",
-    duration: "35:12",
-    views: "203K",
-    description: "Journey through diverse landscapes crossing Thorong La Pass.",
+    title: "Nagarkot to Changunarayan Hiking | Himkala Adventure",
+    url: "https://www.youtube.com/watch?v=6aUyYVxnaOA",
   },
   {
-    title: "Himalayan Sunrise Photography Tips",
-    thumbnail: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop",
-    duration: "18:20",
-    views: "67K",
-    description: "Professional tips for capturing magical golden hour in Himalayas.",
+    title: "Kathmandu Valley Fringe Hiking with Himkala Adventure | Kathmandu, Nepal",
+    url: "https://www.youtube.com/watch?v=JS9aWnSWHAA",
   },
+  {
+    title: "Amazing Free Walking Tour Kathmandu |  Himkala Adevnture",
+    url: "https://www.youtube.com/watch?v=BjfCd9C2uS4",
+  },
+  
 ];
 
 export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = React.useState("All Posts");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [visiblePosts, setVisiblePosts] = React.useState(6);
@@ -140,24 +95,23 @@ export default function BlogPage() {
   const filteredPosts = React.useMemo(() => {
     let filtered = blogPosts;
     
-    if (selectedCategory !== "All Posts") {
-      filtered = filtered.filter(post => post.category === selectedCategory);
-    }
-    
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(post => 
         post.title.toLowerCase().includes(query) ||
-        post.excerpt.toLowerCase().includes(query) ||
-        post.category.toLowerCase().includes(query)
+        post.excerpt.toLowerCase().includes(query)
       );
     }
     
     return filtered;
-  }, [selectedCategory, searchQuery]);
+  }, [searchQuery]);
 
   const loadMorePosts = () => {
     setVisiblePosts(prev => Math.min(prev + 3, filteredPosts.length));
+  };
+
+  const handleYoutubeRedirect = () => {
+    window.open("https://www.youtube.com/@himkalaadventure5936", "_blank");
   };
 
   return (
@@ -246,7 +200,7 @@ export default function BlogPage() {
           <div className="container mx-auto px-6 py-8">
             <div className="flex justify-between items-center mb-8">
               <Badge className="bg-[#0a1e32] text-white border-[#C5E0ED]">
-                <BookOpen className="w-3 h-3 mr-1" /> Categories
+                <BookOpen className="w-3 h-3 mr-1" /> Menu
               </Badge>
               <button
                 className="text-white p-2"
@@ -258,25 +212,12 @@ export default function BlogPage() {
             </div>
             
             <div className="space-y-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => {
-                    setSelectedCategory(category);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-3 rounded-lg text-base font-medium ${
-                    selectedCategory === category
-                      ? "bg-[#C5E0ED] text-[#0f2940]"
-                      : "text-white hover:bg-white/10"
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    {category}
-                    <ChevronRight className="w-4 h-4" />
-                  </div>
-                </button>
-              ))}
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full text-left px-4 py-3 rounded-lg text-base font-medium text-white hover:bg-white/10"
+              >
+                Close Menu
+              </button>
             </div>
           </div>
         </div>
@@ -285,111 +226,57 @@ export default function BlogPage() {
       {/* Featured Post */}
       <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <Card className="bg-white border-[#C5E0ED]/30 rounded-xl sm:rounded-2xl md:rounded-[2rem] overflow-hidden shadow-lg">
-            <div className="md:grid md:grid-cols-2">
-              <div className="relative h-64 sm:h-72 md:h-auto md:min-h-[400px]">
-                <Image
-                  src={featuredPost.image}
-                  alt={featuredPost.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
-                <div className="absolute top-4 left-4">
-                  <Badge className="bg-[#C5E0ED] text-[#0f2940] border-none font-bold text-sm px-4 py-1.5">
-                    Featured
+          <Link href={`/blog/${featuredPost.slug}`}>
+            <Card className="bg-white border-[#C5E0ED]/30 rounded-xl sm:rounded-2xl md:rounded-[2rem] overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+              <div className="md:grid md:grid-cols-2">
+                <div className="relative h-64 sm:h-72 md:h-auto md:min-h-[400px]">
+                  <Image
+                    src={featuredPost.image}
+                    alt={featuredPost.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-[#C5E0ED] text-[#0f2940] border-none font-bold text-sm px-4 py-1.5">
+                      Featured
+                    </Badge>
+                  </div>
+                </div>
+                <CardContent className="p-6 sm:p-8 lg:p-12">
+                  <Badge className="mb-4 bg-[#0f2940] text-[#C5E0ED] border-none">
+                    {featuredPost.category}
                   </Badge>
-                </div>
+                  
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#0f2940] mb-4 leading-tight">
+                    {featuredPost.title}
+                  </h2>
+                  
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                    {featuredPost.excerpt}
+                  </p>
+                  
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 mb-8">
+                    <span className="flex items-center gap-2">
+                      <User className="w-4 h-4 text-[#2d6a8a]" /> {featuredPost.author}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-[#2d6a8a]" /> {featuredPost.date}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-[#2d6a8a]" /> {featuredPost.readTime} read
+                    </span>
+                  </div>
+                  
+                  <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white font-bold rounded-full px-8">
+                    Read Full Article
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </CardContent>
               </div>
-              <CardContent className="p-6 sm:p-8 lg:p-12">
-                <Badge className="mb-4 bg-[#0f2940] text-[#C5E0ED] border-none">
-                  <Tag className="w-3 h-3 mr-1" /> {featuredPost.category}
-                </Badge>
-                
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#0f2940] mb-4 leading-tight">
-                  {featuredPost.title}
-                </h2>
-                
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-                  {featuredPost.excerpt}
-                </p>
-                
-                <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 mb-8">
-                  <span className="flex items-center gap-2">
-                    <User className="w-4 h-4 text-[#2d6a8a]" /> {featuredPost.author}
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-[#2d6a8a]" /> {featuredPost.date}
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-[#2d6a8a]" /> {featuredPost.readTime} read
-                  </span>
-                </div>
-                
-                <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white font-bold rounded-full px-8">
-                  Read Full Article
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </CardContent>
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Category Filter */}
-      <section className="py-6 sm:py-8 bg-white border-y border-[#C5E0ED]/20">
-        <div className="container mx-auto px-4 sm:px-6">
-          {/* Desktop Category Filter */}
-          <div className="hidden md:flex flex-wrap justify-center gap-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2.5 rounded-full text-sm font-medium ${
-                  selectedCategory === category
-                    ? "bg-[#0f2940] text-white shadow-md"
-                    : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-          
-          {/* Mobile Category Filter */}
-          <div className="md:hidden">
-            <div className="text-sm font-medium text-[#2d6a8a] mb-3">Filter by:</div>
-            <div className="flex overflow-x-auto pb-3 -mx-4 px-4 space-x-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`shrink-0 px-4 py-2.5 rounded-full text-sm font-medium whitespace-nowrap ${
-                    selectedCategory === category
-                      ? "bg-[#0f2940] text-white shadow-md"
-                      : "bg-[#f0f7fa] text-[#2d6a8a] hover:bg-[#C5E0ED]/40"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-          
-          {/* Mobile Filter Info */}
-          <div className="md:hidden flex items-center justify-between mt-4 pt-4 border-t border-[#C5E0ED]/10">
-            <span className="text-sm text-slate-500">
-              {filteredPosts.length} {filteredPosts.length === 1 ? 'article' : 'articles'}
-            </span>
-            <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="text-sm font-medium text-[#2d6a8a] flex items-center gap-1"
-            >
-              All Categories
-              <Menu className="w-4 h-4" />
-            </button>
-          </div>
+            </Card>
+          </Link>
         </div>
       </section>
 
@@ -404,7 +291,7 @@ export default function BlogPage() {
           </div>
 
           {/* Search Results Info */}
-          {(searchQuery || selectedCategory !== "All Posts") && (
+          {searchQuery && (
             <div className="mb-6 p-4 bg-[#f0f7fa] rounded-xl">
               <div className="flex flex-wrap items-center gap-3">
                 <Badge className="bg-[#C5E0ED] text-[#0f2940] border-none">
@@ -415,53 +302,50 @@ export default function BlogPage() {
                     Search: "{searchQuery}"
                   </span>
                 )}
-                {selectedCategory !== "All Posts" && (
-                  <span className="text-sm text-slate-600">
-                    Category: {selectedCategory}
-                  </span>
-                )}
               </div>
             </div>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredPosts.slice(0, visiblePosts).map((post, i) => (
-              <div key={i} className="h-full">
-                <Card className="bg-white border-[#C5E0ED]/20 rounded-xl sm:rounded-2xl overflow-hidden h-full shadow-sm hover:shadow-md">
-                  <div className="relative h-48 sm:h-56 overflow-hidden">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <Badge className="bg-white/90 text-[#0f2940] border-none text-xs">
-                        {post.category}
-                      </Badge>
-                    </div>
-                  </div>
-                  <CardContent className="p-5 sm:p-6">
-                    <h4 className="text-lg font-bold text-[#0f2940] mb-3 leading-snug">
-                      {post.title}
-                    </h4>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-xs text-slate-500 pt-4 border-t border-slate-100">
-                      <span className="flex items-center gap-1.5">
-                        <User className="w-3 h-3" /> {post.author}
-                      </span>
-                      <div className="flex items-center gap-3">
-                        <span className="hidden sm:flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> {post.readTime}
-                        </span>
+              <Link href={`/blog/${post.slug}`} key={post.id}>
+                <div className="h-full">
+                  <Card className="bg-white border-[#C5E0ED]/20 rounded-xl sm:rounded-2xl overflow-hidden h-full shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                    <div className="relative h-48 sm:h-56 overflow-hidden">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-transform hover:scale-105 duration-300"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <Badge className="bg-white/90 text-[#0f2940] border-none text-xs">
+                          {post.category}
+                        </Badge>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
+                    <CardContent className="p-5 sm:p-6">
+                      <h4 className="text-lg font-bold text-[#0f2940] mb-3 leading-snug">
+                        {post.title}
+                      </h4>
+                      <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between text-xs text-slate-500 pt-4 border-t border-slate-100">
+                        <span className="flex items-center gap-1.5">
+                          <User className="w-3 h-3" /> {post.author}
+                        </span>
+                        <div className="flex items-center gap-3">
+                          <span className="hidden sm:flex items-center gap-1">
+                            <Clock className="w-3 h-3" /> {post.readTime}
+                          </span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </Link>
             ))}
           </div>
 
@@ -471,17 +355,14 @@ export default function BlogPage() {
               <Mountain className="w-16 h-16 text-[#C5E0ED] mx-auto mb-4" />
               <p className="text-slate-600 mb-2">No articles found.</p>
               <p className="text-sm text-slate-400 mb-6">
-                Try a different search or category
+                Try a different search term
               </p>
               <Button
                 variant="outline"
-                onClick={() => {
-                  setSearchQuery("");
-                  setSelectedCategory("All Posts");
-                }}
+                onClick={() => setSearchQuery("")}
                 className="border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20"
               >
-                Clear Filters
+                Clear Search
               </Button>
             </div>
           )}
@@ -535,24 +416,22 @@ export default function BlogPage() {
             <Button 
               variant="outline" 
               className="text-[#C5E0ED] border-[#C5E0ED]/50 hover:bg-[#C5E0ED]/10 font-bold rounded-full px-8"
-              onClick={() => {
-                window.parent.postMessage(
-                  { type: "OPEN_EXTERNAL_URL", data: { url: "https://youtube.com/@himkalaadventure" } },
-                  "*"
-                );
-              }}
+              onClick={handleYoutubeRedirect}
             >
-              <Youtube className="mr-2 w-4 h-4" /> Subscribe
+              <Youtube className="mr-2 w-4 h-4" /> Visit YouTube Channel
             </Button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {youtubeVideos.map((video, i) => (
               <div key={i} className="h-full">
-                <Card className="bg-white/5 border-white/10 rounded-xl sm:rounded-2xl overflow-hidden h-full">
+                <Card 
+                  className="bg-white/5 border-white/10 rounded-xl sm:rounded-2xl overflow-hidden h-full cursor-pointer hover:bg-white/10 transition-all"
+                  onClick={() => window.open(video.url, "_blank")}
+                >
                   <div className="relative h-56 md:h-64 overflow-hidden">
                     <Image
-                      src={video.thumbnail}
+                      src={getYouTubeThumbnail(video.url)}
                       alt={video.title}
                       fill
                       className="object-cover"
@@ -560,25 +439,15 @@ export default function BlogPage() {
                     />
                     <div className="absolute inset-0 bg-[#0f2940]/40" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
+                      <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
                         <Play className="w-6 h-6 text-white ml-1" fill="white" />
                       </div>
-                    </div>
-                    <div className="absolute bottom-4 right-4 bg-black/80 text-white text-xs font-bold px-2 py-1 rounded">
-                      {video.duration}
                     </div>
                   </div>
                   <CardContent className="p-5 sm:p-6">
                     <h4 className="text-lg font-bold text-white mb-3">
                       {video.title}
                     </h4>
-                    <p className="text-white/60 text-sm leading-relaxed mb-4">
-                      {video.description}
-                    </p>
-                    <div className="flex items-center gap-2 text-white/50 text-sm">
-                      <Eye className="w-4 h-4" />
-                      <span>{video.views} views</span>
-                    </div>
                   </CardContent>
                 </Card>
               </div>
@@ -586,8 +455,6 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-
-      
 
       {/* Add this CSS for Safari fallback - EXACTLY LIKE ABOUT PAGE */}
       <style jsx global>{`
