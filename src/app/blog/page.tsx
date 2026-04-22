@@ -15,6 +15,7 @@ import {
   Search,
   Menu,
   X,
+  XCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -34,6 +35,19 @@ const getYouTubeThumbnail = (url: string) => {
   
   // Return high quality thumbnail URL
   return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : "/images/fallback.jpg";
+};
+
+// Function to extract YouTube video ID
+const getYouTubeVideoId = (url: string) => {
+  let videoId = "";
+  
+  if (url.includes("youtube.com/watch?v=")) {
+    videoId = url.split("v=")[1]?.split("&")[0];
+  } else if (url.includes("youtu.be/")) {
+    videoId = url.split("youtu.be/")[1]?.split("?")[0];
+  }
+  
+  return videoId;
 };
 
 const featuredPost = {
@@ -91,6 +105,7 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [visiblePosts, setVisiblePosts] = React.useState(6);
+  const [selectedVideo, setSelectedVideo] = React.useState<{ title: string; url: string } | null>(null);
 
   const filteredPosts = React.useMemo(() => {
     let filtered = blogPosts;
@@ -114,8 +129,69 @@ export default function BlogPage() {
     window.open("https://www.youtube.com/@himkalaadventure5936", "_blank");
   };
 
+  const openVideoModal = (video: { title: string; url: string }) => {
+    setSelectedVideo(video);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeVideoModal = () => {
+    setSelectedVideo(null);
+    document.body.style.overflow = "auto";
+  };
+
+  // Handle escape key press
+  React.useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && selectedVideo) {
+        closeVideoModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscKey);
+    return () => document.removeEventListener("keydown", handleEscKey);
+  }, [selectedVideo]);
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Video Modal */}
+      {selectedVideo && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md animate-in fade-in duration-200"
+          onClick={closeVideoModal}
+        >
+          <div 
+            className="relative w-full max-w-5xl mx-4 bg-black rounded-xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#0f2940] to-[#1a4166]">
+              <h3 className="text-white font-bold text-lg truncate pr-4">
+                {selectedVideo.title}
+              </h3>
+              <button
+                onClick={closeVideoModal}
+                className="text-white hover:text-[#C5E0ED] transition-colors p-1"
+                aria-label="Close video"
+              >
+                <XCircle className="w-6 h-6" />
+              </button>
+            </div>
+            
+            {/* Video Player */}
+            <div className="relative pt-[56.25%] bg-black">
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src={`https://www.youtube.com/embed/${getYouTubeVideoId(selectedVideo.url)}?autoplay=1&rel=0&modestbranding=1`}
+                title={selectedVideo.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Page Header - PROPER FALLBACK LIKE ABOUT PAGE */}
       <section className="pt-6 sm:pt-8 pb-12 sm:pb-16 bg-[#0f2940] relative overflow-hidden">
         {/* Solid overlay for Safari/old browser fallback */}
@@ -427,7 +503,7 @@ export default function BlogPage() {
               <div key={i} className="h-full">
                 <Card 
                   className="bg-white/5 border-white/10 rounded-xl sm:rounded-2xl overflow-hidden h-full cursor-pointer hover:bg-white/10 transition-all"
-                  onClick={() => window.open(video.url, "_blank")}
+                  onClick={() => openVideoModal(video)}
                 >
                   <div className="relative h-56 md:h-64 overflow-hidden">
                     <Image
@@ -476,6 +552,20 @@ export default function BlogPage() {
           .safari-text-fallback {
             opacity: 0;
           }
+        }
+
+        /* Modal animation */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .animate-in {
+          animation: fadeIn 0.2s ease-in;
         }
       `}</style>
     </div>
