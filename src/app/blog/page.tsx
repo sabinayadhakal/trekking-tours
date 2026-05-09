@@ -51,15 +51,15 @@ const getYouTubeVideoId = (url: string) => {
 };
 
 const featuredPost = {
-  id: "everest-base-camp-guide",
-  slug: "everest-base-camp-guide",
-  title: "The Ultimate Guide to Everest Base Camp Trek",
-  excerpt: "Planning your dream trek to the foot of the world's highest peak? This comprehensive guide covers preparation, best seasons, packing lists, acclimatization tips, and what to expect on this life-changing journey.",
-  image: "/images/used/everest-1.avif",
-  author: "Tshering Namgyal Sherpa",
-  date: "January 15, 2025",
-  readTime: "12 min",
-  category: "Trekking Guide",
+  id: "pigeons-symbol-peace-nepal",
+slug: "pigeons-symbol-peace-nepal",
+title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
+excerpt: "In Kathmandu, pigeons are revered as divine ancestors and harbingers of peace. In London, they're pests. This stark cultural divide reveals deep truths about how we see nature, spirituality, and our place in the world.",
+image: "/images/used/pigeons-nepal.avif",
+author: "Sabinaya Dhakal",
+date: "May 9, 2026",
+readTime: "9 min",
+category: "Culture & Society",
 };
 
 const blogPosts = [
