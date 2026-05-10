@@ -10,7 +10,7 @@ const staticPages = [
   { path: '/about-us', priority: 0.9, changefreq: 'monthly' },
   { path: '/contact', priority: 0.8, changefreq: 'monthly' },
   { path: '/blog', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/free-walking-tour', priority: 0.9, changefreq: 'weekly' },
+  { path: '/services/free-walking-tour-kathmandu.html', priority: 0.9, changefreq: 'weekly' },
   { path: '/destinations/nepal', priority: 0.9, changefreq: 'weekly' },
   { path: '/destinations/bhutan', priority: 0.9, changefreq: 'weekly' },
   { path: '/destinations/tibet', priority: 0.9, changefreq: 'weekly' },
