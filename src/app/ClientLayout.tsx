@@ -498,7 +498,7 @@ const ServicesDropdown = () => {
           >
             <div className="py-2">
               <Link
-                href="/services/free-walking-tour-kathmandu.html"
+                href="/services/free-walking-tour-kathmandu"
                 className="block px-4 py-3 text-white/90 hover:text-[#C5E0ED] hover:bg-white/10 transition-colors border-b border-white/5"
                 onClick={() => setIsOpen(false)}
               >
