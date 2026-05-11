@@ -209,7 +209,7 @@ const searchData: SearchResult[] = [
   // Services main pages
   { title: "Day Hikings", url: "/services/day-hikings", category: "service", icon: <Sun className="w-4 h-4" /> },
   { title: "Day Sightseeings", url: "/services/day-sightseeings", category: "service", icon: <Camera className="w-4 h-4" /> },
-  { title: "Free Walking Tour", url: "/services/free-walking-tour", category: "service", icon: <Map className="w-4 h-4" /> },
+  { title: "Free Walking Tour", url: "/services/free-walking-tour-kathmandu", category: "service", icon: <Map className="w-4 h-4" /> },
   { title: "Jungle Safari", url: "/services/jungle-safari", category: "service", icon: <Trees className="w-4 h-4" /> },
   { title: "Mountain Flight & Heli Trip", url: "/services/mountain-flight-heli-trip", category: "service", icon: <Plane className="w-4 h-4" /> },
   { title: "Multi Day Cultural Tours", url: "/services/multi-day-cultural-tours", category: "service", icon: <Landmark className="w-4 h-4" /> },
@@ -643,7 +643,7 @@ const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
           >
             <div className="pl-8 pt-2 space-y-1">
               <Link
-                href="/services/free-walking-tour"
+                href="/services/free-walking-tour-kathmandu"
                 className="block py-3 px-4 text-white/80 hover:text-[#C5E0ED] hover:bg-[#153653]/40 rounded-lg transition-colors"
                 onClick={closeMenu}
               >
@@ -1328,7 +1328,7 @@ Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.         
   </h5>
   <ul className="space-y-3 text-sm text-white/60">
     {[
-       { name: "Free Walking Tour", url: "/services/free-walking-tour" },
+       { name: "Free Walking Tour", url: "/services/free-walking-tour-kathmandu" },
         { name: "Manaslu Circuit", url: "/services/trekking/manaslu-circuit-trek" },
 
       { name: "Everest Base Camp", url: "/services/trekking/everest-base-camp-trek" },
