@@ -43,185 +43,165 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu (1,350m)",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, you can rest or explore the vibrant streets of Thamel. In the evening, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Bring two passport-sized photographs for your trekking permits. Welcome dinner with traditional Nepali cuisine where you'll meet your trek guide.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements", "Welcome dinner"],
+    "day": 1,
+    "title": "Drive from Kathmandu to Barpak Village",
+    "altitude": "1,350m → 1,915m",
+    "distance": "205km / 7-8 hrs drive",
+    "description": "Early morning departure from your hotel in Kathmandu for the scenic drive to Barpak Village, the largest Gurung village in Nepal and the epicenter of the 2015 earthquake. The journey follows the Prithvi Highway before turning off towards Gorkha, passing through picturesque landscapes, terraced farmlands, and traditional villages. You'll have stunning views of Ganesh Himal (7,422m) and the Manaslu range in the distance. Barpak (1,915m) has been beautifully rebuilt since the earthquake and offers a fascinating glimpse into Gurung culture, traditions, and hospitality. Check into your teahouse or homestay, meet your trekking crew, and explore the village's stone-paved streets. Overnight in Barpak.",
+    "overnight": "Teahouse/Homestay in Barpak",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic drive through Gorkha", "Ganesh Himal views", "Barpak Gurung village", "Earthquake recovery story", "Cultural immersion"]
   },
   {
-    day: 2,
-    title: "Drive to Barpak Village (1,915m)",
-    altitude: "1,350m → 1,915m",
-    distance: "205km / 7-8 hrs drive",
-    description: "Early morning departure from Kathmandu for the scenic drive to Barpak Village. The journey follows the Prithvi Highway before turning off towards Gorkha. We pass through picturesque landscapes, terraced farmlands, and traditional villages with views of Ganesh Himal and the Manaslu range in the distance. Barpak is the largest Gurung village in Nepal and was the epicenter of the 2015 earthquake. Today, it has been beautifully rebuilt and offers a fascinating glimpse into Gurung culture and hospitality.",
-    overnight: "Teahouse/Homestay in Barpak",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic drive through Gorkha", "Ganesh Himal views", "Barpak Gurung village", "Cultural immersion"],
+    "day": 2,
+    "title": "Rest Day in Barpak - Acclimatization & Exploration",
+    "altitude": "1,915m",
+    "distance": "Exploration (2-4 hrs optional hike)",
+    "description": "A crucial rest day to acclimatize and explore Barpak village before heading into the remote mountains. Barpak is famous for its brave Gurkha soldiers, including Captain Gaje Ghale, a Victoria Cross recipient. Walk through the village's stone-paved streets, visit the local school and monastery, and interact with friendly Gurung locals who are known for their warm hospitality. Take a short hike to nearby viewpoints for panoramic views of Boudha Himal (6,672m) and the surrounding peaks. In the evening, you may be treated to a cultural performance by the local community, featuring traditional Gurung dances and songs. This rest day is essential for proper acclimatization before the Rupina La Pass crossing. Overnight in Barpak.",
+    "overnight": "Teahouse/Homestay in Barpak",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Gurung cultural experience", "Captain Gaje Ghale memorial", "Village exploration", "Views of Boudha Himal", "Traditional dance performance"]
   },
   {
-    day: 3,
-    title: "Rest Day in Barpak - Acclimatization & Exploration",
-    altitude: "1,915m",
-    distance: "Exploration",
-    description: "A rest day to acclimatize and explore Barpak village. Barpak is famous for its brave Gurkha soldiers, including Captain Gaje Ghale, a Victoria Cross recipient. Walk through the village's stone-paved streets, visit the local schools, and interact with friendly locals. You can take a short hike to nearby viewpoints for panoramic views of Boudha Himal and the surrounding peaks. In the evening, you may be treated to a cultural performance by the local community, featuring traditional Gurung dances and songs.",
-    overnight: "Teahouse/Homestay in Barpak",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Gurung cultural experience", "Village exploration", "Views of Boudha Himal", "Local hospitality"],
+    "day": 3,
+    "title": "Trek from Barpak to Gai Kharka",
+    "altitude": "1,915m → 2,900m",
+    "distance": "15km / 6-7 hrs trek",
+    "description": "Your trek begins today! Leaving Barpak, you ascend through terraced fields and forests with stunning views of Boudha Himal (6,672m) accompanying you for much of the day. The trail passes through the small settlement of Jhong before entering dense rhododendron and pine forests - these forests burst into brilliant red and pink blooms during spring (March-April). You'll cross several ridges with spectacular mountain views before descending slightly to Gai Kharka (2,900m), a grazing pasture with basic camping facilities. Tonight, you transition from teahouses to camping, marking your entry into the remote wilderness section of the trek. Overnight camping at Gai Kharka.",
+    "overnight": "Camping at Gai Kharka",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["First day of trekking", "Terraced fields and forests", "Rhododendron and pine forests", "Boudha Himal views", "First night camping experience"]
   },
   {
-    day: 4,
-    title: "Trek to Gai Kharka (2,900m)",
-    altitude: "1,915m → 2,900m",
-    distance: "15km / 6-7 hrs",
-    description: "Our trek begins! Leaving Barpak, we ascend through terraced fields and forests with stunning views of Boudha Himal accompanying us. The trail passes through the small settlement of Jhong before entering dense rhododendron and pine forests. We cross several ridges with spectacular mountain views before descending to Gai Kharka, a grazing pasture with basic camping facilities. Tonight, we switch from teahouses to camping, marking our entry into the remote wilderness section.",
-    overnight: "Camping at Gai Kharka",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First day of trekking", "Rhododendron forests", "Boudha Himal views", "Camping experience"],
+    "day": 4,
+    "title": "Trek from Gai Kharka to Rupina La Phedi",
+    "altitude": "2,900m → 3,800m",
+    "distance": "12km / 5-6 hrs trek",
+    "description": "Today's trek takes you through beautiful alpine meadows and forests as you gain significant altitude. The trail ascends gradually, offering increasingly dramatic views of the surrounding peaks, including Boudha Himal (6,672m), Sringi Himal (7,187m), and Ganesh Himal (7,422m). You'll pass through Ruse Kharka, a summer grazing area where yaks and horses graze in the lush meadows, before continuing to Rupina La Phedi (3,800m), your base camp for tomorrow's pass crossing. The afternoon is free to rest, hydrate, and prepare for the challenging ascent ahead. Your guide will brief you on the Rupina La Pass crossing procedure. Overnight camping at Rupina La Phedi.",
+    "overnight": "Camping at Rupina La Phedi",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Alpine meadows", "Sringi Himal and Ganesh Himal views", "Ruse Kharka grazing area", "Pass preparation briefing", "Remote mountain atmosphere"]
   },
   {
-    day: 5,
-    title: "Trek to Rupina La Phedi (3,800m)",
-    altitude: "2,900m → 3,800m",
-    distance: "12km / 5-6 hrs",
-    description: "Today's trek takes us through beautiful alpine meadows and forests. The trail ascends gradually, offering increasingly dramatic views of the surrounding peaks, including Boudha Himal, Sringi Himal, and Ganesh Himal. We pass through Ruse Kharka, a summer grazing area, before continuing to Rupina La Phedi, our base camp for the pass crossing. The afternoon is free to rest and prepare for tomorrow's challenging ascent.",
-    overnight: "Camping at Rupina La Phedi",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Alpine meadows", "Mountain panorama", "Pass preparation", "Remote wilderness"],
+    "day": 5,
+    "title": "Cross Rupina La Pass to Boudha Himal Base Camp",
+    "altitude": "3,800m → 4,720m → 3,600m",
+    "distance": "14km / 8-9 hrs trek",
+    "description": "The most challenging and rewarding day of the entire trek! Start very early (3-4 AM) for the ascent to Rupina La Pass (4,720m). The climb is steep and demanding, crossing rocky terrain with stone cairns marking the way. The altitude makes every step feel effortful - move slowly, breathe deeply, and rest frequently. Reaching the summit of Rupina La Pass is an indescribable feeling - prayer flags flutter in the wind as you're rewarded with breathtaking 360-degree views of Manaslu (8,163m), Himal Chuli (7,893m), Boudha Himal (6,672m), Peak 29, and the entire Ganesh Himal range stretching to the Tibetan border. After celebrating at the top and taking photographs, begin the long descent to Boudha Himal Base Camp (3,600m), passing glacial moraines, pristine mountain scenery, and perhaps even small glacial lakes. This is a tiring but unforgettable day - you have now crossed Rupina La Pass! Overnight camping at Boudha Himal Base Camp.",
+    "overnight": "Camping at Boudha Himal Base Camp",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Rupina La Pass crossing (4,720m)", "360-degree Himalayan panorama", "Manaslu & Himal Chuli views", "Ganesh Himal range", "Glacial moraine and lakes"]
   },
   {
-    day: 6,
-    title: "Cross Rupina La Pass (4,720m) to Boudha Himal Base Camp (3,600m)",
-    altitude: "3,800m → 4,720m → 3,600m",
-    distance: "14km / 8-9 hrs",
-    description: "The most challenging and rewarding day of the trek! We start early (3-4 AM) for the ascent to Rupina La Pass (approx. 4,720m). The climb is steep and demanding, crossing rocky terrain with cairns marking the way. At the summit, prayer flags flutter in the wind, and you're rewarded with breathtaking 360-degree views of Manaslu (8,163m), Himal Chuli (7,893m), Boudha Himal (6,672m), Peak 29, and the Ganesh Himal range. After celebrating at the top, we begin the long descent to Boudha Himal Base Camp, passing glacial moraines and pristine mountain scenery. This is a tiring but unforgettable day.",
-    overnight: "Camping at Boudha Himal Base Camp",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Rupina La Pass (4,720m)", "360-degree Himalayan panorama", "Manaslu & Himal Chuli views", "Glacial landscapes"],
+    "day": 6,
+    "title": "Trek from Boudha Himal Base Camp to Zhong Kharka",
+    "altitude": "3,600m → 2,960m",
+    "distance": "11km / 6-7 hrs trek",
+    "description": "Today you continue your descent through stunning alpine landscapes. The trail follows the Boudha Himal glacier moraine and offers incredible views back toward the Rupina La Pass you conquered yesterday. You'll follow the Chhuling Khola (river) through forests and meadows, with opportunities to spot Himalayan wildlife including blue sheep (bharal), Himalayan thar, and perhaps even a glimpse of the elusive snow leopard (tracks are more common than sightings). The vegetation becomes lusher as you lose altitude, with rhododendron and pine forests surrounding the trail. Zhong Kharka (2,960m) is a beautiful grazing pasture surrounded by forests and mountains, with basic camping facilities. Overnight camping at Zhong Kharka.",
+    "overnight": "Camping at Zhong Kharka",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Glacial moraine descent", "Views back to Rupina La Pass", "Wildlife spotting (blue sheep, thar)", "Chhuling Khola river", "Peaceful forest camping"]
   },
   {
-    day: 7,
-    title: "Trek to Zhong Kharka (2,960m)",
-    altitude: "3,600m → 2,960m",
-    distance: "11km / 6-7 hrs",
-    description: "Today we continue our descent through stunning alpine landscapes. The trail passes through the Boudha Himal glacier moraine and offers incredible views back towards the pass. We follow the Chhuling Khola through forests and meadows, with opportunities to spot Himalayan wildlife including blue sheep and Himalayan thar. Zhong Kharka is a beautiful grazing pasture surrounded by forests and mountains.",
-    overnight: "Camping at Zhong Kharka",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Glacial moraine descent", "Wildlife spotting", "Alpine scenery", "Peaceful camping"],
+    "day": 7,
+    "title": "Trek from Zhong Kharka to Nyak Village",
+    "altitude": "2,960m → 2,340m",
+    "distance": "12km / 6-7 hrs trek",
+    "description": "A long descent day as you leave the high mountains behind and rejoin civilization. The trail follows the river through dense forests of rhododendron, oak, and pine, offering spectacular views of Ganesh Himal (7,422m) through breaks in the canopy. You'll pass through several small settlements with traditional stone houses and terraced farmlands. Nyak Village (2,340m) is a charming village at the junction with the Manaslu Circuit trail, offering warm hospitality and comfortable teahouses. Here, you transition back from camping to teahouse accommodation. Celebrate completing the remote Rupina La Pass section of your journey with a well-deserved hot shower and cold drink! Overnight in Nyak Village.",
+    "overnight": "Teahouse in Nyak Village",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Ganesh Himal views", "Forest descent", "Traditional settlements", "Rejoin Manaslu Circuit trail", "Hot shower celebration"]
   },
   {
-    day: 8,
-    title: "Trek to Nyak Village (2,340m)",
-    altitude: "2,960m → 2,340m",
-    distance: "12km / 6-7 hrs",
-    description: "A long descent day as we leave the high mountains behind. The trail follows the river through forests and offers spectacular views of Ganesh Himal. We pass through several small settlements before reaching Nyak Village, where we rejoin civilization and transition back to teahouse accommodation. Nyak is a charming village at the junction with the Manaslu Circuit trail, offering warm hospitality and comfortable lodges. Celebrate completing the remote pass section of your journey!",
-    overnight: "Teahouse in Nyak Village",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Ganesh Himal views", "Rejoin Manaslu Circuit", "Nyak Village arrival", "Celebration"],
+    "day": 8,
+    "title": "Trek from Nyak Village to Deng",
+    "altitude": "2,340m → 1,860m",
+    "distance": "18km / 6-7 hrs trek",
+    "description": "You now join the classic Manaslu Circuit trail, following the Budhi Gandaki River downstream through beautiful forests and traditional villages. The trail offers stunning views of the surrounding peaks and passes through several small settlements including Philim, where you re-register your permits at the checkpoint. This section of the trek is less crowded than the main Manaslu Circuit, offering a sense of wilderness and solitude. Deng (1,860m) is a small village with basic teahouses nestled beside the river, surrounded by lush forests and terraced fields. Overnight in Deng.",
+    "overnight": "Teahouse in Deng",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Join Manaslu Circuit trail", "Budhi Gandaki River views", "Philim permit checkpoint", "Forest and river trails", "Deng village arrival"]
   },
   {
-    day: 9,
-    title: "Trek to Deng (1,860m)",
-    altitude: "2,340m → 1,860m",
-    distance: "18km / 6-7 hrs",
-    description: "We now join the classic Manaslu Circuit trail, following the Budhi Gandaki River downstream through beautiful forests and traditional villages. The trail offers stunning views of the surrounding peaks and passes through several small settlements. Deng is a small village with basic teahouses, nestled beside the river. This section of the trek is less crowded than the main Manaslu Circuit, offering a sense of wilderness and solitude.",
-    overnight: "Teahouse in Deng",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Budhi Gandaki Valley", "Traditional villages", "Forest trails", "Riverside camping"],
+    "day": 9,
+    "title": "Trek from Deng to Namrung",
+    "altitude": "1,860m → 2,630m",
+    "distance": "22km / 7-8 hrs trek",
+    "description": "Today you trek through increasingly dramatic landscapes with ever-improving mountain views. The trail follows the Budhi Gandaki River upstream, passing through several villages and crossing multiple suspension bridges. As you gain altitude, the Tibetan influence becomes more evident in the architecture - flat-roofed stone houses, prayer flags, mani walls, and chortens appear along the trail. Namrung (2,630m) is a beautiful Tibetan-style village with stunning views of Sringi Himal (7,187m) and the surrounding peaks. The village has a small monastery and several comfortable teahouses. Overnight in Namrung.",
+    "overnight": "Teahouse in Namrung",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Budhi Gandaki upstream", "Suspension bridge crossings", "Tibetan architecture", "Sringi Himal views", "Namrung village"]
   },
   {
-    day: 10,
-    title: "Trek to Namrung (2,630m)",
-    altitude: "1,860m → 2,630m",
-    distance: "22km / 7-8 hrs",
-    description: "Today we trek through increasingly dramatic landscapes with ever-improving mountain views. The trail follows the river upstream, passing through Philim and several other villages. As we gain altitude, the Tibetan influence becomes more evident in the architecture and culture. Namrung is a beautiful village with stunning views of Sringi Himal and the surrounding peaks.",
-    overnight: "Teahouse in Namrung",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Sringi Himal views", "Tibetan architecture", "Cultural transition", "Mountain panorama"],
+    "day": 10,
+    "title": "Trek from Namrung to Samagaon",
+    "altitude": "2,630m → 3,530m",
+    "distance": "19km / 7-8 hrs trek",
+    "description": "Today you catch your first breathtaking views of Mount Manaslu (8,163m), the world's eighth highest peak! The trail passes through Lho village, with its beautiful ancient monastery perched on a hillside and spectacular views of Manaslu's north face. Continue through stunning terrain with panoramic mountain views including Ngadi Himal and Himal Chuli. Samagaon (also called Sama - 3,530m) is the largest village on the entire Manaslu Circuit, with a gompa (monastery), school, health post, and numerous teahouses. This traditional Tibetan Buddhist village is surrounded by dramatic peaks including Manaslu (8,163m), Ngadi Himal (7,870m), and Himal Chuli (7,893m). Take time to explore the village, visit the local monastery, and enjoy the spectacular Himalayan panorama. Overnight in Samagaon.",
+    "overnight": "Teahouse in Samagaon",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["First views of Mt. Manaslu (8,163m)", "Lho village monastery", "Ngadi Himal and Himal Chuli views", "Samagaon largest village", "Tibetan Buddhist culture"]
   },
   {
-    day: 11,
-    title: "Trek to Samagaon (3,530m)",
-    altitude: "2,630m → 3,530m",
-    distance: "19km / 7-8 hrs",
-    description: "Today we catch our first breathtaking views of Mount Manaslu (8,163m), the world's eighth highest peak. The trail passes through Lho village with its ancient monastery and continues through beautiful terrain with stunning mountain panoramas. Samagaon (also called Sama) is the largest village on the circuit, with a gompa (monastery) and school. This traditional Tibetan village is surrounded by dramatic peaks including Manaslu, Ngadi Himal, and Himal Chuli.",
-    overnight: "Teahouse in Samagaon",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First views of Mt. Manaslu", "Lho monastery", "Samagaon village", "Stunning mountain panorama"],
+    "day": 11,
+    "title": "Acclimatization Day in Samagaon - Manaslu Base Camp Hike",
+    "altitude": "3,530m → 4,800m → 3,530m",
+    "distance": "14km / 6-7 hrs round trip hike",
+    "description": "A crucial acclimatization day before the challenging Larkya La Pass (5,106m) crossing. The golden rule: climb high, sleep low. Today's optional hike is to Manaslu Base Camp (4,800m), offering spectacular close-up views of Manaslu's massive south face and the Punggen Glacier. The trail climbs steadily through rocky moraine with breathtaking views of hanging glaciers, icefalls, and the towering peaks above. Alternatively, you can take a shorter hike to Birendra Tal (Birendra Lake), a stunning turquoise glacial lake at approximately 3,700m fed by the melting ice of the Manaslu Glacier. Another option is to visit the ancient Pungyen Gompa (Fairy Tale Gompa), perched on a hillside with spectacular views of the Manaslu massif. This acclimatization day is essential for your body to adapt to high altitude before the pass crossing. Listen to your body, stay hydrated, and rest when needed. Overnight in Samagaon.",
+    "overnight": "Teahouse in Samagaon",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Manaslu Base Camp hike (4,800m)", "Punggen Glacier views", "Birendra Tal glacial lake", "Pungyen Gompa option", "Essential acclimatization for Larkya La"]
   },
   {
-    day: 12,
-    title: "Acclimatization Day - Manaslu Base Camp Hike (4,800m)",
-    altitude: "3,530m → 4,800m → 3,530m",
-    distance: "14km / 6-7 hrs",
-    description: "A crucial rest day for acclimatization with an optional hike to Manaslu Base Camp (4,800m) for spectacular close-up views of Manaslu's south face and the Punggen Glacier. The trail offers incredible views of Manaslu, Himal Chuli, and the surrounding peaks. Alternatively, you can hike to Birendra Tal, a beautiful glacial lake, or explore Samagaon village and visit the ancient Pungyen Gompa. This acclimatization is essential for the challenging Larkya La crossing ahead.",
-    overnight: "Teahouse in Samagaon",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Manaslu Base Camp hike", "Punggen Glacier", "Birendra Tal lake", "Acclimatization"],
+    "day": 12,
+    "title": "Trek from Samagaon to Samdo",
+    "altitude": "3,530m → 3,875m",
+    "distance": "8km / 3-4 hrs trek",
+    "description": "A relatively easy day with gradual climbing, allowing for continued acclimatization. The trail offers spectacular views of Manaslu (8,163m), Samdo Peak (6,325m), and surrounding glaciers. You'll pass through Kermo Kharka, a seasonal grazing area with yak pastures, and walk through juniper forests with the fragrant scent of juniper in the air. Samdo (3,875m) is the last major village before the Larkya La Pass crossing. This remote settlement has strong Tibetan heritage, with locals who still speak Tibetan dialect, wear traditional clothing, and maintain ancient customs. Some families still trade with Tibet via the nearby Lajyang border crossing. Explore the village with its prayer wheels, mani walls, chortens, and traditional flat-roofed stone houses. Overnight in Samdo.",
+    "overnight": "Teahouse in Samdo",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Kermo Kharka yak pastures", "Juniper forests", "Samdo Peak (6,325m) views", "Remote Tibetan village", "Traditional culture and customs"]
   },
   {
-    day: 13,
-    title: "Trek to Samdo (3,875m)",
-    altitude: "3,530m → 3,875m",
-    distance: "8km / 3-4 hrs",
-    description: "A relatively easy day with gradual climbing. The trail offers spectacular views of Manaslu, Samdo Peak, and surrounding glaciers. We pass through Kermo Kharka and juniper forests before reaching Samdo, the last major village before the pass. This remote settlement has strong Tibetan heritage, and locals still trade with Tibet via the nearby Lajyang border. The village has a small monastery and stunning mountain views.",
-    overnight: "Teahouse in Samdo",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Spectacular mountain views", "Juniper forests", "Remote Tibetan village", "Lajyang border"],
+    "day": 13,
+    "title": "Trek from Samdo to Dharmasala (Larkya Phedi)",
+    "altitude": "3,875m → 4,460m",
+    "distance": "12km / 5-6 hrs trek",
+    "description": "A short but important trek to the high camp below Larkya La Pass. The terrain becomes increasingly barren and alpine as you climb above the tree line for the final time. The trail passes through Larkya Bazaar, an old trading post that was once a bustling hub for salt and wool traders traveling between Nepal and Tibet. From here, the trail continues on rocky moraine with stunning views of Larkya Peak and the surrounding glaciers. Dharmasala (4,460m), also called Larkya Phedi, is a basic stone shelter serving as the final stop before the pass crossing. The accommodation here is very basic - this is a true high-altitude camp. Rest early, organize your gear for tomorrow's pre-dawn start, and try to sleep as conditions allow. Your guide will check weather conditions and confirm the departure time (typically 3-4 AM). Overnight at Dharmasala.",
+    "overnight": "Basic Lodge at Dharmasala",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Larkya Bazaar old trading post", "Alpine terrain above tree line", "Larkya Peak and glacier views", "High camp experience", "Pass preparation briefing"]
   },
   {
-    day: 14,
-    title: "Trek to Dharmasala (Larkya Phedi) (4,460m)",
-    altitude: "3,875m → 4,460m",
-    distance: "12km / 5-6 hrs",
-    description: "A short but important trek to the high camp below Larkya La Pass. The terrain becomes increasingly barren and alpine as we climb above the tree line. The trail passes through Larkya Bazaar, an old trading post, before reaching Dharmasala (also called Larkya Phedi), a basic stone shelter serving as the final stop before the pass crossing. Rest early, prepare your gear, and try to sleep as conditions allow. We'll start very early tomorrow morning.",
-    overnight: "Basic Lodge/Dharmasala",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["High camp experience", "Alpine terrain", "Larkya Bazaar", "Pass preparation"],
+    "day": 14,
+    "title": "Cross Larkya La Pass & Trek to Bimthang",
+    "altitude": "4,460m → 5,106m → 3,720m",
+    "distance": "23km / 10-12 hrs trek",
+    "description": "The most challenging and rewarding day of the entire trek - the culmination of your Manaslu and Ganesh Himal adventure! Start very early (3-4 AM) to reach the pass before weather conditions deteriorate - afternoon clouds and wind are common. The climb from Dharmasala is steady on a moraine path with stone cairns marking the way. The altitude is extreme, so move slowly, breathe deeply, and rest frequently. Reaching the crest of Larkya La Pass (5,106m) is an indescribable feeling - prayer flags flutter in the wind as you take in the 360-degree panoramic views of Mount Manaslu (8,163m), Himlung Himal (7,126m), Cheo Himal (6,820m), Gyaji Kang, Kang Guru, and Annapurna II (7,937m) in the distance. After celebrating at the pass and taking photographs, begin the long descent to Bimthang (3,720m). The descent passes through glacial moraine, past beautiful glacial lakes (including the stunning white lake and blue lake), and finally through yak pastures into a beautiful valley with rhododendron forests. This is a very long, tiring day but absolutely unforgettable - you have now crossed both Rupina La Pass (4,720m) AND Larkya La Pass (5,106m)! Overnight in Bimthang.",
+    "overnight": "Teahouse in Bimthang",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Larkya La Pass crossing (5,106m)", "360-degree Himalayan panorama", "Manaslu, Himlung, Annapurna views", "Glacial lakes", "Double pass achievement: Rupina La + Larkya La"]
+  },
+    {
+    "day": 15,
+    "title": "Trek from Bimthang to Tilje & Jeep to Besisahar",
+    "altitude": "3,720m → 2,300m → 760m",
+    "distance": "12km trek / 4-5 hrs trek + 4-5 hrs jeep",
+    "description": "Your final day of trekking on this epic Manaslu and Ganesh Himal double pass adventure. From Bimthang, the trail descends through beautiful rhododendron and pine forests, passing through the village of Gho with its traditional stone houses and yak pastures. You'll cross several streams and suspension bridges, with the landscape transforming from alpine to subtropical as you lose altitude. The views back toward the Larkya La and the Manaslu range are spectacular from this side. Arrive in Tilje (2,300m), a charming Gurung village with terraced fields and beautiful mountain views. Here, your private jeep awaits for the scenic drive to Besisahar (760m), the district headquarters of Lamjung and the traditional trailhead for the Annapurna Circuit. The jeep drive follows the Marsyangdi River through dramatic gorges, past terraced farmlands, and through traditional villages. Arrive in Besisahar by late afternoon. Check into your teahouse and celebrate your incredible achievement - you have successfully crossed Rupina La Pass (4,720m) AND Larkya La Pass (5,106m) on this epic journey through the Manaslu and Ganesh Himal region! Overnight in Besisahar.",
+    "overnight": "Teahouse in Besisahar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final day of double pass trek", "Gho village and yak pastures", "Rhododendron and pine forests", "Scenic jeep ride to Besisahar", "Rupina La + Larkya La completion celebration"]
   },
   {
-    day: 15,
-    title: "Cross Larkya La Pass (5,106m) to Bimthang (3,720m)",
-    altitude: "4,460m → 5,106m → 3,720m",
-    distance: "23km / 10-11 hrs",
-    description: "The most challenging and rewarding day of the entire trek! We start at 3-4 AM to reach the pass before conditions deteriorate. The climb is steady on a moraine path with cairns marking the way. At Larkya La (5,106m), prayer flags flutter in the wind and 360-degree views reveal Manaslu, Himlung Himal, Cheo Himal, Annapurna II, and the Tibetan peaks beyond. The long descent to Bimthang passes through glacial moraine, past beautiful glacial lakes, and through yak pastures. This is a tiring but unforgettable day - the culmination of your entire journey.",
-    overnight: "Teahouse in Bimthang",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Larkya La Pass (5,106m)", "360-degree Himalayan panorama", "Glacial lakes", "Prayer flag-adorned summit"],
-  },
-  {
-    day: 16,
-    title: "Trek to Dharapani (1,860m)",
-    altitude: "3,720m → 1,860m",
-    distance: "20km / 6-7 hrs",
-    description: "A long descent day through dramatically changing landscapes. From alpine terrain, we descend through rhododendron forests, crossing streams and passing through Gurung villages. The vegetation transforms from alpine to temperate to subtropical. At Dharapani, we join the Annapurna Circuit trail and reach the road head. The village marks our transition back to more accessible regions. Celebrate your incredible achievement of crossing both Rupina La and Larkya La passes!",
-    overnight: "Teahouse in Dharapani",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Dramatic landscape change", "Rhododendron forests", "Gurung villages", "Join Annapurna Circuit"],
-  },
-  {
-    day: 17,
-    title: "Drive to Kathmandu (1,350m)",
-    altitude: "1,860m → 1,350m",
-    distance: "8-9 hrs drive",
-    description: "Our trekking adventure concludes as we drive back to Kathmandu. From Dharapani, we drive to Besisahar, then continue along the scenic Prithvi Highway to Kathmandu. The journey offers beautiful views of rural landscapes, river valleys, and terraced farmlands. Arrive in Kathmandu by late afternoon. Check into your hotel and enjoy a well-deserved hot shower. Evening farewell dinner with your trekking team, celebrating your incredible journey through the Manaslu region and across two high Himalayan passes.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic drive", "Trek completion", "Farewell dinner with team", "Celebration"],
-  },
-  {
-    day: 18,
-    title: "Departure",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of standing atop Rupina La and Larkya La passes, surrounded by the majestic Himalayas.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 16,
+    "title": "Bus from Besisahar to Kathmandu",
+    "altitude": "760m → 1,350m",
+    "distance": "180km / 7-8 hrs bus",
+    "description": "After breakfast in Besisahar, board a tourist bus for the scenic drive back to Kathmandu. The journey follows the Marsyangdi River valley before joining the Prithvi Highway along the Trishuli River. The bus passes through beautiful landscapes, terraced farmlands, traditional villages, and dramatic river gorges. You'll pass through Dumre, and eventually reach the outskirts of the Kathmandu Valley. Along the way, you'll have stunning views of the Himalayan foothills and opportunities to see local rural life. The bus journey is a wonderful opportunity to relax, reflect on your epic Manaslu and Ganesh Himal double pass adventure, and watch the world go by. Arrive in Kathmandu by late afternoon. Check into your hotel in Thamel, take a well-deserved hot shower, and enjoy the comforts of the city. The remainder of your day is free for souvenir shopping in Thamel, visiting a spa for a much-needed massage, or simply relaxing after your incredible journey. In the evening, enjoy a farewell dinner celebrating your successful trek - exploring Barpak village, crossing Rupina La Pass (4,720m), reaching Boudha Himal Base Camp, trekking the Manaslu Circuit, and crossing Larkya La Pass (5,106m). Share stories and memories with your trekking team.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Dinner",
+    "highlights": ["Scenic bus journey to Kathmandu", "Marsyangdi and Trishuli Rivers", "Rural Nepali landscapes", "Thamel souvenir shopping", "Double pass completion celebration dinner"]
+  }
 ];
 
 const includes = [
@@ -445,8 +425,8 @@ export default function RupinaLaTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$2,450</div>
-                <div className="text-lg font-bold text-[#0f2940]">$2,195</div>
+                <div className="text-xs text-slate-400 line-through">$2,150</div>
+                <div className="text-lg font-bold text-[#0f2940]">$1,895</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -465,8 +445,8 @@ export default function RupinaLaTrekPage() {
                 <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
                     <div className="text-center mb-4 md:mb-6">
-                      <span className="text-white/50 text-sm line-through">$2,450</span>
-                      <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,195</div>
+                      <span className="text-white/50 text-sm line-through">$2,150</span>
+                      <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,895</div>
                       <span className="text-white/60 text-sm">per person</span>
                       <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $255</Badge>
                     </div>
@@ -474,7 +454,7 @@ export default function RupinaLaTrekPage() {
                     <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                       <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>18 Days / 17 Nights</span>
+                        <span>16 Days / 15 Nights</span>
                       </div>
                       <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />

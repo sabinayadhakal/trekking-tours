@@ -44,146 +44,136 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Evening free to explore the vibrant streets of Thamel or rest after your journey.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements"],
+    "day": 1,
+    "title": "Bus from Kathmandu to Besisahar & Jeep to Dharapani",
+    "altitude": "1,400m → 760m → 1,860m",
+    "distance": "175km bus / 30km jeep / 8-9 hrs total",
+    "description": "Early morning departure from your hotel in Kathmandu for the scenic tourist bus journey to Besisahar, the district headquarters of Lamjung and traditional starting point of the Annapurna Circuit. The bus journey follows the Trishuli River through beautiful rural landscapes, terraced farmlands, and traditional villages. Upon arrival in Besisahar (760m), you'll switch to a private 4WD jeep for the rugged drive to Dharapani. The jeep section follows the Marshyangdi River through narrow gorges, past cascading waterfalls, and through remote settlements. This section was once trekked over 2-3 days but now offers a quick and adventurous vehicle transfer. The drive offers stunning views of Manaslu (8,163m), Annapurna II (7,937m), and the surrounding peaks. Arrive in Dharapani (1,860m), a large village at the junction with the Manaslu Circuit trail. Check into your teahouse, meet your trekking crew, and prepare for the Nar Phu Valley adventure. Evening briefing on the restricted area regulations and the Kang La Pass crossing (5,306m).",
+    "overnight": "Teahouse in Dharapani",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic tourist bus to Besisahar", "Trishuli River views", "4WD jeep adventure to Dharapani", "Manaslu and Annapurna views", "Evening Nar Phu briefing"]
   },
   {
-    day: 2,
-    title: "Drive to Jagat",
-    altitude: "1,400m → 1,300m",
-    distance: "205km / 8-9 hrs drive",
-    description: "Early morning departure from Kathmandu. We drive west through scenic mid-hills following the Trishuli and Marshyangdi Rivers. After reaching Besisahar, we switch to 4WD jeeps for the rough road ahead. The journey offers beautiful views of terraced farmlands, waterfalls, and rural villages. Arrive in Jagat, a traditional village with stone-paved streets, and prepare for the trek ahead.",
-    overnight: "Teahouse in Jagat",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic drive through mid-hills", "Trishuli and Marshyangdi Rivers", "4WD jeep adventure", "Arrival at Jagat"],
+    "day": 2,
+    "title": "Trek from Dharapani to Koto",
+    "altitude": "1,860m → 2,600m",
+    "distance": "14km / 6-7 hrs trek",
+    "description": "Your Nar Phu Valley trek begins! Today you trek through beautiful pine and fir forests with fresh mountain air and stunning views of Annapurna II (7,937m) and Lamjung Himal (6,983m). The trail passes through Bagarchhap, a village with unique pagoda-style Tibetan houses and a small monastery. Continue to Danakyu and Timang, a village perched on a ridge with spectacular views of the Annapurna range and Manaslu. The trail winds through rhododendron forests that burst into brilliant red and pink blooms during spring (March-April). Finally, you reach Koto (2,600m), the last village before entering the restricted Nar Phu Valley. Here, your guide will complete the permit checks at the Annapurna Conservation Area checkpoint. Take time to explore Koto, visit the local monastery, and prepare mentally for the remote Nar Phu region ahead. Overnight in Koto.",
+    "overnight": "Teahouse in Koto",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Pine and fir forests", "Annapurna II and Lamjung Himal views", "Bagarchhap pagoda-style houses", "Timang ridge views", "Koto last checkpoint before restricted area"]
   },
   {
-    day: 3,
-    title: "Trek to Dharapani",
-    altitude: "1,300m → 1,860m",
-    distance: "14km / 6-7 hrs",
-    description: "Our trek begins! We follow the Marsyangdi River through lush forests and terraced farmlands. Cross a suspension bridge to Chamje, then ascend steeply into the Manang district. Tal village welcomes us with its stunning valley setting beside a calm river. Continue through rocky paths and pine forests to reach Dharapani, a large village at the junction with the Manaslu Circuit trail.",
-    overnight: "Teahouse in Dharapani",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First day of trekking", "Suspension bridge crossings", "Tal village valley", "Entry into Manang district"],
+    "day": 3,
+    "title": "Trek from Koto to Meta",
+    "altitude": "2,600m → 3,560m",
+    "distance": "15km / 7-8 hrs trek",
+    "description": "Today you enter the restricted Nar Phu Valley - a hidden Tibetan enclave that opened to trekkers only in 2003. The trail follows the Soti Khola through narrow, dramatic canyons with steep rock walls. After passing through Dharmasala, where there is a small police checkpoint, the landscape opens into beautiful alpine meadows with breathtaking views of Kang Guru (6,981m) and Pisang Peak (6,091m). You'll see your first yak pastures, mani walls (stone carvings of Buddhist prayers), and colorful prayer flags of the Nar Phu region. The valley feels ancient and untouched - a true step back in time to traditional Tibetan Buddhist culture. A steep climb brings you to Meta (3,560m), a small settlement perched on a ridge with stunning valley views, stone houses, and friendly locals. Overnight in Meta.",
+    "overnight": "Teahouse in Meta",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Enter Nar Phu restricted area", "Soti Khola narrow canyons", "Dharmasala checkpoint", "Kang Guru and Pisang Peak views", "Meta ridge village arrival"]
   },
   {
-    day: 4,
-    title: "Trek to Koto",
-    altitude: "1,860m → 2,600m",
-    distance: "14.6km / 6-7 hrs",
-    description: "Today we trek through pine and fir forests with fresh mountain air and stunning views of Annapurna II and Lamjung Himal. Pass through Bagarchhap with its unique pagoda-style houses, then continue to Timang. The trail winds through rhododendron forests before reaching Koto, the last village before entering the restricted Nar Phu Valley. Here we complete our permit checks.",
-    overnight: "Teahouse in Koto",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Views of Annapurna II", "Bagarchhap village", "Rhododendron forests", "Last checkpoint before restricted area"],
+    "day": 4,
+    "title": "Trek from Meta to Phu Village",
+    "altitude": "3,560m → 4,080m",
+    "distance": "14km / 7-8 hrs trek",
+    "description": "The landscape becomes increasingly dramatic as you trek through high alpine terrain with yak pastures, sacred chortens (Buddhist shrines), and mani walls. You'll pass through Kyang, a small settlement with a few stone houses, and Jhunam, another tiny village surrounded by towering peaks. As you approach Phu, the valley narrows dramatically with steep cliffs on both sides. Phu Village (4,080m) is one of the most remote villages in Nepal - a stunning Tibetan-style settlement of tightly clustered stone houses nestled beneath towering red cliffs, with the ancient Tashi Lakhang Monastery perched on a hillside above. The village looks like something from another century, with locals wearing traditional Tibetan dress and speaking a Tibetan dialect. The raw beauty and cultural authenticity of Phu is unforgettable. Overnight in Phu Village.",
+    "overnight": "Teahouse in Phu Village",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["High alpine terrain and yak pastures", "Sacred chortens and mani walls", "Kyang and Jhunam villages", "Phu village beneath red cliffs", "Tibetan-style stone houses"]
   },
   {
-    day: 5,
-    title: "Trek to Meta",
-    altitude: "2,600m → 3,560m",
-    distance: "15km / 7-8 hrs",
-    description: "Today we enter the restricted Nar Phu Valley! The trail follows the Soti Khola through narrow canyons and dense pine forests. After passing Dharmasala, the landscape opens into alpine meadows with breathtaking views of Kang Guru and Pisang Peak. A steep climb brings us to Meta, a small settlement perched on a ridge with stunning valley views.",
-    overnight: "Teahouse in Meta",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Enter Nar Phu restricted area", "Narrow canyon trails", "Alpine meadows", "Views of Kang Guru & Pisang Peak"],
+    "day": 5,
+    "title": "Acclimatization & Exploration Day in Phu Village",
+    "altitude": "4,080m",
+    "distance": "Optional hikes (3-6 hrs)",
+    "description": "A crucial rest day for acclimatization at high altitude before attempting Kang La Pass (5,306m). The golden rule: climb high, sleep low. Today you have several options. Visit the ancient Tashi Lakhang Gompa (also called Phu Monastery), built by Karma Sonam Rinpoche who came to Nepal with the Dalai Lama in 1959 after fleeing Tibet. The monastery houses ancient Buddhist texts, thangkas, and religious artifacts. For adventurous trekkers, hike to Himlung Himal Base Camp (4,920m) through icy valleys along the frozen river - you may spot blue sheep (bharal) and perhaps even snow leopard tracks. Alternatively, hike to the viewpoint above Phu for stunning panoramic views of the surrounding peaks including Himlung Himal (7,126m). Interact with locals, learn about their Tibetan-influenced culture, visit the local school, and enjoy the raw, untouched beauty of this remote Himalayan valley. Overnight in Phu Village.",
+    "overnight": "Teahouse in Phu Village",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Tashi Lakhang Gompa visit", "Himlung Base Camp hike option", "Blue sheep spotting", "Tibetan cultural immersion", "Acclimatization for Kang La Pass"]
   },
   {
-    day: 6,
-    title: "Trek to Phu Village",
-    altitude: "3,560m → 4,080m",
-    distance: "14km / 7-8 hrs",
-    description: "The landscape becomes increasingly dramatic as we trek through high alpine terrain with yak pastures, sacred chortens, and mani walls. We pass through Kyang and Jhunam villages before reaching Phu, one of the most remote villages in Nepal. Phu is a stunning Tibetan-style settlement of stone houses clustered beneath towering cliffs, with the ancient Tashi Lakhang Monastery nearby.",
-    overnight: "Teahouse in Phu Village",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Yak pastures", "Sacred chortens and mani walls", "Phu village arrival", "Tibetan-style architecture"],
+    "day": 6,
+    "title": "Trek from Phu Village to Nar Phedi",
+    "altitude": "4,080m → 3,490m",
+    "distance": "12km / 6-7 hrs trek",
+    "description": "You leave Phu Village and begin your journey toward Nar Village and the Kang La Pass. Today you retrace your steps slightly, descending through alpine meadows and the narrow Phu Valley. The trail offers different perspectives of the dramatic landscapes you passed on the way up. You'll arrive at Nar Phedi (3,490m), a small settlement at the confluence of trails, situated beside the river. Nar Phedi has a small monastery where you can visit and interact with the resident monks, learning about their daily life, prayers, and Buddhist practices in this remote region. The rustic teahouses provide a quiet, peaceful setting to rest before the final push to Nar Village and the Kang La Pass crossing. The evening light on the surrounding peaks is beautiful. Overnight in Nar Phedi.",
+    "overnight": "Teahouse in Nar Phedi",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Descend through Phu Valley", "Alpine meadows and river views", "Nar Phedi settlement", "Monastery visit and monk interactions", "Peaceful pre-pass atmosphere"]
   },
   {
-    day: 7,
-    title: "Acclimatization & Exploration in Phu",
-    altitude: "4,080m",
-    distance: "Optional hikes",
-    description: "A crucial rest day for acclimatization at high altitude. Visit the ancient Tashi Lakhang Gompa, built by Karma Sonam Rinpoche who came to Nepal with the Dalai Lama in 1959. For the adventurous, hike to Himlung Himal Base Camp (4,920m) through icy valleys where you may spot blue sheep. Interact with locals, learn about their Tibetan-influenced culture, and enjoy the raw beauty of this remote valley.",
-    overnight: "Teahouse in Phu Village",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Tashi Lakhang Gompa", "Himlung Base Camp hike", "Blue sheep spotting", "Tibetan cultural immersion"],
+    "day": 7,
+    "title": "Trek from Nar Phedi to Nar Village",
+    "altitude": "3,490m → 4,110m",
+    "distance": "6km / 3-4 hrs trek",
+    "description": "A short day allowing for gradual acclimatization before the challenging Kang La Pass crossing tomorrow. The trail follows the river for a short distance, then crosses it and climbs gently towards Nar Village. Colorful prayer flags flutter in the wind, and Buddhist chortens (stupas) and mani walls line the trail as you approach. Nar Village (4,110m) is the larger of the two valley villages (the other being Phu), with tightly clustered flat-roofed stone houses, a vibrant local culture, and spectacular mountain views of the Annapurna range. Unlike Phu, which feels hidden and enclosed, Nar sits on a more open hillside with sweeping views of the valley and surrounding peaks. Spend the afternoon exploring this fascinating settlement, visiting the local monastery, interacting with Nar villagers, and preparing mentally and physically for tomorrow's Kang La Pass crossing. Overnight in Nar Village.",
+    "overnight": "Teahouse in Nar Village",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Short acclimatization day", "Prayer flags and chortens", "Nar village arrival", "Traditional Tibetan architecture", "Preparation for Kang La Pass"]
   },
   {
-    day: 8,
-    title: "Trek to Nar Phedi",
-    altitude: "4,080m → 3,490m",
-    distance: "12km / 6-7 hrs",
-    description: "We retrace our steps slightly, descending through alpine meadows to Nar Phedi, a small settlement at the confluence of trails. Nar Phedi Monastery offers a peaceful atmosphere where you can interact with resident monks and learn about their daily life. The rustic teahouses provide a quiet setting to rest before the final push to Nar Village.",
-    overnight: "Teahouse in Nar Phedi",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Alpine meadows", "Nar Phedi Monastery", "Monk interactions", "Peaceful atmosphere"],
+    "day": 8,
+    "title": "Trek from Nar Village to Ngawal via Kang La Pass",
+    "altitude": "4,110m → 5,306m → 3,660m",
+    "distance": "20km / 9-10 hrs trek",
+    "description": "The most challenging and rewarding day of the entire Nar Phu Valley Trek! Start very early (4-5 AM) for the ascent to Kang La Pass (5,306m) - the highest point of the trek. The climb is steep and relentless on a rocky moraine path, but every step brings you closer to the breathtaking views. As you ascend, the surrounding peaks - Annapurna II (7,937m), Gangapurna (7,455m), Tilicho Peak (7,134m), Pisang Peak (6,091m), and the entire Annapurna range - grow larger and more dramatic. Reaching the crest of Kang La Pass is an indescribable feeling - prayer flags flutter in the wind as you take in the 360-degree panoramic views of the Himalayas stretching in all directions, with the massive south face of Annapurna dominating the skyline. After celebrating at the pass, taking photographs, and soaking in the incredible scenery, begin the long descent to Ngawal (3,660m). The descent passes through rocky terrain, then into forests, with stunning views of the Pisang Valley. Ngawal is a beautiful village where you rejoin the Annapurna Circuit route. Celebrate your incredible achievement - you've crossed Kang La Pass! Overnight in Ngawal.",
+    "overnight": "Teahouse in Ngawal",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Kang La Pass crossing (5,306m)", "360-degree Himalayan panorama", "Annapurna II, Gangapurna, Tilicho views", "Prayer flag-adorned summit", "Rejoin Annapurna Circuit at Ngawal"]
   },
   {
-    day: 9,
-    title: "Trek to Nar Village",
-    altitude: "3,490m → 4,110m",
-    distance: "6km / 3-4 hrs",
-    description: "A shorter day allowing for gradual acclimatization. We follow the river, then cross it to climb gently towards Nar Village. Colorful prayer flags and Buddhist chortens line the trail. Nar is the larger of the two valley villages, with tightly clustered stone houses, a vibrant local culture, and spectacular mountain views. Spend the afternoon exploring this fascinating settlement.",
-    overnight: "Teahouse in Nar Village",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Prayer flags and chortens", "Nar village arrival", "Traditional Tibetan architecture", "Mountain panorama"],
+    "day": 9,
+    "title": "Trek from Ngawal to Manang",
+    "altitude": "3,660m → 3,540m",
+    "distance": "12km / 5-6 hrs trek",
+    "description": "A relatively easy day after the Kang La Pass crossing, allowing your body to recover while enjoying some of the most beautiful scenery on the Annapurna Circuit. The trail descends through the beautiful Pisang Valley with sweeping views of the Annapurna range. You'll pass through the village of Pisang, with its traditional architecture and spectacular views of Pisang Peak (6,091m). The trail offers new perspectives of the Annapurna range before reaching Manang (3,540m), the largest village in the Manang Valley. Manang is a fascinating town with Tibetan-style architecture, numerous gompas (monasteries), several excellent bakeries (famous for apple pie), gear shops, and the Himalayan Rescue Association (HRA) medical clinic. Spend the afternoon exploring Manang, visit the Gangapurna Glacier and Lake, or simply rest in one of the comfortable teahouses. Overnight in Manang.",
+    "overnight": "Teahouse in Manang",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Pisang Valley descent", "Pisang Peak (6,091m) views", "Traditional Tibetan architecture", "Manang village arrival", "Gangapurna Glacier and Lake"]
   },
   {
-    day: 10,
-    title: "Trek to Ngawal via Kang La Pass",
-    altitude: "4,110m → 5,306m → 3,660m",
-    distance: "20km / 9-10 hrs",
-    description: "The most challenging and rewarding day! Early start for the ascent to Kang La Pass (5,306m), the trek's highest point. The climb is steep and relentless, but the 360-degree panoramic views from the top are unforgettable - Annapurna II, Gangapurna, Tilicho Peak, and the entire Annapurna range. The long descent leads to Ngawal, a beautiful village where we rejoin the Annapurna Circuit route.",
-    overnight: "Teahouse in Ngawal",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Kang La Pass (5,306m)", "360-degree Himalayan panorama", "Annapurna range views", "Rejoin Annapurna Circuit"],
+    "day": 10,
+    "title": "Trek from Manang to Ledar",
+    "altitude": "3,540m → 4,200m",
+    "distance": "11km / 4-5 hrs trek",
+    "description": "Today you continue on the Annapurna Circuit toward Thorong La Pass. Leaving Manang, the landscape transforms dramatically from lush valleys to an arid, alpine desert. The trail climbs gradually through the village of Tenki, then passes through Gunsang before reaching Yak Kharka (4,050m), a small settlement surrounded by grazing yaks and spectacular mountain views of Gangapurna and Tilicho Peak (7,134m). Continue ascending on a broad, gentle path through rocky terrain to Ledar (4,200m), a small collection of teahouses nestled in a dramatic alpine landscape. The afternoon is free for rest and optional short acclimatization walks. This gradual ascent is crucial for preparing your body for the high altitude of Thorong La Pass. Overnight in Ledar.",
+    "overnight": "Teahouse in Ledar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Alpine desert landscape", "Yak Kharka and grazing yaks", "Gangapurna and Tilicho Peak views", "Gentle ascent for acclimatization", "Ledar alpine settlement"]
   },
   {
-    day: 11,
-    title: "Trek to Manang",
-    altitude: "3,660m → 3,540m",
-    distance: "12km / 5-6 hrs",
-    description: "A relatively easy day as we descend through the beautiful Pisang Valley. Pass through villages with traditional architecture and enjoy views of Pisang Peak. The trail offers new perspectives of the Annapurna range before reaching Manang, the largest village in the valley. Manang has excellent teahouses, bakeries, and a famous Himalayan Rescue Association clinic.",
-    overnight: "Teahouse in Manang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Pisang Valley", "Pisang Peak views", "Manang village", "Himalayan Rescue Association"],
+    "day": 11,
+    "title": "Trek from Ledar to Thorong Phedi",
+    "altitude": "4,200m → 4,540m",
+    "distance": "9km / 4-5 hrs trek",
+    "description": "A shorter but steep day as you climb to the base of Thorong La Pass. The trail continues through arid, rocky terrain with prayer flags marking the way. You'll pass the seasonal settlement of Letdar before making the final push to Thorong Phedi (4,540m), nestled dramatically beneath the towering south face of Thorong Peak. The afternoon is crucial for preparation: rest, hydrate, organize your gear for tomorrow's 3-4 AM start. For better acclimatization, consider an optional 1-hour hike to High Camp (4,850m), which can make the pass crossing easier by reducing the total ascent on summit day. The views of the surrounding peaks from Thorong Phedi are spectacular. Overnight in Thorong Phedi.",
+    "overnight": "Teahouse in Thorong Phedi",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final approach to Thorong La", "Thorong Phedi base camp", "Optional High Camp hike (4,850m)", "Pass preparation and briefing", "Dramatic mountain amphitheater"]
   },
   {
-    day: 12,
-    title: "Drive to Jomsom via Thorong La",
-    altitude: "3,540m → 5,416m → 2,720m",
-    distance: "8-9 hrs drive",
-    description: "Early morning jeep drive to cross the legendary Thorong La Pass (5,416m) - the world's highest pass. While not trekking, the drive offers spectacular mountain scenery. Descend to the sacred Muktinath Temple, holy to both Hindus and Buddhists, then continue to Jomsom, the main town of the Mustang region. Celebrate completing the Nar Phu adventure!",
-    overnight: "Teahouse in Jomsom",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Thorong La Pass (5,416m)", "Muktinath Temple", "Kali Gandaki Valley", "Jomsom arrival"],
+    "day": 12,
+    "title": "Cross Thorong La Pass to Muktinath & Drive to Pokhara",
+    "altitude": "4,540m → 5,416m → 3,800m → 820m",
+    "distance": "14km trek / 8-10 hrs trek + 6-7 hrs drive",
+    "description": "The biggest day of the Annapurna Circuit section! Start very early (3-4 AM) with headlamps for the challenging climb to Thorong La (5,416m) — the world's highest traversable pass. The trail is steep but well-defined, with prayer flags marking the summit. At the top, celebrate your double achievement: crossing Kang La Pass (5,306m) in Nar Phu and now Thorong La Pass (5,416m) on the Annapurna Circuit. Enjoy breathtaking 360-degree views of Annapurna (8,091m), Dhaulagiri (8,167m), Gangapurna (7,455m), and Thorong Peak (6,144m). After photos and celebrations, begin the long descent (1,600m drop) to Muktinath (3,800m), a sacred pilgrimage site for Hindus and Buddhists. Visit the Muktinath Temple with its 108 water spouts and eternal natural flame. From Muktinath, board your private vehicle for the scenic drive to Pokhara, passing through the dramatic Kali Gandaki Gorge (world's deepest). Arrive in Pokhara by late evening. Check into your hotel and celebrate completing both Nar Phu Valley and the Annapurna Circuit! Overnight in Pokhara.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Thorong La Pass (5,416m) - world's highest pass", "360-degree sunrise Himalayan panorama", "Annapurna and Dhaulagiri ranges", "Muktinath Temple (108 water spouts)", "Nar Phu + Annapurna Circuit double achievement"]
   },
   {
-    day: 13,
-    title: "Fly to Pokhara & Drive to Kathmandu",
-    altitude: "2,720m → 820m → 1,400m",
-    distance: "20 min flight / 6-7 hrs drive",
-    description: "Early morning flight from Jomsom to Pokhara with spectacular aerial views of the Annapurna and Dhaulagiri ranges. Upon arrival, transfer to a tourist bus or private vehicle for the scenic drive back to Kathmandu. Arrive in Kathmandu by late afternoon. Check into your hotel and enjoy free time for souvenir shopping or final exploration of Thamel.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Dinner",
-    highlights: ["Scenic mountain flight", "Pokhara lakeside views", "Thamel exploration", "Celebration dinner"],
-  },
-  {
-    day: 14,
-    title: "Departure",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of walking through ancient Tibetan villages and crossing the remote Nar Phu Valley.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
-];
+    "day": 13,
+    "title": "Drive from Pokhara to Kathmandu",
+    "altitude": "820m → 1,400m",
+    "distance": "200km / 6-7 hrs drive",
+    "description": "After a leisurely breakfast in Pokhara, begin your scenic drive back to Kathmandu along the Prithvi Highway. The journey follows the Trishuli River, offering beautiful views of river valleys, rolling hills, terraced farmlands, and distant mountain peaks. You'll pass through charming towns and witness daily Nepali rural life along the way. The drive is a wonderful opportunity to reflect on your incredible Nar Phu Valley and Annapurna Circuit adventure - exploring the remote Tibetan villages of Phu and Nar, crossing Kang La Pass (5,306m), and conquering Thorong La Pass (5,416m) - the world's highest pass. Arrive in Kathmandu by late afternoon. Check into your hotel in Thamel, take a well-deserved hot shower, and enjoy the comforts of the city. The remainder of your day is free for souvenir shopping in Thamel, visiting a spa for a much-needed massage, or simply relaxing. In the evening, enjoy a farewell dinner celebrating your successful double pass trek - Nar Phu Valley + Annapurna Circuit!",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Dinner",
+    "highlights": ["Scenic Pokhara to Kathmandu drive", "Trishuli River and countryside views", "Rural Nepali landscapes", "Thamel souvenir shopping", "Farewell celebration dinner"]
+  }
+]
 
 const includes = [
   "All airport/hotel transfers in private vehicle",
@@ -312,7 +302,7 @@ export default function NarPhuTrekPage() {
                 <a href="#includes" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
                   What's Included
                 </a>
-                <a href="#gallery" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                <a href="#gallery" onClick={() => setShowMobileNav(false)} className="block p6</y-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
                   Gallery
                 </a>
                 <a href="#faq" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
@@ -402,8 +392,8 @@ export default function NarPhuTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$2,350</div>
-                <div className="text-lg font-bold text-[#0f2940]">$2,095</div>
+                <div className="text-xs text-slate-400 line-through">$1,605</div>
+                <div className="text-lg font-bold text-[#0f2940]">$1,350</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -422,8 +412,8 @@ export default function NarPhuTrekPage() {
                 <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
                     <div className="text-center mb-4 md:mb-6">
-                      <span className="text-white/50 text-sm line-through">$2,350</span>
-                      <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,095</div>
+                      <span className="text-white/50 text-sm line-through">$1,605</span>
+                      <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,350</div>
                       <span className="text-white/60 text-sm">per person</span>
                       <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $255</Badge>
                     </div>
@@ -431,7 +421,7 @@ export default function NarPhuTrekPage() {
                     <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                       <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>14 Days / 13 Nights</span>
+                        <span>13 Days / 12 Nights</span>
                       </div>
                       <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />

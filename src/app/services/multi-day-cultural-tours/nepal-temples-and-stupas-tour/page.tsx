@@ -55,117 +55,106 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive tour briefing where we'll discuss the itinerary, the significance of temples and stupas in Nepali culture, and handle any arrangements. Evening free to explore the vibrant streets of Thamel. Welcome dinner with traditional Nepali cuisine where you'll meet your tour guide.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Tour briefing", "Welcome dinner", "Thamel exploration"],
+    "day": 1,
+    "title": "Arrival in Kathmandu",
+    "altitude": "1,350m",
+    "distance": "-",
+    "description": "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive tour briefing where we'll discuss the itinerary, the significance of UNESCO World Heritage Sites, and handle any arrangements. Evening free to explore the vibrant streets of Thamel, with its bustling shops, restaurants, and cafes. Welcome dinner with traditional Nepali cuisine where you'll meet your tour guide and fellow travelers. Enjoy authentic dal bhat, momos, and other local specialties while learning about the cultural heritage of the Kathmandu Valley.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Dinner",
+    "highlights": ["Airport pickup", "Tour briefing", "Welcome dinner", "Thamel exploration", "Traditional Nepali cuisine"]
   },
   {
-    day: 2,
-    title: "Swayambhunath & Kathmandu Durbar Square",
-    altitude: "1,350m",
-    distance: "Full day tour",
-    description: "After breakfast, begin your spiritual journey at Swayambhunath Stupa (Monkey Temple), one of the most sacred Buddhist sites in Nepal. Perched on a hilltop west of Kathmandu, this ancient stupa dates back to the 5th century. Climb the 365 steps past meditation shrines, prayer wheels, and watching monkeys. At the summit, circumambulate the main stupa with its all-seeing eyes of Buddha, representing wisdom and compassion. Visit the surrounding shrines, monasteries, and enjoy panoramic views of the Kathmandu Valley. After lunch, visit Kathmandu Durbar Square, the historic seat of royalty. Explore the ancient palace complex with its intricately carved wooden windows, including the famous Kumari Ghar—home to the Living Goddess Kumari. Visit the Taleju Temple, Hanuman Dhoka Palace, and numerous other temples dedicated to Hindu deities. Evening return to hotel.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Swayambhunath Stupa", "All-seeing eyes of Buddha", "Kumari Living Goddess", "Hanuman Dhoka Palace"],
+    "day": 2,
+    "title": "Kathmandu Durbar Square & Swayambhunath (Monkey Temple)",
+    "altitude": "1,350m",
+    "distance": "Full day tour",
+    "description": "After breakfast, begin your UNESCO heritage journey at Kathmandu Durbar Square (Hanuman Dhoka), a UNESCO World Heritage Site and the historic seat of Nepalese royalty. Explore the ancient palace complex with its intricately carved wooden windows and doors, including the famous Kumari Ghar—home to the Living Goddess Kumari. If you're lucky, you may catch a glimpse of the Kumari at her window. Visit the massive stone statue of Kal Bhairav, the nine-story Basantapur Tower, the Taleju Temple, and the numerous pagoda-style temples dating back to the 12th to 18th centuries. Your guide will explain the history of the Malla kings and the significance of each structure. After lunch, visit Swayambhunath Stupa (Monkey Temple), perched on a hilltop west of the city. This UNESCO World Heritage Site dates back to the 5th century. Climb the 365 stone steps past meditation shrines, prayer wheels, and the resident monkeys who give the temple its nickname. At the summit, circumambulate the main stupa with its all-seeing eyes of Buddha, representing wisdom and compassion watching over the valley. Visit the surrounding shrines, monasteries, and the stunning golden vajra (thunderbolt) statue. Your guide will explain Buddhist symbolism, the meaning of the all-seeing eyes, and the legend of the lotus that emerged from the valley's lake. Enjoy panoramic views of the entire Kathmandu Valley and on clear days, the Himalayan peaks. Evening return to hotel.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Kathmandu Durbar Square", "Kumari Living Goddess", "Kal Bhairav statue", "Hanuman Dhoka Palace", "Taleju Temple", "Swayambhunath Stupa (5th century)", "365 steps and monkeys", "All-seeing eyes of Buddha", "Panoramic Kathmandu Valley views"]
   },
   {
-    day: 3,
-    title: "Pashupatinath Temple - Sacred Hindu Shrine",
-    altitude: "1,350m",
-    distance: "Full day tour",
-    description: "Early morning visit to Pashupatinath Temple, the holiest Hindu temple in Nepal dedicated to Lord Shiva. This UNESCO World Heritage Site stretches along the banks of the sacred Bagmati River. Observe morning rituals, including the worship of the Shiva Linga, and the fascinating sadhus (holy men) with their distinctive face paint and dreadlocks. Walk along the riverbank to witness cremation ceremonies and understand Hindu beliefs about death and rebirth. Visit the surrounding temples including the Guhyeshwari Temple and the Ram Temple. Your guide will explain the mythology, symbolism, and rituals of this sacred site. Photography is permitted in the outer areas. Return to hotel in the afternoon. Evening free for personal reflection or exploration.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Pashupatinath Temple", "Bagmati River rituals", "Sadhus (holy men)", "Cremation ceremonies"],
+    "day": 3,
+    "title": "Pashupatinath Temple & Boudhanath Stupa - Sacred Hindu & Buddhist Sites",
+    "altitude": "1,350m",
+    "distance": "Full day tour",
+    "description": "Today you visit two of the most sacred UNESCO World Heritage Sites in Nepal - one Hindu and one Buddhist. Early morning visit to Pashupatinath Temple, the holiest Hindu temple in Nepal dedicated to Lord Shiva, located on the sacred banks of the Bagmati River. This UNESCO World Heritage Site dates back to the 5th century. Observe morning puja (worship) rituals, including the worship of the Shiva Linga, and the fascinating sadhus (holy men) with their distinctive face paint, dreadlocks, and ash-smeared bodies. Walk along the riverbank to witness cremation ceremonies at the open-air ghats (burning platforms) and understand Hindu beliefs about death, rebirth, and the cycle of samsara. Your guide will explain the mythology of Lord Shiva, the significance of the Bagmati River, and the symbolism of cremation rituals. Visit the surrounding temples including the Guhyeshwari Temple and the Ram Temple. Photography is permitted in the outer areas. After lunch, visit Boudhanath Stupa, one of the largest spherical stupas in South Asia and the center of Tibetan Buddhism in Nepal. This UNESCO World Heritage Site is a massive mandala representing the Buddhist cosmos, rebuilt in the 5th century after being first constructed in the 14th century. Circumambulate the massive stupa (the kora) while spinning the 108 prayer wheels, sending prayers to the universe. Observe Tibetan monks in maroon robes, pilgrims prostrating, and locals engaged in devotion. Your guide will explain Buddhist symbolism, the meaning of the all-seeing eyes, the significance of prayer flags (five colors representing the five elements), and the importance of circumambulation. Visit the surrounding monasteries including the famous Shechen Monastery and Thrangu Tashi Yangtse Monastery. Optional meditation session at a monastery. As evening falls, the stupa is beautifully illuminated, creating a magical spiritual atmosphere. Return to hotel.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Pashupatinath Temple (5th century)", "Bagmati River ghats", "Cremation ceremonies", "Sadhus (holy men)", "Shiva Linga worship", "Boudhanath Stupa", "Tibetan Buddhist culture", "Prayer wheel circumambulation", "Shechen Monastery", "Evening stupa illumination"]
   },
   {
-    day: 4,
-    title: "Boudhanath Stupa - Center of Tibetan Buddhism",
-    altitude: "1,350m",
-    distance: "Full day tour",
-    description: "After breakfast, visit Boudhanath Stupa, one of the largest spherical stupas in South Asia and the center of Tibetan Buddhism in Nepal. This UNESCO World Heritage Site is a massive mandala representing the Buddhist cosmos. Circumambulate the stupa while spinning the 108 prayer wheels, sending prayers to the universe. Observe Tibetan monks in maroon robes, pilgrims prostrating, and locals engaged in devotion. Visit the surrounding monasteries including the famous Shechen Monastery and Thrangu Tashi Yangtse Monastery. Your guide will explain Buddhist symbolism, the meaning of prayer flags, and the significance of the all-seeing eyes. Optional meditation session at a monastery. Evening return to hotel.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Boudhanath Stupa", "Tibetan Buddhist culture", "Monastery visits", "Prayer wheel circumambulation"],
+    "day": 4,
+    "title": "Patan Durbar Square & Bhaktapur Durbar Square - Twin Medieval Cities",
+    "altitude": "1,350m → 1,401m",
+    "distance": "Full day tour (30 min to Patan, 1 hr to Bhaktapur from Patan)",
+    "description": "Today you explore two of the most magnificent medieval cities in the Kathmandu Valley - Patan and Bhaktapur, both UNESCO World Heritage Sites. Start after breakfast with a short 30-minute drive to Patan (Lalitpur), the 'City of Fine Arts', located just across the Bagmati River from Kathmandu. Patan Durbar Square is the finest collection of Newari temple architecture in Nepal. Visit the Krishna Temple, a masterpiece built entirely of black stone with 21 pinnacles and exquisite carvings depicting scenes from the Mahabharata and Ramayana. Explore the ancient royal palace complex, now the Patan Museum, housed in the old royal palace, featuring magnificent bronze statues, religious artifacts, and a famous collection of Thanka paintings. Visit the Hiranya Varna Mahavihar (Golden Temple), a stunning Buddhist monastery with golden facades, intricate woodwork, peaceful courtyards, and a small stupa. See the Mahabouddha Temple with its thousands of Buddha images on terracotta tiles, and the Kumbheshwar Temple, one of the few five-story pagodas in Nepal. Watch local artisans at work creating traditional metal statues of deities - Patan has been the artistic heart of Nepal for centuries. Your guide will explain the fusion of Hindu and Buddhist architecture found throughout the square. After lunch, drive 1 hour to Bhaktapur, the best-preserved medieval city in Nepal, also known as 'Bhadgaon' or the 'City of Devotees'. Bhaktapur Durbar Square transports you back to the 15th century with its magnificent temple architecture. Explore the Palace of 55 Windows, a masterpiece of wood carving with intricately carved dark red windows. Walk through the magnificent Golden Gate (Sun Dhoka) leading to the palace courtyard. Marvel at the towering Nyatapola Temple, Nepal's tallest pagoda at five stories (30 meters), dedicated to the goddess Siddhi Lakshmi. Visit the Bhairavnath Temple with its three-story pagoda, and the Dattatreya Temple with its intricate woodcarvings. Wander through narrow cobblestone streets to Pottery Square, where artisans create traditional clay figures of deities and everyday items using centuries-old techniques. Your guide will explain the significance of each temple and the stories of the deities worshipped. Return to Kathmandu by evening.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Patan Durbar Square", "Krishna Temple (black stone)", "Golden Temple (Hiranya Varna)", "Patan Museum", "Local metal statue artisans", "Bhaktapur Durbar Square", "Nyatapola Temple (Nepal's tallest pagoda)", "Palace of 55 Windows", "Golden Gate", "Pottery Square"]
   },
   {
-    day: 5,
-    title: "Patan - City of Temples & Monasteries",
-    altitude: "1,350m",
-    distance: "Half day tour",
-    description: "After breakfast, drive to Patan (Lalitpur), the city of fine arts across the Bagmati River. Patan Durbar Square is a stunning collection of temples, statues, and palaces showcasing the finest Newari architecture. Visit the Krishna Temple built entirely of stone, the Hiranya Varna Mahavihar (Golden Temple), and the many intricately carved Hindu and Buddhist temples. Explore the Patan Museum housed in the ancient royal palace, featuring magnificent bronze statues and religious artifacts. Visit the Mahabouddha Temple with its thousands of Buddha images and the Kumbheshwar Temple, one of the few five-story pagodas in Nepal. Watch local artisans at work creating traditional metal statues of deities. Return to Kathmandu by afternoon. Evening at leisure.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Patan Durbar Square", "Krishna Temple", "Golden Temple", "Mahabouddha Temple"],
+    "day": 5,
+    "title": "Drive from Kathmandu to Pokhara - Lakeside Paradise",
+    "altitude": "1,350m → 820m",
+    "distance": "6-7 hrs drive / 200km",
+    "description": "After breakfast, begin the scenic drive to Pokhara, Nepal's most beautiful lakeside city and the gateway to the Annapurna region. The journey follows the Prithvi Highway through river valleys, terraced farmlands, and subtropical forests along the Trishuli River. Stop en-route at various viewpoints overlooking the Marsyangdi and Trishuli Rivers, with opportunities for photos and refreshments. On clear days, enjoy distant views of the Annapurna range, Manaslu (8,163m), and Ganesh Himal. Arrive in Pokhara by mid-afternoon and check into your lakeside hotel. Evening free to explore the Lakeside promenade with its cafes, shops, and restaurants offering international cuisine. Optional boat ride on Phewa Lake at sunset to capture the reflection of Machhapuchhre (Fishtail) mountain in the calm waters. Overnight in Pokhara.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic Prithvi Highway drive", "Trishuli River viewpoints", "Distant Annapurna and Manaslu views", "Lakeside promenade", "Sunset at Phewa Lake"]
   },
   {
-    day: 6,
-    title: "Bhaktapur - Medieval Temple City",
-    altitude: "1,350m → 1,401m",
-    distance: "Full day tour (1 hr drive each way)",
-    description: "After breakfast, drive to Bhaktapur, the best-preserved medieval city in Nepal and a UNESCO World Heritage Site. Known as the 'City of Devotees,' Bhaktapur is home to numerous temples and religious structures. Explore Bhaktapur Durbar Square with its Palace of 55 Windows, the magnificent Golden Gate, and the towering Nyatapola Temple—Nepal's tallest pagoda at five stories, dedicated to the goddess Siddhi Lakshmi. Visit the Bhairavnath Temple with its three-story pagoda, and the Dattatreya Temple with its intricate woodcarvings. Wander through narrow cobblestone streets to Pottery Square, where artisans create traditional clay figures of deities and everyday items. After lunch, drive to the hilltop Changunarayan Temple, the oldest Hindu temple in Nepal dating back to the 4th century. Dedicated to Lord Vishnu, this temple features exquisite stone, wood, and metal craft depicting various incarnations. Return to Kathmandu by evening.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Nyatapola Temple", "Changunarayan Temple", "Pottery Square", "Golden Gate"],
+    "day": 6,
+    "title": "Sarangkot Sunrise & Pokhara Valley Exploration",
+    "altitude": "820m → 1,592m → 820m",
+    "distance": "1 hr drive each way",
+    "description": "Pre-dawn departure (4:30 AM) to Sarangkot hill station for the most spectacular sunrise photography in Nepal. Watch the first light illuminate the Annapurna range including Annapurna South (7,219m), Annapurna I (8,091m), Annapurna II (7,937m), Machhapuchhre (Fishtail - 6,993m), and Dhaulagiri (8,167m). The panoramic views from Sarangkot are absolutely breathtaking. After sunrise, return to hotel for breakfast. Mid-morning, visit Davis Falls, an interesting waterfall on the Bagmati River that disappears into underground caves and tunnels. Adjacent to the falls is Gupteshwor Cave, a sacred limestone cave with a massive shivalinga and views of the waterfall from within. After lunch, explore the International Mountain Museum (IMM), which features exhibits on Himalayan mountaineering, the history of Everest expeditions, the culture of mountain communities, and displays of the world's highest peaks. Late afternoon, enjoy a boat ride on Phewa Lake to the Tal Barahi Temple, a two-story pagoda temple dedicated to the goddess Barahi, located on a small island in the middle of the lake. Capture the stunning reflection of Machhapuchhre mountain in the calm lake waters as the sun sets. Overnight in Pokhara.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Sarangkot sunrise (4:30 AM start)", "Annapurna & Dhaulagiri panorama", "Machhapuchhre (Fishtail) views", "Davis Falls underground", "Gupteshwor Cave", "International Mountain Museum", "Phewa Lake boat ride", "Tal Barahi Temple"]
   },
   {
-    day: 7,
-    title: "Flight to Pokhara & Peace Temple",
-    altitude: "1,350m → 820m",
-    distance: "30 min flight + tour",
-    description: "After breakfast, transfer to Kathmandu Airport for a scenic 30-minute flight to Pokhara. Enjoy aerial views of the Himalayan foothills during the flight. Upon arrival, transfer to your lakeside hotel. After lunch, visit the World Peace Pagoda (Shanti Stupa), a magnificent Buddhist stupa perched on a hilltop overlooking Pokhara Valley. Built by Japanese monks, this white dome stupa features golden Buddha statues and offers panoramic views of the Annapurna range, Phewa Lake, and the city. Hike up through forest trails (or drive partway) and circumambulate the stupa while enjoying the peaceful atmosphere. Evening return to hotel. Free time to explore Lakeside's cafes and shops.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic mountain flight", "World Peace Pagoda", "Annapurna views", "Phewa Lake panorama"],
+    "day": 7,
+    "title": "Drive from Pokhara to Lumbini - Birthplace of Buddha",
+    "altitude": "820m → 150m",
+    "distance": "5-6 hrs drive / 180km",
+    "description": "After breakfast, drive south from Pokhara to Lumbini, the birthplace of Lord Buddha and one of the holiest pilgrimage sites in the world. This UNESCO World Heritage Site is a must-visit for understanding Nepal's Buddhist heritage. The journey descends from the Himalayan foothills (820m) down to the flat Terai plains (150m), with dramatically changing landscapes along the way - from subtropical forests and winding mountain roads to open agricultural fields and rural villages. You'll pass through the cities of Palpa (known for Tansen with its Newari architecture) and Butwal, with opportunities to see traditional Terai culture and lifestyles. Arrive in Lumbini by early afternoon. Check into your hotel and take a short rest. In the late afternoon, take a gentle orientation walk around the Lumbini Sacred Garden area to get acquainted with this peaceful pilgrimage site. Visit the Puskarini Sacred Pond, where Queen Mayadevi is said to have bathed before giving birth to Buddha - it's still used today by pilgrims for bathing rituals. As the sun sets, experience the peaceful chanting of prayers from nearby monasteries filling the air. Your guide will introduce the story of Prince Siddhartha's birth, his mother Queen Mayadevi, and why Lumbini is considered the spiritual heart of Buddhism. Overnight in Lumbini.",
+    "overnight": "Hotel in Lumbini",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic drive from Pokhara to Lumbini", "Palpa/Tansen pass through", "Descend from hills to Terai plains", "Lumbini arrival", "Puskarini Sacred Pond", "Peaceful evening atmosphere"]
   },
   {
-    day: 8,
-    title: "Sarangkot Sunrise & Pokhara Temples",
-    altitude: "820m → 1,592m → 820m",
-    distance: "1 hr drive each way",
-    description: "Pre-dawn departure (4:30 AM) to Sarangkot hill station for spectacular sunrise over the Annapurna range. Watch the first light illuminate Annapurna South, Annapurna I, Machhapuchhre (Fishtail), and Dhaulagiri. After sunrise, return to hotel for breakfast. Mid-morning, visit Bindhyabasini Temple, Pokhara's most important Hindu temple dedicated to the goddess Bhagwati. Observe local devotees offering prayers and rituals. Continue to Davis Falls, an interesting waterfall that disappears into underground caves, and the adjacent Gupteshwor Cave with its massive shivalinga—a sacred cave temple dedicated to Lord Shiva. After lunch, enjoy a boat ride on Phewa Lake to the Tal Barahi Temple, a two-story pagoda in the middle of the lake dedicated to the goddess Barahi. This is one of Pokhara's most revered temples. Capture the reflection of Machhapuchhre mountain in the calm lake waters. Overnight in Pokhara.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Sarangkot sunrise", "Bindhyabasini Temple", "Tal Barahi Temple", "Gupteshwor Cave"],
+    "day": 8,
+    "title": "Lumbini Sacred Garden - Mayadevi Temple, Ashoka Pillar & International Monasteries",
+    "altitude": "150m",
+    "distance": "Full day exploration",
+    "description": "Today is dedicated to the full exploration of Lumbini, the birthplace of Lord Buddha and a UNESCO World Heritage Site - the spiritual destination of your journey. Start early with a morning visit to the Sacred Garden (Lumbini Garden), the heart of Lumbini. Enter through the majestic Dharma Swami Maharaja Gate and walk the peaceful paths lined with ancient ruins and monasteries. Visit the Mayadevi Temple, the most sacred site in Lumbini, where Queen Mayadevi gave birth to Siddhartha Gautama in 623 BCE. The temple is built over the exact birthplace, maintained in its excavated form. Inside the temple, see the ancient Marker Stone that pinpoints the exact birthplace of Buddha, marked with a stone slab. Adjacent to the temple is the Ashoka Pillar, erected by Emperor Ashoka in 249 BCE during his pilgrimage to Lumbini to promote Buddhism. The pillar has inscriptions in Brahmi script confirming the site as Buddha's birthplace - a crucial archaeological discovery. Explore the excavated remains of ancient monasteries and stupas dating back to the 3rd century BCE to the 5th century CE, showing how Lumbini was a major Buddhist pilgrimage site for centuries. Your guide will explain the life of Buddha, the significance of his birth, and the pilgrimage tradition. After lunch, visit the International Monastic Zone, where Buddhist communities from around the world have built temples, stupas, and monasteries in their traditional architectural styles. Visit the magnificent Myanmar (Burmese) Temple with its golden spire and marble Buddha, the Chinese Temple with its beautiful gardens and traditional Chinese architecture featuring yellow roofs and red pillars, the Japanese Peace Stupa (World Peace Pagoda) with its golden Buddha statues, the Thai Monastery with its distinctive curved roofs, the Vietnamese Temple, and the Korean Temple. Each monastery offers unique art, architecture, meditation halls, and spiritual atmosphere. In the late afternoon, visit the Eternal Peace Flame, a continuously burning flame that symbolizes the eternal nature of Buddha's teachings and world peace. End your day at the Lumbini Museum, which houses artifacts, manuscripts, coins, and photographs related to Buddha's life, Buddhist history, and the archaeological discoveries at Lumbini. As evening falls, you may choose to participate in meditation sessions or listen to chanting at one of the monasteries - a deeply spiritual experience. Overnight in Lumbini.",
+    "overnight": "Hotel in Lumbini",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Mayadevi Temple - Buddha's birthplace", "Marker Stone (exact birthplace)", "Ashoka Pillar (249 BCE inscriptions)", "Ancient monastery ruins (3rd century BCE)", "Sacred Garden", "Myanmar (Burmese) Temple", "Chinese Temple", "Japanese Peace Stupa", "Thai Monastery", "Eternal Peace Flame", "Lumbini Museum"]
   },
   {
-    day: 9,
-    title: "Drive to Lumbini - Birthplace of Buddha",
-    altitude: "820m → 150m",
-    distance: "5-6 hrs drive / 180km",
-    description: "After breakfast, drive south to Lumbini, the birthplace of Lord Buddha and the holiest pilgrimage site in Buddhism. This UNESCO World Heritage Site is the spiritual heart of our journey. The drive descends from the hills to the flat Terai plains, with changing landscapes. Arrive in Lumbini by early afternoon. Visit the Mayadevi Temple, the sacred site where Queen Mayadevi gave birth to Siddhartha Gautama in 623 BCE. Explore the excavated remains of ancient monasteries and the marker stone depicting the exact birthplace. See the Ashoka Pillar, erected by Emperor Ashoka in 249 BCE to commemorate his pilgrimage. In the evening, visit the World Peace Pagoda and stroll through the monastic zone with temples built by Buddhist countries from around the world. Overnight in Lumbini.",
-    overnight: "Hotel in Lumbini",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Mayadevi Temple", "Ashoka Pillar", "Sacred Garden", "World Peace Pagoda"],
+    "day": 9,
+    "title": "Return Flight to Kathmandu & Farewell Dinner",
+    "altitude": "150m → 1,350m",
+    "distance": "30 min flight + drive",
+    "description": "Early morning optional visit to the sacred garden for final meditation and peaceful atmosphere—a truly spiritual way to conclude your pilgrimage. After breakfast, transfer to Bhairahawa's Gautam Buddha Airport (30 minutes from Lumbini) for a scenic 30-minute flight back to Kathmandu. The short flight offers spectacular aerial views of the Terai plains, the Himalayan foothills, and on clear days, distant views of the Annapurna and Dhaulagiri ranges. Upon arrival at Tribhuvan International Airport in Kathmandu, our representative will meet you and transfer you to your hotel in Thamel. Check into your hotel and freshen up. The afternoon is free for personal exploration - you may choose to do last-minute souvenir shopping in Thamel, purchase Buddhist or Hindu statues and thangkas, visit a spa for a relaxing massage, or simply rest after your spiritual journey. In the evening, enjoy a farewell dinner at a traditional Nepali restaurant with cultural music and dance performance. Celebrate your incredible journey through Nepal's UNESCO World Heritage Sites - from the ancient temples and stupas of the Kathmandu Valley, to the Himalayan sunrise at Sarangkot, to walking in the footsteps of Lord Buddha in Lumbini. Share stories and reflections with your guide and fellow travelers. Overnight in Kathmandu.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Early morning meditation (optional)", "Scenic flight to Kathmandu (30 min)", "Aerial Himalayan foothill views", "Thamel souvenir shopping", "Thangka and statue shopping", "Spa and relaxation", "Farewell dinner with cultural performance"]
   },
   {
-    day: 10,
-    title: "Lumbini Monastery Exploration & Return Flight",
-    altitude: "150m → 1,350m",
-    distance: "30 min flight + drive",
-    description: "Early morning visit to the sacred garden for meditation and peaceful atmosphere—a truly spiritual experience. Explore the international monasteries including the magnificent Myanmar Temple (with its striking architecture), the Chinese Temple, the Tibetan Monastery, the Thai Monastery, and the Eternal Peace Flame. Each represents the unique Buddhist traditions of their countries. Visit the Lumbini Museum housing artifacts and manuscripts related to Buddha's life. After lunch, transfer to Bhairahawa Airport for a scenic 30-minute flight back to Kathmandu. Upon arrival, transfer to your hotel. Evening farewell dinner at a traditional Nepali restaurant with cultural music and dance performance. Celebrate your spiritual journey through Nepal's sacred temples and stupas. Overnight in Kathmandu.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Sacred Garden meditation", "International monasteries", "Scenic flight", "Farewell dinner"],
-  },
-  {
-    day: 11,
-    title: "Departure",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of visiting sacred temples and stupas, witnessing ancient rituals, walking in the footsteps of Buddha, and experiencing the profound spirituality of this remarkable country. May the blessings of the temples and stupas accompany you on your journey home. Namaste and until we meet again!",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 10,
+    "title": "Departure from Kathmandu",
+    "altitude": "1,350m",
+    "distance": "-",
+    "description": "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time, assist with check-in, and bid you farewell. Bid farewell to Nepal with memories of exploring ancient temples and durbar squares, witnessing majestic Himalayan sunrises, walking in the footsteps of Lord Buddha at his birthplace in Lumbini, and experiencing the rich cultural heritage of this remarkable country where Hinduism and Buddhism coexist in harmony. May the blessings of the UNESCO World Heritage Sites accompany you on your journey home. Namaste and until we meet again for another adventure in the Himalayas!",
+    "overnight": "-",
+    "meals": "Breakfast",
+    "highlights": ["Airport transfer", "Departure assistance", "Fond farewells", "UNESCO heritage memories"]
+  }
 ];
-
 const includes = [
   "All airport/hotel transfers in private vehicle",
   "10 nights hotel accommodation (3-star with breakfast) as per itinerary",
@@ -402,8 +391,8 @@ export default function NepalTemplesAndStupasTourPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$2,050</div>
-                <div className="text-lg font-bold text-[#0f2940]">$1,795</div>
+                <div className="text-xs text-slate-400 line-through">$2,350</div>
+                <div className="text-lg font-bold text-[#0f2940]">$2,200</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -423,16 +412,16 @@ export default function NepalTemplesAndStupasTourPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$2,050</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,795</div>
+                        <span className="text-white/50 text-sm line-through">$2,350</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,200</div>
                         <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $255</Badge>
+                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $150</Badge>
                       </div>
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>11 Days / 10 Nights</span>
+                          <span>10 Days / 9 Nights</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />

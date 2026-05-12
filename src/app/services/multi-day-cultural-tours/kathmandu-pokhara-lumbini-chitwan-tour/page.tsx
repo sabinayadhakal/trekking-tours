@@ -51,95 +51,105 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive tour briefing where we'll discuss the itinerary, cultural significance of sites, and handle any arrangements. Evening free to explore the vibrant streets of Thamel. Welcome dinner with traditional Nepali cuisine where you'll meet your tour guide.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Tour briefing", "Welcome dinner", "Thamel exploration"],
+    "day": 1,
+    "title": "Arrival in Kathmandu",
+    "altitude": "1,350m",
+    "distance": "-",
+    "description": "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive tour briefing where we'll discuss the itinerary, cultural significance of sites, and handle any arrangements. Evening free to explore the vibrant streets of Thamel, with its bustling shops, restaurants, and cafes. Welcome dinner with traditional Nepali cuisine where you'll meet your tour guide and fellow travelers. Enjoy authentic dal bhat, momos, and other local specialties while learning about the days ahead.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Dinner",
+    "highlights": ["Airport pickup", "Tour briefing", "Welcome dinner", "Thamel exploration", "Traditional Nepali cuisine"]
   },
   {
-    day: 2,
-    title: "Kathmandu Valley Heritage Tour",
-    altitude: "1,350m",
-    distance: "Full day tour",
-    description: "After breakfast, begin your heritage journey at Kathmandu Durbar Square, the historic seat of royalty. Explore the ancient palace complex with its intricately carved wooden windows, including the famous Kumari Ghar—home to the Living Goddess Kumari. Continue to Swayambhunath Stupa (Monkey Temple), perched on a hilltop west of the city. Climb the 365 steps past meditation shrines and prayer wheels to reach the main stupa with its all-seeing eyes of Buddha. After lunch, visit Pashupatinath Temple, one of the holiest Hindu temples dedicated to Lord Shiva. Observe afternoon rituals and the fascinating sadhus (holy men). End the day at Boudhanath Stupa, one of the largest spherical stupas in South Asia and the center of Tibetan Buddhism in Nepal. Circumambulate the massive mandala while spinning prayer wheels. Return to hotel for dinner.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Kathmandu Durbar Square", "Swayambhunath Stupa", "Pashupatinath Temple", "Boudhanath Stupa"],
+    "day": 2,
+    "title": "Kathmandu Valley Heritage Tour - Four UNESCO Sites",
+    "altitude": "1,350m",
+    "distance": "Full day tour",
+    "description": "After breakfast, begin your heritage journey at Kathmandu Durbar Square (Hanuman Dhoka), the historic seat of Nepalese royalty and a UNESCO World Heritage Site. Explore the ancient palace complex with its intricately carved wooden windows, including the famous Kumari Ghar - home to the Living Goddess Kumari. If you're lucky, you may catch a glimpse of the Kumari at her window. Continue to Swayambhunath Stupa (Monkey Temple), perched on a hilltop west of the city. Climb the 365 stone steps past meditation shrines, prayer wheels, and the resident monkeys who give the temple its nickname. At the top, admire the main stupa with its all-seeing eyes of Buddha painted on all four sides. Enjoy panoramic views of the entire Kathmandu Valley and the surrounding Himalayan peaks on clear days. After lunch, visit Pashupatinath Temple, one of the holiest Hindu temples in the world dedicated to Lord Shiva, located on the sacred banks of the Bagmati River. Observe afternoon puja (worship) rituals, cremation ceremonies along the river ghats, and the fascinating sadhus (holy men) with their distinctive face paint, dreadlocks, and ash-smeared bodies. End the day at Boudhanath Stupa, one of the largest spherical stupas in South Asia and the center of Tibetan Buddhism in Nepal. Circumambulate the massive mandala (the kora) while spinning prayer wheels, observing Tibetan monks in maroon robes, and listening to the continuous chanting. Return to hotel for dinner.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Kathmandu Durbar Square", "Kumari Living Goddess", "Swayambhunath Stupa (Monkey Temple)", "365 steps with valley views", "Pashupatinath Temple & sadhus", "Boudhanath Stupa", "Tibetan Buddhist culture"]
   },
   {
-    day: 3,
-    title: "Drive to Pokhara - Lakeside Paradise",
-    altitude: "1,350m → 820m",
-    distance: "6-7 hrs drive / 200km",
-    description: "After breakfast, begin the scenic drive to Pokhara, Nepal's most beautiful lakeside city. The journey follows the Prithvi Highway through river valleys, terraced farmlands, and subtropical forests. Stop en-route at viewpoints overlooking the Marsyangdi and Trishuli Rivers. On clear days, enjoy distant views of the Annapurna and Manaslu ranges. Arrive in Pokhara by mid-afternoon and check into your lakeside hotel. Evening free to explore the Lakeside promenade with its cafes, shops, and restaurants. Optional boat ride on Phewa Lake at sunset. Overnight in Pokhara.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic drive", "River valley views", "Lakeside promenade", "Sunset at Phewa Lake"],
+    "day": 3,
+    "title": "Drive from Kathmandu to Pokhara - Lakeside Paradise",
+    "altitude": "1,350m → 820m",
+    "distance": "6-7 hrs drive / 200km",
+    "description": "After breakfast, begin the scenic drive to Pokhara, Nepal's most beautiful lakeside city and the gateway to the Annapurna region. The journey follows the Prithvi Highway through river valleys, terraced farmlands, and subtropical forests along the Trishuli River. Stop en-route at various viewpoints overlooking the Marsyangdi and Trishuli Rivers, with opportunities for photos and refreshments. On clear days, enjoy distant views of the Annapurna range, Manaslu, and Ganesh Himal. Arrive in Pokhara by mid-afternoon and check into your lakeside hotel. Evening free to explore the Lakeside promenade with its cafes, shops, and restaurants offering international cuisine. Optional boat ride on Phewa Lake at sunset to capture the reflection of Machhapuchhre (Fishtail) mountain in the calm waters. Overnight in Pokhara.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic Prithvi Highway drive", "Trishuli River viewpoints", "Distant Annapurna and Manaslu views", "Lakeside promenade", "Sunset at Phewa Lake"]
   },
   {
-    day: 4,
-    title: "Sarangkot Sunrise & Pokhara Valley Exploration",
-    altitude: "820m → 1,592m → 820m",
-    distance: "1 hr drive each way",
-    description: "Pre-dawn departure (4:30 AM) to Sarangkot hill station for the most spectacular sunrise photography in Nepal. Watch the first light illuminate the Annapurna range including Annapurna South, Annapurna I, Machhapuchhre (Fishtail), and Dhaulagiri. After sunrise, return to hotel for breakfast. Mid-morning, visit Davis Falls, an interesting waterfall that disappears into underground caves, and the adjacent Gupteshwor Cave with its massive shivalinga. After lunch, explore the International Mountain Museum for exhibits on Himalayan mountaineering and culture. Late afternoon, enjoy a boat ride on Phewa Lake to the Tal Barahi Temple, a two-story pagoda in the middle of the lake. Capture the reflection of Machhapuchhre mountain in the calm lake waters. Overnight in Pokhara.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Sarangkot sunrise", "Annapurna panorama", "Davis Falls", "Phewa Lake boat ride"],
+    "day": 4,
+    "title": "Sarangkot Sunrise & Pokhara Valley Exploration",
+    "altitude": "820m → 1,592m → 820m",
+    "distance": "1 hr drive each way",
+    "description": "Pre-dawn departure (4:30 AM) to Sarangkot hill station for the most spectacular sunrise photography in Nepal. Watch the first light illuminate the Annapurna range including Annapurna South (7,219m), Annapurna I (8,091m), Annapurna II (7,937m), Machhapuchhre (Fishtail - 6,993m), and Dhaulagiri (8,167m). The panoramic views from Sarangkot are absolutely breathtaking. After sunrise, return to hotel for breakfast. Mid-morning, visit Davis Falls, an interesting waterfall on the Bagmati River that disappears into underground caves and tunnels. Adjacent to the falls is Gupteshwor Cave, a sacred limestone cave with a massive shivalinga and views of the waterfall from within. After lunch, explore the International Mountain Museum (IMM), which features exhibits on Himalayan mountaineering, the history of Everest expeditions, the culture of mountain communities, and displays of the world's highest peaks. Late afternoon, enjoy a boat ride on Phewa Lake to the Tal Barahi Temple, a two-story pagoda temple dedicated to the goddess Barahi, located on a small island in the middle of the lake. Capture the stunning reflection of Machhapuchhre mountain in the calm lake waters as the sun sets. Overnight in Pokhara.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Sarangkot sunrise (4:30 AM start)", "Annapurna & Dhaulagiri panorama", "Machhapuchhre (Fishtail) views", "Davis Falls underground", "Gupteshwor Cave", "International Mountain Museum", "Phewa Lake boat ride", "Tal Barahi Temple"]
   },
   {
-    day: 5,
-    title: "Drive to Lumbini - Birthplace of Buddha",
-    altitude: "820m → 150m",
-    distance: "5-6 hrs drive / 180km",
-    description: "After breakfast, drive south to Lumbini, the birthplace of Lord Buddha and one of the holiest pilgrimage sites in the world. The journey descends from the hills to the flat Terai plains, with changing landscapes from subtropical forests to agricultural fields. Arrive in Lumbini by early afternoon. Visit the Mayadevi Temple, the sacred site where Queen Mayadevi gave birth to Siddhartha Gautama in 623 BCE. Explore the excavated remains of ancient monasteries and the marker stone depicting the exact birthplace. See the Ashoka Pillar, erected by Emperor Ashoka in 249 BCE to commemorate his pilgrimage. In the evening, visit the World Peace Pagoda and stroll through the monastic zone with temples built by Buddhist countries from around the world including Thailand, Japan, Myanmar, and Sri Lanka. Overnight in Lumbini.",
-    overnight: "Hotel in Lumbini",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Mayadevi Temple", "Ashoka Pillar", "Sacred Garden", "International Monasteries"],
+    "day": 5,
+    "title": "Drive from Pokhara to Lumbini - Birthplace of Buddha",
+    "altitude": "820m → 150m",
+    "distance": "5-6 hrs drive / 180km",
+    "description": "After breakfast, drive south from Pokhara to Lumbini, the birthplace of Lord Buddha and one of the holiest pilgrimage sites in the world. The journey descends from the Himalayan foothills (820m) down to the flat Terai plains (150m), with dramatically changing landscapes along the way - from subtropical forests and winding mountain roads to open agricultural fields and rural villages. You'll pass through the cities of Palpa and Butwal, with opportunities to see traditional Terai culture and lifestyles. Arrive in Lumbini by early afternoon. Check into your hotel and take a short rest. In the afternoon, take a gentle orientation walk around the Lumbini Sacred Garden area to get acquainted with this peaceful pilgrimage site. Visit the Puskarini Sacred Pond, where Queen Mayadevi is said to have bathed before giving birth to Buddha. As the sun sets, experience the peaceful chanting of prayers from nearby monasteries. Overnight in Lumbini.",
+    "overnight": "Hotel in Lumbini",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic drive from Pokhara to Lumbini", "Descend from hills to Terai plains", "Palpa and Butwal pass through", "Lumbini arrival", "Puskarini Sacred Pond", "Peaceful evening atmosphere"]
   },
   {
-    day: 6,
-    title: "Lumbini Exploration & Drive to Chitwan",
-    altitude: "150m → 415m",
-    distance: "4-5 hrs drive / 120km",
-    description: "Early morning visit to the sacred garden for meditation and peaceful atmosphere. Explore more international monasteries including the magnificent Myanmar Temple, Chinese Temple, and the Eternal Peace Flame. Visit the Lumbini Museum housing artifacts and manuscripts related to Buddha's life. After lunch, drive east to Chitwan National Park, Nepal's first national park and UNESCO World Heritage Site. The journey continues through the Terai plains with rural landscapes and traditional Tharu villages. Arrive at your jungle resort by late afternoon. Welcome drink and orientation about safari activities. Evening Tharu cultural dance performance. Overnight at jungle resort.",
-    overnight: "Jungle Resort in Chitwan",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Sacred Garden meditation", "International monasteries", "Tharu cultural dance", "Jungle resort"],
+    "day": 6,
+    "title": "Lumbini Exploration - Sacred Garden & International Monasteries",
+    "altitude": "150m",
+    "distance": "Full day exploration",
+    "description": "Today is dedicated to the full exploration of Lumbini, the birthplace of Lord Buddha and a UNESCO World Heritage Site. Start early with a morning visit to the Sacred Garden, the heart of Lumbini. Enter through the majestic Dharma Swami Maharaja Gate and walk the peaceful paths to the Mayadevi Temple, the most sacred site in Lumbini where Queen Mayadevi gave birth to Siddhartha Gautama in 623 BCE. Inside the temple, see the ancient Marker Stone that pinpoints the exact birthplace of Buddha. Adjacent to the temple is the Ashoka Pillar, erected by Emperor Ashoka in 249 BCE during his pilgrimage to Lumbini, with inscriptions in Brahmi script confirming the site as Buddha's birthplace. Explore the excavated remains of ancient monasteries and stupas dating back to the 3rd century BCE to the 5th century CE. After lunch, visit the International Monastic Zone, where Buddhist communities from around the world have built temples, stupas, and monasteries in their traditional architectural styles. Visit the magnificent Myanmar (Burmese) Temple with its golden spire, the Chinese Temple with its beautiful gardens and traditional Chinese architecture, the Japanese Peace Stupa, the Thai Monastery, the Vietnamese Temple, and the Korean Temple. Each monastery offers unique art, architecture, and spiritual atmosphere. In the late afternoon, visit the World Peace Pagoda (Shanti Stupa), a gleaming white stupa built by Japanese Buddhists, offering panoramic views of the entire Lumbini area. End your day at the Eternal Peace Flame and the Lumbini Museum, which houses artifacts, manuscripts, and photographs related to Buddha's life and Buddhist history. As evening falls, you may choose to participate in meditation sessions or listen to chanting at one of the monasteries. Overnight in Lumbini.",
+    "overnight": "Hotel in Lumbini",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Mayadevi Temple - Buddha's birthplace", "Marker Stone and Ashoka Pillar (249 BCE)", "Ancient monastery ruins", "International Monasteries (Myanmar, China, Japan, Thailand)", "World Peace Pagoda", "Eternal Peace Flame", "Lumbini Museum", "Evening meditation optional"]
   },
   {
-    day: 7,
-    title: "Chitwan National Park Safari - Wildlife & Nature",
-    altitude: "415m",
-    distance: "Full day safari",
-    description: "Early morning jungle walk or bird watching tour with naturalist guide. Return to resort for breakfast. After breakfast, embark on a jeep safari into Chitwan National Park for wildlife viewing. The park is home to one-horned rhinoceros, Bengal tigers (rare), leopards, sloth bears, crocodiles, and over 500 bird species. Your naturalist guide will navigate through grasslands and forests for optimal wildlife sightings. After lunch, enjoy a canoe ride along the Rapti River to photograph aquatic birds, crocodiles, and riverside wildlife. Visit the Elephant Breeding Center to learn about conservation efforts and photograph these gentle giants. Late afternoon, enjoy sunset views from the riverbank or an optional elephant safari. Overnight at jungle resort.",
-    overnight: "Jungle Resort in Chitwan",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Jeep safari", "One-horned rhinos", "Canoe ride", "Elephant Breeding Center"],
+    "day": 7,
+    "title": "Drive from Lumbini to Chitwan National Park",
+    "altitude": "150m → 415m",
+    "distance": "4-5 hrs drive / 120km",
+    "description": "After breakfast, drive east from Lumbini to Chitwan National Park, Nepal's first national park and a UNESCO World Heritage Site. The journey continues through the flat Terai plains with rural landscapes, traditional Tharu villages, and agricultural fields. You'll pass through the town of Bhairahawa and continue along the East-West Highway (Mahendra Highway). The drive is relatively short (4-5 hours) and offers glimpses of daily Terai life - farmers tending their fields, women carrying goods, and children walking to school. Arrive at your jungle resort in Chitwan (Sauraha) by late morning or early afternoon. Check into your resort and enjoy a welcome drink with an orientation about the resort and the various safari activities available. After lunch, take a guided village tour to learn about the Tharu culture, traditional mud houses, and local way of life. Visit the Tharu Cultural Museum to see artifacts, tools, and displays about this indigenous community. In the evening, enjoy a spectacular Tharu cultural dance performance at the resort or local community center, featuring traditional sticks dancing and peacock dances. Overnight at jungle resort in Chitwan.",
+    "overnight": "Jungle Resort in Chitwan (Sauraha)",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic drive through Terai plains", "Tharu village views", "Chitwan National Park arrival", "Jungle resort check-in", "Tharu village tour", "Tharu Cultural Museum", "Tharu cultural dance performance"]
   },
   {
-    day: 8,
-    title: "Return to Kathmandu",
-    altitude: "415m → 1,350m",
-    distance: "5-6 hrs drive / 150km + 25 min flight",
-    description: "After breakfast, transfer to Bharatpur Airport for a scenic 25-minute flight back to Kathmandu. The short flight offers aerial views of the Himalayan foothills and terraced landscapes. Alternatively, you may choose to drive (6-7 hours) through scenic countryside. Upon arrival in Kathmandu, transfer to your hotel. Free afternoon for last-minute souvenir shopping, personal exploration, or optional activities. Evening farewell dinner at a traditional Nepali restaurant with cultural music and dance performance. Celebrate your incredible journey through Nepal's cultural and natural heritage. Overnight in Kathmandu.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic flight", "Kathmandu return", "Farewell dinner", "Cultural performance"],
+    "day": 8,
+    "title": "Chitwan National Park Safari - Wildlife & Nature",
+    "altitude": "415m",
+    "distance": "Full day safari",
+    "description": "A full day of wildlife adventure in Chitwan National Park! Start early with a pre-breakfast jungle walk or bird watching tour with your naturalist guide. The early morning is the best time for bird watching, with over 500 species recorded in the park. Return to the resort for breakfast. After breakfast, embark on a jeep safari (4-5 hours) into the core area of Chitwan National Park for wildlife viewing. The park is home to the endangered one-horned rhinoceros (over 600 individuals), Bengal tigers (estimated over 120), leopards, sloth bears, wild elephants, crocodiles (both marsh muggers and gharials), deer species (spotted deer, sambar, barking deer), langur and macaque monkeys, and wild boars. Your naturalist guide will navigate through grasslands, forests, and along river banks for optimal wildlife sightings. After lunch at the resort, enjoy a tranquil canoe ride along the Rapti River (approx 1 hour). Photograph aquatic birds, basking crocodiles, and riverside wildlife while floating downstream. Visit the Elephant Breeding Center at Khorsor, where you can see baby elephants and learn about conservation efforts. Late afternoon, you may choose to visit a crocodile breeding center, take an ox-cart ride through local villages, or simply relax by the river with your camera and watch the sunset over the jungle. Overnight at jungle resort in Chitwan.",
+    "overnight": "Jungle Resort in Chitwan (Sauraha)",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Pre-breakfast bird watching", "Jeep safari (4-5 hours)", "One-horned rhinoceros", "Bengal tiger possibility", "Crocodiles and gharials", "Canoe ride on Rapti River", "Elephant Breeding Center", "Sunset over the jungle"]
   },
   {
-    day: 9,
-    title: "Departure",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of exploring ancient temples, witnessing Himalayan sunrises, walking in the footsteps of Buddha, and encountering exotic wildlife in the jungle. Namaste and until we meet again!",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
+    "day": 9,
+    "title": "Return to Kathmandu - Flight Option",
+    "altitude": "415m → 1,350m",
+    "distance": "20 min flight + transfer",
+    "description": "After breakfast at the jungle resort, transfer to Bharatpur Airport (approx 30 minutes drive) for a scenic 20-minute flight back to Kathmandu. The short flight offers spectacular aerial views of the Himalayan foothills, the Terai plains, terraced landscapes, and on clear days, distant views of the Annapurna and Manaslu ranges. Upon arrival at Tribhuvan International Airport in Kathmandu, our representative will meet you and transfer you to your hotel in Thamel. Check into your hotel and freshen up. The afternoon is free for personal exploration - you may choose to do last-minute souvenir shopping in Thamel, visit a spa for a relaxing massage, explore additional sights you may have missed, or simply rest after your incredible journey. In the evening, enjoy a farewell dinner at a traditional Nepali restaurant with cultural music and dance performance. Celebrate your incredible journey through Nepal's cultural and natural heritage - from medieval temples and Himalayan sunrises to the birthplace of Buddha and the wild jungles of Chitwan. Overnight in Kathmandu.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Dinner",
+    "highlights": ["Scenic flight to Kathmandu (20 min)", "Aerial Himalayan foothill views", "Thamel souvenir shopping", "Spa and relaxation", "Farewell dinner with cultural performance"]
   },
+  {
+    "day": 10,
+    "title": "Departure from Kathmandu",
+    "altitude": "1,350m",
+    "distance": "-",
+    "description": "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time, assist with check-in, and bid you farewell. Bid farewell to Nepal with memories of exploring ancient temples in the Kathmandu Valley, witnessing spectacular Himalayan sunrise from Sarangkot, walking in the footsteps of Lord Buddha in Lumbini, and encountering exotic wildlife in the jungles of Chitwan. Take home the sights, sounds, spiritual energy, and warm hospitality of this incredible Himalayan nation. Namaste and until we meet again for another adventure in Nepal!",
+    "overnight": "-",
+    "meals": "Breakfast",
+    "highlights": ["Airport transfer", "Departure assistance", "Fond farewells", "Heritage, nature, and pilgrimage memories"]
+  }
 ];
 
 const includes = [
@@ -373,8 +383,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$1,850</div>
-                <div className="text-lg font-bold text-[#0f2940]">$1,595</div>
+                <div className="text-lg font-bold text-[#0f2940]">$2,200</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -394,16 +403,14 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$1,850</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,595</div>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,200</div>
                         <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $255</Badge>
                       </div>
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>9 Days / 8 Nights</span>
+                          <span>10 Days / 9 Nights</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />

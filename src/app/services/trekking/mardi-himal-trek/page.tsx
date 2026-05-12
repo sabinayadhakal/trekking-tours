@@ -42,95 +42,75 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Evening free to explore the vibrant streets of Thamel or rest after your journey.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements"],
+    "day": 1,
+    "title": "Drive from Kathmandu to Pokhara",
+    "altitude": "1,400m → 820m",
+    "distance": "200km / 6-7 hrs drive",
+    "description": "Early morning departure from your hotel in Kathmandu for the scenic drive to Pokhara, the gateway to the Annapurna region and starting point for the Mardi Himal Trek. The journey follows the Prithvi Highway along the winding Trishuli River through beautiful rural landscapes, terraced farmlands, and traditional villages. You'll pass through charming towns and witness daily Nepali rural life along the way, with occasional views of distant Himalayan peaks including Manaslu and Ganesh Himal on clear days. Arrive in Pokhara (820m), Nepal's second-largest city and the beautiful lake city. Check into your lakeside hotel and enjoy free time to explore Phewa Lake - take a boat ride, visit the Tal Barahi Temple in the middle of the lake, or simply relax with stunning views of the Annapurna range and Machhapuchhre (Fishtail) reflecting on the water. In the evening, explore Lakeside's vibrant restaurants, bars, and shops, and prepare your gear for the trek ahead.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic Prithvi Highway drive", "Trishuli River views", "Rural Nepali countryside", "Phewa Lake and mountain reflections", "Pokhara preparation for Mardi Himal"]
   },
   {
-    day: 2,
-    title: "Drive to Pokhara",
-    altitude: "1,400m → 820m",
-    distance: "200km / 6-7 hrs drive",
-    description: "Scenic drive from Kathmandu to Pokhara along the Prithvi Highway, following the Trishuli River. The journey offers beautiful views of rural landscapes, river valleys, and distant mountains. Arrive in Pokhara, Nepal's second-largest city and gateway to the Annapurna region. Check into your lakeside hotel and enjoy free time to explore Phewa Lake or relax with mountain views.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic highway drive", "Trishuli River views", "Arrival in Pokhara", "Phewa Lake"],
+    "day": 2,
+    "title": "Drive from Pokhara to Phedi & Trek to Pitam Deurali",
+    "altitude": "820m → 1,130m → 2,100m",
+    "distance": "30 min drive / 4-5 hrs trek",
+    "description": "After breakfast in Pokhara, take a short 30-minute drive to Phedi (1,130m), the traditional trailhead for the Mardi Himal Trek. From Phedi, your trek begins with a steady ascent through beautiful rhododendron and oak forests. The trail is well-marked and passes through several small villages with traditional stone houses and terraced farmlands. As you climb, you'll be rewarded with your first glimpses of Machhapuchhre (Fishtail Mountain - 6,993m) and Annapurna South (7,219m). The trail continues through dense forest, crossing small streams and offering occasional views of the valley below. Arrive at Pitam Deurali (2,100m), a small settlement perched on a ridge with stunning mountain views. The teahouses here offer basic but comfortable accommodation and the sunset views over the Annapurna range are spectacular. Overnight at Pitam Deurali.",
+    "overnight": "Teahouse in Pitam Deurali",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Short drive to Phedi", "Rhododendron and oak forests", "First views of Machhapuchhre", "Traditional villages and farmlands", "Pitam Deurali sunset panorama"]
   },
   {
-    day: 3,
-    title: "Drive to Kande & Trek to Pitam Deurali",
-    altitude: "820m → 1,770m → 2,100m",
-    distance: "1.5 hrs drive / 3-4 hrs trek",
-    description: "Morning drive from Pokhara to Kande (1,770m), the trailhead for our trek. The short drive offers beautiful views of the Annapurna range. From Kande, we begin our trek with a gentle ascent through terraced farmlands and forests to Pitam Deurali (2,100m). The trail offers occasional views of Machhapuchhre (Fishtail) and Annapurna South. Pitam Deurali is a small settlement with basic teahouses and stunning mountain views.",
-    overnight: "Teahouse in Pitam Deurali",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Drive to Kande", "First views of Machhapuchhre", "Terraced farmlands", "Arrival at Pitam Deurali"],
+    "day": 3,
+    "title": "Trek from Pitam Deurali to Low Camp",
+    "altitude": "2,100m → 2,985m",
+    "distance": "12km / 6-7 hrs trek",
+    "description": "Today you trek deeper into the Mardi Himal region, climbing steadily through dense rhododendron and oak forests. The trail becomes increasingly beautiful as you gain altitude, with moss-covered trees, colorful rhododendrons (blooming spectacularly in March-April), and occasional views of the mountains through breaks in the forest canopy. You'll pass through Forest Camp (2,520m), a small clearing with a few basic lodges situated in a beautiful forest setting - a great spot for a tea or lunch break. From Forest Camp, the trail continues climbing through the forest, with the trees becoming shorter as you approach the tree line. The sound of birds and the rustling of leaves create a peaceful atmosphere. Arrive at Low Camp (2,985m), also known as Rest Camp, a small collection of teahouses nestled in a clearing with stunning views of the surrounding peaks. The afternoon light on the mountains is magical from this location. Overnight at Low Camp.",
+    "overnight": "Teahouse at Low Camp",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Dense rhododendron forest", "Forest Camp (2,520m)", "Moss-covered trees", "Bird watching opportunities", "Low Camp mountain views"]
   },
   {
-    day: 4,
-    title: "Trek to Low Camp (Rest Camp)",
-    altitude: "2,100m → 2,985m",
-    distance: "12km / 6-7 hrs",
-    description: "Today we trek through dense rhododendron and oak forests, with the trail gradually steepening as we gain altitude. We pass through Forest Camp (2,520m), a small clearing with a few basic lodges, before continuing to Low Camp (also called Rest Camp). The forest is magical - moss-covered trees, colorful rhododendrons in spring, and occasional views of the mountains through the trees. Low Camp offers basic accommodation and stunning sunset views.",
-    overnight: "Teahouse at Low Camp",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Dense rhododendron forest", "Forest Camp", "Moss-covered trees", "Sunset mountain views"],
+    "day": 4,
+    "title": "Trek from Low Camp to High Camp",
+    "altitude": "2,985m → 3,550m",
+    "distance": "6km / 4-5 hrs trek",
+    "description": "A shorter but steeper day as you climb above the tree line and enter the alpine zone of the Mardi Himal Trek. The trail continues through thinning forest until you emerge above the tree line, where the landscape transforms dramatically into open, alpine terrain with stunning panoramic mountain views. Machhapuchhre (Fishtail - 6,993m) dominates the skyline directly ahead, with Annapurna South (7,219m) and Hiunchuli (6,441m) visible to the west. You'll pass through Mid Camp, a small collection of basic tea shops at approximately 3,300m - a good spot for a rest and hot drink. From Mid Camp, the trail continues up a steep ridge to High Camp (3,550m), perched dramatically on a ridge with breathtaking 360-degree views of the Annapurna range, Machhapuchhre, and the surrounding valleys. The afternoon is free to rest, acclimatize, and enjoy the stunning mountain panorama. The sunset from High Camp is unforgettable, as the peaks glow golden and pink in the fading light. Overnight at High Camp.",
+    "overnight": "Teahouse at High Camp",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Above tree line alpine zone", "Panoramic mountain views", "Mid Camp tea stop (3,300m)", "Machhapuchhre close-up", "High Camp sunset panorama"]
   },
   {
-    day: 5,
-    title: "Trek to High Camp",
-    altitude: "2,985m → 3,550m",
-    distance: "6km / 4-5 hrs",
-    description: "A shorter but steeper day as we climb above the tree line. The trail opens up to spectacular mountain views - Machhapuchhre dominates the skyline ahead, with Annapurna South and Hiunchuli to the west. We pass through Mid Camp, a small collection of tea shops, before reaching High Camp (3,550m), perched on a ridge with breathtaking panoramic views. The afternoon is free to rest and acclimatize, with stunning sunset and sunrise views over the Himalayas.",
-    overnight: "Teahouse at High Camp",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Above tree line", "Panoramic mountain views", "Machhapuchhre close-up", "Sunset from High Camp"],
+    "day": 5,
+    "title": "Hike to Mardi Himal Base Camp & Return to High Camp",
+    "altitude": "3,550m → 4,500m → 3,550m",
+    "distance": "12km / 8-9 hrs round trip",
+    "description": "The biggest and most rewarding day of the entire Mardi Himal Trek! Wake very early (around 4:00 AM) to begin the pre-dawn hike to Mardi Himal Base Camp. The trail climbs steeply along a narrow, exposed ridge with incredible views of Machhapuchhre (Fishtail), Annapurna South, Hiunchuli, and the entire Annapurna range. As you ascend, the peaks seem to grow larger with every step. You'll first reach the Viewpoint (4,200m), where you'll witness a spectacular sunrise - the peaks glow golden and pink as the sun rises behind the Himalayas - an unforgettable experience and a photographer's dream. Continue climbing to Mardi Himal Base Camp (4,500m) for even closer views of Mardi Himal (5,587m), the sheer east face of Machhapuchhre, and the massive Annapurna massif. The feeling of standing beneath these giants is indescribable. After celebrating your achievement, taking photos, and soaking in the incredible scenery, descend back to High Camp for a well-deserved lunch and rest. Spend the afternoon relaxing and enjoying the mountain views from High Camp. Overnight at High Camp.",
+    "overnight": "Teahouse at High Camp",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Pre-dawn sunrise hike", "Viewpoint (4,200m) sunrise panorama", "Mardi Himal Base Camp (4,500m)", "Close-up Machhapuchhre east face", "Annapurna and Hiunchuli views"]
   },
   {
-    day: 6,
-    title: "Hike to Mardi Himal Base Camp & Return to Low Camp",
-    altitude: "3,550m → 4,500m → 2,985m",
-    distance: "12km / 8-9 hrs",
-    description: "The biggest and most rewarding day! Early start (around 4-5 AM) for the hike to Mardi Himal Base Camp (4,500m). The trail climbs steeply along a narrow ridge with incredible views of Machhapuchhre, Annapurna South, Hiunchuli, and the entire Annapurna range. The sunrise from the viewpoint (4,200m) is spectacular as the peaks glow golden. Continue to Base Camp for even closer views of Mardi Himal and Machhapuchhre. After soaking in the incredible scenery, we descend back to High Camp for lunch, then continue down to Low Camp for overnight stay.",
-    overnight: "Teahouse at Low Camp",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Sunrise from Viewpoint (4,200m)", "Mardi Himal Base Camp (4,500m)", "Close-up Machhapuchhre views", "Ridge walk with panoramic vistas"],
+    "day": 6,
+    "title": "Trek from High Camp to Siding Village & Jeep to Pokhara",
+    "altitude": "3,550m → 1,350m → 820m",
+    "distance": "7-8km trek / 4-5 hrs trek + 2.5 hrs jeep",
+    "description": "Your final day of trekking on the Mardi Himal Trek. From High Camp, you descend via an alternative route through beautiful forests and traditional villages. The trail descends steeply at first, then gradually through dense rhododendron and oak forests. As you lose altitude, the vegetation becomes lush and the air warmer. You'll pass through small settlements and terraced farmlands, with beautiful views back toward the mountains you've just conquered. Arrive at Siding Village (1,350m), a charming traditional Gurung village with stone houses, friendly locals, and stunning views of the surrounding hills. Take some time to explore the village, visit the local monastery, and experience the warm Gurung hospitality. From Siding, board a private jeep for the adventurous 2.5-hour drive back to Pokhara, winding through scenic mountain roads with beautiful valley views. Arrive in Pokhara by late afternoon. Check into your hotel at Lakeside, take a well-deserved hot shower, and relax. In the evening, enjoy a celebration dinner at a lakeside restaurant, celebrating your incredible achievement of reaching Mardi Himal Base Camp (4,500m) and standing beneath the majestic Machhapuchhre. Overnight in Pokhara.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final descent from High Camp", "Rhododendron and oak forests", "Siding Gurung village visit", "Scenic jeep ride to Pokhara", "Mardi Himal achievement celebration dinner"]
   },
   {
-    day: 7,
-    title: "Trek to Siding Village & Drive to Pokhara",
-    altitude: "2,985m → 1,350m → 820m",
-    distance: "8km trek / 2.5 hrs drive",
-    description: "Our final day of trekking descends through forests and terraced farmlands to Siding Village (1,350m). The trail offers different perspectives of the mountains as we lose altitude. Siding is a traditional Gurung village where we can experience local hospitality. From Siding, we take a jeep drive back to Pokhara - an adventurous ride through winding mountain roads. Arrive in Pokhara by late afternoon and check into your hotel. Evening celebration dinner at a lakeside restaurant!",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Final descent", "Siding Gurung village", "Scenic jeep drive", "Celebration dinner in Pokhara"],
-  },
-  {
-    day: 8,
-    title: "Drive to Kathmandu",
-    altitude: "820m → 1,400m",
-    distance: "200km / 6-7 hrs drive",
-    description: "After breakfast, scenic drive back to Kathmandu through the Prithvi Highway, following the Trishuli River. The journey offers views of rural landscapes, river rafters, and distant hills. Arrive in Kathmandu by late afternoon. Check into your hotel and enjoy free time for souvenir shopping or final exploration of Thamel.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast",
-    highlights: ["Scenic highway drive", "Trishuli River views", "Rural Nepal", "Thamel exploration"],
-  },
-  {
-    day: 9,
-    title: "Departure",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of standing beneath the majestic Fishtail Mountain at Mardi Himal Base Camp.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 7,
+    "title": "Drive from Pokhara to Kathmandu",
+    "altitude": "820m → 1,400m",
+    "distance": "200km / 6-7 hrs drive",
+    "description": "After a leisurely breakfast in Pokhara, begin your scenic drive back to Kathmandu along the Prithvi Highway. The journey follows the Trishuli River, offering beautiful views of river valleys, rolling hills, terraced farmlands, and distant mountain peaks. You'll pass through charming towns and witness daily Nepali rural life along the way. The drive is a wonderful opportunity to reflect on your Mardi Himal adventure - the pre-dawn hike to Base Camp, the spectacular sunrise over Machhapuchhre, the stunning views from High Camp, and the warm hospitality of the teahouse owners. Arrive in Kathmandu by late afternoon. Check into your hotel in Thamel, take a well-deserved hot shower, and enjoy the comforts of the city. The remainder of your day is free for souvenir shopping in Thamel, exploring UNESCO World Heritage sites you may have missed, visiting a spa for a much-needed massage, or simply relaxing with a good meal. In the evening, enjoy a farewell dinner celebrating your successful Mardi Himal Base Camp trek achievement - standing at 4,500m beneath the majestic Fishtail Mountain. Overnight in Kathmandu.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Dinner",
+    "highlights": ["Scenic Pokhara to Kathmandu drive", "Trishuli River and countryside views", "Rural Nepali landscapes", "Thamel souvenir shopping", "Farewell celebration dinner"]
+  }
 ];
 
 const includes = [
@@ -351,8 +331,8 @@ export default function MardiHimalTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$950</div>
-                <div className="text-lg font-bold text-[#0f2940]">$795</div>
+                <div className="text-xs text-slate-400 line-through">$755</div>
+                <div className="text-lg font-bold text-[#0f2940]">$600</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -372,8 +352,8 @@ export default function MardiHimalTrekPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$950</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$795</div>
+                        <span className="text-white/50 text-sm line-through">$755</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$600</div>
                         <span className="text-white/60 text-sm">per person</span>
                         <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
                       </div>
@@ -381,7 +361,7 @@ export default function MardiHimalTrekPage() {
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>9 Days / 8 Nights</span>
+                          <span>7 Days / 6 Nights</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />

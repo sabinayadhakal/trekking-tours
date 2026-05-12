@@ -43,155 +43,135 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Evening free to explore the vibrant streets of Thamel or rest after your journey.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements"],
+    "day": 1,
+    "title": "Drive from Kathmandu to Pokhara",
+    "altitude": "1,400m → 820m",
+    "distance": "200km / 6-7 hrs drive",
+    "description": "Early morning departure from your hotel in Kathmandu for the scenic drive to Pokhara, the gateway to the Annapurna region and the starting point for the Upper Mustang Trek. The journey follows the Prithvi Highway along the winding Trishuli River through beautiful rural landscapes, terraced farmlands, and traditional villages. You'll pass through charming towns and witness daily Nepali rural life along the way, with occasional views of Manaslu and Ganesh Himal on clear days. Arrive in Pokhara (820m), Nepal's second-largest city and the beautiful lake city. Check into your lakeside hotel and enjoy free time to explore Phewa Lake - take a boat ride, visit the Tal Barahi Temple in the middle of the lake, or simply relax with stunning views of the Annapurna range and Machhapuchhre (Fishtail) reflecting on the water. In the evening, explore Lakeside's vibrant restaurants, bars, and shops, and prepare your gear for the adventure ahead. Evening briefing on the Upper Mustang restricted area regulations and permit requirements.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic Prithvi Highway drive", "Trishuli River views", "Rural Nepali countryside", "Phewa Lake and mountain reflections", "Upper Mustang trek briefing"]
   },
   {
-    day: 2,
-    title: "Drive to Pokhara",
-    altitude: "1,400m → 820m",
-    distance: "200km / 6-7 hrs drive",
-    description: "Scenic drive from Kathmandu to Pokhara along the Prithvi Highway, following the Trishuli River. The journey offers beautiful views of rural landscapes, river valleys, and distant mountains. Arrive in Pokhara, Nepal's second-largest city and gateway to the Annapurna region. Check into your lakeside hotel and enjoy free time to explore Phewa Lake or relax with mountain views.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic highway drive", "Trishuli River views", "Arrival in Pokhara", "Phewa Lake"],
+    "day": 2,
+    "title": "Fly from Pokhara to Jomsom & Trek to Kagbeni",
+    "altitude": "820m → 2,720m → 2,810m",
+    "distance": "20 min flight / 3-4 hrs trek",
+    "description": "Early morning flight from Pokhara to Jomsom, offering spectacular aerial views of the Annapurna and Dhaulagiri ranges, the Kali Gandaki Gorge (the world's deepest gorge), and the dramatic mountain landscapes. The 20-minute flight is an experience in itself, with the Himalayas seemingly close enough to touch. Upon arrival at Jomsom Airport (2,720m), a windswept town in the Kali Gandaki Valley, you'll meet your trekking crew and porters. After organizing gear, begin your trek to Kagbeni. The trail follows the Kali Gandaki River north through dramatic, arid landscapes with views of Nilgiri and Dhaulagiri. Kagbeni (2,810m) is a fascinating village with narrow alleys, ancient monasteries, traditional Tibetan-style houses, and red chortens. Kagbeni serves as the official gateway to the Upper Mustang region - here, your restricted area permits will be checked. Overnight in Kagbeni.",
+    "overnight": "Teahouse in Kagbeni",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic mountain flight to Jomsom", "Annapurna and Dhaulagiri aerial views", "Kali Gandaki Valley", "Kagbeni village arrival", "Upper Mustang permit checkpoint"]
   },
   {
-    day: 3,
-    title: "Fly to Jomsom & Trek to Kagbeni",
-    altitude: "820m → 2,720m → 2,810m",
-    distance: "20 min flight / 3-4 hrs trek",
-    description: "Early morning flight from Pokhara to Jomsom, offering spectacular views of the Annapurna and Dhaulagiri ranges. Upon arrival in Jomsom, a windswept town in the Kali Gandaki Valley, we meet our trekking crew and begin our trek to Kagbeni. The trail follows the Kali Gandaki River through dramatic landscapes. Kagbeni is a fascinating village with narrow alleys, ancient monasteries, and traditional Tibetan-style houses - it's the official gateway to the Upper Mustang region.",
-    overnight: "Teahouse in Kagbeni",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic mountain flight", "Kali Gandaki Valley", "Kagbeni village", "Gateway to Upper Mustang"],
+    "day": 3,
+    "title": "Trek from Kagbeni to Chele",
+    "altitude": "2,810m → 3,050m",
+    "distance": "14km / 5-6 hrs trek",
+    "description": "Today you enter the restricted area of Upper Mustang - the legendary Forbidden Kingdom that remained closed to foreigners until 1992. After the permit check at Kagbeni, the trail climbs steadily through the arid, lunar-like landscape with stunning views of Nilgiri and the surrounding peaks. You'll pass through Tangbe village with its narrow alleys, whitewashed houses, and red and white chortens. The trail offers views of the Kali Gandaki gorge and the mysterious sky caves carved into the cliffs - ancient cave dwellings used for meditation, burial, and refuge, some dating back over 2,000 years. You'll cross a small pass before descending to Chele (3,050m), a village surrounded by spectacular red cliffs and colorful rock formations. Overnight in Chele.",
+    "overnight": "Teahouse in Chele",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Enter restricted Upper Mustang", "Tangbe village", "Sky caves views", "Red cliff landscapes", "Chele village arrival"]
   },
   {
-    day: 4,
-    title: "Trek to Chele",
-    altitude: "2,810m → 3,050m",
-    distance: "14km / 5-6 hrs",
-    description: "Today we enter the restricted area of Upper Mustang. After a permit check at Kagbeni, the trail climbs steadily with stunning views of the arid landscape. We pass through Tangbe village with its narrow alleys and red and white chortens. The trail offers views of the Kali Gandaki gorge and the mysterious sky caves carved into cliffs. We cross a small pass before descending to Chele, a village surrounded by spectacular red cliffs.",
-    overnight: "Teahouse in Chele",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Enter Upper Mustang", "Tangbe village", "Sky caves views", "Red cliff landscapes"],
+    "day": 4,
+    "title": "Trek from Chele to Syangboche",
+    "altitude": "3,050m → 3,475m",
+    "distance": "15km / 6-7 hrs trek",
+    "description": "A challenging but rewarding day crossing two high passes on the Upper Mustang trek. The trail climbs steadily out of Chele, reaching Taklam La Pass (3,624m) with breathtaking panoramic views of Nilgiri (7,061m), Annapurna I (8,091m), and Tilicho Peak (7,134m). After descending, you'll climb to Dajori La Pass (3,735m), offering even more dramatic views of the Mustang Valley and the surrounding peaks. The trail passes through Samar village, a small settlement with barley fields, chortens, and a few teahouses nestled in a green oasis. The landscape becomes increasingly dramatic with colorful rock formations, deep canyons, and barren desert terrain. Syangboche (3,475m) is a small settlement with basic teahouses and stunning mountain views. Overnight in Syangboche.",
+    "overnight": "Teahouse in Syangboche",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Taklam La Pass (3,624m)", "Dajori La Pass (3,735m)", "Nilgiri and Annapurna views", "Samar village oasis", "Syangboche arrival"]
   },
   {
-    day: 5,
-    title: "Trek to Syangboche",
-    altitude: "3,050m → 3,475m",
-    distance: "15km / 6-7 hrs",
-    description: "A challenging but rewarding day crossing two passes - Taklam La (3,624m) and Dajori La (3,735m). The trail offers breathtaking panoramic views of Nilgiri, Annapurna, and Tilicho Peak. We pass through Samar village with its barley fields and chortens. The landscape becomes increasingly dramatic with colorful rock formations and deep canyons. Syangboche is a small settlement with basic teahouses and stunning mountain views.",
-    overnight: "Teahouse in Syangboche",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Taklam La Pass", "Dajori La Pass", "Samar village", "Panoramic mountain views"],
+    "day": 5,
+    "title": "Trek from Syangboche to Ghami",
+    "altitude": "3,475m → 3,520m",
+    "distance": "14km / 5-6 hrs trek",
+    "description": "Today you cross Yamda La Pass (3,850m), the highest point of today's trek, with spectacular 360-degree views of the Mustang Valley and the surrounding peaks. The trail passes through juniper forests - a rare sight in this arid region - and offers glimpses of wild blue sheep (bharal) grazing on the hillsides. You'll visit the longest mani wall in Mustang, stretching nearly 1 kilometer along the trail, covered with intricately carved prayer stones (mani) and colorful prayer flags. Ghami village (3,520m) is known for its red chortens, traditional Tibetan-style flat-roofed stone houses, and whitewashed walls. The Ghami Monastery is worth visiting for its ancient murals, thangkas, and peaceful atmosphere. The village has a unique layout with narrow alleys and a large entrance gate. Overnight in Ghami.",
+    "overnight": "Teahouse in Ghami",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Yamda La Pass (3,850m)", "Juniper forests", "Longest mani wall in Mustang (1km)", "Wild blue sheep spotting", "Ghami monastery and village"]
   },
   {
-    day: 6,
-    title: "Trek to Ghami",
-    altitude: "3,475m → 3,520m",
-    distance: "14km / 5-6 hrs",
-    description: "Today we cross Yamda La Pass (3,850m) with spectacular views of the Mustang Valley. The trail passes through juniper forests and offers glimpses of wild blue sheep. We visit the longest mani wall in Mustang, stretching nearly 1km, covered with intricately carved stones. Ghami village is known for its red chortens and traditional Tibetan architecture. The Ghami monastery is worth visiting for its ancient murals.",
-    overnight: "Teahouse in Ghami",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Yamda La Pass", "Longest mani wall in Mustang", "Ghami monastery", "Tibetan architecture"],
+    "day": 6,
+    "title": "Trek from Ghami to Tsarang",
+    "altitude": "3,520m → 3,620m",
+    "distance": "14km / 5-6 hrs trek",
+    "description": "After crossing the Ghami River via a suspension bridge, you climb steadily towards Choya La Pass (3,870m) with stunning views of the surrounding peaks and the deep valleys below. The descent leads to Tsarang (3,620m), a village dominated by a magnificent five-story white fortress (the Tsarang Fortress or King's Palace) and a red Gompa (monastery). The Tsarang Monastery houses ancient Buddhist texts, beautiful murals, thangkas, and a large collection of statues. The village offers a glimpse into traditional Mustangi life with its whitewashed houses, narrow streets, barley fields, and apple orchards. The fortress is an impressive structure that once served as the residence of the local king. Overnight in Tsarang.",
+    "overnight": "Teahouse in Tsarang",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Suspension bridge crossing", "Choya La Pass (3,870m)", "Tsarang five-story fortress", "Red Gompa monastery", "Traditional Mustangi village"]
   },
   {
-    day: 7,
-    title: "Trek to Tsarang",
-    altitude: "3,520m → 3,620m",
-    distance: "14km / 5-6 hrs",
-    description: "After crossing the Ghami River via a suspension bridge, we climb towards Choya La Pass (3,870m) with stunning views of the surrounding peaks. The descent leads to Tsarang, a village dominated by a five-story fortress and a red Gompa. The Tsarang monastery houses ancient Buddhist texts and beautiful murals. The village offers a glimpse into traditional Mustangi life with its whitewashed houses and barley fields.",
-    overnight: "Teahouse in Tsarang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Choya La Pass", "Tsarang fortress", "Red Gompa monastery", "Traditional Mustangi village"],
+    "day": 7,
+    "title": "Trek from Tsarang to Lo Manthang",
+    "altitude": "3,620m → 3,840m",
+    "distance": "10km / 4-5 hrs trek",
+    "description": "A relatively easy day as you approach the legendary walled capital of the Mustang Kingdom - Lo Manthang! The trail crosses Lo La Pass (3,950m), offering the first breathtaking glimpse of the Forbidden City - a stunning view of whitewashed houses surrounded by massive mud-brick walls, with the four-story royal palace rising above the town. The feeling of entering this legendary kingdom is truly magical and surreal, as if stepping back in time several centuries. Lo Manthang (3,840m) is the cultural and political heart of Upper Mustang, with its narrow streets, ancient monasteries, chortens, and the famous four-story royal palace where the Raja (king) still resides. The town is surrounded by a 6-meter-high mud-brick wall with four gates. Check into your teahouse and explore the town. Overnight in Lo Manthang.",
+    "overnight": "Teahouse in Lo Manthang",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Lo La Pass (3,950m)", "First breathtaking view of Lo Manthang", "Walled Forbidden City", "Four-story royal palace", "Lo Manthang arrival celebration"]
   },
   {
-    day: 8,
-    title: "Trek to Lo Manthang",
-    altitude: "3,620m → 3,840m",
-    distance: "10km / 4-5 hrs",
-    description: "A relatively easy day as we approach the walled capital of Lo Manthang. The trail crosses Lo La Pass (3,950m) offering the first glimpse of the forbidden city - a breathtaking view of whitewashed houses surrounded by mud-brick walls. Lo Manthang feels like stepping back in time, with its narrow streets, ancient monasteries, and the four-story royal palace. The feeling of entering this legendary kingdom is truly magical.",
-    overnight: "Teahouse in Lo Manthang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Lo La Pass", "First view of Lo Manthang", "Walled city entrance", "Four-story royal palace"],
+    "day": 8,
+    "title": "Exploration Day in Lo Manthang - Monasteries & Sky Caves",
+    "altitude": "3,840m",
+    "distance": "Exploration / Optional hike to Chhoser (3-4 hrs)",
+    "description": "A full day to explore the mysteries and wonders of Lo Manthang, the Forbidden Kingdom! Visit the King's Palace (Raja's Palace), a four-story structure in the center of town where the Mustang King, Jigme Dorje Palbar Bista, still resides. Explore the three main gompas of Lo Manthang: Thubchen Gompa, a massive complex with 55 columns and stunning 15th-century murals depicting Buddhist deities and mandalas; Jampa Gompa, housing a massive 15-meter-tall Maitreya Buddha statue; and Chodi Gompa, a smaller but equally fascinating monastery. For an even more incredible experience, take an optional jeep or hike to Chhoser to see the ancient sky caves - thousands of man-made cave dwellings carved into vertical cliffs over 2,000 years ago. The caves were used for meditation, burial, and refuge. The views of the Himalayan peaks from the caves are spectacular. In the evening, witness a traditional cultural performance if available. Overnight in Lo Manthang.",
+    "overnight": "Teahouse in Lo Manthang",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["King's Palace visit", "Thubchen Gompa (55 columns, 15th-century murals)", "Jampa Gompa (15m Maitreya Buddha)", "Chodi Gompa", "Chhoser sky caves (optional)"]
   },
   {
-    day: 9,
-    title: "Exploration Day in Lo Manthang",
-    altitude: "3,840m",
-    distance: "Exploration",
-    description: "A full day to explore the mysteries of Lo Manthang. Visit the King's Palace, a four-story structure in the center of town where the Raja (king) still resides. Explore the three main gompas: Thubchen Gompa with its 55 columns and stunning murals, Jampa Gompa housing a massive Maitreya Buddha statue, and Chodi Gompa. Optionally, take a jeep or hike to Chhoser to see the ancient sky caves - thousands of cave dwellings carved into cliffs over 2,000 years ago. The caves were used for meditation, burial, and refuge.",
-    overnight: "Teahouse in Lo Manthang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["King's Palace visit", "Thubchen Gompa", "Jampa Gompa", "Chhoser sky caves"],
+    "day": 9,
+    "title": "Trek from Lo Manthang to Drakmar via Ghar Gompa",
+    "altitude": "3,840m → 3,820m",
+    "distance": "13km / 6-7 hrs trek",
+    "description": "Today you leave Lo Manthang via a different route, allowing you to experience more of Mustang's hidden gems. You'll visit Ghar Gompa, one of Mustang's oldest and most sacred monasteries, dramatically perched on a cliff face. The monastery dates back to the 8th century and contains ancient rock paintings, Buddhist artifacts, and meditation caves. It is still an active meditation site for Buddhist monks. The trail continues through dramatic red cliffs, deep canyons, and barren landscapes that feel like another planet. Drakmar (3,820m) means 'red cliff' in Tibetan, and the village is surrounded by stunning red rock formations that glow beautifully in the afternoon light. The village has a few teahouses and offers spectacular sunset views. Overnight in Drakmar.",
+    "overnight": "Teahouse in Drakmar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Leave Lo Manthang via different route", "Ghar Gompa (8th-century cliff monastery)", "Ancient rock paintings", "Dramatic red cliffs", "Drakmar 'red cliff' village"]
   },
   {
-    day: 10,
-    title: "Trek to Drakmar",
-    altitude: "3,840m → 3,820m",
-    distance: "13km / 6-7 hrs",
-    description: "We leave Lo Manthang via a different route, visiting Ghar Gompa, one of Mustang's oldest monasteries perched on a cliff. The monastery contains ancient rock paintings and is still an active meditation site. The trail continues through dramatic red cliffs to Drakmar (meaning 'red cliff'), a village surrounded by stunning rock formations. The afternoon light on the cliffs creates a magical atmosphere.",
-    overnight: "Teahouse in Drakmar",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Ghar Gompa", "Ancient rock paintings", "Dramatic red cliffs", "Scenic valley views"],
+    "day": 10,
+    "title": "Trek from Drakmar to Ghiling",
+    "altitude": "3,820m → 3,860m",
+    "distance": "12km / 5-6 hrs trek",
+    "description": "Today you trek through some of the most remote and spectacular sections of Upper Mustang. The trail crosses several small passes with spectacular views of the surrounding mountains, including Nilgiri, Annapurna, and Dhaulagiri in the distance. The landscape alternates between barren, moon-like deserts and green valleys where villagers grow barley, buckwheat, and potatoes using traditional irrigation methods. You'll pass through small, isolated settlements with chortens and prayer flags fluttering in the wind. Ghiling (3,860m) is a prosperous village with a large Gompa (monastery) and traditional water mills. The local monastery welcomes visitors to see its collection of thangkas (Buddhist paintings) and ancient texts. Overnight in Ghiling.",
+    "overnight": "Teahouse in Ghiling",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Remote mountain passes", "Isolated settlements", "Barley and buckwheat fields", "Ghiling Gompa", "Traditional water mills"]
   },
   {
-    day: 11,
-    title: "Trek to Ghiling",
-    altitude: "3,820m → 3,860m",
-    distance: "12km / 5-6 hrs",
-    description: "Today we trek through some of the most remote sections of Mustang, crossing several small passes with spectacular views of the surrounding mountains. The landscape alternates between barren deserts and green valleys where villagers grow barley and buckwheat. Ghiling is a prosperous village with a large Gompa and traditional water mills. The local monastery welcomes visitors to see its collection of thangkas and ancient texts.",
-    overnight: "Teahouse in Ghiling",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Remote mountain passes", "Barley fields", "Ghiling Gompa", "Traditional water mills"],
+    "day": 11,
+    "title": "Trek from Ghiling to Chhusang",
+    "altitude": "3,860m → 3,050m",
+    "distance": "15km / 6-7 hrs trek",
+    "description": "A long descent day as you leave the high Mustang plateau behind. The trail passes through beautiful valleys with colorful rock formations - red, yellow, green, and white bands of rock create a natural canvas. You'll have final glimpses of the Mustang landscape before descending into the Kali Gandaki Valley. You'll pass through Chuksang village with its impressive red cliffs and ancient cave dwellings carved into the rock faces. Chhusang (3,050m) is situated at the dramatic confluence of two rivers, surrounded by towering cliffs with caves visible high in the rock faces. The village has a few teahouses and offers beautiful views. Overnight in Chhusang.",
+    "overnight": "Teahouse in Chhusang",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Leave Mustang plateau", "Colorful rock formations", "Chuksang village", "River confluence", "Chhusang arrival"]
   },
   {
-    day: 12,
-    title: "Trek to Chhusang",
-    altitude: "3,860m → 3,050m",
-    distance: "15km / 6-7 hrs",
-    description: "A long descent day as we leave the high plateau behind. The trail passes through beautiful valleys with colorful rock formations and offers final glimpses of the Mustang landscape. We pass through the village of Chuksang with its impressive red cliffs and ancient cave dwellings. Chhusang is situated at the confluence of two rivers, surrounded by towering cliffs with caves visible in the rock faces.",
-    overnight: "Teahouse in Chhusang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Colorful rock formations", "Chuksang village", "River confluence", "Cave dwellings"],
+    "day": 12,
+    "title": "Trek from Chhusang to Jomsom",
+    "altitude": "3,050m → 2,720m",
+    "distance": "12km / 4-5 hrs trek",
+    "description": "Your final day of trekking on the Upper Mustang journey follows the Kali Gandaki River back to Jomsom. The trail is relatively easy with gentle gradients, offering completely different perspectives of the valley you first entered days ago. The landscape gradually becomes less arid as you approach Jomsom, with more vegetation and settlements along the way. Arrive in Jomsom (2,720m) by early afternoon. Check into your teahouse, take a well-deserved hot shower, and enjoy the simple pleasures of civilization. Explore Jomsom town - known for its apple orchards, apple brandy, and beautiful views of Nilgiri and Dhaulagiri. In the evening, celebrate your incredible Upper Mustang achievement - visiting the Forbidden Kingdom of Lo Manthang - with a celebration dinner with your trekking team. Overnight in Jomsom.",
+    "overnight": "Teahouse in Jomsom",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final day of Upper Mustang trek", "Kali Gandaki Valley return", "Jomsom arrival", "Apple brandy tasting", "Celebration dinner with team"]
   },
   {
-    day: 13,
-    title: "Trek to Jomsom",
-    altitude: "3,050m → 2,720m",
-    distance: "12km / 4-5 hrs",
-    description: "Our final day of trekking follows the Kali Gandaki River back to Jomsom. The trail is relatively easy with gentle gradients, offering different perspectives of the valley we first entered days ago. Arrive in Jomsom by early afternoon with time to celebrate your Upper Mustang achievement. Enjoy hot showers, explore the town, and sample local apple brandy. Evening celebration with your trekking team.",
-    overnight: "Teahouse in Jomsom",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Final trekking day", "Kali Gandaki Valley", "Jomsom arrival", "Celebration dinner"],
-  },
-  {
-    day: 14,
-    title: "Fly to Pokhara & Drive to Kathmandu",
-    altitude: "2,720m → 820m → 1,400m",
-    distance: "20 min flight / 6-7 hrs drive",
-    description: "Early morning flight back to Pokhara with final aerial views of the Himalayas. Upon arrival, transfer to a tourist bus or private vehicle for the scenic drive back to Kathmandu. Arrive in Kathmandu by late afternoon. Check into your hotel and enjoy free time for souvenir shopping or final exploration of Thamel. Evening farewell dinner celebrating your journey to the Forbidden Kingdom.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Dinner",
-    highlights: ["Scenic mountain flight", "Farewell to Mustang", "Thamel exploration", "Celebration dinner"],
-  },
-  {
-    day: 15,
-    title: "Departure",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of walking through the ancient walled city of Lo Manthang and exploring the mystical landscapes of the Forbidden Kingdom.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 13,
+    "title": "Fly from Jomsom to Pokhara & Drive to Kathmandu",
+    "altitude": "2,720m → 820m → 1,400m",
+    "distance": "20 min flight / 6-7 hrs drive",
+    "description": "Early morning flight from Jomsom back to Pokhara - a spectacular 20-minute flight with final aerial views of the Annapurna and Dhaulagiri ranges, the Kali Gandaki Gorge, and the beautiful mountain landscapes you've been trekking through. Upon arrival at Pokhara's domestic airport, you'll be transferred to the tourist bus station. Board a tourist bus for the scenic drive back to Kathmandu along the Prithvi Highway, following the Trishuli River through beautiful rural landscapes, terraced farmlands, and traditional villages. Arrive in Kathmandu by late afternoon. Check into your hotel in Thamel, take a well-deserved hot shower, and enjoy the comforts of the city. The remainder of your day is free for souvenir shopping in Thamel, visiting a spa for a much-needed massage, or simply relaxing. In the evening, enjoy a farewell dinner celebrating your incredible Upper Mustang trek achievement - walking through the ancient walled city of Lo Manthang, visiting the Forbidden Kingdom that only a few thousand trekkers experience each year, and exploring the mystical landscapes of this hidden Himalayan kingdom.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Dinner",
+    "highlights": ["Scenic Jomsom to Pokhara flight", "Final Annapurna and Dhaulagiri views", "Scenic drive to Kathmandu", "Thamel souvenir shopping", "Farewell celebration dinner"]
+  }
 ];
 
 const includes = [
@@ -403,8 +383,8 @@ export default function UpperMustangTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$3,200</div>
-                <div className="text-lg font-bold text-[#0f2940]">$2,895</div>
+                <div className="text-xs text-slate-400 line-through">$2,900</div>
+                <div className="text-lg font-bold text-[#0f2940]">$2,595</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -423,8 +403,8 @@ export default function UpperMustangTrekPage() {
                 <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
                     <div className="text-center mb-4 md:mb-6">
-                      <span className="text-white/50 text-sm line-through">$3,200</span>
-                      <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,895</div>
+                      <span className="text-white/50 text-sm line-through">$2,900</span>
+                      <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,595</div>
                       <span className="text-white/60 text-sm">per person</span>
                       <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $305</Badge>
                     </div>
@@ -432,7 +412,7 @@ export default function UpperMustangTrekPage() {
                     <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                       <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                        <span>15 Days / 14 Nights</span>
+                        <span>13 Days / 12 Nights</span>
                       </div>
                       <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                         <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />

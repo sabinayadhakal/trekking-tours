@@ -9,45 +9,28 @@ import {
   Clock,
   Users,
   MapPin,
-  ArrowLeft,
   Share2,
   Facebook,
   Twitter,
   Copy,
   Check,
   ChevronDown,
-  Star,
   TrendingUp,
   Tent,
   Utensils,
   Heart,
-  Camera,
   AlertTriangle,
   CheckCircle2,
   XCircle,
-  Phone,
   Sunrise,
   Snowflake,
   Map,
   Backpack,
   Menu,
   X,
-  Landmark,
-  Compass,
-  Droplets,
-  Award,
-  Plane,
-  Cloud,
-  Wind,
-  Eye,
   Gauge,
-  Coffee,
-  Wifi,
-  Battery,
-  Luggage,
   Trophy,
-  Sparkles,
-  MountainSnow,
+  Plane,
   MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -57,60 +40,43 @@ import { Badge } from "@/components/ui/badge";
 const itinerary = [
   {
     day: 1,
-    title: "Arrival in Kathmandu",
+    title: "Arrival in Kathmandu & Flight Briefing",
     altitude: "1,350m",
     distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive flight briefing where we'll discuss tomorrow's Everest mountain flight, weather considerations, photography tips, peak identification, and handle any arrangements. Evening free to explore the vibrant streets of Thamel. Welcome dinner with traditional Nepali cuisine where you'll meet your guide.",
+    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive flight briefing where we'll discuss tomorrow's Everest mountain flight, weather considerations, photography tips, peak identification, and handle any arrangements. Evening free to explore the vibrant streets of Thamel, with its bustling shops, restaurants, and cafes. In the evening, enjoy a welcome dinner with traditional Nepali cuisine where you'll meet your guide and fellow travelers, preparing for the adventure of a lifetime.",
     overnight: "Hotel in Kathmandu",
     meals: "Dinner",
-    highlights: ["Airport pickup", "Flight briefing", "Welcome dinner", "Thamel exploration"],
+    highlights: [
+      "Airport pickup and private transfer",
+      "Hotel check-in in Thamel",
+      "Mountain flight briefing and preparation",
+      "Thamel exploration",
+      "Welcome dinner with Nepali cuisine"
+    ]
   },
   {
     day: 2,
     title: "Everest Mountain Flight - The Experience of a Lifetime",
     altitude: "1,350m → 8,000m+ (flight altitude)",
     distance: "1 hour flight",
-    description: "This is the day you've been waiting for! Early morning transfer to Tribhuvan International Airport's domestic terminal for your Everest Mountain Flight. The flight typically departs at sunrise (around 6:30-7:00 AM) for optimal lighting and weather conditions. Board your aircraft and prepare for an unforgettable hour-long journey into the heart of the Himalayas. As the plane ascends, you'll be greeted by an ever-expanding panorama of snow-capped peaks. The flight path takes you east over the beautiful Nepalese countryside, with aerial views of terraced hillsides and traditional villages. Your first major Himalayan views include the Gaurishankar range, followed by the mighty Everest massif. The aircraft flies at approximately 8,000-9,000 meters, bringing you incredibly close to some of the world's highest mountains. Every passenger gets a window seat for unobstructed photography. Your pilot and guide will identify each peak as you fly past, including Mount Everest (8,848m), Lhotse (8,516m), Nuptse (7,861m), Makalu (8,485m), Cho Oyu (8,188m), and many others. The flight turns at Kala Patthar, the famous Everest viewpoint, offering the closest possible aerial views of the world's highest peak. After this once-in-a-lifetime experience, you'll be back in Kathmandu by mid-morning, with the rest of the day free to recover, process your incredible experience, and share photos. Overnight in Kathmandu.",
+    description: "This is the day you've been waiting for! Early morning transfer to Tribhuvan International Airport's domestic terminal for your Everest Mountain Flight. The flight typically departs at sunrise (around 6:30-7:00 AM) for optimal lighting and weather conditions. Board your aircraft and prepare for an unforgettable hour-long journey into the heart of the Himalayas. As the plane ascends, you'll be greeted by an ever-expanding panorama of snow-capped peaks. The flight path takes you east over the beautiful Nepalese countryside, with aerial views of terraced hillsides and traditional villages. Your first major Himalayan views include the Gaurishankar range, followed by the mighty Everest massif. The aircraft flies at approximately 8,000-9,000 meters, bringing you incredibly close to some of the world's highest mountains. Every passenger gets a window seat for unobstructed photography. Your pilot and guide will identify each peak as you fly past, including Mount Everest (8,848m), Lhotse (8,516m), Nuptse (7,861m), Makalu (8,485m), Cho Oyu (8,188m), and many others. The flight turns at Kala Patthar, the famous Everest viewpoint, offering the closest possible aerial views of the world's highest peak. After this once-in-a-lifetime experience, you'll be back in Kathmandu by mid-morning, with the rest of the day free to process your incredible experience, share photos, and reflect on soaring among the giants of the Himalayas. Transfer to your hotel. In the evening, enjoy a farewell dinner at a traditional Nepali restaurant celebrating your Everest mountain flight achievement.",
     overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Mount Everest (8,848m) aerial view", "Lhotse, Nuptse, Makalu, Cho Oyu", "Guaranteed window seat", "Peak identification by expert guide", "Sunrise over the Himalayas"],
-  },
-  {
-    day: 3,
-    title: "Rest Day & Photo Processing",
-    altitude: "1,350m",
-    distance: "-",
-    description: "After yesterday's incredible adventure, enjoy a well-deserved rest day. Sleep in and recover from the early start. The morning is free for relaxation or optional light activities. In the afternoon, you may choose to visit some of Kathmandu's UNESCO World Heritage Sites (optional, at additional cost) or simply relax at your hotel. Your guide can assist with organizing and backing up your Everest photographs. Evening free for personal exploration or souvenir shopping in Thamel. Overnight in Kathmandu.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Rest and recovery", "Photo organization", "Optional heritage site visits", "Thamel exploration"],
-  },
-  {
-    day: 4,
-    title: "Kathmandu Valley Sightseeing (Optional) or Leisure",
-    altitude: "1,350m",
-    distance: "Full day",
-    description: "Today offers flexibility based on your preferences. You may choose to join an optional sightseeing tour of Kathmandu Valley's UNESCO World Heritage Sites (additional cost), including Swayambhunath Stupa (Monkey Temple), Pashupatinath Temple, and Boudhanath Stupa. Alternatively, enjoy a leisurely day exploring the vibrant neighborhoods of Kathmandu, visiting local cafes, shopping for souvenirs, or simply relaxing at your hotel. Your guide can provide recommendations based on your interests. Evening farewell dinner at a traditional Nepali restaurant with cultural music and dance performance. Celebrate your incredible Everest mountain flight adventure with fellow travelers. Overnight in Kathmandu.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Optional heritage sightseeing", "Leisure and shopping", "Cultural farewell dinner", "Everest celebration"],
-  },
-  {
-    day: 5,
-    title: "Departure",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of soaring among the giants of the Himalayas, witnessing Mount Everest and its neighboring peaks from breathtaking proximity, and experiencing the warm hospitality of the Nepali people. Namaste and until we meet again!",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    meals: "Breakfast, Dinner",
+    highlights: [
+      "Mount Everest (8,848m) aerial view",
+      "Lhotse, Nuptse, Makalu, Cho Oyu close-up views",
+      "Guaranteed window seat for every passenger",
+      "Peak identification by expert guide",
+      "Sunrise departure for optimal photography",
+      "Farewell dinner with cultural performance"
+    ]
+  }
 ];
 
 const includes = [
   "All airport/hotel transfers in private vehicle",
-  "4 nights hotel accommodation in Kathmandu (3-star with breakfast)",
-  "All meals during the tour as specified (breakfast, lunch, dinner)",
+  "1 night hotel accommodation in Kathmandu (3-star with breakfast)",
+  "All meals during the tour as specified (breakfast, dinner)",
   "Experienced English-speaking guide",
   "Everest Mountain Flight (1 hour flight with guaranteed window seat)",
   "Peak identification card and flight map",
@@ -120,7 +86,6 @@ const includes = [
   "All government taxes and official expenses",
   "Emergency contact number 24/7",
   "Complimentary map of Nepal",
-  "Bottled water during tours",
   "Everest flight certificate of completion",
   "Souvenir photographs",
 ];
@@ -129,12 +94,11 @@ const excludes = [
   "International airfare to/from Nepal",
   "Nepal visa fee ($30 USD for 15 days, $50 for 30 days - available on arrival)",
   "Travel insurance (mandatory - must cover flight cancellation and medical emergencies)",
-  "Optional sightseeing tours on Day 4 (UNESCO heritage sites)",
-  "Meals not specified in itinerary",
+  "Lunch on Day 2 (not specified in itinerary)",
   "Alcoholic beverages and soft drinks",
   "Personal expenses (phone calls, laundry, souvenirs, etc.)",
   "Tips and gratuities for guides, pilots, and support staff (recommended)",
-  "Emergency evacuation/helicopter rescue costs",
+  "Emergency evacuation/rescue costs",
   "Any costs arising from unforeseen circumstances (weather, political unrest)",
   "International phone calls and internet charges",
   "Excess baggage charges on domestic flight",
@@ -146,18 +110,16 @@ const gallery = [
     alt: "Mount Everest",
     caption: "Mount Everest (8,848m) - The world's highest peak viewed from mountain flight",
   },
- 
   {
     src: "/images/used/everest-flight-1.avif",
     alt: "Window View",
     caption: "Unobstructed window view of Himalayan peaks during flight",
   },
-  
 ];
 
 export default function EverestRegionMountainFlightTripPage() {
   const [copied, setCopied] = React.useState(false);
-  const [expandedDays, setExpandedDays] = React.useState<number[]>([1]);
+  const [expandedDays, setExpandedDays] = React.useState<number[]>([1, 2]);
   const [showMobileNav, setShowMobileNav] = React.useState(false);
   
   // Tour name constant for auto-fill functionality
@@ -285,7 +247,7 @@ export default function EverestRegionMountainFlightTripPage() {
                 Easy
               </Badge>
               <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MountainSnow className="w-3 h-3 mr-1" /> View 8,000m Peaks
+                <Plane className="w-3 h-3 mr-1" /> View 8,000m Peaks
               </Badge>
             </div>
             
@@ -311,8 +273,8 @@ export default function EverestRegionMountainFlightTripPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$1,250</div>
-                <div className="text-lg font-bold text-[#0f2940]">$1,095</div>
+                <div className="text-xs text-slate-400 line-through">$450</div>
+                <div className="text-lg font-bold text-[#0f2940]">$395</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -332,16 +294,16 @@ export default function EverestRegionMountainFlightTripPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$1,250</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,095</div>
+                        <span className="text-white/50 text-sm line-through">$450</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$395</div>
                         <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
+                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $55</Badge>
                       </div>
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>5 Days / 4 Nights</span>
+                          <span>2 Days / 1 Night</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
@@ -389,11 +351,11 @@ export default function EverestRegionMountainFlightTripPage() {
                       </h3>
                       <div className="space-y-2 text-[10px] md:text-sm">
                         <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Start Point</span>
-                          <span className="font-medium text-[#0f2940]">Kathmandu</span>
+                          <span className="text-slate-500">Duration</span>
+                          <span className="font-medium text-[#0f2940]">2 Days / 1 Night</span>
                         </div>
                         <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">End Point</span>
+                          <span className="text-slate-500">Start/End Point</span>
                           <span className="font-medium text-[#0f2940]">Kathmandu</span>
                         </div>
                         <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
@@ -485,16 +447,13 @@ export default function EverestRegionMountainFlightTripPage() {
                 <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The <strong>Everest Region Mountain Flight Trip</strong> offers a once-in-a-lifetime opportunity to experience the world's highest mountains from the air. This 5-day journey combines the thrill of a dedicated mountain flight over the Everest region with the cultural attractions of Kathmandu, creating a perfect short itinerary for those who want to witness Mount Everest and its neighboring giants without extensive trekking.
+                    The <strong>Everest Region Mountain Flight Trip</strong> offers a once-in-a-lifetime opportunity to experience the world's highest mountains from the air. This 2-day journey combines the thrill of a dedicated mountain flight over the Everest region with the cultural attractions of Kathmandu, creating a perfect short itinerary for those who want to witness Mount Everest and its neighboring giants without extensive trekking.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     The centerpiece of this trip is a <strong>1-hour mountain flight from Kathmandu</strong> that takes you into the heart of the Everest region. Flying at approximately 8,000-9,000 meters, you'll come face-to-face with some of the world's highest peaks, including <strong>Mount Everest (8,848m), Lhotse (8,516m), Makalu (8,485m), Cho Oyu (8,188m), Nuptse (7,861m), and the stunning Ama Dablam (6,812m)</strong>. Every passenger is guaranteed a window seat, ensuring unobstructed photography opportunities throughout the flight. The flight turns at Kala Patthar, the famous Everest viewpoint, offering the closest possible aerial views of the world's highest peak.
                   </p>
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    Unlike helicopter tours that land at high altitude, this fixed-wing mountain flight remains at cruising altitude, making it accessible to everyone regardless of age or health considerations. There are no altitude concerns, no physical demands—just pure, breathtaking views of the greatest mountains on Earth.
-                  </p>
                   <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    With experienced guides, comfortable accommodations, and seamless logistics, this mountain flight trip offers the perfect introduction to Nepal's Himalayan wonders. No previous experience is required—just bring your camera and your sense of wonder. Whether you're a photographer seeking the ultimate Himalayan images, a traveler with limited time, or someone who simply wants to experience the majesty of Everest without trekking, this tour delivers an unforgettable experience.
+                    With experienced guides, comfortable accommodations, and seamless logistics, this mountain flight trip offers the perfect introduction to Nepal's Himalayan wonders. No previous experience is required—just bring your camera and your sense of wonder.
                   </p>
                 </div>
               </section>
@@ -512,8 +471,6 @@ export default function EverestRegionMountainFlightTripPage() {
                     "Experienced pilot and guide providing peak identification throughout flight",
                     "Sunrise departure for optimal lighting and weather conditions",
                     "Flight turns at Kala Patthar for the best possible Everest views",
-                    "Relaxed pace with ample free time in Kathmandu",
-                    "Optional UNESCO World Heritage Site sightseeing available",
                     "Perfect for photographers, families, and those with limited time",
                     "No trekking required—suitable for all ages and fitness levels",
                     "No altitude concerns—remains at comfortable cruising altitude",
@@ -542,7 +499,7 @@ export default function EverestRegionMountainFlightTripPage() {
                         <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Excellent visibility, warming temperatures, and clear skies. Ideal for photography with optimal lighting conditions. Peak climbing season adds excitement.
+                        Excellent visibility, warming temperatures, and clear skies. Ideal for photography with optimal lighting conditions.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Excellent</Badge>
                     </CardContent>
@@ -553,7 +510,7 @@ export default function EverestRegionMountainFlightTripPage() {
                         <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crystal-clear skies, stable weather, and perfect mountain views. Post-monsoon clarity is exceptional. Peak season with the highest flight success rates.
+                        Crystal-clear skies, stable weather, and perfect mountain views. Post-monsoon clarity is exceptional.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
                     </CardContent>
@@ -565,13 +522,13 @@ export default function EverestRegionMountainFlightTripPage() {
                         <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crisp clear air and excellent visibility. Cold but clear mornings with snow-covered peaks. Flights may be delayed due to fog but often operate successfully.
+                        Crisp clear air and excellent visibility. Cold but clear mornings with snow-covered peaks.
                       </p>
                       <Badge className="bg-blue-100 text-blue-700 border-none text-[8px] md:text-xs">Good</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-[10px] md:text-xs text-slate-500 mt-2">Note: Monsoon (Jun-Aug) brings clouds and rain, significantly reducing visibility. Flights are often cancelled during this period. We do not recommend mountain flights during monsoon season.</p>
+                <p className="text-[10px] md:text-xs text-slate-500 mt-2">Note: Monsoon (Jun-Aug) brings clouds and rain, significantly reducing visibility. Flights are often cancelled during this period.</p>
               </section>
 
               {/* Detailed Itinerary */}
@@ -696,15 +653,13 @@ export default function EverestRegionMountainFlightTripPage() {
               <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
                 <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information for Mountain Flight</h4>
+                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
-                    <li>• <strong>Weather Dependency:</strong> Mountain flights are weather-dependent. Flights operate only in clear visibility. If weather prevents the flight, you will be offered a full refund or rescheduling. We monitor conditions closely and advise accordingly.</li>
-                    <li>• <strong>Best Time:</strong> Early morning flights (sunrise time) offer the clearest skies and best lighting for photography. Be prepared for an early start (around 6:00-6:30 AM).</li>
-                    <li>• <strong>Photography Tips:</strong> Bring a camera with a zoom lens (70-200mm recommended) for close-up peak shots. Polarizing filter helps reduce glare. Clean your lens before flight and have extra memory cards and batteries ready.</li>
-                    <li>• <strong>What to Wear:</strong> Dress in layers. While the aircraft is heated, mornings can be cool. Dark clothing helps reduce window reflections in your photos.</li>
-                    <li>• <strong>Motion Sensitivity:</strong> The flight is smooth, but if you're prone to motion sickness, consider taking medication beforehand. Window seats provide the best experience.</li>
-                    <li>• <strong>Travel Insurance:</strong> Mandatory - ensure your policy covers flight cancellation and medical emergencies.</li>
-                    <li>• <strong>No Altitude Concerns:</strong> Unlike helicopter tours, this fixed-wing flight remains at cruising altitude with cabin pressurization, making it suitable for all passengers regardless of health considerations.</li>
+                    <li>• <strong>Weather Dependency:</strong> Flights operate only in clear visibility. If weather prevents the flight, you will be offered a full refund or rescheduling.</li>
+                    <li>• <strong>Best Time:</strong> Early morning flights (sunrise time) offer the clearest skies and best lighting for photography.</li>
+                    <li>• <strong>Photography Tips:</strong> Bring a camera with a zoom lens (70-200mm recommended) and extra batteries.</li>
+                    <li>• <strong>What to Wear:</strong> Dress in layers. Dark clothing helps reduce window reflections in your photos.</li>
+                    <li>• <strong>No Altitude Concerns:</strong> Fixed-wing flight remains at cruisin altitude with cabin pressurization.</li>
                   </ul>
                 </div>
               </div>
@@ -763,27 +718,23 @@ export default function EverestRegionMountainFlightTripPage() {
                   {[
                     {
                       q: "How close do we get to Mount Everest?",
-                      a: "The mountain flight takes you within approximately 20-30 kilometers of Mount Everest, offering spectacular close-up views. The aircraft flies at about 8,000-9,000 meters, with Everest towering at 8,848 meters, so you're seeing the peak from a similar altitude. The flight turns at Kala Patthar, the famous Everest viewpoint, providing the best possible aerial perspective of the world's highest mountain.",
-                    },
-                    {
-                      q: "What is the difference between this flight and the helicopter tour?",
-                      a: "This fixed-wing mountain flight remains at cruising altitude throughout and does not land. It's more affordable, accommodates larger groups, and is pressurized for comfort. The helicopter tour includes a landing at Kala Patthar (5,545m) where you can step out onto snow, but it's more expensive and involves high-altitude exposure. Both offer incredible Everest views—choose based on your budget and whether you want to land.",
+                      a: "The mountain flight takes you within approximately 20-30 kilometers of Mount Everest, offering spectacular close-up views. The aircraft flies at about 8,000-9,000 meters, with Everest towering at 8,848 meters, so you're seeing the peak from a similar altitude.",
                     },
                     {
                       q: "Is the flight safe?",
-                      a: "Yes, mountain flights in Nepal are operated by experienced pilots with extensive Himalayan flying experience. All aircraft are modern, well-maintained, and meet international safety standards. Airlines follow strict safety protocols and weather minimums. Flights are only conducted in clear weather conditions. Safety is always the priority.",
+                      a: "Yes, mountain flights in Nepal are operated by experienced pilots with extensive Himalayan flying experience. All aircraft are modern, well-maintained, and meet international safety standards.",
                     },
                     {
                       q: "What happens if the flight is cancelled due to weather?",
-                      a: "Mountain flights are operated only in safe weather conditions with good visibility. If your flight is cancelled, we will offer you a full refund for the mountain flight portion or the opportunity to reschedule for the next day if your schedule permits. Our team monitors conditions closely and advises accordingly. We recommend building in a buffer day if possible.",
+                      a: "If your flight is cancelled due to weather, we will offer you a full refund for the mountain flight portion or the opportunity to reschedule for the next day if your schedule permits.",
                     },
                     {
                       q: "Which peaks will I see during the flight?",
-                      a: "The Everest mountain flight showcases the entire Everest massif. You'll see Mount Everest (8,848m), Lhotse (8,516m), Nuptse (7,861m), Makalu (8,485m), Cho Oyu (8,188m), Ama Dablam (6,812m), and many other stunning peaks. Your pilot and guide will identify each peak during the flight, and you'll receive a peak identification card as a souvenir.",
+                      a: "You'll see Mount Everest (8,848m), Lhotse (8,516m), Nuptse (7,861m), Makalu (8,485m), Cho Oyu (8,188m), Ama Dablam (6,812m), and many other stunning peaks.",
                     },
                     {
                       q: "Is the flight suitable for children and elderly?",
-                      a: "Yes, absolutely! The mountain flight is smooth and suitable for all ages. There are no age restrictions, and the aircraft is pressurized and heated. Children are fascinated by the experience, and seniors find it a comfortable way to see Everest without trekking. Infants under 2 years typically fly for free (lap child). No altitude concerns as the cabin is pressurized.",
+                      a: "Yes! The mountain flight is smooth and suitable for all ages. There are no altitude concerns as the cabin is pressurized. Infants under 2 years typically fly for free (lap child).",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">

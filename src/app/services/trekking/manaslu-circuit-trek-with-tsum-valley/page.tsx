@@ -43,195 +43,175 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Bring two passport-sized photographs for your trekking permits. Evening free to explore the vibrant streets of Thamel or rest after your journey. Welcome dinner with traditional Nepali cuisine where you'll meet your trek guide. ",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements", "Welcome dinner"],
+    "day": 1,
+    "title": "Drive from Kathmandu to Machha Khola",
+    "altitude": "1,400m → 890m",
+    "distance": "150km / 8-9 hrs drive",
+    "description": "Early morning departure from your hotel in Kathmandu for the scenic drive to Machha Khola, the traditional starting point of the Manaslu Circuit and gateway to the Tsum Valley. The journey follows the Trishuli River through beautiful rural landscapes, terraced farmlands, and traditional villages. You'll pass through Dhading Besi and Arughat before the road follows the Budhi Gandaki River through increasingly rugged terrain. The drive offers glimpses of Ganesh Himal (7,422m) and the dramatic river gorge. Arrive in Machha Khola (890m), a small settlement named after the 'Fish River' that flows through it. Check into your teahouse, meet your trekking crew, and prepare for the adventure ahead. Evening briefing on the Tsum Valley and Manaslu Circuit route, including restricted area regulations and permit requirements for the Tsum Valley.",
+    "overnight": "Teahouse in Machha Khola",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic Trishuli River drive", "Arughat pass through", "Budhi Gandaki River gorge", "Ganesh Himal views", "Gateway to Manaslu & Tsum Valley"]
   },
   {
-    day: 2,
-    title: "Drive to Machha Khola",
-    altitude: "1,400m → 890m",
-    distance: "150km / 8-9 hrs drive",
-    description: "Early morning departure from Kathmandu for the scenic drive to Machha Khola. The journey follows the Trishuli River through beautiful rural landscapes, terraced farmlands, and traditional villages. We pass through Arughat before the road becomes rougher, following the Budhi Gandaki River. The drive offers glimpses of Ganesh Himal and the dramatic river gorge. Arrive in Machha Khola, a small settlement named after the 'Fish River' that flows through it. Check into your teahouse and prepare for the trek ahead. ",
-    overnight: "Teahouse in Machha Khola",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic river drive", "Ganesh Himal views", "Budhi Gandaki River", "Gateway to Manaslu"],
+    "day": 2,
+    "title": "Trek from Machha Khola to Jagat",
+    "altitude": "890m → 1,410m",
+    "distance": "20km / 6-7 hrs trek",
+    "description": "Your combined Tsum Valley and Manaslu Circuit trek begins! Today's trail follows the Budhi Gandaki River upstream, crossing several suspension bridges and passing through subtropical forests. You'll pass through the villages of Khursane and Labubesi, with occasional waterfalls cascading down steep cliffs and landslide areas to navigate. After crossing a long suspension bridge, you'll climb stone steps to Jagat (1,410m), a beautiful stone-paved village perched on a ridge. Jagat serves as the official entry point to the Manaslu Conservation Area - here you'll register your permits at the checkpoint. The village offers stunning views of the surrounding hills and traditional stone architecture. Overnight in Jagat.",
+    "overnight": "Teahouse in Jagat",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Suspension bridge crossings", "Subtropical forests", "Waterfalls and landslide sections", "Manaslu Conservation Area entry", "Jagat stone-paved village"]
   },
   {
-    day: 3,
-    title: "Trek to Jagat",
-    altitude: "890m → 1,410m",
-    distance: "20km / 6-7 hrs",
-    description: "Our trek begins! We follow the Budhi Gandaki River upstream, crossing several suspension bridges and passing through subtropical forests. The trail passes through Khursane and Labubesi, with occasional waterfalls and landslide areas. After crossing a long suspension bridge, we climb stone steps to Jagat, a beautiful stone-paved village that serves as the official entry point to the Manaslu Conservation Area. Here we register our permits at the checkpoint. ",
-    overnight: "Teahouse in Jagat",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Suspension bridge crossings", "Subtropical forests", "Permit checkpoint", "Stone-paved village"],
+    "day": 3,
+    "title": "Trek from Jagat to Lokpa",
+    "altitude": "1,410m → 2,240m",
+    "distance": "18km / 6-7 hrs trek",
+    "description": "Today you enter the restricted Tsum Valley region - a hidden Buddhist enclave that opened to trekkers only in 2008. After a short climb to Salleri, you'll walk along scenic riverbanks and cross the Budhi Gandaki on a long suspension bridge. The trail opens up as you head toward Philim, passing through Sirdibas. At Ekle Bhatti, the trail splits - you'll take the right-hand trail that ascends through dense forest and narrow gorges toward Lokpa (2,240m), the first village in the Tsum Valley. The landscape becomes increasingly dramatic as you gain altitude, with steep cliffs, dense rhododendron forests, and glimpses of distant peaks. Lokpa is a small settlement with basic teahouses and stunning views of the surrounding valleys. Overnight in Lokpa.",
+    "overnight": "Teahouse in Lokpa",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Enter restricted Tsum Valley", "Ekle Bhatti trail split", "Dense forest and narrow gorges", "Remote wilderness", "Lokpa village arrival"]
   },
   {
-    day: 4,
-    title: "Trek to Lokpa",
-    altitude: "1,410m → 2,240m",
-    distance: "18km / 6-7 hrs",
-    description: "Today we enter the restricted Tsum Valley region. After a short climb to Salleri, we walk along scenic riverbanks and cross the Budhi Gandaki on a long suspension bridge. The trail opens up as we head toward Philim, passing through Sirdibas. At Ekle Bhatti, the trail splits—we take the right-hand trail that ascends through dense forest and narrow gorges toward Lokpa, the first village in Tsum Valley. The landscape becomes increasingly dramatic as we gain altitude. ",
-    overnight: "Teahouse in Lokpa",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Enter Tsum Valley", "Forest ascent", "Dramatic gorges", "Remote wilderness"],
+    "day": 4,
+    "title": "Trek from Lokpa to Chumling",
+    "altitude": "2,240m → 2,386m",
+    "distance": "10km / 4-5 hrs trek",
+    "description": "A relatively short day allowing for gradual acclimatization in the Tsum Valley. From Lokpa, you descend through forest and cross a stream on a small bridge, then ascend steeply on stone stairs through beautiful rhododendron and pine forests. The trail offers stunning views of Ganesh Himal (7,422m) and the surrounding peaks as you climb. You'll pass through the small settlement of Ripchet before reaching Chumling (2,386m), also known as Lower Tsum. Chumling is a traditional village with ancient monasteries, mani walls, prayer flags, and flat-roofed stone houses characteristic of Tibetan architecture. The village is the administrative center of Tsum Valley and offers a fascinating glimpse into Tibetan-influenced culture. Visit the local monastery and interact with the friendly Chumling villagers. Overnight in Chumling.",
+    "overnight": "Teahouse in Chumling",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Short acclimatization day", "Rhododendron and pine forests", "Ganesh Himal views", "Ancient monasteries", "Lower Tsum Valley culture"]
   },
   {
-    day: 5,
-    title: "Trek to Chumling",
-    altitude: "2,240m → 2,386m",
-    distance: "10km / 4-5 hrs",
-    description: "A relatively short day allowing for acclimatization. We descend through forest and cross a stream on a bridge, then ascend steeply on stone stairs through rhododendron and pine forests. The trail offers beautiful views of Ganesh Himal and the surrounding peaks. We pass through Ripchet before reaching Chumling (Lower Tsum), a traditional village with ancient monasteries and stone houses. Chumling is the administrative center of Tsum Valley and offers a fascinating glimpse into Tibetan-influenced culture. ",
-    overnight: "Teahouse in Chumling",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Rhododendron forests", "Ganesh Himal views", "Traditional architecture", "Lower Tsum Valley"],
+    "day": 5,
+    "title": "Trek from Chumling to Chhokang Paro",
+    "altitude": "2,386m → 3,031m",
+    "distance": "11km / 5-6 hrs trek",
+    "description": "Today you trek through beautiful landscapes with stunning views of Ganesh Himal and Sringi Himal as you ascend into Upper Tsum Valley. The trail crosses a suspension bridge and passes through fields of potatoes and maize cultivated by local farmers. You'll cross the Serpu Khola and gradually ascend to Chhokang Paro (3,031m), also known as Chekampar, the main village of Upper Tsum Valley. On clear days, you'll see amazing views of Mt. Himalchuli (7,893m), Ganesh Himal, and Sringi Himal. The village has several monasteries, a school, and traditional Tibetan-style houses with intricately carved wooden windows. Take time to explore the village, visit the local gompa, and interact with the Tsum people who follow a unique blend of Buddhism and ancient Bön religion. Overnight in Chhokang Paro.",
+    "overnight": "Teahouse in Chhokang Paro",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Upper Tsum Valley entry", "Himalchuli (7,893m) views", "Ganesh Himal and Sringi Himal", "Tibetan-style houses", "Chhokang Paro village"]
   },
   {
-    day: 6,
-    title: "Trek to Chhokang Paro",
-    altitude: "2,386m → 3,031m",
-    distance: "11km / 5-6 hrs",
-    description: "Today we trek through beautiful landscapes with stunning views of Ganesh Himal and Sringi Himal. The trail crosses a suspension bridge and passes through fields of potatoes and maize. We cross the Serpu Khola and gradually ascend to Chhokang Paro, also known as Chekampar, the main village of Upper Tsum. On clear days, you'll see amazing views of Mt. Himalchuli (7,893m). The village has several monasteries and traditional Tibetan-style houses. ",
-    overnight: "Teahouse in Chhokang Paro",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Ganesh Himal panorama", "Traditional villages", "Upper Tsum Valley", "Himalchuli views"],
+    "day": 6,
+    "title": "Trek from Chhokang Paro to Rachen Gompa & Nile",
+    "altitude": "3,031m → 3,240m → 3,361m",
+    "distance": "12km / 5-6 hrs trek",
+    "description": "Today is a cultural and spiritual journey through the heart of Tsum Valley. You'll trek through small villages and ascend to a ridge reaching the courtyard of Rachen Gompa (3,240m), one of the oldest and most important monasteries in the Tsum Valley. The monastery houses ancient Buddhist texts, beautiful murals, and thangkas (Buddhist paintings). From here, you'll continue to visit Milarepa's Cave (Piren Phu Cave), where the great Tibetan Buddhist sage and poet Milarepa is said to have meditated in the 11th century. According to legend, his footprint is believed to be set in the stone inside the cave - a sacred site for Buddhist pilgrims. You'll cross the Siyar Khola and pass through the hamlets of Phurbe and Pangdun before reaching Nile village (3,361m), nestled dramatically beneath towering cliffs. Overnight in Nile.",
+    "overnight": "Teahouse in Nile",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Rachen Gompa monastery", "Ancient Buddhist texts and murals", "Milarepa's Cave (Piren Phu)", "Sacred footprint legend", "Nile cliff-side village"]
   },
   {
-    day: 7,
-    title: "Trek to Rachen Gompa & Nile",
-    altitude: "3,031m → 3,240m → 3,361m",
-    distance: "12km / 5-6 hrs",
-    description: "We trek through small villages and ascend to a ridge reaching the courtyard of Rachen Gompa (3,240m), one of the oldest monasteries in Tsum Valley. The monastery houses ancient Buddhist texts and beautiful murals. From here, we continue to visit Milarepa's Cave (Piren Phu Cave), where the great Tibetan sage is said to have meditated—his footprint is believed to be set in the stone. We cross the Siyar Khola and pass through the hamlets of Phurbe and Pangdun before reaching Nile village, nestled beneath towering cliffs. ",
-    overnight: "Teahouse in Nile",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Rachen Gompa", "Milarepa's Cave", "Sacred footprint", "Cliff-side village"],
+    "day": 7,
+    "title": "Hike to Mu Gompa & Return to Chhokang Paro",
+    "altitude": "3,361m → 3,700m → 3,031m",
+    "distance": "16km / 7-8 hrs round trip hike",
+    "description": "The highlight of the Tsum Valley section! Start early for the hike to Mu Gompa (3,700m), the largest and most significant monastery in the Tsum Valley region. The trail follows the west bank of the Shiar Khola River with spectacular views of chortens, mani walls, and the Tibetan mountains of Ganesh Himal and Sringi Himal visible on the horizon. Mu Gompa is a magnificent complex with ancient Buddhist artifacts, a large prayer hall, and resident monks who greet visitors warmly. The monastery offers breathtaking panoramic views of the Himalaya and a peaceful, spiritual atmosphere unlike anywhere else. On the way back, you'll also visit Dephyudonma Gompa, a smaller nunnery perched on a hillside. After exploring both monasteries, return to Chhokang Paro for overnight. This is the furthest point of the Tsum Valley side trip. Overnight in Chhokang Paro.",
+    "overnight": "Teahouse in Chhokang Paro",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Mu Gompa (3,700m)", "Largest monastery in Tsum Valley", "Tibetan mountain views", "Dephyudonma Gompa nunnery", "Spiritual highlight of Tsum"]
   },
   {
-    day: 8,
-    title: "Hike to Mu Gompa & Return to Chhokang Paro",
-    altitude: "3,361m → 3,700m → 3,031m",
-    distance: "16km / 7-8 hrs",
-    description: "Early start for the highlight of Tsum Valley—a hike to Mu Gompa (3,700m), the largest monastery in the region. The trail follows the west bank of the river with spectacular views of chortens and the Tibetan mountains beyond. Mu Gompa offers breathtaking panoramic views of the Himalaya and a peaceful, spiritual atmosphere. On the way, we also visit Dephyudonma Gompa. After exploring the monasteries, we return to Chhokang Paro for overnight stay. ",
-    overnight: "Teahouse in Chhokang Paro",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Mu Gompa (3,700m)", "Largest Tsum monastery", "Tibetan mountain views", "Dephyudonma Gompa"],
+    "day": 8,
+    "title": "Trek from Chhokang Paro to Deng",
+    "altitude": "3,031m → 1,860m",
+    "distance": "21km / 6-7 hrs trek",
+    "description": "You leave the sacred Tsum Valley behind and descend back to the main Manaslu Circuit trail. The long descent retraces your steps through Chhokang Paro, Chumling, and Lokpa before joining the main Budhi Gandaki Valley at Deng. The dramatic change in vegetation and temperature is striking as you lose altitude - from alpine landscapes with prayer flags to subtropical forests with sal trees and bamboo. You'll notice the return to more frequent teahouses and the presence of other trekkers on the main circuit. Deng (1,860m) is a small settlement with basic teahouses, nestled beside the Budhi Gandaki River. The village has a few shops and offers beautiful views of the surrounding hills. Overnight in Deng.",
+    "overnight": "Teahouse in Deng",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Leave Tsum Valley", "Descend to main circuit", "Return to Budhi Gandaki River", "Changing vegetation", "Deng settlement arrival"]
   },
   {
-    day: 9,
-    title: "Trek to Deng",
-    altitude: "3,031m → 1,860m",
-    distance: "21km / 6-7 hrs",
-    description: "We leave Tsum Valley and descend back to the main Manaslu Circuit trail. The long descent retraces our steps through Chumling and Lokpa before joining the main valley at Deng. The dramatic change in vegetation and temperature is striking as we lose altitude. Deng is a small settlement with basic teahouses, nestled beside the river. ",
-    overnight: "Teahouse in Deng",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Descend Tsum Valley", "Rejoin Manaslu Circuit", "Changing vegetation", "Riverside settlement"],
+    "day": 9,
+    "title": "Trek from Deng to Namrung",
+    "altitude": "1,860m → 2,660m",
+    "distance": "22km / 6-7 hrs trek",
+    "description": "Today you follow the main Manaslu Circuit trail upstream along the Budhi Gandaki River. You'll pass through the village of Philim, where you'll re-register your permits at the checkpoint. The trail continues through beautiful pine and rhododendron forests, crossing several suspension bridges along the way. The valley narrows as you approach Namrung (2,660m), a traditional Tibetan-style village with stunning views of Sringi Himal (7,187m) and the surrounding peaks. The Tibetan influence becomes more evident in the flat-roofed stone houses, prayer flags, mani walls, and chortens. Namrung is a peaceful village with several teahouses and a small monastery. Overnight in Namrung.",
+    "overnight": "Teahouse in Namrung",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Rejoin Manaslu Circuit", "Philim permit re-check", "Pine and rhododendron forests", "Sringi Himal views", "Namrung Tibetan village"]
   },
   {
-    day: 10,
-    title: "Trek to Namrung",
-    altitude: "1,860m → 2,660m",
-    distance: "22km / 6-7 hrs",
-    description: "The trail follows the Budhi Gandaki upstream through beautiful forests and traditional villages. We pass through Philim, where we re-register at the checkpoint, and continue through pine and rhododendron forests. The valley narrows as we approach Namrung, a traditional village with stunning views of Sringi Himal and the surrounding peaks. The Tibetan influence becomes more evident in the architecture and culture. ",
-    overnight: "Teahouse in Namrung",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Budhi Gandaki Valley", "Sringi Himal views", "Tibetan architecture", "Cultural transition"],
+    "day": 10,
+    "title": "Trek from Namrung to Shyala",
+    "altitude": "2,660m → 3,520m",
+    "distance": "10km / 4-5 hrs trek",
+    "description": "A shorter day allowing for gradual acclimatization before the higher elevations and the Larkya La Pass. The trail continues through forests and opens up to alpine meadows with increasingly dramatic mountain views. You'll pass through the villages of Lihi and Sho, where traditional Tibetan architecture and culture are beautifully preserved. As you gain altitude, you'll notice the vegetation transitioning from forest to alpine scrub and juniper. Shyala (3,520m) is a small settlement with a few teahouses and spectacular views of Manaslu North, Ngadi Himal, and the surrounding peaks. The afternoon is free to rest, hydrate, and enjoy the mountain panorama. This short day is perfect for acclimatization before reaching Samagaon. Overnight in Shyala.",
+    "overnight": "Teahouse in Shyala",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Short acclimatization day", "Lihi and Sho villages", "Alpine meadows", "Manaslu North views", "Shyala settlement"]
   },
   {
-    day: 11,
-    title: "Trek to Shyala",
-    altitude: "2,660m → 3,520m",
-    distance: "10km / 4-5 hrs",
-    description: "A shorter day allowing for gradual acclimatization. The trail continues through forests and opens up to alpine meadows with increasingly dramatic mountain views. We pass through Lihi and Sho villages before reaching Shyala, a small settlement with teahouses and spectacular views of Manaslu North and the surrounding peaks. The afternoon is free to rest and enjoy the mountain panorama. ",
-    overnight: "Teahouse in Shyala",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Alpine meadows", "Manaslu North views", "Acclimatization", "Mountain panorama"],
+    "day": 11,
+    "title": "Trek from Shyala to Samagaon",
+    "altitude": "3,520m → 3,530m",
+    "distance": "9km / 5-6 hrs trek",
+    "description": "Today you catch your first breathtaking views of Mount Manaslu (8,163m), the world's eighth highest peak and the namesake of this trek. The trail passes through Lho village, with its beautiful ancient monastery perched on a hillside and spectacular views of Manaslu's north face. Continue through stunning terrain with panoramic mountain views including Ngadi Himal and Himal Chuli. Samagaon (also called Sama - 3,530m) is the largest village on the entire Manaslu Circuit, with a gompa (monastery), school, health post, and numerous teahouses. This traditional Tibetan Buddhist village is surrounded by dramatic peaks including Manaslu (8,163m), Ngadi Himal (7,870m), and Himal Chuli (7,893m). Take time to explore the village, visit the local monastery, and enjoy the spectacular Himalayan panorama. Overnight in Samagaon.",
+    "overnight": "Teahouse in Samagaon",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["First views of Mt. Manaslu (8,163m)", "Lho village monastery", "Himal Chuli and Ngadi Himal views", "Samagaon largest circuit village", "Tibetan Buddhist culture"]
   },
   {
-    day: 12,
-    title: "Trek to Samagaon",
-    altitude: "3,520m → 3,530m",
-    distance: "19km / 7-8 hrs",
-    description: "Today we catch our first breathtaking views of Mount Manaslu (8,163m), the world's eighth highest peak. The trail passes through Lho village with its ancient monastery and continues through beautiful terrain with stunning mountain panoramas. Samagaon (also called Sama) is the largest village on the circuit, with a gompa (monastery) and school. This traditional Tibetan village is surrounded by dramatic peaks including Manaslu, Ngadi Himal, and Himal Chuli. ",
-    overnight: "Teahouse in Samagaon",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First views of Mt. Manaslu", "Lho monastery", "Samagaon village", "Stunning mountain panorama"],
+    "day": 12,
+    "title": "Acclimatization Day in Samagaon - Manaslu Base Camp Hike",
+    "altitude": "3,530m → 4,800m → 3,530m",
+    "distance": "14km / 6-7 hrs round trip hike",
+    "description": "A crucial acclimatization day before the challenging Larkya La Pass (5,106m) crossing. The golden rule: climb high, sleep low. Today's optional hike is to Manaslu Base Camp (4,800m), offering spectacular close-up views of Manaslu's massive south face and the Punggen Glacier. The trail climbs steadily through rocky moraine with breathtaking views of hanging glaciers, icefalls, and the towering peaks above. Alternatively, you can take a shorter hike to Birendra Tal (Birendra Lake), a stunning turquoise glacial lake at approximately 3,700m fed by the melting ice of the Manaslu Glacier. Another option is to visit the ancient Pungyen Gompa (Fairy Tale Gompa), perched on a hillside with spectacular views of the Manaslu massif. This acclimatization day is essential for your body to adapt to high altitude before the pass crossing. Listen to your body, stay hydrated, and rest when needed. Overnight in Samagaon.",
+    "overnight": "Teahouse in Samagaon",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Manaslu Base Camp hike (4,800m)", "Punggen Glacier views", "Birendra Tal glacial lake", "Pungyen Gompa option", "Essential acclimatization for Larkya La"]
   },
   {
-    day: 13,
-    title: "Acclimatization Day - Manaslu Base Camp Hike",
-    altitude: "3,530m → 4,800m → 3,530m",
-    distance: "14km / 6-7 hrs",
-    description: "A crucial rest day for acclimatization with an optional hike to Manaslu Base Camp (4,800m) for spectacular close-up views of Manaslu's south face and the Punggen Glacier. The trail offers incredible views of Manaslu, Himal Chuli, and the surrounding peaks. Alternatively, you can hike to Birendra Tal, a beautiful glacial lake, or explore Samagaon village and visit the ancient Pungyen Gompa. This acclimatization is essential for the challenging Larkya La crossing ahead. ",
-    overnight: "Teahouse in Samagaon",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Manaslu Base Camp hike", "Punggen Glacier", "Birendra Tal lake", "Acclimatization"],
+    "day": 13,
+    "title": "Trek from Samagaon to Samdo",
+    "altitude": "3,530m → 3,860m",
+    "distance": "8km / 4-5 hrs trek",
+    "description": "A relatively easy day with gradual climbing, allowing for continued acclimatization. The trail offers spectacular views of Manaslu (8,163m), Samdo Peak (6,325m), and surrounding glaciers. You'll pass through Kermo Kharka, a seasonal grazing area with yak pastures, and walk through juniper forests with the fragrant scent of juniper in the air. Samdo (3,860m) is the last major village before the Larkya La Pass crossing. This remote settlement has strong Tibetan heritage, with locals who still speak Tibetan dialect, wear traditional clothing, and maintain ancient customs. Some families still trade with Tibet via the nearby Lajyang border crossing. Explore the village with its prayer wheels, mani walls, chortens, and traditional flat-roofed stone houses. Overnight in Samdo.",
+    "overnight": "Teahouse in Samdo",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Kermo Kharka yak pastures", "Juniper forests", "Samdo Peak (6,325m) views", "Remote Tibetan village", "Traditional culture and customs"]
   },
   {
-    day: 14,
-    title: "Trek to Samdo",
-    altitude: "3,530m → 3,690m",
-    distance: "8km / 3-4 hrs",
-    description: "A relatively easy day with gradual climbing. The trail offers spectacular views of Manaslu, Samdo Peak, and surrounding glaciers. We pass through Kermo Kharka and juniper forests before reaching Samdo, the last major village before the pass. This remote settlement has strong Tibetan heritage, and locals still trade with Tibet via the nearby Lajyang border. The village has a small monastery and stunning mountain views. ",
-    overnight: "Teahouse in Samdo",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Spectacular mountain views", "Juniper forests", "Remote Tibetan village", "Lajyang border"],
+    "day": 14,
+    "title": "Trek from Samdo to Dharmasala (Larkya Phedi)",
+    "altitude": "3,860m → 4,460m",
+    "distance": "8km / 4-5 hrs trek",
+    "description": "A short but important trek to the high camp below Larkya La Pass. The terrain becomes increasingly barren and alpine as you climb above the tree line for the final time. The trail passes through Larkya Bazaar, an old trading post that was once a bustling hub for salt and wool traders traveling between Nepal and Tibet. From here, the trail continues on rocky moraine with stunning views of Larkya Peak and the surrounding glaciers. Dharmasala (4,460m), also called Larkya Phedi, is a basic stone shelter serving as the final stop before the pass crossing. The accommodation here is very basic - this is a true high-altitude camp. Rest early, organize your gear for tomorrow's pre-dawn start, and try to sleep as conditions allow. Your guide will check weather conditions and confirm the departure time (typically 3-4 AM). Overnight at Dharmasala.",
+    "overnight": "Basic Lodge at Dharmasala",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Larkya Bazaar old trading post", "Alpine terrain above tree line", "Larkya Peak and glacier views", "High camp experience", "Pass preparation briefing"]
   },
   {
-    day: 15,
-    title: "Trek to Dharmasala (Larkya Phedi)",
-    altitude: "3,690m → 4,460m",
-    distance: "12km / 4-5 hrs",
-    description: "A short but important trek to the high camp below Larkya La Pass. The terrain becomes increasingly barren and alpine as we climb above the tree line. The trail passes through Larkya Bazaar, an old trading post, before reaching Dharmasala (also called Larkya Phedi), a basic stone shelter serving as the final stop before the pass crossing. Rest early, prepare your gear, and try to sleep as conditions allow. We'll start very early tomorrow morning. ",
-    overnight: "Basic Lodge/Dharmasala",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["High camp experience", "Alpine terrain", "Larkya Bazaar", "Pass preparation"],
+    "day": 15,
+    "title": "Cross Larkya La Pass & Trek to Bimthang",
+    "altitude": "4,460m → 5,106m → 3,720m",
+    "distance": "23km / 10-12 hrs trek",
+    "description": "The most challenging and rewarding day of the entire Tsum Valley and Manaslu Circuit trek! Start very early (3-4 AM) to reach the pass before weather conditions deteriorate - afternoon clouds and wind are common. The climb from Dharmasala is steady on a moraine path with stone cairns marking the way. The altitude is extreme, so move slowly, breathe deeply, and rest frequently. Reaching the crest of Larkya La Pass (5,106m) is an indescribable feeling - prayer flags flutter in the wind as you take in the 360-degree panoramic views of Mount Manaslu (8,163m), Himlung Himal (7,126m), Cheo Himal (6,820m), Gyaji Kang, Kang Guru, and Annapurna II (7,937m) in the distance. After celebrating at the pass and taking photographs, begin the long descent to Bimthang (3,720m). The descent passes through glacial moraine, past beautiful glacial lakes (including the stunning white lake and blue lake), and finally through yak pastures into a beautiful valley with rhododendron forests. This is a very long, tiring day but absolutely unforgettable - you have now completed one of Nepal's greatest treks! Overnight in Bimthang.",
+    "overnight": "Teahouse in Bimthang",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Larkya La Pass crossing (5,106m)", "360-degree Himalayan panorama", "Manaslu, Himlung, Annapurna views", "Glacial lakes", "Tsum Valley + Manaslu Circuit completion"]
   },
   {
-    day: 16,
-    title: "Cross Larkya La Pass to Bimthang",
-    altitude: "4,460m → 5,106m → 3,720m",
-    distance: "23km / 10-11 hrs",
-    description: "The most challenging and rewarding day of the trek! We start at 3-4 AM to reach the pass before conditions deteriorate. The climb is steady on a moraine path with cairns marking the way. At Larkya La (5,106m), prayer flags flutter in the wind and 360-degree views reveal Manaslu, Himlung Himal, Cheo Himal, Annapurna II, and the Tibetan peaks beyond. The long descent to Bimthang passes through glacial moraine, past beautiful glacial lakes, and through yak pastures. This is a tiring but unforgettable day. ",
-    overnight: "Teahouse in Bimthang",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Larkya La Pass (5,106m)", "360-degree Himalayan panorama", "Glacial lakes", "Prayer flag-adorned summit"],
+    "day": 16,
+    "title": "Trek from Bimthang to Tilje & Jeep to Besisahar",
+    "altitude": "3,720m → 2,300m → 760m",
+    "distance": "12km trek / 4-5 hrs trek + 4-5 hrs jeep",
+    "description": "Your final day of trekking on the Tsum Valley and Manaslu Circuit. From Bimthang, the trail descends through beautiful rhododendron and pine forests, passing through the village of Gho with its traditional stone houses and yak pastures. You'll cross several streams and suspension bridges, with the landscape transforming from alpine to subtropical. The views back toward the Larkya La and the Manaslu range are spectacular from this side. Arrive in Tilje (2,300m), a charming Gurung village with terraced fields and beautiful mountain views. Here, your private jeep awaits for the scenic drive to Besisahar (760m), the district headquarters of Lamjung. The jeep drive follows the Marsyangdi River through dramatic gorges, past terraced farmlands, and through traditional villages. Arrive in Besisahar by late afternoon. Check into your teahouse and celebrate your incredible achievement - you have successfully explored the sacred Tsum Valley, visited Mu Gompa, crossed the legendary Larkya La Pass at 5,106m, and completed the Manaslu Circuit! Overnight in Besisahar.",
+    "overnight": "Teahouse in Besisahar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final day of Manaslu Circuit trek", "Gho village and yak pastures", "Rhododendron and pine forests", "Scenic jeep ride to Besisahar", "Manaslu + Tsum Valley completion celebration"]
   },
   {
-    day: 17,
-    title: "Trek to Dharapani",
-    altitude: "3,720m → 1,820m",
-    distance: "20km / 6-7 hrs",
-    description: "A long descent day through dramatically changing landscapes. From alpine terrain, we descend through rhododendron forests, crossing streams and passing through Gurung villages. The vegetation transforms from alpine to temperate to subtropical. At Dharapani, we join the Annapurna Circuit trail and reach the road head. The village marks our transition back to more accessible regions. Celebrate your incredible achievement of crossing Larkya La and exploring both Tsum Valley and Manaslu Circuit! ",
-    overnight: "Teahouse in Dharapani",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Dramatic landscape change", "Rhododendron forests", "Gurung villages", "Join Annapurna Circuit"],
-  },
-  {
-    day: 18,
-    title: "Drive to Kathmandu",
-    altitude: "1,820m → 1,400m",
-    distance: "8-9 hrs drive",
-    description: "Our trekking adventure concludes as we drive back to Kathmandu. From Dharapani, we drive to Besisahar, then continue along the scenic Prithvi Highway to Kathmandu. The journey offers beautiful views of rural landscapes, river valleys, and terraced farmlands. Arrive in Kathmandu by late afternoon. Check into your hotel and enjoy a well-deserved hot shower. Evening farewell dinner with your trekking team, celebrating your incredible journey through Tsum Valley and across Larkya La Pass. ",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic drive", "Trek completion", "Farewell dinner with team", "Celebration"],
-  },
-  {
-    day: 19,
-    title: "Departure",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of exploring the sacred Tsum Valley, crossing the legendary Larkya La Pass, and standing in the shadow of Mount Manaslu. ",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 17,
+    "title": "Bus from Besisahar to Kathmandu",
+    "altitude": "760m → 1,400m",
+    "distance": "180km / 7-8 hrs bus",
+    "description": "After breakfast in Besisahar, board a tourist bus for the scenic drive back to Kathmandu. The journey follows the Marsyangdi River valley before joining the Prithvi Highway along the Trishuli River. The bus passes through beautiful landscapes, terraced farmlands, traditional villages, and dramatic river gorges. You'll pass through Dumre, and eventually reach the outskirts of the Kathmandu Valley. Along the way, you'll have stunning views of the Himalayan foothills and opportunities to see local rural life. The bus journey is a wonderful opportunity to relax, reflect on your epic Tsum Valley and Manaslu Circuit adventure, and watch the world go by. Arrive in Kathmandu by late afternoon. Check into your hotel in Thamel, take a well-deserved hot shower, and enjoy the comforts of the city. The remainder of your day is free for souvenir shopping in Thamel, visiting a spa for a much-needed massage, or simply relaxing after your incredible journey. In the evening, enjoy a farewell dinner celebrating your successful trek - exploring the sacred Tsum Valley, visiting ancient monasteries including Mu Gompa and Rachen Gompa, crossing Larkya La Pass at 5,106m, and completing the legendary Manaslu Circuit. Share stories and memories with your trekking team.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic bus journey to Kathmandu", "Marsyangdi and Trishuli Rivers", "Rural Nepali landscapes", "Thamel souvenir shopping", "Farewell celebration dinner"]
+  }
 ];
 
 const includes = [
@@ -454,8 +434,8 @@ export default function ManasluTsumValleyTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$2,550</div>
-                <div className="text-lg font-bold text-[#0f2940]">$2,295</div>
+                <div className="text-xs text-slate-400 line-through">$2,305</div>
+                <div className="text-lg font-bold text-[#0f2940]">$2,050</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -475,8 +455,8 @@ export default function ManasluTsumValleyTrekPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$2,550</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,295</div>
+                        <span className="text-white/50 text-sm line-through">$2,305</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,050</div>
                         <span className="text-white/60 text-sm">per person</span>
                         <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $255</Badge>
                       </div>
@@ -484,7 +464,7 @@ export default function ManasluTsumValleyTrekPage() {
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>19 Days / 18 Nights</span>
+                          <span>17 Days / 16 Nights</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />

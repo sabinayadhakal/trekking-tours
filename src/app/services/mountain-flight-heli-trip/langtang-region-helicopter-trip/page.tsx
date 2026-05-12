@@ -9,49 +9,28 @@ import {
   Clock,
   Users,
   MapPin,
-  ArrowLeft,
   Share2,
   Facebook,
   Twitter,
   Copy,
   Check,
   ChevronDown,
-  Star,
   TrendingUp,
   Tent,
   Utensils,
   Heart,
-  Camera,
   AlertTriangle,
   CheckCircle2,
   XCircle,
-  Phone,
   Sunrise,
   Snowflake,
   Map,
   Backpack,
   Menu,
   X,
-  Landmark,
-  Compass,
-  Droplets,
-  Award,
-  Plane,
-  Cloud,
-  Wind,
-  Eye,
   Gauge,
-  Coffee,
-  Wifi,
-  Battery,
-  Luggage,
-  Helicopter,
   Trophy,
-  Sparkles,
-  Trees,
-  Bird,
-  Flower2,
-  LandPlot,
+  Helicopter,
   MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -61,60 +40,44 @@ import { Badge } from "@/components/ui/badge";
 const itinerary = [
   {
     day: 1,
-    title: "Arrival in Kathmandu",
+    title: "Arrival in Kathmandu & Helicopter Briefing",
     altitude: "1,350m",
     distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive helicopter briefing where we'll discuss tomorrow's Langtang flight, weather considerations, high-altitude precautions, photography tips, and handle any arrangements. Evening free to explore the vibrant streets of Thamel. Welcome dinner with traditional Nepali cuisine where you'll meet your guide.",
+    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive helicopter briefing where we'll discuss tomorrow's Langtang flight, weather considerations, high-altitude precautions, photography tips, and handle any arrangements. Evening free to explore the vibrant streets of Thamel, with its bustling shops, restaurants, and cafes. In the evening, enjoy a welcome dinner with traditional Nepali cuisine where you'll meet your guide and fellow travelers, preparing for the adventure of a lifetime.",
     overnight: "Hotel in Kathmandu",
     meals: "Dinner",
-    highlights: ["Airport pickup", "Helicopter briefing", "Welcome dinner", "Thamel exploration"],
+    highlights: [
+      "Airport pickup and private transfer",
+      "Hotel check-in in Thamel",
+      "Helicopter tour briefing and preparation",
+      "Thamel exploration",
+      "Welcome dinner with Nepali cuisine"
+    ]
   },
   {
     day: 2,
-    title: "Langtag Valley Helicopter Tour with Kyanjin Gompa Landing",
+    title: "Langtang Valley Helicopter Tour with Kyanjin Gompa Landing",
     altitude: "1,350m → 3,950m (Kyanjin Gompa) → 1,350m",
     distance: "3-4 hours helicopter flight",
-    description: "This is the day you've been waiting for! Early morning transfer to Tribhuvan International Airport's domestic terminal for your Langtang helicopter adventure. Your helicopter departs at sunrise (around 6:30-7:00 AM) for optimal weather conditions and lighting. Fly north over the beautiful Nepalese countryside, with aerial views of terraced hillsides, traditional villages, and lush green forests. As you ascend, the dramatic Himalayan vistas unfold, giving you a sense of wonder and adventure. You'll fly over Langtang National Park, Nepal's first Himalayan national park, known for its diverse flora and fauna including red pandas, Himalayan tahrs, and over 250 species of birds [citation:2][citation:7]. The helicopter flies through the heart of the Langtang Valley, often called the 'Valley of Glaciers,' offering spectacular views of snow-capped peaks, deep gorges, cascading waterfalls, and pristine glaciers [citation:1]. The highlight of the tour is a landing at Kyanjin Gompa (3,950m), a charming Tibetan-influenced village surrounded by towering peaks. Step out onto solid ground for 30-40 minutes of exploration time. Visit the ancient Buddhist monastery, sample fresh yak cheese from the famous local cheese factory (the oldest in Nepal), and soak in panoramic mountain views [citation:3][citation:5]. The mountains visible from here include Langtang Lirung (7,227m), Langshisha Ri (6,983m), Ganesh Himal (7,407m), Dorje Lakpa (6,975m), Yala Peak, Naya Kanga, and Gangchempo [citation:2][citation:7]. On the return flight, you'll also get spectacular aerial views of the sacred Gosaikunda Lake, a high-altitude alpine lake system revered by both Hindus and Buddhists [citation:4]. You'll be back in Kathmandu by mid-morning, with the rest of the day free to recover, process your incredible experience, and share photos. Overnight in Kathmandu.",
+    description: "This is the day you've been waiting for! Early morning transfer to Tribhuvan International Airport's domestic terminal for your Langtang helicopter adventure. Your helicopter departs at sunrise (around 6:30-7:00 AM) for optimal weather conditions and lighting. Fly north over the beautiful Nepalese countryside, with aerial views of terraced hillsides, traditional villages, and lush green forests. As you ascend, the dramatic Himalayan vistas unfold, giving you a sense of wonder and adventure. You'll fly over Langtang National Park, Nepal's first Himalayan national park, known for its diverse flora and fauna including red pandas, Himalayan tahrs, and over 250 species of birds. The helicopter flies through the heart of the Langtang Valley, often called the 'Valley of Glaciers,' offering spectacular views of snow-capped peaks, deep gorges, cascading waterfalls, and pristine glaciers. The highlight of the tour is a landing at Kyanjin Gompa (3,950m), a charming Tibetan-influenced village surrounded by towering peaks. Step out onto solid ground for 30-40 minutes of exploration time. Visit the ancient Buddhist monastery, sample fresh yak cheese from the famous local cheese factory (the oldest in Nepal), and soak in panoramic mountain views. The mountains visible from here include Langtang Lirung (7,227m), Langshisha Ri (6,983m), Ganesh Himal (7,407m), Dorje Lakpa (6,975m), Yala Peak, Naya Kanga, and Gangchempo. On the return flight, you'll also get spectacular aerial views of the sacred Gosaikunda Lake, a high-altitude alpine lake system revered by both Hindus and Buddhists. You'll be back in Kathmandu by mid-morning, with the rest of the day free to recover, process your incredible experience, and share photos. Transfer to your hotel. In the evening, enjoy a farewell dinner at a traditional Nepali restaurant celebrating your Langtang helicopter achievement.",
     overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Kyanjin Gompa landing (3,950m)", "Langtang Lirung and Ganesh Himal views", "Ancient Buddhist monastery visit", "Yak cheese factory tasting", "Gosaikunda Lake aerial views", "Langtang National Park flyover"],
-  },
-  {
-    day: 3,
-    title: "Rest Day & Photo Processing",
-    altitude: "1,350m",
-    distance: "-",
-    description: "After yesterday's high-altitude adventure, enjoy a well-deserved rest day. Sleep in and recover from the early start. The morning is free for relaxation or optional light activities. In the afternoon, you may choose to visit some of Kathmandu's UNESCO World Heritage Sites (optional, at additional cost) or simply relax at your hotel. Your guide can assist with organizing and backing up your Langtang photographs. Evening free for personal exploration or souvenir shopping in Thamel. Overnight in Kathmandu.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Rest and recovery", "Photo organization", "Optional heritage site visits", "Thamel exploration"],
-  },
-  {
-    day: 4,
-    title: "Kathmandu Valley Sightseeing (Optional) or Leisure",
-    altitude: "1,350m",
-    distance: "Full day",
-    description: "Today offers flexibility based on your preferences. You may choose to join an optional sightseeing tour of Kathmandu Valley's UNESCO World Heritage Sites (additional cost), including Swayambhunath Stupa (Monkey Temple), Pashupatinath Temple, and Boudhanath Stupa. Alternatively, enjoy a leisurely day exploring the vibrant neighborhoods of Kathmandu, visiting local cafes, shopping for souvenirs, or simply relaxing at your hotel. Your guide can provide recommendations based on your interests. Evening farewell dinner at a traditional Nepali restaurant with cultural music and dance performance. Celebrate your incredible Langtang helicopter adventure with fellow travelers. Overnight in Kathmandu.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Optional heritage sightseeing", "Leisure and shopping", "Cultural farewell dinner", "Langtang celebration"],
-  },
-  {
-    day: 5,
-    title: "Departure",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of flying through the Valley of Glaciers, standing at 3,950m in the shadow of Langtang Lirung, experiencing the rich Tamang and Tibetan Buddhist culture, and the warm hospitality of the Nepali people. Namaste and until we meet again!",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    meals: "Breakfast, Dinner",
+    highlights: [
+      "Kyanjin Gompa landing (3,950m)",
+      "Langtang Lirung and Ganesh Himal views",
+      "Ancient Buddhist monastery visit",
+      "Yak cheese factory tasting",
+      "Gosaikunda Lake aerial views",
+      "Langtang National Park flyover",
+      "Farewell dinner with cultural performance"
+    ]
+  }
 ];
 
 const includes = [
   "All airport/hotel transfers in private vehicle",
-  "4 nights hotel accommodation in Kathmandu (3-star with breakfast)",
-  "All meals during the tour as specified (breakfast, lunch, dinner)",
+  "1 night hotel accommodation in Kathmandu (3-star with breakfast)",
+  "All meals during the tour as specified (breakfast, dinner)",
   "Experienced English-speaking guide",
   "Langtang Valley Helicopter Tour with Kyanjin Gompa landing (3-4 hours)",
   "30-40 minutes ground exploration time at Kyanjin Gompa",
@@ -125,7 +88,6 @@ const includes = [
   "All government taxes and official expenses",
   "Emergency contact number 24/7",
   "Complimentary map of Nepal",
-  "Bottled water during tours",
   "Langtang flight certificate of completion",
   "Souvenir photographs",
   "Passenger insurance (by aviation company)",
@@ -135,8 +97,7 @@ const excludes = [
   "International airfare to/from Nepal",
   "Nepal visa fee ($30 USD for 15 days, $50 for 30 days - available on arrival)",
   "Travel insurance (mandatory - must cover helicopter evacuation up to 4,000m)",
-  "Optional sightseeing tours on Day 4 (UNESCO heritage sites)",
-  "Meals not specified in itinerary",
+  "Lunch on Day 2 (not specified in itinerary)",
   "Breakfast, tea/coffee, and other meals at Kyanjin Gompa",
   "Alcoholic beverages and soft drinks",
   "Personal expenses (phone calls, laundry, souvenirs, etc.)",
@@ -153,20 +114,16 @@ const gallery = [
     alt: "Langtang Lirung",
     caption: "Langtang Lirung (7,227m) - The highest peak in the Langtang range",
   },
-  
   {
     src: "/images/used/langtang-flight-1.avif",
     alt: "Helicopter in Langtang",
     caption: "Helicopter landing at Kyanjin Gompa with mountain backdrop",
   },
-   
-
-  
 ];
 
 export default function LangtangRegionHelicopterTripPage() {
   const [copied, setCopied] = React.useState(false);
-  const [expandedDays, setExpandedDays] = React.useState<number[]>([1]);
+  const [expandedDays, setExpandedDays] = React.useState<number[]>([1, 2]);
   const [showMobileNav, setShowMobileNav] = React.useState(false);
   
   // Tour name constant for auto-fill functionality
@@ -320,8 +277,8 @@ export default function LangtangRegionHelicopterTripPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$1,350</div>
-                <div className="text-lg font-bold text-[#0f2940]">$1,195</div>
+                <div className="text-xs text-slate-400 line-through">$1,550</div>
+                <div className="text-lg font-bold text-[#0f2940]">$1,500</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -341,16 +298,16 @@ export default function LangtangRegionHelicopterTripPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$1,350</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,195</div>
+                        <span className="text-white/50 text-sm line-through">$1,750</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,500</div>
                         <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
+                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $250</Badge>
                       </div>
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>5 Days / 4 Nights</span>
+                          <span>2 Days / 1 Night</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
@@ -398,11 +355,11 @@ export default function LangtangRegionHelicopterTripPage() {
                       </h3>
                       <div className="space-y-2 text-[10px] md:text-sm">
                         <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Start Point</span>
-                          <span className="font-medium text-[#0f2940]">Kathmandu</span>
+                          <span className="text-slate-500">Duration</span>
+                          <span className="font-medium text-[#0f2940]">2 Days / 1 Night</span>
                         </div>
                         <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">End Point</span>
+                          <span className="text-slate-500">Start/End Point</span>
                           <span className="font-medium text-[#0f2940]">Kathmandu</span>
                         </div>
                         <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
@@ -494,16 +451,13 @@ export default function LangtangRegionHelicopterTripPage() {
                 <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The <strong>Langtang Region Helicopter Trip</strong> offers a once-in-a-lifetime opportunity to explore one of Nepal's most beautiful Himalayan valleys in just a single day. Known as the "Valley of Glaciers," the Langtang region is renowned for its pristine natural beauty, rich Tibetan-influenced culture, and stunning mountain panoramas—all accessible within a short flight from Kathmandu [citation:1][citation:5].
+                    The <strong>Langtang Region Helicopter Trip</strong> offers a once-in-a-lifetime opportunity to explore one of Nepal's most beautiful Himalayan valleys in just a single morning. Known as the "Valley of Glaciers," the Langtang region is renowned for its pristine natural beauty, rich Tibetan-influenced culture, and stunning mountain panoramas—all accessible within a short flight from Kathmandu.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The centerpiece of this 5-day adventure is a <strong>3-4 hour helicopter tour</strong> that takes you deep into the heart of the Langtang Valley. Unlike other mountain flights that remain at a distance, this experience includes a <strong>landing at Kyanjin Gompa (3,950m)</strong>—a charming Tibetan-influenced village surrounded by towering peaks. Here, you'll step out and spend 30-40 minutes exploring the ancient Buddhist monastery, visiting the famous yak cheese factory (the oldest in Nepal), and soaking in panoramic mountain views [citation:3][citation:9].
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The flight route takes you over Langtang National Park, Nepal's first Himalayan national park, known for its diverse flora and fauna including red pandas, Himalayan tahrs, and over 250 species of birds [citation:2][citation:7]. You'll witness spectacular views of snow-capped peaks including <strong>Langtang Lirung (7,227m), Ganesh Himal (7,407m), Dorje Lakpa (6,975m), Langshisha Ri (6,983m), Yala Peak, and Naya Kanga</strong> [citation:2][citation:7]. On the return journey, you'll also get breathtaking aerial views of the sacred Gosaikunda Lake, a high-altitude alpine lake system revered by both Hindus and Buddhists [citation:4].
+                    The centerpiece of this 2-day adventure is a <strong>3-4 hour helicopter tour</strong> that takes you deep into the heart of the Langtang Valley. Unlike other mountain flights that remain at a distance, this experience includes a <strong>landing at Kyanjin Gompa (3,950m)</strong>—a charming Tibetan-influenced village surrounded by towering peaks. Here, you'll step out and spend 30-40 minutes exploring the ancient Buddhist monastery, visiting the famous yak cheese factory (the oldest in Nepal), and soaking in panoramic mountain views.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    With experienced pilots, modern helicopters, and careful attention to safety and comfort, this tour makes the beauty of the Langtang region accessible to everyone. No trekking is required—just bring your sense of adventure and your camera. Whether you're a nature lover, cultural enthusiast, photographer, or simply seeking a unique Himalayan experience, this helicopter trip to the Valley of Glaciers delivers an unforgettable adventure.
+                    With experienced pilots, modern helicopters, and careful attention to safety and comfort, this tour makes the beauty of the Langtang region accessible to everyone. No trekking is required—just bring your sense of adventure and your camera. Whether you're a nature lover, cultural enthusiast, photographer, or simply seeking a unique Himalayan experience, this helicopter trip delivers an unforgettable adventure.
                   </p>
                 </div>
               </section>
@@ -521,12 +475,10 @@ export default function LangtangRegionHelicopterTripPage() {
                     "Fly over Langtang National Park, home to red pandas and Himalayan tahrs",
                     "Aerial views of the sacred Gosaikunda Lake at 4,380m",
                     "Experience the 'Valley of Glaciers' with its pristine glaciers and alpine meadows",
-                    "Witness traditional Tamang and Tibetan-influenced villages from above",
                     "Perfect for photographers, nature lovers, and culture enthusiasts",
                     "No trekking required—accessible to all fitness levels",
-                    "Rest days included for relaxation and optional sightseeing",
-                    "Farewell dinner with traditional Nepali cultural performance",
                     "Langtang flight certificate as a lasting souvenir",
+                    "Farewell dinner with traditional Nepali cultural performance",
                   ].map((highlight, i) => (
                     <div
                       key={i}
@@ -550,7 +502,7 @@ export default function LangtangRegionHelicopterTripPage() {
                         <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Excellent visibility, blooming rhododendrons, and pleasant temperatures. Ideal for photography with clear skies and vibrant colors in the lower valleys [citation:7].
+                        Excellent visibility, blooming rhododendrons, and pleasant temperatures. Ideal for photography with clear skies.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Excellent</Badge>
                     </CardContent>
@@ -561,7 +513,7 @@ export default function LangtangRegionHelicopterTripPage() {
                         <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crystal-clear skies, stable weather, and perfect mountain views. Post-monsoon clarity is exceptional. Peak season with the highest success rates [citation:7].
+                        Crystal-clear skies, stable weather, and perfect mountain views. Post-monsoon clarity is exceptional.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
                     </CardContent>
@@ -573,13 +525,13 @@ export default function LangtangRegionHelicopterTripPage() {
                         <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crisp clear air and excellent visibility on clear days. Snow-covered peaks are spectacular. Flights may be delayed due to fog but often operate successfully [citation:2].
+                        Crisp clear air and excellent visibility on clear days. Snow-covered peaks are spectacular.
                       </p>
                       <Badge className="bg-blue-100 text-blue-700 border-none text-[8px] md:text-xs">Good</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-[10px] md:text-xs text-slate-500 mt-2">Note: Monsoon (Jun-Aug) brings clouds and rain, significantly reducing visibility. Helicopter tours are often cancelled during this period. We do not recommend Langtang helicopter trips during monsoon season [citation:2].</p>
+                <p className="text-[10px] md:text-xs text-slate-500 mt-2">Note: Monsoon (Jun-Aug) brings clouds and rain, significantly reducing visibility. Helicopter tours are often cancelled during this period.</p>
               </section>
 
               {/* Altitude Note */}
@@ -714,14 +666,13 @@ export default function LangtangRegionHelicopterTripPage() {
               <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
                 <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information for Helicopter Tour</h4>
+                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
-                    <li>• <strong>Weather Dependency:</strong> Helicopter flights are highly weather-dependent. Flights operate only in clear visibility. If weather prevents the flight, you will be offered a full refund or rescheduling. We recommend keeping your travel dates flexible [citation:2].</li>
-                    <li>• <strong>Altitude:</strong> Kyanjin Gompa is at 3,950m. Most people handle this altitude well, but some may experience mild symptoms. The helicopter carries supplemental oxygen for emergencies.</li>
-                    <li>• <strong>Health Considerations:</strong> Not recommended for pregnant women, infants under 2 years, or those with serious respiratory or cardiac conditions. Consult your doctor before booking.</li>
-                    <li>• <strong>What to Wear:</strong> Dress in warm layers. Temperatures at Kyanjin Gompa can be near freezing even on sunny days. Warm jacket, gloves, hat, and sunglasses are essential. Comfortable walking shoes for exploring.</li>
-                    <li>• <strong>Photography Tips:</strong> Bring a camera with zoom lens (70-200mm recommended). Polarizing filter helps reduce glare. Extra batteries (cold drains them quickly) and memory cards. Clean your lens before flight.</li>
-                    <li>• <strong>Weight Restrictions:</strong> Helicopter weight limits are strictly enforced. Maximum passenger weight is typically 100kg (220lbs). Passengers exceeding this may need to purchase an additional seat.</li>
+                    <li>• <strong>Weather Dependency:</strong> Flights operate only in clear visibility. If weather prevents the flight, you will be offered a full refund or rescheduling.</li>
+                    <li>• <strong>Altitude:</strong> Kyanjin Gompa is at 3,950m. Most people handle this well, but the helicopter carries supplemental oxygen for emergencies.</li>
+                    <li>• <strong>What to Wear:</strong> Dress in warm layers. Temperatures at Kyanjin Gompa can be near freezing even on sunny days.</li>
+                    <li>• <strong>Photography Tips:</strong> Bring extra batteries (cold drains them quickly) and clean your lens before flight.</li>
+                    <li>• <strong>Weight Restrictions:</strong> Maximum passenger weight is typically 100kg (220lbs).</li>
                   </ul>
                 </div>
               </div>
@@ -759,27 +710,23 @@ export default function LangtangRegionHelicopterTripPage() {
                   {[
                     {
                       q: "How long is the helicopter flight?",
-                      a: "The total helicopter flight time is approximately 3-4 hours round trip from Kathmandu. This includes the flight to the Langtang Valley, 30-40 minutes on the ground at Kyanjin Gompa for exploration, and the return flight. The actual flying time to Kyanjin Gompa is about 35-45 minutes each way [citation:3][citation:9].",
+                      a: "The total helicopter flight time is approximately 3-4 hours round trip from Kathmandu. This includes the flight to the Langtang Valley, 30-40 minutes on the ground at Kyanjin Gompa, and the return flight.",
                     },
                     {
                       q: "What mountains will I see during the flight?",
-                      a: "You'll see spectacular views of the Langtang range including Langtang Lirung (7,227m), Langshisha Ri (6,983m), Ganesh Himal (7,407m), Dorje Lakpa (6,975m), Yala Peak (5,520m), Naya Kanga (5,846m), Gangchempo (6,387m), and on clear days, even glimpses of Shishapangma in Tibet [citation:2][citation:7].",
+                      a: "You'll see Langtang Lirung (7,227m), Langshisha Ri (6,983m), Ganesh Himal (7,407m), Dorje Lakpa (6,975m), Yala Peak, Naya Kanga, Gangchempo, and the sacred Gosaikunda Lake.",
                     },
                     {
                       q: "Can I try yak cheese at Kyanjin Gompa?",
-                      a: "Yes! Kyanjin Gompa is famous for its yak cheese factory, which is the oldest in Nepal. During your ground time, you can visit the factory, sample fresh yak cheese, and even purchase some to take home. The cheese is made from the milk of naks (female yaks) and is a local specialty [citation:3][citation:9].",
+                      a: "Yes! The yak cheese factory is the oldest in Nepal. During your ground time, you can visit the factory, sample fresh yak cheese, and even purchase some to take home.",
                     },
                     {
                       q: "Is this tour suitable for children?",
-                      a: "Yes, children aged 3 and above can enjoy this helicopter tour. The flight is smooth and the experience is thrilling for young adventurers. However, please consider that Kyanjin Gompa is at 3,950m altitude. Children under 3 years are not recommended due to the altitude. All children must be accompanied by adults [citation:2].",
+                      a: "Yes, children aged 3 and above can enjoy this helicopter tour. Children under 3 years are not recommended due to the altitude. All children must be accompanied by adults.",
                     },
                     {
                       q: "What is the cancellation policy?",
-                      a: "If weather prevents the flight, you receive a full refund for the helicopter portion. If you cancel due to personal reasons, cancellation fees apply based on how far in advance you cancel: 30+ days (10%), 15-29 days (25%), 7-14 days (50%), 3-6 days (75%), within 48 hours (100%). We strongly recommend travel insurance to cover unforeseen circumstances [citation:2].",
-                    },
-                    {
-                      q: "How does this compare to the Everest helicopter tour?",
-                      a: "The Langtang helicopter tour is shorter and more affordable than the Everest tour. It offers a different mountain experience—lush green valleys, dense forests, and the famous yak cheese factory. The altitude is lower (3,950m vs 5,545m), making it more accessible for those concerned about altitude. Both offer incredible Himalayan experiences, just in different regions.",
+                      a: "If weather prevents the flight, you receive a full refund. For personal cancellations, fees apply based on notice period. We strongly recommend travel insurance.",
                     },
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">

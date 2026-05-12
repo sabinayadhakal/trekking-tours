@@ -47,66 +47,56 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive tour briefing where we'll discuss the itinerary, cultural significance of sites, and handle any arrangements. Evening free to explore the vibrant streets of Thamel. Welcome dinner with traditional Nepali cuisine where you'll meet your tour guide.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Tour briefing", "Welcome dinner", "Thamel exploration"],
+    "day": 1,
+    "title": "Arrival in Kathmandu",
+    "altitude": "1,350m",
+    "distance": "-",
+    "description": "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive tour briefing where we'll discuss the itinerary, cultural significance of sites, and handle any arrangements. Evening free to explore the vibrant streets of Thamel, with its bustling shops, restaurants, and cafes. Welcome dinner with traditional Nepali cuisine where you'll meet your tour guide and fellow travelers. Enjoy authentic dal bhat, momos, and other local specialties while learning about the days ahead.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Dinner",
+    "highlights": ["Airport pickup", "Tour briefing", "Welcome dinner", "Thamel exploration", "Traditional Nepali cuisine"]
   },
   {
-    day: 2,
-    title: "Kathmandu Durbar Square & Swayambhunath",
-    altitude: "1,350m",
-    distance: "Full day tour",
-    description: "After breakfast, begin your heritage journey at Kathmandu Durbar Square, the historic seat of royalty. Explore the ancient palace complex with its intricately carved wooden windows, including the famous Kumari Ghar—home to the Living Goddess Kumari. Photograph the majestic Taleju Temple and the many pagoda-style temples dating back to the 12th century. After lunch, visit Swayambhunath Stupa (Monkey Temple), perched on a hilltop west of the city. Climb the 365 steps past meditation shrines and prayer wheels to reach the main stupa with its all-seeing eyes of Buddha. Enjoy panoramic views of the Kathmandu Valley from this UNESCO World Heritage Site. Evening return to hotel.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Kumari Living Goddess", "Hanuman Dhoka Palace", "Swayambhunath stupa", "Panoramic valley views"],
+    "day": 2,
+    "title": "Kathmandu Durbar Square & Swayambhunath (Monkey Temple)",
+    "altitude": "1,350m",
+    "distance": "Full day tour",
+    "description": "After breakfast, begin your heritage journey at Kathmandu Durbar Square (Hanuman Dhoka), the historic seat of Nepalese royalty. This UNESCO World Heritage Site is a stunning collection of ancient palaces, courtyards, and temples dating back to the 12th to 18th centuries. Explore the intricately carved wooden windows and doors, including the famous Kumari Ghar - home to the Living Goddess Kumari. If you're lucky, you may catch a glimpse of the Kumari at her window. Photograph the majestic Taleju Temple, the massive stone statue of Kal Bhairav, and the nine-story Basantapur Tower. After lunch, visit Swayambhunath Stupa (commonly known as the Monkey Temple), perched on a hilltop west of the city. Climb the 365 stone steps past meditation shrines, prayer wheels, and the resident monkeys who give the temple its nickname. At the top, admire the main stupa with its all-seeing eyes of Buddha painted on all four sides. Enjoy panoramic views of the entire Kathmandu Valley and the surrounding Himalayan peaks on clear days. Learn about the legend that the valley was once a lake and the stupa emerged from a lotus. Evening return to hotel.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Kumari Living Goddess", "Hanuman Dhoka Palace", "Kal Bhairav statue", "Swayambhunath stupa (4th century)", "360-degree Kathmandu Valley views"]
   },
   {
-    day: 3,
-    title: "Pashupatinath & Boudhanath - Sacred Sites",
-    altitude: "1,350m",
-    distance: "Full day tour",
-    description: "Early morning visit to Pashupatinath Temple, one of the holiest Hindu temples dedicated to Lord Shiva. Located on the banks of the Bagmati River, observe morning rituals, cremation ceremonies, and the fascinating sadhus (holy men) with their distinctive face paint and dreadlocks. Photography is permitted in the outer areas. After lunch, continue to Boudhanath Stupa, one of the largest spherical stupas in South Asia and the center of Tibetan Buddhism in Nepal. Circumambulate the massive mandala while spinning prayer wheels, and observe Tibetan monks in maroon robes. Visit the surrounding monasteries and enjoy the peaceful atmosphere. Evening return to hotel.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Pashupatinath rituals", "Sadhus photography", "Boudhanath stupa", "Tibetan Buddhist culture"],
+    "day": 3,
+    "title": "Pashupatinath Temple & Boudhanath Stupa",
+    "altitude": "1,350m",
+    "distance": "Full day tour",
+    "description": "Early morning visit to Pashupatinath Temple, one of the holiest Hindu temples in the world dedicated to Lord Shiva. Located on the sacred banks of the Bagmati River, this UNESCO World Heritage Site is a sprawling complex of temples, ashrams, and shrines dating back to the 5th century. Observe morning puja (worship) rituals, cremation ceremonies along the river ghats (burning platforms), and the fascinating sadhus (holy men) with their distinctive face paint, dreadlocks, and ash-smeared bodies. Note that non-Hindus are not permitted inside the main temple, but the surrounding areas offer incredible photo opportunities. After lunch, continue to Boudhanath Stupa, one of the largest spherical stupas in South Asia and the center of Tibetan Buddhism in Nepal. This UNESCO World Heritage Site was built in the 5th century and is a powerful symbol of Tibetan Buddhism. Circumambulate the massive mandala (the kora) while spinning the prayer wheels, observing Tibetan monks in maroon robes, and listening to the continuous chanting. Visit the surrounding monasteries, thangka schools, and Tibetan Buddhist handicraft shops. Enjoy the peaceful, spiritual atmosphere. Evening return to hotel.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Pashupatinath morning rituals", "Sadhus and cremation ceremonies", "Bagmati River ghats", "Boudhanath stupa (5th century)", "Tibetan Buddhist culture and monasteries"]
   },
   {
-    day: 4,
-    title: "Patan Durbar Square - City of Fine Arts",
-    altitude: "1,350m",
-    distance: "Half day tour",
-    description: "After breakfast, drive to Patan (Lalitpur), the city of fine arts across the Bagmati River. Patan Durbar Square is a stunning collection of temples, statues, and palaces showcasing the finest Newari architecture in Nepal. Visit the ancient royal palace, now a museum housing magnificent bronze statues and religious artifacts. Marvel at the Krishna Temple built entirely of stone, the Hiranya Varna Mahavihar (Golden Temple), and the many intricately carved wood and metal works. Watch local artisans at work creating traditional metal statues and Thanka paintings. Return to Kathmandu by afternoon. Free evening for personal exploration or souvenir shopping.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Patan royal palace", "Krishna Temple", "Golden Temple", "Local artisans at work"],
+    "day": 4,
+    "title": "Patan Durbar Square & Bhaktapur Durbar Square - Twin Medieval Cities",
+    "altitude": "1,350m → 1,401m",
+    "distance": "Full day tour (30 min drive to Patan, 1 hr to Bhaktapur)",
+    "description": "Today you explore two of the most magnificent medieval cities in the Kathmandu Valley - Patan and Bhaktapur. Start after breakfast with a short drive to Patan (Lalitpur), the 'City of Fine Arts', located just across the Bagmati River from Kathmandu. Patan Durbar Square is a stunning UNESCO World Heritage Site with the finest collection of Newari architecture in Nepal. Explore the ancient royal palace complex, now a museum housing magnificent bronze statues, religious artifacts, and a famous collection of Thanka paintings. Marvel at the Krishna Temple, a masterpiece built entirely of black stone with 21 pinnacles and exquisite carvings. Visit the Hiranya Varna Mahavihar (Golden Temple), a stunning Buddhist monastery with golden facades, intricate woodwork, and peaceful courtyards. Watch local artisans at work creating traditional metal statues and Thanka paintings - Patan has been the artistic heart of Nepal for centuries. After lunch, drive to Bhaktapur (1 hour), the best-preserved medieval city in Nepal, also known as 'Bhadgaon' or the 'City of Devotees' (UNESCO World Heritage Site). Bhaktapur Durbar Square transports you back to the 15th century with its magnificent architecture. Explore the Palace of 55 Windows, a masterpiece of wood carving with intricately carved dark red windows. Walk through the magnificent Golden Gate leading to the palace courtyard. Marvel at the towering Nyatapola Temple, Nepal's tallest pagoda at five stories (30 meters), dedicated to the goddess Siddhi Lakshmi. Wander through narrow cobblestone streets lined with traditional red brick houses, pottery squares where artisans shape clay using centuries-old techniques, and hidden courtyards. Visit Pottery Square to see potters at work and even try your hand at shaping a pot. Return to Kathmandu by evening. Farewell dinner at a traditional Newari restaurant with cultural dance performance, celebrating your journey through the heritage of the Kathmandu Valley.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Patan Durbar Square", "Krishna Temple (black stone)", "Golden Temple Hiranya Varna", "Local artisans and Thanka paintings", "Bhaktapur Durbar Square", "Nyatapola Temple (Nepal's tallest pagoda)", "Palace of 55 Windows", "Pottery Square and traditional crafts", "Farewell dinner with cultural dance"]
   },
   {
-    day: 5,
-    title: "Bhaktapur Durbar Square - Medieval Kingdom",
-    altitude: "1,350m → 1,401m",
-    distance: "Full day tour (1 hr drive each way)",
-    description: "After breakfast, drive to Bhaktapur, the best-preserved medieval city in Nepal and a UNESCO World Heritage Site. Often called the 'City of Devotees,' Bhaktapur transports you back to the 15th century. Explore Bhaktapur Durbar Square with its Palace of 55 Windows, the magnificent Golden Gate, and the towering Nyatapola Temple—Nepal's tallest pagoda at five stories. Wander through narrow cobblestone streets lined with traditional houses, pottery squares, and courtyards. Visit Pottery Square to see potters shaping clay using centuries-old techniques. Climb to the hilltop Changunarayan Temple, the oldest Hindu temple in Nepal, dating back to the 4th century. Return to Kathmandu by evening. Farewell dinner at a traditional Newari restaurant with cultural dance performance.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Nyatapola Temple", "Palace of 55 Windows", "Pottery Square artisans", "Changunarayan Temple"],
-  },
-  {
-    day: 6,
-    title: "Departure",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of exploring ancient temples, witnessing living traditions, and experiencing the rich cultural heritage of the Kathmandu Valley. Namaste and until we meet again!",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
-];
+    "day": 5,
+    "title": "Departure from Kathmandu",
+    "altitude": "1,350m",
+    "distance": "-",
+    "description": "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time, assist with check-in, and bid you farewell. Bid farewell to Nepal with memories of exploring ancient temples, witnessing living traditions, experiencing the rich cultural heritage of the Kathmandu Valley, and immersing yourself in the unique blend of Hindu and Buddhist cultures. Take home the sights, sounds, and spiritual energy of this Himalayan nation. Namaste and until we meet again for another adventure in the Himalayas!",
+    "overnight": "-",
+    "meal": "Breakfast",
+    "highlights": ["Airport transfer", "Departure assistance", "Fond farewells", "Heritage memories"]
+  }
+]
 
 const includes = [
   "All airport/hotel transfers in private vehicle",
@@ -335,7 +325,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-slate-400 line-through">$950</div>
-                <div className="text-lg font-bold text-[#0f2940]">$795</div>
+                <div className="text-lg font-bold text-[#0f2940]">$750</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -356,15 +346,15 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
                         <span className="text-white/50 text-sm line-through">$950</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$795</div>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$750</div>
                         <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
+                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $200</Badge>
                       </div>
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>6 Days / 5 Nights</span>
+                          <span>5 Days / 4 Nights</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />

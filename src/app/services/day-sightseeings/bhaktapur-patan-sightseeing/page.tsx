@@ -273,7 +273,7 @@ export default function BhaktapurPatanSightseeingPage() {
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-slate-400 line-through">$120</div>
-                <div className="text-lg font-bold text-[#0f2940]">$95</div>
+                <div className="text-lg font-bold text-[#0f2940]">$100</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -294,9 +294,9 @@ export default function BhaktapurPatanSightseeingPage() {
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
                         <span className="text-white/50 text-sm line-through">$120</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$95</div>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$100</div>
                         <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $25</Badge>
+                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $20</Badge>
                       </div>
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">

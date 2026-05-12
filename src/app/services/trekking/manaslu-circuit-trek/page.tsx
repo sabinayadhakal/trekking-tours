@@ -40,165 +40,125 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Evening free to explore the vibrant streets of Thamel or rest after your journey.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements"],
+    "day": 1,
+    "title": "Drive from Kathmandu to Machha Khola",
+    "altitude": "1,400m → 890m",
+    "distance": "150km / 8-9 hrs drive",
+    "description": "Early morning departure from your hotel in Kathmandu for the scenic drive to Machha Khola, the traditional starting point of the Manaslu Circuit Trek. The journey follows the Trishuli River through beautiful rural landscapes, terraced farmlands, and traditional villages. You'll pass through Dhading Besi and Arughat before reaching Soti Khola. The road then continues along the Budhi Gandaki River through increasingly rugged terrain to Machha Khola (890m), a small village named for the 'fish river' that flows beside it. Check into your teahouse, meet your trekking crew, and prepare for the adventure ahead. Evening briefing on the Manaslu Circuit route, including the Larkya La Pass (5,106m) crossing.",
+    "overnight": "Teahouse in Machha Khola",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic Trishuli River drive", "Arughat and Soti Khola pass through", "Budhi Gandaki River views", "Machha Khola arrival", "Manaslu Circuit briefing"]
   },
   {
-    day: 2,
-    title: "Drive to Soti Khola",
-    altitude: "730m",
-    distance: "140km / 7-8 hrs drive",
-    description: "Early morning departure from Kathmandu. We drive through the scenic mid-hills of Nepal, passing through Dhading Besi and Arughat. The road winds through terraced farmlands, traditional villages, and lush subtropical forests. The journey offers glimpses of rural Nepali life and distant mountain views. Arrive at Soti Khola, a small village on the banks of the Budhi Gandaki River.",
-    overnight: "Teahouse in Soti Khola",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic drive through mid-hills", "Views of terraced farmlands", "First glimpse of Budhi Gandaki River"],
+    "day": 2,
+    "title": "Trek from Machha Khola to Jagat",
+    "altitude": "890m → 1,340m",
+    "distance": "14km / 6-7 hrs trek",
+    "description": "Your Manaslu Circuit trek begins! Today's trail follows the Budhi Gandaki River through a narrowing gorge with dramatic scenery. You'll cross the river multiple times on suspension bridges, passing through the villages of Khursane and Labubesi. The trail winds through subtropical forests with sal trees, bamboo, and banana plants. Watch for langur monkeys swinging through the trees. You'll pass through Khorlabesi, known for its natural hot springs, and Tatopani (meaning 'hot water') before reaching Jagat (1,340m). Jagat marks the entry point to the Manaslu Conservation Area, where your permits will be checked. This is a beautiful village perched on a ridge with traditional stone houses. Overnight in Jagat.",
+    "overnight": "Teahouse in Jagat",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Budhi Gandaki River gorge", "Suspension bridge crossings", "Khorlabesi hot springs", "Manaslu Conservation Area entry", "Jagat village arrival"]
   },
   {
-    day: 3,
-    title: "Trek to Machha Khola",
-    altitude: "890m",
-    distance: "14km / 6-7 hrs",
-    description: "Our trekking adventure begins! The trail follows the Budhi Gandaki River through a narrow gorge, crossing it multiple times on suspension bridges. We pass through Khursane and Labubesi, walking through subtropical forests with sal trees and banana plants. The path alternates between rocky riverside trails and forested sections. Watch for langur monkeys and colorful birds.",
-    overnight: "Teahouse in Machha Khola",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First day of trekking", "Suspension bridge crossings", "Subtropical forest", "Riverside trails"],
+    "day": 3,
+    "title": "Trek from Jagat to Namrung",
+    "altitude": "1,340m → 2,660m",
+    "distance": "15km / 7-8 hrs trek",
+    "description": "A significant altitude gain day as you climb deeper into the Manaslu region. From Jagat, you cross a dramatic suspension bridge and begin climbing through terraced farmlands and forests. The trail passes through Salleri and Deng, where Tibetan influence begins to appear with mani walls, chortens, and prayer flags. As you continue climbing through rhododendron and pine forests, the landscape becomes more alpine. You'll pass through Ghap before reaching Namrung (2,660m), a picturesque village with traditional flat-roofed stone houses decorated with colorful prayer flags. Here, the Nubri Valley opens up with stunning views of the surrounding peaks. Overnight in Namrung.",
+    "overnight": "Teahouse in Namrung",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Dramatic suspension bridge crossing", "First mani walls and chortens", "Rhododendron and pine forests", "Nubri Valley views", "Namrung Tibetan village"]
   },
   {
-    day: 4,
-    title: "Trek to Jagat",
-    altitude: "1,340m",
-    distance: "12km / 6-7 hrs",
-    description: "Continue along the Budhi Gandaki through increasingly dramatic gorge scenery. The trail becomes more rugged with some steep climbs and descents. We pass through Khorlabesi with its hot springs (time for a quick dip if desired) and the villages of Tatopani and Dobhan. At Jagat, we reach the first permit checkpoint and enter the Manaslu Conservation Area.",
-    overnight: "Teahouse in Jagat",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Hot springs at Khorlabesi", "Dramatic gorge scenery", "Manaslu Conservation Area entry", "First checkpoint"],
+    "day": 4,
+    "title": "Trek from Namrung to Shyala",
+    "altitude": "2,660m → 3,520m",
+    "distance": "9km / 5-6 hrs trek",
+    "description": "Today you continue gaining altitude with spectacular mountain views beginning to appear. The trail passes through the villages of Lihi and Sho, with the first breathtaking glimpses of Mount Manaslu (8,163m), Ngadi Himal, and Himal Chuli. The landscape becomes more alpine with juniper forests and yak pastures. Shyala (3,520m) is a small settlement situated on a ridge with stunning panoramic views of the Manaslu range. The village has a beautiful gompa and offers opportunities to interact with local Tibetan Buddhist communities. The afternoon light on Manaslu is spectacular from this vantage point. Overnight in Shyala.",
+    "overnight": "Teahouse in Shyala",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["First views of Mount Manaslu (8,163m)", "Lihi and Sho villages", "Ngadi Himal and Himal Chuli views", "Alpine juniper forests", "Shyala ridge panorama"]
   },
   {
-    day: 5,
-    title: "Trek to Deng",
-    altitude: "1,860m",
-    distance: "11km / 6-7 hrs",
-    description: "Cross to the west bank of the Budhi Gandaki on a dramatic suspension bridge. The landscape begins to change as we enter the Tibetan cultural zone. Notice the mani walls (stones carved with Buddhist prayers), chortens (Buddhist shrines), and prayer flags becoming more frequent. The village of Philim offers stunning views and marks our entry into a more remote region.",
-    overnight: "Teahouse in Deng",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Entry into Tibetan cultural zone", "Mani walls and chortens", "Village of Philim", "Changing landscape"],
+    "day": 5,
+    "title": "Trek from Shyala to Samagaon via Pungyen Gompa Hike",
+    "altitude": "3,520m → 3,530m (with detour)",
+    "distance": "8km / 5-6 hrs trek + hike",
+    "description": "Today's highlight is the hike to the ancient Pungyen Gompa (literally 'Fairy Tale Gompa'), perched on a hillside with spectacular views of Manaslu's north face. From Shyala, you first descend slightly before climbing to the gompa, which sits at approximately 3,800m. The gompa is partly in ruins but holds deep spiritual significance for local Buddhists. From here, the panoramic views of Manaslu, Ngadi Himal, and the glacier below are breathtaking. After exploring the gompa, you continue to Samagaon (also called Sama - 3,530m), the largest village on the Manaslu Circuit. Samagaon is a traditional Tibetan village with flat-roofed stone houses, a school, several gompas, and stunning surrounding peaks. Overnight in Samagaon.",
+    "overnight": "Teahouse in Samagaon",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Pungyen Gompa hike", "Manaslu north face views", "Ruins of ancient gompa", "Tibetan Buddhist spirituality", "Samagaon village arrival"]
   },
   {
-    day: 6,
-    title: "Trek to Namrung",
-    altitude: "2,660m",
-    distance: "8km / 5-6 hrs",
-    description: "A shorter but steep day with significant altitude gain. The trail climbs through beautiful rhododendron and pine forests, offering occasional views of distant peaks. We enter the Nubri Valley, where Tibetan influence becomes dominant in architecture, dress, and culture. Namrung is a picturesque village with traditional flat-roofed stone houses decorated with prayer flags.",
-    overnight: "Teahouse in Namrung",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Rhododendron forests", "Nubri Valley", "Tibetan-style architecture", "Significant altitude gain"],
+    "day": 6,
+    "title": "Acclimatization Day in Samagaon - Birendra Lake & Manaslu Base Camp Hike",
+    "altitude": "3,530m → 4,400m → 3,530m",
+    "distance": "10-12km / 5-6 hrs round trip",
+    "description": "A crucial acclimatization day before the challenging Larkya La Pass crossing. The golden rule: climb high, sleep low. Today you'll experience some of the most spectacular scenery of the entire trek. Start with a morning hike to Birendra Tal (Birendra Lake), a stunning turquoise glacial lake at approximately 3,700m, fed by the melting ice of the Manaslu Glacier. The reflection of Manaslu in the crystal-clear waters is unforgettable. From there, continue toward Manaslu Base Camp (4,400m) for even closer views of the massive south face of Manaslu, hanging glaciers, and the Khumbu-like icefall. This hike is challenging but provides excellent acclimatization for the high pass ahead. Return to Samagaon for lunch. The afternoon is free to explore Samagaon village, visit the local gompa, or simply rest and hydrate. Overnight in Samagaon.",
+    "overnight": "Teahouse in Samagaon",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Birendra Lake turquoise waters", "Manaslu Glacier views", "Manaslu Base Camp hike (4,400m)", "Manaslu south face close-up", "Acclimatization for Larkya La"]
   },
   {
-    day: 7,
-    title: "Trek to Samagaon",
-    altitude: "3,530m",
-    distance: "9km / 5-6 hrs",
-    description: "Today we catch our first breathtaking views of Mount Manaslu (8,163m)! The trail passes through Lihi and Sho villages, climbing gradually through forests with stunning mountain panoramas. Samagaon (also called Sama) is the largest village on the circuit, with a gompa (monastery) and school. This traditional Tibetan village is surrounded by dramatic peaks including Manaslu, Ngadi Himal, and Himal Chuli.",
-    overnight: "Teahouse in Samagaon",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First views of Mt. Manaslu", "Samagaon village", "Pungyen Gompa", "Stunning mountain panorama"],
+    "day": 7,
+    "title": "Trek from Samagaon to Samdo",
+    "altitude": "3,530m → 3,860m",
+    "distance": "7km / 4-5 hrs trek",
+    "description": "A relatively easy day with gradual climbing, allowing for continued acclimatization. The trail follows the valley northward with spectacular views of Manaslu, Samdo Peak (6,325m), and surrounding glaciers. You'll pass through Kermo Kharka, a seasonal grazing area with yak pastures, and walk through juniper forests. Samdo (3,860m) is the last major village before the Larkya La Pass crossing. This remote settlement has strong Tibetan heritage, with locals who still speak Tibetan dialect and maintain traditional customs. Some families still trade with Tibet via the nearby Lajyang border crossing. Explore the village with its prayer wheels, mani walls, and traditional flat-roofed houses. Overnight in Samdo.",
+    "overnight": "Teahouse in Samdo",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Kermo Kharka yak pastures", "Juniper forests", "Samdo Peak views", "Remote Tibetan village culture", "Samdo arrival"]
   },
   {
-    day: 8,
-    title: "Acclimatization Day in Samagaon",
-    altitude: "3,530m",
-    distance: "Optional hikes",
-    description: "A crucial rest day for acclimatization. Options include a hike to Manaslu Base Camp (4,400m) for spectacular close-up views of Manaslu's south face, or a shorter walk to Birendra Tal, a beautiful glacial lake. Alternatively, explore Samagaon village, visit the ancient Pungyen Gompa, interact with local Tibetan Buddhist communities, or simply rest and enjoy the mountain scenery.",
-    overnight: "Teahouse in Samagaon",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Acclimatization", "Optional hike to Manaslu Base Camp", "Birendra Tal glacial lake", "Pungyen Gompa visit"],
+    "day": 8,
+    "title": "Acclimatization Day in Samdo - Optional Hike to Tibet Border",
+    "altitude": "3,860m → 4,200m → 3,860m",
+    "distance": "8-10km / 4-5 hrs round trip",
+    "description": "Another vital acclimatization day before attempting the high Larkya La Pass (5,106m) tomorrow. Today you have the option of hiking toward the Tibetan border at Lajyang (approximately 4,200m). This trail follows the valley northward, passing through stark, high-altitude landscapes with stunning views of the surrounding peaks and the Lajyang Valley. The border area is fascinating, with evidence of old trade routes between Nepal and Tibet. On clear days, you can see into the Tibetan Autonomous Region. Alternatively, you can explore the side valley toward the Gya La pass or simply rest and prepare for the challenging day ahead. Your guide will provide a detailed briefing on the Larkya La crossing, including weather conditions, pacing, and safety protocols. Overnight in Samdo.",
+    "overnight": "Teahouse in Samdo",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Optional Tibet border hike (Lajyang)", "High-altitude stark landscapes", "Old Nepal-Tibet trade route", "Final acclimatization for Larkya La", "Pass crossing preparation briefing"]
   },
   {
-    day: 9,
-    title: "Trek to Samdo",
-    altitude: "3,860m",
-    distance: "7km / 4-5 hrs",
-    description: "A relatively easy day with gradual climbing. The trail offers spectacular views of Manaslu, Samdo Peak, and surrounding glaciers. We pass through Kermo Kharka and juniper forests before reaching Samdo, the last major village before the pass. This remote settlement has strong Tibetan heritage, and locals still trade with Tibet via the nearby Lajyang border.",
-    overnight: "Teahouse in Samdo",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Spectacular mountain views", "Juniper forests", "Remote Tibetan village", "Yak pastures"],
+    "day": 9,
+    "title": "Trek from Samdo to Dharmasala (Larkya Phedi)",
+    "altitude": "3,860m → 4,460m",
+    "distance": "8km / 4-5 hrs trek",
+    "description": "A short but important trek to the high camp below Larkya La Pass. The terrain becomes increasingly barren and alpine as you climb above the tree line. The trail follows the valley, passing through rocky moraine and crossing streams. You'll see stunning views of Samdo Peak, Larkya Peak, and the surrounding glaciers. Dharmasala (4,460m), also known as Larkya Phedi, is a basic stone shelter serving as the final stop before the pass crossing. The accommodation here is very basic - this is a true high-altitude camp. Rest early, organize your gear for tomorrow's pre-dawn start, and try to sleep as conditions allow. Your guide will check weather conditions and confirm the departure time (typically 3-4 AM). Overnight at Dharmasala.",
+    "overnight": "Basic Lodge at Dharmasala",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Alpine terrain above tree line", "Samdo Peak and Larkya Peak views", "High camp experience", "Pass preparation", "Dharmasala arrival"]
   },
   {
-    day: 10,
-    title: "Acclimatization Day in Samdo",
-    altitude: "3,860m",
-    distance: "Optional hikes",
-    description: "Another vital acclimatization day before attempting the high pass. Take an optional hike toward the Tibetan border at Lajyang or explore the valley toward the Gya La pass. The area offers excellent views of snow peaks and glaciers. This is your chance to experience the stark beauty of high-altitude landscapes and prepare mentally and physically for the Larkya La crossing.",
-    overnight: "Teahouse in Samdo",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Second acclimatization day", "Optional hike to Tibet border", "High-altitude landscapes", "Final preparation for pass"],
+    "day": 10,
+    "title": "Cross Larkya La Pass & Trek to Bimthang",
+    "altitude": "4,460m → 5,106m → 3,720m",
+    "distance": "23km / 10-12 hrs trek",
+    "description": "The most challenging and rewarding day of the Manaslu Circuit Trek! Start very early (3-4 AM) to reach the pass before weather conditions deteriorate. The climb from Dharmasala is steady on a moraine path with stone cairns marking the way. The altitude is extreme, so move slowly, breathe deeply, and rest frequently. Reaching Larkya La Pass (5,106m) - the highest point of the trek - is an indescribable feeling. Prayer flags flutter in the wind as you take in the 360-degree panoramic views: Mount Manaslu (8,163m), Himlung Himal (7,126m), Cheo Himal (6,820m), Gyaji Kang, Kang Guru, and Annapurna II in the distance. After celebrating at the pass, begin the long descent to Bimthang (3,720m) through glacial moraine, past yak pastures, and finally into a beautiful valley with rhododendron forests. This is a very long, tiring day but absolutely unforgettable. Overnight in Bimthang.",
+    "overnight": "Teahouse in Bimthang",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Larkya La Pass crossing (5,106m)", "360-degree Himalayan panorama", "Manaslu, Himlung, Annapurna views", "Prayer flag-adorned summit", "Glacial moraine and descent"]
   },
   {
-    day: 11,
-    title: "Trek to Dharmasala (Larkya Phedi)",
-    altitude: "4,460m",
-    distance: "5km / 4-5 hrs",
-    description: "A short but important trek to the high camp below Larkya La Pass. The terrain becomes increasingly barren and alpine as we climb above the tree line. Dharmasala is a basic stone shelter serving as the final stop before the pass crossing. Rest early, prepare your gear, and try to sleep as conditions allow. We'll start very early tomorrow morning.",
-    overnight: "Basic lodge/Dharmasala",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["High camp experience", "Alpine terrain", "Pass preparation", "Early rest for big day"],
+    "day": 11,
+    "title": "Trek from Bimthang to Tilje & Jeep to Besisahar",
+    "altitude": "3,720m → 2,300m → 760m",
+    "distance": "12km trek / 3-4 hrs trek + 4-5 hrs jeep",
+    "description": "Your final day of trekking on the Manaslu Circuit. From Bimthang, the trail descends through beautiful rhododendron and pine forests, passing through the villages of Gho, Karche, and finally Tilje (2,300m). You'll cross several streams and suspension bridges, with the landscape transforming from alpine to subtropical. The views back toward the Manaslu range are spectacular. Upon arrival in Tilje, you'll board a private jeep for the scenic drive to Besisahar (760m), the district headquarters of Lamjung and the traditional trailhead for the Annapurna Circuit. The jeep drive follows the Marsyangdi River through dramatic gorges and past terraced farmlands. Arrive in Besisahar by late afternoon. Check into your teahouse and celebrate your incredible achievement - crossing Larkya La Pass (5,106m) and completing the Manaslu Circuit! Overnight in Besisahar.",
+    "overnight": "Teahouse in Besisahar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final day of Manaslu Circuit trek", "Rhododendron and pine forests", "Tilje village arrival", "Scenic jeep ride to Besisahar", "Manaslu Circuit completion celebration"]
   },
   {
-    day: 12,
-    title: "Cross Larkya La Pass to Bimthang",
-    altitude: "5,106m → 3,720m",
-    distance: "23km / 10-12 hrs",
-    description: "The most challenging and rewarding day of the trek! We start at 3-4 AM to reach the pass before conditions deteriorate. The climb is steady on a moraine path with cairns marking the way. At Larkya La (5,106m), prayer flags flutter in the wind and 360-degree views reveal Manaslu, Himlung Himal, Cheo Himal, and Annapurna II. The long descent to Bimthang passes through glacial moraine and yak pastures.",
-    overnight: "Teahouse in Bimthang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Larkya La Pass crossing (5,106m)", "360-degree Himalayan panorama", "Prayer flag-adorned summit", "Glacial landscapes"],
-  },
-  {
-    day: 13,
-    title: "Trek to Dharapani",
-    altitude: "1,860m",
-    distance: "20km / 6-7 hrs",
-    description: "A long descent day through dramatically changing landscapes. From alpine terrain, we descend through rhododendron forests, crossing streams and passing through Gurung villages. The vegetation transforms from alpine to temperate to subtropical. At Dharapani, we join the Annapurna Circuit trail. The village marks our transition back to more accessible regions.",
-    overnight: "Teahouse in Dharapani",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Dramatic landscape change", "Rhododendron forests", "Gurung villages", "Join Annapurna Circuit trail"],
-  },
-  {
-    day: 14,
-    title: "Drive to Kathmandu",
-    altitude: "1,400m",
-    distance: "180km / 8-9 hrs drive",
-    description: "Our trekking adventure concludes as we drive back to Kathmandu along the scenic Marsyangdi Valley. The road follows the river through dramatic gorges and passes through Besisahar and other market towns. Arrive in Kathmandu by evening. Check into your hotel and enjoy a well-deserved hot shower. Evening celebration dinner with your trekking team!",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic drive along Marsyangdi Valley", "Trek completion celebration", "Farewell dinner with team"],
-  },
-  {
-    day: 15,
-    title: "Free Day in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "A free day to explore Kathmandu's UNESCO World Heritage Sites including Pashupatinath Temple, Boudhanath Stupa, Swayambhunath (Monkey Temple), and Kathmandu Durbar Square. Perfect for souvenir shopping in Thamel, getting a massage, or simply relaxing. Our team can arrange guided sightseeing tours if desired.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast",
-    highlights: ["UNESCO World Heritage Sites", "Shopping in Thamel", "Cultural exploration", "Rest and relaxation"],
-  },
-  {
-    day: 16,
-    title: "Departure",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of an incredible Himalayan adventure. We hope to see you again for another journey into the mountains!",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 12,
+    "title": "Bus from Besisahar to Kathmandu",
+    "altitude": "760m → 1,400m",
+    "distance": "180km / 7-8 hrs bus",
+    "description": "After breakfast in Besisahar, board a tourist bus for the scenic drive back to Kathmandu. The journey follows the Marsyangdi River valley before joining the Trishuli River, passing through beautiful landscapes, terraced farmlands, traditional villages, and dramatic river gorges. The bus journey is a wonderful opportunity to relax, reflect on your Manaslu Circuit adventure, and watch the world go by. You'll pass through Besisahar, Dumre, and eventually reach the outskirts of the Kathmandu Valley. Arrive in Kathmandu by late afternoon. Check into your hotel in Thamel, take a well-deserved hot shower, and enjoy the comforts of the city. The remainder of your day is free for souvenir shopping in Thamel, visiting a spa for a much-needed massage, or simply relaxing. In the evening, enjoy a farewell dinner celebrating your successful Manaslu Circuit trek achievement - crossing Larkya La Pass at 5,106m and completing one of Nepal's most spectacular restricted area treks.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic bus journey to Kathmandu", "Marsyangdi and Trishuli Rivers", "Rural Nepali landscapes", "Thamel souvenir shopping", "Farewell celebration dinner"]
+  }
 ];
 
 const includes = [
@@ -419,8 +379,8 @@ export default function ManasluCircuitTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$1,550</div>
-                <div className="text-lg font-bold text-[#0f2940]">$1,350</div>
+                <div className="text-xs text-slate-400 line-through">$1,400</div>
+                <div className="text-lg font-bold text-[#0f2940]">1,200</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -440,8 +400,8 @@ export default function ManasluCircuitTrekPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$1,550</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,350</div>
+                        <span className="text-white/50 text-sm line-through">$1,400</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,200</div>
                         <span className="text-white/60 text-sm">per person</span>
                         <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $200</Badge>
                       </div>
@@ -449,7 +409,7 @@ export default function ManasluCircuitTrekPage() {
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>16 Days / 15 Nights</span>
+                          <span>12 Days / 11 Nights</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />

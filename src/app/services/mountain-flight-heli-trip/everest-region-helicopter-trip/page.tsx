@@ -56,62 +56,48 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Kathmandu. After check-in, attend a comprehensive helicopter briefing where we'll discuss tomorrow's Everest flight, weather considerations, high-altitude precautions, photography tips, and handle any arrangements. Evening free to explore the vibrant streets of Thamel. Welcome dinner with traditional Nepali cuisine where you'll meet your guide.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Helicopter briefing", "Welcome dinner", "Thamel exploration"],
+    "day": 1,
+    "title": "Arrival in Kathmandu & Tour Briefing",
+    "altitude": "1,350m",
+    "distance": "-",
+    "description": "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in and some rest, attend a comprehensive helicopter briefing where we'll discuss tomorrow's Everest flight, weather considerations, high-altitude precautions, photography tips, and handle any arrangements. Take time to explore the vibrant streets of Thamel, with its bustling shops, restaurants, and cafes. In the evening, enjoy a welcome dinner with traditional Nepali cuisine where you'll meet your guide and fellow travelers, preparing for the adventure of a lifetime.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Dinner",
+    "highlights": [
+      "Airport pickup and private transfer",
+      "Hotel check-in in Thamel",
+      "Helicopter tour briefing and preparation",
+      "Thamel exploration",
+      "Welcome dinner with Nepali cuisine"
+    ]
   },
   {
-    day: 2,
-    title: "Everest Base Camp Helicopter Tour with Landing at Kala Patthar",
-    altitude: "1,350m → 5,545m (Kala Patthar) → 1,350m",
-    distance: "3-4 hours helicopter flight",
-    description: "This is the day you've been dreaming of! Early morning transfer to Kathmandu Airport's domestic terminal for your Everest helicopter adventure. Your helicopter departs at sunrise (around 6:00-6:30 AM) for optimal weather conditions and lighting. Fly east over the beautiful Nepalese countryside, with aerial views of terraced hillsides, traditional villages, and gradually approaching Himalayan peaks. Your first major viewpoint is the stunning Langtang range, followed by Gaurishankar and then the mighty Everest massif. The helicopter flies through the heart of the Khumbu region, passing over Namche Bazaar, Tengboche with its famous monastery, and following the Dudh Kosi Valley toward Everest. The highlight of the tour is a landing at Kala Patthar (5,545m), the famous viewpoint directly opposite Mount Everest. Step out onto the snow for 15-20 minutes of unforgettable, close-up views of Everest (8,848m), Nuptse, Lhotse, and the entire Khumbu icefall. Your pilot will ensure you capture stunning photographs with the world's highest peak as your backdrop. After this once-in-a-lifetime experience, enjoy a champagne celebration at the world's highest landing zone. The return flight offers different perspectives of the mountains you've just witnessed. You'll be back in Kathmandu by mid-morning, with the rest of the day free to recover, process your incredible experience, and share photos. Overnight in Kathmandu.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Everest Base Camp flyover", "Kala Patthar landing (5,545m)", "Close-up views of Mount Everest", "Champagne celebration at high altitude", "Aerial views of Namche Bazaar and Tengboche"],
-  },
-  {
-    day: 3,
-    title: "Rest Day & Photo Processing",
-    altitude: "1,350m",
-    distance: "-",
-    description: "After yesterday's high-altitude adventure, enjoy a well-deserved rest day. Sleep in and recover from the early start. The morning is free for relaxation or optional light activities. In the afternoon, you may choose to visit some of Kathmandu's UNESCO World Heritage Sites (optional, at additional cost) or simply relax at your hotel. Your guide can assist with organizing and backing up your Everest photographs. Evening free for personal exploration or souvenir shopping in Thamel. Overnight in Kathmandu.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Rest and recovery", "Photo organization", "Optional heritage site visits", "Thamel exploration"],
-  },
-  {
-    day: 4,
-    title: "Kathmandu Valley Sightseeing (Optional) or Leisure",
-    altitude: "1,350m",
-    distance: "Full day",
-    description: "Today offers flexibility based on your preferences. You may choose to join an optional sightseeing tour of Kathmandu Valley's UNESCO World Heritage Sites (additional cost), including Swayambhunath Stupa (Monkey Temple), Pashupatinath Temple, and Boudhanath Stupa. Alternatively, enjoy a leisurely day exploring the vibrant neighborhoods of Kathmandu, visiting local cafes, shopping for souvenirs, or simply relaxing at your hotel. Your guide can provide recommendations based on your interests. Evening farewell dinner at a traditional Nepali restaurant with cultural music and dance performance. Celebrate your incredible Everest helicopter adventure with fellow travelers. Overnight in Kathmandu.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Optional heritage sightseeing", "Leisure and shopping", "Cultural farewell dinner", "Everest celebration"],
-  },
-  {
-    day: 5,
-    title: "Departure",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of standing at 5,545m in the shadow of Mount Everest, the world's highest peak, experiencing the thrill of helicopter flight through the Himalayas, and the warm hospitality of the Nepali people. Namaste and until we meet again!",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 2,
+    "title": "Everest Base Camp Helicopter Tour with Landing at Kala Patthar",
+    "altitude": "1,350m → 5,545m (Kala Patthar) → 1,350m",
+    "distance": "3-4 hours helicopter flight",
+    "description": "This is the day you've been dreaming of! Early morning pickup from your hotel in Kathmandu (around 5:00-5:30 AM) and transfer to Tribhuvan International Airport's domestic terminal for your Everest helicopter adventure. Your helicopter departs at sunrise (approximately 6:00-6:30 AM) to ensure optimal weather conditions and the most spectacular lighting for photography. Fly east over the beautiful Nepalese countryside, with breathtaking aerial views of terraced hillsides, traditional villages, winding rivers, and the gradual approach of the Himalayan giants. Your first major viewpoint is the stunning Langtang range, followed by the majestic Gaurishankar (7,134m), and then the mighty Everest massif appears on the horizon. The helicopter flies through the heart of the Khumbu region, passing over Lukla (the famous Tenzing-Hillary Airport), Namche Bazaar (the Sherpa capital), Tengboche with its famous monastery perched on a hilltop, and following the Dudh Koshi Valley toward Everest. You'll have incredible aerial views of Ama Dablam (6,812m), Lhotse (8,516m), Nuptse (7,861m), and finally Mount Everest (8,848m) - the world's highest peak. The absolute highlight of the tour is a landing at Kala Patthar (5,545m), the famous viewpoint directly opposite Mount Everest. Step out onto the snow-covered landscape for approximately 15-20 minutes of unforgettable, close-up views of Everest's southwest face, the Khumbu Icefall, and the entire Everest massif. Your pilot will ensure you capture stunning photographs with the world's highest peak as your backdrop. After this once-in-a-lifetime experience, enjoy a champagne celebration at the world's highest helicopter landing zone, commemorating your incredible achievement. The return flight offers different perspectives of the mountains you've just witnessed, with the morning sun illuminating the peaks in golden light. You'll be back in Kathmandu by mid-morning (approximately 9:30-10:00 AM), with the rest of the day free to process your incredible experience, share photos, and reflect on standing in the shadow of Mount Everest. Transfer to your hotel. Evening farewell dinner at a traditional Nepali restaurant celebrating your Everest helicopter achievement. This is a bucket-list adventure that will stay with you forever.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Dinner",
+    "highlights": [
+      "Everest Base Camp flyover and aerial views",
+      "Landing at Kala Patthar (5,545m) - world's highest helicopter landing zone",
+      "Close-up face-to-face views of Mount Everest (8,848m)",
+      "Champagne celebration at 5,545 meters altitude",
+      "Aerial views of Namche Bazaar, Tengboche Monastery, and Lukla Airport",
+      "Panoramic views of Everest, Lhotse, Nuptse, Ama Dablam, and the Khumbu Icefall",
+      "Professional pilot commentary on Himalayan peaks",
+      "Sunrise departure for optimal mountain photography lighting",
+      "Farewell dinner with cultural performance"
+    ]
+  }
 ];
 
 const includes = [
   "All airport/hotel transfers in private vehicle",
-  "4 nights hotel accommodation in Kathmandu (3-star with breakfast)",
-  "All meals during the tour as specified (breakfast, lunch, dinner)",
-  "Experienced English-speaking guide",
+  "2 nights hotel accommodation in Kathmandu (3-star with breakfast)",
+  "All meals during the tour as specified (breakfast, dinner)",
+  "Experienced English-speaking guide for briefing",
   "Everest Base Camp Helicopter Tour with Kala Patthar landing (3-4 hours)",
   "Champagne celebration at Kala Patthar (5,545m)",
   "All helicopter ground handling and permits",
@@ -129,8 +115,7 @@ const excludes = [
   "International airfare to/from Nepal",
   "Nepal visa fee ($30 USD for 15 days, $50 for 30 days - available on arrival)",
   "Travel insurance (mandatory - must cover helicopter evacuation up to 5,500m)",
-  "Optional sightseeing tours on Day 4 (UNESCO heritage sites)",
-  "Meals not specified in itinerary",
+  "Lunch on Day 2 (not specified in itinerary)",
   "Alcoholic beverages and soft drinks (except champagne on helicopter)",
   "Personal expenses (phone calls, laundry, souvenirs, etc.)",
   "Tips and gratuities for guides, pilots, and support staff (recommended)",
@@ -146,19 +131,16 @@ const gallery = [
     alt: "Mount Everest",
     caption: "Mount Everest (8,848m) viewed from helicopter",
   },
-  
   {
     src: "/images/used/everest-heli-1.avif",
     alt: "Everest Massif",
     caption: "The entire Everest massif including Lhotse and Nuptse",
   },
-  
- 
 ];
 
 export default function EverestRegionHelicopterTripPage() {
   const [copied, setCopied] = React.useState(false);
-  const [expandedDays, setExpandedDays] = React.useState<number[]>([1]);
+  const [expandedDays, setExpandedDays] = React.useState<number[]>([1, 2]);
   const [showMobileNav, setShowMobileNav] = React.useState(false);
   
   // Tour name constant for auto-fill functionality
@@ -312,8 +294,8 @@ export default function EverestRegionHelicopterTripPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$1,450</div>
-                <div className="text-lg font-bold text-[#0f2940]">$1,295</div>
+                <div className="text-xs text-slate-400 line-through">$2,450</div>
+                <div className="text-lg font-bold text-[#0f2940]">$2,000</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -333,16 +315,16 @@ export default function EverestRegionHelicopterTripPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$1,450</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,295</div>
+                        <span className="text-white/50 text-sm line-through">$2,450</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,000</div>
                         <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
+                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $450</Badge>
                       </div>
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>5 Days / 4 Nights</span>
+                          <span>2 Days / 1 Night</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
                           <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
@@ -390,11 +372,11 @@ export default function EverestRegionHelicopterTripPage() {
                       </h3>
                       <div className="space-y-2 text-[10px] md:text-sm">
                         <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Start Point</span>
-                          <span className="font-medium text-[#0f2940]">Kathmandu</span>
+                          <span className="text-slate-500">Duration</span>
+                          <span className="font-medium text-[#0f2940]">2 Days / 1 Night</span>
                         </div>
                         <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">End Point</span>
+                          <span className="text-slate-500">Start/End Point</span>
                           <span className="font-medium text-[#0f2940]">Kathmandu</span>
                         </div>
                         <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
@@ -486,16 +468,13 @@ export default function EverestRegionHelicopterTripPage() {
                 <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The <strong>Everest Region Helicopter Trip</strong> is the ultimate Himalayan experience—a once-in-a-lifetime opportunity to fly into the heart of the Khumbu region and land at the foot of the world's highest mountain. This 5-day adventure combines the thrill of helicopter flight with the awe-inspiring presence of Mount Everest, offering unparalleled access to the world's most famous peak.
+                    The <strong>Everest Region Helicopter Trip</strong> is the ultimate Himalayan experience—a once-in-a-lifetime opportunity to fly into the heart of the Khumbu region and land at the foot of the world's highest mountain. This 2-day adventure combines the thrill of helicopter flight with the awe-inspiring presence of Mount Everest, offering unparalleled access to the world's most famous peak.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     The centerpiece of this trip is a <strong>3-4 hour helicopter tour from Kathmandu</strong> that takes you deep into the Everest region. Unlike fixed-wing mountain flights that remain at a distance, this helicopter adventure includes a <strong>landing at Kala Patthar (5,545m)</strong>—the famous viewpoint directly opposite Everest. Here, you'll step out onto the snow and stand face-to-face with the world's highest peak, surrounded by the giants of the Himalayas including Lhotse, Nuptse, and the entire Khumbu icefall. A champagne celebration at this incredible altitude makes the moment even more memorable.
                   </p>
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The flight route takes you over the beautiful Nepalese countryside, past the Langtang range, and into the heart of the Khumbu. You'll fly over Namche Bazaar, the bustling Sherpa capital, and Tengboche with its famous monastery, following the Dudh Kosi Valley toward Everest. The return flight offers different perspectives of these magnificent peaks.
-                  </p>
                   <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    With experienced pilots, modern helicopters, and careful attention to safety and comfort, this tour makes the dream of seeing Everest up close accessible to everyone. No trekking is required—just bring your sense of adventure and your camera. Whether you're celebrating a special occasion, seeking the ultimate photograph, or simply fulfilling a lifelong dream, this helicopter trip to Everest Base Camp and Kala Patthar delivers an experience you'll treasure forever.
+                    With experienced pilots, modern helicopters, and careful attention to safety and comfort, this tour makes the dream of seeing Everest up close accessible to everyone. No trekking is required—just bring your sense of adventure and your camera. Whether you're celebrating a special occasion, seeking the ultimate photograph, or simply fulfilling a lifelong dream, this helicopter trip delivers an experience you'll treasure forever.
                   </p>
                 </div>
               </section>
@@ -514,9 +493,6 @@ export default function EverestRegionHelicopterTripPage() {
                     "Spectacular mountain photography opportunities from every angle",
                     "Experienced high-altitude helicopter pilots",
                     "No trekking required—accessible to all fitness levels",
-                    "Rest day included for recovery after high-altitude experience",
-                    "Optional Kathmandu Valley sightseeing available",
-                    "Farewell dinner with traditional Nepali cultural performance",
                     "Everest flight certificate as a lasting souvenir",
                     "Perfect for celebrating special occasions",
                   ].map((highlight, i) => (
@@ -542,7 +518,7 @@ export default function EverestRegionHelicopterTripPage() {
                         <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Excellent visibility, stable weather, and warming temperatures. Ideal for photography with clear skies and optimal lighting. Peak climbing season adds excitement.
+                        Excellent visibility, stable weather, and warming temperatures. Ideal for photography with clear skies and optimal lighting.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Excellent</Badge>
                     </CardContent>
@@ -553,7 +529,7 @@ export default function EverestRegionHelicopterTripPage() {
                         <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crystal-clear skies, stable weather, and perfect mountain views. Post-monsoon clarity is exceptional. Peak season with the highest success rates.
+                        Crystal-clear skies, stable weather, and perfect mountain views. Post-monsoon clarity is exceptional.
                       </p>
                       <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
                     </CardContent>
@@ -565,13 +541,13 @@ export default function EverestRegionHelicopterTripPage() {
                         <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h4>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crisp clear air and excellent visibility. Cold but clear mornings with snow-covered peaks. Flights may be delayed due to fog but often operate successfully.
+                        Crisp clear air and excellent visibility. Cold but clear mornings with snow-covered peaks.
                       </p>
                       <Badge className="bg-blue-100 text-blue-700 border-none text-[8px] md:text-xs">Good</Badge>
                     </CardContent>
                   </Card>
                 </div>
-                <p className="text-[10px] md:text-xs text-slate-500 mt-2">Note: Monsoon (Jun-Aug) brings clouds and rain, significantly reducing visibility. Helicopter tours are often cancelled during this period. We do not recommend Everest helicopter trips during monsoon season.</p>
+                <p className="text-[10px] md:text-xs text-slate-500 mt-2">Note: Monsoon (Jun-Aug) brings clouds and rain, significantly reducing visibility. Helicopter tours are often cancelled during this period.</p>
               </section>
 
               {/* Altitude Acclimatization Note */}
@@ -580,7 +556,7 @@ export default function EverestRegionHelicopterTripPage() {
                   <Mountain className="w-4 h-4 md:w-5 md:h-5" /> Important: High Altitude Experience
                 </h4>
                 <p className="text-blue-700 text-[10px] md:text-sm leading-relaxed">
-                  The helicopter lands at Kala Patthar (5,545m), which is extremely high altitude. While the flight itself is quick, your body will experience rapid altitude gain. Most people feel some effects of altitude—shortness of breath, mild headache, or dizziness. These are normal and usually pass quickly. Your pilot will monitor everyone's condition and can shorten the landing if needed. We recommend discussing any health concerns with your doctor before booking, especially if you have respiratory or cardiac conditions. The landing is optional; if you prefer not to step out, you can remain in the helicopter.
+                  The helicopter lands at Kala Patthar (5,545m), which is extremely high altitude. While the flight itself is quick, your body will experience rapid altitude gain. Most people feel some effects of altitude—shortness of breath, mild headache, or dizziness. These are normal and usually pass quickly. Your pilot will monitor everyone's condition and can shorten the landing if needed. The landing is optional; if you prefer not to step out, you can remain in the helicopter.
                 </p>
               </div>
 
@@ -706,14 +682,13 @@ export default function EverestRegionHelicopterTripPage() {
               <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
                 <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information for Helicopter Tour</h4>
+                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information</h4>
                   <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
-                    <li>• <strong>Weather Dependency:</strong> Helicopter flights are highly weather-dependent. Flights operate only in clear visibility. If weather prevents the flight, you will be offered a full refund or rescheduling. We monitor conditions closely and advise accordingly.</li>
-                    <li>• <strong>High Altitude:</strong> Kala Patthar is at 5,545m. Most people experience some altitude effects. The helicopter carries supplemental oxygen for emergencies, and your pilot monitors all passengers. The landing is optional.</li>
-                    <li>• <strong>Health Considerations:</strong> Not recommended for pregnant women, infants under 2 years, or those with serious respiratory or cardiac conditions. Consult your doctor before booking.</li>
-                    <li>• <strong>What to Wear:</strong> Dress in warm layers. Temperatures at Kala Patthar can be -10°C to -20°C even on sunny days. Warm jacket, gloves, hat, and sunglasses are essential. Good hiking boots recommended for stepping onto snow.</li>
-                    <li>• <strong>Photography Tips:</strong> Bring a camera with zoom lens (70-200mm recommended). Polarizing filter helps reduce glare. Extra batteries (cold drains them quickly) and memory cards. Clean your lens before flight.</li>
-                    <li>• <strong>Weight Restrictions:</strong> Helicopter weight limits are strictly enforced. Maximum passenger weight is typically 100kg (220lbs). Passengers exceeding this may need to purchase an additional seat.</li>
+                    <li>• <strong>Weather Dependency:</strong> Flights operate only in clear visibility. If weather prevents the flight, you will be offered a full refund or rescheduling.</li>
+                    <li>• <strong>High Altitude:</strong> Kala Patthar is at 5,545m. The helicopter carries supplemental oxygen for emergencies.</li>
+                    <li>• <strong>What to Wear:</strong> Dress in warm layers. Temperatures at Kala Patthar can be -10°C to -20°C.</li>
+                    <li>• <strong>Photography Tips:</strong> Bring extra batteries (cold drains them quickly) and clean your lens before flight.</li>
+                    <li>• <strong>Weight Restrictions:</strong> Maximum passenger weight is typically 100kg (220lbs).</li>
                   </ul>
                 </div>
               </div>
@@ -751,28 +726,24 @@ export default function EverestRegionHelicopterTripPage() {
                   {[
                     {
                       q: "Do we actually land at Everest Base Camp?",
-                      a: "The helicopter flies over Everest Base Camp but lands at Kala Patthar (5,545m), which is the famous viewpoint directly opposite Everest. This offers far better views of the mountain than Base Camp itself, which is situated lower and surrounded by the Khumbu icefall. From Kala Patthar, you get an unobstructed, face-to-face view of Everest. Some tours may also offer a landing at Gorakshep or actually at Base Camp depending on conditions and permits.",
+                      a: "The helicopter flies over Everest Base Camp but lands at Kala Patthar (5,545m), which offers far better panoramic views of Everest than Base Camp itself."
                     },
                     {
                       q: "Is the helicopter tour safe?",
-                      a: "Yes, helicopter tours in Nepal are operated by experienced pilots with extensive high-altitude flying experience. All helicopters are modern, well-maintained, and meet international safety standards. Operators follow strict safety protocols and weather minimums. Flights are only conducted in clear weather conditions. Safety is always the priority.",
+                      a: "Yes, all operations are conducted by experienced pilots with modern, well-maintained helicopters following strict safety protocols."
                     },
                     {
                       q: "How long is the helicopter flight?",
-                      a: "The total helicopter flight time is approximately 3-4 hours round trip from Kathmandu. This includes the flight to the Everest region, time spent at Kala Patthar (15-20 minutes on the ground), and the return flight. The actual time on the ground at high altitude is limited to minimize exposure.",
+                      a: "The total flight time is approximately 3-4 hours round trip, including 15-20 minutes on the ground at Kala Patthar."
                     },
                     {
-                      q: "What happens if I feel sick at high altitude?",
-                      a: "The helicopter carries supplemental oxygen for emergency use. Your pilot is trained to recognize altitude sickness symptoms and will monitor all passengers during the landing. If anyone feels unwell, the pilot can shorten the landing or return to lower altitude immediately. Most people experience only mild, temporary symptoms that pass quickly.",
+                      q: "What happens if weather prevents the flight?",
+                      a: "If weather conditions are unsafe, the flight will be rescheduled or you will receive a full refund for the helicopter portion."
                     },
                     {
                       q: "Can I book this for a special occasion?",
-                      a: "Absolutely! This helicopter tour is perfect for celebrating birthdays, anniversaries, proposals, or other special occasions. The champagne toast at Kala Patthar with Mount Everest as your backdrop creates an unforgettable moment. Please inform us when booking if you're celebrating something special, and we'll do our best to make it memorable.",
-                    },
-                    {
-                      q: "What is the cancellation policy?",
-                      a: "If weather prevents the flight, you receive a full refund for the helicopter portion. If you cancel due to personal reasons, cancellation fees apply based on how far in advance you cancel: 30+ days (10%), 15-29 days (25%), 7-14 days (50%), 3-6 days (75%), within 48 hours (100%). We strongly recommend travel insurance to cover unforeseen circumstances.",
-                    },
+                      a: "Absolutely! The champagne toast at Kala Patthar makes it perfect for birthdays, anniversaries, or proposals."
+                    }
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
                       <CardContent className="p-2 md:p-5">
