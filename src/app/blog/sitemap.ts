@@ -7,6 +7,7 @@ export default async function blogSitemap(): Promise<MetadataRoute.Sitemap> {
   // List all your blog posts here
   const blogPosts = [
     'pigeons-symbol-peace-nepal',
+    'best-time-to-visit-nepal'
     // Add more blog slugs as you create them
   ]
   
