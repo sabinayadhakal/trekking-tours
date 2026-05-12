@@ -39,38 +39,38 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const blogPost = {
-  title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
-  excerpt: "In Kathmandu, pigeons are revered as divine ancestors and harbingers of peace. In London, they're pests. This stark cultural divide reveals deep truths about how we see nature, spirituality, and our place in the world. Discover the fascinating story behind Nepal's urban pigeons and what they teach us about coexistence.",
-  heroImage: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop",
+  title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
+  excerpt: "From the rainbow blooms of spring to the crystal-clear skies of autumn, every season in Nepal offers something magical. But timing your visit right can mean the difference between watching Everest disappear behind clouds or standing beneath its glittering peak. Here's everything you need to know.",
+  heroImage: "/images/used/historic-scenic-photography-nepal.avif",
   author: {
     name: "Sabinaya Dhakal",
-    avatar: "/placeholder.svg?text=AS",
+    avatar: "/placeholder.svg?text=SD",
     
   },
-  date: "May 9, 2026",
+  date: "May 7, 2026",
   readTime: "9 min read",
-  category: "Culture & Society",
-  tags: ["Pigeons", "Nepal", "Cultural Contrasts", "Urban Wildlife", "Symbolism", "Hinduism", "Himkala Adventure"],
+  category: "Travel Guide",
+  tags: ["Best Time to Visit", "Nepal Travel", "Seasons", "Trekking", "Weather", "Himkala Adventure"],
 };
 
 const tableOfContents = [
-  { id: "introduction", title: "A Tale of Two Cities" },
-  { id: "symbol-of-peace", title: "Why Pigeons = Peace in Nepal" },
-  { id: "religious-significance", title: "Divine Messengers & Ancestors" },
-  { id: "feeding-culture", title: "Why Nepalis Invite Pigeons In" },
-  { id: "europe-perspective", title: "Europe's 'Flying Rats'" },
-  { id: "reasons-for-difference", title: "Why Such Different Views?" },
-  { id: "urban-coexistence", title: "What We Can Learn" },
-  { id: "conclusion", title: "Beyond the Feathers" },
+  { id: "introduction", title: "The Season Dilemma" },
+  { id: "autumn", title: "Autumn: The Golden Season" },
+  { id: "spring", title: "Spring: Blooming Beauty" },
+  { id: "winter", title: "Winter: Solitude & Snow" },
+  { id: "monsoon", title: "Monsoon: The Green Season" },
+  { id: "month-guide", title: "Quick Month-by-Month Guide" },
+  { id: "by-activity", title: "Best Seasons by Activity" },
+  { id: "conclusion", title: "Finding Your Perfect Time" },
 ];
 
 const relatedPosts = [
   {
-    title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
-    image: "/images/used/historic-scenic-photography-nepal.avif",
-    date: "May 7, 2026",
-    readTime: "11 min",
-    href: "/blog/best-time-to-visit-nepal",
+    title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
+    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop",
+    date: "May 9, 2026",
+    readTime: "9 min",
+    href: "/blog/pigeons-symbol-peace-nepal",
   },
 ];
 
@@ -248,7 +248,7 @@ export default function BlogPostPage() {
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-2xl overflow-hidden">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-[#0f2940] mb-4 flex items-center gap-2">
-                      <Bird className="w-4 h-4 text-[#2d6a8a]" /> Table of Contents
+                      <Calendar className="w-4 h-4 text-[#2d6a8a]" /> Table of Contents
                     </h3>
                     <nav className="space-y-2">
                       {tableOfContents.map((item) => (
@@ -303,13 +303,13 @@ export default function BlogPostPage() {
                 <Card className="bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 rounded-2xl overflow-hidden">
                   <CardContent className="p-6 text-center">
                     <Mountain className="w-8 h-8 text-amber-600 mx-auto mb-3" />
-                    <h3 className="font-bold text-amber-800 mb-2">Experience Nepal's Culture Firsthand</h3>
+                    <h3 className="font-bold text-amber-800 mb-2">Plan Your Perfect Trip</h3>
                     <p className="text-amber-700 text-sm mb-4">
-                      Join Himkala Adventure for authentic cultural tours in Kathmandu, spiritual journeys, and Himalayan treks.
+                      Let Himkala Adventure help you choose the best season for your dream Nepal experience.
                     </p>
                     <Link href="/services/day-sightseeings" className="block">
                       <Button className="bg-amber-600 hover:bg-amber-700 text-white w-full rounded-xl">
-                        Explore Our Tours
+                        Plan My Journey
                       </Button>
                     </Link>
                   </CardContent>
@@ -323,109 +323,156 @@ export default function BlogPostPage() {
                 {/* Introduction */}
                 <section id="introduction" className="mb-8 md:mb-12">
                   <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-4 first-letter:text-4xl md:first-letter:text-6xl first-letter:font-serif first-letter:text-[#0f2940] first-letter:float-left first-letter:mr-3 first-letter:mt-1">
-                    Imagine walking through a bustling city square. In Kathmandu, you'd likely see elderly women scattering handfuls of golden corn and rice to flocks of pigeons, their faces serene with the act of giving. In London or Paris, you'd more likely see a cyclist swerving to avoid the same bird, muttering about "flying rats" and the mess they leave behind.
+                    Ask ten different travelers about the best time to visit Nepal, and you might get ten different answers. The trekker who summited Kala Patthar in November will swear by autumn's crystal skies. The photographer who captured rhododendron forests ablaze with color will insist spring is unmatched. And the budget traveler who had entire tea houses to themselves in February? They'll tell you winter's secret magic is worth the chill.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    How can the same creature inspire such radically different emotions? The humble pigeon known scientifically as the rock dove is one of the most widespread urban birds on the planet. Yet its cultural standing varies so dramatically that it offers a fascinating window into the spiritual, historical, and environmental values of different societies.
+                    The truth is, Nepal doesn't have one "best" time. It has four distinct seasons, each offering a completely different version of this Himalayan nation. The question isn't "When should you visit Nepal?" but rather "What kind of Nepal experience are you seeking?"
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    In Nepal, pigeons aren't just tolerated, they're welcomed, fed, and revered as symbols of peace, divine messengers, and even reincarnated ancestors. This blog post explores the beautiful relationship between Nepalis and pigeons, why these birds are everywhere in Nepali cities, and how this perspective contrasts so sharply with the European view. By the end, you might never look at a pigeon the same way again.
+                    In this comprehensive guide, we'll walk you through every season, so you can time your visit perfectly. Whether you're dreaming of Everest views, cultural festivals, wildlife safaris, or peaceful monastery stays, there's a perfect window waiting for you. Let's find it together.
                   </p>
                 </section>
 
                 {/* Image Break */}
                 <div className="relative h-[250px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
                   <Image
-                    src="https://images.unsplash.com/photo-1516298773066-c48f8e9bd92b?q=80&w=2070&auto=format&fit=crop"
-                    alt="Pigeons being fed at a temple in Kathmandu, Nepal"
+                    src="/images/used/when-to-visit-nepal-1.avif"
+                    alt="Views of trekking in Everest region at the time of December"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 80vw"
                   />
                   <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
-                    <Camera className="w-3 h-3" /> Devotees feeding pigeons at a temple courtyard in Kathmandu, Nepal
+                    <Camera className="w-3 h-3" /> Views of the Everest region at the time of December
                   </div>
                 </div>
 
-                {/* Symbol of Peace */}
-                <section id="symbol-of-peace" className="mb-8 md:mb-12">
+                {/* Autumn Season */}
+                <section id="autumn" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Why Pigeons = Peace in Nepal
+                    Autumn (September - November): The Golden Season
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    In Nepal, the pigeon's association with peace is deeply rooted in both Hindu and Buddhist traditions. The white pigeon, in particular, is seen as a gentle, harmless creature that embodies the ideal of <span className="italic">ahimsa</span> (non-violence), a core tenet of both religions.
+                    If there's a consensus "best" season in Nepal, autumn takes the crown and for very good reason. The monsoon rains have just departed, washing the dust from the air and leaving behind impossibly clear skies. The mountains, often hidden behind haze or clouds for much of the year, emerge in breathtaking clarity.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    Unlike predatory animals, pigeons neither bite nor sting nor threaten humans. Their soft cooing sounds are considered soothing and meditative, adding to the peaceful atmosphere of temple courtyards where they gather in large numbers. For many Nepalis, watching pigeons eat from one's hand is a small but meaningful act of compassion that generates good karma.
+                    This is also festival season. Dashain and Tihar, Nepal's biggest celebrations, fill the streets with music, lights, and joy. The weather is mild and stable which is perfect for trekking, sightseeing, or simply sitting at a café watching the world go by.
                   </p>
                   <div className="bg-green-50 border border-green-200 rounded-xl p-4 md:p-5 mt-4">
                     <div className="flex gap-3">
                       <Sparkles className="w-5 h-5 text-green-600 shrink-0" />
                       <p className="text-green-800 text-sm italic leading-relaxed">
-                        <span className="font-bold">The Dove as a Global Peace Symbol:</span> Interestingly, the use of a white dove carrying an olive branch as a peace symbol originated in the biblical story of Noah's Ark. Nepal's reverence for pigeons predates this Western symbol by millennia, rooted in completely different philosophical traditions.
+                        <span className="font-bold">Pro Tip:</span> October is the absolute sweet spot. The trails have dried out, the temperatures are perfect, and the festival season brings an extra layer of cultural magic to your journey.
                       </p>
                     </div>
                   </div>
                 </section>
 
-                {/* Religious Significance */}
-                <section id="religious-significance" className="mb-8 md:mb-12">
+                {/* Spring Season */}
+                <section id="spring" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Landmark className="w-4 h-4 md:w-5 md:h-5" />
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Divine Messengers & Ancestors
+                    Spring (March - May): Blooming Beauty
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    The pigeon's sacred status in Nepal goes far beyond general notions of peace. In Hindu mythology, pigeons are believed to be messengers of Yama, the god of death, and are also associated with the goddess of wealth and prosperity, Lakshmi. Feeding pigeons is thought to please Lakshmi, bringing wealth and good fortune to one's home.
+                    Spring in Nepal is nature's grand unveiling. After the cooler winter months, the hillsides explode into color as rhododendrons; Nepal's national flower those bloom in brilliant reds, pinks, and whites. The weather warms gradually, and the days grow longer, making it the second-most popular trekking season after autumn.
                   </p>
+                  <p className="text-slate-600 leading-relaxed">
+                    For mountaineers, spring is the climbing season. This is when Everest expeditions begin, and the Khumbu region buzzes with an energy unlike any other time of year. Even if you're not summiting, watching the preparations and meeting climbers from around the world adds a unique dimension to your trek.
+                  </p>
+                </section>
+
+                {/* Winter Season */}
+                <section id="winter" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    Winter (December - February): Solitude & Snow
+                  </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    Perhaps even more significant is the widespread belief across both Hindu and Buddhist communities in Nepal that pigeons may be the reincarnated souls of ancestors or loved ones who have passed away. When a Nepali feeds a pigeon, they may literally be offering food to their grandfather, mother, or another departed relative who has returned in this humble form.
+                    Winter is Nepal's best-kept secret. While most travelers assume the country shuts down, the truth is far more interesting. Yes, it's cold, especially at higher elevations but the skies are often shockingly clear, the crowds vanish, and you might find yourself the only guest in a tea house with the world's best view.
                   </p>
-                  <div className="grid md:grid-cols-2 gap-4 mt-6">
-                    <Card className="bg-gradient-to-br from-[#C5E0ED]/20 to-[#e8f4f8] border-[#C5E0ED]/30 rounded-xl">
-                      <CardContent className="p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-2 flex items-center gap-2">
-                          <Shield className="w-4 h-4 text-[#2d6a8a]" /> Bhagwan's Mount
-                        </h4>
-                        <p className="text-slate-600 text-sm">
-                          In some traditions, the pigeon is considered a mount (vahana) of certain deities, making the bird itself semi-divine and worthy of respect.
-                        </p>
-                      </CardContent>
-                    </Card>
-                    <Card className="bg-gradient-to-br from-[#C5E0ED]/20 to-[#e8f4f8] border-[#C5E0ED]/30 rounded-xl">
-                      <CardContent className="p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-2 flex items-center gap-2">
-                          <Globe className="w-4 h-4 text-[#2d6a8a]" /> Buddhist Connections
-                        </h4>
-                        <p className="text-slate-600 text-sm">
-                          Tibetan Buddhist traditions also venerate pigeons, seeing them as beings capable of generating Bodhicitta (the compassionate mind striving for enlightenment).
-                        </p>
-                      </CardContent>
-                    </Card>
+                  <p className="text-slate-600 leading-relaxed">
+                    For budget travelers and solitude seekers, winter offers incredible value. Flight prices drop, accommodations negotiate, and the trails feel like they belong to you alone. The key is choosing your destination wisely: stick to lower elevations (Pokhara, Chitwan, Lumbini) or prepare properly for high-altitude treks.
+                  </p>
+                </section>
+
+                {/* Monsoon Season */}
+                <section id="monsoon" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    Summer/Monsoon (June - August): The Green Season
+                  </h2>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    Monsoon is Nepal's most misunderstood season. While many guidebooks tell you to avoid it entirely, savvy travelers know that monsoon offers unique rewards if you know where to go and what to expect. The landscapes transform into a lush, vibrant green that you won't see any other time of year.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed">
+                    The key to enjoying monsoon is staying in rain-shadow areas like Upper Mustang (which receives almost no rain) or focusing on cultural tours in Kathmandu and Pokhara valleys. The north side of the Annapurna circuit, including Manang, also stays relatively dry. And the best part? You'll have entire sights almost to yourself.
+                  </p>
+                </section>
+
+                {/* Quick Month Guide */}
+                <section id="month-guide" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    Quick Month-by-Month Guide
+                  </h2>
+                  
+                  <div className="space-y-4 mt-4">
+                    {[
+                      { title: "March-April", desc: "Rhododendrons in full bloom. Perfect trekking weather. Holi festival." },
+                      { title: "October-November", desc: "Crystal clear mountain views. Dashain and Tihar festivals. Peak season." },
+                      { title: "December-February", desc: "Solitude on the trails. Clear skies but cold. Best for budget travelers." },
+                      { title: "June-August", desc: "Lush green landscapes. Upper Mustang stays dry. Lowest prices of the year." },
+                    ].map((item, i) => (
+                      <div key={i} className="flex gap-3 p-3 bg-[#f8fbfc] rounded-lg border border-[#C5E0ED]/20">
+                        <div className="w-6 h-6 bg-[#2d6a8a]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                          <ChevronRight className="w-3 h-3 text-[#2d6a8a]" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-[#0f2940] text-sm md:text-base">{item.title}</h4>
+                          <p className="text-slate-600 text-xs md:text-sm mt-0.5">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="bg-green-50 border border-green-200 rounded-xl p-4 md:p-5 mt-6">
+                    <div className="flex gap-3">
+                      <Sparkles className="w-5 h-5 text-green-600 shrink-0" />
+                      <p className="text-green-800 text-sm italic leading-relaxed">
+                        <span className="font-bold">Insider Tip:</span> If you want the perfect balance of good weather and fewer crowds, try late September or early November. You'll catch the tail end of the monsoon freshness or the beginning of winter's clarity without the October rush.
+                      </p>
+                    </div>
                   </div>
                 </section>
 
-                {/* Feeding Culture */}
-                <section id="feeding-culture" className="mb-8 md:mb-12">
+                {/* Best Seasons by Activity */}
+                <section id="by-activity" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Droplets className="w-4 h-4 md:w-5 md:h-5" />
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Why Nepalis Invite Pigeons In
+                    Best Seasons by Activity
                   </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    Walk through any major Nepali city; Kathmandu, Pokhara, Bhaktapur and you'll notice pigeons congregating not just near temples but also around homes, street corners, and public squares. This isn't accidental. Nepalis actively encourage pigeons to come near human settlements for several interconnected reasons:
-                  </p>
+                  
                   <div className="space-y-4 mt-4">
                     {[
-                      { title: "Daily Merit-Making", desc: "For many devout Hindus and Buddhists, offering food to pigeons is part of their daily morning ritual (puja). The act generates punya (merit) that can improve one's current life circumstances or future rebirth." },
-                      { title: "Ancestor Connection", desc: "The belief that deceased relatives may return as pigeons transforms feeding into an act of ongoing family care. Nepalis often feed pigeons with the explicit intention of honoring their ancestors." },
-                      { title: "Festivals & Special Days", desc: "During festivals like Tihar (the festival of lights) and Nag Panchami, feeding pigeons becomes especially important. Some families even construct small perches on rooftops specifically for pigeons." },
-                      { title: "Economic & Historical Factors", desc: "Unlike European cities that underwent rapid industrialization and sanitation campaigns that demonized urban animals, Nepal's predominantly agrarian and religious culture never developed the same aversion." },
+                      { title: "🏔️ High-Altitude Trekking", desc: "Best during October-November or March-April for clear skies and stable weather." },
+                      { title: "🐘 Wildlife Safari", desc: "Best during October-March when animals gather near water sources." },
+                      { title: "🏛️ Cultural Tours", desc: "Best during September-November or March-May for pleasant walking weather." },
+                      { title: "💰 Budget Travel", desc: "Best during December-February or June-August for lower prices." },
+                      { title: "🎉 Festival Experiences", desc: "Best during October for Dashain and Tihar, Nepal's biggest celebrations." },
                     ].map((item, i) => (
                       <div key={i} className="flex gap-3 p-3 bg-[#f8fbfc] rounded-lg border border-[#C5E0ED]/20">
                         <div className="w-6 h-6 bg-[#2d6a8a]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
@@ -447,142 +494,42 @@ export default function BlogPostPage() {
                   </div>
                   <blockquote className="relative z-10">
                     <p className="text-base md:text-lg lg:text-xl font-serif text-white leading-relaxed mb-3 md:mb-4 italic">
-                      &quot;When I feed the pigeons every morning, I am not just giving grain to birds. I am offering food to my mother, who passed away ten years ago. The pigeon that eats from my hand, perhaps that is her. And even if it isn't, the act of giving keeps her memory alive in my heart.&quot;
+                      &quot;I've led treks in every season, and here's what I tell my guests: there's no bad time to come to Nepal, only different times for different dreams. October gives you postcards. February gives you the mountains to yourself. July gives you the deepest green you've ever seen. The question is never 'if' you should come. It's 'which Nepal' you want to meet.&quot;
                     </p>
                     <footer className="flex items-center gap-3">
                       <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-[#C5E0ED] flex items-center justify-center bg-white/10">
                         <User className="w-5 h-5 text-[#C5E0ED]" />
                       </div>
                       <div>
-                        <cite className="font-bold text-[#C5E0ED] not-italic text-sm md:text-base">Kamala Devi, 67, Kathmandu resident</cite>
-                        <p className="text-white/60 text-xs md:text-sm">Interviewed at Pashupatinath Temple, 2025</p>
+                        <cite className="font-bold text-[#C5E0ED] not-italic text-sm md:text-base"> Sabinaya Dhakal</cite>
+                 
                       </div>
                     </footer>
                   </blockquote>
                 </div>
 
-                {/* Europe's Perspective */}
-                <section id="europe-perspective" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <AlertTriangle className="w-4 h-4 md:w-5 md:h-5" />
-                    </span>
-                    Europe's 'Flying Rats': A Study in Contrast
-                  </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    Now, let's cross continents. In cities like London, Paris, Berlin, and Rome, the pigeon enjoys no such reverence. Instead, the common phrase "flying rat" captures the prevailing European attitude: pigeons are dirty, disease-carrying pests that deface statues, spread droppings, and compete with humans for urban space.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    This hostility isn't ancient. It's a relatively modern development tied to industrialization and changing ideas about urban sanitation. In medieval Europe, pigeons were actually valued. They were kept in dovecotes for their eggs, meat, and nutrient-rich droppings (used as fertilizer). Nobility even considered them a status symbol.
-                  </p>
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-5 mt-4">
-                    <h4 className="font-bold text-red-700 mb-2 flex items-center gap-2">
-                      <AlertTriangle className="w-4 h-4" /> The Turning Point
-                    </h4>
-                    <p className="text-red-700 text-sm leading-relaxed">
-                      The shift began during the Industrial Revolution when cities grew crowded and sanitation became a public health crisis. Pigeons, which thrived on grain spillage and urban waste, multiplied rapidly. Their droppings, previously seen as valuable fertilizer, now corroded stone buildings and statues. By the 20th century, urban planners and public health officials had successfully rebranded pigeons from useful animals to vermin.
-                    </p>
-                  </div>
-                </section>
-
-                {/* Reasons for Difference */}
-                <section id="reasons-for-difference" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <TrendingUp className="w-4 h-4 md:w-5 md:h-5" />
-                    </span>
-                    Why Such Different Views?
-                  </h2>
-                  
-                  <div className="grid md:grid-cols-2 gap-6 mt-4">
-                    <Card className="border-[#C5E0ED]/30 rounded-xl overflow-hidden">
-                      <div className="bg-[#0f2940] px-4 py-2">
-                        <h3 className="font-bold text-white text-sm">Nepal (Reverence)</h3>
-                      </div>
-                      <CardContent className="p-4 space-y-2">
-                        {[
-                          "Religious beliefs (Hinduism/Buddhism)",
-                          "Ancestor reincarnation beliefs",
-                          "Ahimsa (non-violence) philosophy",
-                          "Agrarian, pre-industrial mindset",
-                          "Animals seen as co-inhabitants, not pests",
-                          "Feeding = merit/positive karma",
-                        ].map((item, i) => (
-                          <div key={i} className="flex items-center gap-2 text-sm text-slate-700">
-                            <Heart className="w-3 h-3 text-green-600" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </CardContent>
-                    </Card>
-                    <Card className="border-red-200 rounded-xl overflow-hidden">
-                      <div className="bg-red-700 px-4 py-2">
-                        <h3 className="font-bold text-white text-sm">Europe (Rejection)</h3>
-                      </div>
-                      <CardContent className="p-4 space-y-2">
-                        {[
-                          "Secular, utilitarian worldview",
-                          "Industrial-era sanitation campaigns",
-                          "Urban planning prioritizing cleanliness",
-                          "Association with disease (real & perceived)",
-                          "Property damage (droppings corrosive)",
-                          "Seen as invasive & overpopulated",
-                        ].map((item, i) => (
-                          <div key={i} className="flex items-center gap-2 text-sm text-slate-700">
-                            <X className="w-3 h-3 text-red-600" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </CardContent>
-                    </Card>
-                  </div>
-                </section>
-
-                {/* What We Can Learn */}
-                <section id="urban-coexistence" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Lightbulb className="w-4 h-4 md:w-5 md:h-5" />
-                    </span>
-                    What We Can Learn from Nepal's Approach
-                  </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    Nepal's relationship with pigeons isn't naive. Nepalis are fully aware that pigeons can be messy and that large flocks create sanitation challenges. Yet the spiritual and cultural benefits of coexistence are seen as outweighing the inconveniences. This perspective offers valuable lessons for our increasingly urbanized world:
-                  </p>
-                  <div className="space-y-3 mt-4">
-                    {[
-                      { lesson: "Compassion as Urban Policy", desc: "How might our cities change if we prioritized kindness toward all living beings, even those we find inconvenient?" },
-                      { lesson: "Nature Connection in Daily Life", desc: "Feeding pigeons requires no special trip to a national park. It's a daily moment of connection with the non-human world." },
-                      { lesson: "Death & Continuity", desc: "Believing that ancestors may return as animals offers a comforting model of death that keeps loved ones symbolically present." },
-                      { lesson: "Beyond Utility", desc: "A creature need not be 'useful' to humans to deserve respect and care. This principle extends far beyond pigeons to all of nature." },
-                    ].map((item, i) => (
-                      <div key={i} className="flex gap-3 p-3 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]">
-                        <Lightbulb className="w-4 h-4 md:w-5 md:h-5 text-[#2d6a8a] shrink-0 mt-0.5" />
-                        <div>
-                          <h4 className="font-bold text-[#0f2940] mb-1 text-sm md:text-base">{item.lesson}</h4>
-                          <p className="text-slate-600 text-xs md:text-sm">{item.desc}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-
                 {/* Conclusion */}
                 <section id="conclusion" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Bird className="w-4 h-4 md:w-5 md:h-5" />
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Beyond the Feathers: A Mirror to Ourselves
+                    Finding Your Perfect Time
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    The pigeon, it turns out, is not just a bird. It's a mirror reflecting how different cultures answer fundamental questions: What is our relationship with other living beings? How do we honor our ancestors? What do we consider sacred versus polluted?
+                    After reading this guide, you might feel overwhelmed by choices. That's understandable. Nepal truly offers something special in every season. Here's how to decide:
                   </p>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    In Nepal, the pigeon invites us into a worldview where the boundaries between human, animal, and divine are porous and permeable. Your deceased grandmother might be waiting for you on a temple ledge. Your act of scattering grain is indistinguishable from prayer. Peace isn't an abstract ideal. It's a cooing sound outside your window at dawn.
-                  </p>
+                  <div className="bg-[#f0f7fa] rounded-xl p-5 mb-4">
+                    <p className="text-[#0f2940] font-medium mb-2">Ask yourself these questions:</p>
+                    <ul className="space-y-2 text-sm text-slate-700">
+                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" /> Do you want guaranteed clear mountain views? → <span className="font-medium">Autumn (October-November)</span></li>
+                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" /> Do you dream of blooming rhododendron forests? → <span className="font-medium">Spring (March-April)</span></li>
+                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" /> Is solitude and budget your priority? → <span className="font-medium">Winter (December-February)</span></li>
+                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" /> Do you love lush landscapes and don't mind rain? → <span className="font-medium">Monsoon (June-August) with a rain-shadow trek</span></li>
+                    </ul>
+                  </div>
                   <p className="text-slate-600 leading-relaxed">
-                    Next time you see a pigeon whether in Kathmandu, London, or anywhere in between, perhaps pause before dismissing it. That unassuming bird carries centuries of spiritual meaning, cultural baggage, and a lesson about how we choose to see the world. And in Nepal, at least, the choice is clear: welcome the pigeon, feed the pigeon, love the pigeon. For in that small act, peace becomes real.
+                    Ultimately, the best time to visit Nepal is whenever you can make it happen. The mountains wait. The temples stand patient. And whichever season you choose, Nepal will welcome you with warmth that has nothing to do with the weather.
                   </p>
                 </section>
 

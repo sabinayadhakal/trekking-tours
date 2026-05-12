@@ -64,16 +64,27 @@ category: "Culture & Society",
 
 const blogPosts = [
   {
+  id: "pigeons-symbol-peace-nepal",
+slug: "pigeons-symbol-peace-nepal",
+title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
+excerpt: "In Kathmandu, pigeons are revered as divine ancestors and harbingers of peace. In London, they're pests. This stark cultural divide reveals deep truths about how we see nature, spirituality, and our place in the world.",
+image: "/images/used/pigeons-nepal.avif",
+author: "Sabinaya Dhakal",
+date: "May 9, 2026",
+readTime: "9 min",
+category: "Culture & Society",
+},
+  {
     id: "best-time-to-visit-nepal",
     slug: "best-time-to-visit-nepal",
-    title: "Best Time to Visit Nepal: Season Breakdown",
-    excerpt: "Discover the ideal months for trekking, wildlife safaris, and cultural exploration in Nepal.",
-    image: "/images/used/nepal-stupa.avif",
-    author: "Pemba Dorje",
-    date: "January 10, 2025",
-    readTime: "8 min",
-    category: "Travel Tips",
-  },
+    title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
+    excerpt: "From the rainbow blooms of spring to the crystal-clear skies of autumn, every season in Nepal offers something magical. But timing your visit right can mean the difference between watching Everest disappear behind clouds or standing beneath its glittering peak.",
+    image: "/images/used/historic-scenic-photography-nepal.avif",
+    author: "Sabinaya Dhakal",
+    date: "May 7, 2026",
+    readTime: "9 min",
+    category: "Travel Guide",
+}
   
 ];
 
