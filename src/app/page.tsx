@@ -111,7 +111,7 @@ const popularTreks = [
     duration: "16 Days",
     difficulty: "Challenging",
     altitude: "5,106m",
-    price: "$1,350",
+    price: "$1,200",
     image: "/images/used/manaslu-main-page.avif",
     rating: 4.8,
     link: "/services/trekking/manaslu-circuit-trek"
@@ -121,7 +121,7 @@ const popularTreks = [
     duration: "14 Days",
     difficulty: "Moderate",
     altitude: "5,364m",
-    price: "$1,450",
+    price: "$1,520",
     image: "/images/used/everest-main-page.avif",
     rating: 4.9,
     link: "/services/trekking/everest-base-camp-trek"
@@ -131,7 +131,7 @@ const popularTreks = [
     duration: "18 Days",
     difficulty: "Challenging",
     altitude: "5,416m",
-    price: "$1,250",
+    price: "$800",
     image: "/images/used/annapurna-circuit-main-page.avif",
     rating: 4.8,
     link: "/services/trekking/annapurna-circuit-trek"
@@ -141,7 +141,7 @@ const popularTreks = [
     duration: "10 Days",
     difficulty: "Easy-Moderate",
     altitude: "4,984m",
-    price: "$950",
+    price: "$650",
     image: "/images/used/langtang-main-page.avif",
     rating: 4.7,
     link: "/services/trekking/langtang-valley-trek"
@@ -152,7 +152,7 @@ const popularTreks = [
     duration: "12 Days",
     difficulty: "Moderate",
     altitude: "4,010m",
-    price: "$1,650",
+    price: "$2,595",
     image: "/images/used/upper-mustang-main-page.avif",
     rating: 4.7,
     link: "/services/trekking/upper-mustang-trek"
@@ -162,7 +162,7 @@ const popularTreks = [
     duration: "12 Days",
     difficulty: "Moderate",
     altitude: "4,130m",
-    price: "$1,150",
+    price: "$700",
     image: "/images/used/abc-main-page.avif",
     rating: 4.8,
     link: "/services/trekking/annapurna-base-camp-trek"
