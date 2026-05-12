@@ -40,156 +40,148 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
+  
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Evening free to explore the vibrant streets of Thamel or rest after your journey.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements"],
+    "day": 1,
+    "title": "Flight from Kathmandu to Lukla & Trek to Phakding",
+    "altitude": "1,400m → 2,840m → 2,610m",
+    "distance": "35 min flight / 3-4 hrs trek",
+    "description": "Early morning departure from your hotel for the scenic mountain flight from Kathmandu to Lukla (Tenzing-Hillary Airport). This 35-minute flight offers breathtaking aerial views of the Himalayan range, including Langtang, Gauri Shankar, and Everest on clear days. Upon landing at Lukla's famous hillside airstrip, you'll meet your trekking crew and porters. After organizing gear, begin the gentle descent to Phakding. The trail follows the Dudh Koshi River through pine forests, crossing several suspension bridges and passing through small Sherpa settlements. This short trek helps with initial acclimatization while introducing you to the beauty of the Khumbu region. Overnight in Phakding's comfortable teahouse.",
+    "overnight": "Teahouse in Phakding",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic mountain flight to Lukla", "Tenzing-Hillary Airport landing", "First views of the Himalayas", "Dudh Koshi River valley", "Suspension bridge crossings"]
   },
   {
-    day: 2,
-    title: "Flight to Lukla & Trek to Phakding",
-    altitude: "2,840m → 2,610m",
-    distance: "35min flight / 3-4 hrs trek",
-    description: "Early morning flight to Lukla (Tenzing-Hillary Airport), one of the most thrilling mountain flights in the world. After meeting our porters, we begin our trek descending to Phakding. The trail follows the Dudh Koshi River through pine forests, crossing suspension bridges and passing through small settlements. This short trek helps with acclimatization.",
-    overnight: "Teahouse in Phakding",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic mountain flight to Lukla", "First views of Himalayan peaks", "Dudh Koshi River valley", "Suspension bridge crossings"],
+    "day": 2,
+    "title": "Trek from Phakding to Namche Bazaar",
+    "altitude": "2,610m → 3,440m",
+    "distance": "10km / 5-6 hrs trek",
+    "description": "Today's trek takes you from Phakding to Namche Bazaar, the bustling Sherpa capital and gateway to the Everest region. The trail follows the Dudh Koshi River, crossing the iconic Hillary Suspension Bridge - the highest and longest in the Khumbu. You'll pass through Monjo (Sagarmatha National Park entry point) where permits are checked. The trail steepens considerably on the final climb to Namche, with several switchbacks offering magnificent views. As you approach Namche, your patience is rewarded with your first glimpse of Mount Everest's summit peeking above the ridge. Namche Bazaar is a vibrant town with banks, bakeries, gear shops, and exceptional Sherpa culture. This is a challenging but rewarding day that sets the stage for your Gokyo and Everest adventure.",
+    "overnight": "Teahouse in Namche Bazaar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Hillary Suspension Bridge crossing", "Sagarmatha National Park entry", "First views of Mount Everest", "Traditional Sherpa villages", "Namche Bazaar arrival"]
   },
   {
-    day: 3,
-    title: "Trek to Namche Bazaar",
-    altitude: "2,610m → 3,440m",
-    distance: "10km / 5-6 hrs",
-    description: "Today's trek takes us to the gateway of the Everest region. We follow the Dudh Koshi, crossing several suspension bridges including the famous Hillary Bridge. The trail steepens as we approach Namche, with the last section being a challenging uphill climb. The first views of Mount Everest appear as we near Namche Bazaar, the bustling Sherpa capital.",
-    overnight: "Teahouse in Namche Bazaar",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First views of Mount Everest", "Hillary Suspension Bridge", "Namche Bazaar", "Sherpa culture"],
+    "day": 3,
+    "title": "Acclimatization Day in Namche Bazaar",
+    "altitude": "3,440m",
+    "distance": "Optional hikes (2-4 hrs)",
+    "description": "A crucial acclimatization day in Namche Bazaar before heading toward the Gokyo Valley. The golden rule: climb high, sleep low. Your guide will lead an optional morning hike to the Everest View Hotel (3,880m) - a 2-hour uphill climb offering jaw-dropping panoramas of Everest (8,848m), Lhotse (8,516m), Nuptse (7,861m), and Ama Dablam (6,812m). Alternatively, visit the Sherpa Museum to learn about mountaineering history, Sherpa culture, and the famous Tenzing Norgay. Other options include exploring Khumjung village (where the Hillary School is located) or simply resting, hydrating, and enjoying Namche's famous bakeries and cafes. This rest day significantly improves your acclimatization and success rate for the higher altitudes ahead.",
+    "overnight": "Teahouse in Namche Bazaar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Everest View Hotel hike", "Panoramic mountain views (Everest, Lhotse, Ama Dablam)", "Sherpa Museum visit", "Khumjung village exploration", "Acclimatization strategy"]
   },
   {
-    day: 4,
-    title: "Acclimatization Day in Namche Bazaar",
-    altitude: "3,440m",
-    distance: "Optional hikes",
-    description: "A crucial rest day for acclimatization. Hike to the Everest View Hotel for panoramic views of Everest, Lhotse, and Ama Dablam. Alternatively, visit the Sherpa Museum, Khumjung village, or the Hillary School. Namche offers great shopping for trekking gear and souvenirs, plus authentic Sherpa culture and bakeries.",
-    overnight: "Teahouse in Namche Bazaar",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Everest View Hotel", "Panoramic mountain views", "Sherpa Museum", "Khumjung village visit"],
+    "day": 4,
+    "title": "Trek from Namche Bazaar to Dole",
+    "altitude": "3,440m → 4,110m",
+    "distance": "11km / 5-6 hrs trek",
+    "description": "Leaving the main Everest Base Camp trail, you now take the less-crowded route toward the stunning Gokyo Valley. The trail climbs through beautiful rhododendron and pine forests with spectacular views of Kongde Ri (6,187m) and Tawache (6,542m). You'll pass through Khumjung village, then descend to Phortse Tenga before the final climb to Dole (4,110m). Dole is a small, peaceful settlement surrounded by towering mountains and offering spectacular views of Cho Oyu (8,188m) - the world's 6th highest peak. This route offers a more remote and authentic trekking experience away from the busy Everest Base Camp trail.",
+    "overnight": "Teahouse in Dole",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Less crowded Gokyo Valley trail", "Views of Kongde Ri and Tawache", "Phortse Tenga valley crossing", "Cho Oyu mountain views", "Peaceful alpine setting"]
   },
   {
-    day: 5,
-    title: "Trek to Dole",
-    altitude: "3,440m → 4,110m",
-    distance: "11km / 5-6 hrs",
-    description: "Leaving Namche, we take a less traveled route toward the Gokyo Valley. The trail climbs through rhododendron and pine forests with stunning views of Kongde Ri and Tawache. We pass through Khumjung and Phortse Tenga before reaching Dole, a small settlement surrounded by mountains and offering spectacular views.",
-    overnight: "Teahouse in Dole",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Less crowded trail", "Views of Kongde Ri", "Tawache mountain views", "Peaceful alpine setting"],
+    "day": 5,
+    "title": "Trek from Dole to Machhermo",
+    "altitude": "4,110m → 4,470m",
+    "distance": "8km / 4-5 hrs trek",
+    "description": "A shorter day allowing for gradual altitude gain - perfect for acclimatization before the higher elevations. The trail continues through beautiful alpine scenery with juniper and rhododendron forests gradually thinning as you gain altitude. Machhermo (4,470m) is a lovely village with a small health post, yak pastures, and a few teahouses. Enjoy stunning, up-close views of Cho Oyu (8,188m), the world's 6th highest mountain, and the surrounding peaks. This area is famous for a reported Yeti sighting in 1974 - ask your guide about the local legend. The afternoon is free for rest and acclimatization walks.",
+    "overnight": "Teahouse in Machhermo",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Gentle altitude gain day", "Views of Cho Oyu (8,188m)", "Yak pastures and grazing lands", "Yeti legend stories", "Remote mountain village atmosphere"]
   },
   {
-    day: 6,
-    title: "Trek to Machhermo",
-    altitude: "4,110m → 4,470m",
-    distance: "8km / 4-5 hrs",
-    description: "A shorter day allowing for gradual altitude gain. The trail continues through beautiful alpine scenery with juniper and rhododendron forests. Machhermo is a lovely village with a small health post and yak pastures. Enjoy stunning views of Cho Oyu, the world's 6th highest mountain, and the surrounding peaks.",
-    overnight: "Teahouse in Machhermo",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Views of Cho Oyu (8,188m)", "Yak pastures", "Alpine landscapes", "Remote mountain village"],
+    "day": 6,
+    "title": "Trek from Machhermo to Gokyo",
+    "altitude": "4,470m → 4,790m",
+    "distance": "9km / 5-6 hrs trek",
+    "description": "Today you reach the stunning Gokyo Valley - one of the most beautiful places in the entire Everest region. The trail climbs gradually through alpine tundra with incredible views of the Ngozumpa Glacier, the largest glacier in Nepal. Suddenly, the turquoise waters of the first Gokyo Lake (Longpongo) appear - a breathtaking sight that will stop you in your tracks. You continue past the second lake (Taujung Tsho) and finally reach the third and largest lake (Dudh Pokhari), where Gokyo village is nestled between the turquoise waters and the massive Ngozumpa Glacier. The views of Cho Oyu, Gyachung Kang, and Everest from Gokyo are absolutely spectacular. This is a day you will never forget.",
+    "overnight": "Teahouse in Gokyo",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["First Gokyo Lake (Longpongo)", "Second lake Taujung Tsho", "Third lake Dudh Pokhari", "Ngozumpa Glacier (Nepal's largest)", "Turquoise glacial lakes arrival"]
   },
   {
-    day: 7,
-    title: "Trek to Gokyo",
-    altitude: "4,470m → 4,790m",
-    distance: "9km / 5-6 hrs",
-    description: "Today we reach the stunning Gokyo Valley. The trail climbs gradually with incredible views of the Ngozumpa Glacier, the largest glacier in Nepal. Suddenly, the turquoise waters of the first Gokyo Lake appear - a breathtaking sight. We continue past the second and third lakes, with Gokyo village nestled between them beneath the massive Ngozumpa Glacier.",
-    overnight: "Teahouse in Gokyo",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First Gokyo Lake", "Turquoise glacial lakes", "Ngozumpa Glacier views", "Arrival in Gokyo valley"],
+    "day": 7,
+    "title": "Acclimatization Day - Gokyo Ri Hike",
+    "altitude": "4,790m → 5,357m → 4,790m",
+    "distance": "5km / 4-5 hrs hike",
+    "description": "This is one of the most spectacular days of the entire trek! Wake before dawn for the challenging but incredibly rewarding hike to Gokyo Ri (5,357m). The climb is steep (about 2-3 hours) but every step is worth it. From the summit, witness a 360-degree panorama that includes four of the world's six highest peaks: Everest (8,848m), Lhotse (8,516m), Makalu (8,485m), and Cho Oyu (8,188m). Below you, the incredible turquoise Gokyo Lakes shimmer, and the massive Ngozumpa Glacier spreads out like a frozen river. After sunrise photography and celebration, descend to Gokyo for a well-earned breakfast. The afternoon is free to explore the fourth and fifth Gokyo Lakes (just 1-2 hours round trip) or relax by the turquoise waters. This view rivals and some say surpasses Kala Patthar.",
+    "overnight": "Teahouse in Gokyo",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Gokyo Ri sunrise (5,357m)", "360-degree Himalayan panorama", "Everest, Lhotse, Makalu, Cho Oyu views", "Four of world's six highest peaks", "Fourth and fifth Gokyo Lakes exploration"]
   },
   {
-    day: 8,
-    title: "Acclimatization Day - Gokyo Ri Hike",
-    altitude: "4,790m → 5,357m → 4,790m",
-    distance: "5km / 4-5 hrs",
-    description: "Pre-dawn hike to Gokyo Ri (5,357m) for the most spectacular panoramic views of the entire Everest region. From the summit, witness Everest, Lhotse, Makalu, Cho Oyu, and the incredible Gokyo Lakes spread out below. After sunrise, return to Gokyo for breakfast. The afternoon is free to explore the fourth and fifth Gokyo Lakes or relax by the turquoise waters.",
-    overnight: "Teahouse in Gokyo",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Gokyo Ri sunrise (5,357m)", "360-degree Himalayan panorama", "Everest, Lhotse, Makalu, Cho Oyu views", "Fourth and fifth Gokyo Lakes"],
+    "day": 8,
+    "title": "Trek from Gokyo to Thagnak via Cho La Pass",
+    "altitude": "4,790m → 5,420m → 4,700m",
+    "distance": "12km / 7-8 hrs trek",
+    "description": "The most challenging and adventurous day of the Gokyo Everest trek - crossing the mighty Cho La Pass (5,420m)! Start very early (around 5 AM) as you follow the moraine of the Ngozumpa Glacier. The trail climbs steeply over rocky terrain before reaching the pass. The final push involves scrambling over boulders and sometimes crossing snow/ice depending on season. At the top, you're rewarded with stunning views of Cholatse (6,440m), Ama Dablam (6,812m), and the surrounding peaks, with prayer flags fluttering in the wind. The descent on the other side is steep and rocky, requiring careful footing. You'll pass by the beautiful Cho La Lake before reaching Thagnak (4,700m), a small settlement beside a glacial lake. This is the day that connects the Gokyo Valley to the Everest Base Camp trail - a true mountaineering achievement!",
+    "overnight": "Teahouse in Thagnak",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Cho La Pass crossing (5,420m)", "Ngozumpa Glacier moraine", "Prayer flag-adorned summit", "Views of Cholatse and Ama Dablam", "Cho La Lake and Thagnak arrival"]
   },
   {
-    day: 9,
-    title: "Trek to Thagnak via Cho La Pass",
-    altitude: "4,790m → 5,420m → 4,700m",
-    distance: "12km / 7-8 hrs",
-    description: "A challenging but rewarding day crossing the Cho La Pass (5,420m). We start early, following the moraine of the Ngozumpa Glacier before a steep climb to the pass. The pass is adorned with prayer flags and offers stunning views of Cholatse and Ama Dablam. The descent on the other side is steep and rocky, leading to Thagnak beside the beautiful Cho La Lake.",
-    overnight: "Teahouse in Thagnak",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Cho La Pass crossing (5,420m)", "Prayer flag-adorned summit", "Views of Cholatse and Ama Dablam", "Cho La Lake"],
+    "day": 9,
+    "title": "Trek from Thagnak to Lobuche",
+    "altitude": "4,700m → 4,940m",
+    "distance": "8km / 4-5 hrs trek",
+    "description": "A shorter and easier day following the Khumbu Glacier moraine, giving your body a chance to recover after yesterday's challenging Cho La Pass crossing. The trail offers incredible views of Pumori (7,161m), Lingtren (6,749m), Khumbutse (6,636m), and the Khumbu Glacier. You'll pass through the small settlement of Dzongla before continuing to Lobuche (4,940m). Despite being a short day, the altitude is significant, so walk slowly and stay hydrated. The afternoon is free to rest or take short acclimatization walks. Lobuche offers dramatic views of the surrounding peaks and serves as the launching point for tomorrow's Everest Base Camp trek. This rest day is essential for your success at higher elevations.",
+    "overnight": "Teahouse in Lobuche",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Khumbu Glacier moraine walk", "Views of Pumori, Lingtren, Khumbutse", "Dzongla village pass", "Rest and recovery day", "Mountain panoramas from Lobuche"]
   },
   {
-    day: 10,
-    title: "Trek to Lobuche",
-    altitude: "4,700m → 4,940m",
-    distance: "8km / 4-5 hrs",
-    description: "An easier day following the Khumbu Glacier moraine. The trail offers incredible views of Pumori, Lingtren, and Khumbutse. We pass through Dzongla before reaching Lobuche. The afternoon is free to rest or explore the area with its stunning mountain views.",
-    overnight: "Teahouse in Lobuche",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Khumbu Glacier views", "Pumori and Lingtren views", "Rest day preparation", "Mountain panoramas"],
+    "day": 10,
+    "title": "Trek from Lobuche to Gorakshep & Everest Base Camp",
+    "altitude": "4,940m → 5,164m → 5,364m → 5,164m",
+    "distance": "13km / 7-8 hrs trek",
+    "description": "This is the day you've been waiting for - reaching Everest Base Camp! Start early for the 3-hour trek to Gorakshep (5,164m), the last settlement before Base Camp. Drop your bags at the teahouse, have a quick snack, then continue along the lateral moraine of the Khumbu Glacier. The trail to Everest Base Camp (5,364m) is rocky and challenging, following prayer flags and cairns across glacier rubble. As you approach Base Camp during the spring climbing season (April-May), you'll see a tent city of expedition teams preparing for summit attempts. You'll have views of the infamous Khumbu Icefall, the first major obstacle for climbers. Stand at the foot of the world's highest mountain - an achievement of a lifetime after crossing Cho La Pass and visiting Gokyo! Take photos, soak in the atmosphere, and celebrate with your team. Return to Gorakshep for overnight. The thinner air at this altitude will make every step feel effortful - walk slowly and stay hydrated.",
+    "overnight": "Teahouse in Gorakshep",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Gorakshep - highest settlement", "Everest Base Camp (5,364m)", "Khumbu Icefall views", "Expedition tent city (spring season)", "Double achievement: Gokyo + EBC!"]
   },
   {
-    day: 11,
-    title: "Trek to Gorakshep & Everest Base Camp",
-    altitude: "4,940m → 5,364m → 5,364m",
-    distance: "13km / 7-8 hrs",
-    description: "An early start to reach Gorakshep, the last settlement before Base Camp. After lunch, we continue to Everest Base Camp (5,364m) following the Khumbu Glacier moraine. Standing at Base Camp surrounded by the Khumbu Icefall and towering peaks is an unforgettable moment. Return to Gorakshep for overnight stay.",
-    overnight: "Teahouse in Gorakshep",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Everest Base Camp (5,364m)", "Khumbu Icefall views", "Glacier moraine trail", "Mount Everest close-up"],
+    "day": 11,
+    "title": "Kala Patthar Sunrise & Trek to Pangboche",
+    "altitude": "5,164m → 5,545m → 3,985m",
+    "distance": "15km / 7-8 hrs trek",
+    "description": "The most spectacular morning of the entire Gokyo Everest trek! Wake at 4 AM for the challenging pre-dawn hike to Kala Patthar (5,545m) - meaning 'black rock' in Nepali. The 2-hour steep climb in the dark is difficult, but the reward is beyond words. Watch the sunrise paint Mount Everest (8,848m) in golden and pink light - the closest you'll ever be to the world's highest peak without climbing it. From Kala Patthar, you get the most unobstructed, face-on view of Everest, plus Nuptse, Changtse (7,580m), and Lhotse. This is the ultimate photography spot of the entire trek. After photography and celebrations, descend to Gorakshep for breakfast, then continue descending to Pangboche (3,985m). The lower altitude brings richer oxygen, better sleep, and relief for your body. You've now conquered Gokyo Ri, Cho La Pass, Everest Base Camp, and Kala Patthar - an incredible triple achievement!",
+    "overnight": "Teahouse in Pangboche",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Kala Patthar sunrise (5,545m)", "Best unobstructed Everest view", "Golden Himalayan sunrise", "Golden Triangle completion: Gokyo + Cho La + EBC + Kala Patthar", "Pangboche Yeti monastery"]
   },
   {
-    day: 12,
-    title: "Kala Patthar Sunrise & Trek to Pangboche",
-    altitude: "5,364m → 5,545m → 3,985m",
-    distance: "15km / 7-8 hrs",
-    description: "Pre-dawn hike to Kala Patthar (5,545m) for the most spectacular sunrise views of Mount Everest, Nuptse, Changtse, and the entire Khumbu range. After sunrise, return to Gorakshep for breakfast, then descend to Pangboche. The lower altitude provides relief and better oxygen levels.",
-    overnight: "Teahouse in Pangboche",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Kala Patthar sunrise", "Best Everest views", "Panoramic mountain photography", "Descent to lower altitude"],
+    "day": 12,
+    "title": "Trek from Pangboche to Namche Bazaar",
+    "altitude": "3,985m → 3,440m",
+    "distance": "12km / 5-6 hrs trek",
+    "description": "A pleasant day descending through the beautiful Tengboche Valley. You'll have time to visit the famous Tengboche Monastery if you missed it on the way up - the largest Tibetan Buddhist monastery in the Khumbu region, with Ama Dablam as its dramatic backdrop. The trail offers new perspectives of Ama Dablam, Everest, and the surrounding peaks as you descend through rhododendron forests. Arrive in Namche Bazaar by afternoon, with time to celebrate your incredible achievement - completing the Gokyo Valley, crossing Cho La Pass, reaching Everest Base Camp, and summiting Kala Patthar. Celebrate with hot showers (worth every rupee), laundry services, and Namche's famous bakeries. You'll feel the oxygen-rich air immediately, and sleep will come easily tonight.",
+    "overnight": "Teahouse in Namche Bazaar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Tengboche Monastery revisit", "Ama Dablam mountain views", "Descent through rhododendron forests", "Celebration in Namche Bazaar", "Hot shower and bakery reward"]
   },
   {
-    day: 13,
-    title: "Trek to Namche Bazaar",
-    altitude: "3,985m → 3,440m",
-    distance: "12km / 5-6 hrs",
-    description: "A pleasant day descending through Tengboche, with time to visit the famous monastery if you missed it on the way up. The trail offers new perspectives of Ama Dablam and the surrounding peaks. Arrive in Namche Bazaar by afternoon, with time to celebrate your achievement, enjoy hot showers, and indulge in bakery treats.",
-    overnight: "Teahouse in Namche Bazaar",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Tengboche Monastery revisit", "Ama Dablam views", "Celebration in Namche", "Hot shower reward"],
+    "day": 13,
+    "title": "Trek from Namche Bazaar to Lukla",
+    "altitude": "3,440m → 2,840m",
+    "distance": "18km / 6-7 hrs trek",
+    "description": "Your final day of trekking follows the Dudh Koshi River as you make your way back to Lukla. The trail is mostly downhill, passing through Monjo (where you exit Sagarmatha National Park) and crossing familiar suspension bridges including the famous Hillary Bridge. The lush forests, rushing river, and small Sherpa villages create a peaceful farewell to the Khumbu region. Arrive in Lukla by late afternoon. Check into your teahouse for the final time and attend a farewell ceremony with your guides and porters. This is your chance to thank them with tips and appreciation. Enjoy a celebratory dinner in Lukla, reflecting on your incredible journey to Gokyo, across Cho La Pass, and to Everest Base Camp. Pack your bags carefully for tomorrow's early morning flight back to Kathmandu.",
+    "overnight": "Teahouse in Lukla",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final day of Everest Gokyo trek", "Dudh Koshi River valley", "Sagarmatha National Park exit", "Farewell ceremony with team", "Luke arrival and celebration dinner"]
   },
   {
-    day: 14,
-    title: "Trek to Lukla",
-    altitude: "3,440m → 2,840m",
-    distance: "18km / 6-7 hrs",
-    description: "Our final day of trekking follows the Dudh Koshi River with mostly downhill walking. The trail passes through Monjo, Phakding, and numerous suspension bridges. Arrive in Lukla by afternoon. Celebrate your successful Everest Gokyo trek with your guide and porters at a farewell dinner in Lukla.",
-    overnight: "Teahouse in Lukla",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Last day of trekking", "Farewell to the mountains", "Celebration with team", "Lukla exploration"],
-  },
-  {
-    day: 15,
-    title: "Flight to Kathmandu & Departure",
-    altitude: "2,840m → 1,400m",
-    distance: "35min flight",
-    description: "Early morning flight back to Kathmandu after weeks in the mountains. The short flight offers final aerial views of the Himalayas. Upon arrival, transfer to your hotel in Kathmandu. Enjoy a well-deserved hot shower and free time for souvenir shopping in Thamel before your evening departure transfer to the airport.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Scenic mountain flight", "Final Himalayan views", "Thamel exploration", "Farewell to Nepal"],
-  },
+    "day": 14,
+    "title": "Flight from Lukla to Kathmandu",
+    "altitude": "2,840m → 1,400m",
+    "distance": "35 min flight",
+    "description": "Early morning wake-up for your scenic return flight from Lukla to Kathmandu. The 35-minute flight offers final aerial views of the Himalayan range - a last glimpse of Everest, Lhotse, Cho Oyu, and the peaks you've been trekking among. Upon arrival at Tribhuvan International Airport, our representative will transfer you to your hotel in Thamel. You've earned a well-deserved hot shower, clean clothes, and the comfort of a real bed. The remainder of your day is free to explore Kathmandu - shop for souvenirs in Thamel, visit a spa for a much-needed massage, or simply rest and reflect on your journey. Celebrate completing one of the world's greatest treks - the Gokyo Valley, Cho La Pass (5,420m), Everest Base Camp (5,364m), Gokyo Ri (5,357m), and Kala Patthar (5,545m). This is an achievement few trekkers accomplish!",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast",
+    "highlights": ["Scenic Lukla to Kathmandu flight", "Final aerial Himalayan views", "Gokyo Ri + Cho La + EBC + Kala Patthar achievement", "Thamel souvenir shopping", "Farewell to the Himalayas"]
+  }
+
 ];
 
 const includes = [
@@ -406,8 +398,8 @@ export default function EverestGokyoTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$1,650</div>
-                <div className="text-lg font-bold text-[#0f2940]">$1,450</div>
+                <div className="text-xs text-slate-400 line-through">$1,850</div>
+                <div className="text-lg font-bold text-[#0f2940]">$1,650</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -427,8 +419,8 @@ export default function EverestGokyoTrekPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$1,650</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,450</div>
+                        <span className="text-white/50 text-sm line-through">$1,850</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,650</div>
                         <span className="text-white/60 text-sm">per person</span>
                         <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $200</Badge>
                       </div>

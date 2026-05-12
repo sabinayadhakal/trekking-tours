@@ -39,146 +39,128 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
+  
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Evening free to explore the vibrant streets of Thamel or rest after your journey.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements"],
+    "day": 1,
+    "title": "Flight from Kathmandu to Lukla & Trek to Phakding",
+    "altitude": "1,400m → 2,840m → 2,610m",
+    "distance": "35 min flight / 3-4 hrs trek",
+    "description": "Early morning departure from your hotel for the scenic mountain flight from Kathmandu to Lukla (Tenzing-Hillary Airport). This 35-minute flight offers breathtaking aerial views of the Himalayan range, including Langtang, Gauri Shankar, and Everest on clear days. Upon landing at Lukla's famous hillside airstrip, you'll meet your trekking crew and porters. After organizing gear, begin the gentle descent to Phakding. The trail follows the Dudh Koshi River through pine forests, crossing several suspension bridges and passing through small Sherpa settlements. This short trek helps with initial acclimatization while introducing you to the beauty of the Khumbu region. Overnight in Phakding's comfortable teahouse.",
+    "overnight": "Teahouse in Phakding",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic mountain flight to Lukla", "Tenzing-Hillary Airport landing", "First views of the Himalayas", "Dudh Koshi River valley", "Suspension bridge crossings"]
   },
   {
-    day: 2,
-    title: "Flight to Lukla & Trek to Phakding",
-    altitude: "2,840m → 2,610m",
-    distance: "35min flight / 3-4 hrs trek",
-    description: "Early morning flight to Lukla (Tenzing-Hillary Airport), one of the most thrilling mountain flights in the world. After meeting our porters, we begin our trek descending to Phakding. The trail follows the Dudh Koshi River through pine forests, crossing suspension bridges and passing through small settlements. This short trek helps with acclimatization.",
-    overnight: "Teahouse in Phakding",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic mountain flight to Lukla", "First views of Himalayan peaks", "Dudh Koshi River valley", "Suspension bridge crossings"],
+    "day": 2,
+    "title": "Trek from Phakding to Namche Bazaar",
+    "altitude": "2,610m → 3,440m",
+    "distance": "10km / 5-6 hrs trek",
+    "description": "Today's trek takes you from Phakding to Namche Bazaar, the bustling Sherpa capital and gateway to the Everest region. The trail follows the Dudh Koshi River, crossing the iconic Hillary Suspension Bridge - the highest and longest in the Khumbu. You'll pass through Monjo (Sagarmatha National Park entry point) where permits are checked. The trail steepens considerably on the final climb to Namche, with several switchbacks offering magnificent views. As you approach Namche, your patience is rewarded with your first glimpse of Mount Everest's summit peeking above the ridge. Namche Bazaar is a vibrant town with banks, bakeries, gear shops, and exceptional Sherpa culture. This is a challenging but rewarding day that sets the stage for your Everest adventure.",
+    "overnight": "Teahouse in Namche Bazaar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Hillary Suspension Bridge crossing", "Sagarmatha National Park entry", "First views of Mount Everest", "Traditional Sherpa villages", "Namche Bazaar arrival"]
   },
   {
-    day: 3,
-    title: "Trek to Namche Bazaar",
-    altitude: "2,610m → 3,440m",
-    distance: "10km / 5-6 hrs",
-    description: "Today's trek takes us to the gateway of the Everest region. We follow the Dudh Koshi, crossing several suspension bridges including the famous Hillary Bridge. The trail steepens as we approach Namche, with the last section being a challenging uphill climb. The first views of Mount Everest appear as we near Namche Bazaar, the bustling Sherpa capital.",
-    overnight: "Teahouse in Namche Bazaar",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First views of Mount Everest", "Hillary Suspension Bridge", "Namche Bazaar", "Sherpa culture"],
+    "day": 3,
+    "title": "Acclimatization Day in Namche Bazaar",
+    "altitude": "3,440m",
+    "distance": "Optional hikes (2-4 hrs)",
+    "description": "A crucial acclimatization day in Namche Bazaar before climbing higher. The golden rule: climb high, sleep low. Your guide will lead an optional morning hike to the Everest View Hotel (3,880m) - a 2-hour uphill climb offering jaw-dropping panoramas of Everest (8,848m), Lhotse (8,516m), Nuptse (7,861m), and Ama Dablam (6,812m). Alternatively, visit the Sherpa Museum to learn about mountaineering history, Sherpa culture, and the famous Tenzing Norgay. Other options include exploring Khumjung village (where the Hillary School is located) or simply resting, hydrating, and enjoying Namche's famous bakeries and cafes. This rest day significantly improves your acclimatization and success rate for higher altitudes.",
+    "overnight": "Teahouse in Namche Bazaar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Everest View Hotel hike", "Panoramic mountain views (Everest, Lhotse, Ama Dablam)", "Sherpa Museum visit", "Khumjung village exploration", "Acclimatization strategy"]
   },
   {
-    day: 4,
-    title: "Acclimatization Day in Namche Bazaar",
-    altitude: "3,440m",
-    distance: "Optional hikes",
-    description: "A crucial rest day for acclimatization. Hike to the Everest View Hotel for panoramic views of Everest, Lhotse, and Ama Dablam. Alternatively, visit the Sherpa Museum, Khumjung village, or the Hillary School. Namche offers great shopping for trekking gear and souvenirs, plus authentic Sherpa culture and bakeries.",
-    overnight: "Teahouse in Namche Bazaar",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Everest View Hotel", "Panoramic mountain views", "Sherpa Museum", "Khumjung village visit"],
+    "day": 4,
+    "title": "Trek from Namche Bazaar to Tengboche",
+    "altitude": "3,440m → 3,860m",
+    "distance": "10km / 5-6 hrs trek",
+    "description": "Leaving Namche Bazaar, the trail contours along the hillsides with spectacular views of Everest, Nuptse, Lhotse, and the magnificent Ama Dablam. The path is relatively flat for the first hour before descending to Kayangjuma and crossing the Dudh Koshi River at Phunki Tenga (3,250m) - a great spot for a noodle soup break. The final climb to Tengboche (3,860m) is steep but incredibly rewarding. Tengboche Monastery, the largest Tibetan Buddhist monastery in the Khumbu region, sits majestically with Ama Dablam as its backdrop. Attend the evening prayer ceremony (puja) where monks chant, blow conch shells, and play traditional instruments. The sunset over the Himalayas from Tengboche is unforgettable. This day offers some of the most spectacular mountain photography opportunities on the entire trek.",
+    "overnight": "Teahouse in Tengboche",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Ama Dablam close-up views", "Tengboche Monastery visit", "Evening prayer ceremony", "Sunset over the Himalayas", "Rhododendron forests"]
   },
   {
-    day: 5,
-    title: "Trek to Tengboche",
-    altitude: "3,440m → 3,860m",
-    distance: "10km / 5-6 hrs",
-    description: "Leaving Namche, the trail contours along hillsides with stunning views of Everest, Nuptse, Lhotse, and Ama Dablam. We pass through rhododendron forests and traditional Sherpa villages. Tengboche Monastery, the largest in the Khumbu region, offers spectacular sunset views over the Himalayas. Evening prayer ceremony at the monastery is a magical experience.",
-    overnight: "Teahouse in Tengboche",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Spectacular mountain views", "Tengboche Monastery", "Sunset over Himalayas", "Prayer ceremony"],
+    "day": 5,
+    "title": "Trek from Tengboche to Dingboche",
+    "altitude": "3,860m → 4,410m",
+    "distance": "11km / 5-6 hrs trek",
+    "description": "Today's trek descends through beautiful rhododendron and juniper forests to Deboche, then crosses the Imja Khola River. The trail continues through Pangboche village (3,930m), one of the oldest Sherpa settlements in the Khumbu, home to a famous monastery said to contain a Yeti scalp. As you exit the forest, the landscape opens into the vast, alpine Imja Valley with stunning views of Ama Dablam towering above. Dingboche (4,410m) is a beautiful Sherpa village surrounded by stone-walled potato fields and dramatic mountain scenery including Lhotse, Island Peak, and Ama Dablam. This is a key acclimatization point, and you'll notice the air thinning significantly. Spend the afternoon resting, hydrating, and enjoying the mountain atmosphere.",
+    "overnight": "Teahouse in Dingboche",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Pangboche Monastery (Yeti scalp)", "Imja Valley alpine landscape", "Ama Dablam panorama", "Island Peak views", "Sherpa farming community"]
   },
   {
-    day: 6,
-    title: "Trek to Dingboche",
-    altitude: "3,860m → 4,410m",
-    distance: "11km / 5-6 hrs",
-    description: "Descending through forests to Deboche, then crossing the Imja Khola. The trail climbs through rhododendron and juniper forests before opening into the alpine Imja Valley. Dingboche is a beautiful village surrounded by potato fields and dramatic mountain scenery including Ama Dablam and Lhotse.",
-    overnight: "Teahouse in Dingboche",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Imja Valley views", "Ama Dablam panorama", "Alpine landscapes", "Sherpa farming community"],
+    "day": 6,
+    "title": "Acclimatization Day in Dingboche",
+    "altitude": "4,410m",
+    "distance": "Optional hike to Nagarjun Hill (5,100m)",
+    "description": "A second crucial rest day for proper acclimatization before heading to higher elevations. Today's recommended activity is the hike to Nagarjun Hill (also known as Nangkartshang Peak at 5,100m). This 3-4 hour round-trip climb offers spectacular 360-degree views of Makalu (8,485m - the world's fifth highest), Lhotse, Nuptse, Ama Dablam, Island Peak, and the entire Imja Valley. The climb is steep but incredibly rewarding, helping you acclimatize more effectively for the altitude above 5,000m. After lunch, you can explore Dingboche's ancient Buddhist monastery, visit local yak herding families, or simply rest. Your guide will monitor your oxygen saturation and ensure you're properly hydrated for the challenging days ahead. This acclimatization day significantly increases your success rate for Everest Base Camp and Kala Patthar.",
+    "overnight": "Teahouse in Dingboche",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Nagarjun Hill hike (5,100m)", "360-degree Himalayan panorama", "Views of Mt. Makalu (8,485m)", "Island Peak and Lhotse views", "Monastery and yak herder visits"]
   },
   {
-    day: 7,
-    title: "Acclimatization Day in Dingboche",
-    altitude: "4,410m",
-    distance: "Optional hikes",
-    description: "Another important rest day to aid acclimatization. Hike to Nagarjun Hill (5,100m) for spectacular views of Makalu, Lhotse, and the surrounding peaks. The climb provides excellent panoramic views and helps prepare for higher altitudes. Alternatively, explore Dingboche's Buddhist monastery or simply rest and enjoy the mountain scenery.",
-    overnight: "Teahouse in Dingboche",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Nagarjun Hill hike", "Views of Mt. Makalu", "Acclimatization", "Monastery visit"],
+    "day": 7,
+    "title": "Trek from Dingboche to Lobuche",
+    "altitude": "4,410m → 4,940m",
+    "distance": "11km / 5-6 hrs trek",
+    "description": "Today's trek continues up the broad, arid Imja Valley with the towering peaks of Nuptse, Lhotse, and Ama Dablam dominating the skyline. The trail climbs gradually to Thukla Pass (4,620m), marked by a field of memorial chortens and stone cairns dedicated to climbers (including the famous Scott Fischer) who lost their lives on Mount Everest and surrounding peaks. This poignant site reminds you of the mountain's power. After a short break, the trail ascends more steeply to Lobuche (4,940m), a small settlement of basic lodges nestled in a dramatic, rocky amphitheater. The air is noticeably thin here - move slowly, breathe deeply, and listen to your body. In the afternoon, you may take a short acclimatization walk toward the Khumbu Glacier. Overnight at Lobuche's high-altitude teahouse.",
+    "overnight": "Teahouse in Lobuche",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Thukla Pass memorial chortens", "Climbers' memorial tribute", "Khumbu Glacier views", "Nuptse and Lhotse panorama", "High-alpine landscape entry"]
   },
   {
-    day: 8,
-    title: "Trek to Lobuche",
-    altitude: "4,410m → 4,940m",
-    distance: "11km / 5-6 hrs",
-    description: "The trail climbs gradually up the valley, passing through Thukla with its memorial chortens dedicated to climbers who lost their lives on Everest. The path becomes rockier as we enter the high alpine zone with views of Khumbu Glacier and surrounding peaks. Lobuche is a small settlement with basic lodges nestled in a dramatic setting.",
-    overnight: "Teahouse in Lobuche",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Thukla Memorial", "Khumbu Glacier views", "High alpine landscape", "Climbers' memorial"],
+    "day": 8,
+    "title": "Trek from Lobuche to Gorakshep & Everest Base Camp",
+    "altitude": "4,940m → 5,164m → 5,364m",
+    "distance": "13km / 7-8 hrs trek",
+    "description": "This is the day you've been waiting for - reaching Everest Base Camp! Start early for the 3-hour trek to Gorakshep (5,164m), the last settlement before Base Camp. Drop your bags at the teahouse, have a quick snack, then continue along the lateral moraine of the Khumbu Glacier. The trail to Everest Base Camp (5,364m) is rocky and challenging, following prayer flags and cairns across glacier rubble. As you approach Base Camp during the spring climbing season (April-May), you'll see a tent city of expedition teams preparing for summit attempts. You'll have views of the infamous Khumbu Icefall, the first major obstacle for climbers. Stand at the foot of the world's highest mountain - an achievement of a lifetime! Take photos, soak in the atmosphere, and celebrate with your team. Return to Gorakshep for overnight. The thinner air at this altitude will make every step feel effortful - walk slowly and stay hydrated.",
+    "overnight": "Teahouse in Gorakshep",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Gorakshep - highest settlement", "Everest Base Camp (5,364m)", "Khumbu Icefall views", "Expedition tent city (spring season)", "Once-in-a-lifetime achievement"]
   },
   {
-    day: 9,
-    title: "Trek to Gorakshep & Everest Base Camp",
-    altitude: "4,940m → 5,364m → 5,364m",
-    distance: "13km / 7-8 hrs",
-    description: "An early start to reach Gorakshep, the last settlement before Base Camp. After lunch, we continue to Everest Base Camp (5,364m) following the Khumbu Glacier moraine. Standing at Base Camp surrounded by the Khumbu Icefall and towering peaks is an unforgettable moment. Return to Gorakshep for overnight stay.",
-    overnight: "Teahouse in Gorakshep",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Everest Base Camp (5,364m)", "Khumbu Icefall views", "Glacier moraine trail", "Mount Everest close-up"],
+    "day": 9,
+    "title": "Kala Patthar Sunrise & Trek to Pheriche",
+    "altitude": "5,164m → 5,545m → 4,240m",
+    "distance": "12km / 7-8 hrs trek",
+    "description": "The most spectacular morning of the entire trek! Wake at 4 AM for the challenging pre-dawn hike to Kala Patthar (5,545m) - meaning 'black rock' in Nepali. The 2-hour steep climb in the dark is difficult, but the reward is beyond words. Watch the sunrise paint Mount Everest (8,848m) in golden and pink light - the closest you'll ever be to the world's highest peak without climbing it. From Kala Patthar, you get the most unobstructed, face-on view of Everest, plus Nuptse, Changtse (7,580m), and Lhotse. After photography and celebrations, descend to Gorakshep for breakfast, then continue descending to Pheriche (4,240m). The lower altitude brings richer oxygen, better sleep, and relief for your body. Pheriche has the Himalayan Rescue Association's medical clinic where you can learn about altitude sickness. This day is the climax of your Everest Base Camp trek.",
+    "overnight": "Teahouse in Pheriche",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Kala Patthar sunrise (5,545m)", "Best unobstructed Everest view", "Golden Himalayan sunrise", "Pheriche arrival and lower altitude", "HRA medical clinic information"]
   },
   {
-    day: 10,
-    title: "Kala Patthar Sunrise & Trek to Pheriche",
-    altitude: "5,364m → 5,545m → 4,240m",
-    distance: "12km / 7-8 hrs",
-    description: "Pre-dawn hike to Kala Patthar (5,545m) for the most spectacular sunrise views of Mount Everest, Nuptse, Changtse, and the entire Khumbu range. After sunrise, return to Gorakshep for breakfast, then descend to Pheriche. The lower altitude provides relief and better oxygen levels.",
-    overnight: "Teahouse in Pheriche",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Kala Patthar sunrise", "Best Everest views", "Panoramic mountain photography", "Descent to lower altitude"],
+    "day": 10,
+    "title": "Trek from Pheriche to Namche Bazaar",
+    "altitude": "4,240m → 3,440m",
+    "distance": "15km / 6-7 hrs trek",
+    "description": "The descent continues as you retrace your steps through the beautiful Khumbu Valley. The trail passes back through Pangboche, Tengboche, and Kyangjuma. Descending is easier on the lungs but harder on the knees - use trekking poles! The landscape transforms from high-alpine desert back to lush rhododendron and pine forests. The familiar mountains - Everest, Lhotse, and Ama Dablam - appear from new angles. Arrive in Namche Bazaar by afternoon, where you can celebrate your successful Everest Base Camp achievement. Reward yourself with hot showers (worth every rupee), laundry services, and Namche's famous bakeries. You'll feel the oxygen-rich air immediately, and sleep will come easily tonight. This is a day of reflection and celebration with your trekking team.",
+    "overnight": "Teahouse in Namche Bazaar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Return descent through Khumbu", "New mountain perspectives", "Rhododendron forest trails", "Hot shower celebration", "Namche bakeries and cafes"]
   },
   {
-    day: 11,
-    title: "Trek to Namche Bazaar",
-    altitude: "4,240m → 3,440m",
-    distance: "15km / 6-7 hrs",
-    description: "A long descent day retracing our steps through Tengboche and along the Dudh Koshi. The trail offers new perspectives of familiar mountains and landscapes. Arrive in Namche Bazaar by afternoon, with time to celebrate your achievement, enjoy hot showers, and indulge in bakery treats.",
-    overnight: "Teahouse in Namche Bazaar",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Descending through Tengboche", "New mountain perspectives", "Celebration in Namche", "Hot shower reward"],
+    "day": 11,
+    "title": "Trek from Namche Bazaar to Lukla",
+    "altitude": "3,440m → 2,840m",
+    "distance": "18km / 6-7 hrs trek",
+    "description": "Your final day of trekking follows the Dudh Koshi River as you make your way back to Lukla. The trail is mostly downhill, passing through Monjo (where you exit Sagarmatha National Park) and crossing familiar suspension bridges including the Hillary Bridge. The lush forests, rushing river, and small Sherpa villages create a peaceful farewell to the Khumbu region. Arrive in Lukla by late afternoon. Check into your teahouse for the final time and attend a farewell ceremony with your guides and porters. This is your chance to thank them with tips and appreciation. Enjoy a celebratory dinner in Lukla, reflecting on your incredible journey to the base of Mount Everest. Pack your bags carefully for tomorrow's early morning flight back to Kathmandu.",
+    "overnight": "Teahouse in Lukla",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final day of Everest Base Camp trek", "Dudh Koshi River valley", "Farewell to the Himalayas", "Celebration dinner with team", "Lukla arrival and packing"]
   },
   {
-    day: 12,
-    title: "Trek to Lukla",
-    altitude: "3,440m → 2,840m",
-    distance: "18km / 6-7 hrs",
-    description: "Our final day of trekking follows the Dudh Koshi River with mostly downhill walking. The trail passes through Monjo, Phakding, and numerous suspension bridges. Arrive in Lukla by afternoon. Celebrate your successful Everest Base Camp trek with your guide and porters at a farewell dinner in Lukla.",
-    overnight: "Teahouse in Lukla",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Last day of trekking", "Farewell to the mountains", "Celebration with team", "Lukla exploration"],
-  },
-  {
-    day: 13,
-    title: "Flight to Kathmandu",
-    altitude: "2,840m → 1,400m",
-    distance: "35min flight",
-    description: "Early morning flight back to Kathmandu after weeks in the mountains. The short flight offers final aerial views of the Himalayas. Upon arrival, transfer to your hotel in Kathmandu. Enjoy a well-deserved hot shower and free time for souvenir shopping in Thamel. Evening farewell dinner celebrating your Everest Base Camp achievement.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Dinner",
-    highlights: ["Scenic mountain flight", "Final Himalayan views", "Thamel exploration", "Farewell celebration dinner"],
-  },
-  {
-    day: 14,
-    title: "Departure",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of an incredible Himalayan adventure standing at the base of the world's highest mountain.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 12,
+    "title": "Flight from Lukla to Kathmandu",
+    "altitude": "2,840m → 1,400m",
+    "distance": "35 min flight",
+    "description": "Early morning wake-up for your scenic return flight from Lukla to Kathmandu. The 35-minute flight offers final aerial views of the Himalayan range - a last glimpse of Everest, Lhotse, and the peaks you've been trekking among. Upon arrival at Tribhuvan International Airport, our representative will transfer you to your hotel in Thamel. You've earned a well-deserved hot shower, clean clothes, and the comfort of a real bed. The afternoon is free to explore Kathmandu - shop for souvenirs in Thamel, visit a spa for a much-needed massage, or simply rest. In the evening, enjoy a farewell dinner at a traditional Nepali restaurant with cultural performance (optional). Celebrate completing one of the world's greatest treks - reaching Everest Base Camp at 5,364m and Kala Patthar at 5,545m.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Dinner",
+    "highlights": ["Scenic Lukla to Kathmandu flight", "Final aerial Himalayan views", "Thamel souvenir shopping", "Farewell celebration dinner", "Everest Base Camp achievement celebration"]
+  }
+
 ];
 
 const includes = [
@@ -397,8 +379,8 @@ export default function EverestBaseCampTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$1,450</div>
-                <div className="text-lg font-bold text-[#0f2940]">$1,250</div>
+                <div className="text-xs text-slate-400 line-through">$1,720</div>
+                <div className="text-lg font-bold text-[#0f2940]">$1,520</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -418,8 +400,8 @@ export default function EverestBaseCampTrekPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$1,450</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,250</div>
+                        <span className="text-white/50 text-sm line-through">$1,720</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,520</div>
                         <span className="text-white/60 text-sm">per person</span>
                         <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $200</Badge>
                       </div>

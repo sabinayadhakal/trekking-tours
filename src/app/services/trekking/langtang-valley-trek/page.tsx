@@ -42,105 +42,85 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Evening free to explore the vibrant streets of Thamel or rest after your journey.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements"],
+    "day": 1,
+    "title": "Drive from Kathmandu to Syabrubesi",
+    "altitude": "1,400m → 1,550m",
+    "distance": "122km / 7-8 hrs drive",
+    "description": "Early morning departure from your hotel in Kathmandu for the scenic drive to Syabrubesi, the gateway to the Langtang Valley. The journey follows the Trishuli River valley through beautiful rural landscapes, terraced farmlands, and traditional villages. You'll pass through Dhunche (1,950m), the district headquarters of Rasuwa, where your Langtang National Park permit will be checked. The road winds through hillside forests with occasional views of Ganesh Himal (7,422m) and other peaks. Arrive in Syabrubesi (1,550m), a charming village situated at the confluence of the Bhote Koshi and Trishuli Rivers. Check into your teahouse, meet your trekking crew, and prepare for the adventure ahead. Evening briefing on the Langtang Valley route, including the optional climbs to Kyanjin Ri and Tserko Ri.",
+    "overnight": "Teahouse in Syabrubesi",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic Trishuli River drive", "Ganesh Himal views", "Dhunche pass through", "Gateway to Langtang", "Syabrubesi arrival"]
   },
   {
-    day: 2,
-    title: "Drive to Syabrubesi",
-    altitude: "1,400m → 1,550m",
-    distance: "122km / 7-8 hrs drive",
-    description: "Early morning departure from Kathmandu for the scenic drive to Syabrubesi. The journey follows the Trishuli River valley with beautiful views of rural landscapes, terraced farmlands, and distant mountains including Ganesh Himal. The road winds through hillside villages and subtropical forests. Arrive in Syabrubesi, a charming village that serves as the gateway to the Langtang region. Check into your teahouse and prepare for the trek ahead.",
-    overnight: "Teahouse in Syabrubesi",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic Trishuli River drive", "Ganesh Himal views", "Rural Nepali villages", "Gateway to Langtang"],
+    "day": 2,
+    "title": "Trek from Syabrubesi to Lama Hotel",
+    "altitude": "1,550m → 2,380m",
+    "distance": "15km / 6-7 hrs trek",
+    "description": "Your Langtang Valley trek begins! After breakfast, cross the suspension bridge over the Bhote Koshi River and follow the Langtang Khola upstream. The trail winds through dense forests of oak, rhododendron, and bamboo, with occasional glimpses of waterfalls cascading down steep cliffs. This forest is one of the best places to spot the endangered red panda - keep your eyes open! You'll pass through several small settlements including Domen and Bamboo, where you can stop for tea or lunch. The afternoon climb through beautiful forest brings you to Lama Hotel (2,380m), a cluster of teahouses nestled in the woods beside the river. This area is also home to Himalayan monkeys and diverse bird species. Overnight in a comfortable teahouse at Lama Hotel.",
+    "overnight": "Teahouse in Lama Hotel",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Suspension bridge crossing", "Dense oak and rhododendron forest", "Waterfalls and cascades", "Red panda habitat", "Lama Hotel arrival"]
   },
   {
-    day: 3,
-    title: "Trek to Lama Hotel",
-    altitude: "1,550m → 2,380m",
-    distance: "15km / 6-7 hrs",
-    description: "Our trek begins! We cross the suspension bridge over the Bhote Koshi River and follow the Langtang Khola upstream. The trail winds through dense forests of oak, rhododendron, and bamboo, with occasional glimpses of waterfalls cascading down steep cliffs. We pass through small settlements including Domen and Bamboo, where we stop for lunch. The afternoon climb through forest brings us to Lama Hotel, a cluster of teahouses nestled in the woods. Keep an eye out for red pandas and Himalayan monkeys in this forested section.",
-    overnight: "Teahouse in Lama Hotel",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Suspension bridge crossings", "Dense oak and rhododendron forest", "Bamboo village", "Red panda habitat"],
+    "day": 3,
+    "title": "Trek from Lama Hotel to Langtang Village",
+    "altitude": "2,380m → 3,430m",
+    "distance": "14km / 5-6 hrs trek",
+    "description": "Today the valley opens up dramatically as you gain altitude, offering your first breathtaking views of Langtang Lirung (7,227m) and other surrounding peaks. The trail passes through Ghoda Tabela (3,000m) - meaning 'horse stable' - a clearing with teahouses and yak pastures where you can see grazing yaks and horses. Above the tree line, you enter alpine terrain with beautiful mani walls, prayer flags, and traditional stone houses. Langtang Village (3,430m) was devastated by the 2015 earthquake but has been beautifully rebuilt, showcasing the incredible resilience of the local Tamang community. The village offers stunning mountain views and a chance to interact with friendly locals and hear their stories of rebuilding. Overnight in Langtang Village.",
+    "overnight": "Teahouse in Langtang Village",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["First views of Langtang Lirung (7,227m)", "Ghoda Tabela yak pastures", "Alpine terrain with mani walls", "Rebuilt Langtang Village", "Tamang culture experience"]
   },
   {
-    day: 4,
-    title: "Trek to Langtang Village",
-    altitude: "2,380m → 3,430m",
-    distance: "14km / 5-6 hrs",
-    description: "Today the valley opens up as we gain altitude, offering first breathtaking views of Langtang Lirung (7,227m). The trail continues through forest, passing Ghoda Tabela (meaning 'horse stable') - a clearing with tea houses and yak pastures. Above the tree line, we enter alpine terrain with mani walls, prayer flags, and traditional stone houses. Langtang Village was devastated by the 2015 earthquake but has been beautifully rebuilt, showcasing the resilience of the local community. The village offers stunning mountain views and a chance to interact with friendly Tamang locals.",
-    overnight: "Teahouse in Langtang Village",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First views of Langtang Lirung", "Ghoda Tabela yak pastures", "Mani walls and prayer flags", "Rebuilt Langtang Village"],
+    "day": 4,
+    "title": "Trek from Langtang Village to Kyanjin Gompa",
+    "altitude": "3,430m → 3,870m",
+    "distance": "12km / 4-5 hrs trek",
+    "description": "A relatively short day allowing for gradual acclimatization before the optional climbs tomorrow. The trail follows a broad, open valley with stunning mountain scenery on all sides - Langtang Lirung (7,227m) dominates the skyline, while peaks like Gangchempo (6,387m), Langtang II, and Dorje Lakpa surround you. You'll pass through Mundu village with its ancient chortens, prayer wheels, and traditional stone houses. Continue past yak pastures with grazing animals and beautiful mountain streams. Kyanjin Gompa (3,870m) is the last settlement in the Langtang Valley, a beautiful village dominated by its ancient Buddhist monastery (gompa) and surrounded by towering peaks. Visit the famous Kyanjin Cheese Factory, established by Swiss experts in the 1950s, to sample delicious yak cheese, curd, and fresh bread. Explore the monastery with its centuries-old Buddhist artifacts. Overnight in Kyanjin Gompa.",
+    "overnight": "Teahouse in Kyanjin Gompa",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Broad valley panorama", "Mundu village chortens", "Yak pastures", "Kyanjin Gompa monastery", "Yak cheese factory visit and tasting"]
   },
   {
-    day: 5,
-    title: "Trek to Kyanjin Gompa",
-    altitude: "3,430m → 3,870m",
-    distance: "12km / 4-5 hrs",
-    description: "A relatively short day allowing for gradual acclimatization. The trail follows a broad, open valley with stunning mountain scenery on all sides. We pass through Mundu village with its ancient chortens and continue past yak pastures with grazing animals. Kyanjin Gompa is the last settlement in the valley, a beautiful village dominated by its ancient Buddhist monastery and surrounded by towering peaks including Langtang Lirung, Gangchempo, and Dorje Lakpa. Visit the famous Kyanjin Cheese Factory, established by Swiss experts in the 1950s, to sample delicious yak cheese.",
-    overnight: "Teahouse in Kyanjin Gompa",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Broad valley with mountain panorama", "Mundu village chortens", "Kyanjin Gompa monastery", "Yak cheese factory visit"],
+    "day": 5,
+    "title": "Exploration Day - Kyanjin Ri or Tserko Ri",
+    "altitude": "3,870m → 4,773m / 5,033m → 3,870m",
+    "distance": "8-12km / 5-7 hrs hike",
+    "description": "The highlight of the Langtang Valley trek! Choose your adventure based on fitness and weather. Kyanjin Ri (4,773m) offers a challenging 2-3 hour climb to a spectacular ridge with 360-degree views of the entire Langtang range including Langtang Lirung (7,227m), Langtang II, Dorje Lakpa (6,966m), and Yala Peak (5,732m). For experienced trekkers seeking an extra challenge, Tserko Ri (5,033m) is a longer, steeper climb with even more dramatic panoramas stretching to the Tibetan plateau. As the sun rises, the peaks glow golden - an unforgettable experience. After descending, explore the ancient Kyanjin Gompa monastery more thoroughly, walk to the glacial moraine of Langtang Lirung, visit the yak cheese factory again, or simply relax and soak in the mountain atmosphere. In the evening, enjoy a farewell celebration with your trekking team at Kyanjin Gompa.",
+    "overnight": "Teahouse in Kyanjin Gompa",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Kyanjin Ri sunrise (4,773m)", "Tserko Ri option (5,033m)", "360-degree Himalayan panorama", "Langtang Lirung glacial moraine", "Farewell celebration with team"]
   },
   {
-    day: 6,
-    title: "Exploration Day - Kyanjin Ri or Tserko Ri",
-    altitude: "3,870m → 4,773m / 5,033m → 3,870m",
-    distance: "8-12km / 5-7 hrs",
-    description: "The highlight of the trek! Choose your adventure based on fitness and weather. Kyanjin Ri (4,773m) offers a challenging 2-3 hour climb to a spectacular ridge with 360-degree views of the entire Langtang range including Langtang Lirung, Langtang II, Dorje Lakpa, and Yala Peak. For experienced trekkers seeking an extra challenge, Tserko Ri (5,033m) is a longer, steeper climb with even more dramatic panoramas stretching to the Tibetan plateau. After descending, explore the ancient monastery, walk to the glacial moraine, or simply relax and soak in the mountain atmosphere. Evening farewell celebration with your trekking team.",
-    overnight: "Teahouse in Kyanjin Gompa",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Kyanjin Ri sunrise (4,773m)", "Tserko Ri option (5,033m)", "360-degree Himalayan panorama", "Glacier and moraine exploration"],
+    "day": 6,
+    "title": "Trek from Kyanjin Gompa to Lama Hotel",
+    "altitude": "3,870m → 2,380m",
+    "distance": "18km / 6-7 hrs trek",
+    "description": "Today you retrace your steps down the Langtang Valley, descending through Kyanjin Gompa, Mundu village, and Langtang Village. The descent offers completely different perspectives of the mountains and valley - the peaks that towered above you on the way up now appear from new angles. You'll pass through Ghoda Tabela with its yak pastures and continue into the lush forests. The forest feels magical in the afternoon light as you return to Lama Hotel (2,380m) for the night. This long descent day allows time to reflect on the incredible experiences of the past days - the mountain views, the rebuilt villages, and the warm hospitality of the Tamang people. Overnight in a comfortable teahouse at Lama Hotel.",
+    "overnight": "Teahouse in Lama Hotel",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Descending through Langtang Valley", "New mountain perspectives", "Ghoda Tabela yak pastures", "Forest return", "Reflection time"]
   },
   {
-    day: 7,
-    title: "Trek to Lama Hotel",
-    altitude: "3,870m → 2,380m",
-    distance: "18km / 6-7 hrs",
-    description: "We retrace our steps down the valley, descending through Langtang Village and Ghoda Tabela back into the forest. The descent is faster than the ascent, with completely different perspectives of the mountains and valley. The forest feels magical in the afternoon light as we return to Lama Hotel for the night.",
-    overnight: "Teahouse in Lama Hotel",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Descending through Langtang Valley", "New mountain perspectives", "Forest return", "Afternoon light in forest"],
+    "day": 7,
+    "title": "Trek from Lama Hotel to Syabrubesi",
+    "altitude": "2,380m → 1,550m",
+    "distance": "15km / 5-6 hrs trek",
+    "description": "Your final day of trekking in the Langtang Valley. The trail descends through beautiful forests of oak, rhododendron, and bamboo, following the Langtang Khola downstream. You'll cross several suspension bridges and pass through the small settlements of Bamboo and Domen. The rushing river, lush forest, and occasional waterfall create a peaceful farewell to the Langtang region. Arrive in Syabrubesi (1,550m) by early afternoon. Check into your teahouse, take a well-deserved hot shower, and enjoy cold drinks and snacks. In the evening, celebrate your successful Langtang Valley trek achievement - including your climb to Kyanjin Ri or Tserko Ri - with a celebration dinner with your guide and porters.",
+    "overnight": "Teahouse in Syabrubesi",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final day of Langtang trek", "Suspension bridge crossings", "Forest descent", "Syabrubesi arrival", "Celebration dinner with team"]
   },
   {
-    day: 8,
-    title: "Trek to Syabrubesi",
-    altitude: "2,380m → 1,550m",
-    distance: "15km / 5-6 hrs",
-    description: "Final day of trekking as we descend through Bamboo and Domen to Syabrubesi. The trail follows the river through lush forest with many suspension bridge crossings. Arrive in Syabrubesi by early afternoon with time to celebrate your Langtang achievement! Enjoy a hot shower, cold drinks, and a well-deserved celebration dinner with your guide and porters.",
-    overnight: "Teahouse in Syabrubesi",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Final trekking day", "Suspension bridge crossings", "Celebration in Syabrubesi", "Farewell to the mountains"],
-  },
-  {
-    day: 9,
-    title: "Drive to Kathmandu",
-    altitude: "1,550m → 1,400m",
-    distance: "122km / 7-8 hrs drive",
-    description: "Scenic drive back to Kathmandu along the Trishuli River, retracing our journey from a week ago. Stop for lunch along the way and enjoy final views of the Nepali countryside. Arrive in Kathmandu by late afternoon. Check into your hotel and enjoy free time for souvenir shopping or final exploration of Thamel. Evening farewell dinner celebrating your Langtang Valley adventure.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic drive through countryside", "Trishuli River views", "Thamel exploration", "Farewell celebration dinner"],
-  },
-  {
-    day: 10,
-    title: "Departure",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of standing atop Kyanjin Ri surrounded by the majestic Langtang Himalaya.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 8,
+    "title": "Drive from Syabrubesi to Kathmandu",
+    "altitude": "1,550m → 1,400m",
+    "distance": "122km / 7-8 hrs drive",
+    "description": "After breakfast in Syabrubesi, begin your scenic drive back to Kathmandu along the Trishuli River, retracing your journey from a week ago. The drive offers beautiful views of river valleys, rolling hills, terraced farmlands, and distant mountain peaks. You'll pass through charming towns and witness daily Nepali rural life along the way. The drive is a wonderful opportunity to reflect on your Langtang Valley adventure - the breathtaking views from Kyanjin Ri or Tserko Ri, the yak cheese factory, the rebuilt villages, and the warm hospitality of the Tamang people. Arrive in Kathmandu by late afternoon. Check into your hotel in Thamel, take a well-deserved hot shower, and enjoy the comforts of the city. The remainder of your day is free for souvenir shopping in Thamel, visiting a spa for a much-needed massage, or simply relaxing. In the evening, enjoy a farewell dinner celebrating your successful Langtang Valley trek achievement - standing at 4,773m (or 5,033m) surrounded by the majestic Langtang Himalaya.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Dinner",
+    "highlights": ["Scenic drive to Kathmandu", "Trishuli River and countryside views", "Rural Nepali landscapes", "Thamel souvenir shopping", "Farewell celebration dinner"]
+  }
 ];
 
 const includes = [
@@ -356,8 +336,8 @@ export default function LangtangValleyTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$1,150</div>
-                <div className="text-lg font-bold text-[#0f2940]">$995</div>
+                <div className="text-xs text-slate-400 line-through">$805</div>
+                <div className="text-lg font-bold text-[#0f2940]">$650</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -377,8 +357,8 @@ export default function LangtangValleyTrekPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$1,150</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$995</div>
+                        <span className="text-white/50 text-sm line-through">$805</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$650</div>
                         <span className="text-white/60 text-sm">per person</span>
                         <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
                       </div>

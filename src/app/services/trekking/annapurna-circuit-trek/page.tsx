@@ -39,177 +39,99 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-const itinerary = [
+const itinerary = 
+  [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Evening free to explore the vibrant streets of Thamel or rest after your journey.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements"],
+    "day": 1,
+    "title": "Drive from Kathmandu to Besisahar by Bus & Jeep to Chame",
+    "altitude": "1,400m → 820m → 2,670m",
+    "distance": "175km bus / 80km jeep / 9-10 hrs total",
+    "description": "Early morning departure from Kathmandu by tourist bus to Besisahar (820m), the traditional starting point of the Annapurna Circuit. The bus journey follows the Trishuli and Marsyangdi Rivers, offering stunning views of rural Nepali life, terraced farmlands, and distant Himalayan peaks. Upon arrival in Besisahar, switch to a private jeep for the rugged drive to Chame (2,670m), the district headquarters of Manang. The jeep section passes through dramatic river valleys, cascading waterfalls, and dense pine forests, with your first breathtaking glimpses of Annapurna II (7,937m) and Lamjung Himal (6,983m). This combination saves multiple trekking days while allowing proper acclimatization. Check into your teahouse and explore Chame's small bazaar and natural hot springs.",
+    "overnight": "Teahouse in Chame",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic bus drive from Kathmandu to Besisahar", "Private jeep adventure to Chame", "Trishuli and Marsyangdi River views", "First views of Annapurna II and Lamjung Himal", "Chame hot springs"]
   },
   {
-    day: 2,
-    title: "Drive to Bhulbhule",
-    altitude: "1,400m → 840m",
-    distance: "170km / 7-8 hrs drive",
-    description: "Early morning departure from Kathmandu. We drive through scenic mid-hills following the Trishuli and Marsyangdi Rivers. The journey offers glimpses of rural Nepali life, terraced farmlands, and distant mountain views. We pass through Besisahar, the district headquarters, before reaching Bhulbhule, our trek starting point on the banks of the Marsyangdi River.",
-    overnight: "Teahouse in Bhulbhule",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic drive through mid-hills", "Trishuli and Marsyangdi Rivers", "Rural Nepali villages", "Trek commencement"],
+    "day": 2,
+    "title": "Trek from Chame to Upper Pisang",
+    "altitude": "2,670m → 3,300m",
+    "distance": "14km / 5-6 hrs trek",
+    "description": "Today's trek begins from Chame, following the Marsyangdi River through dense pine and rhododendron forests. The trail offers spectacular views of Paungda Danda, an immense curved rock face rising 1,500m from the river. You'll pass through the village of Bhratang before reaching Lower Pisang. From here, take the upper trail to Upper Pisang (3,300m), a traditional Tibetan Buddhist village perched on a hillside with a magnificent Gompa (monastery). Upper Pisang offers unrivaled views of Annapurna II, Annapurna IV (7,525m), and Pisang Peak (6,091m). The village retains authentic Tibetan architecture and culture, providing a memorable overnight experience.",
+    "overnight": "Teahouse in Upper Pisang",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Paungda Danda rock face", "Pine and rhododendron forests", "Upper Pisang village", "Pisang Peak views", "Traditional Tibetan Buddhist monastery"]
   },
   {
-    day: 3,
-    title: "Trek to Jagat",
-    altitude: "840m → 1,300m",
-    distance: "15km / 6-7 hrs",
-    description: "Our trek begins! The trail follows the Marsyangdi River through subtropical forests and terraced farmlands. We cross several suspension bridges and pass through traditional Gurung and Magar villages. The path offers views of waterfalls and the surrounding hills. Jagat is a charming village with stone-paved streets and traditional architecture.",
-    overnight: "Teahouse in Jagat",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First day of trekking", "Suspension bridge crossings", "Gurung and Magar villages", "Subtropical landscapes"],
+    "day": 3,
+    "title": "Trek from Upper Pisang to Manang",
+    "altitude": "3,300m → 3,540m",
+    "distance": "16km / 6-7 hrs trek",
+    "description": "From Upper Pisang, continue along the upper trail (recommended for better views) passing through Ghyaru and Ngawal villages. The trail offers jaw-dropping panoramas of Annapurna II, Annapurna III (7,555m), Annapurna IV, Gangapurna (7,455m), and Tilicho Peak (7,134m). You'll cross several small streams and pass ancient mani walls and chortens. Descend gradually to Manang (3,540m), the largest village in the Manang Valley. Manang is a fascinating town with Tibetan-style architecture, monasteries, a medical clinic, bakeries, and gear shops. The views of Gangapurna and its glacier lake are spectacular.",
+    "overnight": "Teahouse in Manang",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Upper trail via Ghyaru and Ngawal", "Annapurna II, III, IV and Gangapurna views", "Ancient mani walls and chortens", "Manang village", "Gangapurna glacier lake"]
   },
   {
-    day: 4,
-    title: "Trek to Dharapani",
-    altitude: "1,300m → 1,860m",
-    distance: "16km / 6-7 hrs",
-    description: "Today we enter the Manang District and the Annapurna Conservation Area. The trail continues along the Marsyangdi River through forests and villages. We pass through Chamje, Tal (the first village in Manang), and Karte. Notice the changing architecture and cultural influences as we enter the Tibetan Buddhist zone. Dharapani marks the junction with the Manaslu Circuit trail.",
-    overnight: "Teahouse in Dharapani",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Annapurna Conservation Area entry", "Tibetan Buddhist cultural zone", "Marsyangdi River valley", "Traditional villages"],
+    "day": 4,
+    "title": "Acclimatization Day in Manang",
+    "altitude": "3,540m",
+    "distance": "Optional hikes (2-4 hrs)",
+    "description": "A crucial rest day for proper acclimatization before crossing Thorong La Pass (5,416m). Today is not about idleness—active acclimatization is key. Hike to Gangapurna Lake (3,550m) for stunning glacier and mountain reflections. For a higher altitude boost, climb to the viewpoint above Manang (4,000m) or hike to Ice Lake (4,600m) for spectacular panoramas. Attend the Himalayan Rescue Association's (HRA) altitude awareness talk (highly recommended). Explore Manang's monasteries, visit the ancient Braga Monastery, or simply rest and hydrate. This day significantly increases your success rate for crossing the world's highest pass.",
+    "overnight": "Teahouse in Manang",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Gangapurna Lake hike", "Ice Lake viewpoint (optional)", "HRA altitude awareness talk", "Braga Monastery visit", "Active acclimatization for Thorong La"]
   },
   {
-    day: 5,
-    title: "Trek to Chame",
-    altitude: "1,860m → 2,670m",
-    distance: "14km / 5-6 hrs",
-    description: "The trail climbs gradually through pine and rhododendron forests with increasing mountain views. We pass through Bagarchhap with its unique pagoda-style houses, Danakyu, and Timang. The valley narrows as we approach Chame, the district headquarters of Manang. Chame has hot springs, a small bazaar, and stunning views of Annapurna II and Lamjung Himal.",
-    overnight: "Teahouse in Chame",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First views of Annapurna II", "Hot springs at Chame", "Pine and rhododendron forests", "District headquarters"],
+    "day": 5,
+    "title": "Trek from Manang to Ledar",
+    "altitude": "3,540m → 4,200m",
+    "distance": "11km / 4-5 hrs trek",
+    "description": "Leaving Manang after the acclimatization day, the landscape transforms dramatically from lush valleys to an arid, alpine desert. The trail climbs gradually through the village of Tenki, then passes through Gunsang before reaching Yak Kharka (4,050m), a small settlement surrounded by grazing yaks and spectacular mountain views of Gangapurna and Tilicho Peak (7,134m). Continue ascending on a broad, gentle path through rocky terrain to Ledar (4,200m), a small collection of teahouses nestled in a dramatic alpine landscape. The afternoon is free for rest and optional short acclimatization walks.",
+    "overnight": "Teahouse in Ledar",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Alpine desert landscape", "Yak Kharka and grazing yaks", "Gangapurna and Tilicho Peak views", "Gentle ascent for acclimatization", "Remote mountain atmosphere"]
   },
   {
-    day: 6,
-    title: "Trek to Pisang",
-    altitude: "2,670m → 3,200m",
-    distance: "12km / 5-6 hrs",
-    description: "The trail continues through forests with occasional views of Paungda Danda's impressive rock face. We pass through Bhratang before reaching the lower Pisang village. The landscape opens up revealing magnificent views of Annapurna II, Annapurna IV, and Pisang Peak. Upper Pisang, with its Gompa and traditional Tibetan architecture, is visible across the river.",
-    overnight: "Teahouse in Pisang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Paungda Danda rock face", "Views of Annapurna II & IV", "Pisang Peak (6,091m)", "Traditional Tibetan architecture"],
+    "day": 6,
+    "title": "Trek from Ledar to Thorong Phedi",
+    "altitude": "4,200m → 4,540m",
+    "distance": "9km / 4-5 hrs trek",
+    "description": "A shorter but steep day as we climb to the base of Thorong La Pass. The trail continues through arid, rocky terrain with prayer flags marking the way. You'll pass the seasonal settlement of Letdar before making the final push to Thorong Phedi (4,540m), nestled dramatically beneath the towering south face of Thorong Peak. The afternoon is crucial for preparation: rest, hydrate, organize your gear for tomorrow's 3-4 AM start. For better acclimatization, consider an optional 1-hour hike to High Camp (4,850m), which can make the pass crossing easier by reducing the total ascent on summit day.",
+    "overnight": "Teahouse in Thorong Phedi",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final approach to Thorong La", "Thorong Phedi base camp", "Optional High Camp hike (4,850m)", "Pass preparation and briefing", "Dramatic mountain amphitheater"]
   },
   {
-    day: 7,
-    title: "Trek to Manang",
-    altitude: "3,200m → 3,540m",
-    distance: "15km / 5-6 hrs",
-    description: "Two route options: the upper trail via Ghyaru and Ngawal offers spectacular views but is more challenging; the lower trail follows the river. Both lead to Manang, the largest village in the valley. Manang is a fascinating town with monasteries, a medical clinic, bakeries, and excellent mountain views including Gangapurna and Annapurna III.",
-    overnight: "Teahouse in Manang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Upper trail views (optional)", "Ghyaru and Ngawal villages", "Manang village", "Gangapurna and Annapurna III views"],
+    "day": 7,
+    "title": "Cross Thorong La Pass to Muktinath",
+    "altitude": "4,540m → 5,416m → 3,800m",
+    "distance": "14km / 8-10 hrs trek",
+    "description": "The biggest and most rewarding day of the Annapurna Circuit! Start at 3-4 AM with headlamps for the challenging climb to Thorong La (5,416m) — the world's highest traversable pass. The trail is steep but well-defined, with prayer flags marking the summit. At the top, celebrate your achievement with breathtaking 360-degree views of Annapurna (8,091m), Dhaulagiri (8,167m), Gangapurna (7,455m), and Thorong Peak (6,144m). After photos and celebrations, begin the long descent (1,600m drop) to Muktinath (3,800m), a sacred pilgrimage site for Hindus and Buddhists. Visit the Muktinath Temple with its 108 water spouts and eternal natural flame. Overnight in Muktinath, where you can reflect on your incredible achievement.",
+    "overnight": "Teahouse in Muktinath",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Thorong La Pass (5,416m) — world's highest pass", "360-degree sunrise Himalayan panorama", "Annapurna and Dhaulagiri ranges", "1,600m descent to Muktinath", "Muktinath Temple (108 water spouts and eternal flame)"]
   },
   {
-    day: 8,
-    title: "Acclimatization Day in Manang",
-    altitude: "3,540m",
-    distance: "Optional hikes",
-    description: "A crucial rest day for acclimatization before crossing Thorong La. Hike to Gangapurna Lake or the viewpoint above Manang for stunning mountain panoramas. Visit the Himalayan Rescue Association for an altitude awareness talk. Explore Manang's monasteries, the medical clinic, or simply rest and prepare for the days ahead.",
-    overnight: "Teahouse in Manang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Gangapurna Lake hike", "HRA altitude talk", "Monastery visits", "Acclimatization"],
+    "day": 8,
+    "title": "Drive from Muktinath to Pokhara by EV",
+    "altitude": "3,800m → 820m",
+    "distance": "200km / 6-7 hrs EV drive",
+    "description": "After breakfast in Muktinath, board your private Electric Vehicle (EV) for an eco-friendly journey to Pokhara. The drive follows the Kali Gandaki River through the world's deepest gorge, with the Annapurna and Dhaulagiri ranges towering on both sides. You'll pass through the charming villages of Jomsom, Lete, Tatopani (natural hot springs), and Beni. The landscape transforms from arid alpine desert to lush subtropical forests and terraced farmlands. Arrive in Pokhara by late afternoon, the beautiful lake city with stunning views of Machhapuchhre (Fishtail) and the Annapurna range reflecting on Phewa Lake. Check into your hotel and celebrate your Annapurna Circuit achievement with a well-deserved dinner.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Eco-friendly EV drive", "Kali Gandaki Gorge — world's deepest gorge", "Jomsom and Tatopani hot springs views", "Arrival in Pokhara", "Phewa Lake and Machhapuchhre views"]
   },
   {
-    day: 9,
-    title: "Trek to Yak Kharka",
-    altitude: "3,540m → 4,050m",
-    distance: "10km / 4-5 hrs",
-    description: "Leaving Manang, the landscape becomes more arid and alpine. The trail climbs gradually with fewer trees and magnificent mountain views. We pass through Gunsang and Tenni, with views of Gangapurna and Tilicho Peak. Yak Kharka (literally 'yak pasture') is a small settlement with basic lodges, surrounded by grazing yaks and stunning scenery.",
-    overnight: "Teahouse in Yak Kharka",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Alpine desert landscape", "Views of Gangapurna", "Yak pastures", "Tilicho Peak views"],
-  },
-  {
-    day: 10,
-    title: "Trek to Thorong Phedi",
-    altitude: "4,050m → 4,540m",
-    distance: "8km / 4-5 hrs",
-    description: "A short but steep day as we climb to the base of Thorong La Pass. The trail passes through the seasonal settlement of Letdar before climbing to Thorong Phedi, nestled beneath the pass. The afternoon is free to rest, prepare gear, and hydrate for the early morning pass crossing. A short hike to High Camp (4,850m) can aid acclimatization.",
-    overnight: "Teahouse in Thorong Phedi",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Final approach to pass", "Thorong Phedi base camp", "Optional High Camp hike", "Pass preparation"],
-  },
-  {
-    day: 11,
-    title: "Cross Thorong La Pass to Muktinath",
-    altitude: "4,540m → 5,416m → 3,800m",
-    distance: "20km / 8-10 hrs",
-    description: "The biggest day of the trek! Start at 3-4 AM for the challenging climb to Thorong La (5,416m), the world's highest pass. The trail is steep but well-defined, with prayer flags marking the summit. At the top, breathtaking 360-degree views of the Annapurna and Dhaulagiri ranges await. The long descent to Muktinath brings dramatic landscape changes - from barren mountains to the arid Mustang region. Visit the sacred Muktinath Temple, holy to both Hindus and Buddhists.",
-    overnight: "Teahouse in Muktinath",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Thorong La Pass (5,416m)", "360-degree Himalayan panorama", "Annapurna & Dhaulagiri views", "Muktinath Temple"],
-  },
-  {
-    day: 12,
-    title: "Trek to Marpha & Drive to Tatopani",
-    altitude: "3,800m → 2,670m → 1,190m",
-    distance: "12km trek / 3-4 hrs drive",
-    description: "Morning descent through Kagbeni, the gateway to Upper Mustang, with its ancient monasteries and Tibetan architecture. We trek to Marpha, famous for its apple orchards, apple brandy, and whitewashed streets. After lunch, a scenic jeep drive along the Kali Gandaki River - the world's deepest gorge - brings us to Tatopani (meaning 'hot water'), named for its natural hot springs.",
-    overnight: "Teahouse in Tatopani",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Kagbeni village", "Marpha apple orchards", "Kali Gandaki Gorge", "Natural hot springs"],
-  },
-  {
-    day: 13,
-    title: "Trek to Ghorepani",
-    altitude: "1,190m → 2,860m",
-    distance: "12km / 6-7 hrs",
-    description: "Today we climb through lush forests with many stone steps - a challenging but rewarding day. The trail passes through Chitre and offers occasional mountain views. Ghorepani is a lively village at the crossroads of the Annapurna Circuit and Poon Hill trek. Enjoy the mountain atmosphere and prepare for tomorrow's sunrise.",
-    overnight: "Teahouse in Ghorepani",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Forest climb", "Traditional villages", "Mountain views", "Ghorepani village"],
-  },
-  {
-    day: 14,
-    title: "Poon Hill Sunrise & Trek to Ghandruk",
-    altitude: "2,860m → 3,210m → 1,940m",
-    distance: "15km / 7-8 hrs",
-    description: "Pre-dawn hike to Poon Hill (3,210m) for the most spectacular sunrise over the Annapurna and Dhaulagiri ranges, including Machhapuchhre (Fishtail). After sunrise, return for breakfast, then descend through rhododendron forests to Tadapani. Continue through beautiful forests to Ghandruk, a large Gurung village with traditional stone houses and spectacular mountain views.",
-    overnight: "Teahouse in Ghandruk",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Poon Hill sunrise", "Annapurna & Dhaulagiri panorama", "Machhapuchhre views", "Ghandruk Gurung village"],
-  },
-  {
-    day: 15,
-    title: "Trek to Nayapul & Drive to Pokhara",
-    altitude: "1,940m → 1,010m → 820m",
-    distance: "12km trek / 1.5 hrs drive",
-    description: "Final day of trekking descending through terraced farmlands and villages to Nayapul. The trail follows the Modi Khola River with beautiful valley views. At Nayapul, our private vehicle awaits for the short drive to Pokhara. Check into your hotel and celebrate your Annapurna Circuit achievement! Free evening to explore Lakeside's restaurants and bars.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Final trekking day", "Terraced farmlands", "Arrival in Pokhara", "Celebration dinner"],
-  },
-  {
-    day: 16,
-    title: "Drive to Kathmandu",
-    altitude: "820m → 1,400m",
-    distance: "200km / 7-8 hrs drive",
-    description: "After breakfast, scenic drive back to Kathmandu through the Prithvi Highway, following the Trishuli River. The journey offers views of rural landscapes, river rafters, and distant hills. Arrive in Kathmandu by late afternoon. Check into your hotel and enjoy free time for souvenir shopping or final exploration of Thamel.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast",
-    highlights: ["Scenic highway drive", "Trishuli River views", "Rural Nepal", "Thamel exploration"],
-  },
-  {
-    day: 17,
-    title: "Departure",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of crossing the world's highest pass and completing the legendary Annapurna Circuit.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 9,
+    "title": "Drive from Pokhara to Kathmandu",
+    "altitude": "820m → 1,400m",
+    "distance": "200km / 6-7 hrs drive",
+    "description": "After a leisurely breakfast in Pokhara, begin your scenic drive back to Kathmandu along the Prithvi Highway. The journey follows the Trishuli River, offering beautiful views of river valleys, rolling hills, terraced farmlands, and distant mountain peaks. You'll pass through charming towns and witness daily Nepali rural life along the way. Arrive in Kathmandu by late afternoon. The remainder of your day is free for souvenir shopping in Thamel, exploring UNESCO World Heritage sites you may have missed, or simply relaxing after your incredible Annapurna Circuit trek adventure — crossing the world's highest pass at 5,416m.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast",
+    "highlights": ["Scenic drive along Trishuli River", "Rural Nepali landscapes", "Terraced farmlands", "Thamel souvenir shopping", "Farewell to the Himalayas"]
+  }
+
 ];
 
 const includes = [
@@ -435,8 +357,8 @@ export default function AnnapurnaCircuitTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$1,350</div>
-                <div className="text-lg font-bold text-[#0f2940]">$1,150</div>
+                <div className="text-xs text-slate-400 line-through">$1,000</div>
+                <div className="text-lg font-bold text-[#0f2940]">$800</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -456,8 +378,8 @@ export default function AnnapurnaCircuitTrekPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$1,350</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,150</div>
+                        <span className="text-white/50 text-sm line-through">$1,000</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$800</div>
                         <span className="text-white/60 text-sm">per person</span>
                         <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $200</Badge>
                       </div>

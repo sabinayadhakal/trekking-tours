@@ -66,7 +66,7 @@ const services = [
     title: "Free Walking Tour, Kathmandu",
     description: "First Free Walking Tour in Kathmandu, Nepal.",
     color: "from-sky-100 to-blue-50",
-    link: "/services/free-walking-tour"
+    link: "/services/free-walking-tour-kathmandu"
   },
   {
     icon: <Mountain className="w-6 h-6" />,

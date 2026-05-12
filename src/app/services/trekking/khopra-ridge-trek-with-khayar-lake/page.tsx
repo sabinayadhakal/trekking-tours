@@ -43,115 +43,85 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Evening free to explore the vibrant streets of Thamel or rest after your journey.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements"],
+    "day": 1,
+    "title": "Drive from Kathmandu to Pokhara",
+    "altitude": "1,400m → 820m",
+    "distance": "200km / 6-7 hrs drive",
+    "description": "Early morning departure from your hotel in Kathmandu for the scenic drive to Pokhara along the Prithvi Highway, following the winding Trishuli River through lush green hills and terraced farmlands. The journey offers beautiful views of rural Nepali landscapes, distant mountain peaks, and occasional white-water rafters in the river below. You'll pass through charming towns and villages, witnessing daily life in the Nepali countryside. Arrive in Pokhara (820m), Nepal's second-largest city and the gateway to the Annapurna region. Check into your beautiful lakeside hotel and enjoy free time to explore Phewa Lake, go boating, or simply relax with stunning views of the Annapurna range and Machhapuchhre (Fishtail) reflected in the lake. Evening is free to explore Lakeside's vibrant restaurants, bars, and shops. Prepare your gear for tomorrow's trek start.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Early morning departure from Kathmandu", "Scenic Prithvi Highway drive", "Trishuli River views", "Rural Nepali countryside", "Phewa Lake and mountain reflections"]
   },
   {
-    day: 2,
-    title: "Drive to Pokhara",
-    altitude: "1,400m → 820m",
-    distance: "200km / 6-7 hrs drive",
-    description: "Scenic drive from Kathmandu to Pokhara along the Prithvi Highway, following the Trishuli River. The journey offers beautiful views of rural landscapes, river valleys, and distant mountains. Arrive in Pokhara, Nepal's second-largest city and gateway to the Annapurna region. Check into your lakeside hotel and enjoy free time to explore Phewa Lake or relax with mountain views.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic highway drive", "Trishuli River views", "Arrival in Pokhara", "Phewa Lake"],
+    "day": 2,
+    "title": "Drive to Ghandruk & Trek to Tadapani",
+    "altitude": "820m → 1,940m → 2,630m",
+    "distance": "2 hrs drive / 5-6 hrs trek",
+    "description": "After breakfast in Pokhara, take a scenic 2-hour drive to Ghandruk (1,940m), one of the largest and most beautiful Gurung villages in Nepal. The drive offers spectacular views of the Annapurna range. Upon arrival in Ghandruk, explore this charming village with its traditional stone houses, narrow stone-paved streets, and warm Gurung hospitality. Visit the Gurung Museum, which showcases traditional Gurung culture, clothing, tools, and photographs of the village's famous Gurkha soldiers. Enjoy stunning views of Annapurna South (7,219m), Hiunchuli (6,441m), and Machhapuchhre (6,993m - Fishtail). After exploring Ghandruk, begin your trek through beautiful rhododendron forests. The trail climbs steadily through dense forests that burst into brilliant red and pink blooms during spring (March-April). Arrive at Tadapani (2,630m), a scenic ridge-top settlement offering spectacular close-up views of Machhapuchhre and Annapurna South. Overnight in a comfortable teahouse.",
+    "overnight": "Teahouse in Tadapani",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic drive to Ghandruk", "Ghandruk village exploration", "Gurung Museum visit", "Rhododendron forests", "Tadapani mountain views"]
   },
   {
-    day: 3,
-    title: "Drive to Ghandruk & Trek to Tadapani",
-    altitude: "820m → 1,940m → 2,630m",
-    distance: "2 hrs drive / 5-6 hrs trek",
-    description: "Morning drive from Pokhara to Ghandruk (1,940m) - a beautiful Gurung village with stunning views of Annapurna South and Machhapuchhre (Fishtail). After exploring Ghandruk and its museum, we begin our trek through rhododendron forests, climbing steadily to Tadapani. The trail offers spectacular mountain views throughout the day.",
-    overnight: "Teahouse in Tadapani",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Ghandruk village exploration", "Gurung culture and museum", "Rhododendron forests", "Arrival at Tadapani"],
+    "day": 3,
+    "title": "Trek from Tadapani to Dobato",
+    "altitude": "2,630m → 3,420m",
+    "distance": "8-10km / 5-6 hrs trek",
+    "description": "Today we leave the main Annapurna Base Camp trail and head north toward the less-crowded Khopra Ridge. The trail ascends through dense rhododendron and oak forests, which gradually thin as you gain altitude. The path offers beautiful alpine scenery with occasional glimpses of Annapurna South and Machhapuchhre through breaks in the forest. Dobato (3,420m) is a peaceful ridge-top settlement with basic teahouses, offering stunning sunrise and sunset views over the Annapurna and Dhaulagiri ranges. This area is known for its solitude away from the crowded Annapurna trails, providing a truly authentic trekking experience. The afternoon is free to rest and enjoy the spectacular mountain panorama. Overnight in Dobato's simple but comfortable teahouse.",
+    "overnight": "Teahouse in Dobato",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Less-crowded Khopra Ridge trail", "Rhododendron and oak forests", "Alpine scenery", "Dobato ridge-top settlement", "Sunrise and sunset mountain views"]
   },
   {
-    day: 4,
-    title: "Trek to Bayeli Kharka",
-    altitude: "2,630m → 3,420m",
-    distance: "8-10km / 5-6 hrs",
-    description: "We leave the main trail and head north into dense rhododendron and oak forests. The trail ascends gradually through beautiful alpine scenery with occasional views of Annapurna peaks. Bayeli Kharka is a peaceful meadow with basic teahouses, offering solitude away from the crowded Annapurna trails.",
-    overnight: "Teahouse in Bayeli Kharka",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Peaceful forest trail", "Alpine meadows", "Solitude and tranquility", "Views of Annapurna peaks"],
+    "day": 4,
+    "title": "Trek from Dobato to Khopra Ridge",
+    "altitude": "3,420m → 3,660m",
+    "distance": "8km / 5-6 hrs trek",
+    "description": "Today's trek takes us to the magnificent Khopra Ridge, one of the most spectacular viewpoints in the Annapurna region. The trail first descends through oak forests to the charming Chistibang pastures, a beautiful meadow area with grazing yaks and horses. From Chistibang, the trail begins a steady climb up to Khopra Ridge (3,660m). As you ascend, the trail opens up to breathtaking panoramic views of the entire Annapurna and Dhaulagiri ranges. Khopra Ridge offers one of the most spectacular mountain viewpoints in all of Nepal - Annapurna South (7,219m) towers directly above you to the north, while Dhaulagiri (8,167m - world's 7th highest) dominates the western skyline. The ridge is managed by a community-run teahouse, where your stay directly supports local families. Enjoy sunset over the Himalayas from this incredible location. Overnight at the community teahouse on Khopra Ridge.",
+    "overnight": "Community Teahouse at Khopra Ridge",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Chistibang pastures", "Grazing yaks and horses", "Khopra Ridge arrival", "Panoramic Annapurna and Dhaulagiri views", "Community-run teahouse experience"]
   },
   {
-    day: 5,
-    title: "Trek to Khopra Ridge",
-    altitude: "3,420m → 3,660m",
-    distance: "8km / 5-6 hrs",
-    description: "Today we descend through oak forests to Chistibang pastures, then begin the steady climb to Khopra Ridge. The trail opens up to breathtaking panoramic views of the Annapurna and Dhaulagiri ranges. Khopra Ridge (3,660m) offers one of the most spectacular mountain viewpoints in Nepal - Annapurna South towers directly above while Dhaulagiri dominates the western skyline.",
-    overnight: "Community Teahouse at Khopra Ridge",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Chistibang pastures", "Khopra Ridge arrival", "Panoramic Annapurna & Dhaulagiri views", "Community-run teahouse"],
+    "day": 5,
+    "title": "Day Hike to Khayar Lake & Return to Khopra Ridge",
+    "altitude": "3,660m → 4,660m → 3,660m",
+    "distance": "12-14km / 7-8 hrs round trip",
+    "description": "This is the highlight day of the entire trek! Wake early and start the challenging day hike to sacred Khayar Lake (4,660m). The trail climbs steeply through rugged, rocky terrain with increasingly spectacular mountain views. As you gain altitude, the panorama of Annapurna South, Hiunchuli, Machhapuchhre, and Dhaulagiri becomes absolutely breathtaking. After several hours of climbing, you'll suddenly come upon Khayar Lake - a stunning turquoise alpine lake nestled in a glacial basin beneath the towering massif of Annapurna South. The lake is sacred to both Hindus and Buddhists, who believe that bathing in its holy waters fulfills wishes and brings good fortune. The reflection of Annapurna South in the crystal-clear turquoise water is a photographer's dream. Spend time at the lake, enjoy your packed lunch, and soak in the spiritual atmosphere. Afternoon descent back to Khopra Ridge for overnight. This challenging but rewarding day will be one of the most memorable of your life.",
+    "overnight": "Community Teahouse at Khopra Ridge",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Khayar Lake day hike (4,660m)", "Sacred Hindu and Buddhist pilgrimage site", "Turquoise alpine lake", "Annapurna South mountain reflection", "Wish-fulfilling holy waters"]
   },
   {
-    day: 6,
-    title: "Day Hike to Khayar Lake",
-    altitude: "3,660m → 4,660m → 3,660m",
-    distance: "12-14km / 7-8 hrs round trip",
-    description: "Early start for the highlight of the trek - a challenging day hike to sacred Khayar Lake (4,660m). The trail climbs steeply through rugged terrain with spectacular mountain views. Khayar Lake is a stunning turquoise alpine lake nestled beneath Annapurna South, sacred to both Hindus and Buddhists who believe bathing here fulfills wishes. After time at the lake, return to Khopra Ridge for the night.",
-    overnight: "Community Teahouse at Khopra Ridge",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Khayar Lake (4,660m)", "Sacred Hindu and Buddhist site", "Turquoise alpine lake", "Spectacular mountain reflections"],
+    "day": 6,
+    "title": "Trek from Khopra Ridge to Ghorepani via Swanta Village",
+    "altitude": "3,660m → 2,214m → 2,860m",
+    "distance": "14-16km / 6-7 hrs trek",
+    "description": "Today we descend from Khopra Ridge and make our way toward Ghorepani via the traditional village of Swanta. The trail descends through beautiful forests of rhododendron and oak, passing through Chistibang pastures before reaching Swanta Village (2,214m). Swanta is a traditional Gurung and Magar village where you can experience authentic local culture and hospitality. Take time to explore the village, visit the local monastery, and interact with friendly locals. From Swanta, the trail continues through terraced farmlands and forests, gradually ascending toward Ghorepani (2,860m). Ghorepani is a lively village situated on a ridge, serving as the main gateway to Poon Hill. The village offers spectacular mountain views and a vibrant atmosphere with multiple teahouses, bakeries, and shops. Overnight in Ghorepani, preparing for tomorrow's pre-dawn hike to Poon Hill.",
+    "overnight": "Teahouse in Ghorepani",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Descent from Khopra Ridge", "Chistibang pastures", "Swanta village cultural experience", "Traditional Gurung and Magar village", "Ghorepani arrival and preparation"]
   },
   {
-    day: 7,
-    title: "Trek to Swanta Village",
-    altitude: "3,660m → 2,214m",
-    distance: "12km / 5-6 hrs",
-    description: "Descend from Khopra Ridge through forests and pastures to Chistibang, then continue to Swanta Village. The trail offers changing perspectives of the mountains as we lose altitude. Swanta is a traditional village where you can experience local Gurung culture and hospitality.",
-    overnight: "Teahouse in Swanta",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Forest descent", "Changing mountain perspectives", "Swanta village", "Gurung culture"],
+    "day": 7,
+    "title": "Poon Hill Sunrise & Trek to Hille & Jeep Drive to Pokhara",
+    "altitude": "2,860m → 3,210m → 1,490m → 820m",
+    "distance": "6km trek / 2.5 hrs jeep drive",
+    "description": "Wake up early (around 4:00 AM) for the pre-dawn hike to Poon Hill (3,210m) - one of the most famous viewpoints in the entire Himalayas! The 45-minute to 1-hour climb in the dark is well worth every step. As you reach the viewpoint, watch the sky transform from deep blue to orange and gold. The sun rises behind the Annapurna range, painting the peaks of Dhaulagiri (8,167m), Annapurna I (8,091m), Annapurna South (7,219m), Machhapuchhre (6,993m - Fishtail), Hiunchuli (6,441m), and Tukuche Peak (6,920m) in stunning golden light. This 360-degree Himalayan sunrise panorama is one of the most photographed views in the world. After soaking in the magic, descend back to Ghorepani for breakfast. Then continue trekking down through beautiful rhododendron forests to Hille (1,490m). The descent is gentle and offers changing perspectives of the mountains. At Hille, board a private jeep for an exciting 2.5-hour drive back to Pokhara. The jeep ride offers different views of the landscapes you've traversed. Arrive in Pokhara by late afternoon and check into your hotel. Celebrate your incredible Khopra Ridge and Khayar Lake achievement - you've visited the sacred turquoise lake at 4,660m and witnessed sunrise from Poon Hill! Enjoy a well-deserved dinner at one of Lakeside's excellent restaurants.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Poon Hill sunrise (3,210m)", "World-famous 360-degree Himalayan panorama", "Dhaulagiri, Annapurna, and Machhapuchhre views", "Descent to Hille", "Jeep drive to Pokhara and celebration"]
   },
   {
-    day: 8,
-    title: "Trek to Tatopani (Hot Springs)",
-    altitude: "2,214m → 1,190m",
-    distance: "12km / 5-6 hrs",
-    description: "Continue descending through villages and terraced farmlands to Tatopani, meaning 'hot water'. The trail follows the Kali Gandaki River, the world's deepest gorge. Tatopani's natural hot springs are the perfect reward after days of trekking. Soak your tired muscles in the warm, mineral-rich waters while listening to the river.",
-    overnight: "Teahouse in Tatopani",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Kali Gandaki River", "Terraced farmlands", "Natural hot springs", "Muscle recovery"],
-  },
-  {
-    day: 9,
-    title: "Drive to Pokhara",
-    altitude: "1,190m → 820m",
-    distance: "5-6 hrs drive",
-    description: "After breakfast, scenic drive back to Pokhara through the Kali Gandaki Valley and along the Prithvi Highway. The journey offers beautiful river and mountain views. Arrive in Pokhara by afternoon and check into your lakeside hotel. Free evening to celebrate your Khopra Ridge and Khayar Lake achievement! Explore Lakeside's restaurants and shops.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic drive", "Kali Gandaki Valley", "Arrival in Pokhara", "Celebration dinner"],
-  },
-  {
-    day: 10,
-    title: "Drive to Kathmandu",
-    altitude: "820m → 1,400m",
-    distance: "200km / 6-7 hrs drive",
-    description: "After breakfast, scenic drive back to Kathmandu through the Prithvi Highway, following the Trishuli River. The journey offers views of rural landscapes, river rafters, and distant hills. Arrive in Kathmandu by late afternoon. Check into your hotel and enjoy free time for souvenir shopping or final exploration of Thamel.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast",
-    highlights: ["Scenic highway drive", "Trishuli River views", "Rural Nepal", "Thamel exploration"],
-  },
-  {
-    day: 11,
-    title: "Departure",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of standing at sacred Khayar Lake and witnessing the spectacular panoramas from Khopra Ridge.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 8,
+    "title": "Drive from Pokhara to Kathmandu",
+    "altitude": "820m → 1,400m",
+    "distance": "200km / 6-7 hrs drive",
+    "description": "After a leisurely breakfast in Pokhara, begin your scenic drive back to Kathmandu along the Prithvi Highway. The journey follows the Trishuli River, offering beautiful views of river valleys, rolling hills, terraced farmlands, and distant mountain peaks. You'll pass through charming towns and witness daily Nepali rural life along the way. The drive is a wonderful opportunity to reflect on your incredible Khopra Ridge and Khayar Lake adventure - visiting the sacred turquoise lake at 4,660m, witnessing sunrise from Khopra Ridge and Poon Hill, and experiencing authentic village life in Swanta. Arrive in Kathmandu by late afternoon. Check into your hotel, take a well-deserved hot shower, and enjoy the comforts of the city. The remainder of your day is free for souvenir shopping in Thamel, exploring UNESCO World Heritage sites you may have missed, or simply relaxing with a good meal. In the evening, enjoy a farewell dinner celebrating your successful Khopra Ridge trek achievement.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Dinner",
+    "highlights": ["Scenic Pokhara to Kathmandu drive", "Trishuli River and countryside views", "Rural Nepali landscapes", "Thamel souvenir shopping", "Farewell celebration dinner"]
+  }
 ];
 
 const includes = [
@@ -366,8 +336,8 @@ export default function KhopraRidgeKhayarLakeTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$1,150</div>
-                <div className="text-lg font-bold text-[#0f2940]">$975</div>
+                <div className="text-xs text-slate-400 line-through">$875</div>
+                <div className="text-lg font-bold text-[#0f2940]">$700</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -387,8 +357,8 @@ export default function KhopraRidgeKhayarLakeTrekPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$1,150</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$975</div>
+                        <span className="text-white/50 text-sm line-through">$875</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$700</div>
                         <span className="text-white/60 text-sm">per person</span>
                         <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $175</Badge>
                       </div>

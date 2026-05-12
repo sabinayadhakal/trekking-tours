@@ -48,7 +48,7 @@ const trekkingPackages = [
     duration: "14 Days",
     difficulty: "Moderate",
     altitude: "5,364m",
-    price: "$1,450",
+    price: "$1,550",
     image: "/images/used/everest-main-page.avif",
     rating: 4.9,
     region: "Everest Region",

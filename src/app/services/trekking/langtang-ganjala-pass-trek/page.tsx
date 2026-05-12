@@ -42,155 +42,135 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Bring two passport-sized photographs for your trekking permits. Evening free to explore the vibrant streets of Thamel or rest after your journey. Welcome dinner with traditional Nepali cuisine where you'll meet your trek guide.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements", "Welcome dinner"],
+    "day": 1,
+    "title": "Drive from Kathmandu to Syabrubesi",
+    "altitude": "1,350m → 1,550m",
+    "distance": "122km / 7-8 hrs drive",
+    "description": "Early morning departure from your hotel in Kathmandu for the scenic drive to Syabrubesi, the gateway to the Langtang region. The journey follows the Trishuli River valley through beautiful rural landscapes, terraced farmlands, and traditional villages. You'll pass through Dhunche (1,950m), the district headquarters of Rasuwa, where your Langtang National Park permit will be checked. The road winds through hillside forests with occasional views of Ganesh Himal (7,422m) and other peaks. Arrive in Syabrubesi (1,550m), a charming village situated at the confluence of the Bhote Koshi and Trishuli Rivers. Check into your teahouse, meet your trekking crew, and prepare for the adventure ahead. Evening briefing on the Langtang Valley, Ganja La Pass, and Helambu route.",
+    "overnight": "Teahouse in Syabrubesi",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic Trishuli River drive", "Ganesh Himal views", "Dhunche permit check", "Gateway to Langtang", "Syabrubesi arrival"]
   },
   {
-    day: 2,
-    title: "Drive to Syabrubesi",
-    altitude: "1,350m → 1,550m",
-    distance: "122km / 7-8 hrs drive",
-    description: "Early morning departure from Kathmandu for the scenic drive to Syabrubesi. The journey follows the Trishuli River valley through beautiful rural landscapes, terraced farmlands, and traditional villages. We pass through Dhunche, the district headquarters, where your Langtang National Park permit will be checked. The road winds through hillside forests with occasional views of Ganesh Himal. Arrive in Syabrubesi, a charming village that serves as the gateway to the Langtang region. Check into your teahouse and prepare for the trek ahead.",
-    overnight: "Teahouse in Syabrubesi",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic Trishuli River drive", "Ganesh Himal views", "Dhunche permit check", "Gateway to Langtang"],
+    "day": 2,
+    "title": "Trek from Syabrubesi to Lama Hotel",
+    "altitude": "1,550m → 2,380m",
+    "distance": "15km / 6-7 hrs trek",
+    "description": "Your Langtang trek begins! After breakfast, cross the suspension bridge over the Bhote Koshi River and follow the Langtang Khola upstream. The trail winds through dense forests of oak, rhododendron, and bamboo, with occasional glimpses of waterfalls cascading down steep cliffs. This forest is one of the best places to spot the endangered red panda - keep your eyes open! You'll pass through several small settlements including Manaslu, Bamboo, and Rimche, where you can stop for tea or lunch. The afternoon climb through beautiful forest brings you to Lama Hotel (2,380m), a cluster of teahouses nestled in the woods beside the river. This area is also home to Himalayan monkeys and diverse bird species. Overnight in a comfortable teahouse at Lama Hotel.",
+    "overnight": "Teahouse in Lama Hotel",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Suspension bridge crossing", "Dense oak and rhododendron forest", "Waterfalls and cascades", "Red panda habitat", "Lama Hotel arrival"]
   },
   {
-    day: 3,
-    title: "Trek to Lama Hotel",
-    altitude: "1,550m → 2,380m",
-    distance: "15km / 6-7 hrs",
-    description: "Our trek begins! We cross the suspension bridge over the Bhote Koshi River and follow the Langtang Khola upstream. The trail winds through dense forests of oak, rhododendron, and bamboo, with occasional glimpses of waterfalls cascading down steep cliffs. We pass through small settlements including Bamboo, where we stop for lunch. The afternoon climb through forest brings us to Lama Hotel, a cluster of teahouses nestled in the woods. Keep an eye out for red pandas and Himalayan monkeys in this forested section.",
-    overnight: "Teahouse in Lama Hotel",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Suspension bridge crossings", "Dense oak and rhododendron forest", "Bamboo village", "Red panda habitat"],
+    "day": 3,
+    "title": "Trek from Lama Hotel to Langtang Village",
+    "altitude": "2,380m → 3,430m",
+    "distance": "14km / 6-7 hrs trek",
+    "description": "Today the valley opens up dramatically as you gain altitude, offering your first breathtaking views of Langtang Lirung (7,227m) and other surrounding peaks. The trail passes through Ghoda Tabela (3,000m) - meaning 'horse stable' - a clearing with teahouses and yak pastures where you can see grazing yaks and horses. Above the tree line, you enter alpine terrain with beautiful mani walls, prayer flags, and traditional stone houses. Langtang Village (3,430m) was devastated by the 2015 earthquake but has been beautifully rebuilt, showcasing the incredible resilience of the local Tamang community. The village offers stunning mountain views and a chance to interact with friendly locals and hear their stories of rebuilding. Visit the memorial chorten dedicated to those who lost their lives in the earthquake. Overnight in Langtang Village.",
+    "overnight": "Teahouse in Langtang Village",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["First views of Langtang Lirung (7,227m)", "Ghoda Tabela yak pastures", "Alpine terrain with mani walls", "Rebuilt Langtang Village", "Earthquake memorial chorten"]
   },
   {
-    day: 4,
-    title: "Trek to Langtang Village",
-    altitude: "2,380m → 3,430m",
-    distance: "14km / 6-7 hrs",
-    description: "Today the valley opens up dramatically as we gain altitude, offering first breathtaking views of Langtang Lirung (7,227m). The trail passes through Ghoda Tabela ('horse stable') - a clearing with teahouses and yak pastures. Above the tree line, we enter alpine terrain with mani walls, prayer flags, and traditional stone houses. Langtang Village was devastated by the 2015 earthquake but has been beautifully rebuilt, showcasing the incredible resilience of the local community. The village offers stunning mountain views and a chance to interact with friendly Tamang locals and hear their stories of rebuilding.",
-    overnight: "Teahouse in Langtang Village",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["First views of Langtang Lirung", "Ghoda Tabela yak pastures", "Rebuilt Langtang Village", "Community resilience"],
+    "day": 4,
+    "title": "Trek from Langtang Village to Kyanjin Gompa",
+    "altitude": "3,430m → 3,870m",
+    "distance": "10km / 4-5 hrs trek",
+    "description": "A relatively short day allowing for gradual acclimatization before the challenging Ganja La Pass crossing. The trail follows a broad, open valley with stunning mountain scenery on all sides - Langtang Lirung (7,227m) dominates the skyline, while peaks like Gangchempo (6,387m), Langtang II, and Dorje Lakpa surround you. You'll pass through Mundu village with its ancient chortens, prayer wheels, and traditional stone houses. Continue past yak pastures with grazing animals and beautiful mountain streams. Kyanjin Gompa (3,870m) is the last settlement in the Langtang Valley, a beautiful village dominated by its ancient Buddhist monastery (gompa) and surrounded by towering peaks. Visit the famous Kyanjin Cheese Factory, established by Swiss experts in the 1950s, to sample delicious yak cheese, curd, and fresh bread. Explore the monastery with its centuries-old Buddhist artifacts. Overnight in Kyanjin Gompa.",
+    "overnight": "Teahouse in Kyanjin Gompa",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Broad valley panorama", "Mundu village chortens", "Yak pastures", "Kyanjin Gompa monastery", "Yak cheese factory visit and tasting"]
   },
   {
-    day: 5,
-    title: "Trek to Kyanjin Gompa",
-    altitude: "3,430m → 3,870m",
-    distance: "10km / 4-5 hrs",
-    description: "A relatively short day allowing for gradual acclimatization. The trail follows a broad, open valley with stunning mountain scenery on all sides - Langtang Lirung dominates the skyline, while peaks like Gangchempo and Dorje Lakpa surround us. We pass through Mundu village with its ancient chortens and continue past yak pastures with grazing animals. Kyanjin Gompa is the last settlement in the valley, a beautiful village dominated by its ancient Buddhist monastery and surrounded by towering peaks. Visit the famous Kyanjin Cheese Factory, established by Swiss experts in the 1950s, to sample delicious yak cheese and curd.",
-    overnight: "Teahouse in Kyanjin Gompa",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Broad valley panorama", "Mundu village chortens", "Kyanjin Gompa monastery", "Yak cheese factory visit"],
+    "day": 5,
+    "title": "Acclimatization Day - Kyanjin Ri or Tserko Ri",
+    "altitude": "3,870m → 4,773m / 4,985m → 3,870m",
+    "distance": "8-12km / 5-8 hrs hike",
+    "description": "A crucial acclimatization day before attempting the challenging Ganja La Pass (5,130m). The golden rule: climb high, sleep low. Your guide will lead you on an optional sunrise hike to Kyanjin Ri (4,773m) - a challenging 2-3 hour climb to a spectacular ridge with 360-degree views of the entire Langtang range including Langtang Lirung, Langtang II, Dorje Lakpa, Yala Peak, and Naya Kanga. As the sun rises, the peaks glow golden - an unforgettable experience. For experienced trekkers seeking an extra challenge, Tserko Ri (4,985m) is a longer, steeper climb with even more dramatic panoramas stretching to the Tibetan plateau. After descending, explore the ancient Kyanjin Gompa monastery more thoroughly, walk to the glacial moraine of Langtang Lirung, visit the yak cheese factory again, or simply relax and soak in the mountain atmosphere. This acclimatization is essential for the challenging Ganja La crossing ahead.",
+    "overnight": "Teahouse in Kyanjin Gompa",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Kyanjin Ri sunrise (4,773m)", "Tserko Ri option (4,985m)", "360-degree Himalayan panorama", "Langtang Lirung glacial moraine", "Acclimatization for Ganja La Pass"]
   },
   {
-    day: 6,
-    title: "Acclimatization Day - Kyanjin Ri or Tserko Ri",
-    altitude: "3,870m → 4,773m / 4,985m → 3,870m",
-    distance: "8-12km / 5-8 hrs",
-    description: "A crucial acclimatization day with optional summit hikes. Kyanjin Ri (4,773m) offers a challenging 2-3 hour climb to a spectacular ridge with 360-degree views of the entire Langtang range including Langtang Lirung, Langtang II, Dorje Lakpa, and Yala Peak. For experienced trekkers seeking an extra challenge, Tserko Ri (4,985m) is a longer, steeper climb with even more dramatic panoramas stretching to the Tibetan plateau. As the sun rises, the peaks glow golden - an unforgettable experience. After descending, explore the ancient monastery, walk to the glacial moraine, or simply relax and soak in the mountain atmosphere. This acclimatization is essential for the challenging Ganja La crossing ahead.",
-    overnight: "Teahouse in Kyanjin Gompa",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Kyanjin Ri sunrise (4,773m)", "Tserko Ri option (4,985m)", "360-degree Himalayan panorama", "Acclimatization for Ganja La"],
+    "day": 6,
+    "title": "Trek from Kyanjin Gompa to Ngegang",
+    "altitude": "3,870m → 4,300m",
+    "distance": "12km / 5-6 hrs trek",
+    "description": "Today you leave the main Langtang Valley and head toward the remote Ganja La Pass region. The trail crosses the Langtang Khola via a wooden bridge and begins a steady climb through alpine meadows and juniper forests. The landscape becomes increasingly remote and wild as you gain altitude, with stunning views of the surrounding peaks including Naya Kanga. You'll pass through yak pastures and cross several mountain streams. Ngegang (4,300m) is a high-altitude grazing area with basic camping facilities - tonight you transition from teahouses to camping. This marks the beginning of the remote pass crossing section with no teahouses for the next 3-4 days. Your guide and porters will set up camp, and you'll enjoy a hot meal in the dining tent while surrounded by spectacular mountain scenery.",
+    "overnight": "Camping at Ngegang",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Leave main Langtang Valley", "Cross Langtang Khola", "Alpine meadows and juniper forests", "Remote wilderness", "First night camping"]
   },
   {
-    day: 7,
-    title: "Trek to Ngegang",
-    altitude: "3,870m → 4,300m",
-    distance: "12km / 5-6 hrs",
-    description: "We leave the main Langtang Valley and head toward the Ganja La region. The trail crosses the Langtang Khola and begins a steady climb through alpine meadows and juniper forests. The landscape becomes increasingly remote and wild as we gain altitude. Ngegang is a high-altitude grazing area with basic camping facilities - tonight we switch from teahouses to camping. This marks the beginning of the remote pass crossing section with no teahouses for the next 4 days.",
-    overnight: "Camping at Ngegang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Leave main valley", "Alpine meadows", "Remote wilderness", "Camping experience"],
+    "day": 7,
+    "title": "Trek from Ngegang to High Camp",
+    "altitude": "4,300m → 4,700m",
+    "distance": "8km / 4-5 hrs trek",
+    "description": "A shorter day to aid acclimatization before the challenging Ganja La Pass crossing tomorrow. The trail climbs steadily through rocky, alpine terrain with stunning views of the surrounding peaks including Naya Kanga (5,846m) and Langtang Lirung. You'll pass through rugged landscapes with minimal vegetation - just hardy alpine grasses and dwarf juniper. You'll set up camp at High Camp (4,700m), a windswept plateau nestled beneath the pass. The afternoon is free to rest, hydrate, and prepare for the challenging day ahead. Your guide will assess weather and snow conditions on the pass, check everyone's gear (crampons, ropes if needed), and provide a detailed briefing on the Ganja La crossing procedure. The sunset views over the Himalayas from camp are spectacular. Overnight camping at High Camp.",
+    "overnight": "Camping at High Camp",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Stunning mountain views", "Naya Kanga peak (5,846m)", "High-altitude terrain", "Pass preparation and briefing", "Spectacular sunset"]
   },
   {
-    day: 8,
-    title: "Trek to High Camp",
-    altitude: "4,300m → 4,700m",
-    distance: "8km / 4-5 hrs",
-    description: "A shorter day to aid acclimatization before the pass crossing. The trail climbs steadily through rocky terrain with stunning views of the surrounding peaks. We set up camp at High Camp, a windswept plateau beneath the pass. The afternoon is free to rest, hydrate, and prepare for the challenging day ahead. Your guide will assess conditions and provide a briefing on the pass crossing procedure. The views of Naya Kanga (5,846m) and surrounding glaciers are spectacular from this vantage point.",
-    overnight: "Camping at High Camp",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Stunning mountain views", "Naya Kanga peak", "Pass preparation", "High-altitude camping"],
+    "day": 8,
+    "title": "Cross Ganja La Pass & Trek to Keldang",
+    "altitude": "4,700m → 5,130m → 4,270m",
+    "distance": "12km / 8-9 hrs trek",
+    "description": "The most challenging and rewarding day of the entire Langtang Helambu trek! Wake early (3-4 AM) for the ascent to Ganja La Pass (5,130m). The climb is steep and demanding, crossing snow and ice fields where crampons and ropes may be necessary depending on seasonal conditions. Your guide will lead the way carefully, ensuring safety. The final push to the pass is exhilarating, and at the summit, prayer flags flutter in the wind with breathtaking 360-degree views of Langtang Lirung (7,227m), Naya Kanga (5,846m), Dorje Lakpa (6,966m), Ganesh Himal (7,422m), and even glimpses of Shisha Pangma (8,013m) - the only 8,000m peak entirely in Tibet. After celebrating your achievement at the top, begin the long descent to Keldang (4,270m), passing small glacial lakes, rocky terrain, and alpine meadows. This is a tiring but unforgettable day - you've crossed one of Nepal's most spectacular high passes! Overnight camping at Keldang.",
+    "overnight": "Camping at Keldang",
+    "meals": "Breakfast, Packed Lunch, Dinner",
+    "highlights": ["Ganja La Pass crossing (5,130m)", "360-degree Himalayan panorama", "Langtang Lirung and Naya Kanga views", "Glimpses of Shisha Pangma (Tibet)", "Glacial lakes and alpine descent"]
   },
   {
-    day: 9,
-    title: "Cross Ganja La Pass to Keldang",
-    altitude: "4,700m → 5,130m → 4,270m",
-    distance: "12km / 8-9 hrs",
-    description: "The most challenging and rewarding day of the trek! We start early (3-4 AM) for the ascent to Ganja La Pass (5,130m). The climb is steep and demanding, crossing snow and ice fields where crampons and ropes may be necessary depending on conditions. At the summit, prayer flags flutter in the wind with breathtaking 360-degree views of Langtang Lirung, Naya Kanga, Dorje Lakpa, Ganesh Himal, and even glimpses of Shisha Pangma (8,013m) in Tibet. After celebrating at the top, we begin the long descent to Keldang, passing small glacial lakes and rocky terrain. This is a tiring but unforgettable day.",
-    overnight: "Camping at Keldang",
-    meals: "Breakfast, Packed Lunch, Dinner",
-    highlights: ["Ganja La Pass (5,130m)", "360-degree Himalayan panorama", "Views of Shisha Pangma", "Glacial lakes"],
+    "day": 9,
+    "title": "Trek from Keldang to Dukpu",
+    "altitude": "4,270m → 4,040m",
+    "distance": "12km / 6-7 hrs trek",
+    "description": "After the exertion of yesterday's Ganja La Pass crossing, today's trek is mostly downhill through beautiful alpine landscapes. The trail descends through valleys with occasional yak pastures and offers spectacular views back toward the pass you conquered. You'll pass through remote wilderness areas with no permanent settlements - the sense of solitude and pristine nature is profound. The trail follows mountain streams, crosses small bridges, and passes through forests of rhododendron and juniper. Dukpu (4,040m) is a small seasonal grazing area with basic camping facilities, nestled in a valley surrounded by forests and mountains. Enjoy a well-deserved rest and reflect on your incredible achievement of crossing Ganja La Pass. Overnight camping at Dukpu.",
+    "overnight": "Camping at Dukpu",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Alpine descent", "Remote wilderness solitude", "Views back to Ganja La Pass", "Mountain streams and forests", "Rest and recovery day"]
   },
   {
-    day: 10,
-    title: "Trek to Dukpu",
-    altitude: "4,270m → 4,040m",
-    distance: "12km / 6-7 hrs",
-    description: "After the exertion of the pass crossing, today's trek is mostly downhill through beautiful alpine landscapes. The trail descends through valleys with occasional yak pastures and offers spectacular views back toward the pass. We pass through remote wilderness areas with no settlements - the sense of solitude is profound. Dukpu is a small grazing area with basic camping facilities, nestled in a valley surrounded by forests and mountains.",
-    overnight: "Camping at Dukpu",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Alpine descent", "Remote wilderness", "Views back to Ganja La", "Solitude"],
+    "day": 10,
+    "title": "Trek from Dukpu to Tarkeghyang",
+    "altitude": "4,040m → 2,590m",
+    "distance": "14km / 6-7 hrs trek",
+    "description": "A significant descent day as you leave the high mountains behind and enter the beautiful Helambu region. The trail descends through dense rhododendron and pine forests, with the vegetation becoming increasingly lush as you lose altitude. You'll notice the air becoming richer and warmer as you descend. You'll pass through traditional Sherpa and Hyolmo villages with their distinctive stone houses, intricately carved wooden windows, mani walls, and fluttering prayer flags. Tarkeghyang (2,590m) is the largest village in the Helambu region, with a beautiful ancient monastery, friendly locals, comfortable teahouses, and even a few small shops - a welcome return to civilization after multiple days of camping. Enjoy a hot shower, charge your devices, and sleep in a real bed. Overnight in a comfortable teahouse at Tarkeghyang.",
+    "overnight": "Teahouse in Tarkeghyang",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Enter Helambu region", "Rhododendron and pine forests", "Traditional Sherpa and Hyolmo villages", "Tarkeghyang monastery", "Return to teahouse comfort"]
   },
   {
-    day: 11,
-    title: "Trek to Tarkeghyang",
-    altitude: "4,040m → 2,590m",
-    distance: "14km / 6-7 hrs",
-    description: "A significant descent day as we leave the high mountains behind and enter the Helambu region. The trail descends through rhododendron and pine forests, with the vegetation becoming increasingly lush as we lose altitude. We pass through traditional Sherpa and Hyolmo villages with their distinctive stone houses, mani walls, and prayer flags. Tarkeghyang is the largest village in Helambu, with a beautiful ancient monastery, friendly locals, and comfortable teahouses - a welcome return to civilization after days of camping.",
-    overnight: "Teahouse in Tarkeghyang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Enter Helambu region", "Rhododendron forests", "Sherpa and Hyolmo villages", "Tarkeghyang monastery"],
+    "day": 11,
+    "title": "Trek from Tarkeghyang to Sermathang",
+    "altitude": "2,590m → 2,610m",
+    "distance": "10km / 4-5 hrs trek",
+    "description": "A relatively easy and short day following ridgelines with stunning views of the Himalayas on clear days, including Langtang Lirung, Ganesh Himal, and sometimes even Everest and Shisha Pangma. The trail passes through several small villages including Melemchigaon, with opportunities to observe rural life, visit local monasteries, and interact with friendly Hyolmo people. Sermathang (2,610m) is a beautiful village perched on a ridge with spectacular mountain views, several ancient monasteries, and a warm, welcoming community. The village is known for its traditional Hyolmo architecture, the famous Guru Rinpoche statue, and its peaceful atmosphere. Enjoy the sunset views over the mountains and celebrate nearing the end of your epic journey across Ganja La Pass. Visit the local monastery and interact with the monks. Overnight in a comfortable teahouse at Sermathang.",
+    "overnight": "Teahouse in Sermathang",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Ridge walking with mountain views", "Melemchigaon village", "Hyolmo culture", "Sermathang village", "Guru Rinpoche statue and monastery"]
   },
   {
-    day: 12,
-    title: "Trek to Sermathang",
-    altitude: "2,590m → 2,610m",
-    distance: "10km / 4-5 hrs",
-    description: "A relatively easy day following ridgelines with stunning views of the Himalayas on clear days. The trail passes through several small villages with opportunities to observe rural life and interact with friendly locals. Sermathang is a beautiful village perched on a ridge with spectacular mountain views, several monasteries, and a warm community. The village is known for its traditional architecture and the famous Guru Rinpoche statue. Enjoy the sunset views over the mountains and celebrate nearing the end of your epic journey.",
-    overnight: "Teahouse in Sermathang",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Ridge walking", "Mountain views", "Sermathang village", "Guru Rinpoche statue"],
+    "day": 12,
+    "title": "Trek from Sermathang to Melamchi Pul Bazaar",
+    "altitude": "2,610m → 880m",
+    "distance": "14km / 5-6 hrs trek",
+    "description": "Your final day of trekking as you descend through terraced farmlands, lush forests, and traditional villages to Melamchi Pul Bazaar. The trail offers a fascinating transition from mountain villages at 2,600m to subtropical lowlands at 880m. You'll pass through Dubhachaur and other settlements along the Melamchi River, witnessing the change in architecture, agriculture, and daily life. Melamchi Pul (880m) is a bustling market town situated at the confluence of the Melamchi and Indrawati Rivers. Celebrate your incredible achievement of crossing Ganja La Pass (5,130m) and trekking through Langtang Valley and Helambu! Enjoy a well-deserved hot shower, cold drinks, and a celebration dinner with your trekking team. Overnight in a comfortable teahouse at Melamchi Pul.",
+    "overnight": "Teahouse in Melamchi Pul",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final day of Ganja La trek", "Terraced farmlands", "Melamchi River valley", "Subtropical landscapes", "Celebration dinner with team"]
   },
   {
-    day: 13,
-    title: "Trek to Melamchi Pul Bazaar",
-    altitude: "2,610m → 880m",
-    distance: "14km / 5-6 hrs",
-    description: "Final day of trekking as we descend through terraced farmlands, forests, and villages to Melamchi Pul Bazaar. The trail offers a fascinating transition from mountain villages to subtropical lowlands. We pass through Dubhachaur and other settlements before reaching Melamchi Pul, a bustling market town. Celebrate your incredible achievement of crossing Ganja La Pass and trekking through Langtang and Helambu! Enjoy a hot shower, cold drinks, and a well-deserved celebration dinner with your trekking team.",
-    overnight: "Teahouse in Melamchi Pul",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Final trekking day", "Terraced farmlands", "Melamchi Pul arrival", "Celebration dinner"],
-  },
-  {
-    day: 14,
-    title: "Drive to Kathmandu",
-    altitude: "880m → 1,350m",
-    distance: "3-4 hrs drive",
-    description: "After breakfast, we drive back to Kathmandu through scenic countryside. The short drive takes us through beautiful landscapes and villages before reaching the capital. Arrive in Kathmandu by early afternoon and check into your hotel. Enjoy free time for souvenir shopping in Thamel, a well-deserved massage, or simply rest after your adventure. Evening farewell dinner celebrating your Ganja La crossing and the completion of this epic journey through Langtang and Helambu.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast, Dinner",
-    highlights: ["Scenic drive", "Thamel exploration", "Farewell celebration dinner", "Trek completion"],
-  },
-  {
-    day: 15,
-    title: "Departure",
-    altitude: "1,350m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of standing atop Ganja La Pass surrounded by the majestic Himalayas, crossing glaciers, and experiencing the warm hospitality of mountain communities.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 13,
+    "title": "Drive from Melamchi Pul to Kathmandu",
+    "altitude": "880m → 1,350m",
+    "distance": "3-4 hrs drive",
+    "description": "After breakfast in Melamchi Pul, take a scenic drive back to Kathmandu through the beautiful Nepali countryside. The relatively short drive (3-4 hours) takes you through charming villages, terraced farmlands, and along the Indrawati River before reaching the outskirts of the capital. Arrive in Kathmandu by early afternoon and check into your hotel. Take a well-deserved hot shower, clean clothes, and the comfort of a real bed. The remainder of your day is free for souvenir shopping in Thamel, visiting a spa for a much-needed massage, or simply relaxing and reflecting on your epic journey. In the evening, enjoy a farewell dinner celebrating your incredible achievement - crossing Ganja La Pass (5,130m) and completing the Langtang Valley with Helambu circuit. This is a true adventure that few trekkers accomplish!",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Dinner",
+    "highlights": ["Scenic drive to Kathmandu", "Indrawati River views", "Thamel souvenir shopping", "Spa and relaxation", "Farewell celebration dinner"]
+  }
 ];
 
 const includes = [
@@ -407,8 +387,8 @@ export default function LangtangGanjaLaTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$2,250</div>
-                <div className="text-lg font-bold text-[#0f2940]">$1,995</div>
+                <div className="text-xs text-slate-400 line-through">$1,455</div>
+                <div className="text-lg font-bold text-[#0f2940]">$1,200</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -428,8 +408,8 @@ export default function LangtangGanjaLaTrekPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$2,250</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,995</div>
+                        <span className="text-white/50 text-sm line-through">$1,455</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,200</div>
                         <span className="text-white/60 text-sm">per person</span>
                         <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $255</Badge>
                       </div>

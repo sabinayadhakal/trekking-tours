@@ -41,125 +41,95 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Evening free to explore the vibrant streets of Thamel or rest after your journey.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements"],
-  },
-  {
-    day: 2,
-    title: "Drive to Pokhara",
-    altitude: "1,400m → 820m",
-    distance: "200km / 6-7 hrs drive",
-    description: "Scenic drive from Kathmandu to Pokhara along the Prithvi Highway, following the Trishuli River. The journey offers beautiful views of rural landscapes, river valleys, and distant mountains. Arrive in Pokhara, Nepal's second-largest city and gateway to the Annapurna region. Check into your lakeside hotel and enjoy free time to explore Phewa Lake or relax with mountain views.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic highway drive", "Trishuli River views", "Arrival in Pokhara", "Phewa Lake"],
-  },
-  {
-    day: 3,
-    title: "Drive to Ghandruk & Trek to Kimrong",
-    altitude: "820m → 1,940m → 1,850m",
-    distance: "1.5 hrs drive / 4-5 hrs trek",
-    description: "Morning drive from Pokhara to Nayapul, then continue to Ghandruk (1,940m) - a beautiful Gurung village with stunning views of Annapurna South and Machhapuchhre (Fishtail). After exploring Ghandruk and its museum, we trek through rhododendron forests to Kimrong, a small settlement with traditional stone houses and mountain views.",
-    overnight: "Teahouse in Kimrong",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Ghandruk village exploration", "Gurung culture and museum", "Views of Annapurna South", "Rhododendron forests"],
-  },
-  {
-    day: 4,
-    title: "Trek to Chhomrong",
-    altitude: "1,850m → 2,170m",
-    distance: "6km / 4-5 hrs",
-    description: "Trek through beautiful forests with occasional mountain views. The trail passes through traditional villages and terraced farmlands. Chhomrong is a large Gurung village situated on a hillside with spectacular views of Annapurna South, Hiunchuli, and Machhapuchhre. The village has excellent teahouses and is the last permanent settlement before entering the Annapurna Sanctuary.",
-    overnight: "Teahouse in Chhomrong",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Traditional villages", "Terraced farmlands", "Chhomrong village", "Panoramic mountain views"],
-  },
-  {
-    day: 5,
-    title: "Trek to Dovan",
-    altitude: "2,170m → 2,500m",
-    distance: "10km / 5-6 hrs",
-    description: "Descend to the Chhomrong Khola, cross a suspension bridge, and climb through dense rhododendron and bamboo forests. The trail follows the Modi Khola River deep into the valley. Dovan is a small settlement with basic lodges nestled in the forest beside the river. The sound of the river and surrounding forest creates a peaceful atmosphere.",
-    overnight: "Teahouse in Dovan",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Suspension bridge crossings", "Dense rhododendron forest", "Bamboo forests", "Modi Khola River"],
-  },
-  {
-    day: 6,
-    title: "Trek to Deurali",
-    altitude: "2,500m → 3,200m",
-    distance: "8km / 4-5 hrs",
-    description: "Continue ascending through the narrowing valley. The forest gradually thins as we gain altitude, with increasing mountain views. The trail passes through Himalaya Hotel, a small settlement, before reaching Deurali. The landscape becomes more alpine with dramatic rock walls and occasional avalanche paths. Deurali offers stunning views of Machhapuchhre and surrounding peaks.",
-    overnight: "Teahouse in Deurali",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Narrowing valley", "Alpine landscape", "Views of Machhapuchhre", "Dramatic rock walls"],
-  },
-  {
-    day: 7,
-    title: "Trek to Annapurna Base Camp",
-    altitude: "3,200m → 4,130m",
-    distance: "10km / 5-6 hrs",
-    description: "The most spectacular day of the trek! The trail passes through Machhapuchhre Base Camp (3,700m) with incredible close-up views of the Fishtail Mountain. Continue through the glacial moraine into the Annapurna Sanctuary - a breathtaking amphitheater surrounded by a ring of snow-capped peaks. Annapurna Base Camp (4,130m) sits at the heart of this sanctuary, surrounded by Annapurna I, Annapurna South, Hiunchuli, Gandharva Chuli, and Machhapuchhre. The 360-degree mountain panorama is simply unforgettable.",
-    overnight: "Teahouse at Annapurna Base Camp",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Machhapuchhre Base Camp", "Annapurna Sanctuary", "Annapurna Base Camp (4,130m)", "360-degree mountain amphitheater"],
-  },
-  {
-    day: 8,
-    title: "Sunrise at ABC & Trek to Bamboo",
-    altitude: "4,130m → 2,300m",
-    distance: "14km / 6-7 hrs",
-    description: "Wake early to witness sunrise painting the peaks in golden light - a magical experience as the mountains change color minute by minute. After breakfast, begin the descent retracing your steps through the sanctuary. The trail descends through Deurali and Dovan to Bamboo, with changing perspectives of the mountains and forests.",
-    overnight: "Teahouse in Bamboo",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Sunrise at Annapurna Base Camp", "Golden mountain light", "Descending through sanctuary", "Changing forest zones"],
-  },
-  {
-    day: 9,
-    title: "Trek to Jhinu Danda (Hot Springs)",
-    altitude: "2,300m → 1,780m",
-    distance: "10km / 5-6 hrs",
-    description: "Continue descending through Chhomrong and down to the Jhinu Danda hot springs. The natural hot springs beside the Modi Khola River are the perfect reward after days of trekking. Soak your tired muscles in the warm waters while listening to the river. Overnight at Jhinu Danda with optional evening visit to the springs.",
-    overnight: "Teahouse in Jhinu Danda",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Natural hot springs", "Relaxing soak", "Modi Khola River", "Muscle recovery"],
-  },
-  {
-    day: 10,
-    title: "Trek to Nayapul & Drive to Pokhara",
-    altitude: "1,780m → 1,010m → 820m",
-    distance: "10km trek / 1.5 hrs drive",
-    description: "Final day of trekking descending through villages and terraced farmlands to Nayapul. The trail follows the Modi Khola with beautiful valley views. At Nayapul, our private vehicle awaits for the short drive to Pokhara. Check into your lakeside hotel and celebrate your Annapurna Base Camp achievement! Free evening to explore Lakeside's restaurants and bars.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Final trekking day", "Terraced farmlands", "Arrival in Pokhara", "Celebration dinner"],
-  },
-  {
-    day: 11,
-    title: "Drive to Kathmandu",
-    altitude: "820m → 1,400m",
-    distance: "200km / 6-7 hrs drive",
-    description: "After breakfast, scenic drive back to Kathmandu through the Prithvi Highway, following the Trishuli River. The journey offers views of rural landscapes, river rafters, and distant hills. Arrive in Kathmandu by late afternoon. Check into your hotel and enjoy free time for souvenir shopping or final exploration of Thamel.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast",
-    highlights: ["Scenic highway drive", "Trishuli River views", "Rural Nepal", "Thamel exploration"],
-  },
-  {
-    day: 12,
-    title: "Departure",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of standing in the heart of the Annapurna Sanctuary surrounded by the world's most beautiful mountains.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 1,
+    "title": "Drive from Kathmandu to Pokhara",
+    "altitude": "1,400m → 820m",
+    "distance": "200km / 6-7 hrs drive",
+    "description": "Begin your Annapurna Base Camp trek with a scenic drive from Kathmandu to Pokhara along the Prithvi Highway. The journey follows the Trishuli River, offering stunning views of rural Nepali landscapes, terraced farmlands, and distant Himalayan peaks. Upon arrival in Pokhara, the beautiful lake city, check into your hotel and enjoy free time to explore Phewa Lake or relax with mountain views of Machhapuchhre and Annapurna range. This drive is an essential part of the ABC trek experience, allowing you to witness Nepal's diverse geography before the adventure begins.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic Kathmandu to Pokhara drive", "Trishuli River views", "Phewa Lake", "Annapurna mountain range panorama"]
+},
+{
+    "day": 2,
+    "title": "Drive to Kande and Trek to Landruk",
+    "altitude": "820m → 1,770m → 1,565m",
+    "distance": "30 min drive / 5-6 hrs trek",
+    "description": "After breakfast in Pokhara, take a short 30-minute drive to Kande (1,770m), the starting point of today's trek. From Kande, the trail gradually ascends through lush rhododendron and oak forests, offering breathtaking views of Annapurna South and Hiunchuli. You'll pass through small Gurung villages before descending slightly to Landruk (1,565m), a charming hillside village known for its traditional stone houses, friendly locals, and spectacular mountain vistas. Landruk provides an authentic cultural experience and is a perfect introduction to teahouse trekking in the Annapurna region.",
+    "overnight": "Teahouse in Landruk",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Drive from Pokhara to Kande", "Rhododendron forests", "Gurung village culture", "Views of Annapurna South and Hiunchuli"]
+},
+{
+    "day": 3,
+    "title": "Trek from Landruk to Lower Sinuwa",
+    "altitude": "1,565m → 2,340m",
+    "distance": "12km / 6-7 hrs trek",
+    "description": "Today's trek takes you from Landruk through beautiful forests and traditional settlements to Lower Sinuwa. The trail descends to the Modi Khola River, crosses a suspension bridge, and then climbs steadily through dense rhododendron and bamboo forests. You'll pass through the village of Jhinu Danda, famous for its natural hot springs, before continuing to Lower Sinuwa. This section offers incredible views of Machhapuchhre (Fishtail Mountain) and Annapurna South. Lower Sinuwa sits on a ridge with excellent teahouses and stunning mountain panoramas, making it a perfect overnight stop on the ABC trek.",
+    "overnight": "Teahouse in Lower Sinuwa",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Modi Khola River crossing", "Suspension bridge adventure", "Jhinu Danda hot springs view", "Machhapuchhre and Annapurna South vistas"]
+},
+{
+    "day": 4,
+    "title": "Trek from Lower Sinuwa to Deurali",
+    "altitude": "2,340m → 3,200m",
+    "distance": "11km / 5-6 hrs trek",
+    "description": "Depart Lower Sinuwa and continue your ascent toward Annapurna Base Camp. The trail passes through Upper Sinuwa and then enters a dense bamboo forest that gradually thins as you gain altitude. You'll cross several suspension bridges over glacial streams before reaching Dovan, a small forest settlement. The valley narrows dramatically as you approach Deurali, with towering rock walls on both sides. The landscape becomes increasingly alpine, and you'll be rewarded with your first close-up views of Machhapuchhre. Deurali serves as the last major stop before entering the Annapurna Sanctuary, offering dramatic mountain scenery and a true sense of wilderness.",
+    "overnight": "Teahouse in Deurali",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Bamboo and rhododendron forests", "Narrowing Modi River valley", "Alpine landscape transition", "Close-up Machhapuchhre views"]
+},
+{
+    "day": 5,
+    "title": "Trek from Deurali to Annapurna Base Camp via Machhapuchhre Base Camp",
+    "altitude": "3,200m → 4,130m",
+    "distance": "9km / 5-6 hrs trek",
+    "description": "This is the most spectacular day of the entire Annapurna Base Camp trek. From Deurali, follow the Modi Khola upstream through a dramatic glacial valley. You'll reach Machhapuchhre Base Camp (3,700m), which offers jaw-dropping views of the iconic Fishtail Mountain towering directly above. Continue across a glacial moraine and enter the Annapurna Sanctuary - a natural amphitheater surrounded by massive snow-capped peaks including Annapurna I (8,091m), Annapurna South, Hiunchuli, and Gandharva Chuli. Arrive at Annapurna Base Camp (4,130m), where you'll be surrounded by a 360-degree panorama of the world's most beautiful mountains. The sense of accomplishment and the breathtaking scenery make every step worthwhile.",
+    "overnight": "Teahouse at Annapurna Base Camp",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Machhapuchhre Base Camp", "Glacial moraine crossing", "Annapurna Sanctuary amphitheater", "360-degree Himalayan panorama at ABC (4,130m)"]
+},
+{
+    "day": 6,
+    "title": "Sunrise at Annapurna Base Camp and Trek to Lower Sinuwa",
+    "altitude": "4,130m → 2,340m",
+    "distance": "14km / 6-7 hrs trek",
+    "description": "Wake up before dawn to witness one of nature's greatest spectacles - sunrise over the Annapurna massif. As the first light hits the peaks, the mountains transform from deep blue to golden yellow to brilliant white. This magical moment at Annapurna Base Camp is the highlight of the entire journey. After a hearty breakfast, begin your descent retracing your steps through the Annapurna Sanctuary, past Machhapuchhre Base Camp, and down through Deurali and Dovan. The descent offers completely different perspectives of the mountains and forests. Arrive at Lower Sinuwa by late afternoon, where comfortable teahouses await.",
+    "overnight": "Teahouse in Lower Sinuwa",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Unforgettable sunrise at Annapurna Base Camp", "Golden light on Annapurna I", "Descending through Annapurna Sanctuary", "Changing forest and mountain perspectives"]
+},
+{
+    "day": 7,
+    "title": "Trek from Lower Sinuwa to Samrung",
+    "altitude": "2,340m → 1,900m",
+    "distance": "10km / 4-5 hrs trek",
+    "description": "Enjoy a shorter trekking day as you continue your descent from Lower Sinuwa to Samrung. The trail passes through Jhinu Danda, where you can take a refreshing dip in the natural hot springs beside the Modi Khola River - the perfect way to soothe tired muscles after days of trekking. From Jhinu, follow the trail through terraced farmlands and small villages to Samrung, a peaceful settlement offering beautiful views of the surrounding hills and valleys. This relaxed day allows you to fully appreciate the local culture and landscapes as you make your way back toward civilization.",
+    "overnight": "Teahouse in Samrung",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Jhinu Danda natural hot springs", "Modi Khola riverside relaxation", "Terraced farmlands", "Local village culture"]
+},
+{
+    "day": 8,
+    "title": "Short Trek to Nayapul and Jeep Drive to Pokhara",
+    "altitude": "1,900m → 1,010m → 820m",
+    "distance": "3-4 hrs trek / 2 hrs jeep drive",
+    "description": "On your final day of trekking, enjoy a gentle walk from Samrung through picturesque villages and along the Modi Khola River to Nayapul. This section showcases the beautiful terraced farmlands and friendly rural communities of the Annapurna region. At Nayapul, a private jeep awaits for an exciting 2-hour drive back to Pokhara. The jeep ride offers a different perspective of the landscapes you traversed days earlier. Arrive in Pokhara by late afternoon, check into your lakeside hotel, and celebrate your successful Annapurna Base Camp trek with a well-deserved dinner and cold drink.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Final day of ABC trekking", "Modi Khola valley views", "Jeep drive through rural Nepal", "Celebration dinner in Pokhara"]
+},
+{
+    "day": 9,
+    "title": "Drive from Pokhara to Kathmandu",
+    "altitude": "820m → 1,400m",
+    "distance": "200km / 6-7 hrs drive",
+    "description": "After a leisurely breakfast in Pokhara, begin your scenic drive back to Kathmandu along the Prithvi Highway. The journey follows the Trishuli River, offering beautiful views of river valleys, rolling hills, and distant mountain peaks. You'll pass through charming towns and witness daily Nepali rural life along the way. Arrive in Kathmandu by late afternoon. The remainder of your day is free for souvenir shopping in Thamel, exploring UNESCO World Heritage sites you may have missed, or simply relaxing after your incredible ABC trek adventure.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast",
+    "highlights": ["Return drive to Kathmandu", "Trishuli River scenery", "Rural Nepali landscapes", "Thamel souvenir shopping"]
+}
 ];
 
 const includes = [
@@ -369,7 +339,7 @@ export default function AnnapurnaBaseCampTrekPage() {
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-slate-400 line-through">$1,050</div>
-                <div className="text-lg font-bold text-[#0f2940]">$895</div>
+                <div className="text-lg font-bold text-[#0f2940]">$700</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -390,9 +360,9 @@ export default function AnnapurnaBaseCampTrekPage() {
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
                         <span className="text-white/50 text-sm line-through">$1,050</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$895</div>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$700</div>
                         <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
+                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $350</Badge>
                       </div>
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">

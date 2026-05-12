@@ -42,85 +42,65 @@ import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
-    day: 1,
-    title: "Arrival in Kathmandu",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Welcome to Nepal! Upon arrival at Tribhuvan International Airport, our representative will greet you and transfer you to your hotel in Thamel. After check-in, attend a comprehensive trek briefing where we'll discuss the route, check your gear, and handle permit arrangements. Evening free to explore the vibrant streets of Thamel or rest after your journey.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Dinner",
-    highlights: ["Airport pickup", "Trek briefing", "Gear check", "Permit arrangements"],
+    "day": 1,
+    "title": "Drive from Kathmandu to Pokhara",
+    "altitude": "1,400m → 820m",
+    "distance": "200km / 6-7 hrs drive",
+    "description": "Early morning departure from your hotel in Kathmandu for the scenic drive to Pokhara along the Prithvi Highway, following the winding Trishuli River through lush green hills and terraced farmlands. The journey offers beautiful views of rural Nepali landscapes, distant mountain peaks, and occasional white-water rafters in the river below. You'll pass through charming towns and villages, witnessing daily life in the Nepali countryside. Arrive in Pokhara (820m), Nepal's second-largest city and the gateway to the Annapurna region. Check into your beautiful lakeside hotel and enjoy free time to explore Phewa Lake, go boating, or simply relax with stunning views of the Annapurna range and Machhapuchhre (Fishtail) reflected in the lake. Evening is free to explore Lakeside's vibrant restaurants, bars, and shops. Prepare your gear for tomorrow's trek start.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Early morning departure from Kathmandu", "Scenic Prithvi Highway drive", "Trishuli River views", "Rural Nepali countryside", "Phewa Lake and mountain reflections"]
   },
   {
-    day: 2,
-    title: "Drive to Pokhara",
-    altitude: "1,400m → 820m",
-    distance: "200km / 6-7 hrs drive",
-    description: "Scenic drive from Kathmandu to Pokhara along the Prithvi Highway, following the Trishuli River. The journey offers beautiful views of rural landscapes, river valleys, and distant mountains. Arrive in Pokhara, Nepal's second-largest city and gateway to the Annapurna region. Check into your lakeside hotel and enjoy free time to explore Phewa Lake or relax with mountain views.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Scenic highway drive", "Trishuli River views", "Arrival in Pokhara", "Phewa Lake"],
+    "day": 2,
+    "title": "Drive to Nayapul & Trek to Tikhedhunga",
+    "altitude": "820m → 1,010m → 1,540m",
+    "distance": "1.5 hrs drive / 3-4 hrs trek",
+    "description": "After breakfast in Pokhara, take a scenic 1.5-hour drive to Nayapul (1,010m), the traditional trailhead for the Poon Hill and Annapurna Base Camp treks. Along the way, enjoy beautiful views of the Modi Khola River valley and terraced farmlands. Upon arrival at Nayapul, meet your trekking guides and porters. Begin your trek following the Modi Khola River. The trail passes through beautiful villages with traditional Nepali houses, lush forests, and several suspension bridges. The path gradually ascends to Tikhedhunga (1,540m), a small village nestled in a valley surrounded by lush green hills. Tikhedhunga is a charming settlement with several teahouses located beside a rushing stream. This short trek day allows for a gentle introduction to the trail and helps with initial acclimatization. Overnight in a comfortable teahouse.",
+    "overnight": "Teahouse in Tikhedhunga",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Scenic drive to Nayapul", "Modi Khola River valley", "Suspension bridge crossings", "Traditional Nepali villages", "Tikhedhunga arrival"]
   },
   {
-    day: 3,
-    title: "Drive to Nayapul & Trek to Tikhedhunga",
-    altitude: "820m → 1,010m → 1,540m",
-    distance: "1.5 hrs drive / 3-4 hrs trek",
-    description: "Morning drive from Pokhara to Nayapul (1,010m), the trailhead for many Annapurna treks. We begin our trek following the Modi Khola River, passing through beautiful villages and terraced farmlands. The trail gradually ascends to Tikhedhunga, a small village nestled in a valley surrounded by lush hills. This short trek day allows for a gentle introduction to the trail.",
-    overnight: "Teahouse in Tikhedhunga",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Drive to Nayapul", "Modi Khola River", "Terraced farmlands", "Traditional villages"],
+    "day": 3,
+    "title": "Trek from Tikhedhunga to Ghorepani via Ulleri Steps",
+    "altitude": "1,540m → 2,860m",
+    "distance": "12km / 6-7 hrs trek",
+    "description": "Today is challenging but incredibly rewarding as we tackle the famous Ulleri Steps - over 3,000 stone steps that climb steeply through beautiful rhododendron and oak forests. The steps are steep but well-maintained, and the gradual ascent allows you to enjoy the stunning forest scenery. As we climb higher, the first glimpses of the Annapurna and Dhaulagiri ranges begin to appear. We pass through Ulleri village, a traditional Magar settlement with stone houses and friendly locals. The forest section from Ulleri to Ghorepani is particularly beautiful, with rhododendron trees that burst into brilliant red and pink blooms during spring (March-April). Ghorepani (2,860m) is a lively village situated on a ridge, serving as the main gateway to Poon Hill. The village offers spectacular mountain views and a vibrant atmosphere with multiple teahouses, bakeries, and shops. Overnight in Ghorepani, preparing for tomorrow's pre-dawn hike to Poon Hill.",
+    "overnight": "Teahouse in Ghorepani",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Ulleri Steps (3,000+ stone steps)", "Rhododendron forests", "Magar village and culture", "First views of Annapurna and Dhaulagiri", "Ghorepani arrival and preparation"]
   },
   {
-    day: 4,
-    title: "Trek to Ghorepani",
-    altitude: "1,540m → 2,860m",
-    distance: "12km / 6-7 hrs",
-    description: "Today includes the famous 'Ulleri Steps' - over 3,000 stone steps that climb steeply through beautiful forests. The ascent is challenging but rewarding, with stunning mountain views opening up as we gain altitude. We pass through Ulleri village with its traditional Magar houses and continue through rhododendron forests to Ghorepani. Ghorepani is a lively village at the crossroads of several trekking routes, with excellent mountain views and a vibrant atmosphere.",
-    overnight: "Teahouse in Ghorepani",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Ulleri stone steps (3,000+ steps)", "Rhododendron forests", "Magar village culture", "Arrival in Ghorepani"],
+    "day": 4,
+    "title": "Poon Hill Sunrise & Trek to Tadapani",
+    "altitude": "2,860m → 3,210m → 2,630m",
+    "distance": "12km / 6-7 hrs trek",
+    "description": "Wake up early (around 4:00 AM) for the pre-dawn hike to Poon Hill (3,210m) - the highlight of the entire trek! The 45-minute to 1-hour climb in the dark is well worth every step. As you reach the viewpoint, join dozens of trekkers watching the sky transform from deep blue to orange and gold. The sun rises behind the Annapurna range, painting the peaks of Dhaulagiri (8,167m - world's 7th highest), Annapurna I (8,091m), Annapurna South (7,219m), Machhapuchhre (6,993m - Fishtail), Hiunchuli (6,441m), and Tukuche Peak (6,920m) in stunning golden light. This 360-degree Himalayan panorama is one of the most photographed sunrise views in the world. After soaking in the magic of sunrise, descend back to Ghorepani for breakfast. Then continue the trek through beautiful rhododendron and pine forests to Tadapani (2,630m). Tadapani offers stunning close-up views of Machhapuchhre (Fishtail) and Annapurna South, making it a perfect overnight stop.",
+    "overnight": "Teahouse in Tadapani",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Pre-dawn Poon Hill hike", "Spectacular 360-degree sunrise panorama", "Dhaulagiri, Annapurna, Machhapuchhre views", "World-famous mountain photography", "Tadapani close-up mountain views"]
   },
   {
-    day: 5,
-    title: "Poon Hill Sunrise & Trek to Tadapani",
-    altitude: "2,860m → 3,210m → 2,630m",
-    distance: "12km / 6-7 hrs",
-    description: "Pre-dawn hike (4:00 AM) to Poon Hill (3,210m) for the most spectacular sunrise views in the Annapurna region. As the sun rises, the peaks of Dhaulagiri (8,167m), Annapurna I (8,091m), Annapurna South, Machhapuchhre (Fishtail), and dozens of other peaks glow golden in the morning light - an unforgettable experience. After sunrise, return to Ghorepani for breakfast, then trek through rhododendron forests to Tadapani. Tadapani offers stunning close-up views of Machhapuchhre and Annapurna South.",
-    overnight: "Teahouse in Tadapani",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Poon Hill sunrise panorama", "Dhaulagiri & Annapurna views", "Machhapuchhre close-up", "Rhododendron forest trail"],
+    "day": 5,
+    "title": "Trek to Ghandruk & Drive to Pokhara",
+    "altitude": "2,630m → 1,940m → 820m",
+    "distance": "10km trek / 2 hrs drive",
+    "description": "Today is a delightful mix of trekking and cultural exploration. After breakfast, begin your morning descent through beautiful forests of rhododendron, oak, and magnolia. The trail gradually descends to Ghandruk (1,940m), one of the largest and most beautiful Gurung villages in Nepal. Ghandruk is famous for its traditional stone houses, terraced fields, narrow stone-paved streets, and warm Gurung hospitality. Upon arrival, explore the village and visit the Gurung Museum, which showcases traditional Gurung culture, clothing, tools, and photographs of the village's famous Gurkha soldiers. Enjoy spectacular views of Annapurna South, Hiunchuli, and Machhapuchhre from various points in the village. After lunch at a local teahouse, take a scenic drive back to Pokhara (1.5-2 hours) via Nayapul. Arrive in Pokhara by late afternoon and check into your hotel. The evening is free to celebrate your successful Poon Hill trek - enjoy a well-deserved dinner at one of Lakeside's many excellent restaurants, go for a boat ride on Phewa Lake, or simply relax and watch the sunset over the Annapurna range reflecting on the water.",
+    "overnight": "Hotel in Pokhara",
+    "meals": "Breakfast, Lunch, Dinner",
+    "highlights": ["Descent through rhododendron forests", "Ghandruk village exploration", "Gurung Museum visit", "Traditional stone houses and culture", "Celebration dinner in Pokhara"]
   },
   {
-    day: 6,
-    title: "Trek to Ghandruk & Drive to Pokhara",
-    altitude: "2,630m → 1,940m → 820m",
-    distance: "10km trek / 2 hrs drive",
-    description: "Morning descent through forests to Ghandruk (1,940m), one of the largest and most beautiful Gurung villages in Nepal. Explore the village with its traditional stone houses, terraced fields, and the Gurung Museum showcasing local culture and history. After lunch, we drive back to Pokhara via Nayapul. Arrive in Pokhara by late afternoon and check into your hotel. Free evening to celebrate your Poon Hill achievement! Enjoy lakeside restaurants and stunning sunset views over Phewa Lake.",
-    overnight: "Hotel in Pokhara",
-    meals: "Breakfast, Lunch, Dinner",
-    highlights: ["Ghandruk village exploration", "Gurung Museum", "Traditional stone houses", "Celebration in Pokhara"],
-  },
-  {
-    day: 7,
-    title: "Drive to Kathmandu",
-    altitude: "820m → 1,400m",
-    distance: "200km / 6-7 hrs drive",
-    description: "After breakfast, scenic drive back to Kathmandu through the Prithvi Highway, following the Trishuli River. The journey offers views of rural landscapes, river rafters, and distant hills. Arrive in Kathmandu by late afternoon. Check into your hotel and enjoy free time for souvenir shopping or final exploration of Thamel.",
-    overnight: "Hotel in Kathmandu",
-    meals: "Breakfast",
-    highlights: ["Scenic highway drive", "Trishuli River views", "Rural Nepal", "Thamel exploration"],
-  },
-  {
-    day: 8,
-    title: "Departure",
-    altitude: "1,400m",
-    distance: "-",
-    description: "Transfer to Tribhuvan International Airport for your departure flight. Our representative will ensure you reach the airport with plenty of time. Bid farewell to Nepal with memories of watching the sunrise over the Himalayas from Poon Hill - a truly magical experience.",
-    overnight: "-",
-    meals: "Breakfast",
-    highlights: ["Airport transfer", "Departure assistance", "Fond farewells"],
-  },
+    "day": 6,
+    "title": "Drive from Pokhara to Kathmandu",
+    "altitude": "820m → 1,400m",
+    "distance": "200km / 6-7 hrs drive",
+    "description": "After a leisurely breakfast in Pokhara, begin your scenic drive back to Kathmandu along the Prithvi Highway. The journey follows the Trishuli River, offering beautiful views of river valleys, rolling hills, terraced farmlands, and distant mountain peaks. You'll pass through charming towns and witness daily Nepali rural life along the way. The drive is a wonderful opportunity to reflect on your Poon Hill adventure and the incredible sunrise you witnessed over the Himalayas. Arrive in Kathmandu by late afternoon. Check into your hotel, take a well-deserved hot shower, and enjoy the comforts of the city. The remainder of your day is free for souvenir shopping in Thamel, exploring UNESCO World Heritage sites you may have missed, or simply relaxing with a good meal. In the evening, enjoy a farewell dinner celebrating your successful Poon Hill trek achievement - watching the sunrise over Dhaulagiri, Annapurna, and Machhapuchhre from Poon Hill.",
+    "overnight": "Hotel in Kathmandu",
+    "meals": "Breakfast, Dinner",
+    "highlights": ["Scenic Pokhara to Kathmandu drive", "Trishuli River and countryside views", "Rural Nepali landscapes", "Thamel souvenir shopping", "Farewell celebration dinner"]
+  }
 ];
 
 const includes = [
@@ -335,8 +315,8 @@ export default function GhorepaniPoonHillTrekPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$850</div>
-                <div className="text-lg font-bold text-[#0f2940]">$695</div>
+                <div className="text-xs text-slate-400 line-through">$635</div>
+                <div className="text-lg font-bold text-[#0f2940]">$500</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -356,10 +336,10 @@ export default function GhorepaniPoonHillTrekPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$850</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$695</div>
+                        <span className="text-white/50 text-sm line-through">$635</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$500</div>
                         <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
+                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $135</Badge>
                       </div>
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
