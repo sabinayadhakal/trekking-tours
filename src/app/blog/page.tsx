@@ -55,7 +55,7 @@ const featuredPost = {
 slug: "pigeons-symbol-peace-nepal",
 title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
 excerpt: "In Kathmandu, pigeons are revered as divine ancestors and harbingers of peace. In London, they're pests. This stark cultural divide reveals deep truths about how we see nature, spirituality, and our place in the world.",
-image: "/images/used/pigeons-nepal.avif",
+image: "/images/used/dog-pigeons.avif",
 author: "Sabinaya Dhakal",
 date: "May 9, 2026",
 readTime: "9 min",
