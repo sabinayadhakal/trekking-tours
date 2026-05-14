@@ -114,7 +114,9 @@ const tibetPages = [
 
 // Blog pages (you can add more as you create blog posts)
 const blogPages = [
-  { path: '/blog/pigeons-symbol-peace-nepal', priority: 0.7, changefreq: 'monthly' },
+  { path: '/blog/pigeons-symbol-peace-nepal', priority: 0.8, changefreq: 'monthly' },
+    { path: '/blog/best-time-to-visit-nepal', priority: 0.9, changefreq: 'monthly' },
+
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
