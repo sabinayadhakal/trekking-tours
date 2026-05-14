@@ -41,7 +41,7 @@ import { Badge } from "@/components/ui/badge";
 const blogPost = {
   title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
   excerpt: "In Kathmandu, pigeons are revered as divine ancestors and harbingers of peace. In London, they're pests. This stark cultural divide reveals deep truths about how we see nature, spirituality, and our place in the world. Discover the fascinating story behind Nepal's urban pigeons and what they teach us about coexistence.",
-  heroImage: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop",
+  heroImage: "/images/used/dog-pigeons.avif",
   author: {
     name: "Sabinaya Dhakal",
     avatar: "/placeholder.svg?text=AS",
@@ -336,7 +336,7 @@ export default function BlogPostPage() {
                 {/* Image Break */}
                 <div className="relative h-[250px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
                   <Image
-                    src="https://images.unsplash.com/photo-1516298773066-c48f8e9bd92b?q=80&w=2070&auto=format&fit=crop"
+                    src="/images/used/devotee-pigeons.avif"
                     alt="Pigeons being fed at a temple in Kathmandu, Nepal"
                     fill
                     className="object-cover"
