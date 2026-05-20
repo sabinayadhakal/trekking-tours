@@ -39,32 +39,40 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const blogPost = {
-  title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
-  excerpt: "From the rainbow blooms of spring to the crystal-clear skies of autumn, every season in Nepal offers something magical. But timing your visit right can mean the difference between watching Everest disappear behind clouds or standing beneath its glittering peak. Here's everything you need to know.",
-  heroImage: "/images/used/historic-scenic-photography-nepal.avif",
+  title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
+  excerpt: "Perched at 4,919 meters in the Annapurna region, Tilicho Lake is not just one of the highest lakes in the world—it is a place where Hindu mythology meets breathtaking natural beauty. Discover the ancient story of Kakbhusundi, the crow sage, and why thousands of pilgrims and trekkers make the arduous journey to its holy shores each year.",
+  heroImage: "/images/used/tilicho-blog.avif",
   author: {
     name: "Sabinaya Dhakal",
     avatar: "/placeholder.svg?text=SD",
     
   },
-  date: "May 7, 2026",
-  readTime: "9 min read",
-  category: "Travel Guide",
-  tags: ["Best Time to Visit", "Nepal Travel", "Seasons", "Trekking", "Weather", "Himkala Adventure"],
+  date: "May 20, 2026",
+  readTime: "12 min read",
+  category: "Trekking & Pilgrimage",
+  tags: ["Tilicho Lake", "Annapurna Circuit", "Nepal Trekking", "Hindu Pilgrimage", "Kakbhusundi", "Ramayana", "Himkala Adventure"],
 };
 
 const tableOfContents = [
-  { id: "introduction", title: "The Season Dilemma" },
-  { id: "autumn", title: "Autumn: The Golden Season" },
-  { id: "spring", title: "Spring: Blooming Beauty" },
-  { id: "winter", title: "Winter: Solitude & Snow" },
-  { id: "monsoon", title: "Monsoon: The Green Season" },
-  { id: "month-guide", title: "Quick Month-by-Month Guide" },
-  { id: "by-activity", title: "Best Seasons by Activity" },
-  { id: "conclusion", title: "Finding Your Perfect Time" },
+  { id: "introduction", title: "The Lake Above the Clouds" },
+  { id: "religious-significance", title: "The Sacred Legend of Kakbhusundi" },
+  { id: "ramayana-connection", title: "The Ramayana Connection" },
+  { id: "other-significance", title: "Other Religious Significances" },
+  { id: "trek-overview", title: "Trek Overview & Duration" },
+  { id: "itinerary", title: "Detailed Itinerary (Starting from Chame)" },
+  { id: "packing-list", title: "Complete Packing List" },
+  { id: "best-time", title: "Best Time to Visit" },
+  { id: "conclusion", title: "A Journey of Faith & Adventure" },
 ];
 
 const relatedPosts = [
+  {
+    title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
+    image: "/images/used/historic-scenic-photography-nepal.avif",
+    date: "May 7, 2026",
+    readTime: "9 min",
+    href: "/blog/best-time-to-visit-nepal",
+  },
   {
     title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
     image: "/images/used/dog-pigeons.avif",
@@ -72,13 +80,6 @@ const relatedPosts = [
     readTime: "9 min",
     href: "/blog/pigeons-symbol-peace-nepal",
   },
-  {
-    title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
-    image: "/images/used/tilicho-blog.avif",
-    date: "May 20, 2026",
-    readTime: "12 min",
-    href: "/blog/tilicho-lake-sacred-trek",
-},
 ];
 
 export default function BlogPostPage() {
@@ -255,7 +256,7 @@ export default function BlogPostPage() {
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-2xl overflow-hidden">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-[#0f2940] mb-4 flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-[#2d6a8a]" /> Table of Contents
+                      <Mountain className="w-4 h-4 text-[#2d6a8a]" /> Table of Contents
                     </h3>
                     <nav className="space-y-2">
                       {tableOfContents.map((item) => (
@@ -310,13 +311,13 @@ export default function BlogPostPage() {
                 <Card className="bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 rounded-2xl overflow-hidden">
                   <CardContent className="p-6 text-center">
                     <Mountain className="w-8 h-8 text-amber-600 mx-auto mb-3" />
-                    <h3 className="font-bold text-amber-800 mb-2">Plan Your Perfect Trip</h3>
+                    <h3 className="font-bold text-amber-800 mb-2">Trek to Tilicho Lake with Us</h3>
                     <p className="text-amber-700 text-sm mb-4">
-                      Let Himkala Adventure help you choose the best season for your dream Nepal experience.
+                      Let Himkala Adventure guide you on this sacred journey to the world's highest lake.
                     </p>
                     <Link href="/services/day-sightseeings" className="block">
                       <Button className="bg-amber-600 hover:bg-amber-700 text-white w-full rounded-xl">
-                        Plan My Journey
+                        Plan My Tilicho Trek
                       </Button>
                     </Link>
                   </CardContent>
@@ -330,117 +331,94 @@ export default function BlogPostPage() {
                 {/* Introduction */}
                 <section id="introduction" className="mb-8 md:mb-12">
                   <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-4 first-letter:text-4xl md:first-letter:text-6xl first-letter:font-serif first-letter:text-[#0f2940] first-letter:float-left first-letter:mr-3 first-letter:mt-1">
-                    Ask ten different travelers about the best time to visit Nepal, and you might get ten different answers. The trekker who summited Kala Patthar in November will swear by autumn's crystal skies. The photographer who captured rhododendron forests ablaze with color will insist spring is unmatched. And the budget traveler who had entire tea houses to themselves in February? They'll tell you winter's secret magic is worth the chill.
+                    High in the Annapurna Himalayas, where the air thins and the mountains touch the sky, lies a lake that has inspired legends for millennia. Tilicho Lake, sitting at 4,919 meters (16,138 feet), is not just one of the highest lakes in the world—it is a place where mythology becomes geography, where faith meets adventure, and where every visitor leaves transformed.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    The truth is, Nepal doesn't have one "best" time. It has four distinct seasons, each offering a completely different version of this Himalayan nation. The question isn't "When should you visit Nepal?" but rather "What kind of Nepal experience are you seeking?"
+                    For Hindus, this is no ordinary lake. It is the sacred abode of Kakbhusundi—the immortal crow sage who witnessed the Ramayana unfold. For trekkers, it is a challenging detour off the classic Annapurna Circuit that rewards with unparalleled views of the Himalayas. For pilgrims, it is a destination of deep spiritual significance, visited by thousands during the sacred month of August.
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    In this comprehensive guide, we'll walk you through every season, so you can time your visit perfectly. Whether you're dreaming of Everest views, cultural festivals, wildlife safaris, or peaceful monastery stays, there's a perfect window waiting for you. Let's find it together.
+                    In this comprehensive guide, we will explore the rich religious significance of Tilicho Lake, the legendary story of Kakbhusundi and his connection to Garuda and the Ramayana, what you need to pack for this high-altitude trek, how long it takes, and a detailed itinerary starting from Chame. Whether you come for faith or for adventure—or both—Tilicho Lake awaits.
                   </p>
                 </section>
 
                 {/* Image Break */}
                 <div className="relative h-[250px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
                   <Image
-                    src="/images/used/when-to-visit-nepal-1.avif"
-                    alt="Views of trekking in Everest region at the time of December"
+                    src="/images/used/tilicho-lake-1.avif"
+                    alt="Tilicho Lake with dramatic mountain backdrop in Annapurna region"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 80vw"
                   />
                   <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
-                    <Camera className="w-3 h-3" /> Views of the Everest region at the time of December
+                    <Camera className="w-3 h-3" /> Tilicho Lake reflecting the surrounding Himalayas at 4,919 meters
                   </div>
                 </div>
 
-                {/* Autumn Season */}
-                <section id="autumn" className="mb-8 md:mb-12">
+                {/* Religious Significance - Kakbhusundi Legend */}
+                <section id="religious-significance" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Autumn (September - November): The Golden Season
+                    The Sacred Legend of Kakbhusundi
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    If there's a consensus "best" season in Nepal, autumn takes the crown and for very good reason. The monsoon rains have just departed, washing the dust from the air and leaving behind impossibly clear skies. The mountains, often hidden behind haze or clouds for much of the year, emerge in breathtaking clarity.
+                    According to Hindu mythology, Tilicho Lake is the eternal home of Kakbhusundi—a unique and fascinating figure. Kakbhusundi is a crow who was cursed and blessed into immortality. Unlike any other being, he possesses the rare gift of existing simultaneously in all three states of consciousness: waking, dreaming, and deep sleep.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    This is also festival season. Dashain and Tihar, Nepal's biggest celebrations, fill the streets with music, lights, and joy. The weather is mild and stable which is perfect for trekking, sightseeing, or simply sitting at a café watching the world go by.
+                    The legend says that Kakbhusundi was originally a Brahmin named Bhushundi who was a devoted disciple of Lord Rama. Due to a curse from Sage Lomasa, he was transformed into a crow. However, Lord Rama, pleased with his unwavering devotion, blessed him with immortality and the ability to witness the entire Ramayana—not once, but countless times across different cosmic cycles.
                   </p>
+                  <p className="text-slate-600 leading-relaxed">
+                    It is believed that Kakbhusundi resides at Tilicho Lake to this day, meditating and awaiting the next incarnation of Lord Rama. Devotees believe that bathing in the lake's icy waters can cleanse one of sins and bring blessings from the immortal crow sage. Some pilgrims even report seeing a giant crow near the lake—a sign that Kakbhusundi is present.
+                  </p>
+                </section>
+
+                {/* Ramayana Connection */}
+                <section id="ramayana-connection" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    The Ramayana Connection & Garuda
+                  </h2>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    The story of Kakbhusundi is deeply intertwined with the Ramayana. In the Yoga Vasistha, an ancient philosophical text, Kakbhusundi narrates the entire Ramayana to Sage Vasistha from his unique perspective—having witnessed it unfold across multiple cosmic ages.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    What makes this particularly fascinating is Kakbhusundi's relationship with Garuda, the divine eagle and mount of Lord Vishnu. According to legend, Garuda once tried to eat Kakbhusundi the crow, not recognizing his divine nature. A great debate ensued between the two birds about who was greater—Lord Vishnu (Garuda's master) or Lord Rama (Kakbhusundi's master).
+                  </p>
+                  <p className="text-slate-600 leading-relaxed">
+                    The debate was resolved when both realized that Vishnu and Rama are manifestations of the same divine consciousness. Garuda and Kakbhusundi became friends, and it is said that they both visit Tilicho Lake—Garuda from time to time, and Kakbhusundi as his permanent resident. Some local traditions hold that the lake's name "Tilicho" derives from "Til" (sesame) and "Cho" (lake in Tibetan), referring to the sesame seeds offered as prayers at the site.
+                  </p>
+                  
                   <div className="bg-green-50 border border-green-200 rounded-xl p-4 md:p-5 mt-4">
                     <div className="flex gap-3">
                       <Sparkles className="w-5 h-5 text-green-600 shrink-0" />
                       <p className="text-green-800 text-sm italic leading-relaxed">
-                        <span className="font-bold">Pro Tip:</span> October is the absolute sweet spot. The trails have dried out, the temperatures are perfect, and the festival season brings an extra layer of cultural magic to your journey.
+                        <span className="font-bold">The Immortal Crow's Blessing:</span> Pilgrims believe that Kakbhusundi grants three wishes to those who reach Tilicho Lake with pure hearts—one for oneself, one for family, and one for all living beings.
                       </p>
                     </div>
                   </div>
                 </section>
 
-                {/* Spring Season */}
-                <section id="spring" className="mb-8 md:mb-12">
+                {/* Other Religious Significances */}
+                <section id="other-significance" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Spring (March - May): Blooming Beauty
+                    Other Religious Significances
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    Spring in Nepal is nature's grand unveiling. After the cooler winter months, the hillsides explode into color as rhododendrons; Nepal's national flower those bloom in brilliant reds, pinks, and whites. The weather warms gradually, and the days grow longer, making it the second-most popular trekking season after autumn.
+                    Beyond the Kakbhusundi legend, Tilicho Lake holds several other layers of spiritual importance:
                   </p>
-                  <p className="text-slate-600 leading-relaxed">
-                    For mountaineers, spring is the climbing season. This is when Everest expeditions begin, and the Khumbu region buzzes with an energy unlike any other time of year. Even if you're not summiting, watching the preparations and meeting climbers from around the world adds a unique dimension to your trek.
-                  </p>
-                </section>
-
-                {/* Winter Season */}
-                <section id="winter" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
-                    </span>
-                    Winter (December - February): Solitude & Snow
-                  </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    Winter is Nepal's best-kept secret. While most travelers assume the country shuts down, the truth is far more interesting. Yes, it's cold, especially at higher elevations but the skies are often shockingly clear, the crowds vanish, and you might find yourself the only guest in a tea house with the world's best view.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed">
-                    For budget travelers and solitude seekers, winter offers incredible value. Flight prices drop, accommodations negotiate, and the trails feel like they belong to you alone. The key is choosing your destination wisely: stick to lower elevations (Pokhara, Chitwan, Lumbini) or prepare properly for high-altitude treks.
-                  </p>
-                </section>
-
-                {/* Monsoon Season */}
-                <section id="monsoon" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
-                    </span>
-                    Summer/Monsoon (June - August): The Green Season
-                  </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    Monsoon is Nepal's most misunderstood season. While many guidebooks tell you to avoid it entirely, savvy travelers know that monsoon offers unique rewards if you know where to go and what to expect. The landscapes transform into a lush, vibrant green that you won't see any other time of year.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed">
-                    The key to enjoying monsoon is staying in rain-shadow areas like Upper Mustang (which receives almost no rain) or focusing on cultural tours in Kathmandu and Pokhara valleys. The north side of the Annapurna circuit, including Manang, also stays relatively dry. And the best part? You'll have entire sights almost to yourself.
-                  </p>
-                </section>
-
-                {/* Quick Month Guide */}
-                <section id="month-guide" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
-                    </span>
-                    Quick Month-by-Month Guide
-                  </h2>
-                  
                   <div className="space-y-4 mt-4">
                     {[
-                      { title: "March-April", desc: "Rhododendrons in full bloom. Perfect trekking weather. Holi festival." },
-                      { title: "October-November", desc: "Crystal clear mountain views. Dashain and Tihar festivals. Peak season." },
-                      { title: "December-February", desc: "Solitude on the trails. Clear skies but cold. Best for budget travelers." },
-                      { title: "June-August", desc: "Lush green landscapes. Upper Mustang stays dry. Lowest prices of the year." },
+                      { title: "Sacred to Both Hindus and Buddhists", desc: "While primarily a Hindu pilgrimage site, local Tibetan Buddhists also revere the lake, believing it to be connected to the sacred Manasarovar Lake in Tibet." },
+                      { title: "The August Pilgrimage", desc: "Every year during the full moon of Shrawan (July-August), hundreds of pilgrims make the challenging journey to offer prayers and take a ritual dip in the freezing waters." },
+                      { title: "Shiva's Meditation", desc: "Some traditions hold that Lord Shiva meditated near this lake after consuming the poison during the Samudra Manthan (churning of the ocean)." },
+                      { title: "Connection to Muktinath", desc: "The lake is spiritually linked to the nearby Muktinath Temple—one of the most sacred Vishnu temples in Hinduism. Many pilgrims visit both sites on the same journey." },
                     ].map((item, i) => (
                       <div key={i} className="flex gap-3 p-3 bg-[#f8fbfc] rounded-lg border border-[#C5E0ED]/20">
                         <div className="w-6 h-6 bg-[#2d6a8a]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
@@ -453,40 +431,178 @@ export default function BlogPostPage() {
                       </div>
                     ))}
                   </div>
+                </section>
 
-                  <div className="bg-green-50 border border-green-200 rounded-xl p-4 md:p-5 mt-6">
+                {/* Trek Overview */}
+                <section id="trek-overview" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    Trek Overview & Duration
+                  </h2>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    The trek to Tilicho Lake is a challenging high-altitude journey that requires good physical fitness and proper acclimatization. The lake sits at 4,919 meters, and the trail reaches its highest point near the Tilicho Base Camp at around 5,200 meters.
+                  </p>
+                  
+                  <div className="bg-[#f0f7fa] rounded-xl p-5 mb-4">
+                    <h4 className="font-bold text-[#0f2940] mb-2">Two Trek Options:</h4>
+                    <div className="space-y-3">
+                      <div>
+                        <span className="font-bold text-[#2d6a8a]">Option 1: Tilicho Lake Trek Only (Without Thorong La)</span>
+                        <p className="text-sm text-slate-600 mt-1">This option takes you to Tilicho Lake and back, either returning to Chame or continuing to Jomsom. Duration: 7-10 days depending on starting point and pace. Suitable for those who want to focus specifically on the lake without crossing the challenging Thorong La pass.</p>
+                      </div>
+                      <div className="pt-2 border-t border-[#C5E0ED]/30">
+                        <span className="font-bold text-[#2d6a8a]">Option 2: Tilicho Lake + Annapurna Circuit (Including Thorong La)</span>
+                        <p className="text-sm text-slate-600 mt-1">This combines the Tilicho Lake detour with the full Annapurna Circuit, including the famous Thorong La pass at 5,416 meters. Duration: 16-20 days total. This is the classic route for adventure seekers wanting both the lake and the pass.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mt-4">
                     <div className="flex gap-3">
-                      <Sparkles className="w-5 h-5 text-green-600 shrink-0" />
-                      <p className="text-green-800 text-sm italic leading-relaxed">
-                        <span className="font-bold">Insider Tip:</span> If you want the perfect balance of good weather and fewer crowds, try late September or early November. You'll catch the tail end of the monsoon freshness or the beginning of winter's clarity without the October rush.
+                      <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
+                      <div>
+                        <h4 className="font-bold text-amber-800 mb-1">Important Note on Acclimatization</h4>
+                        <p className="text-amber-700 text-sm leading-relaxed">
+                          The trail to Tilicho Lake is at very high altitude. Proper acclimatization is essential. Never rush the journey. The side trail from Khangsar to Tilicho Base Camp involves a steep climb along a narrow, exposed path that can be dangerous in bad weather. Always check conditions before proceeding.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Itinerary */}
+                <section id="itinerary" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    Detailed Itinerary (Starting from Chame)
+                  </h2>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    This itinerary assumes you are starting your trek from Chame, which is already a 6-8 hour drive from Kathmandu or Pokhara. Walking begins at Chame. This route covers Tilicho Lake and continues over Thorong La to complete the Annapurna Circuit.
+                  </p>
+                  
+                  <div className="space-y-3 mt-4">
+                    {[
+                      { day: "Day 1", route: "Drive Kathmandu/Pokhara to Chame (2,670m)", alt: "2,670m", desc: "Scenic drive to the starting point of the trek. Overnight in Chame." },
+                      { day: "Day 2", route: "Chame to Pisang (3,200m)", alt: "3,200m", desc: "Easy walk through pine forests with views of Paungda Danda rock face. 5-6 hours." },
+                      { day: "Day 3", route: "Pisang to Manang (3,540m)", alt: "3,540m", desc: "Gradual climb through Upper Pisang with spectacular Annapurna II views. 5-6 hours." },
+                      { day: "Day 4", route: "Acclimatization Day in Manang", alt: "3,540m", desc: "Rest day. Optional hike to Gangapurna Lake or Ice Lake. Essential for altitude." },
+                      { day: "Day 5", route: "Manang to Shree Kharka (4,050m)", alt: "4,050m", desc: "Trek towards Tilicho. The trail climbs steadily with views of the valley below. 5-6 hours." },
+                      { day: "Day 6", route: "Shree Kharka to Tilicho Base Camp (4,150m)", alt: "4,150m", desc: "Shorter day to save energy for the lake. Pass through the famous landslide section. 4-5 hours." },
+                      { day: "Day 7", route: "Tilicho Base Camp to Tilicho Lake (4,919m) & return to Shree Kharka", alt: "4,919m", desc: "Early morning climb to the sacred lake. Visit the holy site, then descend back to Shree Kharka. 8-9 hours round trip." },
+                      { day: "Day 8", route: "Shree Kharka to Yak Kharka (4,050m)", alt: "4,050m", desc: "Return through Khangsar and continue to Yak Kharka. Gradual descent and climb. 6-7 hours." },
+                      { day: "Day 9", route: "Yak Kharka to Thorong Phedi (4,600m)", alt: "4,600m", desc: "Short day to prepare for the pass crossing. Gradual climb with mountain views. 3-4 hours." },
+                      { day: "Day 10", route: "Thorong Phedi to Thorong La (5,416m) to Muktinath (3,800m)", alt: "5,416m", desc: "The highest point of the trek! Cross the famous pass and descend to sacred Muktinath Temple. 7-8 hours." },
+                      { day: "Day 11", route: "Muktinath to Pokhara by EV", alt: "800m", desc: "Visit Muktinath Temple in the morning, then take an electric vehicle (EV) back to Pokhara via scenic mountain roads." },
+                    ].map((item, i) => (
+                      <div key={i} className="flex gap-3 p-3 bg-[#f8fbfc] rounded-lg border border-[#C5E0ED]/20">
+                        <div className="w-16 sm:w-20">
+                          <span className="text-xs font-bold text-[#2d6a8a] uppercase tracking-wider">{item.day}</span>
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-bold text-[#0f2940] text-sm md:text-base">{item.route}</h4>
+                          <p className="text-slate-600 text-xs md:text-sm mt-0.5">{item.desc}</p>
+                        </div>
+                        <div className="mt-1">
+                          <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] text-xs">{item.alt}</Badge>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* Packing List */}
+                <section id="packing-list" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    Complete Packing List for Tilicho Lake
+                  </h2>
+                  
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-bold text-[#0f2940] mb-3 text-sm md:text-base">Clothing</h4>
+                      <ul className="space-y-1.5">
+                        {[
+                          "Down jacket (-20°C rated)",
+                          "Fleece jacket and pants",
+                          "Waterproof shell jacket",
+                          "Thermal base layers (2 sets)",
+                          "Trekking pants (2 pairs)",
+                          "Warm hat, sun hat, buff",
+                          "Insulated gloves + liner gloves",
+                          "Wool hiking socks (4-5 pairs)",
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-slate-600 text-sm">
+                            <ChevronRight className="w-3 h-3 text-[#2d6a8a] mt-0.5 flex-shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#0f2940] mb-3 text-sm md:text-base">Gear & Essentials</h4>
+                      <ul className="space-y-1.5">
+                        {[
+                          "Sturdy trekking boots (broken in, waterproof)",
+                          "35-45L daypack",
+                          "Sleeping bag (-15°C comfort)",
+                          "Trekking poles (essential for landslide section)",
+                          "Headlamp + spare batteries",
+                          "Sunglasses (UV400, category 4)",
+                          "Water bottles + purification tablets",
+                          "First aid kit + Diamox for altitude",
+                          "Sunscreen (SPF 50+) and lip balm",
+                          "Portable charger/power bank",
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-slate-600 text-sm">
+                            <ChevronRight className="w-3 h-3 text-[#2d6a8a] mt-0.5 flex-shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 md:p-5 mt-6">
+                    <div className="flex gap-3">
+                      <AlertTriangle className="w-5 h-5 text-red-600 shrink-0" />
+                      <p className="text-red-800 text-sm italic leading-relaxed">
+                        <span className="font-bold">Special Note for Tilicho:</span> The trail from Khangsar to Tilicho Base Camp is known for frequent landslides. Bring a helmet if possible, and always check with locals about trail conditions. Trekking poles are absolutely essential for stability.
                       </p>
                     </div>
                   </div>
                 </section>
 
-                {/* Best Seasons by Activity */}
-                <section id="by-activity" className="mb-8 md:mb-12">
+                {/* Best Time */}
+                <section id="best-time" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Best Seasons by Activity
+                    Best Time to Visit Tilicho Lake
                   </h2>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    The best times to trek to Tilicho Lake are during the pre-monsoon (spring) and post-monsoon (autumn) seasons when the weather is most stable.
+                  </p>
                   
                   <div className="space-y-4 mt-4">
                     {[
-                      { title: "🏔️ High-Altitude Trekking", desc: "Best during October-November or March-April for clear skies and stable weather." },
-                      { title: "🐘 Wildlife Safari", desc: "Best during October-March when animals gather near water sources." },
-                      { title: "🏛️ Cultural Tours", desc: "Best during September-November or March-May for pleasant walking weather." },
-                      { title: "💰 Budget Travel", desc: "Best during December-February or June-August for lower prices." },
-                      { title: "🎉 Festival Experiences", desc: "Best during October for Dashain and Tihar, Nepal's biggest celebrations." },
+                      { season: "Spring (March-May)", desc: "Clear skies, blooming rhododendrons, moderate temperatures. One of the best times for the trek." },
+                      { season: "Autumn (September-November)", desc: "Crystal clear mountain views, stable weather, festivals along the route. Peak season." },
+                      { season: "Winter (December-February)", desc: "Extremely cold at high altitudes. The lake often freezes. Not recommended unless you have winter expedition experience." },
+                      { season: "Monsoon (June-August)", desc: "High risk of landslides on the Khangsar-Tilicho section. The August pilgrimage still happens but is extremely challenging and dangerous." },
                     ].map((item, i) => (
                       <div key={i} className="flex gap-3 p-3 bg-[#f8fbfc] rounded-lg border border-[#C5E0ED]/20">
                         <div className="w-6 h-6 bg-[#2d6a8a]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
                           <ChevronRight className="w-3 h-3 text-[#2d6a8a]" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-[#0f2940] text-sm md:text-base">{item.title}</h4>
+                          <h4 className="font-bold text-[#0f2940] text-sm md:text-base">{item.season}</h4>
                           <p className="text-slate-600 text-xs md:text-sm mt-0.5">{item.desc}</p>
                         </div>
                       </div>
@@ -501,15 +617,15 @@ export default function BlogPostPage() {
                   </div>
                   <blockquote className="relative z-10">
                     <p className="text-base md:text-lg lg:text-xl font-serif text-white leading-relaxed mb-3 md:mb-4 italic">
-                      &quot;I've led treks in every season, and here's what I tell my guests: there's no bad time to come to Nepal, only different times for different dreams. October gives you postcards. February gives you the mountains to yourself. July gives you the deepest green you've ever seen. The question is never 'if' you should come. It's 'which Nepal' you want to meet.&quot;
+                      &quot;When I finally reached Tilicho Lake, after days of walking on that treacherous landslide trail, I understood why Kakbhusundi chose this place. The silence is not empty—it is full of something ancient. The lake does not just reflect the mountains. It reflects something inside you. I sat there for an hour, and I felt like I had been sitting there for lifetimes.&quot;
                     </p>
                     <footer className="flex items-center gap-3">
                       <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-[#C5E0ED] flex items-center justify-center bg-white/10">
                         <User className="w-5 h-5 text-[#C5E0ED]" />
                       </div>
                       <div>
-                        <cite className="font-bold text-[#C5E0ED] not-italic text-sm md:text-base"> Sabinaya Dhakal</cite>
-                 
+                        <cite className="font-bold text-[#C5E0ED] not-italic text-sm md:text-base">— Rajan Thapa, Pilgrim & Trekker</cite>
+                        <p className="text-white/60 text-xs md:text-sm">Completed Tilicho Lake trek, November 2024</p>
                       </div>
                     </footer>
                   </blockquote>
@@ -521,22 +637,16 @@ export default function BlogPostPage() {
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Finding Your Perfect Time
+                    A Journey of Faith & Adventure
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    After reading this guide, you might feel overwhelmed by choices. That's understandable. Nepal truly offers something special in every season. Here's how to decide:
+                    Tilicho Lake is more than a trekking destination. It is a place where the boundaries between mythology and geography dissolve. Whether you come seeking the blessing of Kakbhusundi, the challenge of the highest lake, or simply the profound beauty of the Himalayas, this journey will leave an indelible mark on your soul.
                   </p>
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 mb-4">
-                    <p className="text-[#0f2940] font-medium mb-2">Ask yourself these questions:</p>
-                    <ul className="space-y-2 text-sm text-slate-700">
-                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" /> Do you want guaranteed clear mountain views? → <span className="font-medium">Autumn (October-November)</span></li>
-                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" /> Do you dream of blooming rhododendron forests? → <span className="font-medium">Spring (March-April)</span></li>
-                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" /> Is solitude and budget your priority? → <span className="font-medium">Winter (December-February)</span></li>
-                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" /> Do you love lush landscapes and don't mind rain? → <span className="font-medium">Monsoon (June-August) with a rain-shadow trek</span></li>
-                    </ul>
-                  </div>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    The trail is challenging—perhaps one of the most mentally and physically demanding in the Annapurna region. The landslide section between Khangsar and Tilicho Base Camp demands respect and caution. The altitude is unforgiving. But those who make it are rewarded with something that no photograph can capture.
+                  </p>
                   <p className="text-slate-600 leading-relaxed">
-                    Ultimately, the best time to visit Nepal is whenever you can make it happen. The mountains wait. The temples stand patient. And whichever season you choose, Nepal will welcome you with warmth that has nothing to do with the weather.
+                    As you stand at the shores of Tilicho Lake, at 4,919 meters, with the sacred waters reflecting the sky and the mountains standing guard, you will understand why Kakbhusundi—the immortal crow—chose this place as his home. And perhaps, for a moment, you will feel immortal too.
                   </p>
                 </section>
 

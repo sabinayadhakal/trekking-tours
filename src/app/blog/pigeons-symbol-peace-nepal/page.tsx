@@ -72,6 +72,13 @@ const relatedPosts = [
     readTime: "11 min",
     href: "/blog/best-time-to-visit-nepal",
   },
+  {
+    title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
+    image: "/images/used/tilicho-blog.avif",
+    date: "May 20, 2026",
+    readTime: "12 min",
+    href: "/blog/tilicho-lake-sacred-trek",
+},
 ];
 
 export default function BlogPostPage() {

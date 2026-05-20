@@ -51,18 +51,29 @@ const getYouTubeVideoId = (url: string) => {
 };
 
 const featuredPost = {
-  id: "pigeons-symbol-peace-nepal",
-slug: "pigeons-symbol-peace-nepal",
-title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
-excerpt: "In Kathmandu, pigeons are revered as divine ancestors and harbingers of peace. In London, they're pests. This stark cultural divide reveals deep truths about how we see nature, spirituality, and our place in the world.",
-image: "/images/used/dog-pigeons.avif",
-author: "Sabinaya Dhakal",
-date: "May 9, 2026",
-readTime: "9 min",
-category: "Culture & Society",
-};
+    id: "tilicho-lake-sacred-trek",
+    slug: "tilicho-lake-sacred-trek",
+    title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
+    excerpt: "Perched at 4,919 meters in the Annapurna region, Tilicho Lake is not just one of the highest lakes in the world—it is a place where Hindu mythology meets breathtaking natural beauty. Discover the ancient story of Kakbhusundi, the crow sage, and why thousands make the arduous journey to its holy shores.",
+    image: "/images/used/tilicho-blog.avif",
+    author: "Sabinaya Dhakal",
+    date: "May 20, 2026",
+    readTime: "12 min",
+    category: "Trekking & Pilgrimage",
+}
 
 const blogPosts = [
+  {
+    id: "tilicho-lake-sacred-trek",
+    slug: "tilicho-lake-sacred-trek",
+    title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
+    excerpt: "Perched at 4,919 meters in the Annapurna region, Tilicho Lake is not just one of the highest lakes in the world—it is a place where Hindu mythology meets breathtaking natural beauty. Discover the ancient story of Kakbhusundi, the crow sage, and why thousands make the arduous journey to its holy shores.",
+    image: "/images/used/tilicho-blog.avif",
+    author: "Sabinaya Dhakal",
+    date: "May 20, 2026",
+    readTime: "12 min",
+    category: "Trekking & Pilgrimage",
+},
   {
   id: "pigeons-symbol-peace-nepal",
 slug: "pigeons-symbol-peace-nepal",
@@ -84,7 +95,9 @@ category: "Culture & Society",
     date: "May 7, 2026",
     readTime: "9 min",
     category: "Travel Guide",
-}
+},
+
+
   
 ];
 
