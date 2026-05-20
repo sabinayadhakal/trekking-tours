@@ -454,7 +454,7 @@ export default function BlogPostPage() {
                       </div>
                       <div className="pt-2 border-t border-[#C5E0ED]/30">
                         <span className="font-bold text-[#2d6a8a]">Option 2: Tilicho Lake + Annapurna Circuit (Including Thorong La)</span>
-                        <p className="text-sm text-slate-600 mt-1">This combines the Tilicho Lake detour with the full Annapurna Circuit, including the famous Thorong La pass at 5,416 meters. Duration: 16-20 days total. This is the classic route for adventure seekers wanting both the lake and the pass.</p>
+                        <p className="text-sm text-slate-600 mt-1">This combines the Tilicho Lake detour with the full Annapurna Circuit, including the famous Thorong La pass at 5,416 meters. Duration: 11-12 days total. This is the classic route for adventure seekers wanting both the lake and the pass.</p>
                       </div>
                     </div>
                   </div>
