@@ -40,7 +40,7 @@ import { Badge } from "@/components/ui/badge";
 
 const blogPost = {
   title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
-  excerpt: "Perched at 4,919 meters in the Annapurna region, Tilicho Lake is not just one of the highest lakes in the world—it is a place where Hindu mythology meets breathtaking natural beauty. Discover the ancient story of Kakbhusundi, the crow sage, and why thousands of pilgrims and trekkers make the arduous journey to its holy shores each year.",
+  excerpt: "Perched at 4,919 meters in the Annapurna region, Tilicho Lake is not just one of the highest lakes in the world, it is a place where Hindu mythology meets breathtaking natural beauty. Discover the ancient story of Kakbhusundi, the crow sage, and why thousands of pilgrims and trekkers make the arduous journey to its holy shores each year.",
   heroImage: "/images/used/tilicho-blog.avif",
   author: {
     name: "Sabinaya Dhakal",
@@ -315,7 +315,7 @@ export default function BlogPostPage() {
                     <p className="text-amber-700 text-sm mb-4">
                       Let Himkala Adventure guide you on this sacred journey to the world's highest lake.
                     </p>
-                    <Link href="/services/day-sightseeings" className="block">
+                    <Link href="/services/trekking/annapurna-circuit-trek-with-tilicho-lake" className="block">
                       <Button className="bg-amber-600 hover:bg-amber-700 text-white w-full rounded-xl">
                         Plan My Tilicho Trek
                       </Button>
@@ -331,13 +331,13 @@ export default function BlogPostPage() {
                 {/* Introduction */}
                 <section id="introduction" className="mb-8 md:mb-12">
                   <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-4 first-letter:text-4xl md:first-letter:text-6xl first-letter:font-serif first-letter:text-[#0f2940] first-letter:float-left first-letter:mr-3 first-letter:mt-1">
-                    High in the Annapurna Himalayas, where the air thins and the mountains touch the sky, lies a lake that has inspired legends for millennia. Tilicho Lake, sitting at 4,919 meters (16,138 feet), is not just one of the highest lakes in the world—it is a place where mythology becomes geography, where faith meets adventure, and where every visitor leaves transformed.
+                    High in the Annapurna Himalayas, where the air thins and the mountains touch the sky, lies a lake that has inspired legends for millennia. Tilicho Lake, sitting at 4,919 meters (16,138 feet), is not just one of the highest lakes in the world. It is a place where mythology becomes geography, where faith meets adventure, and where every visitor leaves transformed.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    For Hindus, this is no ordinary lake. It is the sacred abode of Kakbhusundi—the immortal crow sage who witnessed the Ramayana unfold. For trekkers, it is a challenging detour off the classic Annapurna Circuit that rewards with unparalleled views of the Himalayas. For pilgrims, it is a destination of deep spiritual significance, visited by thousands during the sacred month of August.
+                    For Hindus, this is no ordinary lake. It is the sacred abode of Kakbhusundi, the immortal crow sage who witnessed the Ramayana unfold. For trekkers, it is a challenging detour off the classic Annapurna Circuit that rewards with unparalleled views of the Himalayas. For pilgrims, it is a destination of deep spiritual significance, visited by thousands during the sacred month of August.
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    In this comprehensive guide, we will explore the rich religious significance of Tilicho Lake, the legendary story of Kakbhusundi and his connection to Garuda and the Ramayana, what you need to pack for this high-altitude trek, how long it takes, and a detailed itinerary starting from Chame. Whether you come for faith or for adventure—or both—Tilicho Lake awaits.
+                    In this comprehensive guide, we will explore the rich religious significance of Tilicho Lake, the legendary story of Kakbhusundi and his connection to Garuda and the Ramayana, what you need to pack for this high-altitude trek, how long it takes, and a detailed itinerary starting from Chame. Whether you come for faith or for adventure or both, Tilicho Lake awaits.
                   </p>
                 </section>
 
@@ -364,13 +364,13 @@ export default function BlogPostPage() {
                     The Sacred Legend of Kakbhusundi
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    According to Hindu mythology, Tilicho Lake is the eternal home of Kakbhusundi—a unique and fascinating figure. Kakbhusundi is a crow who was cursed and blessed into immortality. Unlike any other being, he possesses the rare gift of existing simultaneously in all three states of consciousness: waking, dreaming, and deep sleep.
+                    According to Hindu mythology, Tilicho Lake is the eternal home of Kakbhusundi; a unique and fascinating figure. Kakbhusundi is a crow who was cursed and blessed into immortality. Unlike any other being, he possesses the rare gift of existing simultaneously in all three states of consciousness: waking, dreaming, and deep sleep.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    The legend says that Kakbhusundi was originally a Brahmin named Bhushundi who was a devoted disciple of Lord Rama. Due to a curse from Sage Lomasa, he was transformed into a crow. However, Lord Rama, pleased with his unwavering devotion, blessed him with immortality and the ability to witness the entire Ramayana—not once, but countless times across different cosmic cycles.
+                    The legend says that Kakbhusundi was originally a Brahmin named Bhushundi who was a devoted disciple of Lord Rama. Due to a curse from Sage Lomasa, he was transformed into a crow. However, Lord Rama, pleased with his unwavering devotion, blessed him with immortality and the ability to witness the entire Ramayana, not once, but countless times across different cosmic cycles.
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    It is believed that Kakbhusundi resides at Tilicho Lake to this day, meditating and awaiting the next incarnation of Lord Rama. Devotees believe that bathing in the lake's icy waters can cleanse one of sins and bring blessings from the immortal crow sage. Some pilgrims even report seeing a giant crow near the lake—a sign that Kakbhusundi is present.
+                    It is believed that Kakbhusundi resides at Tilicho Lake to this day, meditating and awaiting the next incarnation of Lord Rama. Devotees believe that bathing in the lake's icy waters can cleanse one of sins and bring blessings from the immortal crow sage. Some pilgrims even report seeing a giant crow near the lake, a sign that Kakbhusundi is present.
                   </p>
                 </section>
 
@@ -383,20 +383,20 @@ export default function BlogPostPage() {
                     The Ramayana Connection & Garuda
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    The story of Kakbhusundi is deeply intertwined with the Ramayana. In the Yoga Vasistha, an ancient philosophical text, Kakbhusundi narrates the entire Ramayana to Sage Vasistha from his unique perspective—having witnessed it unfold across multiple cosmic ages.
+                    The story of Kakbhusundi is deeply intertwined with the Ramayana. In the Yoga Vasistha, an ancient philosophical text, Kakbhusundi narrates the entire Ramayana to Sage Vasistha from his unique perspective, having witnessed it unfold across multiple cosmic ages.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    What makes this particularly fascinating is Kakbhusundi's relationship with Garuda, the divine eagle and mount of Lord Vishnu. According to legend, Garuda once tried to eat Kakbhusundi the crow, not recognizing his divine nature. A great debate ensued between the two birds about who was greater—Lord Vishnu (Garuda's master) or Lord Rama (Kakbhusundi's master).
+                    What makes this particularly fascinating is Kakbhusundi's relationship with Garuda, the divine eagle and mount of Lord Vishnu. According to legend, Garuda once tried to eat Kakbhusundi the crow, not recognizing his divine nature. A great debate ensued between the two birds about who was greater; Lord Vishnu (Garuda's master) or Lord Rama (Kakbhusundi's master).
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    The debate was resolved when both realized that Vishnu and Rama are manifestations of the same divine consciousness. Garuda and Kakbhusundi became friends, and it is said that they both visit Tilicho Lake—Garuda from time to time, and Kakbhusundi as his permanent resident. Some local traditions hold that the lake's name "Tilicho" derives from "Til" (sesame) and "Cho" (lake in Tibetan), referring to the sesame seeds offered as prayers at the site.
+                    The debate was resolved when both realized that Vishnu and Rama are manifestations of the same divine consciousness. Garuda and Kakbhusundi became friends, and it is said that they both visit Tilicho Lake, Garuda from time to time, and Kakbhusundi as his permanent resident. Some local traditions hold that the lake's name "Tilicho" derives from "Til" (sesame) and "Cho" (lake in Tibetan), referring to the sesame seeds offered as prayers at the site.
                   </p>
                   
                   <div className="bg-green-50 border border-green-200 rounded-xl p-4 md:p-5 mt-4">
                     <div className="flex gap-3">
                       <Sparkles className="w-5 h-5 text-green-600 shrink-0" />
                       <p className="text-green-800 text-sm italic leading-relaxed">
-                        <span className="font-bold">The Immortal Crow's Blessing:</span> Pilgrims believe that Kakbhusundi grants three wishes to those who reach Tilicho Lake with pure hearts—one for oneself, one for family, and one for all living beings.
+                        <span className="font-bold">The Immortal Crow's Blessing:</span> Pilgrims believe that Kakbhusundi grants three wishes to those who reach Tilicho Lake with pure hearts. One for oneself, one for family, and one for all living beings.
                       </p>
                     </div>
                   </div>
@@ -418,7 +418,7 @@ export default function BlogPostPage() {
                       { title: "Sacred to Both Hindus and Buddhists", desc: "While primarily a Hindu pilgrimage site, local Tibetan Buddhists also revere the lake, believing it to be connected to the sacred Manasarovar Lake in Tibet." },
                       { title: "The August Pilgrimage", desc: "Every year during the full moon of Shrawan (July-August), hundreds of pilgrims make the challenging journey to offer prayers and take a ritual dip in the freezing waters." },
                       { title: "Shiva's Meditation", desc: "Some traditions hold that Lord Shiva meditated near this lake after consuming the poison during the Samudra Manthan (churning of the ocean)." },
-                      { title: "Connection to Muktinath", desc: "The lake is spiritually linked to the nearby Muktinath Temple—one of the most sacred Vishnu temples in Hinduism. Many pilgrims visit both sites on the same journey." },
+                      { title: "Connection to Muktinath", desc: "The lake is spiritually linked to the nearby Muktinath Temple, one of the most sacred Vishnu temples in Hinduism. Many pilgrims visit both sites on the same journey." },
                     ].map((item, i) => (
                       <div key={i} className="flex gap-3 p-3 bg-[#f8fbfc] rounded-lg border border-[#C5E0ED]/20">
                         <div className="w-6 h-6 bg-[#2d6a8a]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
@@ -617,14 +617,14 @@ export default function BlogPostPage() {
                   </div>
                   <blockquote className="relative z-10">
                     <p className="text-base md:text-lg lg:text-xl font-serif text-white leading-relaxed mb-3 md:mb-4 italic">
-                      &quot;When I finally reached Tilicho Lake, after days of walking on that treacherous landslide trail, I understood why Kakbhusundi chose this place. The silence is not empty—it is full of something ancient. The lake does not just reflect the mountains. It reflects something inside you. I sat there for an hour, and I felt like I had been sitting there for lifetimes.&quot;
+                      &quot;When I finally reached Tilicho Lake, after days of walking on that treacherous landslide trail, I understood why Kakbhusundi chose this place. The silence is not empty. It is full of something ancient. The lake does not just reflect the mountains. It reflects something inside you. I sat there for an hour, and I felt like I had been sitting there for lifetimes.&quot;
                     </p>
                     <footer className="flex items-center gap-3">
                       <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-[#C5E0ED] flex items-center justify-center bg-white/10">
                         <User className="w-5 h-5 text-[#C5E0ED]" />
                       </div>
                       <div>
-                        <cite className="font-bold text-[#C5E0ED] not-italic text-sm md:text-base">— Rajan Thapa, Pilgrim & Trekker</cite>
+                        <cite className="font-bold text-[#C5E0ED] not-italic text-sm md:text-base">Samir Lama, Pilgrim & Trekker</cite>
                         <p className="text-white/60 text-xs md:text-sm">Completed Tilicho Lake trek, November 2024</p>
                       </div>
                     </footer>
@@ -643,10 +643,10 @@ export default function BlogPostPage() {
                     Tilicho Lake is more than a trekking destination. It is a place where the boundaries between mythology and geography dissolve. Whether you come seeking the blessing of Kakbhusundi, the challenge of the highest lake, or simply the profound beauty of the Himalayas, this journey will leave an indelible mark on your soul.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    The trail is challenging—perhaps one of the most mentally and physically demanding in the Annapurna region. The landslide section between Khangsar and Tilicho Base Camp demands respect and caution. The altitude is unforgiving. But those who make it are rewarded with something that no photograph can capture.
+                    The trail is challenging. Perhaps one of the most mentally and physically demanding in the Annapurna region. The landslide section between Khangsar and Tilicho Base Camp demands respect and caution. The altitude is unforgiving. But those who make it are rewarded with something that no photograph can capture.
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    As you stand at the shores of Tilicho Lake, at 4,919 meters, with the sacred waters reflecting the sky and the mountains standing guard, you will understand why Kakbhusundi—the immortal crow—chose this place as his home. And perhaps, for a moment, you will feel immortal too.
+                    As you stand at the shores of Tilicho Lake, at 4,919 meters, with the sacred waters reflecting the sky and the mountains standing guard, you will understand why Kakbhusundi; the immortal crow chose this place as his home. And perhaps, for a moment, you will feel immortal too.
                   </p>
                 </section>
 
