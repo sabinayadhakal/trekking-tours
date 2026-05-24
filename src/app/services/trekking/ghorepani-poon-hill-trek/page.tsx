@@ -142,17 +142,17 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/ghorepani-2.avif",
+    src: "/images/used/ghorepani-2.webp",
     alt: "Poon Hill Sunrise",
     caption: "Annapurna & Dhaulagiri Range",
   },
     {
-    src: "/images/used/ghorepani-1.avif",
+    src: "/images/used/ghorepani-1.webp",
     alt: "Machhapuchhre view with stacked stones",
     caption: "Annapurna & Machhapuchrey Range with stones stacked",
   },
     {
-    src: "/images/used/ghorepani-poon-hill-1.avif",
+    src: "/images/used/ghorepani-poon-hill-1.webp",
     alt: "Poon hill viewpoint",
     caption: "Poon hill viewpoint tower",
   },
@@ -267,7 +267,7 @@ export default function GhorepaniPoonHillTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/ghorepani-1.avif"
+            src="/images/used/ghorepani-1.webp"
             alt="Ghorepani Poon Hill Trek"
             fill
             className="object-cover"

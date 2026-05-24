@@ -215,12 +215,12 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/upper-mustang-1.avif",
+    src: "/images/used/upper-mustang-1.webp",
     alt: "Lo Manthang Walled City",
     caption: "Lo Manthang - The Walled Capital",
   },
   {
-    src: "/images/used/upper-mustang-2.avif",
+    src: "/images/used/upper-mustang-2.webp",
     alt: "Upper Mustang Landscape",
     caption: "High-Altitude Desert of Mustang",
   },
@@ -335,7 +335,7 @@ export default function UpperMustangTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/upper-mustang-main-page.avif"
+            src="/images/used/upper-mustang-main-page.webp"
             alt="Upper Mustang Trek"
             fill
             className="object-cover"

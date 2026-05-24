@@ -170,12 +170,12 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/abc-1.avif",
+    src: "/images/used/abc-1.webp",
     alt: "Annapurna Base Camp",
     caption: "Annapurna Base Camp (4,130m)",
   },
   {
-    src: "/images/used/abc-3.avif",
+    src: "/images/used/abc-3.webp",
     alt: "Machhapuchhre Fishtail",
     caption: "Machhapuchhre - Fishtail Mountain",
   },
@@ -290,7 +290,7 @@ export default function AnnapurnaBaseCampTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/abc-main-page.avif"
+            src="/images/used/abc-main-page.webp"
             alt="Annapurna Base Camp Trek"
             fill
             className="object-cover"

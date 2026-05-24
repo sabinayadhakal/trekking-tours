@@ -33,7 +33,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 100,
     originalPrice: 120,
-    image: "/images/used/bhaktapur-patan-nepal.avif",
+    image: "/images/used/bhaktapur-patan-nepal.webp",
     rating: 4.9,
     reviews: 312,
     highlights: ["Bhaktapur Durbar Square", "Patan Durbar Square", "Golden Temple", "Traditional Crafts"],
@@ -52,7 +52,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 100,
     originalPrice: 120,
-    image: "/images/used/bungamati-1.avif",
+    image: "/images/used/bungamati-1.webp",
     rating: 4.8,
     reviews: 156,
     highlights: ["Bungamati Village", "Khokana Village", "Patan Durbar Square", "Traditional Newari Life"],
@@ -71,7 +71,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 100,
     originalPrice: 120,
-    image: "/images/used/nepal-heritage-sites-tour-nepal.avif",
+    image: "/images/used/nepal-heritage-sites-tour-nepal.webp",
     rating: 4.8,
     reviews: 203,
     highlights: ["Great Bouddhanath Stupa", "Kapan Monastery", "Tibetan Buddhist Culture", "Monastery Visit"],
@@ -90,7 +90,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 100,
     originalPrice: 120,
-    image: "/images/used/changunarayan-1.avif",
+    image: "/images/used/changunarayan-1.webp",
     rating: 4.7,
     reviews: 134,
     highlights: ["Changunarayan Temple", "Bhaktapur Durbar Square", "Sanga Viewpoint", "Traditional Villages"],
@@ -109,7 +109,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 100,
     originalPrice: 120,
-    image: "/images/used/dakshinkali-2.avif",
+    image: "/images/used/dakshinkali-2.webp",
     rating: 4.7,
     reviews: 98,
     highlights: ["Dakshinkali Temple", "Pharping Caves", "Kirtipur Old Town", "Vajrayogini Temple"],
@@ -128,7 +128,7 @@ const dayTours = [
     bestSeason: "Year Round",
     price: 100,
     originalPrice: 120,
-    image: "/images/used/monkey_temple.avif",
+    image: "/images/used/monkey_temple.webp",
     rating: 4.9,
     reviews: 267,
     highlights: ["Swayambhunath Stupa", "Kathmandu Durbar Square", "Pashupatinath Temple", "Bouddhanath Stupa"],
@@ -403,7 +403,7 @@ export default function DaySightseeingPage() {
             </div>
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
-                src="/images/used/nepal-stupa.avif"
+                src="/images/used/nepal-stupa.webp"
                 alt="Kathmandu Durbar Square"
                 fill
                 className="object-cover"

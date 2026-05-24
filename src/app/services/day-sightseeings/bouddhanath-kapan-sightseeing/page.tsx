@@ -87,18 +87,18 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/nepal-heritage-sites-tour-nepal.avif",
+    src: "/images/used/nepal-heritage-sites-tour-nepal.webp",
     alt: "Bouddhanath Stupa",
     caption: "Bouddhanath Stupa - One of the largest stupas in South Asia",
   },
   {
-    src: "/images/used/kapan-1.avif",
+    src: "/images/used/kapan-1.webp",
     alt: "Kapan Monastery",
     caption: "Kapan Monastery perched on a hilltop overlooking Kathmandu Valley",
   },
  
   {
-    src: "/images/used/kapan-2.avif",
+    src: "/images/used/kapan-2.webp",
     alt: "Buddha Statue inside Kapan Monastery",
     caption: "Big Buddha Statue inside the main Monastery",
   },
@@ -214,7 +214,7 @@ export default function BouddhanathKapanSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/nepal-stupa.avif"
+            src="/images/used/nepal-stupa.webp"
             alt="Bouddhanath Stupa and Kapan Monastery"
             fill
             className="object-cover"

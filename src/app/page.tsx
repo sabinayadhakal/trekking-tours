@@ -33,21 +33,21 @@ import { Badge } from "@/components/ui/badge";
 const destinations = [
   {
     name: "Nepal",
-    image: "/images/used/nepal-main-page.avif",
+    image: "/images/used/nepal-main-page.webp",
     description: "Himalayan peaks, ancient cities, and legendary trekking routes.",
     highlights: ["Everest Base Camp", "Annapurna Circuit", "Kathmandu Valley"],
     link: "/destinations/nepal"
   },
   {
     name: "Bhutan",
-    image: "/images/used/bhutan-tiger.avif",
+    image: "/images/used/bhutan-tiger.webp",
     description: "Monasteries, mountain fortresses, and a commitment to happiness.",
     highlights: ["Tiger's Nest", "Punakha Dzong", "Paro Valley"],
     link: "/destinations/bhutan"
   },
   {
     name: "Tibet",
-    image: "/images/used/tibet-main-page.avif",
+    image: "/images/used/tibet-main-page.webp",
     description: "High-altitude plains, sacred peaks, and centuries-old Buddhist traditions.",
     highlights: ["Mount Kailash", "Lhasa", "Everest Base Camp (North)"],
     link: "/destinations/tibet"
@@ -112,7 +112,7 @@ const popularTreks = [
     difficulty: "Challenging",
     altitude: "5,106m",
     price: "$1,200",
-    image: "/images/used/manaslu-main-page.avif",
+    image: "/images/used/manaslu-main-page.webp",
     rating: 4.8,
     link: "/services/trekking/manaslu-circuit-trek"
   },
@@ -122,7 +122,7 @@ const popularTreks = [
     difficulty: "Moderate",
     altitude: "5,364m",
     price: "$1,520",
-    image: "/images/used/everest-main-page.avif",
+    image: "/images/used/everest-main-page.webp",
     rating: 4.9,
     link: "/services/trekking/everest-base-camp-trek"
   },
@@ -132,7 +132,7 @@ const popularTreks = [
     difficulty: "Challenging",
     altitude: "5,416m",
     price: "$800",
-    image: "/images/used/annapurna-circuit-main-page.avif",
+    image: "/images/used/annapurna-circuit-main-page.webp",
     rating: 4.8,
     link: "/services/trekking/annapurna-circuit-trek"
   },
@@ -142,7 +142,7 @@ const popularTreks = [
     difficulty: "Easy-Moderate",
     altitude: "4,984m",
     price: "$650",
-    image: "/images/used/langtang-main-page.avif",
+    image: "/images/used/langtang-main-page.webp",
     rating: 4.7,
     link: "/services/trekking/langtang-valley-trek"
   },
@@ -153,7 +153,7 @@ const popularTreks = [
     difficulty: "Moderate",
     altitude: "4,010m",
     price: "$2,595",
-    image: "/images/used/upper-mustang-main-page.avif",
+    image: "/images/used/upper-mustang-main-page.webp",
     rating: 4.7,
     link: "/services/trekking/upper-mustang-trek"
   },
@@ -163,7 +163,7 @@ const popularTreks = [
     difficulty: "Moderate",
     altitude: "4,130m",
     price: "$700",
-    image: "/images/used/abc-main-page.avif",
+    image: "/images/used/abc-main-page.webp",
     rating: 4.8,
     link: "/services/trekking/annapurna-base-camp-trek"
   },
@@ -292,7 +292,7 @@ export default function Home() {
         <section className="relative min-h-[95vh] md:min-h-screen flex items-center overflow-hidden bg-[#0f2940]">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/used/hero.avif"
+              src="/images/used/hero.webp"
               alt="Himalayan Mountains"
               fill
               className="object-cover"
@@ -715,7 +715,7 @@ export default function Home() {
               <div className="relative">
                 <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/used/why_choose_us.avif"
+                    src="/images/used/why_choose_us.webp"
                     alt="Professional Himalayan Expedition Team"
                     fill
                     className="object-cover"

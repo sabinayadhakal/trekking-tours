@@ -205,32 +205,32 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/nepal-stupa.avif",
+    src: "/images/used/nepal-stupa.webp",
     alt: "Boudhanath Stupa",
     caption: "Boudhanath Stupa - UNESCO World Heritage Site in Kathmandu",
   },
   {
-    src: "/images/used/bhaktapur-3.avif",
+    src: "/images/used/bhaktapur-3.webp",
     alt: "Bhaktapur Durbar Square",
     caption: "Bhaktapur Durbar Square - Medieval UNESCO Heritage Site",
   },
   {
-    src: "/images/used/patan-1.avif",
+    src: "/images/used/patan-1.webp",
     alt: "Patan Durbar Square",
     caption: "Patan Durbar Square - City of Fine Arts, UNESCO Site",
   },
   {
-    src: "/images/used/monkey_temple.avif",
+    src: "/images/used/monkey_temple.webp",
     alt: "Swayambhunath Stupa",
     caption: "Swayambhunath Stupa (Monkey Temple) with valley views",
   },
   {
-    src: "/images/used/pashupati-1.avif",
+    src: "/images/used/pashupati-1.webp",
     alt: "Pashupatinath Temple",
     caption: "Pashupatinath Temple on the banks of Bagmati River",
   },
   {
-    src: "/images/used/lumbini-1.avif",
+    src: "/images/used/lumbini-1.webp",
     alt: "Mayadevi Temple Lumbini",
     caption: "Mayadevi Temple - Birthplace of Buddha, UNESCO Site",
   },
@@ -344,7 +344,7 @@ export default function NepalHeritageSitesTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/nepal-heritage-sites-tour-nepal.avif"
+            src="/images/used/nepal-heritage-sites-tour-nepal.webp"
             alt="Nepal Heritage Sites Tour"
             fill
             className="object-cover"

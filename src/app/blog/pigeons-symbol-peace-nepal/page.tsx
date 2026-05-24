@@ -41,7 +41,7 @@ import { Badge } from "@/components/ui/badge";
 const blogPost = {
   title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
   excerpt: "In Kathmandu, pigeons are revered as divine ancestors and harbingers of peace. In London, they're pests. This stark cultural divide reveals deep truths about how we see nature, spirituality, and our place in the world. Discover the fascinating story behind Nepal's urban pigeons and what they teach us about coexistence.",
-  heroImage: "/images/used/dog-pigeons.avif",
+  heroImage: "/images/used/dog-pigeons.webp",
   author: {
     name: "Sabinaya Dhakal",
     avatar: "/placeholder.svg?text=AS",
@@ -67,14 +67,14 @@ const tableOfContents = [
 const relatedPosts = [
   {
     title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
-    image: "/images/used/historic-scenic-photography-nepal.avif",
+    image: "/images/used/historic-scenic-photography-nepal.webp",
     date: "May 7, 2026",
     readTime: "11 min",
     href: "/blog/best-time-to-visit-nepal",
   },
   {
     title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
-    image: "/images/used/tilicho-blog.avif",
+    image: "/images/used/tilicho-blog.webp",
     date: "May 20, 2026",
     readTime: "12 min",
     href: "/blog/tilicho-lake-sacred-trek",
@@ -343,7 +343,7 @@ export default function BlogPostPage() {
                 {/* Image Break */}
                 <div className="relative h-[250px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
                   <Image
-                    src="/images/used/devotee-pigeons.avif"
+                    src="/images/used/devotee-pigeons.webp"
                     alt="Pigeons being fed at a temple in Kathmandu, Nepal"
                     fill
                     className="object-cover"

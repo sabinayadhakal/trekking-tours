@@ -174,27 +174,27 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/annapurna-circuit-main-page.avif",
+    src: "/images/used/annapurna-circuit-main-page.webp",
     alt: "Manang town",
     caption: "Beautiful Manang Town from a cliff",
   },
   {
-    src: "/images/used/annapurna-circuit-1.avif",
+    src: "/images/used/annapurna-circuit-1.webp",
     alt: "Chulu Himal",
     caption: "View from Thorang High Camp",
   },
    {
-    src: "/images/used/annapurna-circuit-2.avif",
+    src: "/images/used/annapurna-circuit-2.webp",
     alt: "Ngawal town",
     caption: "Small town on the way to Manang-- Ngawal",
   },
    {
-    src: "/images/used/annapurna-circuit-3.avif",
+    src: "/images/used/annapurna-circuit-3.webp",
     alt: "Annapurna Range",
     caption: "Annapurna Range from Manang",
   },
   {
-    src: "/images/used/annapurna-circuit-4.avif",
+    src: "/images/used/annapurna-circuit-4.webp",
     alt: "Thorang La",
     caption: "Thorang La- 5416m",
   },
@@ -309,7 +309,7 @@ export default function AnnapurnaCircuitTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/annapurna-circuit-2.avif"
+            src="/images/used/annapurna-circuit-2.webp"
             alt="Annapurna Circuit Trek"
             fill
             className="object-cover"

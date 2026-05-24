@@ -93,32 +93,32 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/namobuddha-8.avif",
+    src: "/images/used/namobuddha-8.webp",
     alt: "Namobuddha Stupa",
     caption: "The sacred Namobuddha stupa marking the site of the prince's self-sacrifice",
   },
   {
-    src: "/images/used/namobuddha-7.avif",
+    src: "/images/used/namobuddha-7.webp",
     alt: "Thrangu Tashi Yangtse Monastery",
     caption: "Beautiful Thrangu Tashi Yangtse Monastery at Namobuddha",
   },
   {
-    src: "/images/used/namobuddha-5.avif",
+    src: "/images/used/namobuddha-5.webp",
     alt: "Himalayan Views",
     caption: "Panoramic views from Namobuddha hilltop",
   },
   {
-    src: "/images/used/namobuddha-4.avif",
+    src: "/images/used/namobuddha-4.webp",
     alt: "Prayer Flags",
     caption: "Colorful prayer flags fluttering at the monastery",
   },
   {
-    src: "/images/used/namobuddha-3.avif",
+    src: "/images/used/namobuddha-3.webp",
     alt: "Hiking Trail",
     caption: "Beautiful hiking trail through pine forests",
   },
   {
-    src: "/images/used/namobuddha-6.avif",
+    src: "/images/used/namobuddha-6.webp",
     alt: "Monks at Prayer",
     caption: "Buddhist monks in prayer at the monastery",
   },
@@ -232,7 +232,7 @@ export default function NamobuddhaHikingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/namobuddha-1.avif"
+            src="/images/used/namobuddha-1.webp"
             alt="Namobuddha Hiking"
             fill
             className="object-cover"

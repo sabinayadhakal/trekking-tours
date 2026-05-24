@@ -32,9 +32,9 @@ const mountainFlights = [
     altitude: "8,848m",
     groupSize: "1-25",
     bestSeason: "Sep-May",
-    price: 395,
+    price: 350,
     originalPrice: 450,
-    image: "/images/used/everest-flight-1.avif",
+    image: "/images/used/everest-flight-1.webp",
     rating: 4.9,
     reviews: 456,
     highlights: ["Mount Everest", "Lhotse", "Makalu", "Ama Dablam"],
@@ -54,7 +54,7 @@ const mountainFlights = [
     bestSeason: "Sep-May",
     price: 2000,
     originalPrice: 2450,
-    image: "/images/used/everest-heli-1.avif",
+    image: "/images/used/everest-heli-1.webp",
     rating: 4.9,
     reviews: 156,
     highlights: ["Landing at Kalapatthar", "Everest Base Camp", "Gokyo Lakes", "Helicopter Landing"],
@@ -75,7 +75,7 @@ const mountainFlights = [
     bestSeason: "Oct-Apr",
     price: 1500,
     originalPrice: 1750,
-    image: "/images/used/langtang-heli.avif",
+    image: "/images/used/langtang-heli.webp",
     rating: 4.8,
     reviews: 89,
     highlights: ["Langtang Lirung", "Ganesh Himal", "Dorje Lakpa", "Kyanjin Gompa"],
@@ -346,7 +346,7 @@ export default function MountainFlightsPage() {
             </div>
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
-                src="/images/used/everest-flight-1.avif"
+                src="/images/used/everest-flight-1.webp"
                 alt="Mountain flight view"
                 fill
                 className="object-cover"

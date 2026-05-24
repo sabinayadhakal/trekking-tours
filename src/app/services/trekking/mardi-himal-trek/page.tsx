@@ -152,23 +152,23 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/mardi-himal-1.avif",
+    src: "/images/used/mardi-himal-1.webp",
     alt: "Way to Mardi Himal Base Camp",
     caption: "Way to Mardi Himal Base Camp (4,500m)",
   },
   {
-    src: "/images/used/mardi-1.avif",
+    src: "/images/used/mardi-1.webp",
     alt: "Mardi High Camp",
     caption: "High Camp Mardi",
   },
   {
-    src: "/images/used/mardi-3.avif",
+    src: "/images/used/mardi-3.webp",
     alt: "High Camp Ridge",
     caption: "Ridge Trail to High Camp",
   },
   
   {
-    src: "/images/used/mardi-2.avif",
+    src: "/images/used/mardi-2.webp",
     alt: "Viewpoint",
     caption: "Forest Camp",
   },
@@ -283,7 +283,7 @@ export default function MardiHimalTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/mardi-1.avif"
+            src="/images/used/mardi-1.webp"
             alt="Mardi Himal Trek"
             fill
             className="object-cover"

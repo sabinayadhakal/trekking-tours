@@ -263,17 +263,17 @@ const excludes = [
 const gallery = [
   
   {
-    src: "/images/used/3-passes-1.avif",
+    src: "/images/used/3-passes-1.webp",
     alt: "Three Passes Trail",
     caption: "Trail to Kongma La",
   },
   {
-    src: "/images/used/everest-3.avif",
+    src: "/images/used/everest-3.webp",
     alt: "Everest from Kala Patthar",
     caption: "Everest from Kala Patthar",
   },
   {
-    src: "/images/used/gokyo-1.avif",
+    src: "/images/used/gokyo-1.webp",
     alt: "Gokyo Lakes",
     caption: "Gokyo Lakes from Renjo La",
   },

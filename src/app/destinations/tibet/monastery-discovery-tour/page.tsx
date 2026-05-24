@@ -178,19 +178,19 @@ const gallery = [
  
   
   {
-    src: "/images/used/prayer-wheels.avif",
+    src: "/images/used/prayer-wheels.webp",
     alt: "Prayer Wheels",
     caption: "Prayer Wheels at Monastery",
   },
  
   {
-    src: "/images/used/jokhang-monk.avif",
+    src: "/images/used/jokhang-monk.webp",
     alt: "Monk in Prayer",
     caption: "Monk in Prayer at Monastery",
   },
   
     {
-    src: "/images/used/tibet-prayers.avif",
+    src: "/images/used/tibet-prayers.webp",
     alt: "Butter Lamps in Jokhang Monastery",
     caption: "Lamps at Monastery",
   },
@@ -385,7 +385,7 @@ export default function MonasteryDiscoveryTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/tibet-main-page.avif"
+            src="/images/used/tibet-main-page.webp"
             alt="Monastery Discovery Tour Tibet"
             fill
             className="object-cover"

@@ -223,19 +223,19 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/gokyo-1.avif",
+    src: "/images/used/gokyo-1.webp",
     alt: "Gokyo Lakes",
     caption: "Turquoise Gokyo Lakes",
   },
   {
-    src: "/images/used/gokyo-2.avif",
+    src: "/images/used/gokyo-2.webp",
     alt: "Gokyo Ri",
     caption: "Gokyo Ri Summit View",
   },
   
   
   {
-    src: "/images/used/gokyo-3.avif",
+    src: "/images/used/gokyo-3.webp",
     alt: "Everest from Gokyo",
     caption: "Everest from Gokyo Ri",
   },
@@ -350,7 +350,7 @@ export default function EverestGokyoTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/gokyo-1.avif"
+            src="/images/used/gokyo-1.webp"
             alt="Everest Gokyo Lakes Trek"
             fill
             className="object-cover"

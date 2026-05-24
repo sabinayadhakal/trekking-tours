@@ -54,7 +54,7 @@ const culturalTours = [
     difficulty: "Easy",
     altitude: "2,320m",
     price: "$1,950",
-    image: "/images/used/delightful-bhutan.avif",
+    image: "/images/used/delightful-bhutan.webp",
     rating: 4.9,
     region: "Paro • Thimphu",
     highlights: ["Tiger's Nest", "Thimphu Dzong", "Buddha Dordenma", "Traditional Markets"],
@@ -67,7 +67,7 @@ const culturalTours = [
     difficulty: "Easy-Moderate",
     altitude: "3,120m",
     price: "$3,950",
-    image: "/images/used/cultural-bhutan.avif",
+    image: "/images/used/cultural-bhutan.webp",
     rating: 4.8,
     region: "Western Bhutan",
     highlights: ["Punakha Dzong", "Gangtey Valley", "Haa Valley", "Dochula Pass"],
@@ -80,7 +80,7 @@ const culturalTours = [
     difficulty: "Easy",
     altitude: "2,320m",
     price: "$1,250",
-    image: "/images/used/short-sweet-bhutan.avif",
+    image: "/images/used/short-sweet-bhutan.webp",
     rating: 4.7,
     region: "Paro Valley",
     highlights: ["Tiger's Nest Hike", "Paro Dzong", "National Museum", "Farmhouse Visit"],
@@ -93,7 +93,7 @@ const culturalTours = [
     difficulty: "Easy",
     altitude: "2,320m",
     price: "$1,450",
-    image: "/images/used/3days-4nights-bhutan.avif",
+    image: "/images/used/3days-4nights-bhutan.webp",
     rating: 4.6,
     region: "Paro • Thimphu",
     highlights: ["Tiger's Nest", "Thimphu City", "Cheri Monastery", "Traditional Arts"],
@@ -106,7 +106,7 @@ const culturalTours = [
     difficulty: "Moderate",
     altitude: "3,120m",
     price: "$1,050",
-    image: "/images/used/bhutan-tiger.avif",
+    image: "/images/used/bhutan-tiger.webp",
     rating: 4.9,
     region: "Paro Valley",
     highlights: ["Taktsang Monastery", "Cliffside Temple", "Sacred Caves", "Panoramic Views"],
@@ -119,7 +119,7 @@ const culturalTours = [
     difficulty: "Easy",
     altitude: "2,800m",
     price: "$2,750",
-    image: "/images/used/bhutan-culture.avif",
+    image: "/images/used/bhutan-culture.webp",
     rating: 4.8,
     region: "Various Dzongs",
     highlights: ["Paro Tshechu", "Thimphu Festival", "Mask Dances", "Cultural Performances"],
@@ -135,7 +135,7 @@ const trekkingPackages = [
     difficulty: "Moderate",
     altitude: "4,200m",
     price: "$2,950",
-    image: "/images/used/bhutan-druk.avif",
+    image: "/images/used/bhutan-druk.webp",
     rating: 4.8,
     region: "Paro to Thimphu",
     highlights: ["Jele Dzong", "Jangchu Lakha", "Jimilang Tsho", "Thimphu Valley"],
@@ -148,7 +148,7 @@ const trekkingPackages = [
     difficulty: "Challenging",
     altitude: "5,320m",
     price: "$8,500",
-    image: "/images/used/bhutan-snowman.avif",
+    image: "/images/used/bhutan-snowman.webp",
     rating: 4.9,
     region: "Lunana Region",
     highlights: ["Laya Village", "Lunana Region", "14 High Passes", "Remote Valleys"],
@@ -161,7 +161,7 @@ const trekkingPackages = [
     difficulty: "Moderate-Challenging",
     altitude: "4,940m",
     price: "$3,950",
-    image: "/images/used/bhutan-jomolhari-1.avif",
+    image: "/images/used/bhutan-jomolhari-1.webp",
     rating: 4.7,
     region: "Paro Region",
     highlights: ["Jomolhari Base Camp", "Jichu Drake", "Lingzhi Village", "Yak Herder Camps"],
@@ -297,7 +297,7 @@ export default function BhutanPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/bhutan-tiger.avif"
+            src="/images/used/bhutan-tiger.webp"
             alt="Bhutan Himalayas"
             fill
             className="object-cover"
@@ -367,7 +367,7 @@ export default function BhutanPage() {
                 <Link href="/destinations/bhutan/tigers-nest-day-hiking">
                   <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                     <Image
-                      src="/images/used/bhutan-tiger.avif"
+                      src="/images/used/bhutan-tiger.webp"
                       alt="Tiger's Nest Monastery"
                       fill
                       className="object-cover"
@@ -378,7 +378,7 @@ export default function BhutanPage() {
                 <Link href="/destinations/bhutan/bhutan-festival-tour">
                   <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                     <Image
-                      src="/images/used/bhutan-culture.avif"
+                      src="/images/used/bhutan-culture.webp"
                       alt="Bhutanese Culture"
                       fill
                       className="object-cover"
@@ -391,7 +391,7 @@ export default function BhutanPage() {
                 <Link href="/destinations/bhutan/bhutan-cultural-tour">
                   <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                     <Image
-                      src="/images/used/bhutan-dzong.avif"
+                      src="/images/used/bhutan-dzong.webp"
                       alt="Bhutan Dzong"
                       fill
                       className="object-cover"

@@ -239,12 +239,12 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/mera-peak-2.avif",
+    src: "/images/used/mera-peak-2.webp",
     alt: "Mera Peak Summit",
     caption: "Mera Peak Summit (6,476m) with Everest in background",
   },
   {
-    src: "/images/used/mera-peak-3.avif",
+    src: "/images/used/mera-peak-3.webp",
     alt: "Mera Peak Climb",
     caption: "Climbing the Mera Glacier",
   },
@@ -359,7 +359,7 @@ export default function MeraPeakClimbingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/mera-peak-nepal.avif"
+            src="/images/used/mera-peak-nepal.webp"
             alt="Mera Peak Climbing"
             fill
             className="object-cover"

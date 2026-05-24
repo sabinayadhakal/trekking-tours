@@ -216,24 +216,24 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/ganjala-pass-1.avif",
+    src: "/images/used/ganjala-pass-1.webp",
     alt: "Kyanjin Gompa",
     caption: "Kyanjin Gompa with Langtang Lirung",
   },
  
   {
-    src: "/images/used/tamang-heritage-1.avif",
+    src: "/images/used/tamang-heritage-1.webp",
     alt: "Tamang Village",
     caption: "Traditional Tamang Village - Thuman",
   },
   {
-    src: "/images/used/tht-2.avif",
+    src: "/images/used/tht-2.webp",
     alt: "Nagthali Viewpoint",
     caption: "Nagthali Viewpoint (3,165m)",
   },
   
   {
-    src: "/images/used/langtang-1.avif",
+    src: "/images/used/langtang-1.webp",
     alt: "Kyanjin Ri",
     caption: "Sunrise from Kyanjin Ri (4,773m)",
   },
@@ -347,7 +347,7 @@ export default function TamangHeritageLangtangTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/tht-4.avif"
+            src="/images/used/tht-4.webp"
             alt="Tamang Heritage and Langtang Valley Trek"
             fill
             className="object-cover"

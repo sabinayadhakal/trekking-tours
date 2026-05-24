@@ -187,18 +187,18 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/bhutan-druk.avif",
+    src: "/images/used/bhutan-druk.webp",
     alt: "Druk Path Trek",
     caption: "Druk Path Trek",
   },
   
   {
-    src: "/images/used/bhutan-culture.avif",
+    src: "/images/used/bhutan-culture.webp",
     alt: "Sangaygang, Thimpu",
     caption: "Thimphu from above. 🏔️✨ Sangaygang views.",
   },
   {
-    src: "/images/used/wangchuk-bhutan.avif",
+    src: "/images/used/wangchuk-bhutan.webp",
     alt: "Wangdicholding Palace",
     caption: "Where the Wangchuck dynasty began.",
   },
@@ -312,7 +312,7 @@ export default function DrukPathTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/bhutan-druk.avif"
+            src="/images/used/bhutan-druk.webp"
             alt="Druk Path Trek"
             fill
             className="object-cover"

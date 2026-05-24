@@ -106,12 +106,12 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/everest-flight-2.avif",
+    src: "/images/used/everest-flight-2.webp",
     alt: "Mount Everest",
     caption: "Mount Everest (8,848m) - The world's highest peak viewed from mountain flight",
   },
   {
-    src: "/images/used/everest-flight-1.avif",
+    src: "/images/used/everest-flight-1.webp",
     alt: "Window View",
     caption: "Unobstructed window view of Himalayan peaks during flight",
   },
@@ -225,7 +225,7 @@ export default function EverestRegionMountainFlightTripPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/everest-flight-1.avif"
+            src="/images/used/everest-flight-1.webp"
             alt="Everest Region Mountain Flight"
             fill
             className="object-cover"
@@ -274,7 +274,7 @@ export default function EverestRegionMountainFlightTripPage() {
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-slate-400 line-through">$450</div>
-                <div className="text-lg font-bold text-[#0f2940]">$395</div>
+                <div className="text-lg font-bold text-[#0f2940]">$300</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
@@ -295,9 +295,9 @@ export default function EverestRegionMountainFlightTripPage() {
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
                         <span className="text-white/50 text-sm line-through">$450</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$395</div>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$300</div>
                         <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $55</Badge>
+                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $150</Badge>
                       </div>
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">

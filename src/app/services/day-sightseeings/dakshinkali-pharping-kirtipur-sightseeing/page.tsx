@@ -93,17 +93,17 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/dakshinkali-1.avif",
+    src: "/images/used/dakshinkali-1.webp",
     alt: "Dakshinkali Temple",
     caption: "Dakshinkali Temple - Sacred Hindu shrine dedicated to Goddess Kali",
   },
   {
-    src: "/images/used/pharping-2.avif",
+    src: "/images/used/pharping-2.webp",
     alt: "Pharping Monastery",
     caption: "Buddhist monastery in Pharping, important pilgrimage site",
   },
   {
-    src: "/images/used/kirtipur-2.avif",
+    src: "/images/used/kirtipur-2.webp",
     alt: "Kirtipur Hilltop",
     caption: "Historic Kirtipur town with panoramic valley views",
   },
@@ -218,7 +218,7 @@ export default function DakshinkaliPharpingKirtipurSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/dakshinkali-2.avif"
+            src="/images/used/dakshinkali-2.webp"
             alt="Dakshinkali, Pharping and Kirtipur Sightseeing"
             fill
             className="object-cover"

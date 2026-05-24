@@ -91,32 +91,32 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/changunarayan-1.avif",
+    src: "/images/used/changunarayan-1.webp",
     alt: "Changunarayan Temple",
     caption: "Changunarayan Temple - The oldest Hindu temple in Nepal (4th century)",
   },
   {
-    src: "/images/used/bhaktapur-2.avif",
+    src: "/images/used/bhaktapur-2.webp",
     alt: "Bhaktapur Durbar Square",
     caption: "Bhaktapur Durbar Square with Nyatapola Temple",
   },
   {
-    src: "/images/used/sanga-1.avif",
+    src: "/images/used/sanga-1.webp",
     alt: "Sanga Viewpoint",
     caption: "Panoramic Himalayan views from Sanga hilltop",
   },
   {
-    src: "/images/used/bhaktapur-5.avif",
+    src: "/images/used/bhaktapur-5.webp",
     alt: "Nyatapola Temple",
     caption: "Nyatapola Temple - Nepal's tallest pagoda",
   },
   {
-    src: "/images/used/bhaktapur-3.avif",
+    src: "/images/used/bhaktapur-3.webp",
     alt: "Palace of 55 Windows",
     caption: "Palace of 55 Windows in Bhaktapur Durbar Square",
   },
   {
-    src: "/images/used/bhaktapur-4.avif",
+    src: "/images/used/bhaktapur-4.webp",
     alt: "Pottery Square",
     caption: "Traditional potters at work in Bhaktapur's Pottery Square",
   },
@@ -230,7 +230,7 @@ export default function ChangunarayanBhaktapurSangaSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/changunarayan-1.avif"
+            src="/images/used/changunarayan-1.webp"
             alt="Changunarayan, Bhaktapur and Sanga Sightseeing"
             fill
             className="object-cover"

@@ -41,7 +41,7 @@ import { Badge } from "@/components/ui/badge";
 const blogPost = {
   title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
   excerpt: "Perched at 4,919 meters in the Annapurna region, Tilicho Lake is not just one of the highest lakes in the world, it is a place where Hindu mythology meets breathtaking natural beauty. Discover the ancient story of Kakbhusundi, the crow sage, and why thousands of pilgrims and trekkers make the arduous journey to its holy shores each year.",
-  heroImage: "/images/used/tilicho-blog.avif",
+  heroImage: "/images/used/tilicho-blog.webp",
   author: {
     name: "Sabinaya Dhakal",
     avatar: "/placeholder.svg?text=SD",
@@ -68,14 +68,14 @@ const tableOfContents = [
 const relatedPosts = [
   {
     title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
-    image: "/images/used/historic-scenic-photography-nepal.avif",
+    image: "/images/used/historic-scenic-photography-nepal.webp",
     date: "May 7, 2026",
     readTime: "9 min",
     href: "/blog/best-time-to-visit-nepal",
   },
   {
     title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
-    image: "/images/used/dog-pigeons.avif",
+    image: "/images/used/dog-pigeons.webp",
     date: "May 9, 2026",
     readTime: "9 min",
     href: "/blog/pigeons-symbol-peace-nepal",
@@ -344,7 +344,7 @@ export default function BlogPostPage() {
                 {/* Image Break */}
                 <div className="relative h-[250px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
                   <Image
-                    src="/images/used/tilicho-lake-1.avif"
+                    src="/images/used/tilicho-lake-1.webp"
                     alt="Tilicho Lake with dramatic mountain backdrop in Annapurna region"
                     fill
                     className="object-cover"

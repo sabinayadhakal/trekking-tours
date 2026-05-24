@@ -213,27 +213,27 @@ const excludes = [
 const gallery = [
   
   {
-    src: "/images/used/monkey_temple.avif",
+    src: "/images/used/monkey_temple.webp",
     alt: "Swayambhunath Stupa",
     caption: "Swayambhunath Stupa (Monkey Temple) at dawn",
   },
   {
-    src: "/images/used/bhaktapur-3.avif",
+    src: "/images/used/bhaktapur-3.webp",
     alt: "Bhaktapur Durbar Square",
     caption: "Medieval architecture at Bhaktapur Durbar Square",
   },
   {
-    src: "/images/used/pokhara-1.avif",
+    src: "/images/used/pokhara-1.webp",
     alt: "Phewa Lake",
     caption: "Phewa Lake with Machhapuchhre reflection",
   },
   {
-    src: "/images/used/nepal-chitwan.avif",
+    src: "/images/used/nepal-chitwan.webp",
     alt: "One-horned Rhinoceros",
     caption: "One-horned rhinoceros in Chitwan National Park",
   },
   {
-    src: "/images/used/bandipur-1.avif",
+    src: "/images/used/bandipur-1.webp",
     alt: "Bandipur Village",
     caption: "Traditional Newari village of Bandipur at sunset",
   },
@@ -347,7 +347,7 @@ export default function HistoricNatureScenicPhotographyTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/historic-scenic-photography-nepal.avif"
+            src="/images/used/historic-scenic-photography-nepal.webp"
             alt="Historic, Nature & Scenic Photography Tour"
             fill
             className="object-cover"

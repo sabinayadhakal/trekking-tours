@@ -173,22 +173,22 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/tibet-2.avif",
+    src: "/images/used/tibet-2.webp",
     alt: "Namtso Lake",
     caption: "Namtso Lake - Heaven's Lake at 4,718m",
   },
   {
-    src: "/images/used/tibet-1.avif",
+    src: "/images/used/tibet-1.webp",
     alt: "Potala Palace",
     caption: "Potala Palace - Iconic Landmark of Lhasa",
   },
    {
-    src: "/images/used/tibet-lake-1.avif",
+    src: "/images/used/tibet-lake-1.webp",
     alt: "Stones Stacked Besides the Lake",
     caption: "Stones Stacked Besides the Lake",
   },
    {
-    src: "/images/used/tibet-lake-2.avif",
+    src: "/images/used/tibet-lake-2.webp",
     alt: "Yak beside the lake",
     caption: "Yak beside the lake",
   },
@@ -362,7 +362,7 @@ export default function TibetTourWithNamtsoLakePage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/tibet-2.avif"
+            src="/images/used/tibet-2.webp"
             alt="Tibet Tour with Namtso Lake"
             fill
             className="object-cover"

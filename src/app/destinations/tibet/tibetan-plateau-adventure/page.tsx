@@ -254,28 +254,28 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/tibet-everest.avif",
+    src: "/images/used/tibet-everest.webp",
     alt: "Mount Everest",
     caption: "Mount Everest (8,848m) from Tibetan Plateau",
   },
   {
-    src: "/images/used/tibet-lake-1.avif",
+    src: "/images/used/tibet-lake-1.webp",
     alt: "Lake ",
     caption: "Sacred Lake ",
   },
   {
-    src: "/images/used/yamdrok-lake.avif",
+    src: "/images/used/yamdrok-lake.webp",
     alt: "Yamdrok Lake",
     caption: "Turquoise Yamdrok Lake",
   },
   {
-    src:"/images/used/tibet-1.avif",
+    src:"/images/used/tibet-1.webp",
     alt: "Potala Palace",
     caption: "Potala Palace, Lhasa",
   },
  
   {
-    src: "/images/used/tibet-plateau.avif",
+    src: "/images/used/tibet-plateau.webp",
     alt: "Tibetan Plateau",
     caption: "Vast Tibetan Plateau Landscape",
   },
@@ -507,7 +507,7 @@ export default function TibetanPlateauAdventurePage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/tibet-plateau.avif"
+            src="/images/used/tibet-plateau.webp"
             alt="Tibetan Plateau Adventure"
             fill
             className="object-cover"

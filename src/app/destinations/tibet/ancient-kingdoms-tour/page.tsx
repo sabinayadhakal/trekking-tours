@@ -199,19 +199,19 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/tibet-1.avif",
+    src: "/images/used/tibet-1.webp",
     alt: "Potala Palace",
     caption: "Potala Palace - Symbol of Tibetan Civilization",
   },
   
   
   {
-    src: "/images/used/tibet-kingdom-1.avif",
+    src: "/images/used/tibet-kingdom-1.webp",
     alt: "Himalayan Landscape",
     caption: "Tibet-Where the sky touches the earth",
   },
   {
-    src: "/images/used/yamdrok-lake.avif",
+    src: "/images/used/yamdrok-lake.webp",
     alt: "Yamdrok Lake",
     caption: "Sacred Yamdrok Lake",
   },
@@ -403,7 +403,7 @@ export default function TibetanAncientKingdomsTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/tibet-kingdom.avif"
+            src="/images/used/tibet-kingdom.webp"
             alt="Tibetan Ancient Kingdoms Tour"
             fill
             className="object-cover"

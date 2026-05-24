@@ -162,19 +162,19 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/ganjala-pass-1.avif",
+    src: "/images/used/ganjala-pass-1.webp",
     alt: "Kyanjin Gompa",
     caption: "Kyanjin Gompa with Langtang Lirung",
   },
   
   {
-    src: "/images/used/langtang-1.avif",
+    src: "/images/used/langtang-1.webp",
     alt: "Langtang Valley",
     caption: "Langtang Valley with Yak Pastures",
   },
   
   {
-    src: "/images/used/langtang-2.avif",
+    src: "/images/used/langtang-2.webp",
     alt: "Langtang Lirung",
     caption: "Langtang Lirung (7,227m)",
   },
@@ -288,7 +288,7 @@ export default function LangtangValleyTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/langtang-main-page.avif"
+            src="/images/used/langtang-main-page.webp"
             alt="Langtang Valley Trek"
             fill
             className="object-cover"

@@ -95,22 +95,22 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/monkey_temple.avif",
+    src: "/images/used/monkey_temple.webp",
     alt: "Swayambhunath Stupa",
     caption: "Swayambhunath Stupa (Monkey Temple) with all-seeing eyes of Buddha",
   },
   {
-    src: "/images/used/ktm-durbar-1.avif ",
+    src: "/images/used/ktm-durbar-1.webp ",
     alt: "Kathmandu Durbar Square",
     caption: "Kathmandu Durbar Square with ancient temples and palace",
   },
   {
-    src: "/images/used/pashupati-1.avif",
+    src: "/images/used/pashupati-1.webp",
     alt: "Pashupatinath Temple",
     caption: "Pashupatinath Temple on the banks of the Bagmati River",
   },
   {
-    src: "/images/used/nepal-stupa.avif",
+    src: "/images/used/nepal-stupa.webp",
     alt: "Boudhanath Stupa",
     caption: "Boudhanath Stupa - Center of Tibetan Buddhism in Nepal",
   },
@@ -226,7 +226,7 @@ export default function KathmanduSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/monkey_temple.avif"
+            src="/images/used/monkey_temple.webp"
             alt="Kathmandu Valley Sightseeing"
             fill
             className="object-cover"

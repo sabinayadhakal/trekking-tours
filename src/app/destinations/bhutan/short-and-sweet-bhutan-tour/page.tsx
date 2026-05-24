@@ -122,17 +122,17 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/bhutan-tiger.avif",
+    src: "/images/used/bhutan-tiger.webp",
     alt: "Taktsang Monastery",
     caption: "Taktsang Monastery - The Tiger's Nest",
   },
   {
-    src: "/images/used/bhutan-paro.avif",
+    src: "/images/used/bhutan-paro.webp",
     alt: "Paro Valley",
     caption: "Scenic Paro Valley",
   },
   {
-    src: "/images/used/hiking-trail.avif",
+    src: "/images/used/hiking-trail.webp",
     alt: "Tiger's Nest Trail",
     caption: "Trail to Tiger's Nest Monastery",
   },
@@ -248,7 +248,7 @@ export default function ShortSweetBhutanTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/short-sweet-bhutan.avif"
+            src="/images/used/short-sweet-bhutan.webp"
             alt="Short and Sweet Bhutan Trek"
             fill
             className="object-cover"

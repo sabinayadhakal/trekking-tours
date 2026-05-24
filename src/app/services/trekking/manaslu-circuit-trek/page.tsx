@@ -201,22 +201,22 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/manaslu-main-page.avif",
+    src: "/images/used/manaslu-main-page.webp",
     alt: "Manaslu Mountain View",
     caption: "Mount Manaslu (8,163m)",
   },
   {
-    src: "/images/used/manaslu-3.avif",
+    src: "/images/used/manaslu-3.webp",
     alt: "Pungyen Gompa",
     caption: "Pungyen Gompa located at the base of Manaslu",
   },
   {
-    src: "/images/used/manaslu-4.avif",
+    src: "/images/used/manaslu-4.webp",
     alt: "Birendra Lake",
     caption: "Birendra Lake-- Manaslu glacial lake",
   },
   {
-    src: "/images/used/manaslu-2.avif",
+    src: "/images/used/manaslu-2.webp",
     alt: "Way to Namrung",
     caption: "Way to Namrung",
   },
@@ -331,7 +331,7 @@ export default function ManasluCircuitTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/manaslu-1.avif"
+            src="/images/used/manaslu-1.webp"
             alt="Manaslu Circuit Trek"
             fill
             className="object-cover"

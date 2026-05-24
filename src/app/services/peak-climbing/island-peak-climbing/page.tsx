@@ -246,12 +246,12 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/island-peak-1.avif",
+    src: "/images/used/island-peak-1.webp",
     alt: "Island Peak Summit",
     caption: "Island Peak Summit (6,189m) with Everest behind",
   },
   {
-    src: "/images/used/island-peak-2.avif",
+    src: "/images/used/island-peak-2.webp",
     alt: "Island Peak Climb",
     caption: "Climbing the headwall on Island Peak",
   },
@@ -366,7 +366,7 @@ export default function IslandPeakClimbingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/island-peak-climbing-nepal.avif"
+            src="/images/used/island-peak-climbing-nepal.webp"
             alt="Island Peak Climbing"
             fill
             className="object-cover"

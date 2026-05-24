@@ -126,7 +126,7 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/bhutan-tiger.avif",
+    src: "/images/used/bhutan-tiger.webp",
     alt: "Taktsang Monastery",
     caption: "Taktsang Monastery - The Tiger's Nest",
   },
@@ -275,7 +275,7 @@ export default function TigersNestDayHikingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/bhutan-tiger.avif"
+            src="/images/used/bhutan-tiger.webp"
             alt="Tiger's Nest Monastery"
             fill
             className="object-cover"

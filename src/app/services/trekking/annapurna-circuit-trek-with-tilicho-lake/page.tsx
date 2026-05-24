@@ -204,17 +204,17 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/tilicho-lake-1.avif",
+    src: "/images/used/tilicho-lake-1.webp",
     alt: "Tilicho Lake",
     caption: "Tilicho Lake (4,920m) - World's Highest Lake",
   },
   {
-    src: "/images/used/annapurna-circuit-1.avif",
+    src: "/images/used/annapurna-circuit-1.webp",
     alt: "Chulu Mountain from Thorang High Camp",
     caption: "Chulu Mountain from Thorang High Camp",
   },
    {
-    src: "/images/used/annapurna-circuit-4.avif",
+    src: "/images/used/annapurna-circuit-4.webp",
     alt: "Thorang La",
     caption: "Thorang La- 5416m",
   },
@@ -329,7 +329,7 @@ export default function AnnapurnaCircuitTilichoTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/tilicho-lake-1.avif"
+            src="/images/used/tilicho-lake-1.webp"
             alt="Annapurna Circuit with Tilicho Lake Trek"
             fill
             className="object-cover"

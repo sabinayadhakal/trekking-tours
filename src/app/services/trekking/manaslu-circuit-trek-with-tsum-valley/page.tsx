@@ -256,22 +256,22 @@ const gallery = [
   
   
   {
-    src: "/images/used/tsum-4.avif",
+    src: "/images/used/tsum-4.webp",
     alt: "Tsum Valley",
     caption: "Sacred Tsum Valley with Ganesh Himal",
   },
   {
-    src: "/images/used/manaslu-main-page.avif",
+    src: "/images/used/manaslu-main-page.webp",
     alt: "Manaslu Mountain",
     caption: "Mount Manaslu (8,163m)",
   },
   {
-    src: "/images/used/tsum-3.avif",
+    src: "/images/used/tsum-3.webp",
     alt: "Way to Tsum Valley",
     caption: "Way to Sacred Tsum Valley",
   },
   {
-    src: "/images/used/tsum-valley-1.avif",
+    src: "/images/used/tsum-valley-1.webp",
     alt: "Tsum Valley",
     caption: "Sacred Tsum Valley with Ganesh Himal",
   },
@@ -386,7 +386,7 @@ export default function ManasluTsumValleyTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/tsum-valley-1.avif"
+            src="/images/used/tsum-valley-1.webp"
             alt="Manaslu Circuit with Tsum Valley Trek"
             fill
             className="object-cover"

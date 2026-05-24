@@ -110,12 +110,12 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/langtang-flight-2.avif",
+    src: "/images/used/langtang-flight-2.webp",
     alt: "Langtang Lirung",
     caption: "Langtang Lirung (7,227m) - The highest peak in the Langtang range",
   },
   {
-    src: "/images/used/langtang-flight-1.avif",
+    src: "/images/used/langtang-flight-1.webp",
     alt: "Helicopter in Langtang",
     caption: "Helicopter landing at Kyanjin Gompa with mountain backdrop",
   },
@@ -229,7 +229,7 @@ export default function LangtangRegionHelicopterTripPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/langtang-heli.avif"
+            src="/images/used/langtang-heli.webp"
             alt="Langtang Region Helicopter Trip"
             fill
             className="object-cover"

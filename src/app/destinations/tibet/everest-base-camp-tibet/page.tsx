@@ -204,7 +204,7 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/tibet-everest.avif",
+    src: "/images/used/tibet-everest.webp",
     alt: "Mount Everest",
     caption: "Mount Everest (8,848m) - World's Highest Peak",
   },
@@ -212,18 +212,18 @@ const gallery = [
   
   
   {
-    src: "/images/used/tibet-kingdom-1.avif",
+    src: "/images/used/tibet-kingdom-1.webp",
     alt: "Himalayan Panorama",
     caption: "Himalayan Range from Tibet Side",
   },
   {
-    src: "/images/used/yamdrok-lake.avif",
+    src: "/images/used/yamdrok-lake.webp",
     alt: "Yamdrok Lake",
     caption: "Turquoise Yamdrok Lake",
   },
   
   {
-    src: "/images/used/tibet-plateau.avif",
+    src: "/images/used/tibet-plateau.webp",
     alt: "Tibetan Plateau",
     caption: "Vast Tibetan Plateau",
   },
@@ -410,7 +410,7 @@ export default function EverestBaseCampTibetPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/tibet-everest.avif"
+            src="/images/used/tibet-everest.webp"
             alt="Everest Base Camp Tibet"
             fill
             className="object-cover"

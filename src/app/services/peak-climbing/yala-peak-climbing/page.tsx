@@ -212,12 +212,12 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/yala-peak-2.avif",
+    src: "/images/used/yala-peak-2.webp",
     alt: "Yala Peak Summit",
     caption: "Yala Peak Summit (5,732m) with Langtang range behind",
   },
   {
-    src: "/images/used/langtang-2.avif",
+    src: "/images/used/langtang-2.webp",
     alt: "Kyanjin Gompa",
     caption: "Kyanjin Gompa with Langtang Lirung",
   },
@@ -332,7 +332,7 @@ export default function YalaPeakClimbingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/yala-peak-nepal.avif"
+            src="/images/used/yala-peak-nepal.webp"
             alt="Yala Peak Climbing"
             fill
             className="object-cover"

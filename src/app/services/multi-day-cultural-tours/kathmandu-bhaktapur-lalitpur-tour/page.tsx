@@ -137,32 +137,32 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/monkey_temple.avif",
+    src: "/images/used/monkey_temple.webp",
     alt: "Swayambhunath Stupa",
     caption: "Swayambhunath Stupa (Monkey Temple) with all-seeing eyes of Buddha",
   },
   {
-    src: "/images/used/bhaktapur-2.avif",
+    src: "/images/used/bhaktapur-2.webp",
     alt: "Bhaktapur Durbar Square",
     caption: "Bhaktapur Durbar Square with Nyatapola Temple",
   },
   {
-    src: "/images/used/patan-1.avif",
+    src: "/images/used/patan-1.webp",
     alt: "Patan Durbar Square",
     caption: "Patan Durbar Square - City of Fine Arts",
   },
   {
-    src: "/images/used/nepal-stupa.avif",
+    src: "/images/used/nepal-stupa.webp",
     alt: "Boudhanath Stupa",
     caption: "Boudhanath Stupa - Center of Tibetan Buddhism",
   },
   {
-    src: "/images/used/pashupati-1.avif",
+    src: "/images/used/pashupati-1.webp",
     alt: "Pashupatinath Temple",
     caption: "Pashupatinath Temple on the banks of Bagmati River",
   },
   {
-    src: "/images/used/bhaktapur-4.avif",
+    src: "/images/used/bhaktapur-4.webp",
     alt: "Pottery Square Bhaktapur",
     caption: "Traditional potters at work in Bhaktapur's Pottery Square",
   },
@@ -276,7 +276,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/durbar_square.avif"
+            src="/images/used/durbar_square.webp"
             alt="Kathmandu Valley Heritage Tour"
             fill
             className="object-cover"

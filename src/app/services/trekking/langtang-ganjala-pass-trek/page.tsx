@@ -214,17 +214,17 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/ganjala-pass-1.avif",
+    src: "/images/used/ganjala-pass-1.webp",
     alt: "Ganja La Pass",
     caption: "Ganja La Pass (5,130m)",
   },
   {
-    src: "/images/used/langtang-2.avif",
+    src: "/images/used/langtang-2.webp",
     alt: "Kyanjin Gompa",
     caption: "Kyanjin Gompa with Langtang Lirung",
   },
   {
-    src: "/images/used/langtang-1.avif",
+    src: "/images/used/langtang-1.webp",
     alt: "Langtang Valley",
     caption: "Langtang Valley - Valley of Glaciers",
   },
@@ -339,7 +339,7 @@ export default function LangtangGanjaLaTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/ganjala-pass-1.avif"
+            src="/images/used/ganjala-pass-1.webp"
             alt="Langtang Ganja La Trek"
             fill
             className="object-cover"

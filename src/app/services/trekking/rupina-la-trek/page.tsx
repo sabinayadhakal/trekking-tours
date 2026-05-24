@@ -247,22 +247,22 @@ const excludes = [
 const gallery = [
  
   {
-    src: "/images/used/manaslu-main-page.avif",
+    src: "/images/used/manaslu-main-page.webp",
     alt: "Manaslu Mountain",
     caption: "Mount Manaslu (8,163m) from Samagaon",
   },
   {
-    src: "/images/used/rupinala-1.avif",
+    src: "/images/used/rupinala-1.webp",
     alt: "Way to Rupina- La",
     caption: "Way to Rupina La",
   },
   {
-    src: "/images/used/rupinala-3.avif",
+    src: "/images/used/rupinala-3.webp",
     alt: "Village Before Rupina La",
     caption: "Village before Rupina La",
   },
   {
-    src: "/images/used/rupinala-4.avif",
+    src: "/images/used/rupinala-4.webp",
     alt: "Yak on the Way",
     caption: "Yak on the Way to Samagaon",
   },
@@ -377,7 +377,7 @@ export default function RupinaLaTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/rupinala-4.avif"
+            src="/images/used/rupinala-4.webp"
             alt="Rupina La Pass Trek"
             fill
             className="object-cover"

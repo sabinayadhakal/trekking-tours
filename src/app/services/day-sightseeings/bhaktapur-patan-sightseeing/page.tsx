@@ -89,27 +89,27 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/bhaktapur-2.avif",
+    src: "/images/used/bhaktapur-2.webp",
     alt: "Bhaktapur Durbar Square",
     caption: "Bhaktapur Durbar Square with Nyatapola Temple",
   },
   {
-    src: "/images/used/patan-1.avif",
+    src: "/images/used/patan-1.webp",
     alt: "Patan Durbar Square",
     caption: "Patan Durbar Square - City of Fine Arts",
   },
   {
-    src: "/images/used/bhaktapur-4.avif",
+    src: "/images/used/bhaktapur-4.webp",
     alt: "Pottery Square Bhaktapur",
     caption: "Traditional potters at work in Bhaktapur's Pottery Square",
   },
   {
-    src: "/images/used/patan-2.avif",
+    src: "/images/used/patan-2.webp",
     alt: "Krishna Temple Patan",
     caption: "Krishna Temple built entirely of stone in Patan",
   },
   {
-    src: "/images/used/bhaktapur-3.avif",
+    src: "/images/used/bhaktapur-3.webp",
     alt: "Palace of 55 Windows",
     caption: "Palace of 55 Windows in Bhaktapur Durbar Square",
   },
@@ -224,7 +224,7 @@ export default function BhaktapurPatanSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/bhaktapur-patan-nepal.avif"
+            src="/images/used/bhaktapur-patan-nepal.webp"
             alt="Bhaktapur and Patan Sightseeing"
             fill
             className="object-cover"

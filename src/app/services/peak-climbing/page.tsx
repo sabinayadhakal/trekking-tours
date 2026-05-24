@@ -36,7 +36,7 @@ const peakClimbs = [
     bestSeason: "Apr-May, Oct-Nov",
     price: 2450,
     originalPrice: 2800,
-    image: "/images/used/island-peak-climbing-nepal.avif",
+    image: "/images/used/island-peak-climbing-nepal.webp",
     rating: 4.8,
     reviews: 156,
     highlights: ["Summit Experience", "Technical Training", "Everest Views", "Glacier Crossing"],
@@ -57,7 +57,7 @@ const peakClimbs = [
     bestSeason: "Apr-May, Oct-Nov",
     price: 2650,
     originalPrice: 3100,
-    image: "/images/used/mera-peak-nepal.avif",
+    image: "/images/used/mera-peak-nepal.webp",
     rating: 4.9,
     reviews: 124,
     highlights: ["Highest Trekking Peak", "5 x 8000m Views", "Remote Wilderness", "Non-technical Summit"],
@@ -79,7 +79,7 @@ const peakClimbs = [
     bestSeason: "Mar-May, Sep-Dec",
     price: 1850,
     originalPrice: 2200,
-    image: "/images/used/yala-peak-nepal.avif",
+    image: "/images/used/yala-peak-nepal.webp",
     rating: 4.5,
     reviews: 112,
     highlights: ["Beginner Friendly", "Langtang Valley", "Tibetan Border Views", "Cultural Experience"],
@@ -398,7 +398,7 @@ export default function PeakClimbingPage() {
             </div>
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
-                src="/images/used/island-peak-climbing-nepal.avif"
+                src="/images/used/island-peak-climbing-nepal.webp"
                 alt="Mountain climbers on peak"
                 fill
                 className="object-cover"

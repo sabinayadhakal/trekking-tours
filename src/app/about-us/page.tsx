@@ -302,7 +302,7 @@ Streets, Stories & the Himalayas              </h2>
             <div className="relative">
               <div className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-xl sm:rounded-2xl md:rounded-[2rem] overflow-hidden shadow-xl sm:shadow-2xl shadow-[#0f2940]/20">
                 <Image
-                  src="/images/used/FWT-4.avif"
+                  src="/images/used/FWT-4.webp"
                   alt="Himalayan landscape"
                   fill
                   className="object-cover"
@@ -438,7 +438,7 @@ Streets, Stories & the Himalayas              </h2>
               <div className="relative">
                 <div className="relative h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] rounded-xl sm:rounded-2xl md:rounded-[2rem] overflow-hidden shadow-xl sm:shadow-2xl shadow-[#0f2940]/20">
                   <Image
-                    src="/images/used/shiva.avif"
+                    src="/images/used/shiva.webp"
                     alt="Shiva Prasad Dhakal"
                     fill
                     className="object-cover"

@@ -122,17 +122,17 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/bhutan-tiger.avif",
+    src: "/images/used/bhutan-tiger.webp",
     alt: "Taktsang Monastery",
     caption: "Taktsang Monastery - The Tiger's Nest",
   },
   {
-    src: "/images/used/bhutan-page-2.avif",
+    src: "/images/used/bhutan-page-2.webp",
     alt: "Punakha",
     caption: "Scenic Punakha Dzong",
   },
   {
-    src: "/images/used/bhutan-paro.avif",
+    src: "/images/used/bhutan-paro.webp",
     alt: "Monastery from Thimpu",
     caption: "Monastery from Thimpu",
   }
@@ -246,7 +246,7 @@ export default function BhutanTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/3days-4nights-bhutan.avif"
+            src="/images/used/3days-4nights-bhutan.webp"
             alt="Bhutan Tour"
             fill
             className="object-cover"

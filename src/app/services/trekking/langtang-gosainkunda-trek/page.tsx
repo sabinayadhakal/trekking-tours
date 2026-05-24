@@ -235,18 +235,18 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/gosaikunda-1.avif",
+    src: "/images/used/gosaikunda-1.webp",
     alt: "Gosainkunda Lake",
     caption: "Sacred Gosainkunda Lake (4,380m)",
   },
   {
-    src: "/images/used/langtang-2.avif",
+    src: "/images/used/langtang-2.webp",
     alt: "Kyanjin Gompa",
     caption: "Kyanjin Gompa with Langtang Lirung",
   },
   
   {
-    src: "/images/used/langtang-1.avif",
+    src: "/images/used/langtang-1.webp",
     alt: "Langtang Valley",
     caption: "Langtang Valley and Village",
   },
@@ -361,7 +361,7 @@ export default function LangtangGosainkundaTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/gosaikunda-1.avif"
+            src="/images/used/gosaikunda-1.webp"
             alt="Langtang-Gosainkunda Trek"
             fill
             className="object-cover"

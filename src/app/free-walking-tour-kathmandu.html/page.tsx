@@ -206,7 +206,7 @@ export default function FreeWalkingTourKathmanduPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src=                    "/images/used/fwt-1.avif"
+            src=                    "/images/used/fwt-1.webp"
 
             alt="Free Walking Tour Kathmandu"
             fill
@@ -558,14 +558,14 @@ export default function FreeWalkingTourKathmanduPage() {
                 <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Glances of the route</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-3">
                   {[
-                    "/images/used/beads.avif",
-                    "/images/used/ancient_temple.avif",
-                    "/images/used/buddhist_temple-1.avif",
-                    "/images/used/cremation-1.avif",
-                                        "/images/used/indrachowk.avif",
-                                                            "/images/used/kathesimbu.avif",
-                                                                                "/images/used/monkey_temple.avif",
-                                                                                                    "/images/used/teeth.avif",
+                    "/images/used/beads.webp",
+                    "/images/used/ancient_temple.webp",
+                    "/images/used/buddhist_temple-1.webp",
+                    "/images/used/cremation-1.webp",
+                                        "/images/used/indrachowk.webp",
+                                                            "/images/used/kathesimbu.webp",
+                                                                                "/images/used/monkey_temple.webp",
+                                                                                                    "/images/used/teeth.webp",
 
 
 

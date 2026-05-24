@@ -89,27 +89,27 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/champadevi-1.avif",
+    src: "/images/used/champadevi-1.webp",
     alt: "Champa Devi Summit",
     caption: "Panoramic view of Kathmandu Valley from Champa Devi summit",
   },
   {
-    src: "/images/used/champa-1.avif",
+    src: "/images/used/champa-1.webp",
     alt: "Hiking Trail",
     caption: "Beautiful trail through oak and rhododendron forests",
   },
   {
-    src: "/images/used/champa-2.avif",
+    src: "/images/used/champa-2.webp",
     alt: "Map Board in the hike",
     caption: "Board for the ChampaDevi hiking trail",
   },
   {
-    src: "/images/used/champa-3.avif",
+    src: "/images/used/champa-3.webp",
     alt: "Forest",
     caption: "Traditional forest way along the hiking route",
   },
   {
-    src: "/images/used/champa-4.avif",
+    src: "/images/used/champa-4.webp",
     alt: "Path towards the summit of ChampaDevi",
     caption: "Path towards the summit of ChampaDevi",
   },
@@ -224,7 +224,7 @@ export default function ChampaDeviHikingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/champadevi-1.avif"
+            src="/images/used/champadevi-1.webp"
             alt="Champa Devi Hiking"
             fill
             className="object-cover"

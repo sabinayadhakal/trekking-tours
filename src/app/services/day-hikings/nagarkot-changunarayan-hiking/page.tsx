@@ -94,27 +94,27 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/nagarkot-hike-1.avif",
+    src: "/images/used/nagarkot-hike-1.webp",
     alt: "Sunrise over Himalayas from Nagarkot",
     caption: "Spectacular sunrise over the Himalayas from Nagarkot viewpoint",
   },
   {
-    src: "/images/used/changunarayan-temple-2.avif",
+    src: "/images/used/changunarayan-temple-2.webp",
     alt: "Changunarayan Temple",
     caption: "Changunarayan Temple",
   },
   {
-    src: "/images/used/changunarayan-temple-1.avif",
+    src: "/images/used/changunarayan-temple-1.webp",
     alt: "Changunarayan Temple",
     caption: "Changunarayan Temple - Nepal's oldest temple (4th century)",
   },
   {
-    src: "/images/used/nagarkot-3.avif",
+    src: "/images/used/nagarkot-3.webp",
     alt: "Hiking Trail",
     caption: "Beautiful hiking trail through forests and villages",
   },
   {
-    src: "/images/used/nagarkot-4.avif",
+    src: "/images/used/nagarkot-4.webp",
     alt: "Traditional Village",
     caption: "Traditional village along the hiking route",
   },
@@ -229,7 +229,7 @@ export default function NagarkotChangunarayanHikingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/nagarkot-changu.avif"
+            src="/images/used/nagarkot-changu.webp"
             alt="Nagarkot-Changunarayan Hiking"
             fill
             className="object-cover"

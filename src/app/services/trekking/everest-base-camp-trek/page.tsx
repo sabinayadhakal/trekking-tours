@@ -201,22 +201,22 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/everest-3.avif",
+    src: "/images/used/everest-3.webp",
     alt: "Mount Everest",
     caption: "Mount Everest (8,848m)",
   },
   {
-    src: "/images/used/everest-1.avif",
+    src: "/images/used/everest-1.webp",
     alt: "Namche Bazaar",
     caption: "Namche Bazaar",
   },
   {
-    src: "/images/used/everest-2.avif",
+    src: "/images/used/everest-2.webp",
     alt: "Tengboche Monastery",
     caption: "Tengboche Monastery",
   },
   {
-    src: "/images/used/everest-main-page.avif",
+    src: "/images/used/everest-main-page.webp",
     alt: "Everest Base Camp",
     caption: "Everest Base Camp",
   },
@@ -331,7 +331,7 @@ export default function EverestBaseCampTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/everest-main-page.avif"
+            src="/images/used/everest-main-page.webp"
             alt="Everest Base Camp Trek"
             fill
             className="object-cover"

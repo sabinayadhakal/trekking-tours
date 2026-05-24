@@ -168,18 +168,18 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/nepal-chitwan.avif",
+    src: "/images/used/nepal-chitwan.webp",
     alt: "One-horned Rhinoceros",
     caption: "One-horned rhinoceros - Chitwan's most famous resident",
   },
   
   {
-    src: "/images/used/chitwan-2.avif",
+    src: "/images/used/chitwan-2.webp",
     alt: "Bengal Tiger",
     caption: "Bengal tiger - the elusive king of Chitwan",
   },
   {
-    src: "/images/used/chitwan-1.avif",
+    src: "/images/used/chitwan-1.webp",
     alt: "Elephant Ride",
     caption: "Elephant Ride in Chitwan National Park",
   },
@@ -294,7 +294,7 @@ export default function ChitwanNationalParkJungleSafariPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/chitwan-1.avif"
+            src="/images/used/chitwan-1.webp"
             alt="Chitwan National Park Jungle Safari"
             fill
             className="object-cover"

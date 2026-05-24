@@ -127,12 +127,12 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/everest-heli-2.avif",
+    src: "/images/used/everest-heli-2.webp",
     alt: "Mount Everest",
     caption: "Mount Everest (8,848m) viewed from helicopter",
   },
   {
-    src: "/images/used/everest-heli-1.avif",
+    src: "/images/used/everest-heli-1.webp",
     alt: "Everest Massif",
     caption: "The entire Everest massif including Lhotse and Nuptse",
   },
@@ -246,7 +246,7 @@ export default function EverestRegionHelicopterTripPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/everest-heli-1.avif"
+            src="/images/used/everest-heli-1.webp"
             alt="Everest Region Helicopter Trip"
             fill
             className="object-cover"

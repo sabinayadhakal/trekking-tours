@@ -138,17 +138,17 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/bhutan-page-2.avif",
+    src: "/images/used/bhutan-page-2.webp",
     alt: "Punakha Dzong",
     caption: "Punakha Dzong - Bhutan's Most Beautiful Fortress",
   },
   {
-    src: "/images/used/bhutan-tiger.avif",
+    src: "/images/used/bhutan-tiger.webp",
     alt: "Taktsang Monastery",
     caption: "Taktsang Monastery - The Tiger's Nest",
   },
   {
-    src: "/images/used/bhutan-paro.avif",
+    src: "/images/used/bhutan-paro.webp",
     alt: "Tashichho Dzong",
     caption: "Tashichho Dzong, Thimphu",
   },
@@ -263,7 +263,7 @@ export default function DelightfulBhutanTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/delightful-bhutan.avif"
+            src="/images/used/delightful-bhutan.webp"
             alt="Delightful Bhutan Tour"
             fill
             className="object-cover"

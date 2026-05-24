@@ -33,7 +33,7 @@ const culturalTours = [
     bestSeason: "Sep-May",
     price: 1895,
     originalPrice: 2200,
-    image: "/images/used/historic-scenic-photography-nepal.avif",
+    image: "/images/used/historic-scenic-photography-nepal.webp",
     rating: 4.9,
     reviews: 67,
     highlights: ["Historic Sites", "Nature", "Scenic Views", "Photography"],
@@ -52,7 +52,7 @@ const culturalTours = [
     bestSeason: "Year Round",
     price: 750,
     originalPrice: 950,
-    image: "/images/used/durbar_square.avif",
+    image: "/images/used/durbar_square.webp",
     rating: 4.8,
     reviews: 156,
     highlights: ["Kathmandu Durbar Square", "Bhaktapur", "Patan", "Newari Culture"],
@@ -70,7 +70,7 @@ const culturalTours = [
     groupSize: "4-10",
     bestSeason: "Sep-May",
     price: 2200,
-    image: "/images/used/kathmandu-lumbini-pokhara-nepal.avif",
+    image: "/images/used/kathmandu-lumbini-pokhara-nepal.webp",
     rating: 4.9,
     reviews: 112,
     highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
@@ -89,7 +89,7 @@ const culturalTours = [
     bestSeason: "Year Round",
     price: 2300,
     originalPrice: 2450,
-    image: "/images/used/nepal-heritage-sites-tour-nepal.avif",
+    image: "/images/used/nepal-heritage-sites-tour-nepal.webp",
     rating: 4.8,
     reviews: 134,
     highlights: ["UNESCO Sites", "Durbar Squares", "Stupas", "Temples"],
@@ -108,7 +108,7 @@ const culturalTours = [
     bestSeason: "Year Round",
     price: 2200,
     originalPrice: 2350,
-    image: "/images/used/monkey_temple.avif",
+    image: "/images/used/monkey_temple.webp",
     rating: 4.8,
     reviews: 98,
     highlights: ["Pashupatinath", "Boudhanath", "Swayambhunath", "Ancient Temples"],
@@ -378,7 +378,7 @@ export default function MultiDayCulturalToursPage() {
             </div>
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
-                src="/images/used/patan-1.avif"
+                src="/images/used/patan-1.webp"
                 alt="Traditional Nepalese Culture"
                 fill
                 className="object-cover"

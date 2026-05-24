@@ -218,13 +218,13 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/bhutan-jomolhari-1.avif",
+    src: "/images/used/bhutan-jomolhari-1.webp",
     alt: "Way to Jomolhari Base Camp",
     caption: "Way to Mount Jomolhari (7,314m) - Bhutan's Second Highest Peak",
   },
 
    {
-    src: "/images/used/bhutan-jomolhari.avif",
+    src: "/images/used/bhutan-jomolhari.webp",
     alt: "Jomolhari Base Camp",
     caption: "Mount Jomolhari (7,314m) - Bhutan's Second Highest Peak",
   }
@@ -338,7 +338,7 @@ export default function JomolhariTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/bhutan-jomolhari-1.avif"
+            src="/images/used/bhutan-jomolhari-1.webp"
             alt="Jomolhari Trek"
             fill
             className="object-cover"

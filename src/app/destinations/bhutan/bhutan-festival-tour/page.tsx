@@ -167,18 +167,18 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/bhutan-culture.avif",
+    src: "/images/used/bhutan-culture.webp",
     alt: "Thimphu Tshechu",
     caption: "Thimphu Tshechu - Masked Dances",
   },
   
   {
-    src: "/images/used/bhutan-page-2.avif",
+    src: "/images/used/bhutan-page-2.webp",
     alt: "Punakha Dzong",
     caption: "Punakha Dzong",
   },
   {
-    src: "/images/used/mask-bhutan.avif",
+    src: "/images/used/mask-bhutan.webp",
     alt: "Masked Dancer",
     caption: "Cham Dance Performer",
   },
@@ -296,7 +296,7 @@ export default function BhutanFestivalTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/bhutan-culture.avif"
+            src="/images/used/bhutan-culture.webp"
             alt="Bhutan Festival Tour"
             fill
             className="object-cover"

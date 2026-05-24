@@ -203,17 +203,17 @@ const excludes = [
 const gallery = [
   
   {
-    src: "/images/used/cultural-bhutan.avif",
+    src: "/images/used/cultural-bhutan.webp",
     alt: "Tashicho Dzong",
     caption: "Tashicho Dzong- Fortress of the glorious religion",
   },
   {
-    src: "/images/used/bhutan-culture.avif",
+    src: "/images/used/bhutan-culture.webp",
     alt: "Masked Festival CUlture of Bhutan",
     caption: "Mask Festival- Where culture wears a mask.",
   },
   {
-    src: "/images/used/bhutan-dochula.avif",
+    src: "/images/used/bhutan-dochula.webp",
     alt: "Dochula, Bhutan",
     caption: "Dochula, Bhutan- 108 stupas, one breathtaking view",
   },
@@ -327,7 +327,7 @@ export default function BhutanCulturalTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/cultural-bhutan.avif"
+            src="/images/used/cultural-bhutan.webp"
             alt="Bhutan Cultural Tour"
             fill
             className="object-cover"

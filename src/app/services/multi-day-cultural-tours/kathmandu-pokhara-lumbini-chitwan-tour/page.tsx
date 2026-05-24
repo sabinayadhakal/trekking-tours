@@ -200,28 +200,28 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/nepal-heritage-sites-tour-nepal.avif",
+    src: "/images/used/nepal-heritage-sites-tour-nepal.webp",
     alt: "Boudhanath Stupa",
     caption: "Boudhanath Stupa - Center of Tibetan Buddhism in Kathmandu",
   },
   
   {
-    src: "/images/used/pokhara-1.avif",
+    src: "/images/used/pokhara-1.webp",
     alt: "Phewa Lake",
     caption: "Phewa Lake with Machhapuchhre reflection, Pokhara",
   },
   {
-    src: "/images/used/lumbini-1.avif",
+    src: "/images/used/lumbini-1.webp",
     alt: "Mayadevi Temple",
     caption: "Mayadevi Temple - Birthplace of Buddha, Lumbini",
   },
   {
-    src: "/images/used/nepal-chitwan.avif",
+    src: "/images/used/nepal-chitwan.webp",
     alt: "One-horned Rhinoceros",
     caption: "One-horned rhinoceros in Chitwan National Park",
   },
   {
-    src: "/images/used/monkey_temple.avif",
+    src: "/images/used/monkey_temple.webp",
     alt: "Swayambhunath Stupa",
     caption: "Swayambhunath Stupa (Monkey Temple), Kathmandu",
   },
@@ -335,7 +335,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/kathmandu-lumbini-pokhara-nepal.avif"
+            src="/images/used/kathmandu-lumbini-pokhara-nepal.webp"
             alt="Kathmandu Pokhara Lumbini Chitwan Tour"
             fill
             className="object-cover"

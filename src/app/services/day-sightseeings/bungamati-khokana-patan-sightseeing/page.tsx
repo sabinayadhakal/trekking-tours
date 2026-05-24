@@ -94,32 +94,32 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/bungamati-1.avif",
+    src: "/images/used/bungamati-1.webp",
     alt: "Bungamati Village",
     caption: "Traditional Newari village of Bungamati with its temple",
   },
   {
-    src: "/images/used/bungamati-2.avif",
+    src: "/images/used/bungamati-2.webp",
     alt: "Dhime Baja",
     caption: "Newari men playing Dhime Baaja",
   },
   {
-    src: "/images/used/patan-2.avif",
+    src: "/images/used/patan-2.webp",
     alt: "Patan Durbar Square",
     caption: "Patan Durbar Square - UNESCO World Heritage Site",
   },
   {
-    src: "/images/used/bungamati-4.avif",
+    src: "/images/used/bungamati-4.webp",
     alt: "Local Newari Food",
     caption: "Local Newari Food in Bungamati, Khokana",
   },
   {
-    src: "/images/used/bungamati-5.avif",
+    src: "/images/used/bungamati-5.webp",
     alt: "Woodcarving Bungamati",
     caption: "Traditional woodcarving workshops in Bungamati",
   },
   {
-    src: "/images/used/patan-1.avif",
+    src: "/images/used/patan-1.webp",
     alt: "Krishna Temple Patan",
     caption: "Krishna Temple in Patan Durbar Square",
   },
@@ -233,7 +233,7 @@ export default function BungamatiKhokanaPatanSightseeingPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/bungamati-1.avif"
+            src="/images/used/bungamati-1.webp"
             alt="Bungamati, Khokana and Patan Sightseeing"
             fill
             className="object-cover"

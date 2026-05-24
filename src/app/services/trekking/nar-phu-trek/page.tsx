@@ -217,19 +217,19 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/narphu-1.avif",
+    src: "/images/used/narphu-1.webp",
     alt: "Phu Village",
     caption: "Phu Village - Remote Tibetan Settlement",
   },
   
   {
-    src: "/images/used/narphu-3.avif",
+    src: "/images/used/narphu-3.webp",
     alt: "Kang La Pass",
     caption: "Kang La Pass (5,306m)",
   },
  
   {
-    src: "/images/used/narphu-4.avif",
+    src: "/images/used/narphu-4.webp",
     alt: "Nar Village",
     caption: "Nar Village with Mountain Views",
   },
@@ -344,7 +344,7 @@ export default function NarPhuTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/narphu-2.avif"
+            src="/images/used/narphu-2.webp"
             alt="Nar Phu Valley Trek"
             fill
             className="object-cover"

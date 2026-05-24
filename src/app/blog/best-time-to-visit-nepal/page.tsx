@@ -41,7 +41,7 @@ import { Badge } from "@/components/ui/badge";
 const blogPost = {
   title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
   excerpt: "From the rainbow blooms of spring to the crystal-clear skies of autumn, every season in Nepal offers something magical. But timing your visit right can mean the difference between watching Everest disappear behind clouds or standing beneath its glittering peak. Here's everything you need to know.",
-  heroImage: "/images/used/historic-scenic-photography-nepal.avif",
+  heroImage: "/images/used/historic-scenic-photography-nepal.webp",
   author: {
     name: "Sabinaya Dhakal",
     avatar: "/placeholder.svg?text=SD",
@@ -67,14 +67,14 @@ const tableOfContents = [
 const relatedPosts = [
   {
     title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
-    image: "/images/used/dog-pigeons.avif",
+    image: "/images/used/dog-pigeons.webp",
     date: "May 9, 2026",
     readTime: "9 min",
     href: "/blog/pigeons-symbol-peace-nepal",
   },
   {
     title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
-    image: "/images/used/tilicho-blog.avif",
+    image: "/images/used/tilicho-blog.webp",
     date: "May 20, 2026",
     readTime: "12 min",
     href: "/blog/tilicho-lake-sacred-trek",
@@ -343,7 +343,7 @@ export default function BlogPostPage() {
                 {/* Image Break */}
                 <div className="relative h-[250px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
                   <Image
-                    src="/images/used/when-to-visit-nepal-1.avif"
+                    src="/images/used/when-to-visit-nepal-1.webp"
                     alt="Views of trekking in Everest region at the time of December"
                     fill
                     className="object-cover"

@@ -355,12 +355,12 @@ const gallery = [
  
 
   {
-    src: "/images/used/bhutan-snowman.avif",
+    src: "/images/used/bhutan-snowman.webp",
     alt: "Snowman Trek",
     caption: "Snowman Trek Way",
   },
   {
-    src: "/images/used/thimpu-bhutan.avif",
+    src: "/images/used/thimpu-bhutan.webp",
     alt: "Glimpse of hills from Thimpu",
     caption: "Glimpse of hills from Thimpu",
   },
@@ -474,7 +474,7 @@ export default function SnowmanTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/bhutan-snowman.avif"
+            src="/images/used/bhutan-snowman.webp"
             alt="Snowman Trek"
             fill
             className="object-cover"

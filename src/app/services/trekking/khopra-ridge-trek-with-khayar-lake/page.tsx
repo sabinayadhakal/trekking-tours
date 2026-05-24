@@ -163,17 +163,17 @@ const excludes = [
 
 const gallery = [
   {
-    src: "/images/used/khopra-2.avif",
+    src: "/images/used/khopra-2.webp",
     alt: "Khayar Lake",
     caption: "Sacred Khayar Lake (4,660m)",
   },
   {
-    src: "/images/used/khopra-trek-1.avif",
+    src: "/images/used/khopra-trek-1.webp",
     alt: "Khopra Ridge Panorama",
     caption: "Khopra Ridge - Annapurna & Dhaulagiri Views",
   },
   {
-    src: "/images/used/ghandruk-1.avif",
+    src: "/images/used/ghandruk-1.webp",
     alt: "Ghandruk Village",
     caption: "Traditional Gurung Village - Ghandruk",
   },
@@ -288,7 +288,7 @@ export default function KhopraRidgeKhayarLakeTrekPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/khopra-trek-1.avif"
+            src="/images/used/khopra-trek-1.webp"
             alt="Khopra Ridge with Khayar Lake Trek"
             fill
             className="object-cover"

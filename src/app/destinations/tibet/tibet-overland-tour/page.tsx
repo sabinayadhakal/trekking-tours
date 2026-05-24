@@ -205,18 +205,18 @@ const gallery = [
  
  
   {
-    src: "/images/used/tibet-overland.avif",
+    src: "/images/used/tibet-overland.webp",
     alt: "Friendship Highway",
     caption: "Friendship Highway",
   },
 
   {
-    src: "/images/used/tibet-road.avif",
+    src: "/images/used/tibet-road.webp",
     alt: "Roads of TIbet",
     caption: "Roads of Tibet",
   },
   {
-    src: "/images/used/views-tibet-train.avif",
+    src: "/images/used/views-tibet-train.webp",
     alt: "Views of Tibet from a train",
     caption: "Views of Tibet from a train",
   },
@@ -414,7 +414,7 @@ export default function TibetOverlandTourPage() {
       <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/used/tibet-overland.avif"
+            src="/images/used/tibet-overland.webp"
             alt="Tibet Overland Tour"
             fill
             className="object-cover"

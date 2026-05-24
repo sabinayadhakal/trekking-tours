@@ -49,7 +49,7 @@ const trekkingPackages = [
     difficulty: "Moderate",
     altitude: "5,364m",
     price: "$1,520",
-    image: "/images/used/everest-main-page.avif",
+    image: "/images/used/everest-main-page.webp",
     rating: 4.9,
     region: "Everest Region",
     highlights: ["Everest Base Camp", "Kala Patthar", "Namche Bazaar", "Tengboche Monastery"],
@@ -62,7 +62,7 @@ const trekkingPackages = [
     difficulty: "Challenging",
     altitude: "5,416m",
     price: "$800",
-    image: "/images/used/annapurna-circuit-main-page.avif",
+    image: "/images/used/annapurna-circuit-main-page.webp",
     rating: 4.8,
     region: "Annapurna Region",
     highlights: ["Thorong La Pass", "Muktinath Temple", "Manang Valley", "Tatopani Hot Springs"],
@@ -75,7 +75,7 @@ const trekkingPackages = [
     difficulty: "Challenging",
     altitude: "5,106m",
     price: "$1,200",
-    image: "/images/used/manaslu-main-page.avif",
+    image: "/images/used/manaslu-main-page.webp",
     rating: 4.9,
     region: "Manaslu Region",
     highlights: ["Larkya La Pass", "Tibetan Villages", "Remote Trails", "Buddhist Monasteries"],
@@ -88,7 +88,7 @@ const trekkingPackages = [
     difficulty: "Easy-Moderate",
     altitude: "4,984m",
     price: "$650",
-    image: "/images/used/langtang-main-page.avif",
+    image: "/images/used/langtang-main-page.webp",
     rating: 4.7,
     region: "Langtang Region",
     highlights: ["Kyanjin Gompa", "Langtang Village", "Cheese Factory", "Tserko Ri"],
@@ -101,7 +101,7 @@ const trekkingPackages = [
     difficulty: "Moderate",
     altitude: "3,840m",
     price: "$2,595",
-    image: "/images/used/upper-mustang-main-page.avif",
+    image: "/images/used/upper-mustang-main-page.webp",
     rating: 4.9,
     region: "Mustang Region",
     highlights: ["Lo Manthang", "Ancient Caves", "Tibetan Culture", "Desert Landscape"],
@@ -114,7 +114,7 @@ const trekkingPackages = [
     difficulty: "Moderate",
     altitude: "4,130m",
     price: "$700",
-    image: "/images/used/abc-main-page.avif",
+    image: "/images/used/abc-main-page.webp",
     rating: 4.9,
     region: "Annapurna Region",
     highlights: ["Annapurna Sanctuary", "Natural Hot Springs", "Machapuchare View", "Bamboo Forests", "Mountain Amphitheater"],
@@ -130,7 +130,7 @@ const peakClimbing = [
     difficulty: "Technical",
     altitude: "6,189m",
     price: "$2,450",
-    image: "/images/used/island-peak-climbing-nepal.avif",
+    image: "/images/used/island-peak-climbing-nepal.webp",
     rating: 4.8,
     highlights: ["Summit Experience", "Technical Training", "Everest Views", "Glacier Crossing"],
     link: "/services/peak-climbing/island-peak-climbing",
@@ -141,7 +141,7 @@ const peakClimbing = [
     difficulty: "Moderate-Technical",
     altitude: "6,476m",
     price: "$2,650",
-    image: "/images/used/mera-peak-nepal.avif",
+    image: "/images/used/mera-peak-nepal.webp",
     rating: 4.9,
     highlights: ["Highest Trekking Peak", "5 x 8000m Views", "Remote Wilderness", "Non-technical Summit"],
     link: "/services/peak-climbing/mera-peak-climbing",
@@ -152,7 +152,7 @@ const peakClimbing = [
     difficulty: "Moderate",
     altitude: "5,520m",
     price: "$1,850",
-    image: "/images/used/yala-peak-nepal.avif",
+    image: "/images/used/yala-peak-nepal.webp",
     rating: 4.5,
     highlights: ["Beginner Friendly", "Langtang Valley", "Tibetan Border Views", "Cultural Experience"],
     link: "/services/peak-climbing/yala-peak-climbing",
@@ -166,7 +166,7 @@ const cityTours = [
     difficulty: "Easy",
     altitude: "1,400m",
     price: "Tips-based",
-    image: "/images/used/free-walking-tour-nepal.avif",
+    image: "/images/used/free-walking-tour-nepal.webp",
     rating: 4.8,
     highlights: ["Kathe Swoyambhu", "Glass Beads Market", "Local Lassi", "Monkey Temple", "Newar Architecture"],
     description: "First Free Walking Tour in Kathmandu, Nepal.",
@@ -178,7 +178,7 @@ const cityTours = [
     name: "Bhaktapur & Patan Day Tour",
     duration: "1 Day",
     price: "$100",
-    image: "/images/used/bhaktapur-patan-nepal.avif",
+    image: "/images/used/bhaktapur-patan-nepal.webp",
     highlights: ["Bhaktapur Durbar Square", "Patan Durbar Square", "Golden Temple", "Traditional Crafts"],
     description: "Discover ancient Newari architecture and living culture.",
     icon: <Castle className="w-5 h-5" />,
@@ -191,7 +191,7 @@ const cityTours = [
     difficulty: "Easy",
     altitude: "2,195m",
     price: "$120",
-    image: "/images/used/nagarkot-changu.avif",
+    image: "/images/used/nagarkot-changu.webp",
     rating: 4.8,
     highlights: ["Himalayan Sunrise", "Mt. Everest Views", "UNESCO Temple", "Village Walk", "Downhill Trail", "Rural Life Experience"],
     description: "Scenic day hike with panoramic mountain views.",
@@ -205,7 +205,7 @@ const cityTours = [
     difficulty: "Easy",
     altitude: "1,400m",
     price: "$2300",
-    image: "/images/used/nepal-heritage-sites-tour-nepal.avif",
+    image: "/images/used/nepal-heritage-sites-tour-nepal.webp",
     rating: 4.8,
     highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
     description: "Explore Nepal's rich cultural heritage across the country.",
@@ -220,7 +220,7 @@ const cityTours = [
     difficulty: "Easy",
     altitude: "1,400m",
     price: "$2200",
-    image: "/images/used/kathmandu-lumbini-pokhara-nepal.avif",
+    image: "/images/used/kathmandu-lumbini-pokhara-nepal.webp",
     rating: 4.8,
     highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
     description: "Complete Nepal experience covering all major destinations.",
@@ -235,7 +235,7 @@ const cityTours = [
     difficulty: "Easy",
     altitude: "2,100m",
     price: "$1895",
-    image: "/images/used/historic-scenic-photography-nepal.avif",
+    image: "/images/used/historic-scenic-photography-nepal.webp",
     rating: 4.9,
     highlights: ["Historic Sites", "Nature", "Scenic Views", "Photography"],
     description: "Perfect tour for photography enthusiasts.",
@@ -374,7 +374,7 @@ export default function NepalPage() {
 <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
   <div className="absolute inset-0 z-0">
     <Image
-      src="/images/used/nepal-hero.avif"
+      src="/images/used/nepal-hero.webp"
       alt="Nepal Himalayas"
       fill
       className="object-cover"
@@ -441,7 +441,7 @@ export default function NepalPage() {
                 <Link href="/services/day-sightseeings/kathmandu-sightseeing">
                   <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                     <Image
-                      src="/images/used/nepal-temple.avif"
+                      src="/images/used/nepal-temple.webp"
                       alt="Kathmandu Temple"
                       fill
                       className="object-cover"
@@ -452,7 +452,7 @@ export default function NepalPage() {
                 <Link href="/services/jungle-safari/chitwan-np-jungle-safari">
                   <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                     <Image
-                      src="/images/used/nepal-chitwan.avif"
+                      src="/images/used/nepal-chitwan.webp"
                       alt="Chitwan Wildlife"
                       fill
                       className="object-cover"
@@ -465,7 +465,7 @@ export default function NepalPage() {
                 <Link href="/destinations/nepal">
                   <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                     <Image
-                      src="/images/used/nepal-himal.avif"
+                      src="/images/used/nepal-himal.webp"
                       alt="Prayer Flags"
                       fill
                       className="object-cover"
@@ -476,7 +476,7 @@ export default function NepalPage() {
                 <Link href="/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour">
                   <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                     <Image
-                      src="/images/used/nepal-stupa.avif"
+                      src="/images/used/nepal-stupa.webp"
                       alt="Pokhara Lake"
                       fill
                       className="object-cover"
