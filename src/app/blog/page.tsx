@@ -51,18 +51,29 @@ const getYouTubeVideoId = (url: string) => {
 };
 
 const featuredPost = {
-    id: "tilicho-lake-sacred-trek",
-    slug: "tilicho-lake-sacred-trek",
-    title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
-    excerpt: "Perched at 4,919 meters in the Annapurna region, Tilicho Lake is not just one of the highest lakes in the world—it is a place where Hindu mythology meets breathtaking natural beauty. Discover the ancient story of Kakbhusundi, the crow sage, and why thousands make the arduous journey to its holy shores.",
-    image: "/images/used/tilicho-blog.webp",
-    author: "Sabinaya Dhakal",
-    date: "May 20, 2026",
-    readTime: "12 min",
-    category: "Trekking & Pilgrimage",
+    id: "best-beginner-treks-nepal",
+    slug: "best-beginner-treks-nepal",
+    title: "5 Best Beginner Treks in Nepal: From Sunrise Hikes to Himalayan Valleys",
+    excerpt: "Nepal has a trek for every level of experience. Despite its reputation for giant peaks and extreme altitudes, some of the most rewarding adventures are easily within reach for first-timers – with only a moderate level of fitness required.",
+    image: "/images/used/manaslu-main-page.webp",
+    author: "Meg Cassidy",
+    date: "May 24, 2026",
+    readTime: "14 min",
+    category: "Trekking Guide",
 }
 
 const blogPosts = [
+  {
+    id: "best-beginner-treks-nepal",
+    slug: "best-beginner-treks-nepal",
+    title: "5 Best Beginner Treks in Nepal: From Sunrise Hikes to Himalayan Valleys",
+    excerpt: "Nepal has a trek for every level of experience. Despite its reputation for giant peaks and extreme altitudes, some of the most rewarding adventures are easily within reach for first-timers – with only a moderate level of fitness required.",
+    image: "/images/used/manaslu-main-page.webp",
+    author: "Meg Cassidy",
+    date: "May 24, 2026",
+    readTime: "14 min",
+    category: "Trekking Guide",
+},
   {
     id: "tilicho-lake-sacred-trek",
     slug: "tilicho-lake-sacred-trek",
