@@ -8,7 +8,8 @@ export default async function blogSitemap(): Promise<MetadataRoute.Sitemap> {
   const blogPosts = [
     'pigeons-symbol-peace-nepal',
     'best-time-to-visit-nepal',
-    'tilicho-lake-sacred-trek'
+    'tilicho-lake-sacred-trek',
+    'best-beginner-treks-nepal'
     // Add more blog slugs as you create them
   ]
   
