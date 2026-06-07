@@ -50,19 +50,31 @@ const getYouTubeVideoId = (url: string) => {
   return videoId;
 };
 
-const featuredPost = {
-    id: "best-beginner-treks-nepal",
-    slug: "best-beginner-treks-nepal",
-    title: "5 Best Beginner Treks in Nepal: From Sunrise Hikes to Himalayan Valleys",
-    excerpt: "Nepal has a trek for every level of experience. Despite its reputation for giant peaks and extreme altitudes, some of the most rewarding adventures are easily within reach for first-timers – with only a moderate level of fitness required.",
-    image: "/images/used/manaslu-main-page.webp",
+const featuredPost = 
+{
+    id: "everest-vs-annapurna-base-camp",
+    slug: "everest-vs-annapurna-base-camp",
+    title: "Everest Base Camp vs. Annapurna Base Camp: How To Decide Your Next Big Trek",
+    excerpt: "Two major treks dominate every Nepal itinerary shortlist. Everest Base Camp is famous for the altitude and the realisation that you're standing at the foot of the world's tallest mountain. Annapurna Base Camp is famous for the scenery, the feeling of being swallowed whole by peaks on every side. Which one is right for you?",
+    image: "/images/used/ebc-vs-abc.webp",
     author: "Meg Cassidy",
-    date: "May 24, 2026",
-    readTime: "14 min",
+    date: "May 26, 2026",
+    readTime: "16 min",
     category: "Trekking Guide",
 }
 
 const blogPosts = [
+  {
+    id: "everest-vs-annapurna-base-camp",
+    slug: "everest-vs-annapurna-base-camp",
+    title: "Everest Base Camp vs. Annapurna Base Camp: How To Decide Your Next Big Trek",
+    excerpt: "Two major treks dominate every Nepal itinerary shortlist. Everest Base Camp is famous for the altitude and the realisation that you're standing at the foot of the world's tallest mountain. Annapurna Base Camp is famous for the scenery, the feeling of being swallowed whole by peaks on every side. Which one is right for you?",
+    image: "/images/used/ebc-vs-abc.webp",
+    author: "Meg Cassidy",
+    date: "May 26, 2026",
+    readTime: "16 min",
+    category: "Trekking Guide",
+},
   {
     id: "best-beginner-treks-nepal",
     slug: "best-beginner-treks-nepal",

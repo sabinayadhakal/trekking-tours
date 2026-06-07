@@ -67,6 +67,13 @@ const tableOfContents = [
 
 const relatedPosts = [
   {
+    title: "Everest Base Camp vs. Annapurna Base Camp: How To Decide Your Next Big Trek",
+    image: "/images/used/ebc-vs-abc.webp",
+    date: "May 26, 2026",
+    readTime: "16 min",
+    href: "/blog/everest-vs-annapurna-base-camp",
+},
+  {
     title: "5 Best Beginner Treks in Nepal: From Sunrise Hikes to Himalayan Valleys",
     image: "/images/used/manaslu-main-page.webp",
     date: "May 24, 2026",

@@ -39,51 +39,55 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const blogPost = {
-  title: "5 Best Beginner Treks in Nepal: From Sunrise Hikes to Himalayan Valleys",
-  excerpt: "Nepal has a trek for every level of experience. Despite its reputation for giant peaks and extreme altitudes, some of the most rewarding adventures are easily within reach for first-timers – with only a moderate level of fitness required. From single-day sunrise hikes to multi-day routes deep into the Himalayas, these five treks are the ones worth considering.",
-  heroImage: "/images/used/manaslu-main-page.webp",
+  title: "Everest Base Camp vs. Annapurna Base Camp: How To Decide Your Next Big Trek",
+  excerpt: "Two major treks dominate every Nepal itinerary shortlist. Everest Base Camp is famous for the altitude and the realisation that you're standing at the foot of the world's tallest mountain. Annapurna Base Camp is famous for the scenery, the feeling of being swallowed whole by peaks on every side. Which one is right for you?",
+  heroImage: "/images/used/ebc-vs-abc.webp",
   author: {
     name: "Meg Cassidy",
     avatar: "/placeholder.svg?text=MC",
     linkedin: "https://www.linkedin.com/in/meg-c-bbb136294?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
   },
-  date: "May 24, 2026",
-  readTime: "14 min read",
+  date: "May 26, 2026",
+  readTime: "16 min read",
   category: "Trekking Guide",
-  tags: ["Beginner Treks", "Nepal Trekking", "Nagarkot", "Poon Hill", "Mardi Himal", "Langtang", "Namobuddha", "Himkala Adventure"],
+  tags: ["Everest Base Camp", "Annapurna Base Camp", "EBC vs ABC", "Nepal Trekking", "Trek Comparison", "Himkala Adventure"],
 };
 
 const tableOfContents = [
-  { id: "introduction", title: "Trekking for Everyone" },
-  { id: "nagarkot", title: "Nagarkot to Changunarayan" },
-  { id: "namobuddha", title: "Namobuddha Day Hike" },
-  { id: "poonhill", title: "Ghorepani Poon Hill Trek" },
-  { id: "mardi", title: "Mardi Himal Trek" },
-  { id: "langtang", title: "Langtang Valley Trek" },
-  { id: "faq", title: "Frequently Asked Questions" },
+  { id: "introduction", title: "Two Giants of Nepal Trekking" },
+  { id: "at-a-glance", title: "At a Glance Comparison" },
+  { id: "altitude", title: "Altitude" },
+  { id: "physical-preparation", title: "Physical Preparation" },
+  { id: "duration-logistics", title: "Duration and Logistics" },
+  { id: "cost", title: "Cost" },
+  { id: "scenery-experience", title: "Scenery and Experience" },
+  { id: "crowds", title: "Crowds" },
+  { id: "best-time", title: "Best Time to Trek" },
+  { id: "what-to-expect", title: "What to Expect" },
+  { id: "which-is-right", title: "Which is Right for You?" },
 ];
 
 const relatedPosts = [
-  {
-    title: "Everest Base Camp vs. Annapurna Base Camp: How To Decide Your Next Big Trek",
-    image: "/images/used/ebc-vs-abc.webp",
-    date: "May 26, 2026",
-    readTime: "16 min",
-    href: "/blog/everest-vs-annapurna-base-camp",
-},
-  {
-    title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
-    image: "/images/used/historic-scenic-photography-nepal.webp",
-    date: "May 7, 2026",
-    readTime: "9 min",
-    href: "/blog/best-time-to-visit-nepal",
-  },
-  {
+ {
     title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
     image: "/images/used/dog-pigeons.webp",
     date: "May 9, 2026",
     readTime: "9 min",
     href: "/blog/pigeons-symbol-peace-nepal",
+  },
+  {
+    title: "5 Best Beginner Treks in Nepal: From Sunrise Hikes to Himalayan Valleys",
+    image: "/images/used/manaslu-main-page.webp",
+    date: "May 24, 2026",
+    readTime: "14 min",
+    href: "/blog/best-beginner-treks-nepal",
+},
+  {
+    title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
+    image: "/images/used/historic-scenic-photography-nepal.webp",
+    date: "May 7, 2026",
+    readTime: "11 min",
+    href: "/blog/best-time-to-visit-nepal",
   },
   {
     title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
@@ -92,7 +96,6 @@ const relatedPosts = [
     readTime: "12 min",
     href: "/blog/tilicho-lake-sacred-trek",
 },
-  
 ];
 
 export default function BlogPostPage() {
@@ -324,13 +327,13 @@ export default function BlogPostPage() {
                 <Card className="bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 rounded-2xl overflow-hidden">
                   <CardContent className="p-6 text-center">
                     <Mountain className="w-8 h-8 text-amber-600 mx-auto mb-3" />
-                    <h3 className="font-bold text-amber-800 mb-2">Ready for Your First Trek?</h3>
+                    <h3 className="font-bold text-amber-800 mb-2">Customise Your Adventure</h3>
                     <p className="text-amber-700 text-sm mb-4">
-                      Let Himkala Adventure guide you on the perfect beginner trek tailored to your fitness and interests.
+                      Let Himkala Adventure help you choose between Everest and Annapurna. Both treks are available as fully guided packages.
                     </p>
                     <Link href="/services/trekking" className="block">
                       <Button className="bg-amber-600 hover:bg-amber-700 text-white w-full rounded-xl">
-                        Plan My Trek
+                        Plan My Trek Today
                       </Button>
                     </Link>
                   </CardContent>
@@ -344,323 +347,295 @@ export default function BlogPostPage() {
                 {/* Introduction */}
                 <section id="introduction" className="mb-8 md:mb-12">
                   <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-4 first-letter:text-4xl md:first-letter:text-6xl first-letter:font-serif first-letter:text-[#0f2940] first-letter:float-left first-letter:mr-3 first-letter:mt-1">
-                    Nepal has a trek for every level of experience. Despite its reputation for giant peaks and extreme altitudes, some of the most rewarding adventures are easily within reach for first-timers – with only a moderate level of fitness required.
+                    Two major treks dominate every Nepal itinerary shortlist. Everest Base Camp is the name everyone knows. It's famous for the altitude and the realisation that you're standing at the foot of the world's tallest mountain. Annapurna Base Camp is famous for the scenery, the feeling of being swallowed whole by peaks on every side.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    These five treks are the ones worth considering. They range from single-day hikes a short drive from Kathmandu to multi-day routes deep into the Himalayas. Through rhododendron forests, traditional villages and with views of the Himalayas as your backdrop. All are guided, with permits, accommodation and navigation taken care of before you set foot on the trail.
+                    Both treks are achievable for fairly fit, non-technical trekkers. Deciding which one suits you best, however, goes beyond just choosing by name.
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    Whether you have just one day or a full week, whether you want sunrise views over Everest or the spiritual calm of an ancient monastery, there's a trek here waiting for you. Let's find the one that fits.
+                    To help you decide, this guide breaks down key factors like altitude, cost, logistics, terrain, and overall experience. These details will support your decision as you get closer to booking that flight to Nepal.
                   </p>
                 </section>
 
-                {/* Nagarkot to Changunarayan */}
-                <section id="nagarkot" className="mb-8 md:mb-12">
+                {/* Image Break */}
+                <div className="relative h-[250px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
+                  <Image
+                    src="/images/used/ebc-vs-abc.webp"
+                    alt="Comparison of Everest and Annapurna mountain ranges"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                  />
+                  <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+                    <Camera className="w-3 h-3" /> Everest (right) and Annapurna (left) – two very different Himalayan experiences
+                  </div>
+                </div>
+
+                {/* At a Glance Comparison Table */}
+                <section id="at-a-glance" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Nagarkot to Changunarayan – Sunrise Views at Nepal's Oldest Sacred Temple
+                    At a Glance Comparison
                   </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    Your day starts at 4:30 AM for the sunrise, but the early alarm is worth it. This mostly downhill hike allows you to witness one of Kathmandu Valley's best sunrise viewpoints with Nepal's oldest standing temple, and it's one of the most manageable routes for someone with little to no trekking experience.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    The drive from Kathmandu takes around 90 minutes, timed to arrive at Nagarkot just as the sky begins to lighten for morning. At 2,175m, the viewpoint stretches from Annapurna in the west to Everest in the east and on clear days you'll count dozens of distant peaks catching the sun. You'll stop for breakfast – black tea steaming with the air sharp and a little chilly as snowcapped peaks catch the sunrise.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    From Nagarkot, the trail drops steadily through pine forests, farmlands and traditional villages across roughly 12 to 15 kilometres of mostly downhill walking, making the total hike around 5 to 6 hours at a relaxed pace.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    The hike ends at Changunarayan – Nepal's oldest Hindu temple, perched above the valley with 4th century carvings etched on its walls. Built by King Mandev of the Licchavi dynasty and dedicated to Lord Vishnu, it has been continuously worshipped for over 1,700 years. After the tour, you can enjoy a late lunch before the driver will take your group back to Kathmandu, giving you the rest of the afternoon to further explore the city before sunset.
-                  </p>
                   
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 mb-4">
-                    <h4 className="font-bold text-[#0f2940] mb-2">At a Glance:</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div><span className="font-medium text-[#2d6a8a]">Time:</span> One day</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Difficulty:</span> Easy to moderate</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Max altitude:</span> 2,175m</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Best season:</span> September to May</div>
-                    </div>
-                  </div>
-
-                  <Link href="/services/day-hikings/nagarkot-changunarayan-hiking" className="inline-block">
-                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-6 py-2 text-sm">
-                      Book Your Nagarkot to Changunarayan Hike Today →
-                    </Button>
-                  </Link>
-
-                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6">
-                    <Image
-                      src="/images/used/nagarkot-changu.webp"
-                      alt="Sunrise view from Nagarkot with Himalayan peaks"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 80vw"
-                    />
-                    <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
-                      <Camera className="w-3 h-3" /> Sunrise over the Himalayas from Nagarkot viewpoint
-                    </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm border-collapse">
+                      <thead>
+                        <tr className="bg-[#0f2940] text-white">
+                          <th className="p-3 text-left rounded-l-lg">Features</th>
+                          <th className="p-3 text-left">Everest Base Camp</th>
+                          <th className="p-3 text-left rounded-r-lg">Annapurna Base Camp</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          { feature: "Maximum altitude", ebc: "5,364m (at Kala Patthar)", abc: "4,130m" },
+                          { feature: "Duration", ebc: "12 – 14 days", abc: "10 – 12 days" },
+                          { feature: "Difficulty", ebc: "Moderate–challenging", abc: "Moderate" },
+                          { feature: "Base cost (guided)", ebc: "$1,400 – $2,500", abc: "$700 – $1,200" },
+                          { feature: "Permits", ebc: "Sagarmatha NP + Khumbu Municipality (~$50)", abc: "ACAP + TIMS (~$50)" },
+                          { feature: "Starting point", ebc: "Lukla (flight from Kathmandu)", abc: "Pokhara" },
+                          { feature: "Best seasons", ebc: "Mar – May, Oct – Nov", abc: "Mar – May, Oct – Nov" },
+                          { feature: "Crowds", ebc: "High", abc: "Moderate" },
+                        ].map((item, i) => (
+                          <tr key={i} className={`border-b border-[#C5E0ED]/30 ${i % 2 === 0 ? 'bg-white' : 'bg-[#f8fbfc]'}`}>
+                            <td className="p-3 font-medium text-[#0f2940]">{item.feature}</td>
+                            <td className="p-3 text-slate-600">{item.ebc}</td>
+                            <td className="p-3 text-slate-600">{item.abc}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 </section>
 
-                {/* Namobuddha */}
-                <section id="namobuddha" className="mb-8 md:mb-12">
+                {/* Altitude */}
+                <section id="altitude" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Namobuddha – Witness Culture and History Like No Other
+                    Altitude
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    Not every great trek in Nepal is about the altitude. Namobuddha is one of the most sacred Buddhist pilgrimage sites in the country and consists of a single day climb through rural farmlands and thick pine forests to an ancient monastery that has been drawing religious pilgrims for over 2,000 years.
+                    The altitude difference between these two treks is significant – and this will shape everything from your itinerary to your risk profile.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    The hike starts near Dhulikhel – around 40 kilometres from Kathmandu, and is a gentle ascent of around 400 metres across 1.5 to 2 hours.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    At the top, the Thrangu Tashi Yangtse Monastery stands alongside the ancient stupa, golden rooftops catching the light above the treeline. Inside, over 250 monks study, pray and live and the chanting carries across the courtyard, occasionally punctuated by rhythmic strikes of a drum.
+                    Everest Base Camp reaches 5,364m at Kala Patthar – the rocky viewpoint above Gorak Shep that frames Everest's north face. The trail itself is good for those with a fair amount of fitness, but the altitude is more unforgiving. Acclimatisation at Namche Bazaar and Dingboche is built into the itinerary for good reason. Above 4,000m, fitness becomes secondary to how well your body adapts.
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    The pace throughout is gentle and the atmosphere at the top is unlike anything near Kathmandu. For those drawn to the spiritual and cultural side of Nepal as much as the mountains, this experience is one to stick with you.
+                    Annapurna Base Camp has a more manageable altitude at 4,130m, but the terrain more than compensates for this. Daily elevation can be harsher, with steep stone staircases, ascents through dense rhododendron forests, and tough climbs through the Modi Khola valley, with little flat ground to recover on.
                   </p>
-                  
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 my-4">
-                    <h4 className="font-bold text-[#0f2940] mb-2">At a Glance:</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div><span className="font-medium text-[#2d6a8a]">Time:</span> One day</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Difficulty:</span> Easy</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Max altitude:</span> 1,750m</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Best season:</span> September to May</div>
-                    </div>
-                  </div>
-
-                  <Link href="/services/day-hikings/namobuddha-hiking" className="inline-block">
-                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-6 py-2 text-sm">
-                      Book Your Namobuddha Day Hike Today →
-                    </Button>
-                  </Link>
-
-                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6">
-                    <Image
-                      src="/images/used/namobuddha-1.webp"
-                      alt="Thrangu Tashi Yangtse Monastery at Namobuddha"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 80vw"
-                    />
-                    <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
-                      <Camera className="w-3 h-3" /> Thrangu Tashi Yangtse Monastery at Namobuddha
-                    </div>
-                  </div>
                 </section>
 
-                {/* Ghorepani Poon Hill */}
-                <section id="poonhill" className="mb-8 md:mb-12">
+                {/* Physical Preparation */}
+                <section id="physical-preparation" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Ghorepani Poon Hill Trek – Sunrise Views of Annapurna's Mountain Range
+                    Physical Preparation
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    If you've been looking for a sign to book your first multi-day trek, this is it.
+                    Neither trek requires prior mountaineering experience, but both reward a solid base of cardiovascular fitness before you arrive.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    The Ghorepani Poon Hill Trek takes around 6 days and is one of the best multi-day treks for beginners, with some of the best views across the Annapurna Conservation area, at a moderate altitude, making it the ideal first multi-day trek for those with little to no experience of altitude or sustained uphill walking.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    The trek starts with a ride from Pokhara to Nayapul and you begin by moving through rhododendron forests and traditional Gurung villages over four days of trekking. You'll be hiking well-worn trails, resting in warm teahouses, and enjoy the daily Dal Bhat to power you through the day. The trail also passes through Ghandruk, one of the most beautiful Gurung villages in the Annapurna region, with a small museum dedicated to the local culture and history.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    On day four, you'll experience the pre-dawn climb to Poon Hill – a 45-minute push up stone steps in the dark, headtorch on, the trail quiet except for the sound of fellow trekkers making the same ascent. Near the top, the sky begins to shift to deep purple with Annapurna I emerging slowly from the dark, still blanketed by dozens of stars. By the time the sun clears the horizon, both Annapurna I and II are lit up in full from the top of Poon Hill.
+                    For Everest, the priority is endurance, as you will be trekking long days at altitude and your body will work harder to compensate for the thinner air. Training should focus on sustained walking, long hikes, uphill work and anything that builds your capacity to walk steadily for half a day with few breaks.
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    Trek this route in spring and the forests come alive with rhododendrons lining the trail in deep red, pink and white from the valley floor all the way up to Ghorepani.
+                    Annapurna can be more demanding on your legs. The steeper ascents and irregular terrain means strength training, particularly quads and knees, matters as much as cardiovascular fitness. Consistent training for a few months before either trek will impact your experience more than you realise.
                   </p>
-                  
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 my-4">
-                    <h4 className="font-bold text-[#0f2940] mb-2">At a Glance:</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div><span className="font-medium text-[#2d6a8a]">Time:</span> 6 day tour, 4 days trekking</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Difficulty:</span> Easy for multi-day</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Max altitude:</span> 3,210m</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Best season:</span> March-May, Sep-Nov</div>
-                    </div>
-                  </div>
-
-                  <Link href="/services/trekking/ghorepani-poon-hill-trek" className="inline-block">
-                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-6 py-2 text-sm">
-                      Book Your Ghorepani Poon Hill Trek Today →
-                    </Button>
-                  </Link>
-
-                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6">
-                    <Image
-                      src="/images/used/ghorepani-2.webp"
-                      alt="Sunrise view from Poon Hill with Annapurna range"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 80vw"
-                    />
-                    <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
-                      <Camera className="w-3 h-3" /> Sunrise over Annapurna range from Poon Hill
-                    </div>
-                  </div>
                 </section>
 
-                {/* Mardi Himal */}
-                <section id="mardi" className="mb-8 md:mb-12">
+                {/* Duration and Logistics */}
+                <section id="duration-logistics" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Mardi Himal Trek – A Less Travelled Gem of the Annapurna Region
+                    Duration and Logistics
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    Poon Hill is the obvious first multi-day trek in the Annapurna region – and for good reason. But if you have a week and the need for a bigger challenge, Mardi Himal is what you're searching for.
+                    Out of the two, Annapurna Base Camp is logistically easier. Pokhara is your base – a short domestic flight or a seven-hour bus ride from Kathmandu – and the trailhead is within easy reach. A standard itinerary runs 10–12 days. The route alternates between stretches of quiet trail through forests and small villages, past teahouses, locally-owned shops and the occasional school or temple, though the busier stops still retain a certain calm.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    The trail climbs out of Pokhara through dense rhododendron and oak forest, rising gradually through Low Camp and Forest Camp before breaking above the tree line onto an open ridge. The teahouses at High Camp are basic and exposed, and the air is noticeably thinner by this point of the trek. Machhapuchhre will shadow you in the sky, the distinctive double summit unmistakable, with the full Annapurna range stretching out behind it.
+                    Everest Base Camp is a little more involved with the trek starting from Lukla, accessed only by a flight, which can be weather-dependent. Delays are common, though mainly in shoulder seasons. Namche Bazaar is the last hub before settlements thin out and the route becomes progressively more remote, with longer stretches between stops and less of everyday Nepali life visible on the trail. For EBC, plan for 12–14 days minimum, allowing extra time for acclimatisation.
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    The final push to Mardi Himal Base Camp at 4,500m is where the trek earns its reputation — the altitude bites, the gradient steepens, and the hours add up. But above 4,000m, with Machhapuchhre towering directly ahead and the Annapurna range laid out behind you, whatever the climb took out of you, the view puts back. Standing at the base of a 5,587m peak with nothing but open sky and towering mountains in every direction – the kind of morning views that Nepal rewards trekkers with.
+                    If your trip window is tight, Annapurna may be the better option, though EBC justifies the extra planning if you can make it work.
                   </p>
-                  
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 my-4">
-                    <h4 className="font-bold text-[#0f2940] mb-2">At a Glance:</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div><span className="font-medium text-[#2d6a8a]">Time:</span> 7 days</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Difficulty:</span> Easy to moderate</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Max altitude:</span> 4,500m</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Best season:</span> March-May, Sep-Nov</div>
-                    </div>
-                  </div>
-
-                  <Link href="/services/trekking/mardi-himal-trek" className="inline-block">
-                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-6 py-2 text-sm">
-                      Book Your Mardi Himal Trek Today →
-                    </Button>
-                  </Link>
-
-                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6">
-                    <Image
-                      src="/images/used/mardi-3.webp"
-                      alt="Mardi Himal Base Camp with Machhapuchhre mountain"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 80vw"
-                    />
-                    <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
-                      <Camera className="w-3 h-3" /> Machhapuchhre (Fishtail) mountain viewed from Mardi Himal trail
-                    </div>
-                  </div>
                 </section>
 
-                {/* Langtang Valley */}
-                <section id="langtang" className="mb-8 md:mb-12">
+                {/* Cost */}
+                <section id="cost" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Langtang – Trek the 'Valley of Glaciers' Only a Few Hours from Kathmandu
+                    Cost
                   </h2>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    Langtang doesn't get the same headlines as Everest or Annapurna – and that's exactly what makes it worth the attention. A few hours north of Kathmandu, it offers dramatic glacial scenery, dense rhododendron forest and deeply rooted Tibetan-Buddhist culture in a shorter timeframe, with fewer trekkers along the trail, making it a quieter, more peaceful slow ascend.
+                    Both treks run as fully guided packages – with permits, accommodation, meals, a guide, and an optional porter included. With Himkala Adventure, Annapurna starts from USD 1,180 and Everest from USD 1,450.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-4">
-                    From Syabrubesi the trail climbs through dense bamboo forest before opening into alpine meadows. Traditional Tamang villages line the route – distinct wooden architecture and local crafts, making it feel far removed from the bustle of Kathmandu. The forest is also one of the last habitats in Nepal where Red Pandas and Himalayan Black Bears still roam — rare, but reason enough to keep your eyes on the treeline.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-4">
-                    At 3,870m, the valley opens out at Kyanjin Gompa — the last permanent settlement on the trek, and one of its most memorable stops. The monastery was rebuilt after the 2015 earthquake and sits surrounded by prayer flags, mani walls and ancient stupas, with Langtang Lirung filling the sky beyond. Before continuing your journey, try the famous yak cheese produced at the village factory.
+                    Everest's higher cost comes down to logistics. The Khumbu valley is remote, and supplies are expensive. Teahouse prices climb with every kilometre of altitude, and the Kathmandu–Lukla flight is a cost you'll have to factor before arriving at the start point. Add potential weather delays, and you're looking at a longer trip that may demand additional budget and time flexibility.
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    Beyond Kyanjin, the trail gives way to alpine pastures and glaciers. You can choose to trek to Kyanjin Ri at 4,773m – which is a manageable route once you've acclimatised. Or for the adventurous trekkers, to Tserko Ri – a strenuous, full-day ascent.
+                    Annapurna is more straightforward in terms of financial commitment. Based in Pokhara, with road access to the trailhead via jeep, the cost is simpler and more predictable. Daily costs reflect that accessibility – teahouse accommodation and meals sit only a little higher than in the larger towns.
                   </p>
-                  
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 my-4">
-                    <h4 className="font-bold text-[#0f2940] mb-2">At a Glance:</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div><span className="font-medium text-[#2d6a8a]">Time:</span> 8 days</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Difficulty:</span> Easy to moderate</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Max altitude:</span> 5,033m</div>
-                      <div><span className="font-medium text-[#2d6a8a]">Best season:</span> March-May, Sep-Nov</div>
-                    </div>
-                  </div>
-
-                  <Link href="/services/trekking/langtang-valley-trek" className="inline-block">
-                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-6 py-2 text-sm">
-                      Book Your Langtang Valley Trek Today →
-                    </Button>
-                  </Link>
-
-                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6">
-                    <Image
-                      src="/images/used/ganjala-pass-1.webp"
-                      alt="Kyanjin Gompa monastery with Langtang Lirung mountain"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 80vw"
-                    />
-                    <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
-                      <Camera className="w-3 h-3" /> Kyanjin Gompa with Langtang Lirung mountain behind
-                    </div>
-                  </div>
                 </section>
 
-                {/* FAQ Section */}
-                <section id="faq" className="mb-8 md:mb-12">
+                {/* Scenery and Experience */}
+                <section id="scenery-experience" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
                     </span>
-                    Frequently Asked Questions
+                    Scenery and Experience
                   </h2>
-                  
-                  <div className="space-y-4 mt-4">
-                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
-                      <h4 className="font-bold text-[#0f2940] text-base mb-2">Do I need a guide to trek in Nepal?</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed">
-                        For many routes, yes, and in some cases it's now a legal requirement. Trekking in the Annapurna Conservation Area now requires a licensed guide by law, as does Langtang National Park since 2023. Even on trails where a guide isn't mandatory, hiring one is strongly recommended – particularly for first-time trekkers. A licensed guide arranges teahouse accommodation, handles permits, and knows the terrain. That last part matters more than most beginners expect. It's also vital that you research the correct permits – though with Himkala Adventure, this is organised ahead of time to ensure you have a smooth, enjoyable trip.
-                      </p>
-                    </div>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    Personal preference carries more weight than anything else.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    Everest Base Camp moves through the Khumbu valley, through Sherpa villages and ancient monasteries with the constant presence of the world's tallest mountain growing closer with every day. Tengboche Monastery, perched at 3,860m with Ama Dablam rising behind it, is one of the most picturesque, peaceful places in the Himalayas.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed">
+                    Annapurna Base Camp is a different experience. The trail ascends deep into rhododendron forests, terraced Gurung villages, and the deep gorge of the Modi Khola before opening into the Annapurna Sanctuary – a high glacial amphitheatre circled by peaks exceeding 7,000m. The transition from forest to alpine to sanctuary happens fast. On the descent, Jhinu hot springs offer something Everest can't: a well-earned soak in natural thermal pools with Machhapuchhre standing overhead.
+                  </p>
+                </section>
 
-                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
-                      <h4 className="font-bold text-[#0f2940] text-base mb-2">How physically fit do I need to be?</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed">
-                        Only a moderate level of fitness is required for all of these treks and you don't need to be an athlete. Some experience with full-day hikes carrying your backpack will make all the difference to your experience.
-                      </p>
-                    </div>
-
-                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
-                      <h4 className="font-bold text-[#0f2940] text-base mb-2">What should I pack?</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed mb-2">
-                        It will depend on the season and altitude and it's always good to check with your guide prior to commencing the tour. Generally, sturdy hiking boots, walking trousers and base layers, a fleece, and a down jacket for the colder evenings at altitude are recommended. Gloves, a hat and extra pairs of wool socks are also recommended.
-                      </p>
-                      <p className="text-slate-600 text-sm leading-relaxed">
-                        Beyond clothing, you can bring: toilet roll and personal toiletries, snacks, medication and electrolytes, a battery pack and chargers, enough cash (ATMs will not be available on any of the treks), and some personal entertainment for quiet evenings in the teahouses. Pack light, and only bring what you think you need. There are also many trekking stores in Kathmandu and Pokhara to buy or rent gear such as poles, downjackets and hiking boots, all of which can be arranged prior to beginning your chosen trek.
-                      </p>
-                    </div>
+                {/* Image Break 2 */}
+                <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
+                  <Image
+                    src="/images/used/everest-2.webp"
+                    alt="Tengboche Monastery with Ama Dablam mountain"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                  />
+                  <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+                    <Camera className="w-3 h-3" /> Tengboche Monastery – a highlight of the Everest trek
                   </div>
+                </div>
 
-                  <div className="grid grid-cols-2 gap-4 mt-6">
-                    <div className="relative h-[200px] rounded-xl overflow-hidden">
-                      <Image
-                        src="/images/used/gokyo-1.webp"
-                        alt="Trekker on a ridge with mountain views"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="relative h-[200px] rounded-xl overflow-hidden">
-                      <Image
-                        src="/images/used/gokyo-3.webp"
-                        alt="Himalayan mountain range at sunrise"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                {/* Crowds */}
+                <section id="crowds" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    Crowds
+                  </h2>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    Everest Base Camp is one of the most trafficked trekking routes in the world. The spring peak season lasts between April and May and brings significant numbers through the Khumbu valley. It's still a wilderness experience, but a shared one. If solitude matters, your window is narrower and trekking during the shoulder seasons might be for you, though it's worth observing the weather – nights at the teahouses can get increasingly cold.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed">
+                    Annapurna draws fewer trekkers, and the trail network is more spread out with different entry and exit points, meaning foot traffic doesn't concentrate the same way – the crowd is more transient with trekkers branching off onto other routes. The Annapurna route itself retains a sense of quiet that's increasingly difficult to find on the Everest route during the peak trekking season.
+                  </p>
+                </section>
+
+                {/* Best Time to Trek */}
+                <section id="best-time" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    Best Time to Trek
+                  </h2>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    Spring (March until May) and autumn (September to November) are the best windows for both treks, bringing clear skies, stable temperatures and the best visibility on the high routes. October and November are widely considered the sweet spot: post-monsoon air means exceptional clarity, and the trails are at their most defined.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    The difference between the two is worth noting: Annapurna is more exposed to monsoon and rain conditions than Everest. The Modi Khola gorge funnels moisture from the south – with slippery stone staircases and a higher avalanche risk above Deurali – though this is outside of the main trekking season, so it's unlikely to affect your trek. Everest Base Camp has better coverage and is more forgiving during the shoulder seasons.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed">
+                    If your dates are fixed outside the peak windows, Everest gives you more margin.
+                  </p>
+                </section>
+
+                {/* What to Expect */}
+                <section id="what-to-expect" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    What to Expect
+                  </h2>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    With either trek, you'll travel village-to-village staying in local teahouses with meals included and no camping required. Days typically run up to five to seven hours of trekking, with the pace set by you and your guide. Breaks are a must, and you'll stop for lunch halfway through the day.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    The trails largely differ in terrain, with Everest following a well-worn, heavily signposted route through increasingly sparse high-altitude terrain. Annapurna moves through more varied ground: farmland, dense forest, exposed ridgelines, and the dramatic narrowing of the gorge before the sanctuary opens up. You'll also come across more stores, villagers and settlements, especially at lower altitudes.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed">
+                    The cultural experience on each route is shaped by who calls it home. EBC passes through Sherpa communities, and the route is marked by monasteries and colourful prayer flags at every turn. Namche Bazaar, the trail's main hub, has evolved into a busy stop with gear shops and cafes, a community in transition but still rooted in its traditions. On ABC, the lower trail moves through a series of picturesque Gurung villages – Ghandruk and Chhomrong. The culture here is more mixed, drawing on Hindu, Animist and Buddhist traditions, making the everyday rhythm of village life more pronounced.
+                  </p>
+                </section>
+
+                {/* Image Break 3 */}
+                <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
+                  <Image
+                    src="/images/used/abc-3.webp"
+                    alt="Annapurna Base Camp sanctuary surrounded by peaks"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                  />
+                  <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
+                    <Camera className="w-3 h-3" /> The Annapurna Sanctuary – a glacial amphitheatre circled by 7,000m peaks
+                  </div>
+                </div>
+
+                {/* Quote Block */}
+                <div className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] rounded-xl md:rounded-2xl p-6 md:p-8 my-8 md:my-12 relative overflow-hidden">
+                  <div className="absolute top-3 left-3 md:top-4 md:left-4 opacity-20">
+                    <Quote className="w-12 h-12 md:w-16 md:h-16 text-[#C5E0ED]" />
+                  </div>
+                  <blockquote className="relative z-10">
+                    <p className="text-base md:text-lg lg:text-xl font-serif text-white leading-relaxed mb-3 md:mb-4 italic">
+                      &quot;Standing at the foot of the world's highest mountain carries a weight that no amount of comparison can realistically account for. Everest is for those seeking higher altitude and deep immersion into Sherpa culture. Annapurna is the stronger choice if you're trekking for the first time at altitude, working with a tighter budget or schedule.&quot;
+                    </p>
+                    <footer className="flex items-center gap-3">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-[#C5E0ED] flex items-center justify-center bg-white/10">
+                        <User className="w-5 h-5 text-[#C5E0ED]" />
+                      </div>
+                      <div>
+                        <cite className="font-bold text-[#C5E0ED] not-italic text-sm md:text-base">— Himkala Adventure Guide Team</cite>
+                        <p className="text-white/60 text-xs md:text-sm">15+ years guiding both Everest and Annapurna treks</p>
+                      </div>
+                    </footer>
+                  </blockquote>
+                </div>
+
+                {/* Which is Right for You */}
+                <section id="which-is-right" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    Which is Right for You?
+                  </h2>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    Standing at the foot of the world's highest mountain carries a weight that no amount of comparison can realistically account for. Everest is for those seeking higher altitude and for those who want deep immersion into Sherpa culture. EBC demands more of your time and budget, but finally making it to base camp is worth it.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    Annapurna Base Camp is the stronger choice if you're trekking for the first time at altitude, working with a tighter budget or schedule. It's also the stronger option for variety in scenery, with parts of the trail emptying entirely. Logistically, it's easier, but it still delivers in everything from altitude to experience.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    Both treks are available through Himkala Adventure as fully guided tour packages, with itineraries that can be adjusted to suit your schedule and experience level.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed">
+                    If you're still weighing the options, the team are well placed to help you choose. They've guided both routes extensively and will help you plan your trek.
+                  </p>
+                  
+                  <div className="text-center mt-6">
+                    <Link href="/contact" className="inline-block">
+                      <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-8 py-3 text-base">
+                        Customise Your Adventure with Himkala Adventure Today
+                      </Button>
+                    </Link>
                   </div>
                 </section>
 
