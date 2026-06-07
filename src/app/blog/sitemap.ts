@@ -9,7 +9,8 @@ export default async function blogSitemap(): Promise<MetadataRoute.Sitemap> {
     'pigeons-symbol-peace-nepal',
     'best-time-to-visit-nepal',
     'tilicho-lake-sacred-trek',
-    'best-beginner-treks-nepal'
+    'best-beginner-treks-nepal',
+    'everest-vs-annapurna-base-camp'
     // Add more blog slugs as you create them
   ]
   

@@ -118,6 +118,7 @@ const blogPages = [
     { path: '/blog/best-time-to-visit-nepal', priority: 0.9, changefreq: 'monthly' },
     { path: '/blog/tilicho-lake-sacred-trek', priority: 0.9, changefreq: 'monthly' },
      { path: '/blog/best-beginner-treks-nepal', priority: 0.9, changefreq: 'monthly' },
+     { path: '/blog/everest-vs-annapurna-base-camp', priority: 0.9, changefreq: 'monthly' },
 
 ]
 
