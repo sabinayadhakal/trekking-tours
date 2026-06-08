@@ -70,7 +70,7 @@ const relatedPosts = [
     date: "May 26, 2026",
     readTime: "16 min",
     href: "/blog/everest-vs-annapurna-base-camp",
-},
+  },
   {
     title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
     image: "/images/used/historic-scenic-photography-nepal.webp",
@@ -91,8 +91,7 @@ const relatedPosts = [
     date: "May 20, 2026",
     readTime: "12 min",
     href: "/blog/tilicho-lake-sacred-trek",
-},
-  
+  },
 ];
 
 export default function BlogPostPage() {

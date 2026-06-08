@@ -368,7 +368,7 @@ export default function BlogPostPage() {
                     sizes="(max-width: 768px) 100vw, 80vw"
                   />
                   <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
-                    <Camera className="w-3 h-3" /> Everest (right) and Annapurna (left) – two very different Himalayan experiences
+                    <Camera className="w-3 h-3" /> Everest and Annapurna – two very different Himalayan experiences
                   </div>
                 </div>
 
@@ -765,7 +765,7 @@ export default function BlogPostPage() {
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">More Insights from Us</h3>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {relatedPosts.map((post, i) => (
               <Link href={post.href} key={i} className="block">
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg hover:shadow-[#C5E0ED]/20 transition-all duration-300 group cursor-pointer">
@@ -775,7 +775,7 @@ export default function BlogPostPage() {
                       alt={post.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
                   <CardContent className="p-4 md:p-6">
@@ -795,9 +795,12 @@ export default function BlogPostPage() {
               </Link>
             ))}
           </div>
+
+          
         </div>
       </section>
 
+      
       
     </div>
   );
