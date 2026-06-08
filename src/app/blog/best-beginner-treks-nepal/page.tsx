@@ -136,7 +136,7 @@ export default function BlogPostPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Mobile Table of Contents Drawer */}
       {showMobileTOC && (
         <div className="lg:hidden fixed inset-0 z-50">
@@ -338,8 +338,8 @@ export default function BlogPostPage() {
             </aside>
 
             {/* Article Content */}
-            <article className="lg:col-span-9">
-              <div className="max-w-none">
+            <article className="lg:col-span-9 overflow-x-hidden">
+              <div className="max-w-full">
                 {/* Introduction */}
                 <section id="introduction" className="mb-8 md:mb-12">
                   <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-4 first-letter:text-4xl md:first-letter:text-6xl first-letter:font-serif first-letter:text-[#0f2940] first-letter:float-left first-letter:mr-3 first-letter:mt-1">
@@ -374,9 +374,9 @@ export default function BlogPostPage() {
                     The hike ends at Changunarayan – Nepal's oldest Hindu temple, perched above the valley with 4th century carvings etched on its walls. Built by King Mandev of the Licchavi dynasty and dedicated to Lord Vishnu, it has been continuously worshipped for over 1,700 years. After the tour, you can enjoy a late lunch before the driver will take your group back to Kathmandu, giving you the rest of the afternoon to further explore the city before sunset.
                   </p>
                   
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 mb-4">
+                  <div className="bg-[#f0f7fa] rounded-xl p-4 md:p-5 mb-4">
                     <h4 className="font-bold text-[#0f2940] mb-2">At a Glance:</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div className="grid grid-cols-2 gap-3 text-xs md:text-sm">
                       <div><span className="font-medium text-[#2d6a8a]">Time:</span> One day</div>
                       <div><span className="font-medium text-[#2d6a8a]">Difficulty:</span> Easy to moderate</div>
                       <div><span className="font-medium text-[#2d6a8a]">Max altitude:</span> 2,175m</div>
@@ -385,12 +385,12 @@ export default function BlogPostPage() {
                   </div>
 
                   <Link href="/services/day-hikings/nagarkot-changunarayan-hiking" className="inline-block">
-                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-6 py-2 text-sm">
+                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-4 md:px-6 py-2 text-xs md:text-sm">
                       Book Your Nagarkot to Changunarayan Hike Today →
                     </Button>
                   </Link>
 
-                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6">
+                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6 w-full">
                     <Image
                       src="/images/used/nagarkot-changu.webp"
                       alt="Sunrise view from Nagarkot with Himalayan peaks"
@@ -425,9 +425,9 @@ export default function BlogPostPage() {
                     The pace throughout is gentle and the atmosphere at the top is unlike anything near Kathmandu. For those drawn to the spiritual and cultural side of Nepal as much as the mountains, this experience is one to stick with you.
                   </p>
                   
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 my-4">
+                  <div className="bg-[#f0f7fa] rounded-xl p-4 md:p-5 my-4">
                     <h4 className="font-bold text-[#0f2940] mb-2">At a Glance:</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div className="grid grid-cols-2 gap-3 text-xs md:text-sm">
                       <div><span className="font-medium text-[#2d6a8a]">Time:</span> One day</div>
                       <div><span className="font-medium text-[#2d6a8a]">Difficulty:</span> Easy</div>
                       <div><span className="font-medium text-[#2d6a8a]">Max altitude:</span> 1,750m</div>
@@ -436,12 +436,12 @@ export default function BlogPostPage() {
                   </div>
 
                   <Link href="/services/day-hikings/namobuddha-hiking" className="inline-block">
-                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-6 py-2 text-sm">
+                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-4 md:px-6 py-2 text-xs md:text-sm">
                       Book Your Namobuddha Day Hike Today →
                     </Button>
                   </Link>
 
-                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6">
+                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6 w-full">
                     <Image
                       src="/images/used/namobuddha-1.webp"
                       alt="Thrangu Tashi Yangtse Monastery at Namobuddha"
@@ -479,9 +479,9 @@ export default function BlogPostPage() {
                     Trek this route in spring and the forests come alive with rhododendrons lining the trail in deep red, pink and white from the valley floor all the way up to Ghorepani.
                   </p>
                   
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 my-4">
+                  <div className="bg-[#f0f7fa] rounded-xl p-4 md:p-5 my-4">
                     <h4 className="font-bold text-[#0f2940] mb-2">At a Glance:</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div className="grid grid-cols-2 gap-3 text-xs md:text-sm">
                       <div><span className="font-medium text-[#2d6a8a]">Time:</span> 6 day tour, 4 days trekking</div>
                       <div><span className="font-medium text-[#2d6a8a]">Difficulty:</span> Easy for multi-day</div>
                       <div><span className="font-medium text-[#2d6a8a]">Max altitude:</span> 3,210m</div>
@@ -490,12 +490,12 @@ export default function BlogPostPage() {
                   </div>
 
                   <Link href="/services/trekking/ghorepani-poon-hill-trek" className="inline-block">
-                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-6 py-2 text-sm">
+                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-4 md:px-6 py-2 text-xs md:text-sm">
                       Book Your Ghorepani Poon Hill Trek Today →
                     </Button>
                   </Link>
 
-                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6">
+                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6 w-full">
                     <Image
                       src="/images/used/ghorepani-2.webp"
                       alt="Sunrise view from Poon Hill with Annapurna range"
@@ -527,9 +527,9 @@ export default function BlogPostPage() {
                     The final push to Mardi Himal Base Camp at 4,500m is where the trek earns its reputation — the altitude bites, the gradient steepens, and the hours add up. But above 4,000m, with Machhapuchhre towering directly ahead and the Annapurna range laid out behind you, whatever the climb took out of you, the view puts back. Standing at the base of a 5,587m peak with nothing but open sky and towering mountains in every direction – the kind of morning views that Nepal rewards trekkers with.
                   </p>
                   
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 my-4">
+                  <div className="bg-[#f0f7fa] rounded-xl p-4 md:p-5 my-4">
                     <h4 className="font-bold text-[#0f2940] mb-2">At a Glance:</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div className="grid grid-cols-2 gap-3 text-xs md:text-sm">
                       <div><span className="font-medium text-[#2d6a8a]">Time:</span> 7 days</div>
                       <div><span className="font-medium text-[#2d6a8a]">Difficulty:</span> Easy to moderate</div>
                       <div><span className="font-medium text-[#2d6a8a]">Max altitude:</span> 4,500m</div>
@@ -538,12 +538,12 @@ export default function BlogPostPage() {
                   </div>
 
                   <Link href="/services/trekking/mardi-himal-trek" className="inline-block">
-                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-6 py-2 text-sm">
+                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-4 md:px-6 py-2 text-xs md:text-sm">
                       Book Your Mardi Himal Trek Today →
                     </Button>
                   </Link>
 
-                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6">
+                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6 w-full">
                     <Image
                       src="/images/used/mardi-3.webp"
                       alt="Mardi Himal Base Camp with Machhapuchhre mountain"
@@ -578,9 +578,9 @@ export default function BlogPostPage() {
                     Beyond Kyanjin, the trail gives way to alpine pastures and glaciers. You can choose to trek to Kyanjin Ri at 4,773m – which is a manageable route once you've acclimatised. Or for the adventurous trekkers, to Tserko Ri – a strenuous, full-day ascent.
                   </p>
                   
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 my-4">
+                  <div className="bg-[#f0f7fa] rounded-xl p-4 md:p-5 my-4">
                     <h4 className="font-bold text-[#0f2940] mb-2">At a Glance:</h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div className="grid grid-cols-2 gap-3 text-xs md:text-sm">
                       <div><span className="font-medium text-[#2d6a8a]">Time:</span> 8 days</div>
                       <div><span className="font-medium text-[#2d6a8a]">Difficulty:</span> Easy to moderate</div>
                       <div><span className="font-medium text-[#2d6a8a]">Max altitude:</span> 5,033m</div>
@@ -589,12 +589,12 @@ export default function BlogPostPage() {
                   </div>
 
                   <Link href="/services/trekking/langtang-valley-trek" className="inline-block">
-                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-6 py-2 text-sm">
+                    <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-4 md:px-6 py-2 text-xs md:text-sm">
                       Book Your Langtang Valley Trek Today →
                     </Button>
                   </Link>
 
-                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6">
+                  <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-6 w-full">
                     <Image
                       src="/images/used/ganjala-pass-1.webp"
                       alt="Kyanjin Gompa monastery with Langtang Lirung mountain"
@@ -618,33 +618,33 @@ export default function BlogPostPage() {
                   </h2>
                   
                   <div className="space-y-4 mt-4">
-                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
-                      <h4 className="font-bold text-[#0f2940] text-base mb-2">Do I need a guide to trek in Nepal?</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed">
+                    <div className="bg-[#f8fbfc] rounded-xl p-4 md:p-5 border border-[#C5E0ED]/20">
+                      <h4 className="font-bold text-[#0f2940] text-sm md:text-base mb-2">Do I need a guide to trek in Nepal?</h4>
+                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                         For many routes, yes, and in some cases it's now a legal requirement. Trekking in the Annapurna Conservation Area now requires a licensed guide by law, as does Langtang National Park since 2023. Even on trails where a guide isn't mandatory, hiring one is strongly recommended – particularly for first-time trekkers. A licensed guide arranges teahouse accommodation, handles permits, and knows the terrain. That last part matters more than most beginners expect. It's also vital that you research the correct permits – though with Himkala Adventure, this is organised ahead of time to ensure you have a smooth, enjoyable trip.
                       </p>
                     </div>
 
-                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
-                      <h4 className="font-bold text-[#0f2940] text-base mb-2">How physically fit do I need to be?</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed">
+                    <div className="bg-[#f8fbfc] rounded-xl p-4 md:p-5 border border-[#C5E0ED]/20">
+                      <h4 className="font-bold text-[#0f2940] text-sm md:text-base mb-2">How physically fit do I need to be?</h4>
+                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                         Only a moderate level of fitness is required for all of these treks and you don't need to be an athlete. Some experience with full-day hikes carrying your backpack will make all the difference to your experience.
                       </p>
                     </div>
 
-                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
-                      <h4 className="font-bold text-[#0f2940] text-base mb-2">What should I pack?</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed mb-2">
+                    <div className="bg-[#f8fbfc] rounded-xl p-4 md:p-5 border border-[#C5E0ED]/20">
+                      <h4 className="font-bold text-[#0f2940] text-sm md:text-base mb-2">What should I pack?</h4>
+                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2">
                         It will depend on the season and altitude and it's always good to check with your guide prior to commencing the tour. Generally, sturdy hiking boots, walking trousers and base layers, a fleece, and a down jacket for the colder evenings at altitude are recommended. Gloves, a hat and extra pairs of wool socks are also recommended.
                       </p>
-                      <p className="text-slate-600 text-sm leading-relaxed">
+                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                         Beyond clothing, you can bring: toilet roll and personal toiletries, snacks, medication and electrolytes, a battery pack and chargers, enough cash (ATMs will not be available on any of the treks), and some personal entertainment for quiet evenings in the teahouses. Pack light, and only bring what you think you need. There are also many trekking stores in Kathmandu and Pokhara to buy or rent gear such as poles, downjackets and hiking boots, all of which can be arranged prior to beginning your chosen trek.
                       </p>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4 mt-6">
-                    <div className="relative h-[200px] rounded-xl overflow-hidden">
+                  <div className="grid grid-cols-2 gap-3 md:gap-4 mt-6">
+                    <div className="relative h-[150px] md:h-[200px] rounded-xl overflow-hidden">
                       <Image
                         src="/images/used/gokyo-1.webp"
                         alt="Trekker on a ridge with mountain views"
@@ -652,7 +652,7 @@ export default function BlogPostPage() {
                         className="object-cover"
                       />
                     </div>
-                    <div className="relative h-[200px] rounded-xl overflow-hidden">
+                    <div className="relative h-[150px] md:h-[200px] rounded-xl overflow-hidden">
                       <Image
                         src="/images/used/gokyo-3.webp"
                         alt="Himalayan mountain range at sunrise"
@@ -748,11 +748,11 @@ export default function BlogPostPage() {
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">More Insights from Us</h3>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {relatedPosts.map((post, i) => (
               <Link href={post.href} key={i} className="block">
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg hover:shadow-[#C5E0ED]/20 transition-all duration-300 group cursor-pointer">
-                  <div className="relative h-40 md:h-48 overflow-hidden">
+                  <div className="relative h-40 md:h-48 w-full overflow-hidden">
                     <Image
                       src={post.image}
                       alt={post.title}
@@ -780,8 +780,6 @@ export default function BlogPostPage() {
           </div>
         </div>
       </section>
-
-      
     </div>
   );
 }

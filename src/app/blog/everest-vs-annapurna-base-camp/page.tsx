@@ -141,7 +141,7 @@ export default function BlogPostPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Mobile Table of Contents Drawer */}
       {showMobileTOC && (
         <div className="lg:hidden fixed inset-0 z-50">
@@ -343,8 +343,8 @@ export default function BlogPostPage() {
             </aside>
 
             {/* Article Content */}
-            <article className="lg:col-span-9">
-              <div className="max-w-none">
+            <article className="lg:col-span-9 overflow-x-hidden">
+              <div className="max-w-full">
                 {/* Introduction */}
                 <section id="introduction" className="mb-8 md:mb-12">
                   <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-4 first-letter:text-4xl md:first-letter:text-6xl first-letter:font-serif first-letter:text-[#0f2940] first-letter:float-left first-letter:mr-3 first-letter:mt-1">
@@ -359,7 +359,7 @@ export default function BlogPostPage() {
                 </section>
 
                 {/* Image Break */}
-                <div className="relative h-[250px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
+                <div className="relative h-[250px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12 w-full">
                   <Image
                     src="/images/used/ebc-vs-abc.webp"
                     alt="Comparison of Everest and Annapurna mountain ranges"
@@ -373,7 +373,7 @@ export default function BlogPostPage() {
                 </div>
 
                 {/* At a Glance Comparison Table */}
-                <section id="at-a-glance" className="mb-8 md:mb-12">
+                <section id="at-a-glance" className="mb-8 md:mb-12 w-full">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
                       <Heart className="w-4 h-4 md:w-5 md:h-5" />
@@ -381,34 +381,36 @@ export default function BlogPostPage() {
                     At a Glance Comparison
                   </h2>
                   
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm border-collapse">
-                      <thead>
-                        <tr className="bg-[#0f2940] text-white">
-                          <th className="p-3 text-left rounded-l-lg">Features</th>
-                          <th className="p-3 text-left">Everest Base Camp</th>
-                          <th className="p-3 text-left rounded-r-lg">Annapurna Base Camp</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {[
-                          { feature: "Maximum altitude", ebc: "5,364m (at Kala Patthar)", abc: "4,130m" },
-                          { feature: "Duration", ebc: "12 – 14 days", abc: "10 – 12 days" },
-                          { feature: "Difficulty", ebc: "Moderate–challenging", abc: "Moderate" },
-                          { feature: "Base cost (guided)", ebc: "$1,400 – $2,500", abc: "$700 – $1,200" },
-                          { feature: "Permits", ebc: "Sagarmatha NP + Khumbu Municipality (~$50)", abc: "ACAP + TIMS (~$50)" },
-                          { feature: "Starting point", ebc: "Lukla (flight from Kathmandu)", abc: "Pokhara" },
-                          { feature: "Best seasons", ebc: "Mar – May, Oct – Nov", abc: "Mar – May, Oct – Nov" },
-                          { feature: "Crowds", ebc: "High", abc: "Moderate" },
-                        ].map((item, i) => (
-                          <tr key={i} className={`border-b border-[#C5E0ED]/30 ${i % 2 === 0 ? 'bg-white' : 'bg-[#f8fbfc]'}`}>
-                            <td className="p-3 font-medium text-[#0f2940]">{item.feature}</td>
-                            <td className="p-3 text-slate-600">{item.ebc}</td>
-                            <td className="p-3 text-slate-600">{item.abc}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                  <div className="w-full overflow-x-auto">
+                    <div className="min-w-[280px] w-full">
+                      <table className="w-full text-xs sm:text-sm border-collapse">
+                        <thead>
+                          <tr className="bg-[#0f2940] text-white">
+                            <th className="p-2 sm:p-3 text-left rounded-l-lg">Features</th>
+                            <th className="p-2 sm:p-3 text-left">Everest Base Camp</th>
+                            <th className="p-2 sm:p-3 text-left rounded-r-lg">Annapurna Base Camp</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                          {[
+                            { feature: "Maximum altitude", ebc: "5,364m (at Kala Patthar)", abc: "4,130m" },
+                            { feature: "Duration", ebc: "12 – 14 days", abc: "10 – 12 days" },
+                            { feature: "Difficulty", ebc: "Moderate–challenging", abc: "Moderate" },
+                            { feature: "Base cost (guided)", ebc: "$1,400 – $2,500", abc: "$700 – $1,200" },
+                            { feature: "Permits", ebc: "Sagarmatha NP + Khumbu Municipality (~$50)", abc: "ACAP + TIMS (~$50)" },
+                            { feature: "Starting point", ebc: "Lukla (flight from Kathmandu)", abc: "Pokhara" },
+                            { feature: "Best seasons", ebc: "Mar – May, Oct – Nov", abc: "Mar – May, Oct – Nov" },
+                            { feature: "Crowds", ebc: "High", abc: "Moderate" },
+                          ].map((item, i) => (
+                            <tr key={i} className={`border-b border-[#C5E0ED]/30 ${i % 2 === 0 ? 'bg-white' : 'bg-[#f8fbfc]'}`}>
+                              <td className="p-2 sm:p-3 font-medium text-[#0f2940] text-xs sm:text-sm">{item.feature}</td>
+                              <td className="p-2 sm:p-3 text-slate-600 text-xs sm:text-sm">{item.ebc}</td>
+                              <td className="p-2 sm:p-3 text-slate-600 text-xs sm:text-sm">{item.abc}</td>
+                             </tr>
+                          ))}
+                        </tbody>
+                       </table>
+                    </div>
                   </div>
                 </section>
 
@@ -508,7 +510,7 @@ export default function BlogPostPage() {
                 </section>
 
                 {/* Image Break 2 */}
-                <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
+                <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12 w-full">
                   <Image
                     src="/images/used/everest-2.webp"
                     alt="Tengboche Monastery with Ama Dablam mountain"
@@ -576,7 +578,7 @@ export default function BlogPostPage() {
                 </section>
 
                 {/* Image Break 3 */}
-                <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
+                <div className="relative h-[250px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12 w-full">
                   <Image
                     src="/images/used/abc-3.webp"
                     alt="Annapurna Base Camp sanctuary surrounded by peaks"
@@ -650,30 +652,30 @@ export default function BlogPostPage() {
                   </h2>
                   
                   <div className="space-y-4 mt-4">
-                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
-                      <h4 className="font-bold text-[#0f2940] text-base mb-2">Which trek is easier for beginners?</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed">
+                    <div className="bg-[#f8fbfc] rounded-xl p-4 md:p-5 border border-[#C5E0ED]/20">
+                      <h4 className="font-bold text-[#0f2940] text-sm md:text-base mb-2">Which trek is easier for beginners?</h4>
+                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                         Annapurna Base Camp is generally considered easier for beginners. The maximum altitude is lower at 4,130m compared to Everest's 5,364m, and the logistics are more straightforward with road access from Pokhara. That said, both treks are achievable for fit first-timers with proper preparation.
                       </p>
                     </div>
 
-                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
-                      <h4 className="font-bold text-[#0f2940] text-base mb-2">Do I need a guide for these treks?</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed">
+                    <div className="bg-[#f8fbfc] rounded-xl p-4 md:p-5 border border-[#C5E0ED]/20">
+                      <h4 className="font-bold text-[#0f2940] text-sm md:text-base mb-2">Do I need a guide for these treks?</h4>
+                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                         Yes, both treks now legally require a licensed guide. In the Annapurna Conservation Area and Sagarmatha National Park, solo trekking is no longer permitted. A guide also arranges teahouse accommodation, handles permits, and knows the terrain – which is invaluable for first-time trekkers at altitude.
                       </p>
                     </div>
 
-                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
-                      <h4 className="font-bold text-[#0f2940] text-base mb-2">How much does each trek cost with Himkala Adventure?</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed">
+                    <div className="bg-[#f8fbfc] rounded-xl p-4 md:p-5 border border-[#C5E0ED]/20">
+                      <h4 className="font-bold text-[#0f2940] text-sm md:text-base mb-2">How much does each trek cost with Himkala Adventure?</h4>
+                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                         Annapurna Base Camp starts from USD 1,180 for a fully guided package including permits, accommodation, meals, and guide. Everest Base Camp starts from USD 1,450, with the higher cost reflecting the remote location and Kathmandu-Lukla flight. Both treks can be customised to your schedule and budget.
                       </p>
                     </div>
 
-                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
-                      <h4 className="font-bold text-[#0f2940] text-base mb-2">When is the best time to book?</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed">
+                    <div className="bg-[#f8fbfc] rounded-xl p-4 md:p-5 border border-[#C5E0ED]/20">
+                      <h4 className="font-bold text-[#0f2940] text-sm md:text-base mb-2">When is the best time to book?</h4>
+                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                         For both treks, the prime seasons are spring (March-May) and autumn (September-November). These windows offer the clearest skies and most stable weather. However, bookings should be made at least 2-3 months in advance, especially for Everest Base Camp which sees high demand in October and April.
                       </p>
                     </div>
@@ -765,11 +767,11 @@ export default function BlogPostPage() {
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">More Insights from Us</h3>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {relatedPosts.map((post, i) => (
               <Link href={post.href} key={i} className="block">
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg hover:shadow-[#C5E0ED]/20 transition-all duration-300 group cursor-pointer">
-                  <div className="relative h-40 md:h-48 overflow-hidden">
+                  <div className="relative h-40 md:h-48 w-full overflow-hidden">
                     <Image
                       src={post.image}
                       alt={post.title}
@@ -795,13 +797,8 @@ export default function BlogPostPage() {
               </Link>
             ))}
           </div>
-
-          
         </div>
       </section>
-
-      
-      
     </div>
   );
 }
