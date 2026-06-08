@@ -65,10 +65,11 @@ const tableOfContents = [
   { id: "best-time", title: "Best Time to Trek" },
   { id: "what-to-expect", title: "What to Expect" },
   { id: "which-is-right", title: "Which is Right for You?" },
+  { id: "faq", title: "Frequently Asked Questions" },
 ];
 
 const relatedPosts = [
- {
+  {
     title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
     image: "/images/used/dog-pigeons.webp",
     date: "May 9, 2026",
@@ -81,7 +82,7 @@ const relatedPosts = [
     date: "May 24, 2026",
     readTime: "14 min",
     href: "/blog/best-beginner-treks-nepal",
-},
+  },
   {
     title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
     image: "/images/used/historic-scenic-photography-nepal.webp",
@@ -95,7 +96,7 @@ const relatedPosts = [
     date: "May 20, 2026",
     readTime: "12 min",
     href: "/blog/tilicho-lake-sacred-trek",
-},
+  },
 ];
 
 export default function BlogPostPage() {
@@ -639,6 +640,46 @@ export default function BlogPostPage() {
                   </div>
                 </section>
 
+                {/* FAQ Section */}
+                <section id="faq" className="mb-8 md:mb-12">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
+                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                    </span>
+                    Frequently Asked Questions
+                  </h2>
+                  
+                  <div className="space-y-4 mt-4">
+                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
+                      <h4 className="font-bold text-[#0f2940] text-base mb-2">Which trek is easier for beginners?</h4>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        Annapurna Base Camp is generally considered easier for beginners. The maximum altitude is lower at 4,130m compared to Everest's 5,364m, and the logistics are more straightforward with road access from Pokhara. That said, both treks are achievable for fit first-timers with proper preparation.
+                      </p>
+                    </div>
+
+                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
+                      <h4 className="font-bold text-[#0f2940] text-base mb-2">Do I need a guide for these treks?</h4>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        Yes, both treks now legally require a licensed guide. In the Annapurna Conservation Area and Sagarmatha National Park, solo trekking is no longer permitted. A guide also arranges teahouse accommodation, handles permits, and knows the terrain – which is invaluable for first-time trekkers at altitude.
+                      </p>
+                    </div>
+
+                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
+                      <h4 className="font-bold text-[#0f2940] text-base mb-2">How much does each trek cost with Himkala Adventure?</h4>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        Annapurna Base Camp starts from USD 1,180 for a fully guided package including permits, accommodation, meals, and guide. Everest Base Camp starts from USD 1,450, with the higher cost reflecting the remote location and Kathmandu-Lukla flight. Both treks can be customised to your schedule and budget.
+                      </p>
+                    </div>
+
+                    <div className="bg-[#f8fbfc] rounded-xl p-5 border border-[#C5E0ED]/20">
+                      <h4 className="font-bold text-[#0f2940] text-base mb-2">When is the best time to book?</h4>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        For both treks, the prime seasons are spring (March-May) and autumn (September-November). These windows offer the clearest skies and most stable weather. However, bookings should be made at least 2-3 months in advance, especially for Everest Base Camp which sees high demand in October and April.
+                      </p>
+                    </div>
+                  </div>
+                </section>
+
                 {/* Author Card with LinkedIn */}
                 <Card className="bg-gradient-to-br from-[#f8fbfc] to-[#e8f4f8] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6 lg:p-8">
@@ -724,7 +765,7 @@ export default function BlogPostPage() {
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">More Insights from Us</h3>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {relatedPosts.map((post, i) => (
               <Link href={post.href} key={i} className="block">
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg hover:shadow-[#C5E0ED]/20 transition-all duration-300 group cursor-pointer">
@@ -734,7 +775,7 @@ export default function BlogPostPage() {
                       alt={post.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                   </div>
                   <CardContent className="p-4 md:p-6">
