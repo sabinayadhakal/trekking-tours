@@ -39,6 +39,80 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+// Schema.org structured data for Annapurna Base Camp Trek
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Himkala Adventure Pvt. Ltd.",
+  "description": "Expert-guided Annapurna Base Camp trekking packages in Nepal's Annapurna Sanctuary. Trek to 4,130m with certified guides.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Thamel, Lekhnath Marga",
+    "addressLocality": "Kathmandu",
+    "addressCountry": "Nepal"
+  },
+  "telephone": "+977 9841376470",
+  "email": "info@himkalaadventure.com",
+  "url": "https://www.himkalaadventure.com",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 27.7172,
+    "longitude": 85.3240
+  }
+};
+
+const trekSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Annapurna Base Camp Trek - 9 Days",
+  "description": "Trek to the heart of the Annapurna Sanctuary at 4,130m with breathtaking views of Annapurna I (8,091m), Machhapuchhre (6,993m), and surrounding peaks. A moderate 9-day trek in Nepal's most popular trekking region.",
+  "image": "https://www.himkalaadventure.com/images/used/abc-main-page.webp",
+  "brand": {
+    "@type": "Brand",
+    "name": "Himkala Adventure Pvt. Ltd."
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "700",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-01-01",
+    "url": "https://www.himkalaadventure.com/services/trekking/annapurna-base-camp-trek"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "212"
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Max Altitude",
+      "value": "4,130m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Duration",
+      "value": "9 Days"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Difficulty",
+      "value": "Moderate"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Region",
+      "value": "Annapurna Region"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Best Season",
+      "value": "Mar-May, Sep-Nov"
+    }
+  ]
+};
+
 const itinerary = [
   {
     "day": 1,
@@ -171,12 +245,12 @@ const excludes = [
 const gallery = [
   {
     src: "/images/used/abc-1.webp",
-    alt: "Annapurna Base Camp",
+    alt: "Annapurna Base Camp sunrise - golden light hitting Annapurna I and surrounding peaks at 4,130m in Nepal",
     caption: "Annapurna Base Camp (4,130m)",
   },
   {
     src: "/images/used/abc-3.webp",
-    alt: "Machhapuchhre Fishtail",
+    alt: "Machhapuchhre or Fishtail Mountain - iconic peak towering above the Annapurna Sanctuary in Nepal",
     caption: "Machhapuchhre - Fishtail Mountain",
   },
   
@@ -216,6 +290,16 @@ export default function AnnapurnaBaseCampTrekPage() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(trekSchema) }}
+      />
+
       {/* Mobile Navigation Drawer */}
       {showMobileNav && (
         <div className="lg:hidden fixed inset-0 z-50">
@@ -230,8 +314,9 @@ export default function AnnapurnaBaseCampTrekPage() {
                 <button 
                   onClick={() => setShowMobileNav(false)}
                   className="p-2 rounded-lg hover:bg-slate-100"
+                  aria-label="Close navigation menu"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
               
@@ -262,22 +347,25 @@ export default function AnnapurnaBaseCampTrekPage() {
                     size="sm"
                     className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
                     onClick={() => handleShare("facebook")}
+                    aria-label="Share on Facebook"
                   >
-                    <Facebook className="w-4 h-4" />
+                    <Facebook className="w-4 h-4" aria-hidden="true" />
                   </Button>
                   <Button
                     size="sm"
                     className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
                     onClick={() => handleShare("twitter")}
+                    aria-label="Share on Twitter"
                   >
-                    <Twitter className="w-4 h-4" />
+                    <Twitter className="w-4 h-4" aria-hidden="true" />
                   </Button>
                   <Button
                     size="sm"
                     className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
                     onClick={handleCopyLink}
+                    aria-label="Copy link to clipboard"
                   >
-                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
                   </Button>
                 </div>
               </div>
@@ -291,12 +379,13 @@ export default function AnnapurnaBaseCampTrekPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/used/abc-main-page.webp"
-            alt="Annapurna Base Camp Trek"
+            alt="Annapurna Base Camp Trek - trekking through the Annapurna Sanctuary at 4,130m with views of Annapurna I and Machhapuchhre peaks in Nepal"
             fill
             className="object-cover"
             priority
             quality={85}
             sizes="100vw"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
@@ -306,13 +395,13 @@ export default function AnnapurnaBaseCampTrekPage() {
           <div className="max-w-5xl mx-auto text-center w-full">
             <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
               <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MapPin className="w-3 h-3 mr-1" /> Annapurna Region
+                <MapPin className="w-3 h-3 mr-1" aria-hidden="true" /> Annapurna Region
               </Badge>
               <Badge className="bg-green-100 text-green-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
                 Moderate
               </Badge>
               <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <Flower className="w-3 h-3 mr-1" /> Annapurna Sanctuary
+                <Flower className="w-3 h-3 mr-1" aria-hidden="true" /> Annapurna Sanctuary
               </Badge>
             </div>
             
@@ -342,8 +431,8 @@ export default function AnnapurnaBaseCampTrekPage() {
                 <div className="text-lg font-bold text-[#0f2940]">$700</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
-                  <Heart className="w-3 h-3 mr-1" /> Book Now
+                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]" aria-label={`Book ${trekName} now`}>
+                  <Heart className="w-3 h-3 mr-1" aria-hidden="true" /> Book Now
                 </Button>
               </Link>
             </div>
@@ -367,31 +456,31 @@ export default function AnnapurnaBaseCampTrekPage() {
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                           <span>9 Days / 8 Nights</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                           <span>Best: Mar-May, Sep-Nov</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                           <span>Group Size: 2-12</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                           <span>Teahouse Accommodation</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                           <span>All Meals Included</span>
                         </div>
                       </div>
 
                       {/* Book Now Button */}
                       <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
-                        <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
-                          <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Trek
+                        <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base" aria-label={`Book ${trekName}`}>
+                          <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Book This Trek
                         </Button>
                       </Link>
                       
@@ -399,10 +488,11 @@ export default function AnnapurnaBaseCampTrekPage() {
                       <a 
                         href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${trekName}.`)}`}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer nofollow"
+                        aria-label="Inquire about Annapurna Base Camp trek on WhatsApp"
                       >
                         <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
-                          <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
+                          <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> WhatsApp Now
                         </Button>
                       </a>
                     </CardContent>
@@ -412,7 +502,7 @@ export default function AnnapurnaBaseCampTrekPage() {
                   <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                        <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
+                        <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Quick Facts
                       </h3>
                       <div className="space-y-2 text-[10px] md:text-sm">
                         <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
@@ -447,30 +537,33 @@ export default function AnnapurnaBaseCampTrekPage() {
                   <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                        <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
+                        <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Share
                       </h3>
                       <div className="flex gap-2">
                         <Button
                           size="sm"
                           className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={() => handleShare("facebook")}
+                          aria-label="Share on Facebook"
                         >
-                          <Facebook className="w-3 h-3 md:w-4 md:h-4" />
+                          <Facebook className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
                         </Button>
                         <Button
                           size="sm"
                           className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={() => handleShare("twitter")}
+                          aria-label="Share on Twitter"
                         >
-                          <Twitter className="w-3 h-3 md:w-4 md:h-4" />
+                          <Twitter className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
                         </Button>
                         <Button
                           size="sm"
                           variant="outline"
                           className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={handleCopyLink}
+                          aria-label="Copy link to clipboard"
                         >
-                          {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
+                          {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />}
                         </Button>
                       </div>
                     </CardContent>
@@ -487,36 +580,40 @@ export default function AnnapurnaBaseCampTrekPage() {
                   size="sm"
                   className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("facebook")}
+                  aria-label="Share on Facebook"
                 >
-                  <Facebook className="w-3 h-3 mr-1" /> Share
+                  <Facebook className="w-3 h-3 mr-1" aria-hidden="true" /> Share
                 </Button>
                 <Button
                   size="sm"
                   className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("twitter")}
+                  aria-label="Share on Twitter"
                 >
-                  <Twitter className="w-3 h-3 mr-1" /> Tweet
+                  <Twitter className="w-3 h-3 mr-1" aria-hidden="true" /> Tweet
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={handleCopyLink}
+                  aria-label="Copy link to clipboard"
                 >
-                  {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                  {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
                 </Button>
               </div>
 
               {/* Overview */}
               <section className="mb-6 md:mb-12" id="overview">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview of Annapurna Base Camp Trek</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     The <strong>Annapurna Base Camp Trek</strong> (also known as the Annapurna Sanctuary Trek) 
                     takes you into the heart of the Annapurna massif, a spectacular glacial amphitheater surrounded 
                     by some of the world's highest and most beautiful mountains. At <strong>4,130 meters</strong>, 
                     Base Camp offers a 360-degree panorama of towering peaks including Annapurna I (8,091m), 
-                    Annapurna South (7,219m), Machhapuchhre (6,993m), and Hiunchuli (6,441m).
+                    Annapurna South (7,219m), Machhapuchhre (6,993m), and Hiunchuli (6,441m). This <strong>Annapurna Base Camp trekking</strong> 
+                    adventure is one of Nepal's most popular and rewarding <strong>trekking in Nepal</strong> experiences.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     The journey begins with a scenic drive to Pokhara, Nepal's beautiful lakeside city, before 
@@ -526,7 +623,7 @@ export default function AnnapurnaBaseCampTrekPage() {
                     surrounded on all sides by ice and rock.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    Unlike many Himalayan treks that require crossing high passes, the ABC trek is a 
+                    Unlike many Himalayan treks that require crossing high passes, the <strong>ABC trek</strong> is a 
                     straightforward "in-and-out" route, making it accessible to trekkers with moderate fitness 
                     levels. The reward is an intimate experience with the mountains - you sleep at the foot of 
                     giants and wake to watch the sunrise paint their peaks in golden light.
@@ -536,7 +633,7 @@ export default function AnnapurnaBaseCampTrekPage() {
 
               {/* Highlights */}
               <section className="mb-6 md:mb-12" id="highlights">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Trek Highlights</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Annapurna Base Camp Trek Highlights</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
                   {[
                     "Stand at Annapurna Base Camp (4,130m) in a mountain amphitheater",
@@ -554,7 +651,7 @@ export default function AnnapurnaBaseCampTrekPage() {
                       key={i}
                       className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
                     >
-                      <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" />
+                      <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" aria-hidden="true" />
                       <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
                     </div>
                   ))}
@@ -563,13 +660,13 @@ export default function AnnapurnaBaseCampTrekPage() {
 
               {/* Best Season */}
               <section className="mb-6 md:mb-12">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Trek</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Trek Annapurna Base Camp</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
                   <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar - May)</h4>
+                        <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" aria-hidden="true" />
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar - May)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Rhododendron forests explode with color, temperatures are warm, and the sanctuary is lush 
@@ -581,8 +678,8 @@ export default function AnnapurnaBaseCampTrekPage() {
                   <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-blue-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Nov)</h4>
+                        <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-blue-500" aria-hidden="true" />
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Nov)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         The most popular season with crystal-clear skies, stable weather, and the best 
@@ -597,7 +694,7 @@ export default function AnnapurnaBaseCampTrekPage() {
               {/* Detailed Itinerary */}
               <section className="mb-6 md:mb-12" id="itinerary">
                 <div className="flex items-center justify-between mb-3 md:mb-6">
-                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Trek Itinerary</h2>
                   <Button
                     variant="outline"
                     size="sm"
@@ -605,6 +702,7 @@ export default function AnnapurnaBaseCampTrekPage() {
                     onClick={() =>
                       setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
                     }
+                    aria-label={expandedDays.length === itinerary.length ? "Collapse all itinerary days" : "Expand all itinerary days"}
                   >
                     {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
                   </Button>
@@ -622,19 +720,20 @@ export default function AnnapurnaBaseCampTrekPage() {
                         <button
                           className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
                           onClick={() => toggleDay(day.day)}
+                          aria-label={expandedDays.includes(day.day) ? `Collapse day ${day.day}` : `Expand day ${day.day}`}
                         >
                           <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
                             <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
                             <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
+                            <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h3>
                             <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
                               <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
+                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.altitude}
                               </span>
                               <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.distance}
+                                <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.distance}
                               </span>
                             </div>
                           </div>
@@ -642,6 +741,7 @@ export default function AnnapurnaBaseCampTrekPage() {
                             className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
                               expandedDays.includes(day.day) ? "rotate-180" : ""
                             }`}
+                            aria-hidden="true"
                           />
                         </button>
 
@@ -651,11 +751,11 @@ export default function AnnapurnaBaseCampTrekPage() {
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
+                                <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
                                 <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
                               </div>
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
+                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
                                 <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
                               </div>
                             </div>
@@ -677,17 +777,17 @@ export default function AnnapurnaBaseCampTrekPage() {
 
               {/* Includes / Excludes */}
               <section className="mb-6 md:mb-12" id="includes">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included in This Annapurna Base Camp Trek</h2>
                 <div className="grid md:grid-cols-2 gap-3 md:gap-6">
                   <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-6">
                       <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> Cost Includes
+                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Includes
                       </h3>
                       <ul className="space-y-1 md:space-y-2">
                         {includes.map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" />
+                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
                             <span className="leading-tight">{item}</span>
                           </li>
                         ))}
@@ -697,12 +797,12 @@ export default function AnnapurnaBaseCampTrekPage() {
                   <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-6">
                       <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <XCircle className="w-4 h-4 md:w-5 md:h-5" /> Cost Excludes
+                        <XCircle className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Excludes
                       </h3>
                       <ul className="space-y-1 md:space-y-2">
                         {excludes.map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" />
+                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" aria-hidden="true" />
                             <span className="leading-tight">{item}</span>
                           </li>
                         ))}
@@ -714,9 +814,9 @@ export default function AnnapurnaBaseCampTrekPage() {
 
               {/* Important Note */}
               <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
-                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
+                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information</h4>
+                  <h3 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information</h3>
                   <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
                     <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 4,200m.</li>
                     <li>• The trail includes many stone steps - good knee support and trekking poles are recommended.</li>
@@ -728,7 +828,7 @@ export default function AnnapurnaBaseCampTrekPage() {
 
               {/* Photo Gallery */}
               <section className="mb-6 md:mb-12" id="gallery">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery - Annapurna Base Camp Trek</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
                   {gallery.map((image, i) => (
                     <div
@@ -737,10 +837,11 @@ export default function AnnapurnaBaseCampTrekPage() {
                     >
                       <Image
                         src={image.src}
-                        alt={image.alt}
+                        alt={`${image.alt} - Annapurna Base Camp trekking experience in Nepal's Annapurna region`}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
                         sizes="(max-width: 768px) 50vw, 33vw"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
@@ -754,7 +855,7 @@ export default function AnnapurnaBaseCampTrekPage() {
 
               {/* FAQ Section */}
               <section className="mb-6 md:mb-12" id="faq">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions About Annapurna Base Camp Trek</h2>
                 <div className="space-y-2 md:space-y-4">
                   {[
                     {
@@ -780,7 +881,7 @@ export default function AnnapurnaBaseCampTrekPage() {
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
                       <CardContent className="p-2 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
+                        <h3 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h3>
                         <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
                       </CardContent>
                     </Card>

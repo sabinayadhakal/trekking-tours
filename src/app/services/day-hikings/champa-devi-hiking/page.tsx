@@ -148,14 +148,72 @@ export default function ChampaDeviHikingPage() {
     );
   };
 
+  // Schema.org Product schema
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Champa Devi Hiking Adventure",
+    "description": "A rewarding day hike to the highest peak in the southern Kathmandu Valley at 2,250m. Enjoy panoramic views, lush forests, traditional villages, and a peaceful picnic with Himalayan vistas.",
+    "image": "https://www.himkalaadventure.com/images/used/champadevi-1.webp",
+    "brand": {
+      "@type": "Brand",
+      "name": "Himkala Adventure Pvt. Ltd."
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "110",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-01-01",
+      "url": "https://www.himkalaadventure.com/services/day-hikings/champa-devi-hiking"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "reviewCount": "89"
+    }
+  };
+
+  // Organization schema
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "TouristInformationCenter",
+    "name": "Himkala Adventure Pvt. Ltd.",
+    "description": "Expert-guided day hikes in Nepal including Champa Devi hiking adventure in the Kathmandu Valley.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Thamel, Lekhnath Marga",
+      "addressLocality": "Kathmandu",
+      "addressCountry": "Nepal"
+    },
+    "telephone": "+977 9841376470",
+    "email": "info@himkalaadventure.com",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 27.7172,
+      "longitude": 85.3240
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+
       {/* Mobile Navigation Drawer */}
       {showMobileNav && (
         <div className="lg:hidden fixed inset-0 z-50">
           <div 
             className="absolute inset-0 bg-black/50"
             onClick={() => setShowMobileNav(false)}
+            aria-label="Close navigation"
           />
           <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto">
             <div className="p-6">
@@ -164,8 +222,9 @@ export default function ChampaDeviHikingPage() {
                 <button 
                   onClick={() => setShowMobileNav(false)}
                   className="p-2 rounded-lg hover:bg-slate-100"
+                  aria-label="Close navigation"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
               
@@ -196,22 +255,25 @@ export default function ChampaDeviHikingPage() {
                     size="sm"
                     className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
                     onClick={() => handleShare("facebook")}
+                    aria-label="Share on Facebook"
                   >
-                    <Facebook className="w-4 h-4" />
+                    <Facebook className="w-4 h-4" aria-hidden="true" />
                   </Button>
                   <Button
                     size="sm"
                     className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
                     onClick={() => handleShare("twitter")}
+                    aria-label="Share on Twitter"
                   >
-                    <Twitter className="w-4 h-4" />
+                    <Twitter className="w-4 h-4" aria-hidden="true" />
                   </Button>
                   <Button
                     size="sm"
                     className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
                     onClick={handleCopyLink}
+                    aria-label="Copy link to clipboard"
                   >
-                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
                   </Button>
                 </div>
               </div>
@@ -225,7 +287,7 @@ export default function ChampaDeviHikingPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/used/champadevi-1.webp"
-            alt="Champa Devi Hiking"
+            alt="Champa Devi hiking trail with panoramic views of Kathmandu Valley and Himalayan mountains in Nepal"
             fill
             className="object-cover"
             priority
@@ -240,13 +302,13 @@ export default function ChampaDeviHikingPage() {
           <div className="max-w-5xl mx-auto text-center w-full">
             <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
               <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MapPin className="w-3 h-3 mr-1" /> Day Hiking
+                <MapPin className="w-3 h-3 mr-1" aria-hidden="true" /> Day Hiking
               </Badge>
               <Badge className="bg-green-100 text-green-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
                 Moderate
               </Badge>
               <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <Eye className="w-3 h-3 mr-1" /> Valley Panorama
+                <Eye className="w-3 h-3 mr-1" aria-hidden="true" /> Valley Panorama
               </Badge>
             </div>
             
@@ -276,8 +338,8 @@ export default function ChampaDeviHikingPage() {
                 <div className="text-lg font-bold text-[#0f2940]">$110</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
-                  <Heart className="w-3 h-3 mr-1" /> Book Now
+                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]" aria-label={`Book ${trekName} now`}>
+                  <Heart className="w-3 h-3 mr-1" aria-hidden="true" /> Book Now
                 </Button>
               </Link>
             </div>
@@ -300,31 +362,31 @@ export default function ChampaDeviHikingPage() {
 
         <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
           <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-            <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+            <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
             <span>6-7 Hours</span>
           </div>
           <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-            <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+            <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
             <span>Available Daily</span>
           </div>
           <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-            <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+            <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
             <span>Group Size: 1-8</span>
           </div>
           <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-            <Footprints className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+            <Footprints className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
             <span>4-5 Hours Hiking</span>
           </div>
           <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-            <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+            <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
             <span>Max Altitude: 2,250m</span>
           </div>
         </div>
 
         {/* Book Now Button */}
         <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
-          <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
-            <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Hike
+          <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base" aria-label={`Book ${trekName}`}>
+            <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Book This Hike
           </Button>
         </Link>
         
@@ -332,10 +394,11 @@ export default function ChampaDeviHikingPage() {
         <a 
           href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${trekName}.`)}`}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer nofollow"
+          aria-label="Inquire about Champa Devi hiking on WhatsApp"
         >
           <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
-            <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
+            <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> WhatsApp Now
           </Button>
         </a>
       </CardContent>
@@ -345,7 +408,7 @@ export default function ChampaDeviHikingPage() {
     <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
       <CardContent className="p-4 md:p-6">
         <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-          <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
+          <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Quick Facts
         </h3>
         <div className="space-y-2 text-[10px] md:text-sm">
           <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
@@ -380,30 +443,33 @@ export default function ChampaDeviHikingPage() {
     <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
       <CardContent className="p-4 md:p-6">
         <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-          <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
+          <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Share
         </h3>
         <div className="flex gap-2">
           <Button
             size="sm"
             className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
             onClick={() => handleShare("facebook")}
+            aria-label="Share on Facebook"
           >
-            <Facebook className="w-3 h-3 md:w-4 md:h-4" />
+            <Facebook className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
           </Button>
           <Button
             size="sm"
             className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
             onClick={() => handleShare("twitter")}
+            aria-label="Share on Twitter"
           >
-            <Twitter className="w-3 h-3 md:w-4 md:h-4" />
+            <Twitter className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
           </Button>
           <Button
             size="sm"
             variant="outline"
             className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
             onClick={handleCopyLink}
+            aria-label="Copy link to clipboard"
           >
-            {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
+            {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />}
           </Button>
         </div>
       </CardContent>
@@ -421,23 +487,26 @@ export default function ChampaDeviHikingPage() {
                   size="sm"
                   className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("facebook")}
+                  aria-label="Share on Facebook"
                 >
-                  <Facebook className="w-3 h-3 mr-1" /> Share
+                  <Facebook className="w-3 h-3 mr-1" aria-hidden="true" /> Share
                 </Button>
                 <Button
                   size="sm"
                   className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("twitter")}
+                  aria-label="Share on Twitter"
                 >
-                  <Twitter className="w-3 h-3 mr-1" /> Tweet
+                  <Twitter className="w-3 h-3 mr-1" aria-hidden="true" /> Tweet
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={handleCopyLink}
+                  aria-label="Copy link to clipboard"
                 >
-                  {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                  {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
                 </Button>
               </div>
 
@@ -482,7 +551,7 @@ export default function ChampaDeviHikingPage() {
                       key={i}
                       className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
                     >
-                      <Footprints className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] shrink-0" />
+                      <Footprints className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] shrink-0" aria-hidden="true" />
                       <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
                     </div>
                   ))}
@@ -496,8 +565,8 @@ export default function ChampaDeviHikingPage() {
                   <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h4>
+                        <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" aria-hidden="true" />
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Pleasant temperatures, blooming rhododendrons, and clear mountain views. Ideal for hiking with comfortable conditions and beautiful wildflowers along the trail.
@@ -508,7 +577,7 @@ export default function ChampaDeviHikingPage() {
                   <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h4>
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Crystal-clear skies, perfect temperatures, and excellent visibility. The best season for Himalayan views and photography. Post-monsoon clarity is exceptional.
@@ -519,8 +588,8 @@ export default function ChampaDeviHikingPage() {
                   <Card className="bg-gradient-to-br from-amber-50 to-yellow-50 border-amber-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-amber-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h4>
+                        <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-amber-500" aria-hidden="true" />
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Cool, clear days with excellent visibility. Crisp air and fewer crowds on the trail. Morning temperatures are cold but hiking warms you up. Great for mountain views.
@@ -543,6 +612,7 @@ export default function ChampaDeviHikingPage() {
                     onClick={() =>
                       setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
                     }
+                    aria-label={expandedDays.length === itinerary.length ? "Collapse all itinerary days" : "Expand all itinerary days"}
                   >
                     {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
                   </Button>
@@ -560,18 +630,19 @@ export default function ChampaDeviHikingPage() {
                         <button
                           className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
                           onClick={() => toggleDay(day.day)}
+                          aria-label={expandedDays.includes(day.day) ? `Collapse ${day.title}` : `Expand ${day.title}`}
                         >
                           <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
                             <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day Hike</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
+                            <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h3>
                             <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
                               <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
+                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.altitude}
                               </span>
                               <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <Clock className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.distance}
+                                <Clock className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.distance}
                               </span>
                             </div>
                           </div>
@@ -579,6 +650,7 @@ export default function ChampaDeviHikingPage() {
                             className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
                               expandedDays.includes(day.day) ? "rotate-180" : ""
                             }`}
+                            aria-hidden="true"
                           />
                         </button>
 
@@ -588,11 +660,11 @@ export default function ChampaDeviHikingPage() {
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <MapPin className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
+                                <MapPin className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
                                 <span className="text-[10px] md:text-xs"><strong>Meeting Point:</strong> Your hotel in Kathmandu</span>
                               </div>
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
+                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
                                 <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
                               </div>
                             </div>
@@ -614,9 +686,9 @@ export default function ChampaDeviHikingPage() {
 
               {/* Trail Details */}
               <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 mb-6 md:mb-12">
-                <h4 className="font-bold text-amber-800 mb-2 flex items-center gap-2 text-xs md:text-base">
-                  <Map className="w-4 h-4 md:w-5 md:h-5" /> Trail Details & Difficulty
-                </h4>
+                <h3 className="font-bold text-amber-800 mb-2 flex items-center gap-2 text-xs md:text-base">
+                  <Map className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Trail Details & Difficulty
+                </h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   <div>
                     <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1.5">
@@ -641,9 +713,9 @@ export default function ChampaDeviHikingPage() {
 
               {/* What to Bring */}
               <div className="bg-blue-50 border border-blue-200 rounded-lg md:rounded-2xl p-3 md:p-6 mb-6 md:mb-12">
-                <h4 className="font-bold text-blue-800 mb-2 flex items-center gap-2 text-xs md:text-base">
-                  <Backpack className="w-4 h-4 md:w-5 md:h-5" /> What to Bring
-                </h4>
+                <h3 className="font-bold text-blue-800 mb-2 flex items-center gap-2 text-xs md:text-base">
+                  <Backpack className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> What to Bring
+                </h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   <div>
                     <ul className="text-blue-700 text-[10px] md:text-sm leading-relaxed space-y-1.5">
@@ -673,12 +745,12 @@ export default function ChampaDeviHikingPage() {
                   <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-6">
                       <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> Cost Includes
+                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Includes
                       </h3>
                       <ul className="space-y-1 md:space-y-2">
                         {includes.map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" />
+                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
                             <span className="leading-tight">{item}</span>
                           </li>
                         ))}
@@ -688,12 +760,12 @@ export default function ChampaDeviHikingPage() {
                   <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-6">
                       <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <XCircle className="w-4 h-4 md:w-5 md:h-5" /> Cost Excludes
+                        <XCircle className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Excludes
                       </h3>
                       <ul className="space-y-1 md:space-y-2">
                         {excludes.map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" />
+                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" aria-hidden="true" />
                             <span className="leading-tight">{item}</span>
                           </li>
                         ))}
@@ -705,9 +777,9 @@ export default function ChampaDeviHikingPage() {
 
               {/* Important Note */}
               <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
-                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
+                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information for Hikers</h4>
+                  <h3 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information for Hikers</h3>
                   <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
                     <li>• <strong>Physical Fitness:</strong> This hike requires a reasonable level of fitness. You should be comfortable walking uphill for 2-3 hours with regular breaks. Regular exercise before the hike is recommended.</li>
                     <li>• <strong>Health Considerations:</strong> Inform us of any medical conditions (asthma, heart problems, etc.) when booking. The altitude is moderate (2,250m) and rarely causes issues.</li>
@@ -730,10 +802,11 @@ export default function ChampaDeviHikingPage() {
                     >
                       <Image
                         src={image.src}
-                        alt={image.alt}
+                        alt={`${image.alt} - Champa Devi hiking trail in Nepal`}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
                         sizes="(max-width: 768px) 50vw, 33vw"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
@@ -777,7 +850,7 @@ export default function ChampaDeviHikingPage() {
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
                       <CardContent className="p-2 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
+                        <h3 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h3>
                         <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -789,7 +862,7 @@ export default function ChampaDeviHikingPage() {
               <Card className="bg-white border-[#C5E0ED]/30 rounded-lg md:rounded-xl mb-6 md:mb-12">
                 <CardContent className="p-3 md:p-6">
                   <h3 className="font-bold text-[#0f2940] mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                    <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-[#2d6a8a]" /> Elevation Profile
+                    <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-[#2d6a8a]" aria-hidden="true" /> Elevation Profile
                   </h3>
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">

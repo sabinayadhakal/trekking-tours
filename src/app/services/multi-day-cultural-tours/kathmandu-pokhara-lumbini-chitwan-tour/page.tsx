@@ -201,28 +201,27 @@ const excludes = [
 const gallery = [
   {
     src: "/images/used/nepal-heritage-sites-tour-nepal.webp",
-    alt: "Boudhanath Stupa",
+    alt: "Boudhanath Stupa - massive Buddhist stupa and center of Tibetan Buddhism in Kathmandu, UNESCO World Heritage Site",
     caption: "Boudhanath Stupa - Center of Tibetan Buddhism in Kathmandu",
   },
-  
   {
     src: "/images/used/pokhara-1.webp",
-    alt: "Phewa Lake",
+    alt: "Phewa Lake with Machhapuchhre (Fishtail) mountain reflection, Pokhara's beautiful lakeside paradise",
     caption: "Phewa Lake with Machhapuchhre reflection, Pokhara",
   },
   {
     src: "/images/used/lumbini-1.webp",
-    alt: "Mayadevi Temple",
+    alt: "Mayadevi Temple - sacred birthplace of Lord Buddha in Lumbini, UNESCO World Heritage Site",
     caption: "Mayadevi Temple - Birthplace of Buddha, Lumbini",
   },
   {
     src: "/images/used/nepal-chitwan.webp",
-    alt: "One-horned Rhinoceros",
+    alt: "One-horned rhinoceros in Chitwan National Park, UNESCO World Heritage Site and wildlife sanctuary in Nepal",
     caption: "One-horned rhinoceros in Chitwan National Park",
   },
   {
     src: "/images/used/monkey_temple.webp",
-    alt: "Swayambhunath Stupa",
+    alt: "Swayambhunath Stupa (Monkey Temple) with all-seeing eyes of Buddha, Kathmandu Valley UNESCO World Heritage Site",
     caption: "Swayambhunath Stupa (Monkey Temple), Kathmandu",
   },
 ];
@@ -234,6 +233,83 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
   
   // Tour name constant for auto-fill functionality
   const tourName = "Kathmandu, Pokhara, Lumbini & Chitwan Grand Tour";
+
+  // Schema.org structured data for Tour/Product
+  const tourSchema = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": "Kathmandu, Pokhara, Lumbini & Chitwan Grand Tour - 10 Days",
+    "description": "Experience the complete essence of Nepal—from ancient temples and Himalayan sunrises to the birthplace of Buddha and wildlife encounters in Chitwan National Park. This comprehensive 10-day tour covers Kathmandu Valley UNESCO sites, Pokhara's lakeside paradise, Lumbini's sacred garden, and Chitwan's jungle safaris.",
+    "duration": "P10D",
+    "offers": {
+      "@type": "Offer",
+      "price": "2200",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-01-01"
+    },
+    "itinerary": {
+      "@type": "Itinerary",
+      "numberOfDays": 10
+    },
+    "provider": {
+      "@type": "TravelAgency",
+      "name": "Himkala Adventure Pvt. Ltd.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Thamel, Lekhnath Marga",
+        "addressLocality": "Kathmandu",
+        "addressCountry": "Nepal"
+      },
+      "telephone": "+9779841376470",
+      "email": "info@himkalaadventure.com",
+      "url": "https://www.himkalaadventure.com"
+    },
+    "touristType": ["Culture Enthusiasts", "Pilgrims", "Nature Lovers", "Wildlife Photographers", "History Buffs"],
+    "tourDifficulty": "Easy",
+    "touristAttraction": [
+      {
+        "@type": "TouristAttraction",
+        "name": "Kathmandu Durbar Square",
+        "description": "Ancient royal palace complex and UNESCO World Heritage Site in Kathmandu"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Swayambhunath Stupa",
+        "description": "Ancient Buddhist stupa on a hilltop overlooking Kathmandu Valley"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Pashupatinath Temple",
+        "description": "Sacred Hindu temple complex on the banks of Bagmati River"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Boudhanath Stupa",
+        "description": "One of the largest spherical stupas in South Asia and center of Tibetan Buddhism"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Sarangkot",
+        "description": "Hill station in Pokhara with panoramic views of Annapurna and Dhaulagiri ranges"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Phewa Lake",
+        "description": "Beautiful lakeside paradise with reflection of Machhapuchhre mountain"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Mayadevi Temple",
+        "description": "Sacred temple marking the birthplace of Lord Buddha in Lumbini"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Chitwan National Park",
+        "description": "UNESCO World Heritage Site and wildlife sanctuary home to one-horned rhinoceros and Bengal tigers"
+      }
+    ]
+  };
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -261,6 +337,12 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(tourSchema) }}
+      />
+
       {/* Mobile Navigation Drawer */}
       {showMobileNav && (
         <div className="lg:hidden fixed inset-0 z-50">
@@ -275,6 +357,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                 <button 
                   onClick={() => setShowMobileNav(false)}
                   className="p-2 rounded-lg hover:bg-slate-100"
+                  aria-label="Close navigation menu"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -307,6 +390,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                     size="sm"
                     className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
                     onClick={() => handleShare("facebook")}
+                    aria-label="Share on Facebook"
                   >
                     <Facebook className="w-4 h-4" />
                   </Button>
@@ -314,6 +398,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                     size="sm"
                     className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
                     onClick={() => handleShare("twitter")}
+                    aria-label="Share on Twitter"
                   >
                     <Twitter className="w-4 h-4" />
                   </Button>
@@ -321,6 +406,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                     size="sm"
                     className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
                     onClick={handleCopyLink}
+                    aria-label="Copy link to clipboard"
                   >
                     {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                   </Button>
@@ -336,12 +422,13 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/used/kathmandu-lumbini-pokhara-nepal.webp"
-            alt="Kathmandu Pokhara Lumbini Chitwan Tour"
+            alt="Kathmandu Pokhara Lumbini Chitwan Grand Tour - Experience Nepal's cultural heritage, Himalayan sunrises, Buddha's birthplace, and wildlife safaris"
             fill
             className="object-cover"
             priority
             quality={85}
             sizes="100vw"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
@@ -441,7 +528,8 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                       <a 
                         href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${tourName}.`)}`}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer nofollow"
+                        aria-label="Contact via WhatsApp"
                       >
                         <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
                           <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
@@ -496,6 +584,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                           size="sm"
                           className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={() => handleShare("facebook")}
+                          aria-label="Share on Facebook"
                         >
                           <Facebook className="w-3 h-3 md:w-4 md:h-4" />
                         </Button>
@@ -503,6 +592,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                           size="sm"
                           className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={() => handleShare("twitter")}
+                          aria-label="Share on Twitter"
                         >
                           <Twitter className="w-3 h-3 md:w-4 md:h-4" />
                         </Button>
@@ -511,6 +601,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                           variant="outline"
                           className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={handleCopyLink}
+                          aria-label="Copy link to clipboard"
                         >
                           {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
                         </Button>
@@ -529,6 +620,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                   size="sm"
                   className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("facebook")}
+                  aria-label="Share on Facebook"
                 >
                   <Facebook className="w-3 h-3 mr-1" /> Share
                 </Button>
@@ -536,6 +628,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                   size="sm"
                   className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("twitter")}
+                  aria-label="Share on Twitter"
                 >
                   <Twitter className="w-3 h-3 mr-1" /> Tweet
                 </Button>
@@ -544,6 +637,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                   variant="outline"
                   className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={handleCopyLink}
+                  aria-label="Copy link to clipboard"
                 >
                   {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
                 </Button>
@@ -551,16 +645,16 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
 
               {/* Overview */}
               <section className="mb-6 md:mb-12" id="overview">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview of Nepal Grand Tour</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The <strong>Kathmandu, Pokhara, Lumbini & Chitwan Grand Tour</strong> is a comprehensive 9-day journey that showcases the incredible diversity of Nepal—from ancient cultural heritage and spiritual pilgrimage to stunning mountain landscapes and wildlife adventures. This tour is designed for travelers who want to experience the complete essence of Nepal in a single, well-paced itinerary.
+                    The <strong>Kathmandu, Pokhara, Lumbini & Chitwan Grand Tour</strong> is a comprehensive 10-day journey that showcases the incredible diversity of Nepal—from ancient cultural heritage and spiritual pilgrimage to stunning mountain landscapes and wildlife adventures. This <strong>Nepal multi-destination tour</strong> is designed for travelers who want to experience the complete essence of Nepal in a single, well-paced itinerary.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     Begin in the Kathmandu Valley, exploring UNESCO World Heritage Sites including the living goddess Kumari, the sacred Hindu temple of Pashupatinath, and the massive Buddhist stupa of Boudhanath. Travel to the lakeside paradise of Pokhara for sunrise over the Annapurna Himalayas from Sarangkot and serene boat rides on Phewa Lake. Journey south to Lumbini, the birthplace of Lord Buddha, where you'll walk in the footsteps of the enlightened one through the sacred garden and international monasteries. Conclude in Chitwan National Park for thrilling wildlife safaris, encountering one-horned rhinoceros, exotic birds, and experiencing Tharu village culture.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    This tour offers the perfect balance of culture, nature, and adventure with comfortable accommodations, expert guiding, and seamless logistics. Whether you're a history enthusiast, spiritual seeker, nature lover, or wildlife photographer, this journey through Nepal's heartland will leave you with unforgettable memories and a deep appreciation for this remarkable country.
+                    This <strong>Nepal cultural and wildlife tour</strong> offers the perfect balance of culture, nature, and adventure with comfortable accommodations, expert guiding, and seamless logistics. Whether you're a history enthusiast, spiritual seeker, nature lover, or wildlife photographer, this journey through Nepal's heartland will leave you with unforgettable memories and a deep appreciation for this remarkable country.
                   </p>
                 </div>
               </section>
@@ -594,13 +688,13 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
 
               {/* Best Season */}
               <section className="mb-6 md:mb-12">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Visit</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Visit Nepal</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4">
                   <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
                         <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h4>
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Pleasant temperatures, blooming rhododendrons, and clear mountain views. Ideal for all destinations with excellent wildlife viewing in Chitwan.
@@ -611,7 +705,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                   <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h4>
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Crystal-clear skies, perfect temperatures, and vibrant festivals including Dashain and Tihar. Peak season for mountain views and cultural experiences.
@@ -623,7 +717,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
                         <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-amber-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h4>
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Crisp clear air, excellent mountain views, and cool sunny days. Good for sightseeing with fewer crowds. Chitwan remains pleasant for wildlife viewing.
@@ -646,6 +740,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                     onClick={() =>
                       setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
                     }
+                    aria-label={expandedDays.length === itinerary.length ? "Collapse all itinerary days" : "Expand all itinerary days"}
                   >
                     {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
                   </Button>
@@ -663,13 +758,14 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                         <button
                           className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
                           onClick={() => toggleDay(day.day)}
+                          aria-label={`Toggle day ${day.day} itinerary details`}
                         >
                           <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
                             <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
                             <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
+                            <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h3>
                             <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
                               <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
                                 <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
@@ -718,7 +814,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
 
               {/* Includes / Excludes */}
               <section className="mb-6 md:mb-12" id="includes">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included in This Nepal Tour</h2>
                 <div className="grid md:grid-cols-2 gap-3 md:gap-6">
                   <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-6">
@@ -771,7 +867,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
 
               {/* Photo Gallery */}
               <section className="mb-6 md:mb-12" id="gallery">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery - Nepal's Diverse Landscapes</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
                   {gallery.map((image, i) => (
                     <div
@@ -784,6 +880,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
                         sizes="(max-width: 768px) 50vw, 33vw"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
@@ -797,7 +894,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
 
               {/* FAQ Section */}
               <section className="mb-6 md:mb-12" id="faq">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions About Nepal Tours</h2>
                 <div className="space-y-2 md:space-y-4">
                   {[
                     {
@@ -827,7 +924,7 @@ export default function KathmanduPokharaLumbiniChitwanTourPage() {
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
                       <CardContent className="p-2 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
+                        <h3 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h3>
                         <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
                       </CardContent>
                     </Card>

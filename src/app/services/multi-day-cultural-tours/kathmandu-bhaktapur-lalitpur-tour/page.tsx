@@ -138,32 +138,32 @@ const excludes = [
 const gallery = [
   {
     src: "/images/used/monkey_temple.webp",
-    alt: "Swayambhunath Stupa",
+    alt: "Swayambhunath Stupa (Monkey Temple) with all-seeing eyes of Buddha, a UNESCO World Heritage Site in Kathmandu Valley",
     caption: "Swayambhunath Stupa (Monkey Temple) with all-seeing eyes of Buddha",
   },
   {
     src: "/images/used/bhaktapur-2.webp",
-    alt: "Bhaktapur Durbar Square",
+    alt: "Bhaktapur Durbar Square with Nyatapola Temple, UNESCO World Heritage Site showcasing medieval Newari architecture",
     caption: "Bhaktapur Durbar Square with Nyatapola Temple",
   },
   {
     src: "/images/used/patan-1.webp",
-    alt: "Patan Durbar Square",
+    alt: "Patan Durbar Square - City of Fine Arts with ancient royal palace and Krishna Temple in Lalitpur",
     caption: "Patan Durbar Square - City of Fine Arts",
   },
   {
     src: "/images/used/nepal-stupa.webp",
-    alt: "Boudhanath Stupa",
+    alt: "Boudhanath Stupa - massive Buddhist stupa and center of Tibetan Buddhism in Nepal, UNESCO World Heritage Site",
     caption: "Boudhanath Stupa - Center of Tibetan Buddhism",
   },
   {
     src: "/images/used/pashupati-1.webp",
-    alt: "Pashupatinath Temple",
+    alt: "Pashupatinath Temple on the banks of Bagmati River, sacred Hindu temple dedicated to Lord Shiva",
     caption: "Pashupatinath Temple on the banks of Bagmati River",
   },
   {
     src: "/images/used/bhaktapur-4.webp",
-    alt: "Pottery Square Bhaktapur",
+    alt: "Traditional potters at work in Bhaktapur's Pottery Square, preserving centuries-old Newari craftsmanship",
     caption: "Traditional potters at work in Bhaktapur's Pottery Square",
   },
 ];
@@ -175,6 +175,73 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
   
   // Tour name constant for auto-fill functionality
   const tourName = "Kathmandu, Bhaktapur & Lalitpur Heritage Tour";
+
+  // Schema.org structured data for Tour/Product
+  const tourSchema = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": "Kathmandu, Bhaktapur & Lalitpur Heritage Tour - 6 Days",
+    "description": "Explore the cultural heart of Nepal through its three ancient royal cities—Kathmandu, Bhaktapur, and Lalitpur. Visit 7 UNESCO World Heritage Sites including Pashupatinath Temple, Boudhanath Stupa, Swayambhunath, and the Durbar Squares of Kathmandu, Patan, and Bhaktapur.",
+    "duration": "P6D",
+    "offers": {
+      "@type": "Offer",
+      "price": "750",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-01-01"
+    },
+    "itinerary": {
+      "@type": "Itinerary",
+      "numberOfDays": 6
+    },
+    "provider": {
+      "@type": "TravelAgency",
+      "name": "Himkala Adventure Pvt. Ltd.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Thamel, Lekhnath Marga",
+        "addressLocality": "Kathmandu",
+        "addressCountry": "Nepal"
+      },
+      "telephone": "+9779841376470",
+      "email": "info@himkalaadventure.com",
+      "url": "https://www.himkalaadventure.com"
+    },
+    "touristType": ["Culture Enthusiasts", "History Buffs", "Photographers", "Heritage Travelers"],
+    "tourDifficulty": "Easy",
+    "touristAttraction": [
+      {
+        "@type": "TouristAttraction",
+        "name": "Kathmandu Durbar Square",
+        "description": "Ancient royal palace complex and UNESCO World Heritage Site in Kathmandu"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Swayambhunath Stupa",
+        "description": "Ancient Buddhist stupa on a hilltop overlooking Kathmandu Valley"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Pashupatinath Temple",
+        "description": "Sacred Hindu temple complex on the banks of Bagmati River"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Boudhanath Stupa",
+        "description": "One of the largest spherical stupas in South Asia and center of Tibetan Buddhism"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Patan Durbar Square",
+        "description": "Medieval royal palace square with finest Newari architecture in Lalitpur"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Bhaktapur Durbar Square",
+        "description": "Best-preserved medieval city in Nepal with Nyatapola Temple and Pottery Square"
+      }
+    ]
+  };
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -202,6 +269,12 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(tourSchema) }}
+      />
+
       {/* Mobile Navigation Drawer */}
       {showMobileNav && (
         <div className="lg:hidden fixed inset-0 z-50">
@@ -216,6 +289,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                 <button 
                   onClick={() => setShowMobileNav(false)}
                   className="p-2 rounded-lg hover:bg-slate-100"
+                  aria-label="Close navigation menu"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -248,6 +322,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                     size="sm"
                     className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
                     onClick={() => handleShare("facebook")}
+                    aria-label="Share on Facebook"
                   >
                     <Facebook className="w-4 h-4" />
                   </Button>
@@ -255,6 +330,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                     size="sm"
                     className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
                     onClick={() => handleShare("twitter")}
+                    aria-label="Share on Twitter"
                   >
                     <Twitter className="w-4 h-4" />
                   </Button>
@@ -262,6 +338,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                     size="sm"
                     className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
                     onClick={handleCopyLink}
+                    aria-label="Copy link to clipboard"
                   >
                     {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                   </Button>
@@ -277,12 +354,13 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/used/durbar_square.webp"
-            alt="Kathmandu Valley Heritage Tour"
+            alt="Kathmandu Durbar Square UNESCO World Heritage Site with ancient temples and royal palace in Kathmandu Valley"
             fill
             className="object-cover"
             priority
             quality={85}
             sizes="100vw"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
@@ -385,7 +463,8 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                       <a 
                         href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${tourName}.`)}`}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer nofollow"
+                        aria-label="Contact via WhatsApp"
                       >
                         <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
                           <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
@@ -440,6 +519,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                           size="sm"
                           className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={() => handleShare("facebook")}
+                          aria-label="Share on Facebook"
                         >
                           <Facebook className="w-3 h-3 md:w-4 md:h-4" />
                         </Button>
@@ -447,6 +527,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                           size="sm"
                           className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={() => handleShare("twitter")}
+                          aria-label="Share on Twitter"
                         >
                           <Twitter className="w-3 h-3 md:w-4 md:h-4" />
                         </Button>
@@ -455,6 +536,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                           variant="outline"
                           className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={handleCopyLink}
+                          aria-label="Copy link to clipboard"
                         >
                           {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
                         </Button>
@@ -473,6 +555,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                   size="sm"
                   className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("facebook")}
+                  aria-label="Share on Facebook"
                 >
                   <Facebook className="w-3 h-3 mr-1" /> Share
                 </Button>
@@ -480,6 +563,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                   size="sm"
                   className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("twitter")}
+                  aria-label="Share on Twitter"
                 >
                   <Twitter className="w-3 h-3 mr-1" /> Tweet
                 </Button>
@@ -488,6 +572,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                   variant="outline"
                   className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={handleCopyLink}
+                  aria-label="Copy link to clipboard"
                 >
                   {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
                 </Button>
@@ -495,16 +580,16 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
 
               {/* Overview */}
               <section className="mb-6 md:mb-12" id="overview">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview of Kathmandu Valley Heritage Tour</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The <strong>Kathmandu, Bhaktapur & Lalitpur Heritage Tour</strong> is a comprehensive 6-day journey through the cultural heart of Nepal, exploring the three ancient royal cities of the Kathmandu Valley. This tour offers an immersive experience into the rich history, stunning architecture, and living traditions of the Newari people, who have inhabited this valley for over two millennia.
+                    The <strong>Kathmandu, Bhaktapur & Lalitpur Heritage Tour</strong> is a comprehensive 6-day journey through the cultural heart of Nepal, exploring the three ancient royal cities of the Kathmandu Valley. This <strong>Nepal cultural tour</strong> offers an immersive experience into the rich history, stunning architecture, and living traditions of the Newari people, who have inhabited this valley for over two millennia.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The Kathmandu Valley is home to seven UNESCO World Heritage Sites, all of which are included in this tour. From the sacred Hindu temple of Pashupatinath on the banks of the Bagmati River to the massive Buddhist stupa of Boudhanath, from the medieval palace squares of Kathmandu, Patan, and Bhaktapur to the hilltop monkey temple of Swayambhunath—each site tells a unique story of Nepal's syncretic culture where Hinduism and Buddhism have coexisted harmoniously for centuries.
+                    The Kathmandu Valley is home to seven UNESCO World Heritage Sites, all of which are included in this <strong>heritage walking tour</strong>. From the sacred Hindu temple of Pashupatinath on the banks of the Bagmati River to the massive Buddhist stupa of Boudhanath, from the medieval palace squares of Kathmandu, Patan, and Bhaktapur to the hilltop monkey temple of Swayambhunath—each site tells a unique story of Nepal's syncretic culture where Hinduism and Buddhism have coexisted harmoniously for centuries.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    Your expert guide will bring these ancient stones to life with stories of kings and gods, tales of craftsmanship and devotion, and insights into the living traditions that continue today. You'll witness artisans at work, explore narrow cobblestone streets, sample traditional Newari cuisine, and experience the warm hospitality of the Nepali people. This tour is perfect for culture enthusiasts, history buffs, photographers, and anyone seeking to understand the soul of Nepal.
+                    Your expert guide will bring these ancient stones to life with stories of kings and gods, tales of craftsmanship and devotion, and insights into the living traditions that continue today. You'll witness artisans at work, explore narrow cobblestone streets, sample traditional Newari cuisine, and experience the warm hospitality of the Nepali people. This <strong>Kathmandu Valley UNESCO tour</strong> is perfect for culture enthusiasts, history buffs, photographers, and anyone seeking to understand the soul of Nepal.
                   </p>
                 </div>
               </section>
@@ -543,7 +628,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
                         <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h4>
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Pleasant temperatures and blooming flowers. Clear mornings for photography. Ideal for exploring heritage sites comfortably.
@@ -554,7 +639,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                   <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h4>
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Crystal-clear skies, perfect temperatures, and vibrant festivals including Dashain and Tihar. Peak cultural season.
@@ -566,7 +651,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
                         <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-amber-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h4>
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Crisp clear air, cool sunny days, and fewer crowds. Excellent for photography with clear mountain views from the valley.
@@ -589,6 +674,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                     onClick={() =>
                       setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
                     }
+                    aria-label={expandedDays.length === itinerary.length ? "Collapse all itinerary days" : "Expand all itinerary days"}
                   >
                     {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
                   </Button>
@@ -606,13 +692,14 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                         <button
                           className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
                           onClick={() => toggleDay(day.day)}
+                          aria-label={`Toggle day ${day.day} itinerary details`}
                         >
                           <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
                             <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
                             <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
+                            <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h3>
                             <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
                               <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
                                 <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
@@ -661,7 +748,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
 
               {/* Includes / Excludes */}
               <section className="mb-6 md:mb-12" id="includes">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included in This Nepal Heritage Tour</h2>
                 <div className="grid md:grid-cols-2 gap-3 md:gap-6">
                   <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-6">
@@ -714,7 +801,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
 
               {/* Photo Gallery */}
               <section className="mb-6 md:mb-12" id="gallery">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery - Kathmandu Valley Heritage Sites</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
                   {gallery.map((image, i) => (
                     <div
@@ -727,6 +814,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
                         sizes="(max-width: 768px) 50vw, 33vw"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
@@ -740,7 +828,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
 
               {/* FAQ Section */}
               <section className="mb-6 md:mb-12" id="faq">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions About Kathmandu Valley Tour</h2>
                 <div className="space-y-2 md:space-y-4">
                   {[
                     {
@@ -770,7 +858,7 @@ export default function KathmanduBhaktapurLalitpurTourPage() {
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
                       <CardContent className="p-2 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
+                        <h3 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h3>
                         <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
                       </CardContent>
                     </Card>

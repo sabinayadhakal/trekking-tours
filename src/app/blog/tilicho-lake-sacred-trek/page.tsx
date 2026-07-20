@@ -137,29 +137,67 @@ export default function BlogPostPage() {
     setShowMobileTOC(false);
   };
 
+  // Schema.org BlogPosting structured data
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": blogPost.title,
+    "description": blogPost.excerpt,
+    "image": `https://www.himkalaadventure.com${blogPost.heroImage}`,
+    "datePublished": "2026-05-20",
+    "dateModified": "2026-05-20",
+    "author": {
+      "@type": "Person",
+      "name": blogPost.author.name
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Himkala Adventure Pvt. Ltd.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.himkalaadventure.com/images/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.himkalaadventure.com/blog/tilicho-lake-sacred-trek"
+    },
+    "keywords": "Tilicho Lake, Annapurna Circuit trek, Nepal trekking, Hindu pilgrimage, Kakbhusundi, highest lake Nepal, sacred lake Nepal, Annapurna trek",
+    "articleSection": "Trekking & Pilgrimage",
+    "wordCount": "2200"
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
+
       {/* Mobile Table of Contents Drawer */}
       {showMobileTOC && (
         <div className="lg:hidden fixed inset-0 z-50">
           <div 
             className="absolute inset-0 bg-black/50"
             onClick={() => setShowMobileTOC(false)}
+            aria-label="Close table of contents"
           />
           <div className="absolute right-0 top-0 bottom-0 w-4/5 max-w-sm bg-white shadow-xl">
             <div className="p-6 h-full overflow-y-auto">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-bold text-lg text-[#0f2940] flex items-center gap-2">
-                  <Menu className="w-5 h-5 text-[#2d6a8a]" /> Contents
+                  <Menu className="w-5 h-5 text-[#2d6a8a]" aria-hidden="true" /> Contents
                 </h3>
                 <button 
                   onClick={() => setShowMobileTOC(false)}
                   className="p-2 rounded-lg hover:bg-slate-100"
+                  aria-label="Close table of contents"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
-              <nav className="space-y-2">
+              <nav className="space-y-2" aria-label="Table of contents">
                 {tableOfContents.map((item) => (
                   <button
                     key={item.id}
@@ -169,6 +207,7 @@ export default function BlogPostPage() {
                         ? "bg-[#C5E0ED]/30 text-[#0f2940] font-medium"
                         : "text-slate-600 hover:bg-[#f0f7fa] hover:text-[#2d6a8a]"
                     }`}
+                    aria-current={activeSection === item.id ? "location" : undefined}
                   >
                     {item.title}
                   </button>
@@ -180,22 +219,25 @@ export default function BlogPostPage() {
                     size="sm"
                     className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
                     onClick={() => handleShare("facebook")}
+                    aria-label="Share on Facebook"
                   >
-                    <Facebook className="w-4 h-4" />
+                    <Facebook className="w-4 h-4" aria-hidden="true" />
                   </Button>
                   <Button
                     size="sm"
                     className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
                     onClick={() => handleShare("twitter")}
+                    aria-label="Share on Twitter"
                   >
-                    <Twitter className="w-4 h-4" />
+                    <Twitter className="w-4 h-4" aria-hidden="true" />
                   </Button>
                   <Button
                     size="sm"
                     className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
                     onClick={handleCopyLink}
+                    aria-label="Copy link to clipboard"
                   >
-                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
                   </Button>
                 </div>
               </div>
@@ -209,7 +251,7 @@ export default function BlogPostPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src={blogPost.heroImage}
-            alt={blogPost.title}
+            alt="Tilicho Lake at 4,919 meters in the Annapurna region, Nepal - sacred Himalayan lake and trekking destination"
             fill
             className="object-cover object-center"
             priority
@@ -223,7 +265,7 @@ export default function BlogPostPage() {
         <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
           <div className="max-w-4xl mx-auto text-center w-full">
             <Badge className="mb-4 bg-white/20 backdrop-blur-sm text-white border-white/30 py-1.5 px-3 text-xs font-medium">
-              <Tag className="w-3 h-3 mr-1.5" /> {blogPost.category}
+              <Tag className="w-3 h-3 mr-1.5" aria-hidden="true" /> {blogPost.category}
             </Badge>
             
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-white leading-tight mb-4 md:mb-6 px-2">
@@ -238,7 +280,7 @@ export default function BlogPostPage() {
               <div className="flex flex-col sm:flex-row items-center gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#C5E0ED] bg-white/10 flex items-center justify-center">
-                    <User className="w-5 h-5 text-white" />
+                    <User className="w-5 h-5 text-white" aria-hidden="true" />
                   </div>
                   <div className="text-center sm:text-left">
                     <p className="font-bold text-white text-sm sm:text-base">{blogPost.author.name}</p>
@@ -246,11 +288,11 @@ export default function BlogPostPage() {
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="flex items-center gap-1.5">
-                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-[#C5E0ED]" /> 
+                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-[#C5E0ED]" aria-hidden="true" /> 
                     <span>{blogPost.date}</span>
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-[#C5E0ED]" /> 
+                    <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-[#C5E0ED]" aria-hidden="true" /> 
                     {blogPost.readTime}
                   </span>
                 </div>
@@ -269,10 +311,10 @@ export default function BlogPostPage() {
               <div className="sticky top-24 space-y-6">
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-2xl overflow-hidden">
                   <CardContent className="p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-4 flex items-center gap-2">
-                      <Mountain className="w-4 h-4 text-[#2d6a8a]" /> Table of Contents
-                    </h3>
-                    <nav className="space-y-2">
+                    <h2 className="font-bold text-[#0f2940] mb-4 flex items-center gap-2 text-base">
+                      <Mountain className="w-4 h-4 text-[#2d6a8a]" aria-hidden="true" /> Table of Contents
+                    </h2>
+                    <nav className="space-y-2" aria-label="Table of contents">
                       {tableOfContents.map((item) => (
                         <button
                           key={item.id}
@@ -282,6 +324,7 @@ export default function BlogPostPage() {
                               ? "bg-[#C5E0ED]/30 text-[#0f2940] font-medium"
                               : "text-slate-600 hover:bg-[#f0f7fa] hover:text-[#2d6a8a]"
                           }`}
+                          aria-current={activeSection === item.id ? "location" : undefined}
                         >
                           {item.title}
                         </button>
@@ -292,30 +335,33 @@ export default function BlogPostPage() {
 
                 <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-2xl overflow-hidden">
                   <CardContent className="p-6">
-                    <h3 className="font-bold text-white mb-4 flex items-center gap-2">
-                      <Share2 className="w-4 h-4 text-[#C5E0ED]" /> Share Article
+                    <h3 className="font-bold text-white mb-4 flex items-center gap-2 text-base">
+                      <Share2 className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" /> Share Article
                     </h3>
                     <div className="flex gap-2">
                       <Button
                         size="sm"
                         className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-xl"
                         onClick={() => handleShare("facebook")}
+                        aria-label="Share on Facebook"
                       >
-                        <Facebook className="w-4 h-4" />
+                        <Facebook className="w-4 h-4" aria-hidden="true" />
                       </Button>
                       <Button
                         size="sm"
                         className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-xl"
                         onClick={() => handleShare("twitter")}
+                        aria-label="Share on Twitter"
                       >
-                        <Twitter className="w-4 h-4" />
+                        <Twitter className="w-4 h-4" aria-hidden="true" />
                       </Button>
                       <Button
                         size="sm"
                         className="flex-1 bg-white/10 hover:bg-white/20 text-white rounded-xl"
                         onClick={handleCopyLink}
+                        aria-label="Copy link to clipboard"
                       >
-                        {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                        {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
                       </Button>
                     </div>
                   </CardContent>
@@ -324,13 +370,13 @@ export default function BlogPostPage() {
                 {/* Himkala Adventure Callout */}
                 <Card className="bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 rounded-2xl overflow-hidden">
                   <CardContent className="p-6 text-center">
-                    <Mountain className="w-8 h-8 text-amber-600 mx-auto mb-3" />
-                    <h3 className="font-bold text-amber-800 mb-2">Trek to Tilicho Lake with Us</h3>
+                    <Mountain className="w-8 h-8 text-amber-600 mx-auto mb-3" aria-hidden="true" />
+                    <h3 className="font-bold text-amber-800 mb-2 text-base">Trek to Tilicho Lake with Us</h3>
                     <p className="text-amber-700 text-sm mb-4">
                       Let Himkala Adventure guide you on this sacred journey to the world's highest lake.
                     </p>
                     <Link href="/services/trekking/annapurna-circuit-trek-with-tilicho-lake" className="block">
-                      <Button className="bg-amber-600 hover:bg-amber-700 text-white w-full rounded-xl">
+                      <Button className="bg-amber-600 hover:bg-amber-700 text-white w-full rounded-xl" aria-label="Book your Tilicho Lake trek with Himkala Adventure">
                         Plan My Tilicho Trek
                       </Button>
                     </Link>
@@ -359,13 +405,14 @@ export default function BlogPostPage() {
                 <div className="relative h-[250px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
                   <Image
                     src="/images/used/tilicho-lake-1.webp"
-                    alt="Tilicho Lake with dramatic mountain backdrop in Annapurna region"
+                    alt="Tilicho Lake reflecting the surrounding Himalayan mountains in Annapurna region, Nepal - sacred lake at 4,919 meters"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 80vw"
+                    loading="lazy"
                   />
                   <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
-                    <Camera className="w-3 h-3" /> Tilicho Lake reflecting the surrounding Himalayas at 4,919 meters
+                    <Camera className="w-3 h-3" aria-hidden="true" /> Tilicho Lake reflecting the surrounding Himalayas at 4,919 meters
                   </div>
                 </div>
 
@@ -373,7 +420,7 @@ export default function BlogPostPage() {
                 <section id="religious-significance" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                     </span>
                     The Sacred Legend of Kakbhusundi
                   </h2>
@@ -392,7 +439,7 @@ export default function BlogPostPage() {
                 <section id="ramayana-connection" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                     </span>
                     The Ramayana Connection & Garuda
                   </h2>
@@ -408,7 +455,7 @@ export default function BlogPostPage() {
                   
                   <div className="bg-green-50 border border-green-200 rounded-xl p-4 md:p-5 mt-4">
                     <div className="flex gap-3">
-                      <Sparkles className="w-5 h-5 text-green-600 shrink-0" />
+                      <Sparkles className="w-5 h-5 text-green-600 shrink-0" aria-hidden="true" />
                       <p className="text-green-800 text-sm italic leading-relaxed">
                         <span className="font-bold">The Immortal Crow's Blessing:</span> Pilgrims believe that Kakbhusundi grants three wishes to those who reach Tilicho Lake with pure hearts. One for oneself, one for family, and one for all living beings.
                       </p>
@@ -420,7 +467,7 @@ export default function BlogPostPage() {
                 <section id="other-significance" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                     </span>
                     Other Religious Significances
                   </h2>
@@ -436,10 +483,10 @@ export default function BlogPostPage() {
                     ].map((item, i) => (
                       <div key={i} className="flex gap-3 p-3 bg-[#f8fbfc] rounded-lg border border-[#C5E0ED]/20">
                         <div className="w-6 h-6 bg-[#2d6a8a]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                          <ChevronRight className="w-3 h-3 text-[#2d6a8a]" />
+                          <ChevronRight className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-[#0f2940] text-sm md:text-base">{item.title}</h4>
+                          <h3 className="font-bold text-[#0f2940] text-sm md:text-base">{item.title}</h3>
                           <p className="text-slate-600 text-xs md:text-sm mt-0.5">{item.desc}</p>
                         </div>
                       </div>
@@ -451,7 +498,7 @@ export default function BlogPostPage() {
                 <section id="trek-overview" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                     </span>
                     Trek Overview & Duration
                   </h2>
@@ -460,7 +507,7 @@ export default function BlogPostPage() {
                   </p>
                   
                   <div className="bg-[#f0f7fa] rounded-xl p-5 mb-4">
-                    <h4 className="font-bold text-[#0f2940] mb-2">Two Trek Options:</h4>
+                    <h3 className="font-bold text-[#0f2940] mb-2 text-sm md:text-base">Two Trek Options:</h3>
                     <div className="space-y-3">
                       <div>
                         <span className="font-bold text-[#2d6a8a]">Option 1: Tilicho Lake Trek Only (Without Thorong La)</span>
@@ -475,9 +522,9 @@ export default function BlogPostPage() {
 
                   <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mt-4">
                     <div className="flex gap-3">
-                      <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
+                      <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" aria-hidden="true" />
                       <div>
-                        <h4 className="font-bold text-amber-800 mb-1">Important Note on Acclimatization</h4>
+                        <h3 className="font-bold text-amber-800 mb-1 text-sm md:text-base">Important Note on Acclimatization</h3>
                         <p className="text-amber-700 text-sm leading-relaxed">
                           The trail to Tilicho Lake is at very high altitude. Proper acclimatization is essential. Never rush the journey. The side trail from Khangsar to Tilicho Base Camp involves a steep climb along a narrow, exposed path that can be dangerous in bad weather. Always check conditions before proceeding.
                         </p>
@@ -490,7 +537,7 @@ export default function BlogPostPage() {
                 <section id="itinerary" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                     </span>
                     Detailed Itinerary (Starting from Chame)
                   </h2>
@@ -517,7 +564,7 @@ export default function BlogPostPage() {
                           <span className="text-xs font-bold text-[#2d6a8a] uppercase tracking-wider">{item.day}</span>
                         </div>
                         <div className="flex-1">
-                          <h4 className="font-bold text-[#0f2940] text-sm md:text-base">{item.route}</h4>
+                          <h3 className="font-bold text-[#0f2940] text-sm md:text-base">{item.route}</h3>
                           <p className="text-slate-600 text-xs md:text-sm mt-0.5">{item.desc}</p>
                         </div>
                         <div className="mt-1">
@@ -532,14 +579,14 @@ export default function BlogPostPage() {
                 <section id="packing-list" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                     </span>
                     Complete Packing List for Tilicho Lake
                   </h2>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <h4 className="font-bold text-[#0f2940] mb-3 text-sm md:text-base">Clothing</h4>
+                      <h3 className="font-bold text-[#0f2940] mb-3 text-sm md:text-base">Clothing</h3>
                       <ul className="space-y-1.5">
                         {[
                           "Down jacket (-20°C rated)",
@@ -552,14 +599,14 @@ export default function BlogPostPage() {
                           "Wool hiking socks (4-5 pairs)",
                         ].map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-slate-600 text-sm">
-                            <ChevronRight className="w-3 h-3 text-[#2d6a8a] mt-0.5 flex-shrink-0" />
+                            <ChevronRight className="w-3 h-3 text-[#2d6a8a] mt-0.5 flex-shrink-0" aria-hidden="true" />
                             <span>{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-bold text-[#0f2940] mb-3 text-sm md:text-base">Gear & Essentials</h4>
+                      <h3 className="font-bold text-[#0f2940] mb-3 text-sm md:text-base">Gear & Essentials</h3>
                       <ul className="space-y-1.5">
                         {[
                           "Sturdy trekking boots (broken in, waterproof)",
@@ -574,7 +621,7 @@ export default function BlogPostPage() {
                           "Portable charger/power bank",
                         ].map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-slate-600 text-sm">
-                            <ChevronRight className="w-3 h-3 text-[#2d6a8a] mt-0.5 flex-shrink-0" />
+                            <ChevronRight className="w-3 h-3 text-[#2d6a8a] mt-0.5 flex-shrink-0" aria-hidden="true" />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -584,7 +631,7 @@ export default function BlogPostPage() {
 
                   <div className="bg-red-50 border border-red-200 rounded-xl p-4 md:p-5 mt-6">
                     <div className="flex gap-3">
-                      <AlertTriangle className="w-5 h-5 text-red-600 shrink-0" />
+                      <AlertTriangle className="w-5 h-5 text-red-600 shrink-0" aria-hidden="true" />
                       <p className="text-red-800 text-sm italic leading-relaxed">
                         <span className="font-bold">Special Note for Tilicho:</span> The trail from Khangsar to Tilicho Base Camp is known for frequent landslides. Bring a helmet if possible, and always check with locals about trail conditions. Trekking poles are absolutely essential for stability.
                       </p>
@@ -596,7 +643,7 @@ export default function BlogPostPage() {
                 <section id="best-time" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                     </span>
                     Best Time to Visit Tilicho Lake
                   </h2>
@@ -613,10 +660,10 @@ export default function BlogPostPage() {
                     ].map((item, i) => (
                       <div key={i} className="flex gap-3 p-3 bg-[#f8fbfc] rounded-lg border border-[#C5E0ED]/20">
                         <div className="w-6 h-6 bg-[#2d6a8a]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                          <ChevronRight className="w-3 h-3 text-[#2d6a8a]" />
+                          <ChevronRight className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-[#0f2940] text-sm md:text-base">{item.season}</h4>
+                          <h3 className="font-bold text-[#0f2940] text-sm md:text-base">{item.season}</h3>
                           <p className="text-slate-600 text-xs md:text-sm mt-0.5">{item.desc}</p>
                         </div>
                       </div>
@@ -627,7 +674,7 @@ export default function BlogPostPage() {
                 {/* Quote Block */}
                 <div className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] rounded-xl md:rounded-2xl p-6 md:p-8 my-8 md:my-12 relative overflow-hidden">
                   <div className="absolute top-3 left-3 md:top-4 md:left-4 opacity-20">
-                    <Quote className="w-12 h-12 md:w-16 md:h-16 text-[#C5E0ED]" />
+                    <Quote className="w-12 h-12 md:w-16 md:h-16 text-[#C5E0ED]" aria-hidden="true" />
                   </div>
                   <blockquote className="relative z-10">
                     <p className="text-base md:text-lg lg:text-xl font-serif text-white leading-relaxed mb-3 md:mb-4 italic">
@@ -635,7 +682,7 @@ export default function BlogPostPage() {
                     </p>
                     <footer className="flex items-center gap-3">
                       <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-[#C5E0ED] flex items-center justify-center bg-white/10">
-                        <User className="w-5 h-5 text-[#C5E0ED]" />
+                        <User className="w-5 h-5 text-[#C5E0ED]" aria-hidden="true" />
                       </div>
                       <div>
                         <cite className="font-bold text-[#C5E0ED] not-italic text-sm md:text-base">Samir Lama, Pilgrim & Trekker</cite>
@@ -649,7 +696,7 @@ export default function BlogPostPage() {
                 <section id="conclusion" className="mb-8 md:mb-12">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
                     <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                     </span>
                     A Journey of Faith & Adventure
                   </h2>
@@ -669,7 +716,7 @@ export default function BlogPostPage() {
                   <CardContent className="p-4 md:p-6 lg:p-8">
                     <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center md:items-start">
                       <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden border-4 border-white shadow-lg flex items-center justify-center bg-[#2d6a8a]/10">
-                        <User className="w-8 h-8 text-[#2d6a8a]" />
+                        <User className="w-8 h-8 text-[#2d6a8a]" aria-hidden="true" />
                       </div>
                       <div className="text-center md:text-left">
                         <p className="text-xs font-bold text-[#2d6a8a] uppercase tracking-wider mb-1 md:mb-2">Written By</p>
@@ -677,10 +724,11 @@ export default function BlogPostPage() {
                         <a 
                           href="https://www.instagram.com/sabinayadhakal/" 
                           target="_blank" 
-                          rel="noopener noreferrer"
+                          rel="noopener noreferrer nofollow"
                           className="inline-flex items-center gap-2 text-sm text-[#2d6a8a] hover:text-[#1a4a6a] transition-colors mt-2"
+                          aria-label="Follow Sabinaya Dhakal on Instagram"
                         >
-                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.667.072 4.947.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.667-.014 4.947-.072 4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                           </svg>
                           @sabinayadhakal
@@ -698,29 +746,32 @@ export default function BlogPostPage() {
                         size="sm"
                         className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
                         onClick={() => handleShare("facebook")}
+                        aria-label="Share on Facebook"
                       >
-                        <Facebook className="w-4 h-4 mr-2" /> Share
+                        <Facebook className="w-4 h-4 mr-2" aria-hidden="true" /> Share
                       </Button>
                       <Button
                         size="sm"
                         className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
                         onClick={() => handleShare("twitter")}
+                        aria-label="Share on Twitter"
                       >
-                        <Twitter className="w-4 h-4 mr-2" /> Tweet
+                        <Twitter className="w-4 h-4 mr-2" aria-hidden="true" /> Tweet
                       </Button>
                     </div>
                     <Button
                       variant="outline"
                       className="w-full border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/10"
                       onClick={handleCopyLink}
+                      aria-label="Copy link to clipboard"
                     >
                       {copied ? (
                         <>
-                          <Check className="w-4 h-4 mr-2" /> Link Copied!
+                          <Check className="w-4 h-4 mr-2" aria-hidden="true" /> Link Copied!
                         </>
                       ) : (
                         <>
-                          <Copy className="w-4 h-4 mr-2" /> Copy Link
+                          <Copy className="w-4 h-4 mr-2" aria-hidden="true" /> Copy Link
                         </>
                       )}
                     </Button>
@@ -760,6 +811,7 @@ export default function BlogPostPage() {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading="lazy"
                     />
                   </div>
                   <CardContent className="p-4 md:p-6">
@@ -768,10 +820,10 @@ export default function BlogPostPage() {
                     </h4>
                     <div className="flex items-center gap-3 md:gap-4 text-xs text-slate-500">
                       <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" /> {post.date}
+                        <Calendar className="w-3 h-3" aria-hidden="true" /> {post.date}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" /> {post.readTime}
+                        <Clock className="w-3 h-3" aria-hidden="true" /> {post.readTime}
                       </span>
                     </div>
                   </CardContent>

@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import {
   Mountain,
   Calendar,
@@ -255,28 +256,28 @@ const excludes = [
 const gallery = [
   {
     src: "/images/used/tibet-everest.webp",
-    alt: "Mount Everest",
+    alt: "Mount Everest at 8,848m viewed from the Tibetan plateau - the world's highest mountain",
     caption: "Mount Everest (8,848m) from Tibetan Plateau",
   },
   {
     src: "/images/used/tibet-lake-1.webp",
-    alt: "Lake ",
-    caption: "Sacred Lake ",
+    alt: "Sacred Lake Manasarovar at 4,590m - holy lake in Tibet with turquoise waters",
+    caption: "Sacred Lake Manasarovar",
   },
   {
     src: "/images/used/yamdrok-lake.webp",
-    alt: "Yamdrok Lake",
+    alt: "Turquoise Yamdrok Lake at 4,440m - one of Tibet's three sacred lakes",
     caption: "Turquoise Yamdrok Lake",
   },
   {
     src:"/images/used/tibet-1.webp",
-    alt: "Potala Palace",
+    alt: "Potala Palace in Lhasa, Tibet - iconic UNESCO World Heritage site",
     caption: "Potala Palace, Lhasa",
   },
  
   {
     src: "/images/used/tibet-plateau.webp",
-    alt: "Tibetan Plateau",
+    alt: "Vast Tibetan plateau landscape with mountain views - the Roof of the World",
     caption: "Vast Tibetan Plateau Landscape",
   },
  
@@ -400,6 +401,10 @@ export default function TibetanPlateauAdventurePage() {
 
   // Tour name constant for auto-fill functionality
   const tourName = "12-Day Tibetan Plateau Adventure";
+  const canonicalUrl = "https://www.himkalaadventure.com/tours/tibetan-plateau-adventure";
+  const pageTitle = "12-Day Tibetan Plateau Adventure - Lhasa to Kailash Tour";
+  const pageDescription = "12-Day Tibetan Plateau Adventure: Epic overland journey from Lhasa to Everest Base Camp and Lake Manasarovar. Visit sacred lakes and Mount Kailash. Book your Tibet adventure now!";
+  const imageUrl = "https://www.himkalaadventure.com/images/used/tibet-plateau.webp";
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -425,7 +430,127 @@ export default function TibetanPlateauAdventurePage() {
     );
   };
 
+  // Schema.org Organization schema
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Himkala Adventure Pvt. Ltd.",
+    "description": "Expert-guided Tibetan Plateau Adventures. Epic overland journeys from Lhasa to Everest Base Camp and Lake Manasarovar with certified guides.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Thamel, Lekhnath Marga",
+      "addressLocality": "Kathmandu",
+      "addressCountry": "Nepal"
+    },
+    "telephone": "+977 9841376470",
+    "email": "info@himkalaadventure.com",
+    "url": "https://www.himkalaadventure.com",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 27.7172,
+      "longitude": 85.3240
+    }
+  };
+
+  // Schema.org Product/Tour schema
+  const tourSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "12-Day Tibetan Plateau Adventure",
+    "description": pageDescription,
+    "image": imageUrl,
+    "url": canonicalUrl,
+    "brand": {
+      "@type": "Organization",
+      "name": "Himkala Adventure Pvt. Ltd."
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "2950",
+      "priceValidUntil": "2026-12-31",
+      "availability": "https://schema.org/InStock",
+      "url": canonicalUrl,
+      "validFrom": "2024-01-01"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "58"
+    },
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Max Altitude",
+        "value": "5,200m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Everest Base Camp Altitude",
+        "value": "5,200m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Duration",
+        "value": "12 Days / 11 Nights"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Difficulty",
+        "value": "Challenging"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Region",
+        "value": "Tibet"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Best Season",
+        "value": "Jun-Oct"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Transport",
+        "value": "4WD Land Cruiser"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Highlights",
+        "value": "Everest Base Camp, Lake Manasarovar, Mount Kailash, Yamdrok Lake, Potala Palace, Sakya Monastery"
+      }
+    ]
+  };
+
   return (
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Himkala Adventure" />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={imageUrl} />
+        <meta name="twitter:site" content="@himkalanepal" />
+        <meta name="twitter:creator" content="@himkalanepal" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(tourSchema) }}
+        />
+      </Head>
+
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Mobile Navigation Drawer */}
       {showMobileNav && (
@@ -440,9 +565,10 @@ export default function TibetanPlateauAdventurePage() {
                 <h3 className="font-bold text-lg text-[#0f2940]">Quick Navigation</h3>
                 <button 
                   onClick={() => setShowMobileNav(false)}
-                  className="p-2 rounded-lg hover:bg-slate-100"
+                  className="p-2 rounded-lg hover:bg-slate-100 min-h-[44px] min-w-[44px]"
+                  aria-label="Close navigation menu"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
               
@@ -479,22 +605,25 @@ export default function TibetanPlateauAdventurePage() {
                     size="sm"
                     className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
                     onClick={() => handleShare("facebook")}
+                    aria-label="Share Tibetan Plateau Adventure on Facebook"
                   >
-                    <Facebook className="w-4 h-4" />
+                    <Facebook className="w-4 h-4" aria-hidden="true" />
                   </Button>
                   <Button
                     size="sm"
                     className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
                     onClick={() => handleShare("twitter")}
+                    aria-label="Share Tibetan Plateau Adventure on Twitter"
                   >
-                    <Twitter className="w-4 h-4" />
+                    <Twitter className="w-4 h-4" aria-hidden="true" />
                   </Button>
                   <Button
                     size="sm"
                     className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
                     onClick={handleCopyLink}
+                    aria-label="Copy Tibetan Plateau Adventure link to clipboard"
                   >
-                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
                   </Button>
                 </div>
               </div>
@@ -508,7 +637,7 @@ export default function TibetanPlateauAdventurePage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/used/tibet-plateau.webp"
-            alt="Tibetan Plateau Adventure"
+            alt="Tibetan Plateau Adventure - epic overland journey across the Roof of the World with mountain views"
             fill
             className="object-cover"
             priority
@@ -523,13 +652,13 @@ export default function TibetanPlateauAdventurePage() {
           <div className="max-w-5xl mx-auto text-center w-full">
             <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
               <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MapPin className="w-3 h-3 mr-1" /> Tibet Autonomous Region
+                <MapPin className="w-3 h-3 mr-1" aria-hidden="true" /> Tibet Autonomous Region
               </Badge>
               <Badge className="bg-amber-100 text-amber-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <Route className="w-3 h-3 mr-1" /> Epic Overland Journey
+                <Route className="w-3 h-3 mr-1" aria-hidden="true" /> Epic Overland Journey
               </Badge>
               <Badge className="bg-blue-100 text-blue-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MountainSnow className="w-3 h-3 mr-1" /> 5,200m Highest Point
+                <MountainSnow className="w-3 h-3 mr-1" aria-hidden="true" /> 5,200m Highest Point
               </Badge>
             </div>
             
@@ -559,8 +688,8 @@ export default function TibetanPlateauAdventurePage() {
                 <div className="text-lg font-bold text-[#0f2940]">$2,950</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
-                  <Heart className="w-3 h-3 mr-1" /> Book Now
+                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]" aria-label={`Book ${tourName} now`}>
+                  <Heart className="w-3 h-3 mr-1" aria-hidden="true" /> Book Now
                 </Button>
               </Link>
             </div>
@@ -578,36 +707,36 @@ export default function TibetanPlateauAdventurePage() {
                       <span className="text-white/50 text-sm line-through">$3,250</span>
                       <div className="text-3xl md:text-4xl font-bold text-white mt-1">$2,950</div>
                       <span className="text-white/60 text-sm">per person</span>
-                      <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-xs">Save $300</Badge>
+                      <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $300</Badge>
                     </div>
 
                     <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                         <span>12 Days / 11 Nights</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
-                        <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                        <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                         <span>Best: Jun-Oct</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
-                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                         <span>Group Size: 4-12</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
-                        <Car className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                        <Car className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                         <span>4WD Land Cruiser</span>
                       </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs md:text-sm">
-                        <MountainSnow className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                        <MountainSnow className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                         <span>Max Altitude: 5,200m</span>
                       </div>
                     </div>
 
                     {/* Book Now Button */}
                     <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
-                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-sm md:text-base">
-                        <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Adventure
+                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-sm md:text-base" aria-label={`Book ${tourName}`}>
+                        <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Book This Adventure
                       </Button>
                     </Link>
                     
@@ -615,10 +744,11 @@ export default function TibetanPlateauAdventurePage() {
                     <a 
                       href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${tourName}.`)}`}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noopener noreferrer nofollow"
+                      aria-label="Inquire about Tibetan Plateau Adventure on WhatsApp"
                     >
                       <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-sm md:text-base">
-                        <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
+                        <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> WhatsApp Now
                       </Button>
                     </a>
                   </CardContent>
@@ -628,9 +758,9 @@ export default function TibetanPlateauAdventurePage() {
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
                     <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                      <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
+                      <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Quick Facts
                     </h3>
-                    <div className="space-y-2 text-xs md:text-sm">
+                    <div className="space-y-2 text-[10px] md:text-sm">
                       <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
                         <span className="text-slate-500">Start/End Point</span>
                         <span className="font-medium text-[#0f2940]">Lhasa</span>
@@ -663,9 +793,9 @@ export default function TibetanPlateauAdventurePage() {
                 <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
                     <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                      <Route className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Route Overview
+                      <Route className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Route Overview
                     </h3>
-                    <div className="space-y-2 text-xs md:text-sm max-h-60 overflow-y-auto pr-1">
+                    <div className="space-y-2 text-[10px] md:text-sm max-h-60 overflow-y-auto pr-1">
                       {routeInfo.map((item, index) => (
                         <div key={index} className="flex items-start gap-2 border-b border-[#C5E0ED]/20 last:border-0 pb-1.5 last:pb-0">
                           <div className="w-28 font-medium text-[#0f2940] text-[10px]">{item.segment}</div>
@@ -685,9 +815,9 @@ export default function TibetanPlateauAdventurePage() {
                 <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
                     <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                      <MountainSnow className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Altitude Profile
+                      <MountainSnow className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Altitude Profile
                     </h3>
-                    <div className="space-y-2 text-xs md:text-sm max-h-60 overflow-y-auto pr-1">
+                    <div className="space-y-2 text-[10px] md:text-sm max-h-60 overflow-y-auto pr-1">
                       {altitudeInfo.map((item, index) => (
                         <div key={index} className="flex items-start gap-2 border-b border-[#C5E0ED]/20 last:border-0 pb-1.5 last:pb-0">
                           <div className="w-20 font-medium text-[#0f2940] text-[10px]">{item.location}</div>
@@ -704,7 +834,7 @@ export default function TibetanPlateauAdventurePage() {
                       ))}
                       <div className="mt-2 bg-amber-50 p-2 rounded-lg">
                         <p className="text-amber-700 text-[8px] flex items-start gap-1">
-                          <Info className="w-2.5 h-2.5 shrink-0 mt-0.5" />
+                          <Info className="w-2.5 h-2.5 shrink-0 mt-0.5" aria-hidden="true" />
                           <span><strong>Acclimatization:</strong> Gradual ascent with multiple nights at increasing altitudes.</span>
                         </p>
                       </div>
@@ -716,30 +846,33 @@ export default function TibetanPlateauAdventurePage() {
                 <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                   <CardContent className="p-4 md:p-6">
                     <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                      <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
+                      <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Share
                     </h3>
                     <div className="flex gap-2">
                       <Button
                         size="sm"
-                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={() => handleShare("facebook")}
+                        aria-label="Share Tibetan Plateau Adventure on Facebook"
                       >
-                        <Facebook className="w-3 h-3 md:w-4 md:h-4" />
+                        <Facebook className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
                       </Button>
                       <Button
                         size="sm"
-                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={() => handleShare("twitter")}
+                        aria-label="Share Tibetan Plateau Adventure on Twitter"
                       >
-                        <Twitter className="w-3 h-3 md:w-4 md:h-4" />
+                        <Twitter className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
                       </Button>
                       <Button
                         size="sm"
                         variant="outline"
-                        className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-xs"
+                        className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
                         onClick={handleCopyLink}
+                        aria-label="Copy Tibetan Plateau Adventure link to clipboard"
                       >
-                        {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
+                        {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />}
                       </Button>
                     </div>
                   </CardContent>
@@ -748,36 +881,39 @@ export default function TibetanPlateauAdventurePage() {
             </aside>
 
             {/* Main Content */}
-            <article className="lg:col-span-8 w-full overflow-hidden">
+            <article className="lg:col-span-8 w-full overflow-hidden mt-6 lg:mt-0">
               {/* Mobile Share Buttons */}
               <div className="lg:hidden flex gap-2 mb-4">
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-xs py-1.5 min-h-[44px]"
+                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("facebook")}
+                  aria-label="Share on Facebook"
                 >
-                  <Facebook className="w-3 h-3 mr-1" /> Share
+                  <Facebook className="w-3 h-3 mr-1" aria-hidden="true" /> Share
                 </Button>
                 <Button
                   size="sm"
-                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-xs py-1.5 min-h-[44px]"
+                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("twitter")}
+                  aria-label="Share on Twitter"
                 >
-                  <Twitter className="w-3 h-3 mr-1" /> Tweet
+                  <Twitter className="w-3 h-3 mr-1" aria-hidden="true" /> Tweet
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
-                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-xs py-1.5 min-h-[44px]"
+                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={handleCopyLink}
+                  aria-label="Copy link to clipboard"
                 >
-                  {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                  {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
                 </Button>
               </div>
 
               {/* Overview */}
               <section className="mb-6 md:mb-12" id="overview">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview of Tibetan Plateau Adventure</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     The <strong>12-Day Tibetan Plateau Adventure</strong> is the ultimate overland journey across the 
@@ -823,7 +959,7 @@ export default function TibetanPlateauAdventurePage() {
                       key={i}
                       className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
                     >
-                      <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" />
+                      <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" aria-hidden="true" />
                       <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
                     </div>
                   ))}
@@ -837,27 +973,27 @@ export default function TibetanPlateauAdventurePage() {
                   <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Flower2 className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Summer (Jun - Aug)</h4>
+                        <Flower2 className="w-4 h-4 md:w-5 md:h-5 text-green-600" aria-hidden="true" />
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Summer (Jun - Aug)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Warmest temperatures, green pastures, and best access to remote areas. Longer daylight hours 
                         for driving. Occasional afternoon showers but generally good conditions.
                       </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-xs">Excellent</Badge>
+                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Excellent</Badge>
                     </CardContent>
                   </Card>
                   <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <SunriseIcon className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Oct)</h4>
+                        <SunriseIcon className="w-4 h-4 md:w-5 md:h-5 text-orange-500" aria-hidden="true" />
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Oct)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         The most popular season with crystal-clear skies, stable weather, and spectacular mountain 
                         views. Perfect for photography and long drives.
                       </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-xs">Best Season</Badge>
+                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
                     </CardContent>
                   </Card>
                 </div>
@@ -875,19 +1011,19 @@ export default function TibetanPlateauAdventurePage() {
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
                       <div className="bg-white/80 p-2 rounded-lg">
-                        <span className="text-[#0f2940] font-bold text-xs">Yamdrok Lake</span>
-                        <p className="text-slate-600 text-[10px]">4,440m</p>
-                        <p className="text-slate-500 text-[8px]">Turquoise waters, Kampala Pass</p>
+                        <span className="text-[#0f2940] font-bold text-[10px] md:text-xs">Yamdrok Lake</span>
+                        <p className="text-slate-600 text-[8px] md:text-[10px]">4,440m</p>
+                        <p className="text-slate-500 text-[7px] md:text-[8px]">Turquoise waters, Kampala Pass</p>
                       </div>
                       <div className="bg-white/80 p-2 rounded-lg">
-                        <span className="text-[#0f2940] font-bold text-xs">Pelku Tso</span>
-                        <p className="text-slate-600 text-[10px]">4,500m</p>
-                        <p className="text-slate-500 text-[8px]">Remote beauty, western plateau</p>
+                        <span className="text-[#0f2940] font-bold text-[10px] md:text-xs">Pelku Tso</span>
+                        <p className="text-slate-600 text-[8px] md:text-[10px]">4,500m</p>
+                        <p className="text-slate-500 text-[7px] md:text-[8px]">Remote beauty, western plateau</p>
                       </div>
                       <div className="bg-white/80 p-2 rounded-lg">
-                        <span className="text-[#0f2940] font-bold text-xs">Manasarovar</span>
-                        <p className="text-slate-600 text-[10px]">4,590m</p>
-                        <p className="text-slate-500 text-[8px]">Holy lake, puja site, Kailash views</p>
+                        <span className="text-[#0f2940] font-bold text-[10px] md:text-xs">Manasarovar</span>
+                        <p className="text-slate-600 text-[8px] md:text-[10px]">4,590m</p>
+                        <p className="text-slate-500 text-[7px] md:text-[8px]">Holy lake, puja site, Kailash views</p>
                       </div>
                     </div>
                   </CardContent>
@@ -897,14 +1033,15 @@ export default function TibetanPlateauAdventurePage() {
               {/* Detailed Itinerary */}
               <section className="mb-6 md:mb-12" id="itinerary">
                 <div className="flex items-center justify-between mb-3 md:mb-6">
-                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Tibetan Plateau Itinerary</h2>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4"
+                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4 min-h-[44px]"
                     onClick={() =>
                       setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
                     }
+                    aria-label={expandedDays.length === itinerary.length ? "Collapse all itinerary days" : "Expand all itinerary days"}
                   >
                     {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
                   </Button>
@@ -920,21 +1057,23 @@ export default function TibetanPlateauAdventurePage() {
                     >
                       <CardContent className="p-0">
                         <button
-                          className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
+                          className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left min-h-[44px]"
                           onClick={() => toggleDay(day.day)}
+                          aria-expanded={expandedDays.includes(day.day)}
+                          aria-label={expandedDays.includes(day.day) ? `Collapse day ${day.day}` : `Expand day ${day.day}`}
                         >
                           <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
                             <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
                             <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
+                            <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h3>
                             <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
                               <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
+                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.altitude}
                               </span>
                               <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <Car className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.distance}
+                                <Car className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.distance}
                               </span>
                             </div>
                           </div>
@@ -942,6 +1081,7 @@ export default function TibetanPlateauAdventurePage() {
                             className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
                               expandedDays.includes(day.day) ? "rotate-180" : ""
                             }`}
+                            aria-hidden="true"
                           />
                         </button>
 
@@ -951,11 +1091,11 @@ export default function TibetanPlateauAdventurePage() {
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <TentIcon className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
+                                <TentIcon className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
                                 <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
                               </div>
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
+                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
                                 <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
                               </div>
                             </div>
@@ -982,12 +1122,12 @@ export default function TibetanPlateauAdventurePage() {
                   <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-6">
                       <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> Cost Includes
+                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Includes
                       </h3>
                       <ul className="space-y-1 md:space-y-2">
                         {includes.map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" />
+                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
                             <span className="leading-tight">{item}</span>
                           </li>
                         ))}
@@ -997,12 +1137,12 @@ export default function TibetanPlateauAdventurePage() {
                   <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-6">
                       <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                        <XCircle className="w-4 h-4 md:w-5 md:h-5" /> Cost Excludes
+                        <XCircle className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Excludes
                       </h3>
                       <ul className="space-y-1 md:space-y-2">
                         {excludes.map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" />
+                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" aria-hidden="true" />
                             <span className="leading-tight">{item}</span>
                           </li>
                         ))}
@@ -1014,9 +1154,9 @@ export default function TibetanPlateauAdventurePage() {
 
               {/* Important Note */}
               <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
-                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
+                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information - Plateau Adventure</h4>
+                  <h3 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information - Plateau Adventure</h3>
                   <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
                     <li>• <strong>Travel insurance is MANDATORY</strong> and must cover high altitude up to 5,500m and emergency helicopter evacuation.</li>
                     <li>• <strong>Altitude Acclimatization:</strong> This journey involves prolonged periods above 4,500m. The itinerary includes gradual ascent with multiple nights at increasing altitudes. Even so, altitude sickness is possible. Listen to your body and guide.</li>
@@ -1030,7 +1170,7 @@ export default function TibetanPlateauAdventurePage() {
 
               {/* Photo Gallery */}
               <section className="mb-6 md:mb-12" id="gallery">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Tibetan Plateau Photo Gallery</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
                   {gallery.map((image, i) => (
                     <div
@@ -1039,10 +1179,11 @@ export default function TibetanPlateauAdventurePage() {
                     >
                       <Image
                         src={image.src}
-                        alt={image.alt}
+                        alt={`${image.alt} - Tibetan Plateau Adventure tour experience`}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
                         sizes="(max-width: 768px) 50vw, 33vw"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
@@ -1094,7 +1235,7 @@ export default function TibetanPlateauAdventurePage() {
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
                       <CardContent className="p-2 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
+                        <h3 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h3>
                         <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1106,5 +1247,6 @@ export default function TibetanPlateauAdventurePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

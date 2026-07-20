@@ -360,13 +360,13 @@ const PrivacyDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (o
   </Dialog>
 );
 
-// Social links array
+// Social links array with nofollow added
 const socialLinks = [
   { name: "Facebook", href: "https://www.facebook.com/HimkalaAdventureNepal?ref=embed_page", icon: FaFacebook, color: "hover:text-[#1877F2]" },
   { name: "Instagram", href: "https://www.instagram.com/himkalaadventure?igsh=MTc4aDR0bm92ODd0NQ%3D%3D&utm_source=qr", icon: FaInstagram, color: "hover:text-[#E4405F]" },
-  { name: "Twitter", href: "https://x.com/himkalanepal?s=21&t=2wPjjwhkMD0rUThQZq-5jQ", icon: FaTwitter, color: "hover:text-[#1DA1F2]" },
+  { name: "Twitter", href: "https://x.com/HimkalaNepal", icon: FaTwitter, color: "hover:text-[#1DA1F2]" },
   { name: "YouTube", href: "https://www.youtube.com/@himkalaadventure5936", icon: FaYoutube, color: "hover:text-[#FF0000]" },
-  { name: "LinkedIn", href: "https://linkedin.com/yourpage", icon: FaLinkedin, color: "hover:text-[#0077B5]" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/himkalaadventure/", icon: FaLinkedin, color: "hover:text-[#0077B5]" },
   { name: "TikTok", href: "https://www.tiktok.com/@himkalaadventure", icon: FaTiktok, color: "hover:text-[#000000]" },
   { name: "Pinterest", href: "https://www.pinterest.com/HimkalaNepal/_profile/", icon: FaPinterest, color: "hover:text-[#E60023]" }
 ];
@@ -417,9 +417,10 @@ const DestinationsDropdown = () => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-[#C5E0ED] transition-colors hover:scale-105 active:scale-95 px-3 py-1.5 rounded-lg hover:bg-white/5 backdrop-blur-sm"
+        aria-label="Open destinations menu"
       >
         Destinations
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
       
       <AnimatePresence>
@@ -482,9 +483,10 @@ const ServicesDropdown = () => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-[#C5E0ED] transition-colors hover:scale-105 active:scale-95 px-3 py-1.5 rounded-lg hover:bg-white/5 backdrop-blur-sm"
+        aria-label="Open services menu"
       >
         Our Services in Nepal
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
       
       <AnimatePresence>
@@ -571,12 +573,13 @@ const MobileDestinationsDropdown = ({ closeMenu }: { closeMenu: () => void }) =>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-4 px-4 text-lg font-medium text-white/90 hover:text-[#C5E0ED] hover:bg-[#153653]/60 rounded-xl transition-all active:scale-95 flex items-center justify-between backdrop-blur-sm border border-white/10 group"
+        aria-label="Toggle destinations menu"
       >
         <span className="flex items-center gap-3">
           <div className="w-2 h-2 bg-[#C5E0ED] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
           Destinations
         </span>
-        <ChevronDown className={`w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] transition-transform ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
       
       <AnimatePresence>
@@ -625,12 +628,13 @@ const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-4 px-4 text-lg font-medium text-white/90 hover:text-[#C5E0ED] hover:bg-[#153653]/60 rounded-xl transition-all active:scale-95 flex items-center justify-between backdrop-blur-sm border border-white/10 group"
+        aria-label="Toggle services menu"
       >
         <span className="flex items-center gap-3">
           <div className="w-2 h-2 bg-[#C5E0ED] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
           Our Services in Nepal
         </span>
-        <ChevronDown className={`w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] transition-transform ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
       
       <AnimatePresence>
@@ -817,7 +821,7 @@ const SearchModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                 handleResultClick(results[0]);
               }
             }} className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50" aria-hidden="true" />
               <input
                 ref={inputRef}
                 type="text"
@@ -826,14 +830,16 @@ const SearchModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                 onKeyDown={handleKeyDown}
                 placeholder="Search destinations, treks, tours, packages..."
                 className="w-full pl-12 pr-12 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#C5E0ED] focus:border-transparent backdrop-blur-sm"
+                aria-label="Search"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 rounded-lg hover:bg-white/10 text-white/60 hover:text-white transition-colors"
+                  aria-label="Clear search"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-4 h-4" aria-hidden="true" />
                 </button>
               )}
             </form>
@@ -862,7 +868,7 @@ const SearchModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                                     : 'text-white/80 hover:bg-white/10'
                                 }`}
                               >
-                                <span className="text-[#C5E0ED]">
+                                <span className="text-[#C5E0ED]" aria-hidden="true">
                                   {result.icon}
                                 </span>
                                 <div className="flex-1">
@@ -873,7 +879,7 @@ const SearchModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                                     </div>
                                   )}
                                 </div>
-                                <ChevronRight className="w-4 h-4 text-white/40" />
+                                <ChevronRight className="w-4 h-4 text-white/40" aria-hidden="true" />
                               </button>
                             );
                           })}
@@ -883,7 +889,7 @@ const SearchModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                   </div>
                 ) : (
                   <div className="text-center py-8 text-white/50">
-                    <Search className="w-12 h-12 mx-auto mb-3 opacity-30" />
+                    <Search className="w-12 h-12 mx-auto mb-3 opacity-30" aria-hidden="true" />
                     <p>No results found for "{searchQuery}"</p>
                     <p className="text-sm mt-1">Try searching with different keywords</p>
                   </div>
@@ -902,7 +908,6 @@ const SearchModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                     "Bhutan Tour", 
                     "Tibet Tour", 
                     "Island Peak", 
-                    "Chitwan Safari",
                     "Kathmandu Sightseeing",
                     "Free Walking Tour"
                   ].map((term) => (
@@ -958,15 +963,15 @@ export default function ClientLayout({
         isScrolled 
           ? 'bg-[#153653]/95 shadow-lg shadow-black/20' 
           : 'bg-[#153653]/85'
-      } border-b border-white/20 backdrop-blur-md`}>
+      } border-b border-white/20 backdrop-blur-md`} aria-label="Main navigation">
         <div className="container mx-auto px-4 sm:px-6 py-3 md:py-4 flex items-center justify-between relative">
           {/* Logo with Custom Image - EXTRA LARGE */}
-          <Link href="/" className="flex items-center gap-2 md:gap-3 group relative z-10" onClick={closeMenu}>
+          <Link href="/" className="flex items-center gap-2 md:gap-3 group relative z-10" onClick={closeMenu} aria-label="Himkala Adventure - Home">
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
               <div className="relative w-full h-full">
                 <Image
                   src="/images/himkala-logo-2.png"
-                  alt="Himkala Adventure Logo"
+                  alt="Himkala Adventure Logo - Himalayan Trekking Company Nepal"
                   fill
                   className="object-contain"
                   sizes="(max-width: 768px) 64px, 80px"
@@ -989,9 +994,9 @@ export default function ClientLayout({
             <button 
               onClick={() => setIsSearchOpen(true)}
               className="text-white/80 hover:text-[#C5E0ED] hover:bg-white/5 p-2 rounded-lg transition-colors backdrop-blur-sm border border-white/10"
-              aria-label="Search"
+              aria-label="Search treks, tours, and destinations"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-5 h-5" aria-hidden="true" />
             </button>
 
             {/* Destinations Dropdown */}
@@ -1021,10 +1026,10 @@ export default function ClientLayout({
             <a 
               href={whatsappUrl}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               className="flex items-center gap-2 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#2ef575] hover:to-[#1a9f8f] text-white font-bold rounded-full px-4 lg:px-6 py-2 shadow-lg shadow-[#25D366]/30 backdrop-blur-sm transition-all active:scale-95"
             >
-              <WhatsAppIcon className="w-4 h-4" />
+              <WhatsAppIcon className="w-4 h-4" aria-hidden="true" />
               <span className="text-sm">WhatsApp</span>
             </a>
 
@@ -1044,21 +1049,21 @@ export default function ClientLayout({
             <button 
               onClick={() => setIsSearchOpen(true)}
               className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors backdrop-blur-sm border border-white/10"
-              aria-label="Search"
+              aria-label="Search treks and tours"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-5 h-5" aria-hidden="true" />
             </button>
 
             {/* Menu Button */}
             <button 
               className="text-white p-2 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors backdrop-blur-sm border border-white/10"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             >
               {isMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6" aria-hidden="true" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-6 h-6" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -1106,7 +1111,7 @@ export default function ClientLayout({
                             <div className="w-2 h-2 bg-[#C5E0ED] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                             About Us
                           </span>
-                          <ChevronRight className="w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] group-hover:translate-x-1 transition-all" />
+                          <ChevronRight className="w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] group-hover:translate-x-1 transition-all" aria-hidden="true" />
                         </Link>
                       </motion.div>
                       
@@ -1125,7 +1130,7 @@ export default function ClientLayout({
                             <div className="w-2 h-2 bg-[#C5E0ED] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                             Blogs
                           </span>
-                          <ChevronRight className="w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] group-hover:translate-x-1 transition-all" />
+                          <ChevronRight className="w-4 h-4 text-white/50 group-hover:text-[#C5E0ED] group-hover:translate-x-1 transition-all" aria-hidden="true" />
                         </Link>
                       </motion.div>
                       
@@ -1138,7 +1143,7 @@ export default function ClientLayout({
                         <a 
                           href={whatsappUrl}
                           target="_blank"
-                          rel="noopener noreferrer"
+                          rel="noopener noreferrer nofollow"
                           className="py-4 px-4 text-lg font-medium text-white/90 hover:text-[#C5E0ED] hover:bg-[#153653]/60 rounded-xl transition-all active:scale-95 flex items-center justify-between backdrop-blur-sm border border-white/10 group"
                           onClick={closeMenu}
                         >
@@ -1146,7 +1151,7 @@ export default function ClientLayout({
                             <div className="w-2 h-2 bg-[#25D366] rounded-full" />
                             WhatsApp Chat
                           </span>
-                          <ExternalLink className="w-4 h-4 text-white/50 group-hover:text-[#25D366] transition-all" />
+                          <ExternalLink className="w-4 h-4 text-white/50 group-hover:text-[#25D366] transition-all" aria-hidden="true" />
                         </a>
                       </motion.div>
                       
@@ -1165,7 +1170,7 @@ export default function ClientLayout({
                             <div className="w-2 h-2 bg-[#C5E0ED] rounded-full" />
                             Plan Your Trip
                           </span>
-                          <ArrowRight className="w-4 h-4 text-[#C5E0ED] group-hover:translate-x-1 transition-all" />
+                          <ArrowRight className="w-4 h-4 text-[#C5E0ED] group-hover:translate-x-1 transition-all" aria-hidden="true" />
                         </Link>
                       </motion.div>
                     </div>
@@ -1178,7 +1183,7 @@ export default function ClientLayout({
                         className="flex items-center justify-center gap-2 text-white/90 hover:text-[#C5E0ED] transition-colors px-4 py-3 rounded-lg hover:bg-[#153653]/60 backdrop-blur-sm border border-white/10 group"
                         onClick={closeMenu}
                       >
-                        <Phone className="w-5 h-5" />
+                        <Phone className="w-5 h-5" aria-hidden="true" />
                         <span className="text-sm font-medium">Call Us</span>
                       </a>
                       <a 
@@ -1186,7 +1191,7 @@ export default function ClientLayout({
                         className="flex items-center justify-center gap-2 text-white/90 hover:text-[#C5E0ED] transition-colors px-4 py-3 rounded-lg hover:bg-[#153653]/60 backdrop-blur-sm border border-white/10 group"
                         onClick={closeMenu}
                       >
-                        <Mail className="w-5 h-5" />
+                        <Mail className="w-5 h-5" aria-hidden="true" />
                         <span className="text-sm font-medium">Email Us</span>
                       </a>
                     </div>
@@ -1194,13 +1199,13 @@ export default function ClientLayout({
                     {/* Contact Info at Bottom */}
                     <div className="mt-6 text-center text-white/60 text-xs space-y-3">
                       <p className="flex items-center justify-center gap-2">
-                        <MapPin className="w-3 h-3" />
+                        <MapPin className="w-3 h-3" aria-hidden="true" />
                         Thamel, Kathmandu, Nepal
                       </p>
                       <div className="flex items-center justify-center gap-4 text-white/40">
-                        <Clock className="w-3 h-3" />
+                        <Clock className="w-3 h-3" aria-hidden="true" />
                         <span>Daily 9AM - 6PM</span>
-                        <Shield className="w-3 h-3" />
+                        <Shield className="w-3 h-3" aria-hidden="true" />
                         <span>Licensed</span>
                       </div>
                       <p>© {new Date().getFullYear()} Himkala Adventure</p>
@@ -1219,10 +1224,10 @@ export default function ClientLayout({
       </main>
 
       {/* CTA Section - Mobile Optimized with Navbar Color */}
-      <section className="py-16 sm:py-20 md:py-24 bg-[#153653]/90 backdrop-blur-sm relative overflow-hidden border-t border-white/20">
+      <section className="py-16 sm:py-20 md:py-24 bg-[#153653]/90 backdrop-blur-sm relative overflow-hidden border-t border-white/20" aria-label="Call to action">
         {/* Animated Background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/images/used/cta.avif')] bg-cover bg-center opacity-20"></div>
+          <div className="absolute inset-0 bg-[url('/images/used/cta.webp')] bg-cover bg-center opacity-20"></div>
           <div className="absolute inset-0 bg-gradient-to-br from-[#153653]/90 via-[#153653]/80 to-[#153653]/95"></div>
         </div>
         
@@ -1235,7 +1240,7 @@ export default function ClientLayout({
               transition={{ duration: 0.6 }}
             >
               <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                <Star className="w-4 h-4 text-[#C5E0ED]" />
+                <Star className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
                 <span className="text-white/90 text-sm font-medium">With every trip comes new optimism...</span>
               </div>
               
@@ -1253,7 +1258,7 @@ You dream it. We plan it. Let's build your adventure together.              </p>
                   className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#153653] font-bold h-14 sm:h-16 px-8 sm:px-10 rounded-full text-lg shadow-2xl shadow-[#C5E0ED]/40 hover:shadow-[#C5E0ED]/60 hover:scale-105 active:scale-95 transition-all w-full sm:w-auto backdrop-blur-sm"
                 >
                   <Link href="/contact">
-                    <Compass className="mr-3 w-5 h-5" />
+                    <Compass className="mr-3 w-5 h-5" aria-hidden="true" />
                     <span className="font-bold">Plan My Trip Now</span>
                   </Link>
                 </Button>
@@ -1265,8 +1270,8 @@ You dream it. We plan it. Let's build your adventure together.              </p>
                   variant="outline"
                   className="bg-white/10 hover:bg-white/20 text-white border-white/30 hover:border-white/50 h-14 sm:h-16 px-8 sm:px-10 rounded-full text-lg backdrop-blur-sm hover:scale-105 active:scale-95 transition-all w-full sm:w-auto"
                 >
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                    <WhatsAppIcon className="mr-3 w-5 h-5" />
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer nofollow">
+                    <WhatsAppIcon className="mr-3 w-5 h-5" aria-hidden="true" />
                     <span className="font-medium">WhatsApp Us</span>
                   </a>
                 </Button>
@@ -1289,7 +1294,7 @@ You dream it. We plan it. Let's build your adventure together.              </p>
                   <div className="relative w-full h-full">
                     <Image
                       src="/images/himkala-logo-2.png"
-                      alt="Himkala Adventure Logo"
+                      alt="Himkala Adventure Logo - Himalayan Trekking Company"
                       fill
                       className="object-contain"
                       sizes="64px"
@@ -1309,12 +1314,12 @@ Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.         
                     key={social.name}
                     href={social.href}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer nofollow"
                     className={`w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 ${social.color} transition-all active:scale-95 hover:bg-white/10`}
                     aria-label={`Follow us on ${social.name}`}
                     title={social.name}
                   >
-                    <social.icon className="w-4 h-4" />
+                    <social.icon className="w-4 h-4" aria-hidden="true" />
                   </a>
                 ))}
               </div>
@@ -1323,7 +1328,7 @@ Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.         
             {/* Popular Treks */}
 <div>
   <h5 className="font-bold text-white mb-6 text-lg flex items-center gap-2">
-    <BookOpen className="w-5 h-5 text-[#C5E0ED]" />
+    <BookOpen className="w-5 h-5 text-[#C5E0ED]" aria-hidden="true" />
     Popular Treks/Tours
   </h5>
   <ul className="space-y-3 text-sm text-white/60">
@@ -1342,7 +1347,7 @@ Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.         
           href={trek.url}
           className="hover:text-[#C5E0ED] transition-colors flex items-center gap-2 py-1 group"
         >
-          <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
           {trek.name}
         </Link>
       </li>
@@ -1353,7 +1358,7 @@ Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.         
             {/* Quick Links */}
             <div>
               <h5 className="font-bold text-white mb-6 text-lg flex items-center gap-2">
-                <Globe className="w-5 h-5 text-[#C5E0ED]" />
+                <Globe className="w-5 h-5 text-[#C5E0ED]" aria-hidden="true" />
                 Quick Links
               </h5>
               <ul className="space-y-3 text-sm text-white/60">
@@ -1367,7 +1372,7 @@ Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.         
                       href={link.href}
                       className="hover:text-[#C5E0ED] transition-colors flex items-center gap-2 py-1 group"
                     >
-                      <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
                       {link.label}
                     </Link>
                   </li>
@@ -1378,28 +1383,28 @@ Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.         
             {/* Contact Info */}
             <div>
               <h5 className="font-bold text-white mb-6 text-lg flex items-center gap-2">
-                <Phone className="w-5 h-5 text-[#C5E0ED]" />
+                <Phone className="w-5 h-5 text-[#C5E0ED]" aria-hidden="true" />
                 Contact Us
               </h5>
               <ul className="space-y-4 text-sm text-white/60">
                 <li className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[#C5E0ED] shrink-0 mt-0.5" />
+                  <MapPin className="w-5 h-5 text-[#C5E0ED] shrink-0 mt-0.5" aria-hidden="true" />
                   <span>Thamel, Kathmandu, Nepal</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 text-[#C5E0ED] shrink-0 mt-0.5" />
+                  <Phone className="w-5 h-5 text-[#C5E0ED] shrink-0 mt-0.5" aria-hidden="true" />
                   <a href={`tel:${phoneNumber.replace(/\s/g, '')}`} className="hover:text-[#C5E0ED] transition-colors">
                     {phoneNumber}
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 text-[#C5E0ED] shrink-0 mt-0.5" />
+                  <Mail className="w-5 h-5 text-[#C5E0ED] shrink-0 mt-0.5" aria-hidden="true" />
                   <a href="mailto:info@himkalaadventure.com" className="hover:text-[#C5E0ED] transition-colors">
                     info@himkalaadventure.com
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-[#C5E0ED] shrink-0 mt-0.5" />
+                  <Clock className="w-5 h-5 text-[#C5E0ED] shrink-0 mt-0.5" aria-hidden="true" />
                   <span>Daily 9AM - 6PM</span>
                 </li>
               </ul>
@@ -1414,16 +1419,17 @@ Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.         
                   key={index}
                   href={affiliation.href}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="group relative"
                   title={affiliation.name}
                 >
                   <img
                     src={affiliation.logo}
-                    alt={`${affiliation.name} Logo`}
+                    alt={`${affiliation.name} Logo - Official certification`}
                     width={affiliation.width}
                     height={affiliation.height}
                     className="object-contain filter brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity"
+                    loading="lazy"
                   />
                   <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-white/60 text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                     {affiliation.name}
@@ -1442,12 +1448,14 @@ Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.         
               <button 
                 onClick={() => setPrivacyOpen(true)}
                 className="hover:text-white transition-colors hover:text-[#C5E0ED] cursor-pointer"
+                aria-label="Open privacy policy"
               >
                 Privacy Policy
               </button>
               <button 
                 onClick={() => setTermsOpen(true)}
                 className="hover:text-white transition-colors hover:text-[#C5E0ED] cursor-pointer"
+                aria-label="Open terms and conditions"
               >
                 Terms & Conditions
               </button>
@@ -1464,11 +1472,11 @@ Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.         
       <a 
         href={whatsappUrl}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         className="fixed bottom-6 right-6 z-40 w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-r from-[#25D366] to-[#128C7E] flex items-center justify-center shadow-2xl shadow-[#25D366]/50 hover:shadow-[#25D366]/70 hover:scale-110 active:scale-95 transition-all animate-pulse hover:animate-none"
         aria-label="Chat on WhatsApp"
       >
-        <WhatsAppIcon className="w-7 h-7 md:w-8 md:h-8 text-white" />
+        <WhatsAppIcon className="w-7 h-7 md:w-8 md:h-8 text-white" aria-hidden="true" />
         <span className="sr-only">Chat on WhatsApp</span>
       </a>
 
@@ -1479,7 +1487,7 @@ Real adventures. Real connections. Nepal, Bhutan, and Tibet since 2015.         
           className="w-12 h-12 rounded-full bg-gradient-to-r from-[#4285F4] via-[#3B82F6] to-[#2563EB] flex items-center justify-center shadow-2xl shadow-blue-500/50 hover:shadow-blue-500/70 hover:scale-110 active:scale-95 transition-all"
           aria-label="Call us"
         >
-          <Phone className="w-5 h-5 text-white" />
+          <Phone className="w-5 h-5 text-white" aria-hidden="true" />
         </a>
       </div>
     </>

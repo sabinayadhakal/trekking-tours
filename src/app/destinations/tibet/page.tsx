@@ -4,6 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Head from "next/head";
 import {
   Mountain,
   MapPin,
@@ -259,6 +260,11 @@ export default function TibetPage() {
   const cityTourScrollContainerRef = React.useRef<HTMLDivElement>(null);
   const regionScrollContainerRef = React.useRef<HTMLDivElement>(null);
 
+  const canonicalUrl = "https://www.himkalaadventure.com/destinations/tibet";
+  const pageTitle = "Tibet Travel & Tours - Himkala Adventure";
+  const pageDescription = "Tibet travel & tours: Explore the Roof of the World with our expert-guided cultural tours and treks. Visit Lhasa, Potala Palace, Mount Kailash, and more. Book your Tibet adventure now!";
+  const imageUrl = "https://www.himkalaadventure.com/images/used/tibet-main-page.webp";
+
   const handleBookNow = (itemName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(itemName)}`);
   };
@@ -293,200 +299,336 @@ export default function TibetPage() {
   const scrollCityTourRight = () => scrollRight(cityTourScrollContainerRef, setCityTourScrollPosition);
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/used/tibet-main-page.webp"
-            alt="Tibet Himalayas"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
-        </div>
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Himkala Adventure" />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={imageUrl} />
+        <meta name="twitter:site" content="@himkalanepal" />
+        <meta name="twitter:creator" content="@himkalanepal" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "TravelAgency",
+              "name": "Himkala Adventure Pvt. Ltd.",
+              "description": "Tibet travel and tours: Cultural tours and treks on the Roof of the World. Visit Lhasa, Potala Palace, Mount Kailash, and more.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Thamel, Lekhnath Marga",
+                "addressLocality": "Kathmandu",
+                "addressCountry": "Nepal"
+              },
+              "telephone": "+977 9841376470",
+              "email": "info@himkalaadventure.com",
+              "url": canonicalUrl,
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 27.7172,
+                "longitude": 85.3240
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Destination",
+              "name": "Tibet",
+              "description": "Known as the Roof of the World, Tibet is the highest plateau on Earth with an average elevation over 4,500m. Explore Potala Palace, ancient monasteries, and sacred landscapes.",
+              "image": imageUrl,
+              "touristType": "Cultural, Pilgrimage, Trekking, Spiritual",
+              "bestTimeToVisit": "May-October (Summer and Autumn)",
+              "timeZone": "UTC+6"
+            })
+          }}
+        />
+      </Head>
 
-        <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
-          <div className="max-w-5xl mx-auto text-center w-full">
-            <Badge className="mb-6 bg-white/20 backdrop-blur-sm text-white border-white/30 py-2 px-4 text-sm font-medium">
-              <Star className="w-4 h-4 mr-2 fill-white" /> Roof of the World
-            </Badge>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-4 md:mb-6 tracking-tight">
-              DISCOVER <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
-                TIBET
-              </span>
-            </h1>
-            
-            <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
-              Land of the Potala Palace, ancient monasteries, and the spiritual heart of Tibetan Buddhism.
-              Journey to the dwelling place of gods and spiritual spirits.
-            </p>
+      <div className="min-h-screen bg-white overflow-x-hidden">
+        {/* Hero Section */}
+        <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/used/tibet-main-page.webp"
+              alt="Tibet Himalayas - spiritual landscape with prayer flags and sacred mountains on the Roof of the World"
+              fill
+              className="object-cover"
+              priority
+              quality={85}
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
           </div>
-        </div>
-      </section>
 
-      {/* About Tibet */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-[#f0f7fa]">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div>
-              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                <MapPin className="w-3 h-3 mr-1.5" /> ABOUT TIBET
+          <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
+            <div className="max-w-5xl mx-auto text-center w-full">
+              <Badge className="mb-6 bg-white/20 backdrop-blur-sm text-white border-white/30 py-2 px-4 text-sm font-medium">
+                <Star className="w-4 h-4 mr-2 fill-white" aria-hidden="true" /> Roof of the World
               </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4 leading-tight">
-                The Spiritual Roof of the World
-              </h2>
-              <div className="space-y-3">
-                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                  <strong className="text-[#0f2940]">Tibet</strong> is culturally and historically rich, 
-                  where <strong className="text-[#0f2940]">Tibetan Buddhism</strong> holds a special position 
-                  of interest in the world. It can be said to be the dwelling place of gods, lokeshvara, 
-                  tantra, and spiritual spirits.
-                </p>
-                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                  The many-storied <strong className="text-[#0f2940]">Potala Palace</strong> towers above 
-                  Lhasa like a celestial realm suspended in air. <strong className="text-[#0f2940]">Lhasa</strong> 
-                  contains treasures like the <strong className="text-[#0f2940]">Barkhor</strong> market circuit 
-                  and the mysterious <strong className="text-[#0f2940]">Jokhang Temple</strong>, Tibet's most sacred shrine.
-                </p>
-                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                  Tibet was a land of many principalities with different dialects and styles of dress. 
-                  Multiple sects and subsects of Tibetan Buddhism created one of the world's greatest 
-                  and most complex religious traditions, all enriching each other.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              <div className="space-y-3 sm:space-y-4">
-                <Link href="/destinations/tibet/lhasa-city-tour">
-                  <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
-                    <Image
-                      src="/images/used/tibet-1.webp"
-                      alt="Potala Palace"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                  </div>
-                </Link>
-                <Link href="/destinations/tibet/monastery-discovery-tour">
-                  <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
-                    <Image
-                      src="/images/used/tibet-3.webp"
-                      alt="Tibetan Monastery"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                  </div>
-                </Link>
-              </div>
-              <div className="space-y-3 sm:space-y-4 pt-8 sm:pt-12">
-                <Link href="/destinations/tibet/tibet-overland-tour">
-                  <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
-                    <Image
-                      src="/images/used/tibet-2.webp"
-                      alt="Tibetan Landscape"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                  </div>
-                </Link>
-                <Link href="/destinations/tibet/kailash-mansarovar-yatra">
-                  <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
-                    <Image
-                      src="/images/used/tibet-4.webp"
-                      alt="Prayer Flags"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                  </div>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Cultural Tours Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
-            <div className="max-w-2xl">
-              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                <Landmark className="w-3 h-3 mr-1.5" /> TIBET TOURS
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940]">
-                Spiritual & Cultural Journeys
-              </h2>
-              <p className="text-slate-600 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">
-                Experience Tibet's rich heritage and breathtaking landscapes.
+              
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-4 md:mb-6 tracking-tight">
+                DISCOVER <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
+                  TIBET
+                </span>
+              </h1>
+              
+              <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
+                Land of the Potala Palace, ancient monasteries, and the spiritual heart of Tibetan Buddhism.
+                Journey to the dwelling place of gods and spiritual spirits.
               </p>
             </div>
-            
           </div>
+        </section>
 
-          {/* Mobile Horizontal Scroll */}
-          <div className="md:hidden relative">
-            <div 
-              className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
-              ref={cityTourScrollContainerRef}
-            >
+        {/* About Tibet */}
+        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-[#f0f7fa]">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div>
+                <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
+                  <MapPin className="w-3 h-3 mr-1.5" aria-hidden="true" /> ABOUT TIBET
+                </Badge>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4 leading-tight">
+                  The Spiritual Roof of the World
+                </h2>
+                <div className="space-y-3">
+                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                    <strong className="text-[#0f2940]">Tibet</strong> is culturally and historically rich, 
+                    where <strong className="text-[#0f2940]">Tibetan Buddhism</strong> holds a special position 
+                    of interest in the world. It can be said to be the dwelling place of gods, lokeshvara, 
+                    tantra, and spiritual spirits.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                    The many-storied <strong className="text-[#0f2940]">Potala Palace</strong> towers above 
+                    Lhasa like a celestial realm suspended in air. <strong className="text-[#0f2940]">Lhasa</strong> 
+                    contains treasures like the <strong className="text-[#0f2940]">Barkhor</strong> market circuit 
+                    and the mysterious <strong className="text-[#0f2940]">Jokhang Temple</strong>, Tibet's most sacred shrine.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                    Tibet was a land of many principalities with different dialects and styles of dress. 
+                    Multiple sects and subsects of Tibetan Buddhism created one of the world's greatest 
+                    and most complex religious traditions, all enriching each other.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <div className="space-y-3 sm:space-y-4">
+                  <Link href="/destinations/tibet/lhasa-city-tour" aria-label="Potala Palace tour">
+                    <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                      <Image
+                        src="/images/used/tibet-1.webp"
+                        alt="Potala Palace - iconic UNESCO World Heritage site in Lhasa, Tibet"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        loading="lazy"
+                      />
+                    </div>
+                  </Link>
+                  <Link href="/destinations/tibet/monastery-discovery-tour" aria-label="Tibetan Monastery tour">
+                    <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                      <Image
+                        src="/images/used/tibet-3.webp"
+                        alt="Tibetan Monastery - ancient Buddhist monastery with traditional architecture in Tibet"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        loading="lazy"
+                      />
+                    </div>
+                  </Link>
+                </div>
+                <div className="space-y-3 sm:space-y-4 pt-8 sm:pt-12">
+                  <Link href="/destinations/tibet/tibet-overland-tour" aria-label="Tibet Overland Tour">
+                    <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                      <Image
+                        src="/images/used/tibet-2.webp"
+                        alt="Tibetan Landscape - dramatic high-altitude landscape with turquoise lake and mountains in Tibet"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        loading="lazy"
+                      />
+                    </div>
+                  </Link>
+                  <Link href="/destinations/tibet/kailash-mansarovar-yatra" aria-label="Kailash Mansarovar Yatra">
+                    <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                      <Image
+                        src="/images/used/tibet-4.webp"
+                        alt="Tibetan Prayer Flags - colorful prayer flags fluttering against the Himalayan landscape in Tibet"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        loading="lazy"
+                      />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Cultural Tours Section */}
+        <section className="py-12 sm:py-16 md:py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
+              <div className="max-w-2xl">
+                <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
+                  <Landmark className="w-3 h-3 mr-1.5" aria-hidden="true" /> TIBET TOURS
+                </Badge>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940]">
+                  Spiritual & Cultural Journeys
+                </h2>
+                <p className="text-slate-600 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">
+                  Experience Tibet's rich heritage and breathtaking landscapes.
+                </p>
+              </div>
+            </div>
+
+            {/* Mobile Horizontal Scroll */}
+            <div className="md:hidden relative">
+              <div 
+                className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
+                ref={cityTourScrollContainerRef}
+              >
+                {culturalTours.map((tour, i) => (
+                  <Link 
+                    key={i} 
+                    href={tour.link}
+                    className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center cursor-pointer"
+                    aria-label={tour.name}
+                  >
+                    <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                      <div className="relative h-40 overflow-hidden">
+                        <Image
+                          src={tour.image}
+                          alt={tour.name}
+                          fill
+                          className="object-cover"
+                          sizes="85vw"
+                          quality={85}
+                          loading="lazy"
+                        />
+                        <div className="absolute top-3 right-3">
+                          <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold text-xs">
+                            {tour.duration}
+                          </Badge>
+                        </div>
+                      </div>
+                      <CardContent className="p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-8 h-8 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
+                            <Castle className="w-5 h-5" aria-hidden="true" />
+                          </div>
+                          <h4 className="text-base font-bold text-[#0f2940] line-clamp-1">{tour.name}</h4>
+                        </div>
+                        <p className="text-slate-600 text-xs mb-3 line-clamp-2">{tour.description}</p>
+                        <div className="flex flex-wrap gap-1 mb-3">
+                          {tour.highlights.slice(0, 2).map((h, idx) => (
+                            <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
+                              {h}
+                            </Badge>
+                          ))}
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-lg font-bold text-[#0f2940]">{tour.price}</span>
+                          <Button 
+                            size="sm" 
+                            className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs min-h-[44px]"
+                            onClick={(e) => { e.preventDefault(); handleBookNow(tour.name); }}
+                            aria-label={`Book ${tour.name}`}
+                          >
+                            Book Now
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+              <button
+                onClick={scrollCityTourLeft}
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-1.5 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft className="w-4 h-4" aria-hidden="true" />
+              </button>
+              <button
+                onClick={scrollCityTourRight}
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-1.5 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
+                aria-label="Scroll right"
+              >
+                <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
+              </button>
+            </div>
+
+            {/* Desktop Grid */}
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {culturalTours.map((tour, i) => (
                 <Link 
-                  key={i} 
+                  key={i}
                   href={tour.link}
-                  className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center cursor-pointer"
+                  className="cursor-pointer"
+                  aria-label={tour.name}
                 >
-                  <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
-                    <div className="relative h-40 overflow-hidden">
+                  <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
+                    <div className="relative h-48 overflow-hidden">
                       <Image
                         src={tour.image}
                         alt={tour.name}
                         fill
                         className="object-cover"
-                        sizes="85vw"
+                        sizes="(max-width: 1024px) 33vw, 33vw"
                         quality={85}
+                        loading="lazy"
                       />
-                      <div className="absolute top-3 right-3">
-                        <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold text-xs">
+                      <div className="absolute top-4 right-4">
+                        <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
                           {tour.duration}
                         </Badge>
                       </div>
                     </div>
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
-                          <Castle className="w-5 h-5" />
+                    <CardContent className="p-5">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
+                          <Castle className="w-5 h-5" aria-hidden="true" />
                         </div>
-                        <h4 className="text-base font-bold text-[#0f2940] line-clamp-1">{tour.name}</h4>
+                        <h4 className="text-lg font-bold text-[#0f2940]">{tour.name}</h4>
                       </div>
-                      <p className="text-slate-600 text-xs mb-3 line-clamp-2">{tour.description}</p>
-                      <div className="flex flex-wrap gap-1 mb-3">
-                        {tour.highlights.slice(0, 2).map((h, idx) => (
+                      <p className="text-slate-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {tour.highlights.slice(0, 3).map((h, idx) => (
                           <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
                             {h}
                           </Badge>
                         ))}
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-lg font-bold text-[#0f2940]">{tour.price}</span>
+                        <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
                         <Button 
                           size="sm" 
-                          className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleBookNow(tour.name);
-                          }}
+                          className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full min-h-[44px]"
+                          onClick={(e) => { e.preventDefault(); handleBookNow(tour.name); }}
+                          aria-label={`Book ${tour.name}`}
                         >
                           Book Now
                         </Button>
@@ -496,551 +638,474 @@ export default function TibetPage() {
                 </Link>
               ))}
             </div>
-            {/* Scroll Buttons */}
-            <button
-              onClick={scrollCityTourLeft}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-1.5 backdrop-blur-sm"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={scrollCityTourRight}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-1.5 backdrop-blur-sm"
-            >
-              <ChevronRightIcon className="w-4 h-4" />
-            </button>
           </div>
+        </section>
 
-          {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {culturalTours.map((tour, i) => (
-              <Link 
-                key={i}
-                href={tour.link}
-                className="cursor-pointer"
-              >
-                <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={tour.image}
-                      alt={tour.name}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 33vw, 33vw"
-                      quality={85}
-                    />
-                    <div className="absolute top-4 right-4">
-                      <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
-                        {tour.duration}
-                      </Badge>
-                    </div>
-                  </div>
-                  <CardContent className="p-5">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
-                        <Castle className="w-5 h-5" />
+        {/* Why Tibet */}
+        <section className="py-12 sm:py-16 md:py-20 bg-[#0f2940] relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-20 left-20 w-96 h-96 bg-[#C5E0ED] rounded-full blur-[150px]" />
+            <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#7fb8d4] rounded-full blur-[150px]" />
+          </div>
+          <div className="container mx-auto px-4 sm:px-6 relative z-10">
+            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
+                <CheckCircle className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHY VISIT TIBET
+              </Badge>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white mb-4">
+                A Land of Spiritual Wonder
+              </h2>
+              <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+                From ancient monasteries to breathtaking landscapes, Tibet offers transformative experiences.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              {whyTibet.map((item, i) => (
+                <Card key={i} className="bg-white/5 border-white/10 backdrop-blur-sm h-full rounded-xl hover:bg-white/10 transition-all hover:scale-[1.02]">
+                  <CardContent className="p-4 sm:p-5">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] mb-3">
+                      <div className="scale-125" aria-hidden="true">
+                        {item.icon}
                       </div>
-                      <h4 className="text-lg font-bold text-[#0f2940]">{tour.name}</h4>
                     </div>
-                    <p className="text-slate-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {tour.highlights.slice(0, 3).map((h, idx) => (
-                        <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
-                          {h}
-                        </Badge>
-                      ))}
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
-                      <Button 
-                        size="sm" 
-                        className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleBookNow(tour.name);
-                        }}
-                      >
-                        Book Now
-                      </Button>
-                    </div>
+                    <h4 className="text-sm sm:text-base md:text-lg font-bold text-white mb-1.5">{item.title}</h4>
+                    <p className="text-white/60 text-xs sm:text-sm leading-relaxed">{item.description}</p>
                   </CardContent>
                 </Card>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Tibet */}
-      <section className="py-12 sm:py-16 md:py-20 bg-[#0f2940] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-[#C5E0ED] rounded-full blur-[150px]" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#7fb8d4] rounded-full blur-[150px]" />
-        </div>
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-            <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-              <CheckCircle className="w-3 h-3 mr-1.5" /> WHY VISIT TIBET
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white mb-4">
-              A Land of Spiritual Wonder
-            </h2>
-            <p className="text-white/70 text-sm sm:text-base leading-relaxed">
-              From ancient monasteries to breathtaking landscapes, Tibet offers transformative experiences.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            {whyTibet.map((item, i) => (
-              <Card key={i} className="bg-white/5 border-white/10 backdrop-blur-sm h-full rounded-xl hover:bg-white/10 transition-all hover:scale-[1.02]">
-                <CardContent className="p-4 sm:p-5">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] mb-3">
-                    <div className="scale-125">
-                      {item.icon}
-                    </div>
-                  </div>
-                  <h4 className="text-sm sm:text-base md:text-lg font-bold text-white mb-1.5">{item.title}</h4>
-                  <p className="text-white/60 text-xs sm:text-sm leading-relaxed">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-     {/* Tibet Regions */}
-<section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-[#f0f7fa] to-white">
-  <div className="container mx-auto px-4 sm:px-6">
-    {/* Header with decorative elements */}
-    <div className="text-center max-w-3xl mx-auto mb-16">
-      <div className="flex justify-center items-center gap-3 mb-4">
-        <div className="h-px w-12 bg-gradient-to-l from-[#2d6a8a]/30 to-transparent"></div>
-        <Badge className="bg-transparent text-[#2d6a8a] border-[#2d6a8a]/20 px-5 py-1.5 text-xs font-light tracking-[0.2em] uppercase rounded-full">
-          Sacred Geography
-        </Badge>
-        <div className="h-px w-12 bg-gradient-to-r from-[#2d6a8a]/30 to-transparent"></div>
-      </div>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-4">
-        The Four Pillars of Tibet
-      </h2>
-      <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-        Ancient kingdoms and sacred valleys, each holding centuries of wisdom within their mountains and monasteries
-      </p>
-    </div>
-
-    {/* Regions as descriptive cards - no buttons, no images */}
-    <div className="max-w-5xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-        {regions.map((region, index) => (
-          <div key={index} className="relative">
-            {/* Decorative element */}
-            <div className="absolute -left-6 top-0 text-6xl font-serif text-[#C5E0ED]/30 select-none">
-              {String(index + 1).padStart(2, '0')}
+              ))}
             </div>
-            
-            <div className="relative pl-4 border-l-2 border-[#C5E0ED] group hover:border-[#2d6a8a] transition-colors duration-300">
-              <h3 className="text-2xl font-serif text-[#0f2940] mb-3 group-hover:text-[#2d6a8a] transition-colors">
-                {region.name}
-              </h3>
-              
-              <p className="text-slate-600 text-base leading-relaxed mb-4">
-                {region.description}
+          </div>
+        </section>
+
+        {/* Tibet Regions */}
+        <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-[#f0f7fa] to-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <div className="flex justify-center items-center gap-3 mb-4">
+                <div className="h-px w-12 bg-gradient-to-l from-[#2d6a8a]/30 to-transparent"></div>
+                <Badge className="bg-transparent text-[#2d6a8a] border-[#2d6a8a]/20 px-5 py-1.5 text-xs font-light tracking-[0.2em] uppercase rounded-full">
+                  Sacred Geography
+                </Badge>
+                <div className="h-px w-12 bg-gradient-to-r from-[#2d6a8a]/30 to-transparent"></div>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-4">
+                The Four Pillars of Tibet
+              </h2>
+              <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                Ancient kingdoms and sacred valleys, each holding centuries of wisdom within their mountains and monasteries
               </p>
-              
-              {/* Cultural characteristics - replacing tour counts */}
-              <div className="space-y-2">
-                {region.characteristics?.map((trait, idx) => (
-                  <div key={idx} className="flex items-start gap-2 text-sm">
-                    <span className="text-[#2d6a8a] mt-1">•</span>
-                    <span className="text-slate-600">{trait}</span>
+            </div>
+
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                {regions.map((region, index) => (
+                  <div key={index} className="relative">
+                    <div className="absolute -left-6 top-0 text-6xl font-serif text-[#C5E0ED]/30 select-none">
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                    
+                    <div className="relative pl-4 border-l-2 border-[#C5E0ED] group hover:border-[#2d6a8a] transition-colors duration-300">
+                      <h3 className="text-2xl font-serif text-[#0f2940] mb-3 group-hover:text-[#2d6a8a] transition-colors">
+                        {region.name}
+                      </h3>
+                      
+                      <p className="text-slate-600 text-base leading-relaxed mb-4">
+                        {region.description}
+                      </p>
+                      
+                      <div className="space-y-2">
+                        {region.characteristics?.map((trait, idx) => (
+                          <div key={idx} className="flex items-start gap-2 text-sm">
+                            <span className="text-[#2d6a8a] mt-1">•</span>
+                            <span className="text-slate-600">{trait}</span>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      <div className="mt-4 inline-block">
+                        <span className="text-xs text-[#2d6a8a] bg-[#C5E0ED]/10 px-3 py-1 rounded-full border border-[#C5E0ED]/20">
+                          {region.culturalFocus}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
-              
-              {/* Subtle cultural tag */}
-              <div className="mt-4 inline-block">
-                <span className="text-xs text-[#2d6a8a] bg-[#C5E0ED]/10 px-3 py-1 rounded-full border border-[#C5E0ED]/20">
-                  {region.culturalFocus}
-                </span>
+
+              <div className="mt-20 text-center">
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-[#C5E0ED]/20"></div>
+                  </div>
+                  <div className="relative flex justify-center">
+                    <div className="bg-gradient-to-b from-[#f0f7fa] to-white px-8">
+                      <span className="text-sm text-slate-500 flex items-center gap-2">
+                        <Compass className="w-4 h-4 text-[#2d6a8a]/40" aria-hidden="true" />
+                        For centuries, these lands have preserved the spiritual and cultural heritage of Tibet
+                        <Compass className="w-4 h-4 text-[#2d6a8a]/40" aria-hidden="true" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        </section>
 
-      {/* Historical context footer */}
-      <div className="mt-20 text-center">
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-[#C5E0ED]/20"></div>
-          </div>
-          <div className="relative flex justify-center">
-            <div className="bg-gradient-to-b from-[#f0f7fa] to-white px-8">
-              <span className="text-sm text-slate-500 flex items-center gap-2">
-                <Compass className="w-4 h-4 text-[#2d6a8a]/40" />
-                For centuries, these lands have preserved the spiritual and cultural heritage of Tibet
-                <Compass className="w-4 h-4 text-[#2d6a8a]/40" />
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-      {/* Best Time to Visit */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-            <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-              <Calendar className="w-3 h-3 mr-1.5" /> WHEN TO VISIT
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4">
-              Best Time to Visit Tibet
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-            {[
-              {
-                season: "Spring",
-                months: "April - May",
-                icon: <TreePine className="w-5 h-5 sm:w-5 sm:h-5" />,
-                color: "from-pink-100 to-orange-100",
-                borderColor: "border-pink-200",
-                highlights: ["Mild weather", "Fewer tourists", "Blooming flowers", "Clear skies"],
-                rating: "Excellent",
-              },
-              {
-                season: "Summer",
-                months: "June - August",
-                icon: <Sunrise className="w-5 h-5 sm:w-5 sm:h-5" />,
-                color: "from-green-100 to-emerald-100",
-                borderColor: "border-green-200",
-                highlights: ["Warmest months", "Festival season", "Lush landscapes", "Rain showers"],
-                rating: "Best",
-              },
-              {
-                season: "Autumn",
-                months: "September - October",
-                icon: <Mountain className="w-5 h-5 sm:w-5 sm:h-5" />,
-                color: "from-amber-100 to-orange-100",
-                borderColor: "border-amber-200",
-                highlights: ["Clear mountain views", "Dry weather", "Harvest season", "Photography"],
-                rating: "Excellent",
-              },
-              {
-                season: "Winter",
-                months: "November - March",
-                icon: <Snowflake className="w-5 h-5 sm:w-5 sm:h-5" />,
-                color: "from-blue-100 to-cyan-100",
-                borderColor: "border-blue-200",
-                highlights: ["Fewest tourists", "Snow landscapes", "Lower prices", "Indoor cultural tours"],
-                rating: "Moderate",
-              },
-            ].map((season, i) => (
-              <Card key={i} className={`bg-gradient-to-br ${season.color} ${season.borderColor} border h-full rounded-xl hover:scale-[1.02] transition-transform`}>
-                <CardContent className="p-4 sm:p-5">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
-                      {season.icon}
-                    </div>
-                    <Badge className={`
-                      ${season.rating === "Best" ? "bg-green-500 text-white" : 
-                        season.rating === "Excellent" ? "bg-blue-500 text-white" : 
-                        season.rating === "Moderate" ? "bg-amber-500 text-white" : "bg-slate-500 text-white"
-                      } border-none text-xs
-                    `}>
-                      {season.rating}
-                    </Badge>
-                  </div>
-                  <h4 className="text-base sm:text-lg font-bold text-[#0f2940] mb-1">{season.season}</h4>
-                  <p className="text-xs sm:text-sm text-slate-500 mb-2.5">{season.months}</p>
-                  <ul className="space-y-1.5">
-                    {season.highlights.map((h, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-slate-600">
-                        <Star className="w-3 h-3 text-[#2d6a8a] fill-[#C5E0ED]" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Monastery & Adventure Tours */}
-      <section className="py-12 sm:py-16 md:py-20 bg-[#0f2940] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-[#C5E0ED] rounded-full blur-[150px]" />
-        </div>
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-5">
-            <div className="max-w-2xl">
-              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                <Building className="w-3 h-3 mr-1.5" /> MONASTERY & ADVENTURE
+        {/* Best Time to Visit */}
+        <section className="py-12 sm:py-16 md:py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
+                <Calendar className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHEN TO VISIT
               </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white">
-                Spiritual & Adventure Tours
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4">
+                Best Time to Visit Tibet
               </h2>
-              <p className="text-white/70 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">
-                Explore ancient monasteries and remote Tibetan landscapes.
-              </p>
             </div>
-            
-          </div>
 
-          {/* Mobile Horizontal Scroll */}
-          <div className="md:hidden relative">
-            <div 
-              className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
-              ref={monasteryScrollContainerRef}
-            >
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+              {[
+                {
+                  season: "Spring",
+                  months: "April - May",
+                  icon: <TreePine className="w-5 h-5 sm:w-5 sm:h-5" />,
+                  color: "from-pink-100 to-orange-100",
+                  borderColor: "border-pink-200",
+                  highlights: ["Mild weather", "Fewer tourists", "Blooming flowers", "Clear skies"],
+                  rating: "Excellent",
+                },
+                {
+                  season: "Summer",
+                  months: "June - August",
+                  icon: <Sunrise className="w-5 h-5 sm:w-5 sm:h-5" />,
+                  color: "from-green-100 to-emerald-100",
+                  borderColor: "border-green-200",
+                  highlights: ["Warmest months", "Festival season", "Lush landscapes", "Rain showers"],
+                  rating: "Best",
+                },
+                {
+                  season: "Autumn",
+                  months: "September - October",
+                  icon: <Mountain className="w-5 h-5 sm:w-5 sm:h-5" />,
+                  color: "from-amber-100 to-orange-100",
+                  borderColor: "border-amber-200",
+                  highlights: ["Clear mountain views", "Dry weather", "Harvest season", "Photography"],
+                  rating: "Excellent",
+                },
+                {
+                  season: "Winter",
+                  months: "November - March",
+                  icon: <Snowflake className="w-5 h-5 sm:w-5 sm:h-5" />,
+                  color: "from-blue-100 to-cyan-100",
+                  borderColor: "border-blue-200",
+                  highlights: ["Fewest tourists", "Snow landscapes", "Lower prices", "Indoor cultural tours"],
+                  rating: "Moderate",
+                },
+              ].map((season, i) => (
+                <Card key={i} className={`bg-gradient-to-br ${season.color} ${season.borderColor} border h-full rounded-xl hover:scale-[1.02] transition-transform`}>
+                  <CardContent className="p-4 sm:p-5">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
+                        {season.icon}
+                      </div>
+                      <Badge className={`
+                        ${season.rating === "Best" ? "bg-green-500 text-white" : 
+                          season.rating === "Excellent" ? "bg-blue-500 text-white" : 
+                          season.rating === "Moderate" ? "bg-amber-500 text-white" : "bg-slate-500 text-white"
+                        } border-none text-xs
+                      `}>
+                        {season.rating}
+                      </Badge>
+                    </div>
+                    <h4 className="text-base sm:text-lg font-bold text-[#0f2940] mb-1">{season.season}</h4>
+                    <p className="text-xs sm:text-sm text-slate-500 mb-2.5">{season.months}</p>
+                    <ul className="space-y-1.5">
+                      {season.highlights.map((h, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-slate-600">
+                          <Star className="w-3 h-3 text-[#2d6a8a] fill-[#C5E0ED]" aria-hidden="true" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Monastery & Adventure Tours */}
+        <section className="py-12 sm:py-16 md:py-20 bg-[#0f2940] relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-20 right-20 w-96 h-96 bg-[#C5E0ED] rounded-full blur-[150px]" />
+          </div>
+          <div className="container mx-auto px-4 sm:px-6 relative z-10">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-5">
+              <div className="max-w-2xl">
+                <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
+                  <Building className="w-3 h-3 mr-1.5" aria-hidden="true" /> MONASTERY & ADVENTURE
+                </Badge>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white">
+                  Spiritual & Adventure Tours
+                </h2>
+                <p className="text-white/70 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">
+                  Explore ancient monasteries and remote Tibetan landscapes.
+                </p>
+              </div>
+            </div>
+
+            {/* Mobile Horizontal Scroll */}
+            <div className="md:hidden relative">
+              <div 
+                className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
+                ref={monasteryScrollContainerRef}
+              >
+                {monasteryTours.map((tour, i) => (
+                  <Link 
+                    key={i} 
+                    href={tour.link}
+                    className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
+                    aria-label={tour.name}
+                  >
+                    <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-lg transition-all">
+                      <div className="relative h-56 overflow-hidden">
+                        <Image
+                          src={tour.image}
+                          alt={tour.name}
+                          fill
+                          className="object-cover"
+                          sizes="85vw"
+                          quality={85}
+                          loading="lazy"
+                        />
+                        <div className="absolute top-3 right-3">
+                          <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold text-xs">
+                            {tour.duration}
+                          </Badge>
+                        </div>
+                        <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                          <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {tour.rating}
+                        </div>
+                      </div>
+                      <CardContent className="p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
+                            <Building className="w-5 h-5" aria-hidden="true" />
+                          </div>
+                          <h4 className="text-base font-bold text-white line-clamp-1">{tour.name}</h4>
+                        </div>
+                        <p className="text-white/70 text-xs mb-3 line-clamp-2">{tour.description}</p>
+                        <div className="grid grid-cols-2 gap-1.5 mb-3">
+                          <div className="flex items-center gap-1.5 text-white/70 text-xs">
+                            <Clock className="w-3 h-3 text-[#C5E0ED]" aria-hidden="true" /> {tour.duration}
+                          </div>
+                          <div className="flex items-center gap-1.5 text-white/70 text-xs">
+                            <TrendingUp className="w-3 h-3 text-[#C5E0ED]" aria-hidden="true" /> {tour.altitude}
+                          </div>
+                          <div className="flex items-center gap-1.5 text-white/70 text-xs">
+                            <Footprints className="w-3 h-3 text-[#C5E0ED]" aria-hidden="true" /> {tour.difficulty}
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-1 mb-3">
+                          {tour.highlights.slice(0, 2).map((h, idx) => (
+                            <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
+                              {h}
+                            </Badge>
+                          ))}
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-lg font-bold text-white">{tour.price}</span>
+                          <Button 
+                            size="sm" 
+                            className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs min-h-[44px]"
+                            onClick={(e) => { e.preventDefault(); handleBookNow(tour.name); }}
+                            aria-label={`Book ${tour.name}`}
+                          >
+                            Book Now
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+              <button
+                onClick={scrollMonasteryLeft}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft className="w-4 h-4" aria-hidden="true" />
+              </button>
+              <button
+                onClick={scrollMonasteryRight}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
+                aria-label="Scroll right"
+              >
+                <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
+              </button>
+            </div>
+
+            {/* Desktop Grid */}
+            <div className="hidden md:grid md:grid-cols-3 gap-5">
               {monasteryTours.map((tour, i) => (
                 <Link 
-                  key={i} 
+                  key={i}
                   href={tour.link}
-                  className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
+                  className="cursor-pointer"
+                  aria-label={tour.name}
                 >
-                  <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-lg transition-all">
-                    <div className="relative h-56 overflow-hidden">
+                  <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]">
+                    <div className="relative h-48 overflow-hidden">
                       <Image
                         src={tour.image}
                         alt={tour.name}
                         fill
-                        className="object-cover"
-                        sizes="85vw"
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        sizes="(max-width: 1024px) 33vw, 33vw"
                         quality={85}
+                        loading="lazy"
                       />
                       <div className="absolute top-3 right-3">
-                        <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold text-xs">
+                        <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
                           {tour.duration}
                         </Badge>
                       </div>
-                      <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                        <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {tour.rating}
+                      <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                        <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {tour.rating}
                       </div>
                     </div>
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
-                          <Building className="w-5 h-5" />
+                    <CardContent className="p-4 sm:p-5">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
+                          <Building className="w-5 h-5" aria-hidden="true" />
                         </div>
-                        <h4 className="text-base font-bold text-white line-clamp-1">{tour.name}</h4>
+                        <h4 className="text-lg font-bold text-white">{tour.name}</h4>
                       </div>
-                      <p className="text-white/70 text-xs mb-3 line-clamp-2">{tour.description}</p>
-                      <div className="grid grid-cols-2 gap-1.5 mb-3">
-                        <div className="flex items-center gap-1.5 text-white/70 text-xs">
-                          <Clock className="w-3 h-3 text-[#C5E0ED]" /> {tour.duration}
+                      <p className="text-white/70 text-sm mb-4 line-clamp-2">{tour.description}</p>
+                      <div className="grid grid-cols-2 gap-2 mb-4">
+                        <div className="flex items-center gap-2 text-white/80 text-sm">
+                          <Clock className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" /> {tour.duration}
                         </div>
-                        <div className="flex items-center gap-1.5 text-white/70 text-xs">
-                          <TrendingUp className="w-3 h-3 text-[#C5E0ED]" /> {tour.altitude}
+                        <div className="flex items-center gap-2 text-white/80 text-sm">
+                          <TrendingUp className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" /> {tour.altitude}
                         </div>
-                        <div className="flex items-center gap-1.5 text-white/70 text-xs">
-                          <Footprints className="w-3 h-3 text-[#C5E0ED]" /> {tour.difficulty}
+                        <div className="flex items-center gap-2 text-white/80 text-sm">
+                          <Footprints className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" /> {tour.difficulty}
                         </div>
+                        <div className="text-white font-bold text-lg">{tour.price}</div>
                       </div>
-                      <div className="flex flex-wrap gap-1 mb-3">
-                        {tour.highlights.slice(0, 2).map((h, idx) => (
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {tour.highlights.slice(0, 3).map((h, idx) => (
                           <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
                             {h}
                           </Badge>
                         ))}
                       </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-lg font-bold text-white">{tour.price}</span>
-                        <Button 
-                          size="sm" 
-                          className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleBookNow(tour.name);
-                          }}
-                        >
-                          Book Now
-                        </Button>
-                      </div>
+                      <Button 
+                        className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm min-h-[44px]"
+                        onClick={(e) => { e.preventDefault(); handleBookNow(tour.name); }}
+                        aria-label={`Book ${tour.name}`}
+                      >
+                        Book Now
+                      </Button>
                     </CardContent>
                   </Card>
                 </Link>
               ))}
             </div>
-            {/* Scroll Buttons */}
-            <button
-              onClick={scrollMonasteryLeft}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={scrollMonasteryRight}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm"
-            >
-              <ChevronRightIcon className="w-4 h-4" />
-            </button>
           </div>
+        </section>
 
-          {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-3 gap-5">
-            {monasteryTours.map((tour, i) => (
-              <Link 
-                key={i}
-                href={tour.link}
-                className="cursor-pointer"
-              >
-                <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={tour.image}
-                      alt={tour.name}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
-                      sizes="(max-width: 1024px) 33vw, 33vw"
-                      quality={85}
-                    />
-                    <div className="absolute top-3 right-3">
-                      <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
-                        {tour.duration}
-                      </Badge>
-                    </div>
-                    <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {tour.rating}
-                    </div>
+        {/* Travel Information */}
+        <section className="py-12 sm:py-16 md:py-20 bg-[#f0f7fa]">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
+                <ShieldCheck className="w-3 h-3 mr-1.5" aria-hidden="true" /> TRAVEL TO TIBET
+              </Badge>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4">
+                Travel Information & Tips
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Everything you need to know for your journey to the Roof of the World.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] flex-shrink-0">
+                    <Plane className="w-5 h-5" aria-hidden="true" />
                   </div>
-                  <CardContent className="p-4 sm:p-5">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
-                        <Building className="w-5 h-5" />
-                      </div>
-                      <h4 className="text-lg font-bold text-white">{tour.name}</h4>
-                    </div>
-                    <p className="text-white/70 text-sm mb-4 line-clamp-2">{tour.description}</p>
-                    <div className="grid grid-cols-2 gap-2 mb-4">
-                      <div className="flex items-center gap-2 text-white/80 text-sm">
-                        <Clock className="w-4 h-4 text-[#C5E0ED]" /> {tour.duration}
-                      </div>
-                      <div className="flex items-center gap-2 text-white/80 text-sm">
-                        <TrendingUp className="w-4 h-4 text-[#C5E0ED]" /> {tour.altitude}
-                      </div>
-                      <div className="flex items-center gap-2 text-white/80 text-sm">
-                        <Footprints className="w-4 h-4 text-[#C5E0ED]" /> {tour.difficulty}
-                      </div>
-                      <div className="text-white font-bold text-lg">{tour.price}</div>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {tour.highlights.slice(0, 3).map((h, idx) => (
-                        <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
-                          {h}
-                        </Badge>
-                      ))}
-                    </div>
-                    <Button 
-                      className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleBookNow(tour.name);
-                      }}
-                    >
-                      Book Now
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+                  <div>
+                    <h4 className="font-bold text-[#0f2940] mb-1">Easy Access from Nepal</h4>
+                    <p className="text-slate-600 text-sm">Regular flights between Kathmandu and Lhasa (1 hour). Overland route via Friendship Highway offers spectacular Himalayan views.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] flex-shrink-0">
+                    <Map className="w-5 h-5" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#0f2940] mb-1">Overland Route Experience</h4>
+                    <p className="text-slate-600 text-sm">Spectacular view of the Himalayas from Tibetan plateau. See white glaciers, multi-colored hills, turquoise lakes, and ancient monastic cities.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] flex-shrink-0">
+                    <Users className="w-5 h-5" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#0f2940] mb-1">Cultural Diversity</h4>
+                    <p className="text-slate-600 text-sm">Experience the wonderful diversity of Tibetan people and culture across different regions - what made Tibet remarkable.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] flex-shrink-0">
+                    <Award className="w-5 h-5" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#0f2940] mb-1">Permits & Regulations</h4>
+                    <p className="text-slate-600 text-sm">Tibet Travel Permit required for all visitors. We handle all paperwork including China Group Visa and Tibet Travel Permits.</p>
+                  </div>
+                </div>
+              </div>
 
-      {/* Travel Information */}
-      <section className="py-12 sm:py-16 md:py-20 bg-[#f0f7fa]">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-            <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-              <ShieldCheck className="w-3 h-3 mr-1.5" /> TRAVEL TO TIBET
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4">
-              Travel Information & Tips
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Everything you need to know for your journey to the Roof of the World.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] flex-shrink-0">
-                  <Plane className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#0f2940] mb-1">Easy Access from Nepal</h4>
-                  <p className="text-slate-600 text-sm">Regular flights between Kathmandu and Lhasa (1 hour). Overland route via Friendship Highway offers spectacular Himalayan views.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] flex-shrink-0">
-                  <Map className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#0f2940] mb-1">Overland Route Experience</h4>
-                  <p className="text-slate-600 text-sm">Spectacular view of the Himalayas from Tibetan plateau. See white glaciers, multi-colored hills, turquoise lakes, and ancient monastic cities.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] flex-shrink-0">
-                  <Users className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#0f2940] mb-1">Cultural Diversity</h4>
-                  <p className="text-slate-600 text-sm">Experience the wonderful diversity of Tibetan people and culture across different regions - what made Tibet remarkable.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] flex-shrink-0">
-                  <Award className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#0f2940] mb-1">Permits & Regulations</h4>
-                  <p className="text-slate-600 text-sm">Tibet Travel Permit required for all visitors. We handle all paperwork including China Group Visa and Tibet Travel Permits.</p>
-                </div>
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-[#C5E0ED]/30">
+                <h4 className="font-bold text-[#0f2940] mb-4 text-lg">What to Expect in Tibet</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />
+                    <span className="text-slate-600 text-sm"><strong>High Altitude:</strong> Lhasa at 3,650m, gradual acclimatization important</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />
+                    <span className="text-slate-600 text-sm"><strong>Spiritual Atmosphere:</strong> Active monasteries with praying monks and pilgrims</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />
+                    <span className="text-slate-600 text-sm"><strong>Architectural Marvels:</strong> Ancient dzongs, palaces, and monastic complexes</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />
+                    <span className="text-slate-600 text-sm"><strong>Dramatic Landscapes:</strong> Vast plateaus, turquoise lakes, snow-capped peaks</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />
+                    <span className="text-slate-600 text-sm"><strong>Monastic Cities:</strong> Visit Sakya, Shigatse, and Gyantse - ancient centers of power</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />
+                    <span className="text-slate-600 text-sm"><strong>Local Cuisine:</strong> Tsampa, butter tea, momos, and Tibetan noodle soups</span>
+                  </li>
+                </ul>
               </div>
             </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-[#C5E0ED]/30">
-              <h4 className="font-bold text-[#0f2940] mb-4 text-lg">What to Expect in Tibet</h4>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600 text-sm"><strong>High Altitude:</strong> Lhasa at 3,650m, gradual acclimatization important</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600 text-sm"><strong>Spiritual Atmosphere:</strong> Active monasteries with praying monks and pilgrims</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600 text-sm"><strong>Architectural Marvels:</strong> Ancient dzongs, palaces, and monastic complexes</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600 text-sm"><strong>Dramatic Landscapes:</strong> Vast plateaus, turquoise lakes, snow-capped peaks</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600 text-sm"><strong>Monastic Cities:</strong> Visit Sakya, Shigatse, and Gyantse - ancient centers of power</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600 text-sm"><strong>Local Cuisine:</strong> Tsampa, butter tea, momos, and Tibetan noodle soups</span>
-                </li>
-              </ul>
-            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 }

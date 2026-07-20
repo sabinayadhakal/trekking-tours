@@ -206,32 +206,32 @@ const excludes = [
 const gallery = [
   {
     src: "/images/used/nepal-stupa.webp",
-    alt: "Boudhanath Stupa",
+    alt: "Boudhanath Stupa - massive Buddhist stupa and UNESCO World Heritage Site in Kathmandu, center of Tibetan Buddhism in Nepal",
     caption: "Boudhanath Stupa - UNESCO World Heritage Site in Kathmandu",
   },
   {
     src: "/images/used/bhaktapur-3.webp",
-    alt: "Bhaktapur Durbar Square",
+    alt: "Bhaktapur Durbar Square - medieval UNESCO World Heritage Site with Nyatapola Temple and Palace of 55 Windows",
     caption: "Bhaktapur Durbar Square - Medieval UNESCO Heritage Site",
   },
   {
     src: "/images/used/patan-1.webp",
-    alt: "Patan Durbar Square",
+    alt: "Patan Durbar Square - City of Fine Arts and UNESCO World Heritage Site with Krishna Temple and ancient royal palace",
     caption: "Patan Durbar Square - City of Fine Arts, UNESCO Site",
   },
   {
     src: "/images/used/monkey_temple.webp",
-    alt: "Swayambhunath Stupa",
+    alt: "Swayambhunath Stupa (Monkey Temple) - ancient Buddhist stupa and UNESCO World Heritage Site with panoramic Kathmandu Valley views",
     caption: "Swayambhunath Stupa (Monkey Temple) with valley views",
   },
   {
     src: "/images/used/pashupati-1.webp",
-    alt: "Pashupatinath Temple",
+    alt: "Pashupatinath Temple on the banks of Bagmati River - sacred Hindu temple and UNESCO World Heritage Site dedicated to Lord Shiva",
     caption: "Pashupatinath Temple on the banks of Bagmati River",
   },
   {
     src: "/images/used/lumbini-1.webp",
-    alt: "Mayadevi Temple Lumbini",
+    alt: "Mayadevi Temple in Lumbini - sacred birthplace of Lord Buddha and UNESCO World Heritage Site with Ashoka Pillar",
     caption: "Mayadevi Temple - Birthplace of Buddha, UNESCO Site",
   },
 ];
@@ -243,6 +243,93 @@ export default function NepalHeritageSitesTourPage() {
   
   // Tour name constant for auto-fill functionality
   const tourName = "Nepal Heritage Sites Tour - UNESCO World Heritage Journey";
+
+  // Schema.org structured data for Tour/Product
+  const tourSchema = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": "Nepal Heritage Sites Tour - UNESCO World Heritage Journey - 10 Days",
+    "description": "A comprehensive 10-day journey through Nepal's UNESCO World Heritage Sites—from ancient palace squares and sacred temples to the birthplace of Buddha and stunning Himalayan vistas. Visit Kathmandu Durbar Square, Patan Durbar Square, Bhaktapur Durbar Square, Swayambhunath, Pashupatinath, Boudhanath, Changunarayan, and Lumbini.",
+    "duration": "P10D",
+    "offers": {
+      "@type": "Offer",
+      "price": "2300",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-01-01"
+    },
+    "itinerary": {
+      "@type": "Itinerary",
+      "numberOfDays": 10
+    },
+    "provider": {
+      "@type": "TravelAgency",
+      "name": "Himkala Adventure Pvt. Ltd.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Thamel, Lekhnath Marga",
+        "addressLocality": "Kathmandu",
+        "addressCountry": "Nepal"
+      },
+      "telephone": "+9779841376470",
+      "email": "info@himkalaadventure.com",
+      "url": "https://www.himkalaadventure.com"
+    },
+    "touristType": ["Culture Enthusiasts", "History Buffs", "Photographers", "Pilgrims", "Heritage Travelers"],
+    "tourDifficulty": "Easy",
+    "touristAttraction": [
+      {
+        "@type": "TouristAttraction",
+        "name": "Kathmandu Durbar Square",
+        "description": "Ancient royal palace complex and UNESCO World Heritage Site in Kathmandu"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Swayambhunath Stupa",
+        "description": "Ancient Buddhist stupa on a hilltop overlooking Kathmandu Valley, UNESCO World Heritage Site"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Pashupatinath Temple",
+        "description": "Sacred Hindu temple complex on the banks of Bagmati River, UNESCO World Heritage Site"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Boudhanath Stupa",
+        "description": "One of the largest spherical stupas in South Asia and center of Tibetan Buddhism, UNESCO World Heritage Site"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Patan Durbar Square",
+        "description": "Medieval royal palace square with finest Newari architecture, UNESCO World Heritage Site"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Bhaktapur Durbar Square",
+        "description": "Best-preserved medieval city in Nepal with Nyatapola Temple, UNESCO World Heritage Site"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Changunarayan Temple",
+        "description": "Oldest Hindu temple in Nepal dating to the 4th century, UNESCO World Heritage Site"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Lumbini",
+        "description": "Birthplace of Lord Buddha, UNESCO World Heritage Site with Mayadevi Temple and Ashoka Pillar"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Sarangkot",
+        "description": "Hill station in Pokhara with panoramic views of Annapurna and Dhaulagiri ranges"
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Phewa Lake",
+        "description": "Beautiful lakeside paradise with reflection of Machhapuchhre mountain in Pokhara"
+      }
+    ]
+  };
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -270,6 +357,12 @@ export default function NepalHeritageSitesTourPage() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(tourSchema) }}
+      />
+
       {/* Mobile Navigation Drawer */}
       {showMobileNav && (
         <div className="lg:hidden fixed inset-0 z-50">
@@ -284,6 +377,7 @@ export default function NepalHeritageSitesTourPage() {
                 <button 
                   onClick={() => setShowMobileNav(false)}
                   className="p-2 rounded-lg hover:bg-slate-100"
+                  aria-label="Close navigation menu"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -316,6 +410,7 @@ export default function NepalHeritageSitesTourPage() {
                     size="sm"
                     className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
                     onClick={() => handleShare("facebook")}
+                    aria-label="Share on Facebook"
                   >
                     <Facebook className="w-4 h-4" />
                   </Button>
@@ -323,6 +418,7 @@ export default function NepalHeritageSitesTourPage() {
                     size="sm"
                     className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
                     onClick={() => handleShare("twitter")}
+                    aria-label="Share on Twitter"
                   >
                     <Twitter className="w-4 h-4" />
                   </Button>
@@ -330,6 +426,7 @@ export default function NepalHeritageSitesTourPage() {
                     size="sm"
                     className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
                     onClick={handleCopyLink}
+                    aria-label="Copy link to clipboard"
                   >
                     {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                   </Button>
@@ -345,12 +442,13 @@ export default function NepalHeritageSitesTourPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/used/nepal-heritage-sites-tour-nepal.webp"
-            alt="Nepal Heritage Sites Tour"
+            alt="Nepal Heritage Sites Tour - UNESCO World Heritage journey through Kathmandu Valley, Pokhara, and Lumbini"
             fill
             className="object-cover"
             priority
             quality={85}
             sizes="100vw"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
@@ -453,7 +551,8 @@ export default function NepalHeritageSitesTourPage() {
                       <a 
                         href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${tourName}.`)}`}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer nofollow"
+                        aria-label="Contact via WhatsApp"
                       >
                         <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
                           <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
@@ -508,6 +607,7 @@ export default function NepalHeritageSitesTourPage() {
                           size="sm"
                           className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={() => handleShare("facebook")}
+                          aria-label="Share on Facebook"
                         >
                           <Facebook className="w-3 h-3 md:w-4 md:h-4" />
                         </Button>
@@ -515,6 +615,7 @@ export default function NepalHeritageSitesTourPage() {
                           size="sm"
                           className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={() => handleShare("twitter")}
+                          aria-label="Share on Twitter"
                         >
                           <Twitter className="w-3 h-3 md:w-4 md:h-4" />
                         </Button>
@@ -523,6 +624,7 @@ export default function NepalHeritageSitesTourPage() {
                           variant="outline"
                           className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={handleCopyLink}
+                          aria-label="Copy link to clipboard"
                         >
                           {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
                         </Button>
@@ -541,6 +643,7 @@ export default function NepalHeritageSitesTourPage() {
                   size="sm"
                   className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("facebook")}
+                  aria-label="Share on Facebook"
                 >
                   <Facebook className="w-3 h-3 mr-1" /> Share
                 </Button>
@@ -548,6 +651,7 @@ export default function NepalHeritageSitesTourPage() {
                   size="sm"
                   className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("twitter")}
+                  aria-label="Share on Twitter"
                 >
                   <Twitter className="w-3 h-3 mr-1" /> Tweet
                 </Button>
@@ -556,6 +660,7 @@ export default function NepalHeritageSitesTourPage() {
                   variant="outline"
                   className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={handleCopyLink}
+                  aria-label="Copy link to clipboard"
                 >
                   {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
                 </Button>
@@ -563,23 +668,23 @@ export default function NepalHeritageSitesTourPage() {
 
               {/* Overview */}
               <section className="mb-6 md:mb-12" id="overview">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview of Nepal UNESCO Heritage Tour</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The <strong>Nepal Heritage Sites Tour</strong> is a comprehensive 10-day journey that takes you through the cultural heart of Nepal, exploring the country's magnificent UNESCO World Heritage Sites. From the ancient palace squares of the Kathmandu Valley to the sacred birthplace of Lord Buddha in Lumbini, and from the stunning Himalayan vistas of Pokhara to the medieval craftsmanship of Newari artisans, this tour offers an unparalleled immersion into Nepal's rich cultural heritage.
+                    The <strong>Nepal Heritage Sites Tour</strong> is a comprehensive 10-day journey that takes you through the cultural heart of Nepal, exploring the country's magnificent <strong>UNESCO World Heritage Sites</strong>. From the ancient palace squares of the Kathmandu Valley to the sacred birthplace of Lord Buddha in Lumbini, and from the stunning Himalayan vistas of Pokhara to the medieval craftsmanship of Newari artisans, this <strong>Nepal cultural heritage tour</strong> offers an unparalleled immersion into Nepal's rich cultural heritage.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     The Kathmandu Valley alone is home to seven UNESCO World Heritage Sites, all included in this tour: the three durbar squares of Kathmandu, Patan, and Bhaktapur; the Buddhist stupas of Swayambhunath and Boudhanath; the Hindu temple of Pashupatinath; and the ancient hilltop temple of Changunarayan. Beyond the valley, you'll journey to Pokhara for sunrise over the Annapurna Himalayas and to Lumbini, where you'll walk in the footsteps of Buddha himself.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    Your expert guide will bring these ancient stones to life with stories of kings and gods, tales of craftsmanship and devotion, and insights into the living traditions that continue today. With comfortable accommodations, seamless logistics, and expert guidance throughout, this tour is perfect for culture enthusiasts, history buffs, photographers, and anyone seeking to understand the soul of Nepal.
+                    Your expert guide will bring these ancient stones to life with stories of kings and gods, tales of craftsmanship and devotion, and insights into the living traditions that continue today. With comfortable accommodations, seamless logistics, and expert guidance throughout, this <strong>UNESCO heritage walking tour</strong> is perfect for culture enthusiasts, history buffs, photographers, and anyone seeking to understand the soul of Nepal.
                   </p>
                 </div>
               </section>
 
               {/* Highlights */}
               <section className="mb-6 md:mb-12" id="highlights">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Tour Highlights</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Tour Highlights - UNESCO Heritage Sites</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
                   {[
                     "Visit all 7 UNESCO World Heritage Sites in the Kathmandu Valley",
@@ -609,13 +714,13 @@ export default function NepalHeritageSitesTourPage() {
 
               {/* Best Season */}
               <section className="mb-6 md:mb-12">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Visit</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Visit Nepal Heritage Sites</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4">
                   <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
                         <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h4>
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar-May)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Pleasant temperatures, blooming rhododendrons, and clear mountain views. Ideal for photography and exploring heritage sites comfortably.
@@ -626,7 +731,7 @@ export default function NepalHeritageSitesTourPage() {
                   <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h4>
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep-Nov)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Crystal-clear skies, perfect temperatures, and vibrant festivals including Dashain and Tihar. Peak season for cultural experiences and mountain views.
@@ -638,7 +743,7 @@ export default function NepalHeritageSitesTourPage() {
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
                         <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-amber-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h4>
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Winter (Dec-Feb)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Crisp clear air, excellent mountain views, and cool sunny days. Good for sightseeing with fewer crowds. Lumbini remains pleasant for pilgrimage.
@@ -661,6 +766,7 @@ export default function NepalHeritageSitesTourPage() {
                     onClick={() =>
                       setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
                     }
+                    aria-label={expandedDays.length === itinerary.length ? "Collapse all itinerary days" : "Expand all itinerary days"}
                   >
                     {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
                   </Button>
@@ -678,13 +784,14 @@ export default function NepalHeritageSitesTourPage() {
                         <button
                           className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
                           onClick={() => toggleDay(day.day)}
+                          aria-label={`Toggle day ${day.day} itinerary details`}
                         >
                           <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
                             <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
                             <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
+                            <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h3>
                             <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
                               <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
                                 <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
@@ -733,7 +840,7 @@ export default function NepalHeritageSitesTourPage() {
 
               {/* Includes / Excludes */}
               <section className="mb-6 md:mb-12" id="includes">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included in This Nepal Heritage Tour</h2>
                 <div className="grid md:grid-cols-2 gap-3 md:gap-6">
                   <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-6">
@@ -786,7 +893,7 @@ export default function NepalHeritageSitesTourPage() {
 
               {/* Photo Gallery */}
               <section className="mb-6 md:mb-12" id="gallery">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery - Nepal UNESCO Heritage Sites</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
                   {gallery.map((image, i) => (
                     <div
@@ -799,6 +906,7 @@ export default function NepalHeritageSitesTourPage() {
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
                         sizes="(max-width: 768px) 50vw, 33vw"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
@@ -812,7 +920,7 @@ export default function NepalHeritageSitesTourPage() {
 
               {/* FAQ Section */}
               <section className="mb-6 md:mb-12" id="faq">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions About Nepal Heritage Tours</h2>
                 <div className="space-y-2 md:space-y-4">
                   {[
                     {
@@ -842,7 +950,7 @@ export default function NepalHeritageSitesTourPage() {
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
                       <CardContent className="p-2 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
+                        <h3 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h3>
                         <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
                       </CardContent>
                     </Card>

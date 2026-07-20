@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import {
   Mountain,
   Calendar,
@@ -153,26 +154,24 @@ const excludes = [
 const gallery = [
   {
     src: "/images/used/mardi-himal-1.webp",
-    alt: "Way to Mardi Himal Base Camp",
+    alt: "Trail to Mardi Himal Base Camp at 4,500m - spectacular mountain views of Machhapuchhre and Annapurna on the Mardi Himal trek in Nepal",
     caption: "Way to Mardi Himal Base Camp (4,500m)",
   },
   {
     src: "/images/used/mardi-1.webp",
-    alt: "Mardi High Camp",
+    alt: "High Camp Mardi - panoramic ridge-top teahouse with stunning views of Machhapuchhre (Fishtail) on the Mardi Himal trek in Nepal",
     caption: "High Camp Mardi",
   },
   {
     src: "/images/used/mardi-3.webp",
-    alt: "High Camp Ridge",
+    alt: "Ridge Trail to High Camp - dramatic mountain ridge with Annapurna and Machhapuchhre views on the Mardi Himal trek in Nepal",
     caption: "Ridge Trail to High Camp",
   },
-  
   {
     src: "/images/used/mardi-2.webp",
-    alt: "Viewpoint",
+    alt: "Forest Camp - beautiful rhododendron and oak forest section of the Mardi Himal trek in Nepal's Annapurna region",
     caption: "Forest Camp",
   },
-  
 ];
 
 export default function MardiHimalTrekPage() {
@@ -180,8 +179,11 @@ export default function MardiHimalTrekPage() {
   const [expandedDays, setExpandedDays] = React.useState<number[]>([1]);
   const [showMobileNav, setShowMobileNav] = React.useState(false);
   
-  // Trek name constant for auto-fill functionality
   const trekName = "Mardi Himal Base Camp Trek";
+  const canonicalUrl = "https://www.himkalaadventure.com/mardi-himal-base-camp-trek";
+  const pageTitle = "Mardi Himal Base Camp Trek - Himkala Adventure";
+  const pageDescription = "Mardi Himal Base Camp Trek: Trek to 4,500m beneath Machhapuchhre (Fishtail) through rhododendron forests. A hidden gem in Nepal's Annapurna region. Book now!";
+  const imageUrl = "https://www.himkalaadventure.com/images/used/mardi-1.webp";
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -207,570 +209,704 @@ export default function MardiHimalTrekPage() {
     );
   };
 
+  // Schema.org Organization schema
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Himkala Adventure Pvt. Ltd.",
+    "description": "Expert-guided Mardi Himal Base Camp trekking packages in Nepal. Trek to 4,500m beneath Machhapuchhre with certified guides.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Thamel, Lekhnath Marga",
+      "addressLocality": "Kathmandu",
+      "addressCountry": "Nepal"
+    },
+    "telephone": "+977 9841376470",
+    "email": "info@himkalaadventure.com",
+    "url": "https://www.himkalaadventure.com",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 27.7172,
+      "longitude": 85.3240
+    }
+  };
+
+  // Schema.org Product/Trek schema
+  const trekSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Mardi Himal Base Camp Trek - 7 Days",
+    "description": "Mardi Himal Base Camp Trek: Trek to 4,500m beneath Machhapuchhre (Fishtail) through enchanting rhododendron forests. A hidden gem in Nepal's Annapurna region.",
+    "image": imageUrl,
+    "brand": {
+      "@type": "Brand",
+      "name": "Himkala Adventure Pvt. Ltd."
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "600",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-01-01",
+      "url": canonicalUrl
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "reviewCount": "112"
+    },
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Max Altitude",
+        "value": "4,500m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Mardi Himal Base Camp Altitude",
+        "value": "4,500m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Viewpoint Altitude",
+        "value": "4,200m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Duration",
+        "value": "7 Days"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Difficulty",
+        "value": "Easy-Moderate"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Region",
+        "value": "Annapurna Region"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Best Season",
+        "value": "Mar-May, Sep-Nov"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Trek Highlights",
+        "value": "Mardi Himal Base Camp, Machhapuchhre Views, Rhododendron Forests, High Camp Ridge"
+      }
+    ]
+  };
+
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Mobile Navigation Drawer */}
-      {showMobileNav && (
-        <div className="lg:hidden fixed inset-0 z-50">
-          <div 
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setShowMobileNav(false)}
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg text-[#0f2940]">Quick Navigation</h3>
-                <button 
-                  onClick={() => setShowMobileNav(false)}
-                  className="p-2 rounded-lg hover:bg-slate-100"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Himkala Adventure" />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={imageUrl} />
+        <meta name="twitter:site" content="@himkalanepal" />
+        <meta name="twitter:creator" content="@himkalanepal" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(trekSchema) }}
+        />
+      </Head>
+
+      <div className="min-h-screen bg-white overflow-x-hidden">
+        {/* Mobile Navigation Drawer */}
+        {showMobileNav && (
+          <div className="lg:hidden fixed inset-0 z-50">
+            <div 
+              className="absolute inset-0 bg-black/50"
+              onClick={() => setShowMobileNav(false)}
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="font-bold text-lg text-[#0f2940]">Quick Navigation</h3>
+                  <button 
+                    onClick={() => setShowMobileNav(false)}
+                    className="p-2 rounded-lg hover:bg-slate-100 min-h-[44px] min-w-[44px]"
+                    aria-label="Close navigation menu"
+                  >
+                    <X className="w-5 h-5" aria-hidden="true" />
+                  </button>
+                </div>
+                
+                <div className="space-y-4">
+                  <a href="#overview" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Overview
+                  </a>
+                  <a href="#highlights" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Highlights
+                  </a>
+                  <a href="#itinerary" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Itinerary
+                  </a>
+                  <a href="#includes" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    What's Included
+                  </a>
+                  <a href="#gallery" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Gallery
+                  </a>
+                  <a href="#faq" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    FAQ
+                  </a>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate-200">
+                  <div className="flex gap-2">
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
+                      onClick={() => handleShare("facebook")}
+                      aria-label="Share on Facebook"
+                    >
+                      <Facebook className="w-4 h-4" aria-hidden="true" />
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
+                      onClick={() => handleShare("twitter")}
+                      aria-label="Share on Twitter"
+                    >
+                      <Twitter className="w-4 h-4" aria-hidden="true" />
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
+                      onClick={handleCopyLink}
+                      aria-label="Copy link to clipboard"
+                    >
+                      {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Hero Section */}
+        <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/used/mardi-1.webp"
+              alt="Mardi Himal Base Camp Trek - panoramic views of Machhapuchhre (Fishtail) and the Annapurna range from High Camp in Nepal"
+              fill
+              className="object-cover"
+              priority
+              quality={85}
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
+          </div>
+
+          <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
+            <div className="max-w-5xl mx-auto text-center w-full">
+              <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
+                <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                  <MapPin className="w-3 h-3 mr-1" aria-hidden="true" /> Annapurna Region
+                </Badge>
+                <Badge className="bg-green-100 text-green-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                  Easy-Moderate
+                </Badge>
+                <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                  <Eye className="w-3 h-3 mr-1" aria-hidden="true" /> Fishtail Views
+                </Badge>
               </div>
               
-              <div className="space-y-4">
-                <a href="#overview" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Overview
-                </a>
-                <a href="#highlights" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Highlights
-                </a>
-                <a href="#itinerary" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Itinerary
-                </a>
-                <a href="#includes" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  What's Included
-                </a>
-                <a href="#gallery" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Gallery
-                </a>
-                <a href="#faq" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  FAQ
-                </a>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-slate-200">
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
-                    onClick={() => handleShare("facebook")}
-                  >
-                    <Facebook className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
-                    onClick={() => handleShare("twitter")}
-                  >
-                    <Twitter className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
-                    onClick={handleCopyLink}
-                  >
-                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                  </Button>
-                </div>
-              </div>
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-3 md:mb-6 tracking-tight">
+                MARDI HIMAL <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
+                  BASE CAMP TREK
+                </span>
+              </h1>
+              
+              <p className="text-sm sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
+                A hidden gem in the Annapurna region - trek through enchanting rhododendron forests 
+                to a spectacular ridge with breathtaking views of Machhapuchhre (Fishtail).
+              </p>
             </div>
           </div>
-        </div>
-      )}
+        </section>
 
-      {/* Hero Section */}
-      <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/used/mardi-1.webp"
-            alt="Mardi Himal Trek"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
-        </div>
-
-        <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
-          <div className="max-w-5xl mx-auto text-center w-full">
-            <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
-              <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MapPin className="w-3 h-3 mr-1" /> Annapurna Region
-              </Badge>
-              <Badge className="bg-green-100 text-green-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                Easy-Moderate
-              </Badge>
-              <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <Eye className="w-3 h-3 mr-1" /> Fishtail Views
-              </Badge>
-            </div>
-            
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-3 md:mb-6 tracking-tight">
-              MARDI HIMAL <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
-                BASE CAMP TREK
-              </span>
-            </h1>
-            
-            <p className="text-sm sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
-              A hidden gem in the Annapurna region - trek through enchanting rhododendron forests 
-              to a spectacular ridge with breathtaking views of Machhapuchhre (Fishtail).
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content - with proper sticky sidebar */}
-      <section className="py-6 md:py-12 relative">
-        <div className="container mx-auto px-3 md:px-6 max-w-full">
-          {/* Mobile Sticky Book Now Bar */}
-          <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-slate-400 line-through">$755</div>
-                <div className="text-lg font-bold text-[#0f2940]">$600</div>
-              </div>
-              <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
-                  <Heart className="w-3 h-3 mr-1" /> Book Now
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Desktop Layout - Grid with sticky sidebar */}
-          <div className="lg:grid lg:grid-cols-12 lg:gap-4 lg:gap-10">
-            {/* Sidebar - Sticky on desktop */}
-            <aside className="hidden lg:block lg:col-span-4">
-              <div className="sticky top-24">
-                <div className="space-y-4 md:space-y-6">
-                  {/* Price Card */}
-                  <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
-                    <CardContent className="p-4 md:p-6">
-                      <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$755</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$600</div>
-                        <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
-                      </div>
-
-                      <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>7 Days / 6 Nights</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>Best: Mar-May, Sep-Nov</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>Group Size: 2-12</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>Teahouse Accommodation</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>All Meals Included</span>
-                        </div>
-                      </div>
-
-                      {/* Book Now Button */}
-                      <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
-                        <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
-                          <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Trek
-                        </Button>
-                      </Link>
-                      
-                      {/* WhatsApp Now Button */}
-                      <a 
-                        href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${trekName}.`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
-                          <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
-                        </Button>
-                      </a>
-                    </CardContent>
-                  </Card>
-
-                  {/* Quick Facts */}
-                  <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                    <CardContent className="p-4 md:p-6">
-                      <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                        <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
-                      </h3>
-                      <div className="space-y-2 text-[10px] md:text-sm">
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Start Point</span>
-                          <span className="font-medium text-[#0f2940]">Kathmandu</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">End Point</span>
-                          <span className="font-medium text-[#0f2940]">Kathmandu</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Trek Start/End</span>
-                          <span className="font-medium text-[#0f2940]">Kande / Siding</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Highest Point</span>
-                          <span className="font-medium text-[#0f2940]">Mardi Base Camp (4,500m)</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Viewpoint</span>
-                          <span className="font-medium text-[#0f2940]">4,200m</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2">
-                          <span className="text-slate-500">Trekking Days</span>
-                          <span className="font-medium text-[#0f2940]">5 Days</span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Share */}
-                  <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                    <CardContent className="p-4 md:p-6">
-                      <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                        <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
-                      </h3>
-                      <div className="flex gap-2">
-                        <Button
-                          size="sm"
-                          className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                          onClick={() => handleShare("facebook")}
-                        >
-                          <Facebook className="w-3 h-3 md:w-4 md:h-4" />
-                        </Button>
-                        <Button
-                          size="sm"
-                          className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                          onClick={() => handleShare("twitter")}
-                        >
-                          <Twitter className="w-3 h-3 md:w-4 md:h-4" />
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                          onClick={handleCopyLink}
-                        >
-                          {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            </aside>
-
-            {/* Main Content */}
-            <article className="lg:col-span-8 w-full overflow-hidden mt-6 lg:mt-0">
-              {/* Mobile Share Buttons */}
-              <div className="lg:hidden flex gap-2 mb-6">
-                <Button
-                  size="sm"
-                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={() => handleShare("facebook")}
-                >
-                  <Facebook className="w-3 h-3 mr-1" /> Share
-                </Button>
-                <Button
-                  size="sm"
-                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={() => handleShare("twitter")}
-                >
-                  <Twitter className="w-3 h-3 mr-1" /> Tweet
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={handleCopyLink}
-                >
-                  {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-                </Button>
-              </div>
-
-              {/* Overview */}
-              <section className="mb-6 md:mb-12" id="overview">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
-                <div className="prose prose-slate max-w-none">
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The <strong>Mardi Himal Trek</strong> is one of the Annapurna region's best-kept secrets - a hidden gem that offers spectacular mountain views, enchanting forests, and a genuine sense of wilderness without the crowds of the more famous treks. Opened to trekkers in 2012, this relatively new route takes you to the base of <strong>Mardi Himal (5,587m)</strong>, a beautiful peak nestled beside the iconic Machhapuchhre (Fishtail).
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The trek begins with a scenic drive to Pokhara, then to the trailhead at Kande. The trail winds through enchanting rhododendron and oak forests, past traditional villages and terraced farmlands, before emerging above the tree line onto a spectacular ridge. The views from the ridge are simply breathtaking - <strong>Machhapuchhre</strong> dominates the skyline, while Annapurna South, Hiunchuli, and the entire Annapurna range stretch out before you.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    The highlight is the early morning hike to <strong>Mardi Himal Base Camp (4,500m)</strong>, where you stand at the foot of the mountain with Machhapuchhre towering beside you. This trek is perfect for those with limited time who still want an authentic Himalayan experience - it's shorter and less demanding than treks like Annapurna Base Camp, but no less rewarding in terms of scenery and mountain intimacy.
-                  </p>
-                </div>
-              </section>
-
-              {/* Highlights */}
-              <section className="mb-6 md:mb-12" id="highlights">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Trek Highlights</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
-                  {[
-                    "Mardi Himal Base Camp (4,500m) with close-up mountain views",
-                    "Spectacular sunrise from Mardi Viewpoint (4,200m)",
-                    "Unobstructed views of Machhapuchhre (Fishtail) throughout the trek",
-                    "Enchanting rhododendron and oak forests - stunning in spring",
-                    "Panoramic Annapurna & Dhaulagiri range views from the ridge",
-                    "Less crowded trail - a peaceful alternative to ABC",
-                    "Traditional Gurung and Magar villages with warm hospitality",
-                    "Shorter duration - perfect for those with limited time",
-                    "Dramatic ridge walk above the tree line",
-                    "Scenic drives through rural Nepal and Pokhara's lakeside",
-                  ].map((highlight, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
-                    >
-                      <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" />
-                      <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* Best Season */}
-              <section className="mb-6 md:mb-12">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Trek</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
-                  <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-5">
-                      <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar - May)</h4>
-                      </div>
-                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Rhododendron forests burst into vibrant red, pink, and white blooms. Warm temperatures during the day, clear skies, and excellent visibility. The most colorful time to trek.
-                      </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Excellent</Badge>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-5">
-                      <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-blue-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Nov)</h4>
-                      </div>
-                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crystal-clear skies, stable weather, and perfect trekking conditions. Lush green trails after the monsoon and spectacular mountain views. Festive atmosphere with Dashain and Tihar celebrations.
-                      </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
-                    </CardContent>
-                  </Card>
-                </div>
-              </section>
-
-              {/* Detailed Itinerary */}
-              <section className="mb-6 md:mb-12" id="itinerary">
-                <div className="flex items-center justify-between mb-3 md:mb-6">
-                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4"
-                    onClick={() =>
-                      setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
-                    }
-                  >
-                    {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
-                  </Button>
-                </div>
-
-                <div className="space-y-2 md:space-y-3">
-                  {itinerary.map((day) => (
-                    <Card
-                      key={day.day}
-                      className={`bg-white border-[#C5E0ED]/30 rounded-lg md:rounded-xl overflow-hidden transition-all ${
-                        expandedDays.includes(day.day) ? "shadow-md md:shadow-lg shadow-[#C5E0ED]/20" : "hover:shadow-sm"
-                      }`}
-                    >
-                      <CardContent className="p-0">
-                        <button
-                          className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
-                          onClick={() => toggleDay(day.day)}
-                        >
-                          <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
-                            <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
-                            <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
-                            <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
-                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
-                              </span>
-                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.distance}
-                              </span>
-                            </div>
-                          </div>
-                          <ChevronDown
-                            className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
-                              expandedDays.includes(day.day) ? "rotate-180" : ""
-                            }`}
-                          />
-                        </button>
-
-                        {expandedDays.includes(day.day) && (
-                          <div className="px-2 md:px-4 pb-2 md:pb-4 border-t border-[#C5E0ED]/20">
-                            <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed pt-2 md:pt-4 mb-2 md:mb-4">{day.description}</p>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
-                              <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
-                                <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
-                              </div>
-                              <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
-                                <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
-                              </div>
-                            </div>
-
-                            <div className="flex flex-wrap gap-1 md:gap-2">
-                              {day.highlights.map((h, i) => (
-                                <Badge key={i} variant="secondary" className="bg-[#C5E0ED]/20 text-[#2d6a8a] text-[8px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1">
-                                  {h}
-                                </Badge>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </section>
-
-              {/* Includes / Excludes */}
-              <section className="mb-6 md:mb-12" id="includes">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included</h2>
-                <div className="grid md:grid-cols-2 gap-3 md:gap-6">
-                  <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-6">
-                      <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> Cost Includes
-                      </h3>
-                      <ul className="space-y-1 md:space-y-2">
-                        {includes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" />
-                            <span className="leading-tight">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-6">
-                      <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <XCircle className="w-4 h-4 md:w-5 md:h-5" /> Cost Excludes
-                      </h3>
-                      <ul className="space-y-1 md:space-y-2">
-                        {excludes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" />
-                            <span className="leading-tight">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </section>
-
-              {/* Important Note */}
-              <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
-                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
+        {/* Main Content */}
+        <section className="py-6 md:py-12 relative">
+          <div className="container mx-auto px-3 md:px-6 max-w-full">
+            {/* Mobile Sticky Book Now Bar */}
+            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
+              <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information</h4>
-                  <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
-                    <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 4,500m.</li>
-                    <li>• The Mardi Himal trek is suitable for beginners but requires good fitness - 5-7 hours walking daily.</li>
-                    <li>• The trail to Base Camp can be steep and exposed - trekking poles are highly recommended.</li>
-                    <li>• Winter conditions may limit access beyond the Viewpoint (4,200m) - your guide will advise.</li>
-                  </ul>
+                  <div className="text-xs text-slate-400 line-through">$755</div>
+                  <div className="text-lg font-bold text-[#0f2940]">$600</div>
                 </div>
+                <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
+                  <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]" aria-label={`Book ${trekName} now`}>
+                    <Heart className="w-3 h-3 mr-1" aria-hidden="true" /> Book Now
+                  </Button>
+                </Link>
               </div>
+            </div>
 
-              {/* Photo Gallery */}
-              <section className="mb-6 md:mb-12" id="gallery">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
-                  {gallery.map((image, i) => (
-                    <div
-                      key={i}
-                      className="relative h-24 md:h-48 rounded-lg md:rounded-xl overflow-hidden group cursor-pointer"
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        sizes="(max-width: 768px) 50vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
-                          <p className="text-white text-[8px] md:text-xs font-medium truncate">{image.caption}</p>
+            {/* Desktop Layout */}
+            <div className="lg:grid lg:grid-cols-12 lg:gap-4 lg:gap-10">
+              {/* Sidebar */}
+              <aside className="hidden lg:block lg:col-span-4">
+                <div className="sticky top-24">
+                  <div className="space-y-4 md:space-y-6">
+                    {/* Price Card */}
+                    <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
+                      <CardContent className="p-4 md:p-6">
+                        <div className="text-center mb-4 md:mb-6">
+                          <span className="text-white/50 text-sm line-through">$755</span>
+                          <div className="text-3xl md:text-4xl font-bold text-white mt-1">$600</div>
+                          <span className="text-white/60 text-sm">per person</span>
+                          <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
                         </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
 
-              {/* FAQ Section */}
-              <section className="mb-6 md:mb-12" id="faq">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions</h2>
-                <div className="space-y-2 md:space-y-4">
-                  {[
-                    {
-                      q: "How difficult is the Mardi Himal Trek?",
-                      a: "The Mardi Himal Trek is rated as easy to moderate. You'll trek 4-7 hours daily on well-defined trails with some steep sections. The highest point is 4,500m, so altitude is manageable. It's perfect for beginners with good fitness and those with limited time.",
-                    },
-                    {
-                      q: "Is Mardi Himal less crowded than other Annapurna treks?",
-                      a: "Yes! Mardi Himal is much less crowded than Annapurna Base Camp or Ghorepani Poon Hill. It was opened to trekkers in 2012 and remains a hidden gem, offering a more peaceful and authentic experience.",
-                    },
-                    {
-                      q: "What is the accommodation like on the trek?",
-                      a: "Teahouses along the route are basic but comfortable. Low Camp and High Camp have simple lodges with shared bathrooms and communal dining areas. Facilities become more basic at higher altitudes, but the hospitality is warm.",
-                    },
-                    {
-                      q: "Can I see Machhapuchhre (Fishtail) from the trek?",
-                      a: "Absolutely! Machhapuchhre dominates the views throughout the trek, especially from High Camp and the ridge. The close-up views of Fishtail Mountain are among the best in the Annapurna region.",
-                    },
-                    {
-                      q: "How many days do I need for the Mardi Himal Trek?",
-                      a: "The trek typically takes 5 days (4 nights) from Kande to Siding. Including travel from Kathmandu, you should allow 8-9 days total. Some operators offer shorter 4-day options for experienced trekkers.",
-                    },
-                  ].map((faq, i) => (
-                    <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
-                      <CardContent className="p-2 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
-                        <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
+                        <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>7 Days / 6 Nights</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>Best: Mar-May, Sep-Nov</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>Group Size: 2-12</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>Teahouse Accommodation</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>All Meals Included</span>
+                          </div>
+                        </div>
+
+                        <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
+                          <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base" aria-label={`Book ${trekName}`}>
+                            <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Book This Trek
+                          </Button>
+                        </Link>
+                        
+                        <a 
+                          href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${trekName}.`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer nofollow"
+                          className="block"
+                          aria-label="Inquire about Mardi Himal Base Camp trek on WhatsApp"
+                        >
+                          <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
+                            <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> WhatsApp Now
+                          </Button>
+                        </a>
                       </CardContent>
                     </Card>
-                  ))}
+
+                    {/* Quick Facts */}
+                    <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
+                      <CardContent className="p-4 md:p-6">
+                        <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
+                          <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Quick Facts
+                        </h3>
+                        <div className="space-y-2 text-[10px] md:text-sm">
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Start Point</span>
+                            <span className="font-medium text-[#0f2940]">Kathmandu</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">End Point</span>
+                            <span className="font-medium text-[#0f2940]">Kathmandu</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Trek Start/End</span>
+                            <span className="font-medium text-[#0f2940]">Kande / Siding</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Highest Point</span>
+                            <span className="font-medium text-[#0f2940]">Mardi Base Camp (4,500m)</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Viewpoint</span>
+                            <span className="font-medium text-[#0f2940]">4,200m</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2">
+                            <span className="text-slate-500">Trekking Days</span>
+                            <span className="font-medium text-[#0f2940]">5 Days</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Share */}
+                    <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
+                      <CardContent className="p-4 md:p-6">
+                        <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
+                          <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Share
+                        </h3>
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                            onClick={() => handleShare("facebook")}
+                            aria-label="Share on Facebook"
+                          >
+                            <Facebook className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                            onClick={() => handleShare("twitter")}
+                            aria-label="Share on Twitter"
+                          >
+                            <Twitter className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                            onClick={handleCopyLink}
+                            aria-label="Copy link to clipboard"
+                          >
+                            {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />}
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </div>
-              </section>
-            </article>
+              </aside>
+
+              {/* Main Content */}
+              <article className="lg:col-span-8 w-full overflow-hidden mt-6 lg:mt-0">
+                {/* Mobile Share Buttons */}
+                <div className="lg:hidden flex gap-2 mb-6">
+                  <Button
+                    size="sm"
+                    className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
+                    onClick={() => handleShare("facebook")}
+                    aria-label="Share on Facebook"
+                  >
+                    <Facebook className="w-3 h-3 mr-1" aria-hidden="true" /> Share
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
+                    onClick={() => handleShare("twitter")}
+                    aria-label="Share on Twitter"
+                  >
+                    <Twitter className="w-3 h-3 mr-1" aria-hidden="true" /> Tweet
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
+                    onClick={handleCopyLink}
+                    aria-label="Copy link to clipboard"
+                  >
+                    {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
+                  </Button>
+                </div>
+
+                {/* Overview */}
+                <section className="mb-6 md:mb-12" id="overview">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview of Mardi Himal Base Camp Trek</h2>
+                  <div className="prose prose-slate max-w-none">
+                    <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
+                      The <strong>Mardi Himal Base Camp Trek</strong> is one of the Annapurna region's best-kept secrets - a hidden gem that offers spectacular mountain views, enchanting forests, and a genuine sense of wilderness without the crowds of the more famous treks. Opened to trekkers in 2012, this relatively new <strong>Mardi Himal Base Camp trekking</strong> route takes you to the base of <strong>Mardi Himal (5,587m)</strong>, a beautiful peak nestled beside the iconic Machhapuchhre (Fishtail).
+                    </p>
+                    <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
+                      The trek begins with a scenic drive to Pokhara, then to the trailhead at Kande. The trail winds through enchanting rhododendron and oak forests, past traditional villages and terraced farmlands, before emerging above the tree line onto a spectacular ridge. The views from the ridge are simply breathtaking - <strong>Machhapuchhre</strong> dominates the skyline, while Annapurna South, Hiunchuli, and the entire Annapurna range stretch out before you.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed text-xs md:text-base">
+                      The highlight is the early morning hike to <strong>Mardi Himal Base Camp (4,500m)</strong>, where you stand at the foot of the mountain with Machhapuchhre towering beside you. This trek is perfect for those with limited time who still want an authentic Himalayan experience - it's shorter and less demanding than treks like Annapurna Base Camp, but no less rewarding in terms of scenery and mountain intimacy.
+                    </p>
+                  </div>
+                </section>
+
+                {/* Highlights */}
+                <section className="mb-6 md:mb-12" id="highlights">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Mardi Himal Base Camp Trek Highlights</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+                    {[
+                      "Mardi Himal Base Camp (4,500m) with close-up mountain views",
+                      "Spectacular sunrise from Mardi Viewpoint (4,200m)",
+                      "Unobstructed views of Machhapuchhre (Fishtail) throughout the trek",
+                      "Enchanting rhododendron and oak forests - stunning in spring",
+                      "Panoramic Annapurna & Dhaulagiri range views from the ridge",
+                      "Less crowded trail - a peaceful alternative to ABC",
+                      "Traditional Gurung and Magar villages with warm hospitality",
+                      "Shorter duration - perfect for those with limited time",
+                      "Dramatic ridge walk above the tree line",
+                      "Scenic drives through rural Nepal and Pokhara's lakeside",
+                    ].map((highlight, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
+                      >
+                        <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" aria-hidden="true" />
+                        <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* Best Season */}
+                <section className="mb-6 md:mb-12">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Trek Mardi Himal Base Camp</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
+                    <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-5">
+                        <div className="flex items-center gap-2 mb-1 md:mb-3">
+                          <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" aria-hidden="true" />
+                          <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar - May)</h3>
+                        </div>
+                        <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
+                          Rhododendron forests burst into vibrant red, pink, and white blooms. Warm temperatures during the day, clear skies, and excellent visibility. The most colorful time to trek.
+                        </p>
+                        <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Excellent</Badge>
+                      </CardContent>
+                    </Card>
+                    <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-5">
+                        <div className="flex items-center gap-2 mb-1 md:mb-3">
+                          <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-blue-500" aria-hidden="true" />
+                          <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Nov)</h3>
+                        </div>
+                        <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
+                          Crystal-clear skies, stable weather, and perfect trekking conditions. Lush green trails after the monsoon and spectacular mountain views. Festive atmosphere with Dashain and Tihar celebrations.
+                        </p>
+                        <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </section>
+
+                {/* Detailed Itinerary */}
+                <section className="mb-6 md:mb-12" id="itinerary">
+                  <div className="flex items-center justify-between mb-3 md:mb-6">
+                    <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Mardi Himal Itinerary</h2>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4 min-h-[44px]"
+                      onClick={() =>
+                        setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
+                      }
+                      aria-label={expandedDays.length === itinerary.length ? "Collapse all itinerary days" : "Expand all itinerary days"}
+                    >
+                      {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
+                    </Button>
+                  </div>
+
+                  <div className="space-y-2 md:space-y-3">
+                    {itinerary.map((day) => (
+                      <Card
+                        key={day.day}
+                        className={`bg-white border-[#C5E0ED]/30 rounded-lg md:rounded-xl overflow-hidden transition-all ${
+                          expandedDays.includes(day.day) ? "shadow-md md:shadow-lg shadow-[#C5E0ED]/20" : "hover:shadow-sm"
+                        }`}
+                      >
+                        <CardContent className="p-0">
+                          <button
+                            className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left min-h-[44px]"
+                            onClick={() => toggleDay(day.day)}
+                            aria-expanded={expandedDays.includes(day.day)}
+                            aria-label={expandedDays.includes(day.day) ? `Collapse day ${day.day}` : `Expand day ${day.day}`}
+                          >
+                            <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
+                              <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
+                              <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h3>
+                              <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
+                                <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
+                                  <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.altitude}
+                                </span>
+                                <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
+                                  <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.distance}
+                                </span>
+                              </div>
+                            </div>
+                            <ChevronDown
+                              className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
+                                expandedDays.includes(day.day) ? "rotate-180" : ""
+                              }`}
+                              aria-hidden="true"
+                            />
+                          </button>
+
+                          {expandedDays.includes(day.day) && (
+                            <div className="px-2 md:px-4 pb-2 md:pb-4 border-t border-[#C5E0ED]/20">
+                              <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed pt-2 md:pt-4 mb-2 md:mb-4">{day.description}</p>
+
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
+                                <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
+                                  <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
+                                  <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
+                                  <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
+                                  <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
+                                </div>
+                              </div>
+
+                              <div className="flex flex-wrap gap-1 md:gap-2">
+                                {day.highlights.map((h, i) => (
+                                  <Badge key={i} variant="secondary" className="bg-[#C5E0ED]/20 text-[#2d6a8a] text-[8px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1">
+                                    {h}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </section>
+
+                {/* Includes / Excludes */}
+                <section className="mb-6 md:mb-12" id="includes">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included in This Mardi Himal Base Camp Trek</h2>
+                  <div className="grid md:grid-cols-2 gap-3 md:gap-6">
+                    <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-6">
+                        <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
+                          <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Includes
+                        </h3>
+                        <ul className="space-y-1 md:space-y-2">
+                          {includes.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
+                              <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
+                              <span className="leading-tight">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-6">
+                        <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
+                          <XCircle className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Excludes
+                        </h3>
+                        <ul className="space-y-1 md:space-y-2">
+                          {excludes.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
+                              <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" aria-hidden="true" />
+                              <span className="leading-tight">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </section>
+
+                {/* Important Information */}
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-4">Important Information for Mardi Himal Base Camp Trek</h2>
+                <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
+                  <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
+                  <div>
+                    <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
+                      <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 4,500m.</li>
+                      <li>• The Mardi Himal trek is suitable for beginners but requires good fitness - 5-7 hours walking daily.</li>
+                      <li>• The trail to Base Camp can be steep and exposed - trekking poles are highly recommended.</li>
+                      <li>• Winter conditions may limit access beyond the Viewpoint (4,200m) - your guide will advise.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Photo Gallery */}
+                <section className="mb-6 md:mb-12" id="gallery">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery - Mardi Himal Base Camp Trek</h2>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
+                    {gallery.map((image, i) => (
+                      <div
+                        key={i}
+                        className="relative h-24 md:h-48 rounded-lg md:rounded-xl overflow-hidden group cursor-pointer"
+                      >
+                        <Image
+                          src={image.src}
+                          alt={`${image.alt} - Mardi Himal Base Camp trekking experience in Nepal's Annapurna region`}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-300"
+                          sizes="(max-width: 768px) 50vw, 33vw"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
+                            <p className="text-white text-[8px] md:text-xs font-medium truncate">{image.caption}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* FAQ Section */}
+                <section className="mb-6 md:mb-12" id="faq">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions About Mardi Himal Base Camp Trek</h2>
+                  <div className="space-y-2 md:space-y-4">
+                    {[
+                      {
+                        q: "How difficult is the Mardi Himal Trek?",
+                        a: "The Mardi Himal Trek is rated as easy to moderate. You'll trek 4-7 hours daily on well-defined trails with some steep sections. The highest point is 4,500m, so altitude is manageable. It's perfect for beginners with good fitness and those with limited time.",
+                      },
+                      {
+                        q: "Is Mardi Himal less crowded than other Annapurna treks?",
+                        a: "Yes! Mardi Himal is much less crowded than Annapurna Base Camp or Ghorepani Poon Hill. It was opened to trekkers in 2012 and remains a hidden gem, offering a more peaceful and authentic experience.",
+                      },
+                      {
+                        q: "What is the accommodation like on the trek?",
+                        a: "Teahouses along the route are basic but comfortable. Low Camp and High Camp have simple lodges with shared bathrooms and communal dining areas. Facilities become more basic at higher altitudes, but the hospitality is warm.",
+                      },
+                      {
+                        q: "Can I see Machhapuchhre (Fishtail) from the trek?",
+                        a: "Absolutely! Machhapuchhre dominates the views throughout the trek, especially from High Camp and the ridge. The close-up views of Fishtail Mountain are among the best in the Annapurna region.",
+                      },
+                      {
+                        q: "How many days do I need for the Mardi Himal Trek?",
+                        a: "The trek typically takes 5 days (4 nights) from Kande to Siding. Including travel from Kathmandu, you should allow 8-9 days total. Some operators offer shorter 4-day options for experienced trekkers.",
+                      },
+                    ].map((faq, i) => (
+                      <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
+                        <CardContent className="p-2 md:p-5">
+                          <h3 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h3>
+                          <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </section>
+              </article>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 }

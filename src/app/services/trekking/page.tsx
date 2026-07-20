@@ -21,6 +21,40 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+// Schema.org structured data for Trekking Packages
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Himkala Adventure Pvt. Ltd.",
+  "description": "Expert-guided trekking packages in Nepal including Everest Base Camp, Annapurna Circuit, Langtang Valley, and Manaslu Circuit treks.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Thamel, Lekhnath Marga",
+    "addressLocality": "Kathmandu",
+    "addressCountry": "Nepal"
+  },
+  "telephone": "+977 9841376470",
+  "email": "info@himkalaadventure.com",
+  "url": "https://www.himkalaadventure.com",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 27.7172,
+    "longitude": 85.3240
+  }
+};
+
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Trekking Packages in Nepal",
+  "description": "Explore our wide range of trekking packages in Nepal including Everest Base Camp, Annapurna Circuit, Langtang Valley, Manaslu Circuit, and more. Expert-guided Himalayan treks with guaranteed departures.",
+  "url": "https://www.himkalaadventure.com/services/trekking",
+  "about": {
+    "@type": "Thing",
+    "name": "Trekking in Nepal"
+  }
+};
+
 // Only include treks that exist in your folder structure
 const trekkingPackages = [
   {
@@ -41,6 +75,16 @@ const trekkingPackages = [
     description: "Trek to the foot of the world's highest mountain through legendary Sherpa villages and breathtaking Himalayan landscapes.",
     featured: true,
     link: "/services/trekking/everest-base-camp-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Everest Base Camp Trek - 14 Days",
+      "description": "Trek to the foot of the world's highest mountain through legendary Sherpa villages and breathtaking Himalayan landscapes.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1520",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 2,
@@ -60,6 +104,16 @@ const trekkingPackages = [
     description: "The classic Himalayan trek circumnavigating the Annapurna massif, crossing the legendary Thorong La Pass.",
     featured: true,
     link: "/services/trekking/annapurna-circuit-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Annapurna Circuit Trek - 9 Days",
+      "description": "The classic Himalayan trek circumnavigating the Annapurna massif, crossing the legendary Thorong La Pass.",
+      "offers": {
+        "@type": "Offer",
+        "price": "800",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 3,
@@ -79,6 +133,16 @@ const trekkingPackages = [
     description: "Extended Annapurna Circuit with a side trip to the world's highest lake - Tilicho.",
     featured: false,
     link: "/services/trekking/annapurna-circuit-trek-with-tilicho-lake",
+    schema: {
+      "@type": "Product",
+      "name": "Annapurna Circuit Trek with Tilicho Lake - 12 Days",
+      "description": "Extended Annapurna Circuit with a side trip to the world's highest lake - Tilicho.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1200",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 4,
@@ -98,6 +162,16 @@ const trekkingPackages = [
     description: "Explore the 'Valley of Glaciers' just north of Kathmandu with rich Tamang culture.",
     featured: false,
     link: "/services/trekking/langtang-valley-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Langtang Valley Trek - 8 Days",
+      "description": "Explore the 'Valley of Glaciers' just north of Kathmandu with rich Tamang culture.",
+      "offers": {
+        "@type": "Offer",
+        "price": "650",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 5,
@@ -117,6 +191,16 @@ const trekkingPackages = [
     description: "Circle the world's eighth highest mountain through pristine wilderness and authentic Tibetan culture.",
     featured: true,
     link: "/services/trekking/manaslu-circuit-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Manaslu Circuit Trek - 12 Days",
+      "description": "Circle the world's eighth highest mountain through pristine wilderness and authentic Tibetan culture.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1200",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 6,
@@ -136,6 +220,16 @@ const trekkingPackages = [
     description: "Combine the Manaslu Circuit with the sacred Tsum Valley for an extended cultural adventure.",
     featured: false,
     link: "/services/trekking/manaslu-circuit-trek-with-tsum-valley",
+    schema: {
+      "@type": "Product",
+      "name": "Manaslu Circuit Trek with Tsum Valley - 17 Days",
+      "description": "Combine the Manaslu Circuit with the sacred Tsum Valley for an extended cultural adventure.",
+      "offers": {
+        "@type": "Offer",
+        "price": "2050",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 7,
@@ -155,6 +249,16 @@ const trekkingPackages = [
     description: "Journey into the heart of the Annapurna Sanctuary, surrounded by towering peaks.",
     featured: true,
     link: "/services/trekking/annapurna-base-camp-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Annapurna Base Camp Trek - 9 Days",
+      "description": "Journey into the heart of the Annapurna Sanctuary, surrounded by towering peaks.",
+      "offers": {
+        "@type": "Offer",
+        "price": "700",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 8,
@@ -174,6 +278,16 @@ const trekkingPackages = [
     description: "Trek to the stunning turquoise Gokyo Lakes and climb Gokyo Ri for panoramic Everest views.",
     featured: false,
     link: "/services/trekking/everest-gokyo-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Gokyo Trek - 14 Days",
+      "description": "Trek to the stunning turquoise Gokyo Lakes and climb Gokyo Ri for panoramic Everest views.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1650",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 9,
@@ -193,10 +307,20 @@ const trekkingPackages = [
     description: "The ultimate challenge for experienced trekkers, crossing three high passes above 5,300m.",
     featured: true,
     link: "/services/trekking/everest-three-passes-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Everest Three Passes Trek - 18 Days",
+      "description": "The ultimate challenge for experienced trekkers, crossing three high passes above 5,300m.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1950",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 10,
-    name: "Gorepani Poon Hill Trek",
+    name: "Ghorepani Poon Hill Trek",
     region: "Annapurna Region",
     duration: "6 Days",
     difficulty: "Easy",
@@ -212,6 +336,16 @@ const trekkingPackages = [
     description: "The perfect short trek with stunning sunrise views over the Annapurna and Dhaulagiri ranges.",
     featured: false,
     link: "/services/trekking/ghorepani-poon-hill-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Ghorepani Poon Hill Trek - 6 Days",
+      "description": "The perfect short trek with stunning sunrise views over the Annapurna and Dhaulagiri ranges.",
+      "offers": {
+        "@type": "Offer",
+        "price": "500",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 11,
@@ -231,6 +365,16 @@ const trekkingPackages = [
     description: "Off-the-beaten-path trek offering stunning mountain views and the sacred Khayar Lake.",
     featured: false,
     link: "/services/trekking/khopra-ridge-trek-with-khayar-lake",
+    schema: {
+      "@type": "Product",
+      "name": "Khopra Ridge Trek with Khayar Lake - 8 Days",
+      "description": "Off-the-beaten-path trek offering stunning mountain views and the sacred Khayar Lake.",
+      "offers": {
+        "@type": "Offer",
+        "price": "700",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 12,
@@ -250,6 +394,16 @@ const trekkingPackages = [
     description: "Cross the challenging Ganjala Pass connecting Langtang with Helambu for a complete adventure.",
     featured: false,
     link: "/services/trekking/langtang-ganjala-pass-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Langtang Ganjala Pass Trek - 13 Days",
+      "description": "Cross the challenging Ganjala Pass connecting Langtang with Helambu for a complete adventure.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1200",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 13,
@@ -269,6 +423,16 @@ const trekkingPackages = [
     description: "Trek to the sacred alpine lakes of Gosainkunda, an important Hindu pilgrimage site.",
     featured: false,
     link: "/services/trekking/langtang-gosainkunda-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Langtang Gosainkunda Trek - 15 Days",
+      "description": "Trek to the sacred alpine lakes of Gosainkunda, an important Hindu pilgrimage site.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1395",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 15,
@@ -288,6 +452,16 @@ const trekkingPackages = [
     description: "A hidden gem offering spectacular close-up views of Machapuchare and Annapurna South.",
     featured: true,
     link: "/services/trekking/mardi-himal-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Mardi Himal Trek - 7 Days",
+      "description": "A hidden gem offering spectacular close-up views of Machapuchare and Annapurna South.",
+      "offers": {
+        "@type": "Offer",
+        "price": "600",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 16,
@@ -307,6 +481,16 @@ const trekkingPackages = [
     description: "Explore the remote and restricted Nar-Phu valleys with their ancient Tibetan Buddhist culture.",
     featured: true,
     link: "/services/trekking/nar-phu-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Nar Phu Trek - 13 Days",
+      "description": "Explore the remote and restricted Nar-Phu valleys with their ancient Tibetan Buddhist culture.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1350",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 17,
@@ -326,6 +510,16 @@ const trekkingPackages = [
     description: "An off-the-beaten-path trek in the Manaslu region offering pristine nature and authentic culture.",
     featured: false,
     link: "/services/trekking/rupina-la-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Rupina La Trek - 16 Days",
+      "description": "An off-the-beaten-path trek in the Manaslu region offering pristine nature and authentic culture.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1895",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 18,
@@ -345,6 +539,16 @@ const trekkingPackages = [
     description: "Combine the cultural Tamang Heritage Trail with the stunning Langtang Valley trek.",
     featured: false,
     link: "/services/trekking/tamang-heritage-trail-and-langtang-valley-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Tamang Heritage Trail and Langtang Valley Trek - 13 Days",
+      "description": "Combine the cultural Tamang Heritage Trail with the stunning Langtang Valley trek.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1195",
+        "priceCurrency": "USD"
+      }
+    }
   },
   {
     id: 19,
@@ -364,6 +568,16 @@ const trekkingPackages = [
     description: "Journey to the forbidden kingdom of Lo in the rain shadow of the Himalayas.",
     featured: true,
     link: "/services/trekking/upper-mustang-trek",
+    schema: {
+      "@type": "Product",
+      "name": "Upper Mustang Trek - 13 Days",
+      "description": "Journey to the forbidden kingdom of Lo in the rain shadow of the Himalayas.",
+      "offers": {
+        "@type": "Offer",
+        "price": "2595",
+        "priceCurrency": "USD"
+      }
+    }
   },
 ];
 
@@ -389,6 +603,16 @@ export default function TrekkingNepalPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+
       {/* Page Header */}
       <section className="pt-6 pb-12 md:pt-8 md:pb-16 bg-gradient-to-br from-[#0f2940] to-[#1a4166] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -398,24 +622,24 @@ export default function TrekkingNepalPage() {
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <Badge className="mb-4 md:mb-6 bg-[#C5E0ED]/20 text-white backdrop-blur-md border-[#C5E0ED]/40 py-1.5 md:py-2 px-4 md:px-5 text-xs md:text-sm">
-              <Compass className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Nepal - The Himalayan Wonderland
+              <Compass className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Nepal - The Himalayan Wonderland
             </Badge>
             <h1 className="text-2xl md:text-4xl lg:text-6xl font-serif text-white mb-4 md:mb-6">
               Trekking in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4]">Nepal</span>
             </h1>
             <p className="text-sm md:text-base text-white/80 leading-relaxed mb-6 md:mb-8">
               From the legendary Everest Base Camp to the sacred trails of Annapurna, discover why Nepal remains 
-              the ultimate destination for trekkers worldwide.
+              the ultimate destination for trekkers worldwide with our expertly curated <strong className="text-white">trekking packages in Nepal</strong>.
             </p>
             <div className="flex flex-wrap justify-center gap-2 md:gap-4">
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 19 Trekking Routes
+                <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> 19 Trekking Routes
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 5 to 21 Days
+                <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> 5 to 21 Days
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <TrendingUp className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Up to 5,545m
+                <TrendingUp className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> Up to 5,545m
               </div>
             </div>
           </div>
@@ -424,18 +648,19 @@ export default function TrekkingNepalPage() {
 
       {/* Featured Package */}
       {featuredPackage && (
-        <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
+        <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white" aria-label="Featured trekking package">
           <div className="container mx-auto px-4 md:px-6">
             <Link 
               href={featuredPackage.link}
               className="cursor-pointer block"
+              aria-label={`View details for ${featuredPackage.name}`}
             >
               <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
                 <div className="grid lg:grid-cols-2">
                   <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
                     <Image
                       src={featuredPackage.image}
-                      alt={featuredPackage.name}
+                      alt={`${featuredPackage.name} - trekking package in ${featuredPackage.region}, Nepal`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -446,12 +671,12 @@ export default function TrekkingNepalPage() {
                       </Badge>
                     </div>
                     <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" /> {featuredPackage.rating} ({featuredPackage.reviews})
+                      <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {featuredPackage.rating} ({featuredPackage.reviews})
                     </div>
                   </div>
                   <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
                     <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
-                      <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredPackage.region}
+                      <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" aria-hidden="true" /> {featuredPackage.region}
                     </Badge>
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
                       {featuredPackage.name}
@@ -461,16 +686,16 @@ export default function TrekkingNepalPage() {
                     </p>
                     <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.duration}
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredPackage.duration}
                       </div>
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.maxAltitude}
+                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredPackage.maxAltitude}
                       </div>
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Footprints className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.difficulty}
+                        <Footprints className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredPackage.difficulty}
                       </div>
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredPackage.groupSize} People
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredPackage.groupSize} People
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
@@ -492,9 +717,10 @@ export default function TrekkingNepalPage() {
                           e.preventDefault();
                           handleBookNow(featuredPackage.name);
                         }}
+                        aria-label={`Book ${featuredPackage.name} now`}
                       >
                         Book Now
-                        <ArrowRight className="ml-2 w-4 h-4" />
+                        <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                       </Button>
                     </div>
                   </CardContent>
@@ -506,7 +732,7 @@ export default function TrekkingNepalPage() {
       )}
 
       {/* All Packages Grid */}
-      <section className="py-8 md:py-20 bg-white">
+      <section className="py-8 md:py-20 bg-white" aria-label="All trekking packages">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-6 md:mb-12">
             <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-2 md:mb-4">All Packages</h2>
@@ -524,12 +750,13 @@ export default function TrekkingNepalPage() {
                 key={pkg.id} 
                 href={pkg.link}
                 className="cursor-pointer block"
+                aria-label={`View details for ${pkg.name}`}
               >
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
                   <div className="relative h-40 md:h-52 overflow-hidden">
                     <Image
                       src={pkg.image}
-                      alt={pkg.name}
+                      alt={`${pkg.name} - trekking package in ${pkg.region}, Nepal`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
@@ -540,7 +767,7 @@ export default function TrekkingNepalPage() {
                       </Badge>
                     </div>
                     <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {pkg.rating}
+                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {pkg.rating}
                     </div>
                     {pkg.featured && (
                       <div className="absolute bottom-3 left-3">
@@ -562,10 +789,10 @@ export default function TrekkingNepalPage() {
                     </p>
                     <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
                       <div className="flex items-center gap-1.5 text-slate-500">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {pkg.duration}
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {pkg.duration}
                       </div>
                       <div className="flex items-center gap-1.5 text-slate-500">
-                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {pkg.maxAltitude}
+                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {pkg.maxAltitude}
                       </div>
                     </div>
                     <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
@@ -581,8 +808,9 @@ export default function TrekkingNepalPage() {
                           e.preventDefault();
                           handleBookNow(pkg.name);
                         }}
+                        aria-label={`Book ${pkg.name} now`}
                       >
-                        Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                        Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" aria-hidden="true" />
                       </Button>
                     </div>
                   </CardContent>
@@ -594,7 +822,7 @@ export default function TrekkingNepalPage() {
       </section>
 
       {/* Info Section */}
-      <section className="py-8 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white">
+      <section className="py-8 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white" aria-label="Why trek with us">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
@@ -604,7 +832,8 @@ export default function TrekkingNepalPage() {
               </h3>
               <p className="text-slate-600 leading-relaxed mb-6 md:mb-8 text-sm md:text-base">
                 With over a decade of experience in Himalayan expeditions, we&apos;ve built a reputation for excellence, 
-                safety, and creating life-changing adventures.
+                safety, and creating life-changing adventures. Our <strong>Nepal trekking packages</strong> are designed to 
+                provide the perfect balance of challenge and comfort.
               </p>
               <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
                 {[
@@ -615,14 +844,14 @@ export default function TrekkingNepalPage() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 text-slate-700">
                     <div className="w-5 h-5 md:w-6 md:h-6 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                      <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-[#0f2940]" />
+                      <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-[#0f2940]" aria-hidden="true" />
                     </div>
                     <span className="text-sm md:text-base">{item}</span>
                   </div>
                 ))}
               </div>
               <Link href="/contact">
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-3 md:py-4 text-sm md:text-base">
+                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-3 md:py-4 text-sm md:text-base" aria-label="Get free consultation for trekking packages">
                   Get Free Consultation
                 </Button>
               </Link>
@@ -630,7 +859,7 @@ export default function TrekkingNepalPage() {
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
                 src="/images/used/hero.webp"
-                alt="Trekkers in Himalayas"
+                alt="Trekkers in the Himalayas - enjoying Nepal's legendary trekking routes with stunning mountain views"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

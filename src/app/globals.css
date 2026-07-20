@@ -22,18 +22,278 @@
     max-width: 100%;
     overflow-x: hidden;
   }
+
+  /* ===============================
+     ACCESSIBILITY: Focus visible styles for keyboard navigation
+     =============================== */
+  :focus-visible {
+    outline: 2px solid #C5E0ED;
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  /* ===============================
+     ACCESSIBILITY: Skip to content link for screen readers
+     =============================== */
+  .skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #C5E0ED;
+    color: #0f2940;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+    font-weight: bold;
+    border-radius: 0 0 4px 0;
+    transition: top 0.2s ease;
+  }
+
+  .skip-to-content:focus {
+    top: 0;
+    outline: none;
+  }
+
+  /* ===============================
+     ACCESSIBILITY: Reduced motion preference
+     =============================== */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
-/* Define CSS variables */
+/* Define CSS variables - Trekking company color palette */
 :root {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 3.9%;
-  --border: 0 0% 89.8%;
+  /* Primary Colors - Mountain Blues */
+  --background: 210 40% 98%;
+  --foreground: 222.2 84% 4.9%;
+  --border: 214.3 31.8% 91.4%;
   --radius: 0.5rem;
+  
+  /* Brand Colors - Himalayan Theme */
+  --color-primary: 197 65% 58%;
+  --color-primary-dark: 210 40% 30%;
+  --color-secondary: 25 95% 53%;
+  --color-accent: 145 63% 49%;
+  --color-earth: 30 25% 45%;
+  --color-mountain: 220 40% 35%;
+  --color-snow: 0 0% 98%;
+  
+  /* Accessibility: High contrast text colors (WCAG AA compliant) */
+  --text-dark: 222 47% 11%;
+  --text-muted: 215 25% 27%;
+  --text-light: 210 40% 98%;
+  
+  /* Status colors with good contrast */
+  --success: 142 76% 36%;
+  --warning: 38 92% 50%;
+  --error: 0 72% 51%;
+  --info: 199 89% 48%;
 }
 
 .dark {
-  --background: 0 0% 3.9%;
-  --foreground: 0 0% 98%;
-  --border: 0 0% 14.9%;
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  
+  /* Dark mode brand colors - adjusted for contrast */
+  --color-primary: 197 65% 58%;
+  --color-primary-dark: 210 40% 50%;
+  --color-secondary: 25 95% 60%;
+  --color-accent: 145 63% 55%;
+  --color-earth: 30 25% 55%;
+  --color-mountain: 220 40% 55%;
+}
+
+/* ===============================
+   ACCESSIBILITY: High contrast text utilities
+   =============================== */
+@layer utilities {
+  .text-accessible {
+    color: hsl(var(--text-dark));
+  }
+  
+  .text-accessible-light {
+    color: hsl(var(--text-light));
+  }
+  
+  /* Ensure minimum contrast ratio of 4.5:1 for normal text */
+  .contrast-safe {
+    color: hsl(var(--text-dark));
+  }
+  
+  .bg-contrast-safe {
+    background-color: hsl(var(--background));
+  }
+  
+  /* Link styles with good visibility */
+  .link-accessible {
+    color: hsl(197 65% 45%);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .link-accessible:hover {
+    color: hsl(197 65% 35%);
+    text-decoration-thickness: 2px;
+  }
+  
+  .dark .link-accessible {
+    color: hsl(197 65% 65%);
+  }
+  
+  /* Focus ring for keyboard navigation */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-[#C5E0ED] focus:ring-offset-2 focus:ring-offset-white;
+  }
+  
+  .dark .focus-ring {
+    @apply focus:ring-offset-[#0f2940];
+  }
+}
+
+/* ===============================
+   PERFORMANCE: Tailwind CSS purging
+   Ensure Tailwind purges unused styles in production
+   This is handled in tailwind.config.js
+   =============================== */
+
+/* ===============================
+   MOBILE RESPONSIVENESS: Touch-friendly tap targets
+   =============================== */
+@layer base {
+  /* Ensure tap targets are at least 44x44px on mobile */
+  button,
+  a,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Adjust for inline links that shouldn't be huge */
+  .inline-link {
+    min-height: auto;
+    min-width: auto;
+  }
+  
+  /* Improved scrollbar styling for better UX */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(197 65% 58%);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(197 65% 48%);
+  }
+}
+
+/* ===============================
+   UTILITY CLASSES FOR THEME CONSISTENCY
+   =============================== */
+@layer components {
+  /* Mountain gradient backgrounds */
+  .bg-mountain-gradient {
+    background: linear-gradient(135deg, hsl(220 40% 35%) 0%, hsl(197 65% 58%) 100%);
+  }
+  
+  .bg-mountain-gradient-light {
+    background: linear-gradient(135deg, hsl(197 65% 75%) 0%, hsl(145 63% 70%) 100%);
+  }
+  
+  /* Earth tone backgrounds */
+  .bg-earth-tone {
+    background-color: hsl(30 25% 45%);
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  /* Container padding for mobile */
+  .container-padding {
+    @apply px-4 sm:px-6 md:px-8;
+  }
+  
+  /* Reading optimized text */
+  .prose-trekking {
+    line-height: 1.75;
+    color: hsl(var(--text-dark));
+  }
+  
+  .prose-trekking h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-6;
+  }
+  
+  .prose-trekking h2 {
+    @apply text-2xl md:text-3xl font-semibold mt-8 mb-4;
+  }
+  
+  .prose-trekking h3 {
+    @apply text-xl md:text-2xl font-semibold mt-6 mb-3;
+  }
+  
+  .prose-trekking p {
+    @apply mb-4 text-base leading-relaxed;
+  }
+}
+
+/* ===============================
+   ANIMATIONS (only if needed - performance optimized)
+   =============================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-up,
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

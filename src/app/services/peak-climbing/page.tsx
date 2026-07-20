@@ -110,6 +110,57 @@ const getSuccessRateColor = (rate: string) => {
   return "text-red-600";
 };
 
+// Schema.org structured data for collection page
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Peak Climbing in Nepal - Himalayan Mountain Expeditions",
+  "description": "Explore the best peak climbing experiences in Nepal with Himkala Adventure. Climb Island Peak, Mera Peak, Yala Peak and more with expert UIAGM/IFMGA guides. Technical and non-technical climbing expeditions in the Everest, Langtang, and Annapurna regions.",
+  "url": "https://www.himkalaadventure.com/services/peak-climbing",
+  "about": {
+    "@type": "Thing",
+    "name": "Peak Climbing Nepal",
+    "description": "Nepal peak climbing expeditions ranging from 5,520m to 6,476m with professional guides and comprehensive support."
+  },
+  "provider": {
+    "@type": "TravelAgency",
+    "name": "Himkala Adventure Pvt. Ltd.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Thamel, Lekhnath Marga",
+      "addressLocality": "Kathmandu",
+      "addressCountry": "Nepal"
+    },
+    "telephone": "+9779841376470",
+    "email": "info@himkalaadventure.com",
+    "url": "https://www.himkalaadventure.com"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": peakClimbs.map((climb, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Product",
+        "name": climb.name,
+        "description": climb.description,
+        "image": `https://www.himkalaadventure.com${climb.image}`,
+        "offers": {
+          "@type": "Offer",
+          "price": climb.price,
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "category": "Peak Climbing Expedition",
+        "brand": {
+          "@type": "Brand",
+          "name": "Himkala Adventure"
+        }
+      }
+    }))
+  }
+};
+
 export default function PeakClimbingPage() {
   const router = useRouter();
 
@@ -121,6 +172,12 @@ export default function PeakClimbingPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+
       {/* Page Header */}
       <section className="pt-6 pb-12 md:pt-8 md:pb-16 bg-gradient-to-br from-[#0f2940] to-[#1a4166] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -156,21 +213,25 @@ export default function PeakClimbingPage() {
 
       {/* Featured Climb */}
       {featuredClimb && (
-        <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
+        <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white" aria-label="Featured peak climb">
           <div className="container mx-auto px-4 md:px-6">
             <Link 
               href={featuredClimb.link}
               className="cursor-pointer block"
+              aria-label={`View details for ${featuredClimb.name}`}
             >
               <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
                 <div className="grid lg:grid-cols-2">
                   <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
                     <Image
                       src={featuredClimb.image}
-                      alt={featuredClimb.name}
+                      alt={`${featuredClimb.name} - featured peak climbing expedition in Nepal's ${featuredClimb.region}`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
+                      priority
+                      loading="eager"
+                      quality={85}
                     />
                     <div className="absolute top-4 left-4">
                       <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1 text-xs md:text-sm">
@@ -193,16 +254,16 @@ export default function PeakClimbingPage() {
                     </p>
                     <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.duration}
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredClimb.duration}
                       </div>
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Flag className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.altitude}
+                        <Flag className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredClimb.altitude}
                       </div>
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Target className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.difficulty}
+                        <Target className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredClimb.difficulty}
                       </div>
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredClimb.groupSize} People
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredClimb.groupSize} People
                       </div>
                     </div>
                     
@@ -210,7 +271,7 @@ export default function PeakClimbingPage() {
                     <div className="grid grid-cols-2 gap-4 mb-4 md:mb-6">
                       <div className="bg-[#C5E0ED]/10 rounded-lg p-3 md:p-4">
                         <div className="flex items-center gap-2 mb-1">
-                          <Award className="w-4 h-4 text-[#2d6a8a]" />
+                          <Award className="w-4 h-4 text-[#2d6a8a]" aria-hidden="true" />
                           <span className="text-xs md:text-sm font-medium text-[#0f2940]">Success Rate</span>
                         </div>
                         <div className={`text-lg md:text-xl font-bold ${getSuccessRateColor(featuredClimb.successRate)}`}>
@@ -219,7 +280,7 @@ export default function PeakClimbingPage() {
                       </div>
                       <div className="bg-[#C5E0ED]/10 rounded-lg p-3 md:p-4">
                         <div className="flex items-center gap-2 mb-1">
-                          <Snowflake className="w-4 h-4 text-[#2d6a8a]" />
+                          <Snowflake className="w-4 h-4 text-[#2d6a8a]" aria-hidden="true" />
                           <span className="text-xs md:text-sm font-medium text-[#0f2940]">Training Days</span>
                         </div>
                         <div className="text-lg md:text-xl font-bold text-[#0f2940]">
@@ -242,14 +303,15 @@ export default function PeakClimbingPage() {
                         <span className="text-slate-500 text-sm">/person</span>
                       </div>
                       <Button 
-                        className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                        className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base min-h-[44px]"
                         onClick={(e) => {
                           e.preventDefault();
                           handleBookNow(featuredClimb.name);
                         }}
+                        aria-label={`Book ${featuredClimb.name} expedition`}
                       >
                         Book Now
-                        <ArrowRight className="ml-2 w-4 h-4" />
+                        <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                       </Button>
                     </div>
                   </CardContent>
@@ -261,7 +323,7 @@ export default function PeakClimbingPage() {
       )}
 
       {/* All Climbs Grid */}
-      <section className="py-8 md:py-20 bg-white">
+      <section className="py-8 md:py-20 bg-white" aria-label="All peak climbing expeditions">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-6 md:mb-12">
             <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-2 md:mb-4">All Peaks</h2>
@@ -279,15 +341,17 @@ export default function PeakClimbingPage() {
                 key={climb.id} 
                 href={climb.link}
                 className="cursor-pointer block"
+                aria-label={`View details for ${climb.name}`}
               >
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
                   <div className="relative h-40 md:h-52 overflow-hidden">
                     <Image
                       src={climb.image}
-                      alt={climb.name}
+                      alt={`${climb.name} - ${climb.difficulty} peak climbing expedition in ${climb.region}, Nepal`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      loading="lazy"
                     />
                     <div className="absolute top-3 left-3">
                       <Badge className={`border-none text-xs font-medium ${getDifficultyColor(climb.difficulty)}`}>
@@ -295,7 +359,7 @@ export default function PeakClimbingPage() {
                       </Badge>
                     </div>
                     <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {climb.rating}
+                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {climb.rating}
                     </div>
                     {climb.featured && (
                       <div className="absolute bottom-3 left-3">
@@ -319,10 +383,10 @@ export default function PeakClimbingPage() {
                     {/* Altitude & Success Rate */}
                     <div className="flex items-center justify-between mb-3 md:mb-4 text-xs md:text-sm">
                       <div className="flex items-center gap-1.5 text-slate-500">
-                        <Flag className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {climb.altitude}
+                        <Flag className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {climb.altitude}
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <Award className={`w-3 h-3 md:w-4 md:h-4 ${getSuccessRateColor(climb.successRate)}`} />
+                        <Award className={`w-3 h-3 md:w-4 md:h-4 ${getSuccessRateColor(climb.successRate)}`} aria-hidden="true" />
                         <span className={`font-medium ${getSuccessRateColor(climb.successRate)}`}>
                           {climb.successRate}
                         </span>
@@ -331,10 +395,10 @@ export default function PeakClimbingPage() {
                     
                     <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
                       <div className="flex items-center gap-1.5 text-slate-500">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {climb.duration}
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {climb.duration}
                       </div>
                       <div className="flex items-center gap-1.5 text-slate-500">
-                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {climb.groupSize}
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {climb.groupSize}
                       </div>
                     </div>
                     <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
@@ -345,13 +409,14 @@ export default function PeakClimbingPage() {
                       <Button 
                         size="sm" 
                         variant="ghost" 
-                        className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm"
+                        className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm min-h-[44px]"
                         onClick={(e) => {
                           e.preventDefault();
                           handleBookNow(climb.name);
                         }}
+                        aria-label={`Book ${climb.name} expedition`}
                       >
-                        Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                        Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" aria-hidden="true" />
                       </Button>
                     </div>
                   </CardContent>
@@ -363,7 +428,7 @@ export default function PeakClimbingPage() {
       </section>
 
       {/* Info Section */}
-      <section className="py-8 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white">
+      <section className="py-8 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white" aria-label="Why climb with us">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
@@ -384,14 +449,14 @@ export default function PeakClimbingPage() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 text-slate-700">
                     <div className="w-5 h-5 md:w-6 md:h-6 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                      <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-[#0f2940]" />
+                      <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-[#0f2940]" aria-hidden="true" />
                     </div>
                     <span className="text-sm md:text-base">{item}</span>
                   </div>
                 ))}
               </div>
               <Link href="/contact">
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-3 md:py-4 text-sm md:text-base">
+                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-3 md:py-4 text-sm md:text-base min-h-[44px]">
                   Plan Your Expedition
                 </Button>
               </Link>
@@ -399,10 +464,11 @@ export default function PeakClimbingPage() {
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
                 src="/images/used/island-peak-climbing-nepal.webp"
-                alt="Mountain climbers on peak"
+                alt="Mountain climbers on Island Peak summit with breathtaking Himalayan views in Nepal"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
               />
             </div>
           </div>

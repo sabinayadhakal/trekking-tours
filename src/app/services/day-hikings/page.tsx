@@ -104,8 +104,68 @@ export default function DayHikesPage() {
 
   const featuredHike = dayHikes.find((hike) => hike.id === 1);
 
+  // Schema.org Product schema for day hikes
+  const productSchemas = dayHikes.map((hike) => ({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": hike.name,
+    "description": hike.description,
+    "image": `https://www.himkalaadventure.com${hike.image}`,
+    "brand": {
+      "@type": "Brand",
+      "name": "Himkala Adventure Pvt. Ltd."
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": hike.price,
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-01-01",
+      "url": `https://www.himkalaadventure.com${hike.link}`
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": hike.rating,
+      "reviewCount": hike.reviews
+    }
+  }));
+
+  // Organization schema
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "TouristInformationCenter",
+    "name": "Himkala Adventure Pvt. Ltd.",
+    "description": "Expert-guided day hikes in Nepal including Nagarkot, Champa Devi, and Namobuddha treks.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Thamel, Lekhnath Marga",
+      "addressLocality": "Kathmandu",
+      "addressCountry": "Nepal"
+    },
+    "telephone": "+977 9841376470",
+    "email": "info@himkalaadventure.com",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 27.7172,
+      "longitude": 85.3240
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      {productSchemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+
       {/* Page Header */}
       <section className="pt-6 pb-12 md:pt-8 md:pb-16 bg-gradient-to-br from-[#0f2940] to-[#1a4166] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -115,7 +175,7 @@ export default function DayHikesPage() {
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <Badge className="mb-4 md:mb-6 bg-[#C5E0ED]/20 text-white backdrop-blur-md border-[#C5E0ED]/40 py-1.5 md:py-2 px-4 md:px-5 text-xs md:text-sm">
-              <Mountain className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Perfect Day Adventures from the Cities
+              <Mountain className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Perfect Day Adventures from the Cities
             </Badge>
             <h1 className="text-2xl md:text-4xl lg:text-6xl font-serif text-white mb-4 md:mb-6">
               Day <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4]">Hikes</span>
@@ -126,13 +186,13 @@ export default function DayHikesPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-2 md:gap-4">
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Sunrise className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Sunrise Hikes
+                <Sunrise className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> Sunrise Hikes
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> 3-8 Hours
+                <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> 3-8 Hours
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Camera className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" /> Photo Friendly
+                <Camera className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> Photo Friendly
               </div>
             </div>
           </div>
@@ -146,16 +206,18 @@ export default function DayHikesPage() {
             <Link 
               href={featuredHike.link}
               className="cursor-pointer block"
+              aria-label={`View details for ${featuredHike.name}`}
             >
               <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
                 <div className="grid lg:grid-cols-2">
                   <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
                     <Image
                       src={featuredHike.image}
-                      alt={featuredHike.name}
+                      alt={`${featuredHike.name} - popular day hike in Nepal's ${featuredHike.region} region`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
+                      priority
                     />
                     <div className="absolute top-4 left-4">
                       <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1 text-xs md:text-sm">
@@ -163,12 +225,12 @@ export default function DayHikesPage() {
                       </Badge>
                     </div>
                     <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" /> {featuredHike.rating} ({featuredHike.reviews})
+                      <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {featuredHike.rating} ({featuredHike.reviews})
                     </div>
                   </div>
                   <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
                     <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
-                      <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" /> {featuredHike.region}
+                      <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" aria-hidden="true" /> {featuredHike.region}
                     </Badge>
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
                       {featuredHike.name}
@@ -178,16 +240,16 @@ export default function DayHikesPage() {
                     </p>
                     <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredHike.duration}
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredHike.duration}
                       </div>
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredHike.difficulty}
+                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredHike.difficulty}
                       </div>
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredHike.groupSize} People
+                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredHike.groupSize} People
                       </div>
                       <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {featuredHike.bestSeason}
+                        <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredHike.bestSeason}
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
@@ -209,9 +271,10 @@ export default function DayHikesPage() {
                           e.preventDefault();
                           handleBookNow(featuredHike.name);
                         }}
+                        aria-label={`Book ${featuredHike.name} now`}
                       >
                         Book Now
-                        <ArrowRight className="ml-2 w-4 h-4" />
+                        <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                       </Button>
                     </div>
                   </CardContent>
@@ -241,15 +304,17 @@ export default function DayHikesPage() {
                 key={hike.id} 
                 href={hike.link}
                 className="cursor-pointer block"
+                aria-label={`View details for ${hike.name}`}
               >
                 <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
                   <div className="relative h-40 md:h-52 overflow-hidden">
                     <Image
                       src={hike.image}
-                      alt={hike.name}
+                      alt={`${hike.name} - ${hike.category} day hike in Nepal's ${hike.region} region`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      loading="lazy"
                     />
                     <div className="absolute top-3 left-3">
                       <Badge className={`border-none text-xs font-medium ${getCategoryColor(hike.category)}`}>
@@ -257,7 +322,7 @@ export default function DayHikesPage() {
                       </Badge>
                     </div>
                     <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" /> {hike.rating}
+                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {hike.rating}
                     </div>
                     {hike.featured && (
                       <div className="absolute bottom-3 left-3">
@@ -279,10 +344,10 @@ export default function DayHikesPage() {
                     </p>
                     <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
                       <div className="flex items-center gap-1.5 text-slate-500">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {hike.duration}
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {hike.duration}
                       </div>
                       <div className="flex items-center gap-1.5 text-slate-500">
-                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> {hike.difficulty}
+                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {hike.difficulty}
                       </div>
                     </div>
                     <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
@@ -298,8 +363,9 @@ export default function DayHikesPage() {
                           e.preventDefault();
                           handleBookNow(hike.name);
                         }}
+                        aria-label={`Book ${hike.name}`}
                       >
-                        Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+                        Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" aria-hidden="true" />
                       </Button>
                     </div>
                   </CardContent>
@@ -332,14 +398,14 @@ export default function DayHikesPage() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 text-slate-700">
                     <div className="w-5 h-5 md:w-6 md:h-6 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                      <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-[#0f2940]" />
+                      <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-[#0f2940]" aria-hidden="true" />
                     </div>
                     <span className="text-sm md:text-base">{item}</span>
                   </div>
                 ))}
               </div>
               <Link href="/contact">
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-3 md:py-4 text-sm md:text-base">
+                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-3 md:py-4 text-sm md:text-base" aria-label="Contact us to plan your day hike">
                   Plan Your Hike
                 </Button>
               </Link>
@@ -347,10 +413,11 @@ export default function DayHikesPage() {
             <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
               <Image
                 src="/images/used/hiking-1.webp"
-                alt="Hiking in Nepal"
+                alt="Scenic hiking trail in Nepal with lush green hills and mountain views"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
               />
             </div>
           </div>

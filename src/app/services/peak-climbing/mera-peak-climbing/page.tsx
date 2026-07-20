@@ -240,16 +240,96 @@ const excludes = [
 const gallery = [
   {
     src: "/images/used/mera-peak-2.webp",
-    alt: "Mera Peak Summit",
+    alt: "Mera Peak Summit - climbers celebrating on the highest trekking peak in Nepal at 6,476m with Everest in the background",
     caption: "Mera Peak Summit (6,476m) with Everest in background",
   },
   {
     src: "/images/used/mera-peak-3.webp",
-    alt: "Mera Peak Climb",
+    alt: "Climbing the Mera Glacier - mountaineers ascending the Mera Peak climbing route with crampons on the glacier",
     caption: "Climbing the Mera Glacier",
   },
   
 ];
+
+// Schema.org structured data for Mera Peak Climbing
+const climbSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Mera Peak Climbing Expedition - 14 Days",
+  "description": "Summit the highest trekking peak in Nepal at 6,476m with unparalleled views of five 8,000-meter giants—Everest, Kanchenjunga, Lhotse, Makalu, and Cho Oyu. A 14-day climbing expedition in the remote Hinku Valley with expert guides and comprehensive support.",
+  "image": "https://www.himkalaadventure.com/images/used/mera-peak-nepal.webp",
+  "brand": {
+    "@type": "Brand",
+    "name": "Himkala Adventure Pvt. Ltd."
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "3195",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-01-01",
+    "url": "https://www.himkalaadventure.com/services/peak-climbing/mera-peak-climbing"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "124"
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Altitude",
+      "value": "6,476m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Duration",
+      "value": "14 Days"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Difficulty",
+      "value": "Challenging"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Region",
+      "value": "Makalu Region"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Success Rate",
+      "value": "95%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Highest Trekking Peak",
+      "value": "Yes"
+    }
+  ]
+};
+
+// Organization schema
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Himkala Adventure Pvt. Ltd.",
+  "description": "Expert-guided Mera Peak climbing expeditions in the Makalu region, Nepal. Highest trekking peak at 6,476m with certified guides.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Thamel, Lekhnath Marga",
+    "addressLocality": "Kathmandu",
+    "addressCountry": "Nepal"
+  },
+  "telephone": "+977 9841376470",
+  "email": "info@himkalaadventure.com",
+  "url": "https://www.himkalaadventure.com",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 27.7172,
+    "longitude": 85.3240
+  }
+};
 
 export default function MeraPeakClimbingPage() {
   const [copied, setCopied] = React.useState(false);
@@ -285,6 +365,16 @@ export default function MeraPeakClimbingPage() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(climbSchema) }}
+      />
+
       {/* Mobile Navigation Drawer */}
       {showMobileNav && (
         <div className="lg:hidden fixed inset-0 z-50">
@@ -299,8 +389,9 @@ export default function MeraPeakClimbingPage() {
                 <button 
                   onClick={() => setShowMobileNav(false)}
                   className="p-2 rounded-lg hover:bg-slate-100"
+                  aria-label="Close navigation menu"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
               
@@ -331,22 +422,25 @@ export default function MeraPeakClimbingPage() {
                     size="sm"
                     className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
                     onClick={() => handleShare("facebook")}
+                    aria-label="Share on Facebook"
                   >
-                    <Facebook className="w-4 h-4" />
+                    <Facebook className="w-4 h-4" aria-hidden="true" />
                   </Button>
                   <Button
                     size="sm"
                     className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
                     onClick={() => handleShare("twitter")}
+                    aria-label="Share on Twitter"
                   >
-                    <Twitter className="w-4 h-4" />
+                    <Twitter className="w-4 h-4" aria-hidden="true" />
                   </Button>
                   <Button
                     size="sm"
                     className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
                     onClick={handleCopyLink}
+                    aria-label="Copy link to clipboard"
                   >
-                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
                   </Button>
                 </div>
               </div>
@@ -360,12 +454,13 @@ export default function MeraPeakClimbingPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/used/mera-peak-nepal.webp"
-            alt="Mera Peak Climbing"
+            alt="Mera Peak Climbing expedition - summit the highest trekking peak in Nepal at 6,476m with views of Everest, Kanchenjunga, Lhotse, Makalu, and Cho Oyu"
             fill
             className="object-cover"
             priority
             quality={85}
             sizes="100vw"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
@@ -375,13 +470,13 @@ export default function MeraPeakClimbingPage() {
           <div className="max-w-5xl mx-auto text-center w-full">
             <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
               <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MapPin className="w-3 h-3 mr-1" /> Makalu Region
+                <MapPin className="w-3 h-3 mr-1" aria-hidden="true" /> Makalu Region
               </Badge>
               <Badge className="bg-red-100 text-red-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
                 Challenging
               </Badge>
               <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MountainSnow className="w-3 h-3 mr-1" /> 6,476m Summit
+                <MountainSnow className="w-3 h-3 mr-1" aria-hidden="true" /> 6,476m Summit
               </Badge>
             </div>
             
@@ -411,8 +506,8 @@ export default function MeraPeakClimbingPage() {
                 <div className="text-lg font-bold text-[#0f2940]">$3,195</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(climbName)}`}>
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
-                  <Heart className="w-3 h-3 mr-1" /> Book Now
+                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]" aria-label={`Book ${climbName} now`}>
+                  <Heart className="w-3 h-3 mr-1" aria-hidden="true" /> Book Now
                 </Button>
               </Link>
             </div>
@@ -436,31 +531,31 @@ export default function MeraPeakClimbingPage() {
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                           <span>14 Days / 13 Nights</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                           <span>Best: Mar-May, Sep-Nov</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                           <span>Group Size: 2-6</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                           <span>Teahouse + Tented Camp</span>
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <MountainSnow className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
+                          <MountainSnow className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
                           <span>Max Altitude: 6,476m</span>
                         </div>
                       </div>
 
                       {/* Book Now Button */}
                       <Link href={`/contact?trek=${encodeURIComponent(climbName)}`}>
-                        <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
-                          <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Climb
+                        <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base" aria-label={`Book ${climbName}`}>
+                          <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Book This Climb
                         </Button>
                       </Link>
                       
@@ -468,10 +563,11 @@ export default function MeraPeakClimbingPage() {
                       <a 
                         href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${climbName}.`)}`}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer nofollow"
+                        aria-label="Inquire about Mera Peak climbing on WhatsApp"
                       >
                         <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
-                          <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
+                          <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> WhatsApp Now
                         </Button>
                       </a>
                     </CardContent>
@@ -481,7 +577,7 @@ export default function MeraPeakClimbingPage() {
                   <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                        <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
+                        <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Quick Facts
                       </h3>
                       <div className="space-y-2 text-[10px] md:text-sm">
                         <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
@@ -516,30 +612,33 @@ export default function MeraPeakClimbingPage() {
                   <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                        <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
+                        <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Share
                       </h3>
                       <div className="flex gap-2">
                         <Button
                           size="sm"
                           className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={() => handleShare("facebook")}
+                          aria-label="Share on Facebook"
                         >
-                          <Facebook className="w-3 h-3 md:w-4 md:h-4" />
+                          <Facebook className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
                         </Button>
                         <Button
                           size="sm"
                           className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={() => handleShare("twitter")}
+                          aria-label="Share on Twitter"
                         >
-                          <Twitter className="w-3 h-3 md:w-4 md:h-4" />
+                          <Twitter className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
                         </Button>
                         <Button
                           size="sm"
                           variant="outline"
                           className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
                           onClick={handleCopyLink}
+                          aria-label="Copy link to clipboard"
                         >
-                          {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
+                          {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />}
                         </Button>
                       </div>
                     </CardContent>
@@ -556,45 +655,48 @@ export default function MeraPeakClimbingPage() {
                   size="sm"
                   className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("facebook")}
+                  aria-label="Share on Facebook"
                 >
-                  <Facebook className="w-3 h-3 mr-1" /> Share
+                  <Facebook className="w-3 h-3 mr-1" aria-hidden="true" /> Share
                 </Button>
                 <Button
                   size="sm"
                   className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={() => handleShare("twitter")}
+                  aria-label="Share on Twitter"
                 >
-                  <Twitter className="w-3 h-3 mr-1" /> Tweet
+                  <Twitter className="w-3 h-3 mr-1" aria-hidden="true" /> Tweet
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
                   onClick={handleCopyLink}
+                  aria-label="Copy link to clipboard"
                 >
-                  {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                  {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
                 </Button>
               </div>
 
               {/* Overview */}
               <section className="mb-6 md:mb-12" id="overview">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview of Mera Peak Climbing Expedition</h2>
                 <div className="prose prose-slate max-w-none">
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The <strong>Mera Peak Climbing Expedition</strong> (6,476m) is the highest trekking peak in Nepal and one of the most spectacular mountaineering adventures in the Himalayas. Located in the remote Hinku Valley south of Mount Everest, Mera Peak offers climbers the opportunity to stand atop a 6,000-meter peak with an unparalleled <strong>panoramic view of five of the world's highest 8,000-meter mountains</strong>: Everest (8,848m), Kanchenjunga (8,586m), Lhotse (8,516m), Makalu (8,485m), and Cho Oyu (8,188m).
+                    The <strong>Mera Peak Climbing Expedition</strong> (6,476m) is the highest trekking peak in Nepal and one of the most spectacular mountaineering adventures in the Himalayas. Located in the remote Hinku Valley south of Mount Everest, Mera Peak offers climbers the opportunity to stand atop a 6,000-meter peak with an unparalleled <strong>panoramic view of five of the world's highest 8,000-meter mountains</strong>: Everest (8,848m), Kanchenjunga (8,586m), Lhotse (8,516m), Makalu (8,485m), and Cho Oyu (8,188m). This <strong>Nepal peak climbing</strong> expedition is truly unique.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
                     The expedition begins with a thrilling flight to Lukla, followed by a trek through the pristine and less-visited Hinku Valley. Unlike the crowded Everest routes, the approach to Mera Peak offers true wilderness experience with pristine forests, yak pastures, and dramatic mountain scenery. The climb itself is technically straightforward, involving glacier travel and a steep but non-technical summit ridge, making it an <strong>ideal first 6,000-meter peak for aspiring climbers</strong>.
                   </p>
                   <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    This expedition is perfect for experienced trekkers with good fitness who want to take their first steps into high-altitude mountaineering. While prior technical experience is beneficial, our comprehensive training at Base Camp ensures you'll learn all necessary skills including crampon use, rope techniques, and glacier travel. Standing on the summit of Mera Peak as the sun rises over the greatest mountains on Earth is an experience that will stay with you forever.
+                    This <strong>Mera Peak expedition</strong> is perfect for experienced trekkers with good fitness who want to take their first steps into high-altitude mountaineering. While prior technical experience is beneficial, our comprehensive training at Base Camp ensures you'll learn all necessary skills including crampon use, rope techniques, and glacier travel. Standing on the summit of Mera Peak as the sun rises over the greatest mountains on Earth is an experience that will stay with you forever.
                   </p>
                 </div>
               </section>
 
               {/* Highlights */}
               <section className="mb-6 md:mb-12" id="highlights">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Climbing Highlights</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Mera Peak Climbing Highlights</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
                   {[
                     "Summit the highest trekking peak in Nepal at 6,476m",
@@ -612,7 +714,7 @@ export default function MeraPeakClimbingPage() {
                       key={i}
                       className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
                     >
-                      <Award className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" />
+                      <Award className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" aria-hidden="true" />
                       <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
                     </div>
                   ))}
@@ -621,13 +723,13 @@ export default function MeraPeakClimbingPage() {
 
               {/* Best Season */}
               <section className="mb-6 md:mb-12">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Climb</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Climb Mera Peak</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
                   <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar - May)</h4>
+                        <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" aria-hidden="true" />
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar - May)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Stable weather, warming temperatures, and longer climbing days. Rhododendrons bloom in the lower valleys. Excellent summit windows with good snow conditions.
@@ -638,8 +740,8 @@ export default function MeraPeakClimbingPage() {
                   <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-5">
                       <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-blue-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Nov)</h4>
+                        <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-blue-500" aria-hidden="true" />
+                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Nov)</h3>
                       </div>
                       <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
                         Crystal-clear skies, stable weather, and perfect mountain views. Cooler temperatures but excellent climbing conditions. Peak season with the highest success rates.
@@ -654,7 +756,7 @@ export default function MeraPeakClimbingPage() {
               {/* Detailed Itinerary */}
               <section className="mb-6 md:mb-12" id="itinerary">
                 <div className="flex items-center justify-between mb-3 md:mb-6">
-                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Expedition Itinerary</h2>
                   <Button
                     variant="outline"
                     size="sm"
@@ -662,6 +764,7 @@ export default function MeraPeakClimbingPage() {
                     onClick={() =>
                       setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
                     }
+                    aria-label={expandedDays.length === itinerary.length ? "Collapse all itinerary days" : "Expand all itinerary days"}
                   >
                     {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
                   </Button>
@@ -679,19 +782,20 @@ export default function MeraPeakClimbingPage() {
                         <button
                           className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
                           onClick={() => toggleDay(day.day)}
+                          aria-label={expandedDays.includes(day.day) ? `Collapse day ${day.day}` : `Expand day ${day.day}`}
                         >
                           <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
                             <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
                             <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
+                            <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h3>
                             <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
                               <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
+                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.altitude}
                               </span>
                               <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.distance}
+                                <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.distance}
                               </span>
                             </div>
                           </div>
@@ -699,6 +803,7 @@ export default function MeraPeakClimbingPage() {
                             className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
                               expandedDays.includes(day.day) ? "rotate-180" : ""
                             }`}
+                            aria-hidden="true"
                           />
                         </button>
 
@@ -708,11 +813,11 @@ export default function MeraPeakClimbingPage() {
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
+                                <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
                                 <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
                               </div>
                               <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
+                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
                                 <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
                               </div>
                             </div>
@@ -734,17 +839,17 @@ export default function MeraPeakClimbingPage() {
 
               {/* Includes / Excludes */}
               <section className="mb-6 md:mb-12" id="includes">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included in This Mera Peak Expedition</h2>
                 <div className="grid md:grid-cols-2 gap-3 md:gap-6">
                   <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-6">
                       <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> Cost Includes
+                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Includes
                       </h3>
                       <ul className="space-y-1 md:space-y-2">
                         {includes.map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" />
+                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
                             <span className="leading-tight">{item}</span>
                           </li>
                         ))}
@@ -754,12 +859,12 @@ export default function MeraPeakClimbingPage() {
                   <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
                     <CardContent className="p-3 md:p-6">
                       <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <XCircle className="w-4 h-4 md:w-5 md:h-5" /> Cost Excludes
+                        <XCircle className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Excludes
                       </h3>
                       <ul className="space-y-1 md:space-y-2">
                         {excludes.map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" />
+                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" aria-hidden="true" />
                             <span className="leading-tight">{item}</span>
                           </li>
                         ))}
@@ -771,9 +876,9 @@ export default function MeraPeakClimbingPage() {
 
               {/* Important Note */}
               <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
-                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
+                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information</h4>
+                  <h3 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information</h3>
                   <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
                     <li>• <strong>Permits Required:</strong> Mera Peak climbing permit, Makalu Barun National Park entry permit, and local permits are all included and arranged by us.</li>
                     <li>• <strong>Physical Fitness:</strong> This is a strenuous climb requiring excellent fitness. You should be comfortable trekking 5-7 hours daily at altitude and have good cardiovascular endurance.</li>
@@ -788,7 +893,7 @@ export default function MeraPeakClimbingPage() {
 
               {/* Photo Gallery */}
               <section className="mb-6 md:mb-12" id="gallery">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery - Mera Peak Expedition</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
                   {gallery.map((image, i) => (
                     <div
@@ -797,10 +902,11 @@ export default function MeraPeakClimbingPage() {
                     >
                       <Image
                         src={image.src}
-                        alt={image.alt}
+                        alt={`${image.alt} - Mera Peak climbing expedition in Nepal's Makalu region`}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
                         sizes="(max-width: 768px) 50vw, 33vw"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                         <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
@@ -814,7 +920,7 @@ export default function MeraPeakClimbingPage() {
 
               {/* FAQ Section */}
               <section className="mb-6 md:mb-12" id="faq">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions</h2>
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions About Mera Peak</h2>
                 <div className="space-y-2 md:space-y-4">
                   {[
                     {
@@ -844,7 +950,7 @@ export default function MeraPeakClimbingPage() {
                   ].map((faq, i) => (
                     <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
                       <CardContent className="p-2 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
+                        <h3 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h3>
                         <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
                       </CardContent>
                     </Card>

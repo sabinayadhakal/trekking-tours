@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import {
   Mountain,
   Calendar,
@@ -163,19 +164,17 @@ const excludes = [
 const gallery = [
   {
     src: "/images/used/ganjala-pass-1.webp",
-    alt: "Kyanjin Gompa",
+    alt: "Kyanjin Gompa with Langtang Lirung - ancient Buddhist monastery beneath the 7,227m peak in Nepal's Langtang Valley",
     caption: "Kyanjin Gompa with Langtang Lirung",
   },
-  
   {
     src: "/images/used/langtang-1.webp",
-    alt: "Langtang Valley",
+    alt: "Langtang Valley with Yak Pastures - traditional Tamang village and grazing yaks in the Valley of Glaciers in Nepal",
     caption: "Langtang Valley with Yak Pastures",
   },
-  
   {
     src: "/images/used/langtang-2.webp",
-    alt: "Langtang Lirung",
+    alt: "Langtang Lirung at 7,227m - the majestic peak dominating the Langtang Valley skyline in Nepal's Langtang National Park",
     caption: "Langtang Lirung (7,227m)",
   },
 ];
@@ -185,8 +184,11 @@ export default function LangtangValleyTrekPage() {
   const [expandedDays, setExpandedDays] = React.useState<number[]>([1]);
   const [showMobileNav, setShowMobileNav] = React.useState(false);
   
-  // Trek name constant for auto-fill functionality
   const trekName = "Langtang Valley Trek";
+  const canonicalUrl = "https://www.himkalaadventure.com/langtang-valley-trek";
+  const pageTitle = "Langtang Valley Trek - Himkala Adventure";
+  const pageDescription = "Langtang Valley Trek: Explore the Valley of Glaciers with Kyanjin Gompa and optional climbs to Kyanjin Ri (4,773m) or Tserko Ri (5,033m). Book now!";
+  const imageUrl = "https://www.himkalaadventure.com/images/used/langtang-main-page.webp";
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -212,572 +214,711 @@ export default function LangtangValleyTrekPage() {
     );
   };
 
+  // Schema.org Organization schema
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Himkala Adventure Pvt. Ltd.",
+    "description": "Expert-guided Langtang Valley trekking packages in Nepal. Explore the Valley of Glaciers with Kyanjin Gompa and Kyanjin Ri climbs with certified guides.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Thamel, Lekhnath Marga",
+      "addressLocality": "Kathmandu",
+      "addressCountry": "Nepal"
+    },
+    "telephone": "+977 9841376470",
+    "email": "info@himkalaadventure.com",
+    "url": "https://www.himkalaadventure.com",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 27.7172,
+      "longitude": 85.3240
+    }
+  };
+
+  // Schema.org Product/Trek schema
+  const trekSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Langtang Valley Trek - 8 Days",
+    "description": "Langtang Valley Trek: Explore the Valley of Glaciers with Kyanjin Gompa and optional climbs to Kyanjin Ri (4,773m) or Tserko Ri (5,033m). A stunning Himalayan trek near Kathmandu.",
+    "image": imageUrl,
+    "brand": {
+      "@type": "Brand",
+      "name": "Himkala Adventure Pvt. Ltd."
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "650",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-01-01",
+      "url": canonicalUrl
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "reviewCount": "165"
+    },
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Max Altitude",
+        "value": "5,033m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Kyanjin Gompa Altitude",
+        "value": "3,870m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Kyanjin Ri Altitude",
+        "value": "4,773m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Tserko Ri Altitude",
+        "value": "5,033m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Duration",
+        "value": "8 Days"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Difficulty",
+        "value": "Easy-Moderate"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Region",
+        "value": "Langtang Region"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Best Season",
+        "value": "Mar-May, Sep-Nov"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Trek Highlights",
+        "value": "Kyanjin Gompa, Yak Cheese Factory, Red Panda Habitat, Langtang Lirung Views, Tamang Villages"
+      }
+    ]
+  };
+
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Mobile Navigation Drawer */}
-      {showMobileNav && (
-        <div className="lg:hidden fixed inset-0 z-50">
-          <div 
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setShowMobileNav(false)}
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg text-[#0f2940]">Quick Navigation</h3>
-                <button 
-                  onClick={() => setShowMobileNav(false)}
-                  className="p-2 rounded-lg hover:bg-slate-100"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Himkala Adventure" />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={imageUrl} />
+        <meta name="twitter:site" content="@himkalanepal" />
+        <meta name="twitter:creator" content="@himkalanepal" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(trekSchema) }}
+        />
+      </Head>
+
+      <div className="min-h-screen bg-white overflow-x-hidden">
+        {/* Mobile Navigation Drawer */}
+        {showMobileNav && (
+          <div className="lg:hidden fixed inset-0 z-50">
+            <div 
+              className="absolute inset-0 bg-black/50"
+              onClick={() => setShowMobileNav(false)}
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="font-bold text-lg text-[#0f2940]">Quick Navigation</h3>
+                  <button 
+                    onClick={() => setShowMobileNav(false)}
+                    className="p-2 rounded-lg hover:bg-slate-100 min-h-[44px] min-w-[44px]"
+                    aria-label="Close navigation menu"
+                  >
+                    <X className="w-5 h-5" aria-hidden="true" />
+                  </button>
+                </div>
+                
+                <div className="space-y-4">
+                  <a href="#overview" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Overview
+                  </a>
+                  <a href="#highlights" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Highlights
+                  </a>
+                  <a href="#itinerary" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Itinerary
+                  </a>
+                  <a href="#includes" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    What's Included
+                  </a>
+                  <a href="#gallery" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Gallery
+                  </a>
+                  <a href="#faq" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    FAQ
+                  </a>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate-200">
+                  <div className="flex gap-2">
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
+                      onClick={() => handleShare("facebook")}
+                      aria-label="Share on Facebook"
+                    >
+                      <Facebook className="w-4 h-4" aria-hidden="true" />
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
+                      onClick={() => handleShare("twitter")}
+                      aria-label="Share on Twitter"
+                    >
+                      <Twitter className="w-4 h-4" aria-hidden="true" />
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
+                      onClick={handleCopyLink}
+                      aria-label="Copy link to clipboard"
+                    >
+                      {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Hero Section */}
+        <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/used/langtang-main-page.webp"
+              alt="Langtang Valley Trek - exploring the Valley of Glaciers with Langtang Lirung and traditional Tamang villages in Nepal's Langtang National Park"
+              fill
+              className="object-cover"
+              priority
+              quality={85}
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
+          </div>
+
+          <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
+            <div className="max-w-5xl mx-auto text-center w-full">
+              <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
+                <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                  <MapPin className="w-3 h-3 mr-1" aria-hidden="true" /> Langtang Region
+                </Badge>
+                <Badge className="bg-green-100 text-green-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                  Easy-Moderate
+                </Badge>
+                <Badge className="bg-amber-100 text-amber-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                  <TreePine className="w-3 h-3 mr-1" aria-hidden="true" /> Valley of Glaciers
+                </Badge>
               </div>
               
-              <div className="space-y-4">
-                <a href="#overview" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Overview
-                </a>
-                <a href="#highlights" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Highlights
-                </a>
-                <a href="#itinerary" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Itinerary
-                </a>
-                <a href="#includes" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  What's Included
-                </a>
-                <a href="#gallery" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Gallery
-                </a>
-                <a href="#faq" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  FAQ
-                </a>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-slate-200">
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
-                    onClick={() => handleShare("facebook")}
-                  >
-                    <Facebook className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
-                    onClick={() => handleShare("twitter")}
-                  >
-                    <Twitter className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
-                    onClick={handleCopyLink}
-                  >
-                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                  </Button>
-                </div>
-              </div>
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-3 md:mb-6 tracking-tight">
+                LANGTANG <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
+                  VALLEY TREK
+                </span>
+              </h1>
+              
+              <p className="text-sm sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
+                Discover the "Valley of Glaciers" - a stunning Himalayan trek through rhododendron forests, 
+                traditional Tamang villages, and to the foot of majestic Langtang Lirung.
+              </p>
             </div>
           </div>
-        </div>
-      )}
+        </section>
 
-      {/* Hero Section */}
-      <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/used/langtang-main-page.webp"
-            alt="Langtang Valley Trek"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
-        </div>
-
-        <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
-          <div className="max-w-5xl mx-auto text-center w-full">
-            <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
-              <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MapPin className="w-3 h-3 mr-1" /> Langtang Region
-              </Badge>
-              <Badge className="bg-green-100 text-green-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                Easy-Moderate
-              </Badge>
-              <Badge className="bg-amber-100 text-amber-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <TreePine className="w-3 h-3 mr-1" /> Valley of Glaciers
-              </Badge>
-            </div>
-            
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-3 md:mb-6 tracking-tight">
-              LANGTANG <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
-                VALLEY TREK
-              </span>
-            </h1>
-            
-            <p className="text-sm sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
-              Discover the "Valley of Glaciers" - a stunning Himalayan trek through rhododendron forests, 
-              traditional Tamang villages, and to the foot of majestic Langtang Lirung.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content - with proper sticky sidebar */}
-      <section className="py-6 md:py-12 relative">
-        <div className="container mx-auto px-3 md:px-6 max-w-full">
-          {/* Mobile Sticky Book Now Bar */}
-          <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-slate-400 line-through">$805</div>
-                <div className="text-lg font-bold text-[#0f2940]">$650</div>
-              </div>
-              <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
-                  <Heart className="w-3 h-3 mr-1" /> Book Now
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Desktop Layout - Grid with sticky sidebar */}
-          <div className="lg:grid lg:grid-cols-12 lg:gap-4 lg:gap-10">
-            {/* Sidebar - Sticky on desktop */}
-            <aside className="hidden lg:block lg:col-span-4">
-              <div className="sticky top-24">
-                <div className="space-y-4 md:space-y-6">
-                  {/* Price Card */}
-                  <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
-                    <CardContent className="p-4 md:p-6">
-                      <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$805</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$650</div>
-                        <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
-                      </div>
-
-                      <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>8 Days / 7 Nights</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>Best: Mar-May, Sep-Nov</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>Group Size: 2-12</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>Teahouse Accommodation</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>All Meals Included</span>
-                        </div>
-                      </div>
-
-                      {/* Book Now Button */}
-                      <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
-                        <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
-                          <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Trek
-                        </Button>
-                      </Link>
-                      
-                      {/* WhatsApp Now Button */}
-                      <a 
-                        href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${trekName}.`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
-                          <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
-                        </Button>
-                      </a>
-                    </CardContent>
-                  </Card>
-
-                  {/* Quick Facts */}
-                  <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                    <CardContent className="p-4 md:p-6">
-                      <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                        <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
-                      </h3>
-                      <div className="space-y-2 text-[10px] md:text-sm">
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Start Point</span>
-                          <span className="font-medium text-[#0f2940]">Kathmandu</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">End Point</span>
-                          <span className="font-medium text-[#0f2940]">Kathmandu</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Trek Start/End</span>
-                          <span className="font-medium text-[#0f2940]">Syabrubesi</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Highest Point</span>
-                          <span className="font-medium text-[#0f2940]">Tserko Ri (5,033m)</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Kyanjin Ri</span>
-                          <span className="font-medium text-[#0f2940]">4,773m</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2">
-                          <span className="text-slate-500">Trekking Days</span>
-                          <span className="font-medium text-[#0f2940]">7 Days</span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Share */}
-                  <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                    <CardContent className="p-4 md:p-6">
-                      <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                        <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
-                      </h3>
-                      <div className="flex gap-2">
-                        <Button
-                          size="sm"
-                          className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                          onClick={() => handleShare("facebook")}
-                        >
-                          <Facebook className="w-3 h-3 md:w-4 md:h-4" />
-                        </Button>
-                        <Button
-                          size="sm"
-                          className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                          onClick={() => handleShare("twitter")}
-                        >
-                          <Twitter className="w-3 h-3 md:w-4 md:h-4" />
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                          onClick={handleCopyLink}
-                        >
-                          {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            </aside>
-
-            {/* Main Content */}
-            <article className="lg:col-span-8 w-full overflow-hidden mt-6 lg:mt-0">
-              {/* Mobile Share Buttons */}
-              <div className="lg:hidden flex gap-2 mb-6">
-                <Button
-                  size="sm"
-                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={() => handleShare("facebook")}
-                >
-                  <Facebook className="w-3 h-3 mr-1" /> Share
-                </Button>
-                <Button
-                  size="sm"
-                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={() => handleShare("twitter")}
-                >
-                  <Twitter className="w-3 h-3 mr-1" /> Tweet
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={handleCopyLink}
-                >
-                  {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-                </Button>
-              </div>
-
-              {/* Overview */}
-              <section className="mb-6 md:mb-12" id="overview">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
-                <div className="prose prose-slate max-w-none">
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The <strong>Langtang Valley Trek</strong> is one of Nepal's most beautiful and accessible treks, located just north of Kathmandu near the Tibetan border. Known as the "Valley of Glaciers," this stunning region offers a perfect blend of dramatic Himalayan scenery, rich Tamang culture, and diverse wildlife - all in a compact 10-day itinerary.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The trek takes you through lush rhododendron and bamboo forests, past traditional villages with mani walls and prayer flags, to the spectacular <strong>Kyanjin Gompa (3,870m)</strong> beneath the towering peak of Langtang Lirung (7,227m). The valley was severely affected by the 2015 earthquake but has been beautifully rebuilt, with the resilience of the local Tamang community shining through.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    Highlights include the challenging but rewarding ascent of <strong>Kyanjin Ri (4,773m)</strong> or <strong>Tserko Ri (5,033m)</strong> for breathtaking 360-degree mountain panoramas, visiting the famous yak cheese factory, and the chance to spot rare wildlife including red pandas and Himalayan black bears in Langtang National Park. This trek is perfect for those seeking an authentic Himalayan experience without the crowds of Everest or Annapurna.
-                  </p>
-                </div>
-              </section>
-
-              {/* Highlights */}
-              <section className="mb-6 md:mb-12" id="highlights">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Trek Highlights</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
-                  {[
-                    "Summit Kyanjin Ri (4,773m) or Tserko Ri (5,033m) for panoramic Himalayan views",
-                    "Visit ancient Kyanjin Gompa and famous yak cheese factory",
-                    "Explore Langtang National Park - home to red pandas and Himalayan black bears",
-                    "Experience authentic Tamang culture and hospitality",
-                    "Spectacular views of Langtang Lirung (7,227m) and surrounding peaks",
-                    "Trek through rhododendron, bamboo, and oak forests",
-                    "No internal flights needed - just scenic drive from Kathmandu",
-                    "Quieter trails than Everest or Annapurna regions",
-                    "Beautiful mani walls, chortens, and prayer flags throughout the valley",
-                    "Witness the resilience of rebuilt Langtang Village post-2015 earthquake",
-                  ].map((highlight, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
-                    >
-                      <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" />
-                      <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* Best Season */}
-              <section className="mb-6 md:mb-12">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Trek</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
-                  <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-5">
-                      <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar - May)</h4>
-                      </div>
-                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Rhododendron forests burst into vibrant red, pink, and white blooms. Warm temperatures, clear mornings, and excellent visibility. The most colorful time to trek.
-                      </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Excellent</Badge>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-5">
-                      <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-blue-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Nov)</h4>
-                      </div>
-                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Crystal-clear skies, stable weather, and perfect trekking conditions. The best visibility for mountain photography. Peak season with vibrant teahouse atmosphere.
-                      </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
-                    </CardContent>
-                  </Card>
-                </div>
-                <p className="text-[10px] md:text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is cold with possible snow but offers solitude. Monsoon (Jun-Aug) brings lush greenery but leeches and possible landslides.</p>
-              </section>
-
-              {/* Detailed Itinerary */}
-              <section className="mb-6 md:mb-12" id="itinerary">
-                <div className="flex items-center justify-between mb-3 md:mb-6">
-                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4"
-                    onClick={() =>
-                      setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
-                    }
-                  >
-                    {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
-                  </Button>
-                </div>
-
-                <div className="space-y-2 md:space-y-3">
-                  {itinerary.map((day) => (
-                    <Card
-                      key={day.day}
-                      className={`bg-white border-[#C5E0ED]/30 rounded-lg md:rounded-xl overflow-hidden transition-all ${
-                        expandedDays.includes(day.day) ? "shadow-md md:shadow-lg shadow-[#C5E0ED]/20" : "hover:shadow-sm"
-                      }`}
-                    >
-                      <CardContent className="p-0">
-                        <button
-                          className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
-                          onClick={() => toggleDay(day.day)}
-                        >
-                          <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
-                            <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
-                            <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
-                            <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
-                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
-                              </span>
-                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.distance}
-                              </span>
-                            </div>
-                          </div>
-                          <ChevronDown
-                            className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
-                              expandedDays.includes(day.day) ? "rotate-180" : ""
-                            }`}
-                          />
-                        </button>
-
-                        {expandedDays.includes(day.day) && (
-                          <div className="px-2 md:px-4 pb-2 md:pb-4 border-t border-[#C5E0ED]/20">
-                            <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed pt-2 md:pt-4 mb-2 md:mb-4">{day.description}</p>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
-                              <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
-                                <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
-                              </div>
-                              <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
-                                <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
-                              </div>
-                            </div>
-
-                            <div className="flex flex-wrap gap-1 md:gap-2">
-                              {day.highlights.map((h, i) => (
-                                <Badge key={i} variant="secondary" className="bg-[#C5E0ED]/20 text-[#2d6a8a] text-[8px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1">
-                                  {h}
-                                </Badge>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </section>
-
-              {/* Includes / Excludes */}
-              <section className="mb-6 md:mb-12" id="includes">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included</h2>
-                <div className="grid md:grid-cols-2 gap-3 md:gap-6">
-                  <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-6">
-                      <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> Cost Includes
-                      </h3>
-                      <ul className="space-y-1 md:space-y-2">
-                        {includes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" />
-                            <span className="leading-tight">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-6">
-                      <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <XCircle className="w-4 h-4 md:w-5 md:h-5" /> Cost Excludes
-                      </h3>
-                      <ul className="space-y-1 md:space-y-2">
-                        {excludes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" />
-                            <span className="leading-tight">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </section>
-
-              {/* Important Note */}
-              <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
-                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
+        {/* Main Content */}
+        <section className="py-6 md:py-12 relative">
+          <div className="container mx-auto px-3 md:px-6 max-w-full">
+            {/* Mobile Sticky Book Now Bar */}
+            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
+              <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information</h4>
-                  <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
-                    <li>• <strong>Guide Required:</strong> Since 2023, solo trekking without a guide is banned in Langtang National Park - you must trek with a licensed guide for safety.</li>
-                    <li>• <strong>Permits:</strong> Langtang National Park Entry Permit (NPR 3,000) and TIMS card (NPR 2,000) are required.</li>
-                    <li>• <strong>Travel Insurance:</strong> Mandatory - must cover high altitude trekking up to 5,100m and helicopter evacuation.</li>
-                    <li>• <strong>Kyanjin Ri/Tserko Ri:</strong> Both optional hikes require early starts and good fitness - your guide will recommend based on conditions.</li>
-                    <li>• <strong>Connectivity:</strong> Limited WiFi available at teahouses (paid), no signal in upper valley - prepare for digital detox.</li>
-                  </ul>
+                  <div className="text-xs text-slate-400 line-through">$805</div>
+                  <div className="text-lg font-bold text-[#0f2940]">$650</div>
                 </div>
+                <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
+                  <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]" aria-label={`Book ${trekName} now`}>
+                    <Heart className="w-3 h-3 mr-1" aria-hidden="true" /> Book Now
+                  </Button>
+                </Link>
               </div>
+            </div>
 
-              {/* Photo Gallery */}
-              <section className="mb-6 md:mb-12" id="gallery">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
-                  {gallery.map((image, i) => (
-                    <div
-                      key={i}
-                      className="relative h-24 md:h-48 rounded-lg md:rounded-xl overflow-hidden group cursor-pointer"
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        sizes="(max-width: 768px) 50vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
-                          <p className="text-white text-[8px] md:text-xs font-medium truncate">{image.caption}</p>
+            {/* Desktop Layout */}
+            <div className="lg:grid lg:grid-cols-12 lg:gap-4 lg:gap-10">
+              {/* Sidebar */}
+              <aside className="hidden lg:block lg:col-span-4">
+                <div className="sticky top-24">
+                  <div className="space-y-4 md:space-y-6">
+                    {/* Price Card */}
+                    <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
+                      <CardContent className="p-4 md:p-6">
+                        <div className="text-center mb-4 md:mb-6">
+                          <span className="text-white/50 text-sm line-through">$805</span>
+                          <div className="text-3xl md:text-4xl font-bold text-white mt-1">$650</div>
+                          <span className="text-white/60 text-sm">per person</span>
+                          <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $155</Badge>
                         </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
 
-              {/* FAQ Section */}
-              <section className="mb-6 md:mb-12" id="faq">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions</h2>
-                <div className="space-y-2 md:space-y-4">
-                  {[
-                    {
-                      q: "How difficult is the Langtang Valley Trek?",
-                      a: "The trek is rated as easy to moderate. You'll trek 4-7 hours daily on well-maintained trails with some steep sections. The main challenge is the altitude (up to 5,033m at Tserko Ri). No technical experience is required, and it's suitable for beginners with good fitness.",
-                    },
-                    {
-                      q: "Do I need a guide for this trek?",
-                      a: "Yes, since 2023 solo trekking without a guide is banned in Langtang National Park for foreign trekkers. You must trek with a licensed guide for safety reasons. Our package includes an experienced guide.",
-                    },
-                    {
-                      q: "What is the accommodation like?",
-                      a: "Teahouses are basic but comfortable, with twin-sharing rooms and shared bathrooms. Facilities become simpler at higher altitudes, but all offer warm meals and friendly service. Hot showers and charging are available for a small fee.",
-                    },
-                    {
-                      q: "What is special about Kyanjin Gompa?",
-                      a: "Kyanjin Gompa is the last settlement in the valley, home to an ancient Buddhist monastery and the famous yak cheese factory established by Swiss experts in the 1950s. It's also the base for hiking Kyanjin Ri and Tserko Ri.",
-                    },
-                    {
-                      q: "Can I see red pandas on this trek?",
-                      a: "Yes, Langtang National Park is one of the best places in Nepal to spot red pandas, though sightings are rare and require luck. The bamboo forests between Lama Hotel and Ghoda Tabela are prime habitat. You may also see Himalayan black bears, langur monkeys, and various bird species.",
-                    },
-                  ].map((faq, i) => (
-                    <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
-                      <CardContent className="p-2 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
-                        <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
+                        <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>8 Days / 7 Nights</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>Best: Mar-May, Sep-Nov</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>Group Size: 2-12</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>Teahouse Accommodation</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>All Meals Included</span>
+                          </div>
+                        </div>
+
+                        <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
+                          <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base" aria-label={`Book ${trekName}`}>
+                            <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Book This Trek
+                          </Button>
+                        </Link>
+                        
+                        <a 
+                          href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${trekName}.`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer nofollow"
+                          className="block"
+                          aria-label="Inquire about Langtang Valley trek on WhatsApp"
+                        >
+                          <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
+                            <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> WhatsApp Now
+                          </Button>
+                        </a>
                       </CardContent>
                     </Card>
-                  ))}
+
+                    {/* Quick Facts */}
+                    <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
+                      <CardContent className="p-4 md:p-6">
+                        <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
+                          <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Quick Facts
+                        </h3>
+                        <div className="space-y-2 text-[10px] md:text-sm">
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Start Point</span>
+                            <span className="font-medium text-[#0f2940]">Kathmandu</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">End Point</span>
+                            <span className="font-medium text-[#0f2940]">Kathmandu</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Trek Start/End</span>
+                            <span className="font-medium text-[#0f2940]">Syabrubesi</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Highest Point</span>
+                            <span className="font-medium text-[#0f2940]">Tserko Ri (5,033m)</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Kyanjin Ri</span>
+                            <span className="font-medium text-[#0f2940]">4,773m</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2">
+                            <span className="text-slate-500">Trekking Days</span>
+                            <span className="font-medium text-[#0f2940]">7 Days</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Share */}
+                    <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
+                      <CardContent className="p-4 md:p-6">
+                        <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
+                          <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Share
+                        </h3>
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                            onClick={() => handleShare("facebook")}
+                            aria-label="Share on Facebook"
+                          >
+                            <Facebook className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                            onClick={() => handleShare("twitter")}
+                            aria-label="Share on Twitter"
+                          >
+                            <Twitter className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                            onClick={handleCopyLink}
+                            aria-label="Copy link to clipboard"
+                          >
+                            {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />}
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </div>
-              </section>
-            </article>
+              </aside>
+
+              {/* Main Content */}
+              <article className="lg:col-span-8 w-full overflow-hidden mt-6 lg:mt-0">
+                {/* Mobile Share Buttons */}
+                <div className="lg:hidden flex gap-2 mb-6">
+                  <Button
+                    size="sm"
+                    className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
+                    onClick={() => handleShare("facebook")}
+                    aria-label="Share on Facebook"
+                  >
+                    <Facebook className="w-3 h-3 mr-1" aria-hidden="true" /> Share
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
+                    onClick={() => handleShare("twitter")}
+                    aria-label="Share on Twitter"
+                  >
+                    <Twitter className="w-3 h-3 mr-1" aria-hidden="true" /> Tweet
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
+                    onClick={handleCopyLink}
+                    aria-label="Copy link to clipboard"
+                  >
+                    {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
+                  </Button>
+                </div>
+
+                {/* Overview */}
+                <section className="mb-6 md:mb-12" id="overview">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview of Langtang Valley Trek</h2>
+                  <div className="prose prose-slate max-w-none">
+                    <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
+                      The <strong>Langtang Valley Trek</strong> is one of Nepal's most beautiful and accessible treks, located just north of Kathmandu near the Tibetan border. Known as the "Valley of Glaciers," this stunning <strong>Langtang Valley trekking</strong> region offers a perfect blend of dramatic Himalayan scenery, rich Tamang culture, and diverse wildlife - all in a compact 10-day itinerary.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
+                      The trek takes you through lush rhododendron and bamboo forests, past traditional villages with mani walls and prayer flags, to the spectacular <strong>Kyanjin Gompa (3,870m)</strong> beneath the towering peak of Langtang Lirung (7,227m). The valley was severely affected by the 2015 earthquake but has been beautifully rebuilt, with the resilience of the local Tamang community shining through.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed text-xs md:text-base">
+                      Highlights include the challenging but rewarding ascent of <strong>Kyanjin Ri (4,773m)</strong> or <strong>Tserko Ri (5,033m)</strong> for breathtaking 360-degree mountain panoramas, visiting the famous yak cheese factory, and the chance to spot rare wildlife including red pandas and Himalayan black bears in Langtang National Park. This trek is perfect for those seeking an authentic Himalayan experience without the crowds of Everest or Annapurna.
+                    </p>
+                  </div>
+                </section>
+
+                {/* Highlights */}
+                <section className="mb-6 md:mb-12" id="highlights">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Langtang Valley Trek Highlights</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+                    {[
+                      "Summit Kyanjin Ri (4,773m) or Tserko Ri (5,033m) for panoramic Himalayan views",
+                      "Visit ancient Kyanjin Gompa and famous yak cheese factory",
+                      "Explore Langtang National Park - home to red pandas and Himalayan black bears",
+                      "Experience authentic Tamang culture and hospitality",
+                      "Spectacular views of Langtang Lirung (7,227m) and surrounding peaks",
+                      "Trek through rhododendron, bamboo, and oak forests",
+                      "No internal flights needed - just scenic drive from Kathmandu",
+                      "Quieter trails than Everest or Annapurna regions",
+                      "Beautiful mani walls, chortens, and prayer flags throughout the valley",
+                      "Witness the resilience of rebuilt Langtang Village post-2015 earthquake",
+                    ].map((highlight, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
+                      >
+                        <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" aria-hidden="true" />
+                        <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* Best Season */}
+                <section className="mb-6 md:mb-12">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Trek Langtang Valley</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
+                    <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-5">
+                        <div className="flex items-center gap-2 mb-1 md:mb-3">
+                          <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" aria-hidden="true" />
+                          <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar - May)</h3>
+                        </div>
+                        <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
+                          Rhododendron forests burst into vibrant red, pink, and white blooms. Warm temperatures, clear mornings, and excellent visibility. The most colorful time to trek.
+                        </p>
+                        <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Excellent</Badge>
+                      </CardContent>
+                    </Card>
+                    <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-5">
+                        <div className="flex items-center gap-2 mb-1 md:mb-3">
+                          <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-blue-500" aria-hidden="true" />
+                          <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Nov)</h3>
+                        </div>
+                        <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
+                          Crystal-clear skies, stable weather, and perfect trekking conditions. The best visibility for mountain photography. Peak season with vibrant teahouse atmosphere.
+                        </p>
+                        <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  <p className="text-[10px] md:text-xs text-slate-500 mt-2">Note: Winter (Dec-Feb) is cold with possible snow but offers solitude. Monsoon (Jun-Aug) brings lush greenery but leeches and possible landslides.</p>
+                </section>
+
+                {/* Detailed Itinerary */}
+                <section className="mb-6 md:mb-12" id="itinerary">
+                  <div className="flex items-center justify-between mb-3 md:mb-6">
+                    <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Langtang Valley Itinerary</h2>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4 min-h-[44px]"
+                      onClick={() =>
+                        setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
+                      }
+                      aria-label={expandedDays.length === itinerary.length ? "Collapse all itinerary days" : "Expand all itinerary days"}
+                    >
+                      {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
+                    </Button>
+                  </div>
+
+                  <div className="space-y-2 md:space-y-3">
+                    {itinerary.map((day) => (
+                      <Card
+                        key={day.day}
+                        className={`bg-white border-[#C5E0ED]/30 rounded-lg md:rounded-xl overflow-hidden transition-all ${
+                          expandedDays.includes(day.day) ? "shadow-md md:shadow-lg shadow-[#C5E0ED]/20" : "hover:shadow-sm"
+                        }`}
+                      >
+                        <CardContent className="p-0">
+                          <button
+                            className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left min-h-[44px]"
+                            onClick={() => toggleDay(day.day)}
+                            aria-expanded={expandedDays.includes(day.day)}
+                            aria-label={expandedDays.includes(day.day) ? `Collapse day ${day.day}` : `Expand day ${day.day}`}
+                          >
+                            <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
+                              <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
+                              <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h3>
+                              <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
+                                <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
+                                  <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.altitude}
+                                </span>
+                                <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
+                                  <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.distance}
+                                </span>
+                              </div>
+                            </div>
+                            <ChevronDown
+                              className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
+                                expandedDays.includes(day.day) ? "rotate-180" : ""
+                              }`}
+                              aria-hidden="true"
+                            />
+                          </button>
+
+                          {expandedDays.includes(day.day) && (
+                            <div className="px-2 md:px-4 pb-2 md:pb-4 border-t border-[#C5E0ED]/20">
+                              <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed pt-2 md:pt-4 mb-2 md:mb-4">{day.description}</p>
+
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
+                                <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
+                                  <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
+                                  <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
+                                  <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
+                                  <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
+                                </div>
+                              </div>
+
+                              <div className="flex flex-wrap gap-1 md:gap-2">
+                                {day.highlights.map((h, i) => (
+                                  <Badge key={i} variant="secondary" className="bg-[#C5E0ED]/20 text-[#2d6a8a] text-[8px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1">
+                                    {h}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </section>
+
+                {/* Includes / Excludes */}
+                <section className="mb-6 md:mb-12" id="includes">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included in This Langtang Valley Trek</h2>
+                  <div className="grid md:grid-cols-2 gap-3 md:gap-6">
+                    <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-6">
+                        <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
+                          <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Includes
+                        </h3>
+                        <ul className="space-y-1 md:space-y-2">
+                          {includes.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
+                              <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
+                              <span className="leading-tight">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-6">
+                        <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
+                          <XCircle className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Excludes
+                        </h3>
+                        <ul className="space-y-1 md:space-y-2">
+                          {excludes.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
+                              <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" aria-hidden="true" />
+                              <span className="leading-tight">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </section>
+
+                {/* Important Information */}
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-4">Important Information for Langtang Valley Trek</h2>
+                <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
+                  <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
+                  <div>
+                    <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
+                      <li>• <strong>Guide Required:</strong> Since 2023, solo trekking without a guide is banned in Langtang National Park - you must trek with a licensed guide for safety.</li>
+                      <li>• <strong>Permits:</strong> Langtang National Park Entry Permit (NPR 3,000) and TIMS card (NPR 2,000) are required.</li>
+                      <li>• <strong>Travel Insurance:</strong> Mandatory - must cover high altitude trekking up to 5,100m and helicopter evacuation.</li>
+                      <li>• <strong>Kyanjin Ri/Tserko Ri:</strong> Both optional hikes require early starts and good fitness - your guide will recommend based on conditions.</li>
+                      <li>• <strong>Connectivity:</strong> Limited WiFi available at teahouses (paid), no signal in upper valley - prepare for digital detox.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Photo Gallery */}
+                <section className="mb-6 md:mb-12" id="gallery">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery - Langtang Valley Trek</h2>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
+                    {gallery.map((image, i) => (
+                      <div
+                        key={i}
+                        className="relative h-24 md:h-48 rounded-lg md:rounded-xl overflow-hidden group cursor-pointer"
+                      >
+                        <Image
+                          src={image.src}
+                          alt={`${image.alt} - Langtang Valley trekking experience in Nepal's Langtang region`}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-300"
+                          sizes="(max-width: 768px) 50vw, 33vw"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
+                            <p className="text-white text-[8px] md:text-xs font-medium truncate">{image.caption}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* FAQ Section */}
+                <section className="mb-6 md:mb-12" id="faq">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions About Langtang Valley Trek</h2>
+                  <div className="space-y-2 md:space-y-4">
+                    {[
+                      {
+                        q: "How difficult is the Langtang Valley Trek?",
+                        a: "The trek is rated as easy to moderate. You'll trek 4-7 hours daily on well-maintained trails with some steep sections. The main challenge is the altitude (up to 5,033m at Tserko Ri). No technical experience is required, and it's suitable for beginners with good fitness.",
+                      },
+                      {
+                        q: "Do I need a guide for this trek?",
+                        a: "Yes, since 2023 solo trekking without a guide is banned in Langtang National Park for foreign trekkers. You must trek with a licensed guide for safety reasons. Our package includes an experienced guide.",
+                      },
+                      {
+                        q: "What is the accommodation like?",
+                        a: "Teahouses are basic but comfortable, with twin-sharing rooms and shared bathrooms. Facilities become simpler at higher altitudes, but all offer warm meals and friendly service. Hot showers and charging are available for a small fee.",
+                      },
+                      {
+                        q: "What is special about Kyanjin Gompa?",
+                        a: "Kyanjin Gompa is the last settlement in the valley, home to an ancient Buddhist monastery and the famous yak cheese factory established by Swiss experts in the 1950s. It's also the base for hiking Kyanjin Ri and Tserko Ri.",
+                      },
+                      {
+                        q: "Can I see red pandas on this trek?",
+                        a: "Yes, Langtang National Park is one of the best places in Nepal to spot red pandas, though sightings are rare and require luck. The bamboo forests between Lama Hotel and Ghoda Tabela are prime habitat. You may also see Himalayan black bears, langur monkeys, and various bird species.",
+                      },
+                    ].map((faq, i) => (
+                      <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
+                        <CardContent className="p-2 md:p-5">
+                          <h3 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h3>
+                          <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </section>
+              </article>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 }

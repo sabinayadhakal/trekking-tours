@@ -12,7 +12,6 @@ import {
   Users, 
   Star,
   Clock,
-  Phone,
   Tent,
   Footprints,
   Camera,
@@ -289,11 +288,11 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-white overflow-x-hidden">
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[95vh] md:min-h-screen flex items-center overflow-hidden bg-[#0f2940]">
+        <section aria-label="Hero" className="relative min-h-[95vh] md:min-h-screen flex items-center overflow-hidden bg-[#0f2940]">
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/used/hero.webp"
-              alt="Himalayan Mountains"
+              alt="Himalayan Mountains landscape with snow-capped peaks"
               fill
               className="object-cover"
               priority
@@ -314,7 +313,7 @@ export default function Home() {
   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic"> Cultural Tours</span>
 </h1>
 <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 leading-relaxed max-w-2xl font-light">
-  Expert-guided adventures in Nepal, Bhutan, and Tibet; from Everest treks to Kathmandu city walks.
+  Expert-guided adventures in Nepal, Bhutan, and Tibet; from Everest Base Camp treks to Kathmandu city walks.
 </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12 md:mb-16">
                 <Link href="/services/trekking">
@@ -358,9 +357,9 @@ export default function Home() {
               {/* Quick Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {[
-                  { value: "11+", label: "Years Experience", icon: <Award className="w-4 h-4" /> },
-                  { value: "2500+", label: "Happy Travelers", icon: <Users className="w-4 h-4" /> },
-                  { value: "100%", label: "Safety Record", icon: <ShieldCheck className="w-4 h-4" /> }
+                  { value: "11+", label: "Years Experience", icon: <Award className="w-4 h-4" aria-hidden="true" /> },
+                  { value: "2500+", label: "Happy Travelers", icon: <Users className="w-4 h-4" aria-hidden="true" /> },
+                  { value: "100%", label: "Safety Record", icon: <ShieldCheck className="w-4 h-4" aria-hidden="true" /> }
                 ].map((stat, i) => (
                   <div
                     key={i}
@@ -383,13 +382,13 @@ export default function Home() {
   <div className="container mx-auto px-4 sm:px-6">
     <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
       <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-        <MapPin className="w-3 h-3 mr-1.5" /> WHERE WE GO
+        <MapPin className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHERE WE GO
       </Badge>
       <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
         Nepal, Bhutan & Tibet
       </h2>
       <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-        Trekking, city tours, and cultural experiences across the Himalayas.
+        Trekking in Nepal, city tours in Kathmandu, and cultural experiences across the Himalayas.
       </p>
     </div>
 
@@ -405,7 +404,7 @@ export default function Home() {
                     <div className="relative h-[400px] rounded-2xl overflow-hidden">
                       <Image
                         src={dest.image}
-                        alt={dest.name}
+                        alt={`${dest.name} destination - Himalayan trekking and cultural tours`}
                         fill
                         className="object-cover"
                         sizes="85vw"
@@ -442,7 +441,7 @@ export default function Home() {
                 >
                   <Image
                     src={dest.image}
-                    alt={dest.name}
+                    alt={`${dest.name} - Himalayan trekking destination with cultural highlights`}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 1200px) 33vw, 400px"
@@ -474,7 +473,7 @@ export default function Home() {
   <div className="container mx-auto px-4 sm:px-6">
     <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
       <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-        <CheckCircle className="w-3 h-3 mr-1.5" /> WHAT WE OFFER
+        <CheckCircle className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHAT WE OFFER
       </Badge>
       <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
         Treks, Tours & Cultural Experiences
@@ -493,7 +492,7 @@ export default function Home() {
                 >
                   <CardContent className="p-6 md:p-8 h-full">
                     <div className={`w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center text-[#2d6a8a] mb-6`}>
-                      <div className="scale-125">
+                      <div className="scale-125" aria-hidden="true">
                         {service.icon}
                       </div>
                     </div>
@@ -503,7 +502,7 @@ export default function Home() {
                     </p>
                     <div className="text-[#2d6a8a] hover:text-[#0f2940] inline-flex items-center group">
                       Learn More
-                      <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </div>
                   </CardContent>
                 </Link>
@@ -518,13 +517,13 @@ export default function Home() {
     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 md:mb-16 gap-6">
       <div className="max-w-2xl">
         <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-          <Star className="w-3 h-3 mr-1.5 fill-[#C5E0ED]" /> TREKKING ROUTES
+          <Star className="w-3 h-3 mr-1.5 fill-[#C5E0ED]" aria-hidden="true" /> TREKKING ROUTES
         </Badge>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4">
           Nepal's Finest Treks
         </h2>
         <p className="text-white/70 text-base">
-          Everest Base Camp, Annapurna Circuit, and classic Himalayan trails.
+          Everest Base Camp, Annapurna Circuit, Manaslu, and classic Himalayan trails.
         </p>
       </div>
               
@@ -533,15 +532,17 @@ export default function Home() {
                   onClick={scrollLeft}
                   className="bg-white/10 hover:bg-white/20 border-white/30 text-white rounded-full p-3"
                   size="icon"
+                  aria-label="Scroll left through treks"
                 >
-                  <ChevronLeft className="h-6 w-6" />
+                  <ChevronLeft className="h-6 w-6" aria-hidden="true" />
                 </Button>
                 <Button
                   onClick={scrollRight}
                   className="bg-white/10 hover:bg-white/20 border-white/30 text-white rounded-full p-3"
                   size="icon"
+                  aria-label="Scroll right through treks"
                 >
-                  <RightIcon className="h-6 w-6" />
+                  <RightIcon className="h-6 w-6" aria-hidden="true" />
                 </Button>
               </div>
             </div>
@@ -559,29 +560,29 @@ export default function Home() {
                       <div className="relative h-64 overflow-hidden">
                         <Image
                           src={trek.image}
-                          alt={trek.name}
+                          alt={`${trek.name} trek - ${trek.duration} trek in Nepal Himalayas`}
                           fill
                           className="object-cover"
                           sizes="85vw"
                           quality={85}
                         />
                         <div className="absolute top-4 right-4 bg-[#0f2940]/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-bold flex items-center gap-1">
-                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" /> {trek.rating}
+                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" /> {trek.rating}
                         </div>
                       </div>
                       <CardContent className="p-6">
                         <h3 className="text-xl font-bold text-white mb-4">{trek.name}</h3>
                         <div className="grid grid-cols-2 gap-4 mb-6">
                           <div className="flex items-center gap-2 text-white/70">
-                            <Clock className="w-4 h-4 text-[#C5E0ED]" />
+                            <Clock className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
                             <span className="text-sm">{trek.duration}</span>
                           </div>
                           <div className="flex items-center gap-2 text-white/70">
-                            <Mountain className="w-4 h-4 text-[#C5E0ED]" />
+                            <Mountain className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
                             <span className="text-sm">{trek.altitude}</span>
                           </div>
                           <div className="flex items-center gap-2 text-white/70">
-                            <Footprints className="w-4 h-4 text-[#C5E0ED]" />
+                            <Footprints className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
                             <span className="text-sm">{trek.difficulty}</span>
                           </div>
                           <div className="text-[#C5E0ED] font-bold text-lg">
@@ -617,29 +618,29 @@ export default function Home() {
                         <div className="relative h-72 overflow-hidden">
                           <Image
                             src={trek.image}
-                            alt={trek.name}
+                            alt={`${trek.name} trek - popular Himalayan trekking route`}
                             fill
                             className="object-cover"
                             sizes="400px"
                             quality={85}
                           />
                           <div className="absolute top-4 right-4 bg-[#0f2940]/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-bold flex items-center gap-1">
-                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" /> {trek.rating}
+                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" /> {trek.rating}
                           </div>
                         </div>
                         <CardContent className="p-8">
                           <h3 className="text-2xl font-bold text-white mb-4">{trek.name}</h3>
                           <div className="grid grid-cols-2 gap-4 mb-6">
                             <div className="flex items-center gap-2 text-white/70">
-                              <Clock className="w-4 h-4 text-[#C5E0ED]" />
+                              <Clock className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
                               <span className="text-sm">{trek.duration}</span>
                             </div>
                             <div className="flex items-center gap-2 text-white/70">
-                              <Mountain className="w-4 h-4 text-[#C5E0ED]" />
+                              <Mountain className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
                               <span className="text-sm">{trek.altitude}</span>
                             </div>
                             <div className="flex items-center gap-2 text-white/70">
-                              <Footprints className="w-4 h-4 text-[#C5E0ED]" />
+                              <Footprints className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
                               <span className="text-sm">{trek.difficulty}</span>
                             </div>
                             <div className="text-[#C5E0ED] font-bold text-xl">
@@ -665,7 +666,7 @@ export default function Home() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
       <div>
         <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-          <ShieldCheck className="w-3 h-3 mr-1.5" /> WHY CHOOSE US
+          <ShieldCheck className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHY CHOOSE US
         </Badge>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
           Local Knowledge, Global Standards
@@ -679,22 +680,22 @@ export default function Home() {
             { 
               title: "Local Experts", 
               desc: "Nepali guides with deep knowledge of trails, culture, and hidden gems.",
-              icon: <Users className="w-5 h-5" />
+              icon: <Users className="w-5 h-5" aria-hidden="true" />
             },
             { 
               title: "Authentic City Tours", 
               desc: "Pioneers of Kathmandu's Free Walking Tours, see the real Nepal beyond the guidebooks.",
-              icon: <MapPin className="w-5 h-5" />
+              icon: <MapPin className="w-5 h-5" aria-hidden="true" />
             },
             { 
               title: "Reliable & Safe", 
               desc: "24/7 support, experienced guides, and careful planning for peace of mind.",
-              icon: <ShieldCheck className="w-5 h-5" />
+              icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
             },
             { 
               title: "Community Focused", 
               desc: "We support local families and sustainable tourism across Nepal, Bhutan, and Tibet.",
-              icon: <Heart className="w-5 h-5" />
+              icon: <Heart className="w-5 h-5" aria-hidden="true" />
             }
           ].map((item, i) => (
             <div key={i} className="flex gap-4">
@@ -704,7 +705,7 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <h4 className="font-bold text-lg text-[#0f2940] mb-2">{item.title}</h4>
+                <h3 className="font-bold text-lg text-[#0f2940] mb-2">{item.title}</h3>
                 <p className="text-slate-600 text-sm">{item.desc}</p>
               </div>
             </div>
@@ -716,7 +717,7 @@ export default function Home() {
                 <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
                   <Image
                     src="/images/used/why_choose_us.webp"
-                    alt="Professional Himalayan Expedition Team"
+                    alt="Professional Himalayan expedition team - experienced guides and porters"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
@@ -730,7 +731,7 @@ export default function Home() {
     </div>
     <div className="flex items-center gap-1">
       {[...Array(5)].map((_, i) => (
-        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
       ))}
       <span className="text-white font-bold ml-2 text-lg">4.8/5 Rating</span>
     </div>
@@ -747,13 +748,13 @@ export default function Home() {
   <div className="container mx-auto px-4 sm:px-6">
     <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
       <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-        <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" /> TRAVELER STORIES
+        <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" aria-hidden="true" /> TRAVELER STORIES
       </Badge>
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
         Real Travelers, Real Experiences
       </h2>
       <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-        What guests say about their treks, city tours, and cultural journeys with us.
+        What guests say about their Everest Base Camp treks, Annapurna Circuit treks, and cultural journeys with us.
       </p>
     </div>
             {/* Horizontal Flow Animation for Mobile */}
@@ -767,7 +768,7 @@ export default function Home() {
                     <div className="bg-gradient-to-br from-[#f8fafc] to-[#f0f7ff] rounded-2xl overflow-hidden border border-[#C5E0ED]/40 p-6 h-full shadow-lg hover:shadow-xl transition-all duration-300">
                       <div className="flex gap-1 mb-6">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
                         ))}
                       </div>
                       <p className="text-slate-700 italic mb-8 leading-relaxed text-base">
@@ -776,7 +777,7 @@ export default function Home() {
                       <div className="flex flex-col gap-2">
                         <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
                         <div className="text-slate-600 text-sm flex items-center gap-1">
-                          <Globe className="w-3 h-3 text-[#2d6a8a]" /> {testimonial.country}
+                          <Globe className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" /> {testimonial.country}
                         </div>
                         <Link href={testimonial.trekLink}>
                           <Badge className="bg-gradient-to-r from-[#C5E0ED]/20 to-[#7fb8d4]/20 text-[#0f2940] border-[#C5E0ED]/40 text-xs w-fit hover:bg-[#C5E0ED]/40 cursor-pointer transition-colors">
@@ -801,7 +802,7 @@ export default function Home() {
                     <div className="bg-gradient-to-br from-white to-[#f8fafc] rounded-3xl overflow-hidden border border-[#C5E0ED]/40 p-8 h-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-[#7fb8d4]/60">
                       <div className="flex gap-1 mb-6">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
                         ))}
                       </div>
                       <p className="text-slate-700 italic mb-8 leading-relaxed text-base">
@@ -810,7 +811,7 @@ export default function Home() {
                       <div className="flex flex-col gap-2">
                         <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
                         <div className="text-slate-600 text-sm flex items-center gap-1">
-                          <Globe className="w-3 h-3 text-[#2d6a8a]" /> {testimonial.country}
+                          <Globe className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" /> {testimonial.country}
                         </div>
                         <Link href={testimonial.trekLink}>
                           <Badge className="bg-gradient-to-r from-[#C5E0ED]/20 to-[#7fb8d4]/20 text-[#0f2940] border-[#C5E0ED]/40 text-xs w-fit font-medium hover:bg-[#C5E0ED]/40 cursor-pointer transition-colors">
@@ -838,11 +839,11 @@ export default function Home() {
                   <a
                     href={tripadvisorUrl}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer nofollow"
                     className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2d6a8a] to-[#3C6AA6] hover:from-[#0f2940] hover:to-[#2d6a8a] text-white font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
                   >
                     <span>Visit Tripadvisor</span>
-                    <ExternalLink className="h-4 w-4" />
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
                   </a>
                 </div>
                 
@@ -850,13 +851,13 @@ export default function Home() {
                   <a
                     href={tripadvisorUrl}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer nofollow"
                     className="block hover:scale-105 transition-transform duration-300"
                   >
                     <div className="relative w-48 sm:w-56 h-48 sm:h-56">
                       <Image
                         src="/images/TripAdvisor-Logo.png"
-                        alt="Tripadvisor"
+                        alt="Tripadvisor logo and reviews for Himkala Adventure"
                         fill
                         className="object-contain drop-shadow-lg"
                         unoptimized

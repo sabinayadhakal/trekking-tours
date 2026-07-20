@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import {
   Mountain,
   Calendar,
@@ -202,25 +203,24 @@ const excludes = [
 const gallery = [
   {
     src: "/images/used/manaslu-main-page.webp",
-    alt: "Manaslu Mountain View",
+    alt: "Mount Manaslu at 8,163m - the eighth highest mountain in the world viewed from the Manaslu Circuit trek in Nepal",
     caption: "Mount Manaslu (8,163m)",
   },
   {
     src: "/images/used/manaslu-3.webp",
-    alt: "Pungyen Gompa",
+    alt: "Pungyen Gompa - ancient Buddhist monastery located at the base of Mount Manaslu on the Manaslu Circuit trek in Nepal",
     caption: "Pungyen Gompa located at the base of Manaslu",
   },
   {
     src: "/images/used/manaslu-4.webp",
-    alt: "Birendra Lake",
+    alt: "Birendra Lake - stunning turquoise glacial lake fed by the Manaslu Glacier on the Manaslu Circuit trek in Nepal",
     caption: "Birendra Lake-- Manaslu glacial lake",
   },
   {
     src: "/images/used/manaslu-2.webp",
-    alt: "Way to Namrung",
+    alt: "Trail to Namrung - traditional Tibetan Buddhist village on the Manaslu Circuit trekking route in Nepal",
     caption: "Way to Namrung",
   },
- 
 ];
 
 export default function ManasluCircuitTrekPage() {
@@ -228,8 +228,11 @@ export default function ManasluCircuitTrekPage() {
   const [expandedDays, setExpandedDays] = React.useState<number[]>([1]);
   const [showMobileNav, setShowMobileNav] = React.useState(false);
   
-  // Trek name constant for auto-fill functionality
   const trekName = "Manaslu Circuit Trek";
+  const canonicalUrl = "https://www.himkalaadventure.com/manaslu-circuit-trek";
+  const pageTitle = "Manaslu Circuit Trek - Himkala Adventure";
+  const pageDescription = "Manaslu Circuit Trek: Circumnavigate Mount Manaslu (8,163m) and cross Larkya La Pass at 5,106m. A remote Himalayan adventure in Nepal's restricted area. Book now!";
+  const imageUrl = "https://www.himkalaadventure.com/images/used/manaslu-1.webp";
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -255,579 +258,715 @@ export default function ManasluCircuitTrekPage() {
     );
   };
 
+  // Schema.org Organization schema
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Himkala Adventure Pvt. Ltd.",
+    "description": "Expert-guided Manaslu Circuit trekking packages in Nepal. Circumnavigate Mount Manaslu and cross Larkya La Pass with certified guides.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Thamel, Lekhnath Marga",
+      "addressLocality": "Kathmandu",
+      "addressCountry": "Nepal"
+    },
+    "telephone": "+977 9841376470",
+    "email": "info@himkalaadventure.com",
+    "url": "https://www.himkalaadventure.com",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 27.7172,
+      "longitude": 85.3240
+    }
+  };
+
+  // Schema.org Product/Trek schema
+  const trekSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Manaslu Circuit Trek - 12 Days",
+    "description": "Manaslu Circuit Trek: Circumnavigate Mount Manaslu (8,163m) and cross Larkya La Pass at 5,106m. A remote Himalayan adventure in Nepal's restricted area with Tibetan Buddhist culture.",
+    "image": imageUrl,
+    "brand": {
+      "@type": "Brand",
+      "name": "Himkala Adventure Pvt. Ltd."
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "1200",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-01-01",
+      "url": canonicalUrl
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "98"
+    },
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Max Altitude",
+        "value": "5,106m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Larkya La Pass Altitude",
+        "value": "5,106m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Mount Manaslu Altitude",
+        "value": "8,163m"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Duration",
+        "value": "12 Days"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Difficulty",
+        "value": "Challenging"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Region",
+        "value": "Manaslu Region"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Best Season",
+        "value": "Mar-May, Sep-Nov"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Trek Type",
+        "value": "Restricted Area Trek"
+      }
+    ]
+  };
+
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Mobile Navigation Drawer */}
-      {showMobileNav && (
-        <div className="lg:hidden fixed inset-0 z-50">
-          <div 
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setShowMobileNav(false)}
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg text-[#0f2940]">Quick Navigation</h3>
-                <button 
-                  onClick={() => setShowMobileNav(false)}
-                  className="p-2 rounded-lg hover:bg-slate-100"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Himkala Adventure" />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={imageUrl} />
+        <meta name="twitter:site" content="@himkalanepal" />
+        <meta name="twitter:creator" content="@himkalanepal" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(trekSchema) }}
+        />
+      </Head>
+
+      <div className="min-h-screen bg-white overflow-x-hidden">
+        {/* Mobile Navigation Drawer */}
+        {showMobileNav && (
+          <div className="lg:hidden fixed inset-0 z-50">
+            <div 
+              className="absolute inset-0 bg-black/50"
+              onClick={() => setShowMobileNav(false)}
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="font-bold text-lg text-[#0f2940]">Quick Navigation</h3>
+                  <button 
+                    onClick={() => setShowMobileNav(false)}
+                    className="p-2 rounded-lg hover:bg-slate-100 min-h-[44px] min-w-[44px]"
+                    aria-label="Close navigation menu"
+                  >
+                    <X className="w-5 h-5" aria-hidden="true" />
+                  </button>
+                </div>
+                
+                <div className="space-y-4">
+                  <a href="#overview" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Overview
+                  </a>
+                  <a href="#highlights" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Highlights
+                  </a>
+                  <a href="#itinerary" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Itinerary
+                  </a>
+                  <a href="#includes" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    What's Included
+                  </a>
+                  <a href="#gallery" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    Gallery
+                  </a>
+                  <a href="#faq" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
+                    FAQ
+                  </a>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate-200">
+                  <div className="flex gap-2">
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
+                      onClick={() => handleShare("facebook")}
+                      aria-label="Share on Facebook"
+                    >
+                      <Facebook className="w-4 h-4" aria-hidden="true" />
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
+                      onClick={() => handleShare("twitter")}
+                      aria-label="Share on Twitter"
+                    >
+                      <Twitter className="w-4 h-4" aria-hidden="true" />
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
+                      onClick={handleCopyLink}
+                      aria-label="Copy link to clipboard"
+                    >
+                      {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Hero Section */}
+        <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/used/manaslu-1.webp"
+              alt="Manaslu Circuit Trek - circumnavigating Mount Manaslu at 8,163m in Nepal's restricted Manaslu region with dramatic mountain views"
+              fill
+              className="object-cover"
+              priority
+              quality={85}
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
+          </div>
+
+          <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
+            <div className="max-w-5xl mx-auto text-center w-full">
+              <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
+                <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                  <MapPin className="w-3 h-3 mr-1" aria-hidden="true" /> Manaslu Region
+                </Badge>
+                <Badge className="bg-orange-100 text-orange-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                  Challenging
+                </Badge>
+                <Badge className="bg-white/20 backdrop-blur-sm text-white border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
+                  Restricted Area
+                </Badge>
               </div>
               
-              <div className="space-y-4">
-                <a href="#overview" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Overview
-                </a>
-                <a href="#highlights" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Highlights
-                </a>
-                <a href="#itinerary" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Itinerary
-                </a>
-                <a href="#includes" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  What's Included
-                </a>
-                <a href="#gallery" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Gallery
-                </a>
-                <a href="#faq" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  FAQ
-                </a>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-slate-200">
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
-                    onClick={() => handleShare("facebook")}
-                  >
-                    <Facebook className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
-                    onClick={() => handleShare("twitter")}
-                  >
-                    <Twitter className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
-                    onClick={handleCopyLink}
-                  >
-                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                  </Button>
-                </div>
-              </div>
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-3 md:mb-6 tracking-tight">
+                MANASLU <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
+                  CIRCUIT TREK
+                </span>
+              </h1>
+              
+              <p className="text-sm sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
+                Circumnavigate the world's eighth highest mountain through remote Tibetan villages, 
+                ancient monasteries, and cross the legendary Larkya La Pass at 5,106 meters.
+              </p>
             </div>
           </div>
-        </div>
-      )}
+        </section>
 
-      {/* Hero Section */}
-      <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/used/manaslu-1.webp"
-            alt="Manaslu Circuit Trek"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
-        </div>
-
-        <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
-          <div className="max-w-5xl mx-auto text-center w-full">
-            <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
-              <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MapPin className="w-3 h-3 mr-1" /> Manaslu Region
-              </Badge>
-              <Badge className="bg-orange-100 text-orange-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                Challenging
-              </Badge>
-              <Badge className="bg-white/20 backdrop-blur-sm text-white border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                Restricted Area
-              </Badge>
-            </div>
-            
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-3 md:mb-6 tracking-tight">
-              MANASLU <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
-                CIRCUIT TREK
-              </span>
-            </h1>
-            
-            <p className="text-sm sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
-              Circumnavigate the world&apos;s eighth highest mountain through remote Tibetan villages, 
-              ancient monasteries, and cross the legendary Larkya La Pass at 5,106 meters.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content - with proper sticky sidebar */}
-      <section className="py-6 md:py-12 relative">
-        <div className="container mx-auto px-3 md:px-6 max-w-full">
-          {/* Mobile Sticky Book Now Bar */}
-          <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-slate-400 line-through">$1,400</div>
-                <div className="text-lg font-bold text-[#0f2940]">1,200</div>
-              </div>
-              <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]">
-                  <Heart className="w-3 h-3 mr-1" /> Book Now
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Desktop Layout - Grid with sticky sidebar */}
-          <div className="lg:grid lg:grid-cols-12 lg:gap-4 lg:gap-10">
-            {/* Sidebar - Sticky on desktop */}
-            <aside className="hidden lg:block lg:col-span-4">
-              <div className="sticky top-24">
-                <div className="space-y-4 md:space-y-6">
-                  {/* Price Card */}
-                  <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
-                    <CardContent className="p-4 md:p-6">
-                      <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$1,400</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,200</div>
-                        <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $200</Badge>
-                      </div>
-
-                      <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>12 Days / 11 Nights</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>Best: Mar-May, Sep-Nov</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>Group Size: 2-12</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>Teahouse Accommodation</span>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                          <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" />
-                          <span>All Meals Included</span>
-                        </div>
-                      </div>
-
-                      {/* Book Now Button */}
-                      <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
-                        <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base">
-                          <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> Book This Trek
-                        </Button>
-                      </Link>
-                      
-                      {/* WhatsApp Now Button */}
-                      <a 
-                        href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${trekName}.`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
-                          <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> WhatsApp Now
-                        </Button>
-                      </a>
-                    </CardContent>
-                  </Card>
-
-                  {/* Quick Facts */}
-                  <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                    <CardContent className="p-4 md:p-6">
-                      <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                        <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Quick Facts
-                      </h3>
-                      <div className="space-y-2 text-[10px] md:text-sm">
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Start/End</span>
-                          <span className="font-medium text-[#0f2940]">Kathmandu</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Trek Start</span>
-                          <span className="font-medium text-[#0f2940]">Soti Khola</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Trek End</span>
-                          <span className="font-medium text-[#0f2940]">Dharapani</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Highest Point</span>
-                          <span className="font-medium text-[#0f2940]">5,106m</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                          <span className="text-slate-500">Trekking Days</span>
-                          <span className="font-medium text-[#0f2940]">12 Days</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 md:py-2">
-                          <span className="text-slate-500">Permits</span>
-                          <span className="font-medium text-[#0f2940]">RAP, MCAP, ACAP</span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Share */}
-                  <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                    <CardContent className="p-4 md:p-6">
-                      <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                        <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" /> Share
-                      </h3>
-                      <div className="flex gap-2">
-                        <Button
-                          size="sm"
-                          className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                          onClick={() => handleShare("facebook")}
-                        >
-                          <Facebook className="w-3 h-3 md:w-4 md:h-4" />
-                        </Button>
-                        <Button
-                          size="sm"
-                          className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                          onClick={() => handleShare("twitter")}
-                        >
-                          <Twitter className="w-3 h-3 md:w-4 md:h-4" />
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                          onClick={handleCopyLink}
-                        >
-                          {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" />}
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            </aside>
-
-            {/* Main Content */}
-            <article className="lg:col-span-8 w-full overflow-hidden mt-6 lg:mt-0">
-              {/* Mobile Share Buttons */}
-              <div className="lg:hidden flex gap-2 mb-6">
-                <Button
-                  size="sm"
-                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={() => handleShare("facebook")}
-                >
-                  <Facebook className="w-3 h-3 mr-1" /> Share
-                </Button>
-                <Button
-                  size="sm"
-                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={() => handleShare("twitter")}
-                >
-                  <Twitter className="w-3 h-3 mr-1" /> Tweet
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={handleCopyLink}
-                >
-                  {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-                </Button>
-              </div>
-
-              {/* Overview */}
-              <section className="mb-6 md:mb-12" id="overview">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview</h2>
-                <div className="prose prose-slate max-w-none">
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The Manaslu Circuit Trek is one of Nepal&apos;s most rewarding yet challenging treks, 
-                    circumnavigating <strong>Mount Manaslu (8,163m)</strong>, the eighth highest mountain 
-                    in the world. Often called the &quot;Killer Mountain&quot; due to its steep faces and 
-                    unpredictable weather, Manaslu offers trekkers a unique blend of natural beauty 
-                    and cultural immersion.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    Unlike the more popular Annapurna and Everest regions, the Manaslu area remained 
-                    closed to foreigners until 1991. This restricted access has preserved its pristine 
-                    environment and authentic Tibetan Buddhist culture.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    The crown jewel of this trek is the crossing of <strong>Larkya La Pass (5,106m)</strong>, 
-                    one of the highest and most spectacular passes in Nepal.
-                  </p>
-                </div>
-              </section>
-
-              {/* Highlights */}
-              <section className="mb-6 md:mb-12" id="highlights">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Trek Highlights</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
-                  {[
-                    "Cross Larkya La Pass (5,106m)",
-                    "Views of Mt. Manaslu (8,163m)",
-                    "Remote Tibetan Buddhist villages",
-                    "Ancient monasteries & gompas",
-                    "Pristine & less crowded trails",
-                    "Rich cultural heritage",
-                    "Diverse landscapes & ecosystems",
-                    "Optional Manaslu Base Camp visit",
-                    "Birendra Tal glacial lake",
-                    "Authentic teahouse experience",
-                  ].map((highlight, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
-                    >
-                      <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" />
-                      <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* Best Season */}
-              <section className="mb-6 md:mb-12">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Trek</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
-                  <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-5">
-                      <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar - May)</h4>
-                      </div>
-                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Rhododendrons bloom in vibrant colors, temperatures warm up, and skies are generally 
-                        clear.
-                      </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Recommended</Badge>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-5">
-                      <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-blue-500" />
-                        <h4 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Nov)</h4>
-                      </div>
-                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        The most popular season with stable weather, crystal-clear visibility, and comfortable 
-                        temperatures.
-                      </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
-                    </CardContent>
-                  </Card>
-                </div>
-              </section>
-
-              {/* Detailed Itinerary */}
-              <section className="mb-6 md:mb-12" id="itinerary">
-                <div className="flex items-center justify-between mb-3 md:mb-6">
-                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4"
-                    onClick={() =>
-                      setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
-                    }
-                  >
-                    {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
-                  </Button>
-                </div>
-
-                <div className="space-y-2 md:space-y-3">
-                  {itinerary.map((day) => (
-                    <Card
-                      key={day.day}
-                      className={`bg-white border-[#C5E0ED]/30 rounded-lg md:rounded-xl overflow-hidden transition-all ${
-                        expandedDays.includes(day.day) ? "shadow-md md:shadow-lg shadow-[#C5E0ED]/20" : "hover:shadow-sm"
-                      }`}
-                    >
-                      <CardContent className="p-0">
-                        <button
-                          className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
-                          onClick={() => toggleDay(day.day)}
-                        >
-                          <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
-                            <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
-                            <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h4>
-                            <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
-                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.altitude}
-                              </span>
-                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" /> {day.distance}
-                              </span>
-                            </div>
-                          </div>
-                          <ChevronDown
-                            className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
-                              expandedDays.includes(day.day) ? "rotate-180" : ""
-                            }`}
-                          />
-                        </button>
-
-                        {expandedDays.includes(day.day) && (
-                          <div className="px-2 md:px-4 pb-2 md:pb-4 border-t border-[#C5E0ED]/20">
-                            <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed pt-2 md:pt-4 mb-2 md:mb-4">{day.description}</p>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
-                              <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
-                                <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
-                              </div>
-                              <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" />
-                                <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
-                              </div>
-                            </div>
-
-                            <div className="flex flex-wrap gap-1 md:gap-2">
-                              {day.highlights.map((h, i) => (
-                                <Badge key={i} variant="secondary" className="bg-[#C5E0ED]/20 text-[#2d6a8a] text-[8px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1">
-                                  {h}
-                                </Badge>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </section>
-
-              {/* Includes / Excludes */}
-              <section className="mb-6 md:mb-12" id="includes">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What&apos;s Included</h2>
-                <div className="grid md:grid-cols-2 gap-3 md:gap-6">
-                  <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-6">
-                      <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> Cost Includes
-                      </h3>
-                      <ul className="space-y-1 md:space-y-2">
-                        {includes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" />
-                            <span className="leading-tight">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-6">
-                      <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
-                        <XCircle className="w-4 h-4 md:w-5 md:h-5" /> Cost Excludes
-                      </h3>
-                      <ul className="space-y-1 md:space-y-2">
-                        {excludes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" />
-                            <span className="leading-tight">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </section>
-
-              {/* Important Note */}
-              <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
-                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" />
+        {/* Main Content */}
+        <section className="py-6 md:py-12 relative">
+          <div className="container mx-auto px-3 md:px-6 max-w-full">
+            {/* Mobile Sticky Book Now Bar */}
+            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
+              <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information</h4>
-                  <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
-                    <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 5,500m.</li>
-                    <li>• The Manaslu region is a <strong>restricted area</strong> requiring a special permit.</li>
-                    <li>• We recommend starting physical preparation <strong>2-3 months before your trek</strong>.</li>
-                    <li>• The itinerary may be modified due to weather conditions or other circumstances.</li>
-                  </ul>
+                  <div className="text-xs text-slate-400 line-through">$1,400</div>
+                  <div className="text-lg font-bold text-[#0f2940]">$1,200</div>
                 </div>
+                <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
+                  <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]" aria-label={`Book ${trekName} now`}>
+                    <Heart className="w-3 h-3 mr-1" aria-hidden="true" /> Book Now
+                  </Button>
+                </Link>
               </div>
+            </div>
 
-              {/* Photo Gallery */}
-              <section className="mb-6 md:mb-12" id="gallery">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
-                  {gallery.map((image, i) => (
-                    <div
-                      key={i}
-                      className="relative h-24 md:h-48 rounded-lg md:rounded-xl overflow-hidden group cursor-pointer"
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        sizes="(max-width: 768px) 50vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
-                          <p className="text-white text-[8px] md:text-xs font-medium truncate">{image.caption}</p>
+            {/* Desktop Layout */}
+            <div className="lg:grid lg:grid-cols-12 lg:gap-4 lg:gap-10">
+              {/* Sidebar */}
+              <aside className="hidden lg:block lg:col-span-4">
+                <div className="sticky top-24">
+                  <div className="space-y-4 md:space-y-6">
+                    {/* Price Card */}
+                    <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
+                      <CardContent className="p-4 md:p-6">
+                        <div className="text-center mb-4 md:mb-6">
+                          <span className="text-white/50 text-sm line-through">$1,400</span>
+                          <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,200</div>
+                          <span className="text-white/60 text-sm">per person</span>
+                          <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $200</Badge>
                         </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
 
-              {/* FAQ Section */}
-              <section className="mb-6 md:mb-12" id="faq">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions</h2>
-                <div className="space-y-2 md:space-y-4">
-                  {[
-                    {
-                      q: "How difficult is the Manaslu Circuit Trek?",
-                      a: "The trek is rated as challenging due to its length (16 days), high altitude (crossing Larkya La at 5,106m), and remote terrain. Good physical fitness is essential, and previous trekking experience at altitude is recommended.",
-                    },
-                    {
-                      q: "Do I need a guide for this trek?",
-                      a: "Yes, the Manaslu region is a restricted area, and trekking independently is not permitted. You must be accompanied by a licensed guide and have all necessary permits arranged through a registered trekking agency.",
-                    },
-                    {
-                      q: "What about altitude sickness?",
-                      a: "The itinerary includes two acclimatization days (at Samagaon and Samdo) to help your body adjust. Our guides are trained in altitude sickness recognition and carry oximeters. We recommend Diamox and following proper hydration protocols.",
-                    },
-                    {
-                      q: "What is the accommodation like?",
-                      a: "Accommodation is in basic teahouses/lodges throughout the trek. Expect simple rooms with twin beds, shared bathrooms, and limited facilities. Hot showers and charging are available at extra cost in most places.",
-                    },
-                    {
-                      q: "Is the Manaslu trek crowded?",
-                      a: "No, Manaslu sees far fewer trekkers than Everest or Annapurna regions due to permit restrictions and its remote nature. This is one of its biggest attractions - you'll enjoy a more authentic and peaceful experience.",
-                    },
-                  ].map((faq, i) => (
-                    <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
-                      <CardContent className="p-2 md:p-5">
-                        <h4 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h4>
-                        <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
+                        <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>12 Days / 11 Nights</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>Best: Mar-May, Sep-Nov</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>Group Size: 2-12</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>Teahouse Accommodation</span>
+                          </div>
+                          <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
+                            <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <span>All Meals Included</span>
+                          </div>
+                        </div>
+
+                        <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
+                          <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base" aria-label={`Book ${trekName}`}>
+                            <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Book This Trek
+                          </Button>
+                        </Link>
+                        
+                        <a 
+                          href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${trekName}.`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer nofollow"
+                          className="block"
+                          aria-label="Inquire about Manaslu Circuit trek on WhatsApp"
+                        >
+                          <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
+                            <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> WhatsApp Now
+                          </Button>
+                        </a>
                       </CardContent>
                     </Card>
-                  ))}
+
+                    {/* Quick Facts */}
+                    <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
+                      <CardContent className="p-4 md:p-6">
+                        <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
+                          <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Quick Facts
+                        </h3>
+                        <div className="space-y-2 text-[10px] md:text-sm">
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Start/End</span>
+                            <span className="font-medium text-[#0f2940]">Kathmandu</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Trek Start</span>
+                            <span className="font-medium text-[#0f2940]">Soti Khola</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Trek End</span>
+                            <span className="font-medium text-[#0f2940]">Dharapani</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Highest Point</span>
+                            <span className="font-medium text-[#0f2940]">5,106m</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
+                            <span className="text-slate-500">Trekking Days</span>
+                            <span className="font-medium text-[#0f2940]">12 Days</span>
+                          </div>
+                          <div className="flex justify-between py-1.5 md:py-2">
+                            <span className="text-slate-500">Permits</span>
+                            <span className="font-medium text-[#0f2940]">RAP, MCAP, ACAP</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Share */}
+                    <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
+                      <CardContent className="p-4 md:p-6">
+                        <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
+                          <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Share
+                        </h3>
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                            onClick={() => handleShare("facebook")}
+                            aria-label="Share on Facebook"
+                          >
+                            <Facebook className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                            onClick={() => handleShare("twitter")}
+                            aria-label="Share on Twitter"
+                          >
+                            <Twitter className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
+                            onClick={handleCopyLink}
+                            aria-label="Copy link to clipboard"
+                          >
+                            {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />}
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </div>
-              </section>
-            </article>
+              </aside>
+
+              {/* Main Content */}
+              <article className="lg:col-span-8 w-full overflow-hidden mt-6 lg:mt-0">
+                {/* Mobile Share Buttons */}
+                <div className="lg:hidden flex gap-2 mb-6">
+                  <Button
+                    size="sm"
+                    className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
+                    onClick={() => handleShare("facebook")}
+                    aria-label="Share on Facebook"
+                  >
+                    <Facebook className="w-3 h-3 mr-1" aria-hidden="true" /> Share
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
+                    onClick={() => handleShare("twitter")}
+                    aria-label="Share on Twitter"
+                  >
+                    <Twitter className="w-3 h-3 mr-1" aria-hidden="true" /> Tweet
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
+                    onClick={handleCopyLink}
+                    aria-label="Copy link to clipboard"
+                  >
+                    {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
+                  </Button>
+                </div>
+
+                {/* Overview */}
+                <section className="mb-6 md:mb-12" id="overview">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview of Manaslu Circuit Trek</h2>
+                  <div className="prose prose-slate max-w-none">
+                    <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
+                      The <strong>Manaslu Circuit Trek</strong> is one of Nepal's most rewarding yet challenging treks, 
+                      circumnavigating <strong>Mount Manaslu (8,163m)</strong>, the eighth highest mountain 
+                      in the world. Often called the "Killer Mountain" due to its steep faces and 
+                      unpredictable weather, Manaslu offers trekkers a unique blend of natural beauty 
+                      and cultural immersion on this <strong>Manaslu Circuit trekking</strong> adventure.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
+                      Unlike the more popular Annapurna and Everest regions, the Manaslu area remained 
+                      closed to foreigners until 1991. This restricted access has preserved its pristine 
+                      environment and authentic Tibetan Buddhist culture, making it one of the most 
+                      rewarding <strong>trekking in Nepal</strong> experiences.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed text-xs md:text-base">
+                      The crown jewel of this trek is the crossing of <strong>Larkya La Pass (5,106m)</strong>, 
+                      one of the highest and most spectacular passes in Nepal, offering breathtaking 
+                      views of Manaslu, Himlung Himal, Cheo Himal, and Annapurna II.
+                    </p>
+                  </div>
+                </section>
+
+                {/* Highlights */}
+                <section className="mb-6 md:mb-12" id="highlights">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Manaslu Circuit Trek Highlights</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+                    {[
+                      "Cross Larkya La Pass (5,106m)",
+                      "Views of Mt. Manaslu (8,163m)",
+                      "Remote Tibetan Buddhist villages",
+                      "Ancient monasteries & gompas",
+                      "Pristine & less crowded trails",
+                      "Rich cultural heritage",
+                      "Diverse landscapes & ecosystems",
+                      "Optional Manaslu Base Camp visit",
+                      "Birendra Tal glacial lake",
+                      "Authentic teahouse experience",
+                    ].map((highlight, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
+                      >
+                        <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" aria-hidden="true" />
+                        <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* Best Season */}
+                <section className="mb-6 md:mb-12">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Trek Manaslu Circuit</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
+                    <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-5">
+                        <div className="flex items-center gap-2 mb-1 md:mb-3">
+                          <Sunrise className="w-4 h-4 md:w-5 md:h-5 text-orange-500" aria-hidden="true" />
+                          <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Spring (Mar - May)</h3>
+                        </div>
+                        <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
+                          Rhododendrons bloom in vibrant colors, temperatures warm up, and skies are generally 
+                          clear.
+                        </p>
+                        <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Recommended</Badge>
+                      </CardContent>
+                    </Card>
+                    <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-5">
+                        <div className="flex items-center gap-2 mb-1 md:mb-3">
+                          <Snowflake className="w-4 h-4 md:w-5 md:h-5 text-blue-500" aria-hidden="true" />
+                          <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Nov)</h3>
+                        </div>
+                        <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
+                          The most popular season with stable weather, crystal-clear visibility, and comfortable 
+                          temperatures.
+                        </p>
+                        <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </section>
+
+                {/* Detailed Itinerary */}
+                <section className="mb-6 md:mb-12" id="itinerary">
+                  <div className="flex items-center justify-between mb-3 md:mb-6">
+                    <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Manaslu Circuit Itinerary</h2>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4 min-h-[44px]"
+                      onClick={() =>
+                        setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
+                      }
+                      aria-label={expandedDays.length === itinerary.length ? "Collapse all itinerary days" : "Expand all itinerary days"}
+                    >
+                      {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
+                    </Button>
+                  </div>
+
+                  <div className="space-y-2 md:space-y-3">
+                    {itinerary.map((day) => (
+                      <Card
+                        key={day.day}
+                        className={`bg-white border-[#C5E0ED]/30 rounded-lg md:rounded-xl overflow-hidden transition-all ${
+                          expandedDays.includes(day.day) ? "shadow-md md:shadow-lg shadow-[#C5E0ED]/20" : "hover:shadow-sm"
+                        }`}
+                      >
+                        <CardContent className="p-0">
+                          <button
+                            className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left min-h-[44px]"
+                            onClick={() => toggleDay(day.day)}
+                            aria-expanded={expandedDays.includes(day.day)}
+                            aria-label={expandedDays.includes(day.day) ? `Collapse day ${day.day}` : `Expand day ${day.day}`}
+                          >
+                            <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
+                              <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
+                              <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h3>
+                              <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
+                                <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
+                                  <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.altitude}
+                                </span>
+                                <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
+                                  <Backpack className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.distance}
+                                </span>
+                              </div>
+                            </div>
+                            <ChevronDown
+                              className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
+                                expandedDays.includes(day.day) ? "rotate-180" : ""
+                              }`}
+                              aria-hidden="true"
+                            />
+                          </button>
+
+                          {expandedDays.includes(day.day) && (
+                            <div className="px-2 md:px-4 pb-2 md:pb-4 border-t border-[#C5E0ED]/20">
+                              <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed pt-2 md:pt-4 mb-2 md:mb-4">{day.description}</p>
+
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
+                                <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
+                                  <Tent className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
+                                  <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
+                                  <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
+                                  <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
+                                </div>
+                              </div>
+
+                              <div className="flex flex-wrap gap-1 md:gap-2">
+                                {day.highlights.map((h, i) => (
+                                  <Badge key={i} variant="secondary" className="bg-[#C5E0ED]/20 text-[#2d6a8a] text-[8px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1">
+                                    {h}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </section>
+
+                {/* Includes / Excludes */}
+                <section className="mb-6 md:mb-12" id="includes">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included in This Manaslu Circuit Trek</h2>
+                  <div className="grid md:grid-cols-2 gap-3 md:gap-6">
+                    <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-6">
+                        <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
+                          <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Includes
+                        </h3>
+                        <ul className="space-y-1 md:space-y-2">
+                          {includes.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
+                              <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
+                              <span className="leading-tight">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
+                      <CardContent className="p-3 md:p-6">
+                        <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-xs md:text-base">
+                          <XCircle className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Excludes
+                        </h3>
+                        <ul className="space-y-1 md:space-y-2">
+                          {excludes.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
+                              <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" aria-hidden="true" />
+                              <span className="leading-tight">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </section>
+
+                {/* Important Information */}
+                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-4">Important Information for Manaslu Circuit Trek</h2>
+                <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
+                  <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
+                  <div>
+                    <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
+                      <li>• <strong>Travel insurance is mandatory</strong> and must cover high altitude trekking up to 5,500m.</li>
+                      <li>• The Manaslu region is a <strong>restricted area</strong> requiring a special permit.</li>
+                      <li>• We recommend starting physical preparation <strong>2-3 months before your trek</strong>.</li>
+                      <li>• The itinerary may be modified due to weather conditions or other circumstances.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Photo Gallery */}
+                <section className="mb-6 md:mb-12" id="gallery">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery - Manaslu Circuit Trek</h2>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
+                    {gallery.map((image, i) => (
+                      <div
+                        key={i}
+                        className="relative h-24 md:h-48 rounded-lg md:rounded-xl overflow-hidden group cursor-pointer"
+                      >
+                        <Image
+                          src={image.src}
+                          alt={`${image.alt} - Manaslu Circuit trekking experience in Nepal's Manaslu region`}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-300"
+                          sizes="(max-width: 768px) 50vw, 33vw"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
+                            <p className="text-white text-[8px] md:text-xs font-medium truncate">{image.caption}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* FAQ Section */}
+                <section className="mb-6 md:mb-12" id="faq">
+                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions About Manaslu Circuit Trek</h2>
+                  <div className="space-y-2 md:space-y-4">
+                    {[
+                      {
+                        q: "How difficult is the Manaslu Circuit Trek?",
+                        a: "The trek is rated as challenging due to its length (16 days), high altitude (crossing Larkya La at 5,106m), and remote terrain. Good physical fitness is essential, and previous trekking experience at altitude is recommended.",
+                      },
+                      {
+                        q: "Do I need a guide for this trek?",
+                        a: "Yes, the Manaslu region is a restricted area, and trekking independently is not permitted. You must be accompanied by a licensed guide and have all necessary permits arranged through a registered trekking agency.",
+                      },
+                      {
+                        q: "What about altitude sickness?",
+                        a: "The itinerary includes two acclimatization days (at Samagaon and Samdo) to help your body adjust. Our guides are trained in altitude sickness recognition and carry oximeters. We recommend Diamox and following proper hydration protocols.",
+                      },
+                      {
+                        q: "What is the accommodation like?",
+                        a: "Accommodation is in basic teahouses/lodges throughout the trek. Expect simple rooms with twin beds, shared bathrooms, and limited facilities. Hot showers and charging are available at extra cost in most places.",
+                      },
+                      {
+                        q: "Is the Manaslu trek crowded?",
+                        a: "No, Manaslu sees far fewer trekkers than Everest or Annapurna regions due to permit restrictions and its remote nature. This is one of its biggest attractions - you'll enjoy a more authentic and peaceful experience.",
+                      },
+                    ].map((faq, i) => (
+                      <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
+                        <CardContent className="p-2 md:p-5">
+                          <h3 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h3>
+                          <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </section>
+              </article>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 }
