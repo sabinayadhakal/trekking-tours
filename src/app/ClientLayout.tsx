@@ -1072,6 +1072,82 @@ export default function ClientLayout({
           <div className="absolute inset-0 bg-[#153653]/95 md:bg-[#153653]/85 backdrop-blur-md -z-10"></div>
         </div>
 
+        {/* SPECIAL OFFER BANNER - Integrated into Header */}
+<motion.div
+  initial={{ opacity: 0, height: 0 }}
+  animate={{ opacity: 1, height: 'auto' }}
+  transition={{ duration: 0.4, ease: "easeOut" }}
+  className="relative z-40 bg-gradient-to-r from-[#6B2FA0] via-[#8B3FC8] to-[#6B2FA0] border-t border-[#C084FC]/20 overflow-hidden shadow-inner shadow-[#C084FC]/10"
+  id="announcement-banner"
+>
+  {/* Subtle animated gradient overlay */}
+  <div className="absolute inset-0 opacity-20">
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse"></div>
+  </div>
+  
+  <div className="container mx-auto px-4 sm:px-6 py-1.5 md:py-2 relative z-10">
+    <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-center">
+      {/* Glowing dot indicator */}
+      <span className="relative flex-shrink-0">
+        <span className="absolute inset-0 animate-ping rounded-full bg-[#C084FC] opacity-75"></span>
+        <span className="relative inline-flex h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#C084FC]"></span>
+      </span>
+      
+      {/* Text */}
+      <p className="text-white text-[10px] sm:text-xs md:text-sm font-medium leading-tight">
+        <span className="font-bold text-[#E9D5FF]">🔥 SPECIAL OFFER:</span>{' '}
+        <span className="text-white/95">Annapurna Circuit + Tilicho Lake – Oct 1st.</span>{' '}
+        <span className="inline-block bg-[#C084FC]/20 backdrop-blur-sm px-1.5 py-0.5 rounded font-bold text-[#E9D5FF] text-[9px] sm:text-[11px] border border-[#C084FC]/40">
+          5th person gets 50% OFF!
+        </span>
+      </p>
+      
+      {/* Learn About The Trek Button */}
+      <Link
+        href="/services/trekking/annapurna-circuit-trek-with-tilicho-lake"
+        className="inline-flex items-center gap-1 bg-white/10 hover:bg-white/20 text-[#E9D5FF] font-medium px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs border border-[#C084FC]/30 hover:border-[#C084FC]/60 transition-all duration-200 flex-shrink-0"
+      >
+        <span>Learn About The Trek</span>
+        <ChevronRight className="w-2.5 h-2.5 sm:w-3 sm:h-3" aria-hidden="true" />
+      </Link>
+      
+      {/* Book Now Button */}
+      <a
+        href={`https://wa.me/9779841376470?text=${encodeURIComponent("Hello. I would like to inquire about the Annapurna Circuit Trek with Tilicho Lake trek offer that is going to start on October 1st.")}`}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        className="inline-flex items-center gap-1 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#2ef575] hover:to-[#1a9f8f] text-white font-bold px-2.5 sm:px-4 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs shadow-lg shadow-[#25D366]/30 hover:shadow-[#25D366]/50 hover:scale-105 active:scale-95 transition-all duration-200 flex-shrink-0"
+      >
+        <WhatsAppIcon className="w-2.5 h-2.5 sm:w-3 sm:h-3" aria-hidden="true" />
+        <span>Book Now</span>
+      </a>
+      
+      {/* Close button */}
+      <button
+        onClick={() => {
+          const banner = document.getElementById('announcement-banner');
+          if (banner) {
+            banner.style.transition = 'all 0.4s ease-in-out';
+            banner.style.maxHeight = '0';
+            banner.style.opacity = '0';
+            banner.style.padding = '0';
+            banner.style.margin = '0';
+            banner.style.overflow = 'hidden';
+            banner.style.border = 'none';
+            setTimeout(() => {
+              banner.style.display = 'none';
+            }, 400);
+          }
+        }}
+        className="absolute right-1 sm:right-3 top-1/2 -translate-y-1/2 text-white/60 hover:text-white hover:bg-white/10 rounded-full p-0.5 sm:p-1 transition-all duration-200 flex items-center justify-center"
+        aria-label="Dismiss offer"
+      >
+        <X className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
+      </button>
+    </div>
+  </div>
+</motion.div>
+
         {/* Search Modal */}
         <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
