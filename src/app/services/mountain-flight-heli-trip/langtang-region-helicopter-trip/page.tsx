@@ -153,7 +153,7 @@ export default function LangtangRegionHelicopterTripPage() {
     );
   };
 
-  // Schema.org Product schema
+  // Schema.org Product schema - FIXED with missing fields
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -170,7 +170,37 @@ export default function LangtangRegionHelicopterTripPage() {
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "validFrom": "2026-01-01",
-      "url": "https://www.himkalaadventure.com/services/mountain-flight-heli-trip/langtang-region-helicopter-trip"
+      "priceValidUntil": "2027-12-31",
+      "url": "https://www.himkalaadventure.com/services/mountain-flight-heli-trip/langtang-region-helicopter-trip",
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "USD"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "NP"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "NP",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      }
     },
     "aggregateRating": {
       "@type": "AggregateRating",
