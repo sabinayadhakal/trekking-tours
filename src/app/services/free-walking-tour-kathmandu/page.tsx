@@ -63,7 +63,7 @@ const tourStops = [
     name: "Kathe Swoyambhu",
     icon: Church,
     description:
-      "A beautiful embodiment of religious harmony where Hindu, Buddhist and Tibetan cultures coexist. Small stupas with symbolic paintings surround the main stupa. Very photogenic, often undergoing gentle construction.",
+      "A embodiment of religious harmony where Hindu, Buddhist and Tibetan cultures coexist. Small stupas with symbolic paintings surround the main stupa. Very photogenic, often undergoing gentle construction.",
   },
   {
     name: "Local Lassi Stop",
