@@ -166,7 +166,7 @@ export default function NagarkotChangunarayanHikingPage() {
     },
     "offers": {
       "@type": "Offer",
-      "price": "120",
+      "price": "45",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "validFrom": "2026-01-01",
@@ -339,8 +339,8 @@ export default function NagarkotChangunarayanHikingPage() {
           <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs text-slate-400 line-through">$150</div>
-                <div className="text-lg font-bold text-[#0f2940]">$120</div>
+                <div className="text-xs text-slate-400 line-through">$60</div>
+                <div className="text-lg font-bold text-[#0f2940]">$45</div>
               </div>
               <Link href={`/contact?trek=${encodeURIComponent(trekName)}`}>
                 <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]" aria-label={`Book ${trekName} now`}>
@@ -360,10 +360,10 @@ export default function NagarkotChangunarayanHikingPage() {
                   <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
                     <CardContent className="p-4 md:p-6">
                       <div className="text-center mb-4 md:mb-6">
-                        <span className="text-white/50 text-sm line-through">$150</span>
-                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$120</div>
+                        <span className="text-white/50 text-sm line-through">$60</span>
+                        <div className="text-3xl md:text-4xl font-bold text-white mt-1">$45</div>
                         <span className="text-white/60 text-sm">per person</span>
-                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $30</Badge>
+                        <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $15</Badge>
                       </div>
 
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
