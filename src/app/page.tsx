@@ -23,7 +23,12 @@ import {
   ChevronLeft,
   ChevronRight as RightIcon,
   Globe,
-  MessageCircle
+  MessageCircle,
+  BookOpen,
+  Youtube,
+  Instagram,
+  Play,
+  XCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -215,7 +220,7 @@ const testimonials = [
   {
     name: "Novitri Esna",
     country: "Indonesia",
-    text: "I’m a beginner trekker, but Shiva made the Langtang trek feel possible. He was so patient and always checked in... He pointed out langurs, yaks, and special places I would’ve missed. I felt supported the whole way.",
+    text: "I'm a beginner trekker, but Shiva made the Langtang trek feel possible. He was so patient and always checked in... He pointed out langurs, yaks, and special places I would've missed. I felt supported the whole way.",
     trek: "Langtang Valley",
     trekLink: "/services/trekking/langtang-valley-trek"
   },
@@ -257,14 +262,117 @@ const testimonials = [
   }
 ];
 
-
 // Duplicate testimonials for infinite scroll effect
 const infiniteTestimonials = [...testimonials, ...testimonials, ...testimonials];
+
+// --- BLOG AND SOCIAL DATA (from blog page) ---
+const featuredBlog = {
+  title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
+  excerpt: "From budget-friendly Poon Hill at $500 to premium Upper Mustang at $2,595 — break down every trek, permit, and hidden expense.",
+  image: "/images/used/nepal-trek-cost-blog-hero.webp",
+  slug: "nepal-trek-cost-2026",
+  date: "June 4, 2026",
+  readTime: "16 min",
+};
+
+const youtubeVideos = [
+  {
+    title: "Himkala Adventure | Kathmandu, Nepal",
+    url: "https://www.youtube.com/watch?v=JxiY-aG0e_c&t=10s",
+  },
+  {
+    title: "Ritual Thread Ceremony | Himkala Adventure",
+    url: "https://www.youtube.com/watch?v=a0P-e9MRRpY&pp=0gcJCdkKAYcqIYzv",
+  },
+  {
+    title: "Nagarkot to Changunarayan Hiking | Himkala Adventure",
+    url: "https://www.youtube.com/watch?v=6aUyYVxnaOA",
+  },
+  {
+    title: "Kathmandu Valley Fringe Hiking with Himkala Adventure | Kathmandu, Nepal",
+    url: "https://www.youtube.com/watch?v=JS9aWnSWHAA",
+  },
+  {
+    title: "Amazing Free Walking Tour Kathmandu | Himkala Adevnture",
+    url: "https://www.youtube.com/watch?v=BjfCd9C2uS4",
+  },
+];
+
+const instagramPosts = [
+  {
+    title: "Kathmandu's Free Walking Tour — 12 Years Strong",
+    url: "https://www.instagram.com/freewalkingtourkathmandu/reel/DblJWo7TsOB/",
+    type: "reel",
+  },
+  {
+    title: "Backpacking Diaries: Trekking the Himalayas with Himkala Adventure",
+    url: "https://www.instagram.com/amberlowentravels/reel/DSSTpFck6F4/",
+    type: "reel",
+  },
+  {
+    title: "Humbled by the Mountains — Annapurna Circuit Trek",
+    url: "https://www.instagram.com/back.to.that.moment/reel/DMzitZdIxVI/",
+    type: "reel",
+  },
+  {
+    title: "Langtang Summit: Kyangjing Ri at 4,400m",
+    url: "https://www.instagram.com/thelonecompass/reel/DM4xMomRuex/",
+    type: "reel",
+  },
+  {
+    title: "Manaslu Circuit — Captured on 35mm Film",
+    url: "https://www.instagram.com/himkalaadventure/reel/DLK9i0YvXLk/",
+    type: "reel",
+  },
+  {
+    title: "Annapurna Basecamp: Steep Stairs & Breathtaking Views",
+    url: "https://www.instagram.com/back.to.that.moment/reel/DJ2HAhPoeqS/",
+    type: "reel",
+  },
+  {
+    title: "Shree Kharka to Tilicho Base Camp",
+    url: "https://www.instagram.com/himkalaadventure/reel/DZzFS3_tL5w/",
+    type: "reel",
+  },
+  {
+    title: "Ice Lake — 4,620 Meters",
+    url: "https://www.instagram.com/himkalaadventure/reel/DZuqJtjPGVO/",
+    type: "reel",
+  },
+  {
+    title: "Everest Three Passes Trekking",
+    url: "https://www.instagram.com/himkalaadventure/p/Daj6PkTD1Tp/",
+    type: "post",
+  },
+];
+
+// Function to get YouTube thumbnail
+const getYouTubeThumbnail = (url: string) => {
+  let videoId = "";
+  if (url.includes("youtube.com/watch?v=")) {
+    videoId = url.split("v=")[1]?.split("&")[0];
+  } else if (url.includes("youtu.be/")) {
+    videoId = url.split("youtu.be/")[1]?.split("?")[0];
+  }
+  return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : "/images/fallback.jpg";
+};
+
+// Function to extract YouTube video ID
+const getYouTubeVideoId = (url: string) => {
+  let videoId = "";
+  if (url.includes("youtube.com/watch?v=")) {
+    videoId = url.split("v=")[1]?.split("&")[0];
+  } else if (url.includes("youtu.be/")) {
+    videoId = url.split("youtu.be/")[1]?.split("?")[0];
+  }
+  return videoId;
+};
 
 const tripadvisorUrl = "https://www.tripadvisor.com/Attraction_Review-g293890-d8417075-Reviews-Himkala_Adventure-Kathmandu_Kathmandu_Valley_Bagmati_Zone_Central_Region.html";
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [selectedVideo, setSelectedVideo] = React.useState<{ title: string; url: string } | null>(null);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -283,6 +391,32 @@ export default function Home() {
       });
     }
   };
+
+  const openVideoModal = (video: { title: string; url: string }) => {
+    setSelectedVideo(video);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeVideoModal = () => {
+    setSelectedVideo(null);
+    document.body.style.overflow = "auto";
+  };
+
+  const openInstagramPost = (url: string) => {
+    window.open(url, "_blank");
+  };
+
+  // Handle escape key press
+  React.useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (selectedVideo) closeVideoModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscKey);
+    return () => document.removeEventListener("keydown", handleEscKey);
+  }, [selectedVideo]);
 
   return (
     <div className="flex flex-col min-h-screen bg-white overflow-x-hidden">
@@ -378,19 +512,19 @@ export default function Home() {
         </section>
 
         {/* Destinations */}
-<section id="destinations" className="py-16 md:py-32 bg-white">
-  <div className="container mx-auto px-4 sm:px-6">
-    <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-      <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-        <MapPin className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHERE WE GO
-      </Badge>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
-        Nepal, Bhutan & Tibet
-      </h2>
-      <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-        Trekking in Nepal, city tours in Kathmandu, and cultural experiences across the Himalayas.
-      </p>
-    </div>
+        <section id="destinations" className="py-16 md:py-32 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
+              <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+                <MapPin className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHERE WE GO
+              </Badge>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
+                Nepal, Bhutan & Tibet
+              </h2>
+              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+                Trekking in Nepal, city tours in Kathmandu, and cultural experiences across the Himalayas.
+              </p>
+            </div>
 
             {/* Mobile Horizontal Scroll */}
             <div className="md:hidden">
@@ -469,19 +603,19 @@ export default function Home() {
         </section>
 
         {/* Our Services */}
-<section id="services" className="py-16 md:py-32 bg-gradient-to-b from-white to-slate-50">
-  <div className="container mx-auto px-4 sm:px-6">
-    <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-      <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-        <CheckCircle className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHAT WE OFFER
-      </Badge>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
-        Treks, Tours & Cultural Experiences
-      </h2>
-      <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-        Guided trekking in Nepal, city tours in Kathmandu, and cultural journeys through Bhutan and Tibet.
-      </p>
-    </div>
+        <section id="services" className="py-16 md:py-32 bg-gradient-to-b from-white to-slate-50">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
+              <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+                <CheckCircle className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHAT WE OFFER
+              </Badge>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
+                Treks, Tours & Cultural Experiences
+              </h2>
+              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+                Guided trekking in Nepal, city tours in Kathmandu, and cultural journeys through Bhutan and Tibet.
+              </p>
+            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {services.map((service, i) => (
@@ -512,20 +646,20 @@ export default function Home() {
         </section>
 
         {/* Popular Treks - Desktop with arrow navigation */}
-<section id="treks" className="py-16 md:py-32 bg-[#0f2940]">
-  <div className="container mx-auto px-4 sm:px-6">
-    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 md:mb-16 gap-6">
-      <div className="max-w-2xl">
-        <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-          <Star className="w-3 h-3 mr-1.5 fill-[#C5E0ED]" aria-hidden="true" /> TREKKING ROUTES
-        </Badge>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4">
-          Nepal's Finest Treks
-        </h2>
-        <p className="text-white/70 text-base">
-          Everest Base Camp, Annapurna Circuit, Manaslu, and classic Himalayan trails.
-        </p>
-      </div>
+        <section id="treks" className="py-16 md:py-32 bg-[#0f2940]">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 md:mb-16 gap-6">
+              <div className="max-w-2xl">
+                <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+                  <Star className="w-3 h-3 mr-1.5 fill-[#C5E0ED]" aria-hidden="true" /> TREKKING ROUTES
+                </Badge>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4">
+                  Nepal's Finest Treks
+                </h2>
+                <p className="text-white/70 text-base">
+                  Everest Base Camp, Annapurna Circuit, Manaslu, and classic Himalayan trails.
+                </p>
+              </div>
               
               <div className="flex gap-4">
                 <Button
@@ -660,58 +794,229 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Why Choose Us */}
-<section className="py-16 md:py-32 bg-gradient-to-b from-slate-50 to-white">
-  <div className="container mx-auto px-4 sm:px-6">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
-      <div>
-        <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-          <ShieldCheck className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHY CHOOSE US
-        </Badge>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
-          Local Knowledge, Global Standards
-        </h2>
-        <p className="text-slate-600 text-base md:text-lg mb-8 leading-relaxed">
-          Born in Gorkha, based in Kathmandu, we offer authentic Himalayan experiences with professional service.
-        </p>
+        {/* ===== NEW: FROM THE HIMALAYAN JOURNAL SECTION ===== */}
+        <section className="py-12 sm:py-16 md:py-24 bg-white overflow-hidden">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8 md:mb-12">
+              <div>
+                <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
+                  <BookOpen className="w-3 h-3 mr-1.5" /> JOURNAL
+                </Badge>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940]">
+                  From the <span className="text-[#2d6a8a]">Himalayan</span> Journal
+                </h2>
+                <p className="text-slate-500 text-sm mt-1">Stories, tips, and adventures from the Himalayas</p>
+              </div>
+              <Link href="/blog">
+                <Button variant="ghost" className="text-[#2d6a8a] hover:text-[#0f2940] font-medium px-0 sm:px-4">
+                  View All Posts <ChevronRight className="w-4 h-4 ml-1" />
+                </Button>
+              </Link>
+            </div>
 
-        <div className="space-y-6">
-          {[
-            { 
-              title: "Local Experts", 
-              desc: "Nepali guides with deep knowledge of trails, culture, and hidden gems.",
-              icon: <Users className="w-5 h-5" aria-hidden="true" />
-            },
-            { 
-              title: "Authentic City Tours", 
-              desc: "Pioneers of Kathmandu's Free Walking Tours, see the real Nepal beyond the guidebooks.",
-              icon: <MapPin className="w-5 h-5" aria-hidden="true" />
-            },
-            { 
-              title: "Reliable & Safe", 
-              desc: "24/7 support, experienced guides, and careful planning for peace of mind.",
-              icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
-            },
-            { 
-              title: "Community Focused", 
-              desc: "We support local families and sustainable tourism across Nepal, Bhutan, and Tibet.",
-              icon: <Heart className="w-5 h-5" aria-hidden="true" />
-            }
-          ].map((item, i) => (
-            <div key={i} className="flex gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-xl flex items-center justify-center shrink-0">
-                <div className="text-[#0f2940]">
-                  {item.icon}
+            {/* Featured Blog Post Card */}
+            <Link href={`/blog/${featuredBlog.slug}`}>
+              <Card className="bg-white border-[#C5E0ED]/30 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 mb-8 md:mb-10">
+                <div className="grid grid-cols-1 md:grid-cols-3">
+                  <div className="relative h-48 md:h-auto md:min-h-[200px]">
+                    <Image
+                      src={featuredBlog.image}
+                      alt={featuredBlog.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                    <Badge className="absolute top-3 left-3 bg-[#0f2940]/90 text-white border-none text-xs">
+                      Featured
+                    </Badge>
+                  </div>
+                  <CardContent className="p-4 md:p-6 md:col-span-2 flex flex-col justify-center">
+                    <div className="flex items-center gap-3 text-xs text-slate-500 mb-2">
+                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {featuredBlog.readTime}</span>
+                      <span>•</span>
+                      <span>{featuredBlog.date}</span>
+                    </div>
+                    <h3 className="text-base md:text-lg font-bold text-[#0f2940] mb-2 leading-snug line-clamp-2">
+                      {featuredBlog.title}
+                    </h3>
+                    <p className="text-slate-600 text-sm leading-relaxed line-clamp-2">
+                      {featuredBlog.excerpt}
+                    </p>
+                    <div className="mt-3 text-[#2d6a8a] font-medium text-sm inline-flex items-center hover:underline">
+                      Read More <ChevronRight className="w-4 h-4 ml-1" />
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            </Link>
+
+            {/* YouTube & Instagram Horizontal Scrolls */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {/* YouTube */}
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-6 h-6 bg-red-600 rounded flex items-center justify-center">
+                    <Youtube className="w-3.5 h-3.5 text-white" />
+                  </div>
+                  <h4 className="text-xs font-bold text-slate-600 uppercase tracking-wider">  YouTube Videos</h4>
+                </div>
+                <div className="overflow-hidden relative">
+                  <div className="flex animate-infinite-scroll-youtube-home">
+                    {[...youtubeVideos, ...youtubeVideos].map((video, i) => (
+                      <div
+                        key={`${video.url}-${i}`}
+                        className="flex-shrink-0 w-[160px] sm:w-[180px] mr-4 cursor-pointer"
+                        onClick={() => openVideoModal(video)}
+                      >
+                        <div className="bg-slate-100 rounded-lg overflow-hidden hover:shadow-md transition-all">
+                          <div className="relative h-24 sm:h-28 overflow-hidden">
+                            <Image
+                              src={getYouTubeThumbnail(video.url)}
+                              alt={video.title}
+                              fill
+                              className="object-cover"
+                              sizes="180px"
+                              loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                              <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
+                                <Play className="w-3 h-3 text-white ml-0.5" fill="white" />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="p-2">
+                            <p className="text-xs font-medium text-slate-700 line-clamp-1">{video.title}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
+
+              {/* Instagram */}
               <div>
-                <h3 className="font-bold text-lg text-[#0f2940] mb-2">{item.title}</h3>
-                <p className="text-slate-600 text-sm">{item.desc}</p>
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-6 h-6 bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F56040] rounded flex items-center justify-center">
+                    <Instagram className="w-3.5 h-3.5 text-white" />
+                  </div>
+                  <h4 className="text-xs font-bold text-slate-600 uppercase tracking-wider">Instagram</h4>
+                </div>
+                <div className="overflow-hidden relative">
+                  <div className="flex animate-infinite-scroll-instagram-home">
+                    {[...instagramPosts, ...instagramPosts].map((post, i) => (
+                      <div
+                        key={`${post.url}-${i}`}
+                        className="flex-shrink-0 w-[160px] sm:w-[180px] mr-4 cursor-pointer"
+                        onClick={() => openInstagramPost(post.url)}
+                      >
+                        <div className="bg-gradient-to-br from-[#833AB4]/10 via-[#FD1D1D]/10 to-[#F56040]/10 rounded-lg overflow-hidden hover:shadow-md transition-all border border-[#C5E0ED]/20">
+                          <div className="relative h-24 sm:h-28 overflow-hidden flex items-center justify-center bg-gradient-to-br from-[#833AB4]/5 via-[#FD1D1D]/5 to-[#F56040]/5">
+                            <Instagram className="w-8 h-8 text-[#833AB4]/40" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent" />
+                          </div>
+                          <div className="p-2">
+                            <p className="text-xs font-medium text-slate-700 line-clamp-1">{post.title}</p>
+                            <p className="text-[10px] text-slate-400 mt-0.5">{post.type === "reel" ? "📱 Reel" : "📷 Post"}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </section>
+
+        {/* YouTube Modal */}
+        {selectedVideo && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md animate-in fade-in duration-200"
+            onClick={closeVideoModal}
+          >
+            <div 
+              className="relative w-full max-w-5xl mx-4 bg-black rounded-xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#0f2940] to-[#1a4166]">
+                <h3 className="text-white font-bold text-lg truncate pr-4">
+                  {selectedVideo.title}
+                </h3>
+                <button
+                  onClick={closeVideoModal}
+                  className="text-white hover:text-[#C5E0ED] transition-colors p-1"
+                  aria-label="Close video"
+                >
+                  <XCircle className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="relative pt-[56.25%] bg-black">
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src={`https://www.youtube.com/embed/${getYouTubeVideoId(selectedVideo.url)}?autoplay=1&rel=0&modestbranding=1`}
+                  title={selectedVideo.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Why Choose Us */}
+        <section className="py-16 md:py-32 bg-gradient-to-b from-slate-50 to-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
+              <div>
+                <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+                  <ShieldCheck className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHY CHOOSE US
+                </Badge>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
+                  Local Knowledge, Global Standards
+                </h2>
+                <p className="text-slate-600 text-base md:text-lg mb-8 leading-relaxed">
+                  Born in Gorkha, based in Kathmandu, we offer authentic Himalayan experiences with professional service.
+                </p>
+
+                <div className="space-y-6">
+                  {[
+                    { 
+                      title: "Local Experts", 
+                      desc: "Nepali guides with deep knowledge of trails, culture, and hidden gems.",
+                      icon: <Users className="w-5 h-5" aria-hidden="true" />
+                    },
+                    { 
+                      title: "Authentic City Tours", 
+                      desc: "Pioneers of Kathmandu's Free Walking Tours, see the real Nepal beyond the guidebooks.",
+                      icon: <MapPin className="w-5 h-5" aria-hidden="true" />
+                    },
+                    { 
+                      title: "Reliable & Safe", 
+                      desc: "24/7 support, experienced guides, and careful planning for peace of mind.",
+                      icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
+                    },
+                    { 
+                      title: "Community Focused", 
+                      desc: "We support local families and sustainable tourism across Nepal, Bhutan, and Tibet.",
+                      icon: <Heart className="w-5 h-5" aria-hidden="true" />
+                    }
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-xl flex items-center justify-center shrink-0">
+                        <div className="text-[#0f2940]">
+                          {item.icon}
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg text-[#0f2940] mb-2">{item.title}</h3>
+                        <p className="text-slate-600 text-sm">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               <div className="relative">
                 <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
@@ -724,19 +1029,19 @@ export default function Home() {
                     quality={85}
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0f2940] to-transparent p-6 md:p-8">
-  <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 md:p-6 border border-white/20">
-    <div className="text-white mb-4">
-      <div className="font-bold text-lg mb-2">2500+ Travelers Since 2015</div>
-      <div className="text-white/70 text-sm">from 30+ countries around the world</div>
-    </div>
-    <div className="flex items-center gap-1">
-      {[...Array(5)].map((_, i) => (
-        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-      ))}
-      <span className="text-white font-bold ml-2 text-lg">4.8/5 Rating</span>
-    </div>
-  </div>
-</div>
+                    <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 md:p-6 border border-white/20">
+                      <div className="text-white mb-4">
+                        <div className="font-bold text-lg mb-2">2500+ Travelers Since 2015</div>
+                        <div className="text-white/70 text-sm">from 30+ countries around the world</div>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+                        ))}
+                        <span className="text-white font-bold ml-2 text-lg">4.8/5 Rating</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -744,19 +1049,19 @@ export default function Home() {
         </section>
 
         {/* Testimonials - Horizontal Flow Animation */}
-<section className="py-16 md:py-32 bg-white overflow-hidden">
-  <div className="container mx-auto px-4 sm:px-6">
-    <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-      <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-        <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" aria-hidden="true" /> TRAVELER STORIES
-      </Badge>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
-        Real Travelers, Real Experiences
-      </h2>
-      <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-        What guests say about their Everest Base Camp treks, Annapurna Circuit treks, and cultural journeys with us.
-      </p>
-    </div>
+        <section className="py-16 md:py-32 bg-white overflow-hidden">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
+              <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
+                <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" aria-hidden="true" /> TRAVELER STORIES
+              </Badge>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
+                Real Travelers, Real Experiences
+              </h2>
+              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+                What guests say about their Everest Base Camp treks, Annapurna Circuit treks, and cultural journeys with us.
+              </p>
+            </div>
             {/* Horizontal Flow Animation for Mobile */}
             <div className="md:hidden overflow-hidden relative py-4">
               <div className="flex animate-infinite-scroll-slow-mobile">
@@ -871,7 +1176,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Updated CSS for infinite scroll animation */}
+      {/* CSS for infinite scroll animations */}
       <style jsx global>{`
         @keyframes infinite-scroll {
           0% {
@@ -895,6 +1200,46 @@ export default function Home() {
           animation: infinite-scroll 150s linear infinite;
         }
 
+        /* YouTube Home Animation - faster for teaser */
+        @keyframes infinite-scroll-youtube-home {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-infinite-scroll-youtube-home {
+          display: flex;
+          width: max-content;
+          animation: infinite-scroll-youtube-home 60s linear infinite;
+        }
+
+        .animate-infinite-scroll-youtube-home:hover {
+          animation-play-state: paused;
+        }
+
+        /* Instagram Home Animation - faster for teaser */
+        @keyframes infinite-scroll-instagram-home {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-infinite-scroll-instagram-home {
+          display: flex;
+          width: max-content;
+          animation: infinite-scroll-instagram-home 60s linear infinite;
+        }
+
+        .animate-infinite-scroll-instagram-home:hover {
+          animation-play-state: paused;
+        }
+
         /* Hide scrollbar */
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
@@ -902,6 +1247,19 @@ export default function Home() {
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .animate-in {
+          animation: fadeIn 0.2s ease-in;
         }
       `}</style>
     </div>

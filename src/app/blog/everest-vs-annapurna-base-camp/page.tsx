@@ -70,6 +70,13 @@ const tableOfContents = [
 
 const relatedPosts = [
   {
+    title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
+    image: "/images/used/nepal-trek-cost-blog-hero.webp",
+    date: "June 4, 2026",
+    readTime: "16 min",
+    href: "/blog/nepal-trek-cost-2026",
+},
+  {
     title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
     image: "/images/used/dog-pigeons.webp",
     date: "May 9, 2026",

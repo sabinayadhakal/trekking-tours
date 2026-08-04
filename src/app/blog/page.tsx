@@ -17,6 +17,8 @@ import {
   Menu,
   X,
   XCircle,
+  DollarSign,
+  Instagram,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -27,14 +29,12 @@ import { Input } from "@/components/ui/input";
 const getYouTubeThumbnail = (url: string) => {
   let videoId = "";
   
-  // Extract video ID from different YouTube URL formats
   if (url.includes("youtube.com/watch?v=")) {
     videoId = url.split("v=")[1]?.split("&")[0];
   } else if (url.includes("youtu.be/")) {
     videoId = url.split("youtu.be/")[1]?.split("?")[0];
   }
   
-  // Return high quality thumbnail URL
   return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : "/images/fallback.jpg";
 };
 
@@ -51,20 +51,30 @@ const getYouTubeVideoId = (url: string) => {
   return videoId;
 };
 
-const featuredPost = 
-{
-    id: "everest-vs-annapurna-base-camp",
-    slug: "everest-vs-annapurna-base-camp",
-    title: "Everest Base Camp vs. Annapurna Base Camp: How To Decide Your Next Big Trek",
-    excerpt: "Two major treks dominate every Nepal itinerary shortlist. Everest Base Camp is famous for the altitude and the realisation that you're standing at the foot of the world's tallest mountain. Annapurna Base Camp is famous for the scenery, the feeling of being swallowed whole by peaks on every side. Which one is right for you?",
-    image: "/images/used/ebc-vs-abc.webp",
-    author: "Meg Cassidy",
-    date: "May 26, 2026",
+const featuredPost = {
+    id: "nepal-trek-cost-2026",
+    slug: "nepal-trek-cost-2026",
+    title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
+    excerpt: "Planning a trek in Nepal? Here's exactly how much it costs in 2026. From budget-friendly Poon Hill at $500 to premium Upper Mustang at $2,595 — we break down every trek, permit, and hidden expense so you know what to budget.",
+    image: "/images/used/nepal-trek-cost-blog-hero.webp",
+    author: "Sabinaya Dhakal",
+    date: "June 4, 2026",
     readTime: "16 min",
     category: "Trekking Guide",
 }
 
 const blogPosts = [
+  {
+    id: "nepal-trek-cost-2026",
+    slug: "nepal-trek-cost-2026",
+    title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
+    excerpt: "Planning a trek in Nepal? Here's exactly how much it costs in 2026. From budget-friendly Poon Hill at $500 to premium Upper Mustang at $2,595 — we break down every trek, permit, and hidden expense so you know what to budget.",
+    image: "/images/used/nepal-trek-cost-blog-hero.webp",
+    author: "Sabinaya Dhakal",
+    date: "June 4, 2026",
+    readTime: "16 min",
+    category: "Trekking Guide",
+  },
   {
     id: "everest-vs-annapurna-base-camp",
     slug: "everest-vs-annapurna-base-camp",
@@ -75,7 +85,7 @@ const blogPosts = [
     date: "May 26, 2026",
     readTime: "16 min",
     category: "Trekking Guide",
-},
+  },
   {
     id: "best-beginner-treks-nepal",
     slug: "best-beginner-treks-nepal",
@@ -86,7 +96,7 @@ const blogPosts = [
     date: "May 24, 2026",
     readTime: "14 min",
     category: "Trekking Guide",
-},
+  },
   {
     id: "tilicho-lake-sacred-trek",
     slug: "tilicho-lake-sacred-trek",
@@ -97,18 +107,18 @@ const blogPosts = [
     date: "May 20, 2026",
     readTime: "12 min",
     category: "Trekking & Pilgrimage",
-},
+  },
   {
-  id: "pigeons-symbol-peace-nepal",
-slug: "pigeons-symbol-peace-nepal",
-title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
-excerpt: "In Kathmandu, pigeons are revered as divine ancestors and harbingers of peace. In London, they're pests. This stark cultural divide reveals deep truths about how we see nature, spirituality, and our place in the world.",
-image: "/images/used/dog-pigeons.webp",
-author: "Sabinaya Dhakal",
-date: "May 9, 2026",
-readTime: "9 min",
-category: "Culture & Society",
-},
+    id: "pigeons-symbol-peace-nepal",
+    slug: "pigeons-symbol-peace-nepal",
+    title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
+    excerpt: "In Kathmandu, pigeons are revered as divine ancestors and harbingers of peace. In London, they're pests. This stark cultural divide reveals deep truths about how we see nature, spirituality, and our place in the world.",
+    image: "/images/used/dog-pigeons.webp",
+    author: "Sabinaya Dhakal",
+    date: "May 9, 2026",
+    readTime: "9 min",
+    category: "Culture & Society",
+  },
   {
     id: "best-time-to-visit-nepal",
     slug: "best-time-to-visit-nepal",
@@ -119,12 +129,10 @@ category: "Culture & Society",
     date: "May 7, 2026",
     readTime: "9 min",
     category: "Travel Guide",
-},
-
-
-  
+  },
 ];
 
+// Double the YouTube videos for seamless infinite scroll
 const youtubeVideos = [
   {
     title: "Himkala Adventure | Kathmandu, Nepal",
@@ -143,10 +151,57 @@ const youtubeVideos = [
     url: "https://www.youtube.com/watch?v=JS9aWnSWHAA",
   },
   {
-    title: "Amazing Free Walking Tour Kathmandu |  Himkala Adevnture",
+    title: "Amazing Free Walking Tour Kathmandu | Himkala Adevnture",
     url: "https://www.youtube.com/watch?v=BjfCd9C2uS4",
   },
-  
+];
+
+const instagramPosts = [
+  {
+    title: "Kathmandu's Free Walking Tour — 12 Years Strong",
+    url: "https://www.instagram.com/freewalkingtourkathmandu/reel/DblJWo7TsOB/",
+    type: "reel",
+  },
+  {
+    title: "Backpacking Diaries: Trekking the Himalayas with Himkala Adventure",
+    url: "https://www.instagram.com/amberlowentravels/reel/DSSTpFck6F4/",
+    type: "reel",
+  },
+  {
+    title: "Humbled by the Mountains — Annapurna Circuit Trek",
+    url: "https://www.instagram.com/back.to.that.moment/reel/DMzitZdIxVI/",
+    type: "reel",
+  },
+  {
+    title: "Langtang Summit: Kyangjing Ri at 4,400m",
+    url: "https://www.instagram.com/thelonecompass/reel/DM4xMomRuex/",
+    type: "reel",
+  },
+  {
+    title: "Manaslu Circuit — Captured on 35mm Film",
+    url: "https://www.instagram.com/himkalaadventure/reel/DLK9i0YvXLk/",
+    type: "reel",
+  },
+  {
+    title: "Annapurna Basecamp: Steep Stairs & Breathtaking Views",
+    url: "https://www.instagram.com/back.to.that.moment/reel/DJ2HAhPoeqS/",
+    type: "reel",
+  },
+  {
+    title: "Shree Kharka to Tilicho Base Camp",
+    url: "https://www.instagram.com/himkalaadventure/reel/DZzFS3_tL5w/",
+    type: "reel",
+  },
+  {
+    title: "Ice Lake — 4,620 Meters",
+    url: "https://www.instagram.com/himkalaadventure/reel/DZuqJtjPGVO/",
+    type: "reel",
+  },
+  {
+    title: "Everest Three Passes Trekking",
+    url: "https://www.instagram.com/himkalaadventure/p/Daj6PkTD1Tp/",
+    type: "post",
+  },
 ];
 
 export default function BlogPage() {
@@ -177,6 +232,10 @@ export default function BlogPage() {
     window.open("https://www.youtube.com/@himkalaadventure5936", "_blank");
   };
 
+  const handleInstagramRedirect = () => {
+    window.open("https://www.instagram.com/himkalaadventure/", "_blank");
+  };
+
   const openVideoModal = (video: { title: string; url: string }) => {
     setSelectedVideo(video);
     document.body.style.overflow = "hidden";
@@ -187,11 +246,15 @@ export default function BlogPage() {
     document.body.style.overflow = "auto";
   };
 
+  const openInstagramPost = (url: string) => {
+    window.open(url, "_blank");
+  };
+
   // Handle escape key press
   React.useEffect(() => {
     const handleEscKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && selectedVideo) {
-        closeVideoModal();
+      if (e.key === "Escape") {
+        if (selectedVideo) closeVideoModal();
       }
     };
 
@@ -210,7 +273,7 @@ export default function BlogPage() {
         {/* Open Graph Tags */}
         <meta property="og:title" content="Himalayan Journal | Trekking Blog & Travel Stories from Nepal" />
         <meta property="og:description" content="Discover expert trekking guides, cultural insights, and inspiring stories from Nepal, Bhutan, and Tibet. Read our Himalayan Journal for travel tips and adventure inspiration." />
-        <meta property="og:image" content="https://www.himkalaadventure.com/images/used/ebc-vs-abc.webp" />
+        <meta property="og:image" content="https://www.himkalaadventure.com/images/used/manaslu-main-page.webp" />
         <meta property="og:url" content="https://www.himkalaadventure.com/blog" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Himkala Adventure" />
@@ -219,7 +282,7 @@ export default function BlogPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Himalayan Journal | Trekking Blog & Travel Stories from Nepal" />
         <meta name="twitter:description" content="Discover expert trekking guides, cultural insights, and inspiring stories from Nepal, Bhutan, and Tibet. Read our Himalayan Journal for travel tips and adventure inspiration." />
-        <meta name="twitter:image" content="https://www.himkalaadventure.com/images/used/ebc-vs-abc.webp" />
+        <meta name="twitter:image" content="https://www.himkalaadventure.com/images/used/manaslu-main-page.webp" />
         
         {/* Schema.org - CollectionPage Schema */}
         <script
@@ -247,7 +310,7 @@ export default function BlogPage() {
       </Head>
 
       <div className="min-h-screen bg-white">
-        {/* Video Modal */}
+        {/* YouTube Video Modal */}
         {selectedVideo && (
           <div 
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md animate-in fade-in duration-200"
@@ -411,7 +474,7 @@ export default function BlogPage() {
                     />
                     <div className="absolute top-4 left-4">
                       <Badge className="bg-[#C5E0ED] text-[#0f2940] border-none font-bold text-sm px-4 py-1.5">
-                        Featured
+                        <DollarSign className="w-3 h-3 mr-1" /> Featured
                       </Badge>
                     </div>
                   </div>
@@ -554,7 +617,7 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* YouTube Videos Section - WITH PROPER FALLBACK */}
+        {/* YouTube Videos Section - Infinite Horizontal Scroll */}
         <section className="py-12 sm:py-16 md:py-20 bg-[#0f2940] relative overflow-hidden">
           {/* Solid overlay for Safari/old browser fallback */}
           <div className="absolute inset-0 bg-[#0f2940] safari-fallback" />
@@ -587,49 +650,128 @@ export default function BlogPage() {
               
               <Button 
                 variant="outline" 
-                className="text-[#C5E0ED] border-[#C5E0ED]/50 hover:bg-[#C5E0ED]/10 font-bold rounded-full px-8"
+                className="text-[#C5E0ED] border-[#C5E0ED]/50 hover:bg-[#C5E0ED]/10 font-bold rounded-full px-8 flex-shrink-0"
                 onClick={handleYoutubeRedirect}
               >
                 <Youtube className="mr-2 w-4 h-4" /> Visit YouTube Channel
               </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {youtubeVideos.map((video, i) => (
-                <div key={i} className="h-full">
-                  <Card 
-                    className="bg-white/5 border-white/10 rounded-xl sm:rounded-2xl overflow-hidden h-full cursor-pointer hover:bg-white/10 transition-all"
+            {/* Infinite Horizontal Scroll - Same as Testimonials */}
+            <div className="overflow-hidden relative py-4">
+              <div className="flex animate-infinite-scroll-youtube">
+                {/* Double the videos for seamless infinite scroll */}
+                {[...youtubeVideos, ...youtubeVideos].map((video, i) => (
+                  <div
+                    key={`${video.url}-${i}`}
+                    className="flex-shrink-0 w-[280px] sm:w-[320px] mr-6 cursor-pointer"
                     onClick={() => openVideoModal(video)}
                   >
-                    <div className="relative h-56 md:h-64 overflow-hidden">
-                      <Image
-                        src={getYouTubeThumbnail(video.url)}
-                        alt={video.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-[#0f2940]/40" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                          <Play className="w-6 h-6 text-white ml-1" fill="white" />
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+                      <div className="relative h-56 md:h-64 overflow-hidden">
+                        <Image
+                          src={getYouTubeThumbnail(video.url)}
+                          alt={video.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 85vw, 320px"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-[#0f2940]/40" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <Play className="w-6 h-6 text-white ml-1" fill="white" />
+                          </div>
                         </div>
                       </div>
+                      <div className="p-4">
+                        <h4 className="text-sm font-bold text-white line-clamp-2">
+                          {video.title}
+                        </h4>
+                      </div>
                     </div>
-                    <CardContent className="p-5 sm:p-6">
-                      <h4 className="text-lg font-bold text-white mb-3">
-                        {video.title}
-                      </h4>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Add this CSS for Safari fallback - EXACTLY LIKE ABOUT PAGE */}
+        {/* Instagram Section - Infinite Horizontal Scroll */}
+        <section className="py-12 sm:py-16 md:py-20 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F56040] rounded-full blur-[150px]" />
+            <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-[#FCAF45] to-[#FFDC80] rounded-full blur-[150px]" />
+          </div>
+          
+          <div className="container mx-auto px-4 sm:px-6 relative z-10">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+              <div className="max-w-2xl">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F56040] rounded-xl flex items-center justify-center">
+                    <Instagram className="w-6 h-6 text-white" />
+                  </div>
+                  <h2 className="text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.2em]">Instagram Feed</h2>
+                </div>
+                
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] leading-tight mb-4">
+                  Traveler Stories & Adventures
+                </h3>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                  Real moments from our trekkers and guides across the Himalayas.
+                </p>
+              </div>
+              
+              <Button 
+                variant="outline" 
+                className="text-[#0f2940] border-[#0f2940]/30 hover:bg-[#0f2940]/5 font-bold rounded-full px-8 flex-shrink-0"
+                onClick={handleInstagramRedirect}
+              >
+                <Instagram className="mr-2 w-4 h-4" /> Follow @himkalaadventure
+              </Button>
+            </div>
+
+            {/* Infinite Horizontal Scroll - Same as Testimonials */}
+            <div className="overflow-hidden relative py-4">
+              <div className="flex animate-infinite-scroll-instagram">
+                {/* Double the posts for seamless infinite scroll */}
+                {[...instagramPosts, ...instagramPosts].map((post, i) => (
+                  <div
+                    key={`${post.url}-${i}`}
+                    className="flex-shrink-0 w-[280px] sm:w-[320px] mr-6 cursor-pointer"
+                    onClick={() => openInstagramPost(post.url)}
+                  >
+                    <div className="bg-gradient-to-br from-white to-[#f8fafc] rounded-2xl overflow-hidden border border-[#C5E0ED]/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-[#7fb8d4]/60 hover:scale-[1.02]">
+                      {/* Thumbnail Area with Instagram-style gradient */}
+                      <div className="relative h-56 md:h-64 overflow-hidden bg-gradient-to-br from-[#833AB4]/20 via-[#FD1D1D]/20 to-[#F56040]/20 flex items-center justify-center">
+                        <div className="text-center p-4">
+                          <Instagram className="w-14 h-14 text-[#833AB4] mx-auto mb-3 opacity-60" />
+                          <p className="text-sm font-medium text-[#0f2940] line-clamp-2 px-2">
+                            {post.title}
+                          </p>
+                          <Badge className="mt-3 bg-[#0f2940] text-white border-none text-xs">
+                            {post.type === "reel" ? "📱 Reel" : "📷 Post"}
+                          </Badge>
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent" />
+                        <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-1">
+                          <Instagram className="w-3 h-3" /> View
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <p className="text-xs text-slate-500 truncate">
+                          Click to view on Instagram →
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Global Styles */}
         <style jsx global>{`
           /* Hide modern styles in Safari/old browsers */
           @supports not (backdrop-filter: blur(10px)) {
@@ -663,6 +805,44 @@ export default function BlogPage() {
 
           .animate-in {
             animation: fadeIn 0.2s ease-in;
+          }
+
+          /* YouTube Infinite Scroll Animation */
+          @keyframes infinite-scroll-youtube {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+
+          .animate-infinite-scroll-youtube {
+            display: flex;
+            width: max-content;
+            animation: infinite-scroll-youtube 120s linear infinite;
+          }
+
+          /* Instagram Infinite Scroll Animation */
+          @keyframes infinite-scroll-instagram {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+
+          .animate-infinite-scroll-instagram {
+            display: flex;
+            width: max-content;
+            animation: infinite-scroll-instagram 120s linear infinite;
+          }
+
+          /* Pause animation on hover */
+          .animate-infinite-scroll-youtube:hover,
+          .animate-infinite-scroll-instagram:hover {
+            animation-play-state: paused;
           }
         `}</style>
       </div>

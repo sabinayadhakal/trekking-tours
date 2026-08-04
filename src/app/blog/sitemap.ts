@@ -10,7 +10,8 @@ export default async function blogSitemap(): Promise<MetadataRoute.Sitemap> {
     'best-time-to-visit-nepal',
     'tilicho-lake-sacred-trek',
     'best-beginner-treks-nepal',
-    'everest-vs-annapurna-base-camp'
+    'everest-vs-annapurna-base-camp',
+    'nepal-trek-cost-2026'
     // Add more blog slugs as you create them
   ]
   

@@ -120,11 +120,13 @@ const tibetPages = [
 
 // Blog pages (SEO-optimized with relevant keywords)
 const blogPages = [
+    { path: '/blog/nepal-trek-cost-2026', priority: 0.8, changefreq: 'monthly' },
   { path: '/blog/best-time-to-visit-nepal', priority: 0.9, changefreq: 'monthly' },
   { path: '/blog/everest-vs-annapurna-base-camp', priority: 0.9, changefreq: 'monthly' },
   { path: '/blog/tilicho-lake-sacred-trek', priority: 0.85, changefreq: 'monthly' },
   { path: '/blog/best-beginner-treks-nepal', priority: 0.85, changefreq: 'monthly' },
   { path: '/blog/pigeons-symbol-peace-nepal', priority: 0.8, changefreq: 'monthly' },
+
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

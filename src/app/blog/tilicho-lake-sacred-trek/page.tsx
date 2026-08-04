@@ -67,6 +67,13 @@ const tableOfContents = [
 
 const relatedPosts = [
   {
+    title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
+    image: "/images/used/nepal-trek-cost-blog-hero.webp",
+    date: "June 4, 2026",
+    readTime: "16 min",
+    href: "/blog/nepal-trek-cost-2026",
+},
+  {
     title: "Everest Base Camp vs. Annapurna Base Camp: How To Decide Your Next Big Trek",
     image: "/images/used/ebc-vs-abc.webp",
     date: "May 26, 2026",
