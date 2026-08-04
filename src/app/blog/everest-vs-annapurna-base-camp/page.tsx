@@ -692,7 +692,7 @@ export default function BlogPostPage() {
                   <div className="text-center mt-6">
                     <Link href="/contact" className="inline-block">
                       <Button className="bg-[#0f2940] hover:bg-[#1a4166] text-white rounded-full px-8 py-3 text-base" aria-label="Contact Himkala Adventure to customise your Everest or Annapurna trek">
-                        Customise Your Adventure with Himkala Adventure Today
+                        Customise Your Adventure
                       </Button>
                     </Link>
                   </div>
