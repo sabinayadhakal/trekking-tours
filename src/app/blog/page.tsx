@@ -52,18 +52,29 @@ const getYouTubeVideoId = (url: string) => {
 };
 
 const featuredPost = {
-    id: "nepal-trek-cost-2026",
-    slug: "nepal-trek-cost-2026",
-    title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
-    excerpt: "Planning a trek in Nepal? Here's exactly how much it costs in 2026. From budget-friendly Poon Hill at $500 to premium Upper Mustang at $2,595 — we break down every trek, permit, and hidden expense so you know what to budget.",
-    image: "/images/used/nepal-trek-cost-blog-hero.webp",
+    id: "solo-trekking-nepal-2026",
+    slug: "solo-trekking-nepal-2026",
+    title: "Solo Trekking in Nepal: Complete 2026 Guide for Independent Travelers",
+    excerpt: "Solo trekking in Nepal is legal again. Complete 2026 guide covering best treks, permits, costs, safety tips, and everything you need for a solo Himalayan adventure.",
+    image: "/images/used/solo-trek-blog-hero.webp",
     author: "Sabinaya Dhakal",
-    date: "June 4, 2026",
-    readTime: "16 min",
+    date: "August 7, 2026",
+    readTime: "8 min",
     category: "Trekking Guide",
-}
+  };
 
 const blogPosts = [
+   {
+    id: "solo-trekking-nepal-2026",
+    slug: "solo-trekking-nepal-2026",
+    title: "Solo Trekking in Nepal: Complete 2026 Guide for Independent Travelers",
+    excerpt: "Solo trekking in Nepal is legal again. Complete 2026 guide covering best treks, permits, costs, safety tips, and everything you need for a solo Himalayan adventure.",
+    image: "/images/used/solo-trek-blog-hero.webp",
+    author: "Sabinaya Dhakal",
+    date: "August 7, 2026",
+    readTime: "8 min",
+    category: "Trekking Guide",
+  },
   {
     id: "nepal-trek-cost-2026",
     slug: "nepal-trek-cost-2026",
@@ -75,6 +86,7 @@ const blogPosts = [
     readTime: "16 min",
     category: "Trekking Guide",
   },
+ 
   {
     id: "everest-vs-annapurna-base-camp",
     slug: "everest-vs-annapurna-base-camp",

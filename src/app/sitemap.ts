@@ -31,7 +31,7 @@ const trekkingPages = [
   { path: '/services/trekking/annapurna-base-camp-trek', priority: 0.95, changefreq: 'weekly' },
   { path: '/services/trekking/upper-mustang-trek', priority: 0.9, changefreq: 'weekly' },
   { path: '/services/trekking/langtang-valley-trek', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/trekking/everest-gokyo-trek', priority: 0.9, changefreq: 'weekly' },
+  { path: '/services/trekking/gokyo-trek', priority: 0.9, changefreq: 'weekly' },
   { path: '/services/trekking/everest-three-passes-trek', priority: 0.9, changefreq: 'weekly' },
   { path: '/services/trekking/ghorepani-poon-hill-trek', priority: 0.85, changefreq: 'weekly' },
   { path: '/services/trekking/mardi-himal-trek', priority: 0.85, changefreq: 'weekly' },
@@ -46,7 +46,7 @@ const trekkingPages = [
   { path: '/services/trekking/tamang-heritage-trail-and-langtang-valley-trek', priority: 0.8, changefreq: 'weekly' },
 ]
 
-// Peak climbing pages - Pisang Peak removed
+// Peak climbing pages
 const peakClimbingPages = [
   { path: '/services/peak-climbing/island-peak-climbing', priority: 0.85, changefreq: 'weekly' },
   { path: '/services/peak-climbing/mera-peak-climbing', priority: 0.85, changefreq: 'weekly' },
@@ -120,13 +120,13 @@ const tibetPages = [
 
 // Blog pages (SEO-optimized with relevant keywords)
 const blogPages = [
-    { path: '/blog/nepal-trek-cost-2026', priority: 0.8, changefreq: 'monthly' },
+  { path: '/blog/nepal-trek-cost-2026', priority: 0.8, changefreq: 'monthly' },
+  { path: '/blog/solo-trekking-nepal-2026', priority: 0.85, changefreq: 'monthly' },
   { path: '/blog/best-time-to-visit-nepal', priority: 0.9, changefreq: 'monthly' },
   { path: '/blog/everest-vs-annapurna-base-camp', priority: 0.9, changefreq: 'monthly' },
   { path: '/blog/tilicho-lake-sacred-trek', priority: 0.85, changefreq: 'monthly' },
   { path: '/blog/best-beginner-treks-nepal', priority: 0.85, changefreq: 'monthly' },
   { path: '/blog/pigeons-symbol-peace-nepal', priority: 0.8, changefreq: 'monthly' },
-
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

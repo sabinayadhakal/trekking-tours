@@ -275,6 +275,26 @@ const featuredBlog = {
   readTime: "16 min",
 };
 
+// --- UPDATED BLOG DATA WITH 2 FEATURED BLOGS ---
+const featuredBlogs = [
+  {
+    title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
+    excerpt: "From budget-friendly Poon Hill at $500 to premium Upper Mustang at $2,595 — break down every trek, permit, and hidden expense.",
+    image: "/images/used/nepal-trek-cost-blog-hero.webp",
+    slug: "nepal-trek-cost-2026",
+    date: "June 4, 2026",
+    readTime: "16 min",
+  },
+  {
+    title: "Solo Trekking in Nepal: Complete 2026 Guide for Independent Travelers",
+    excerpt: "Solo trekking in Nepal is legal again. Complete 2026 guide covering best treks, permits, costs, safety tips, and everything you need for a solo Himalayan adventure.",
+    image: "/images/used/solo-trek-blog-hero.webp",
+    slug: "solo-trekking-nepal-2026",
+    date: "August 7, 2026",
+    readTime: "8 min",
+  },
+];
+
 const youtubeVideos = [
   {
     title: "Himkala Adventure | Kathmandu, Nepal",
@@ -298,7 +318,18 @@ const youtubeVideos = [
   },
 ];
 
+// --- UPDATED INSTAGRAM POSTS WITH 2 NEW REELS ---
 const instagramPosts = [
+  {
+    title: "City or mountains? With us, you don't have to choose. 🇳🇵🏔️",
+    url: "https://www.instagram.com/himkalaadventure/reel/DbsQAe9PPuI/",
+    type: "reel",
+  },
+  {
+    title: "The climb is worth it. 🇳🇵🐒 — Monkey Temple",
+    url: "https://www.instagram.com/freewalkingtourkathmandu/reel/DbsuPo8zUMf/",
+    type: "reel",
+  },
   {
     title: "Kathmandu's Free Walking Tour — 12 Years Strong",
     url: "https://www.instagram.com/freewalkingtourkathmandu/reel/DblJWo7TsOB/",
@@ -794,7 +825,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ===== NEW: FROM THE HIMALAYAN JOURNAL SECTION ===== */}
+        {/* ===== UPDATED: FROM THE HIMALAYAN JOURNAL SECTION (2 FEATURED BLOGS) ===== */}
         <section className="py-12 sm:py-16 md:py-24 bg-white overflow-hidden">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8 md:mb-12">
@@ -814,41 +845,47 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Featured Blog Post Card */}
-            <Link href={`/blog/${featuredBlog.slug}`}>
-              <Card className="bg-white border-[#C5E0ED]/30 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 mb-8 md:mb-10">
-                <div className="grid grid-cols-1 md:grid-cols-3">
-                  <div className="relative h-48 md:h-auto md:min-h-[200px]">
-                    <Image
-                      src={featuredBlog.image}
-                      alt={featuredBlog.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                    <Badge className="absolute top-3 left-3 bg-[#0f2940]/90 text-white border-none text-xs">
-                      Featured
-                    </Badge>
-                  </div>
-                  <CardContent className="p-4 md:p-6 md:col-span-2 flex flex-col justify-center">
-                    <div className="flex items-center gap-3 text-xs text-slate-500 mb-2">
-                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {featuredBlog.readTime}</span>
-                      <span>•</span>
-                      <span>{featuredBlog.date}</span>
+            {/* 2 Featured Blog Post Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-10">
+              {featuredBlogs.map((blog, index) => (
+                <Link href={`/blog/${blog.slug}`} key={index}>
+                  <Card className="bg-white border-[#C5E0ED]/30 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 h-full">
+                    <div className="grid grid-cols-1 sm:grid-cols-3">
+                      <div className="relative h-48 sm:h-auto sm:min-h-[200px]">
+                        <Image
+                          src={blog.image}
+                          alt={blog.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                        />
+                        {index === 0 && (
+                          <Badge className="absolute top-3 left-3 bg-[#0f2940]/90 text-white border-none text-xs">
+                            Featured
+                          </Badge>
+                        )}
+                      </div>
+                      <CardContent className="p-4 md:p-6 sm:col-span-2 flex flex-col justify-center">
+                        <div className="flex items-center gap-3 text-xs text-slate-500 mb-2">
+                          <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {blog.readTime}</span>
+                          <span>•</span>
+                          <span>{blog.date}</span>
+                        </div>
+                        <h3 className="text-base md:text-lg font-bold text-[#0f2940] mb-2 leading-snug line-clamp-2">
+                          {blog.title}
+                        </h3>
+                        <p className="text-slate-600 text-sm leading-relaxed line-clamp-2">
+                          {blog.excerpt}
+                        </p>
+                        <div className="mt-3 text-[#2d6a8a] font-medium text-sm inline-flex items-center hover:underline">
+                          Read More <ChevronRight className="w-4 h-4 ml-1" />
+                        </div>
+                      </CardContent>
                     </div>
-                    <h3 className="text-base md:text-lg font-bold text-[#0f2940] mb-2 leading-snug line-clamp-2">
-                      {featuredBlog.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed line-clamp-2">
-                      {featuredBlog.excerpt}
-                    </p>
-                    <div className="mt-3 text-[#2d6a8a] font-medium text-sm inline-flex items-center hover:underline">
-                      Read More <ChevronRight className="w-4 h-4 ml-1" />
-                    </div>
-                  </CardContent>
-                </div>
-              </Card>
-            </Link>
+                  </Card>
+                </Link>
+              ))}
+            </div>
 
             {/* YouTube & Instagram Horizontal Scrolls */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">

@@ -70,6 +70,13 @@ const tableOfContents = [
 
 const relatedPosts = [
   {
+    title: "Solo Trekking in Nepal: Complete 2026 Guide for Independent Travelers",
+    image: "/images/used/solo-trek-blog-hero.webp",
+    date: "August 7, 2026",
+    readTime: "18 min",
+    href: "/blog/solo-trekking-nepal-2026",
+},
+  {
     title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
     image: "/images/used/nepal-trek-cost-blog-hero.webp",
     date: "June 4, 2026",

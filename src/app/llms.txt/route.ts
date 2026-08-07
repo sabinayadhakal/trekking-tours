@@ -41,7 +41,7 @@ const trekkingPages: Entry[] = [
     path: '/services/trekking/tamang-heritage-trail-and-langtang-valley-trek',
     label: 'Tamang Heritage Trail and Langtang Valley Trek',
   },
-  { path: '/services/trekking/everest-gokyo-trek', label: 'Everest Gokyo Trek' },
+  { path: '/services/trekking/gokyo-trek', label: 'Everest Gokyo Trek' },
   { path: '/services/trekking/everest-three-passes-trek', label: 'Everest Three Passes Trek' },
   { path: '/services/trekking/ghorepani-poon-hill-trek', label: 'Ghorepani Poon Hill Trek' },
   { path: '/services/trekking/mardi-himal-trek', label: 'Mardi Himal Trek' },
@@ -163,7 +163,10 @@ const walkingTourPages: Entry[] = [
   { path: '/services/free-walking-tour-kathmandu', label: 'Free Walking Tour Kathmandu' },
 ]
 
+// UPDATED: Blog pages with new solo trekking blog added
 const blogPages: Entry[] = [
+  { path: '/blog/solo-trekking-nepal-2026', label: 'Solo Trekking in Nepal: Complete 2026 Guide' },
+  { path: '/blog/nepal-trek-cost-2026', label: 'How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown' },
   { path: '/blog/best-time-to-visit-nepal', label: 'Best Time to Visit Nepal' },
   { path: '/blog/everest-vs-annapurna-base-camp', label: 'Everest vs Annapurna Base Camp' },
   { path: '/blog/tilicho-lake-sacred-trek', label: 'Tilicho Lake Sacred Trek' },
