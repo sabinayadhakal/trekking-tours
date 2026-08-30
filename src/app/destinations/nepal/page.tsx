@@ -1,10 +1,10 @@
 "use client";
 
 import * as React from "react";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Head from "next/head";
 import {
   Mountain,
   MapPin,
@@ -41,7 +41,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 const trekkingPackages = [
   {
@@ -119,7 +118,7 @@ const trekkingPackages = [
     rating: 4.9,
     region: "Annapurna Region",
     highlights: ["Annapurna Sanctuary", "Natural Hot Springs", "Machapuchare View", "Bamboo Forests", "Mountain Amphitheater"],
-    description: "Journey into the Annapurna Sanctuary, standing at the base of towering peaks including Annapurna I and Machapuchare.",
+    description: "Journey into the Annapurna Sanctuary, standing at the base of towering peaks.",
     link: "/services/trekking/annapurna-base-camp-trek",
   },
 ];
@@ -210,127 +209,53 @@ const cityTours = [
 }
 ];
 
-const whyNepal = [
-  {
-    icon: <Mountain className="w-5 h-5" />,
-    title: "8 of World's 14 Highest Peaks",
-    description: "Home to Mount Everest and seven other 8,000m+ giants.",
-  },
-  {
-    icon: <Building className="w-5 h-5" />,
-    title: "UNESCO World Heritage Sites",
-    description: "Ten UNESCO sites including ancient temples and stupas.",
-  },
-  {
-    icon: <Bird className="w-5 h-5" />,
-    title: "Incredible Biodiversity",
-    description: "From subtropical jungles to alpine meadows with rare wildlife.",
-  },
-  {
-    icon: <Users className="w-5 h-5" />,
-    title: "Warm Hospitality",
-    description: "Experience legendary Nepali hospitality with 'Namaste'.",
-  },
-  {
-    icon: <Compass className="w-5 h-5" />,
-    title: "Adventure Capital",
-    description: "Trekking, climbing, rafting, and endless adventure possibilities.",
-  },
-  {
-    icon: <Heart className="w-5 h-5" />,
-    title: "Spiritual Heritage",
-    description: "Birthplace of Buddha, land of ancient traditions.",
-  },
-];
-
 const regions = [
   {
     name: "Everest Region",
     description: "Home to the world's highest peak and the legendary Sherpa people. This sacred landscape is dotted with ancient monasteries, bustling trading villages, and the footsteps of mountaineering history.",
-    characteristics: [
-      "Sagamartha National Park - home to Everest, Lhotse, and Cho Oyu",
-      "Tengboche Monastery - spiritual heart of the Khumbu",
-      "Sherpa culture - legendary mountaineers and Buddhist traditions"
-    ],
-    culturalSignature: "Land of the Sherpas"
+    highlights: ["Sagamartha National Park", "Tengboche Monastery", "Sherpa Culture"],
   },
   {
     name: "Annapurna Region",
     description: "The most diverse trekking region on Earth, where you can walk from subtropical forests to high-altitude deserts in days. Home to the world's deepest gorge and the sacred pilgrimage site of Muktinath.",
-    characteristics: [
-      "Thorong La Pass - world's highest trekking pass at 5,416m",
-      "Annapurna Circuit - circumambulation of an 8,000m peak",
-      "Gurung and Thakali cultures - ancient trade routes"
-    ],
-    culturalSignature: "The Great Diversity"
+    highlights: ["Thorong La Pass", "Annapurna Circuit", "Gurung & Thakali Cultures"],
   },
   {
     name: "Langtang Region",
     description: "The 'Valley of Glaciers' lies just north of Kathmandu, offering pristine wilderness and warm Tamang hospitality. Rebuilding stronger after the 2015 earthquake, this region remains a hidden gem.",
-    characteristics: [
-      "Langtang National Park - red pandas and Himalayan wildlife",
-      "Tamang heritage - Tibetan-Buddhist mountain culture",
-      "Kyanjin Gompa - high-altitude monastery and cheese factory"
-    ],
-    culturalSignature: "Valley of Glaciers"
+    highlights: ["Langtang National Park", "Tamang Heritage", "Kyanjin Gompa"],
   },
   {
     name: "Manaslu Region",
     description: "A restricted area preserving authentic Tibetan culture and pristine landscapes. Circumnavigate the world's eighth highest mountain through remote villages and ancient trade routes to Tibet.",
-    characteristics: [
-      "Tsum Valley - 'Hidden Valley' of Buddhist meditation caves",
-      "Larkya La Pass - one of Nepal's most spectacular high passes",
-      "Tibetan heritage - untouched Buddhist traditions"
-    ],
-    culturalSignature: "The Hidden Circuit"
+    highlights: ["Tsum Valley", "Larkya La Pass", "Tibetan Heritage"],
   }
 ];
 
 export default function NepalPage() {
   const router = useRouter();
-  const [trekScrollPosition, setTrekScrollPosition] = React.useState(0);
-  const [cityTourScrollPosition, setCityTourScrollPosition] = React.useState(0);
-  const [regionScrollPosition, setRegionScrollPosition] = React.useState(0);
-
-  const trekScrollContainerRef = React.useRef<HTMLDivElement>(null);
-  const cityTourScrollContainerRef = React.useRef<HTMLDivElement>(null);
-  const regionScrollContainerRef = React.useRef<HTMLDivElement>(null);
-
-  const canonicalUrl = "https://www.himkalaadventure.com/destinations/nepal";
-  const pageTitle = "Nepal Travel & Tours - Himkala Adventure";
-  const pageDescription = "Nepal travel & tours: Explore the Himalayas with our expert-guided treks and tours. From Everest Base Camp to cultural heritage sites. Book your Nepal adventure now!";
-  const imageUrl = "https://www.himkalaadventure.com/images/used/nepal-hero.webp";
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
 
   const handleBookNow = (itemName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(itemName)}`);
   };
 
-  const scrollLeft = (ref: React.RefObject<HTMLDivElement | null>, setPosition?: React.Dispatch<React.SetStateAction<number>>) => {
-    if (ref.current) {
-      const scrollAmount = ref.current.clientWidth * 0.8;
-      ref.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      if (setPosition) {
-        setPosition(ref.current.scrollLeft - scrollAmount);
-      }
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -400, behavior: 'smooth' });
     }
   };
 
-  const scrollRight = (ref: React.RefObject<HTMLDivElement | null>, setPosition?: React.Dispatch<React.SetStateAction<number>>) => {
-    if (ref.current) {
-      const scrollAmount = ref.current.clientWidth * 0.8;
-      ref.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      if (setPosition) {
-        setPosition(ref.current.scrollLeft + scrollAmount);
-      }
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 400, behavior: 'smooth' });
     }
   };
 
-  const scrollRegionLeft = () => scrollLeft(regionScrollContainerRef, setRegionScrollPosition);
-  const scrollRegionRight = () => scrollRight(regionScrollContainerRef, setRegionScrollPosition);
-  const scrollTrekLeft = () => scrollLeft(trekScrollContainerRef, setTrekScrollPosition);
-  const scrollTrekRight = () => scrollRight(trekScrollContainerRef, setTrekScrollPosition);
-  const scrollCityTourLeft = () => scrollLeft(cityTourScrollContainerRef, setCityTourScrollPosition);
-  const scrollCityTourRight = () => scrollRight(cityTourScrollContainerRef, setCityTourScrollPosition);
+  const canonicalUrl = "https://www.himkalaadventure.com/destinations/nepal";
+  const pageTitle = "Nepal Travel & Tours - Himkala Adventure";
+  const pageDescription = "Nepal travel & tours: Explore the Himalayas with our expert-guided treks and tours. From Everest Base Camp to cultural heritage sites. Book your Nepal adventure now!";
+  const imageUrl = "https://www.himkalaadventure.com/images/used/nepal-hero.webp";
 
   return (
     <>
@@ -344,744 +269,494 @@ export default function NepalPage() {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Himkala Adventure" />
-        <meta property="og:locale" content="en_US" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={imageUrl} />
-        <meta name="twitter:site" content="@himkalanepal" />
-        <meta name="twitter:creator" content="@himkalanepal" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "TravelAgency",
-              "name": "Himkala Adventure Pvt. Ltd.",
-              "description": "Nepal travel and tours: Expert-guided treks and tours in the Himalayas. Everest Base Camp, Annapurna Circuit, cultural heritage tours, and more.",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Thamel, Lekhnath Marga",
-                "addressLocality": "Kathmandu",
-                "addressCountry": "Nepal"
-              },
-              "telephone": "+977 9841376470",
-              "email": "info@himkalaadventure.com",
-              "url": canonicalUrl,
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 27.7172,
-                "longitude": 85.3240
-              }
-            })
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Destination",
-              "name": "Nepal",
-              "description": "Nepal is home to eight of the world's 8,000-meter peaks, including Mount Everest. A land of ancient temples, warm hospitality, and incredible biodiversity.",
-              "image": imageUrl,
-              "touristType": "Trekking, Cultural, Adventure, Spiritual",
-              "bestTimeToVisit": "March-May and September-November",
-              "timeZone": "UTC+5:45"
-            })
-          }}
-        />
       </Head>
 
-      <div className="min-h-screen bg-white overflow-x-hidden">
-        {/* Hero Section */}
-        <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/used/nepal-hero.webp"
-              alt="Nepal Himalayas - majestic mountain landscape with Everest and the Himalayan range in Nepal"
-              fill
-              className="object-cover"
-              priority
-              quality={85}
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
-          </div>
-
-          <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
-            <div className="max-w-5xl mx-auto text-center w-full">
-              <Badge className="mb-6 bg-white/20 backdrop-blur-sm text-white border-white/30 py-2 px-4 text-sm font-medium">
-                <Star className="w-4 h-4 mr-2 fill-white" aria-hidden="true" /> 5000+ Adventurers Since 2012
-              </Badge>
-              
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-4 md:mb-6 tracking-tight">
-                DISCOVER <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
-                  NEPAL
-                </span>
-              </h1>
-              
-              <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
-                Where ancient temples meet soaring peaks. Experience the birthplace of Buddha, 
-                the roof of the world, and the warmest hospitality on Earth.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* About Nepal */}
-        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-[#f0f7fa]">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-              <div>
-                <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                  <MapPin className="w-3 h-3 mr-1.5" aria-hidden="true" /> ABOUT NEPAL
-                </Badge>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4 leading-tight">
-                  A Land of Endless Wonder
-                </h2>
-                <div className="space-y-3">
-                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                    Nestled between India and China, <strong className="text-[#0f2940]">Nepal</strong> is a small country 
-                    with an enormous presence. From the jungles of the Terai to the summits of 
-                    the Himalayas, this nation offers astonishing diversity.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                    Home to <strong className="text-[#0f2940]">eight of the world's 8,000-meter peaks</strong>, including the 
-                    legendary Mount Everest, Nepal has been the ultimate destination for adventurers. 
-                    It's also the <strong className="text-[#0f2940]">birthplace of Buddha</strong> and a living museum of traditions.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                    Whether you seek high-altitude trekking, ancient monasteries, jungle safaris, 
-                    or genuine human connection, Nepal delivers transformative experiences.
-                  </p>
+      <div className="flex flex-col min-h-screen bg-[#f2ede4] overflow-x-hidden">
+        <main>
+          {/* Page Header - matching about page style */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Destination</div>
+                  <h1 className="mt-3 sm:mt-5 font-serif text-[clamp(2.2rem,7vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    Discover <span className="text-[#cf6943]">Nepal</span>
+                  </h1>
                 </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="space-y-3 sm:space-y-4">
-                  <Link href="/services/day-sightseeings/kathmandu-sightseeing" aria-label="Kathmandu Sightseeing Tour">
-                    <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
-                      <Image
-                        src="/images/used/nepal-temple.webp"
-                        alt="Kathmandu Temple - ancient Newari temple with intricate woodcarvings in Kathmandu Valley, Nepal"
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        loading="lazy"
-                      />
-                    </div>
-                  </Link>
-                  <Link href="/services/jungle-safari/chitwan-np-jungle-safari" aria-label="Chitwan Jungle Safari">
-                    <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
-                      <Image
-                        src="/images/used/nepal-chitwan.webp"
-                        alt="Chitwan Wildlife - one-horned rhinoceros in Chitwan National Park, Nepal"
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        loading="lazy"
-                      />
-                    </div>
-                  </Link>
-                </div>
-                <div className="space-y-3 sm:space-y-4 pt-8 sm:pt-12">
-                  <Link href="/destinations/nepal" aria-label="Nepal Himalayas">
-                    <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
-                      <Image
-                        src="/images/used/nepal-himal.webp"
-                        alt="Prayer Flags - colorful Buddhist prayer flags fluttering against the Himalayan mountains in Nepal"
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        loading="lazy"
-                      />
-                    </div>
-                  </Link>
-                  <Link href="/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour" aria-label="Kathmandu Pokhara Lumbini Chitwan Tour">
-                    <div className="relative h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
-                      <Image
-                        src="/images/used/nepal-stupa.webp"
-                        alt="Pokhara Lake - Phewa Lake with reflection of Machhapuchhare mountain in Pokhara, Nepal"
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        loading="lazy"
-                      />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* City Tours Section */}
-        <section className="py-12 sm:py-16 md:py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
-              <div className="max-w-2xl">
-                <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                  <Landmark className="w-3 h-3 mr-1.5" aria-hidden="true" /> CITY TOURS
-                </Badge>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940]">
-                  Cultural & Heritage Experiences
-                </h2>
-                <p className="text-slate-600 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">
-                  Discover Nepal's rich heritage with our expert-guided day tours.
+                <p className="max-w-full md:max-w-[280px] lg:max-w-[380px] text-sm leading-6 text-[#66706d]">
+                  Where ancient temples meet soaring peaks — the birthplace of Buddha and the roof of the world.
                 </p>
               </div>
-              <Link href="/services/day-sightseeings" aria-label="View all day tours">
-                <Button variant="outline" className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 font-bold group rounded-full px-4 sm:px-6 text-xs sm:text-sm min-h-[44px]">
-                  View All Tours <ChevronRightIcon className="ml-2 w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />
-                </Button>
-              </Link>
             </div>
+          </section>
 
-            {/* Mobile Horizontal Scroll */}
-            <div className="md:hidden relative">
-              <div 
-                className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
-                ref={cityTourScrollContainerRef}
-              >
-                {cityTours.map((tour, i) => (
-                  <Link 
-                    key={i} 
-                    href={tour.link}
-                    className="flex-shrink-0 w-[85vw] mr-4 last:mr-0 snap-center cursor-pointer"
-                    aria-label={tour.name}
-                  >
-                    <Card className={`bg-gradient-to-br ${tour.color} border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all`}>
-                      <div className="relative h-40 overflow-hidden">
-                        <Image
-                          src={tour.image}
-                          alt={tour.name}
-                          fill
-                          className="object-cover"
-                          sizes="85vw"
-                          quality={85}
-                          loading="lazy"
-                        />
-                        <div className="absolute top-3 right-3">
-                          <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold text-xs">
-                            {tour.duration}
-                          </Badge>
-                        </div>
+          {/* About Nepal - matching about page story layout */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-8 sm:gap-12 lg:gap-14 lg:items-center lg:gap-24">
+                <div className="relative min-h-[280px] sm:min-h-[350px] md:min-h-[400px] lg:min-h-[480px] order-2 lg:order-1">
+                  <Image
+                    src="/images/used/nepal-hero.webp"
+                    alt="Nepal Himalayas with majestic mountain landscape"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={85}
+                  />
+                  <div className="absolute bottom-0 left-0 bg-[#e47a4f] px-4 sm:px-6 py-3 sm:py-4 md:py-5 text-[#fff8ee] sm:px-8">
+                    <div className="font-serif text-2xl sm:text-3xl md:text-4xl leading-none">8<span className="text-xl sm:text-2xl">+</span></div>
+                    <div className="mt-1 sm:mt-2 text-[8px] sm:text-[10px] font-bold tracking-[.15em]">8,000M PEAKS</div>
+                  </div>
+                </div>
+                <div className="order-1 lg:order-2">
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">About Nepal</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,4.8rem)] leading-[1.05] sm:leading-[.96] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    A Land of <span className="text-[#cf6943]">Endless Wonder</span>
+                  </h2>
+                  <div className="mt-4 sm:mt-7 space-y-3 sm:space-y-4 text-[#556363] text-sm leading-relaxed">
+                    <p>
+                      Nestled between India and China, Nepal is a small country with an enormous presence. From the jungles of the Terai to the summits of the Himalayas, this nation offers astonishing diversity.
+                    </p>
+                    <p>
+                      Home to <strong className="text-[#14383b]">eight of the world's 8,000-meter peaks</strong>, including the legendary Mount Everest, Nepal has been the ultimate destination for adventurers. It's also the <strong className="text-[#14383b]">birthplace of Buddha</strong> and a living museum of traditions.
+                    </p>
+                    <p>
+                      Whether you seek high-altitude trekking, ancient monasteries, jungle safaris, or genuine human connection, Nepal delivers transformative experiences.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Why Nepal - clean cards matching about page */}
+          <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Why Visit</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    A Country <span className="text-[#cf6943]">Like No Other</span>
+                  </h2>
+                </div>
+                <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                  From world-record peaks to ancient kingdoms, Nepal offers unique experiences.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
+                {[
+                  { icon: <Mountain className="w-4 h-4 sm:w-5 sm:h-5" />, title: "8 of World's 14 Highest Peaks", text: "Home to Mount Everest and seven other 8,000m+ giants." },
+                  { icon: <Building className="w-4 h-4 sm:w-5 sm:h-5" />, title: "UNESCO World Heritage Sites", text: "Ten UNESCO sites including ancient temples and stupas." },
+                  { icon: <Bird className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Incredible Biodiversity", text: "From subtropical jungles to alpine meadows with rare wildlife." },
+                  { icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Warm Hospitality", text: "Experience legendary Nepali hospitality with 'Namaste'." },
+                  { icon: <Compass className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Adventure Capital", text: "Trekking, climbing, rafting, and endless adventure possibilities." },
+                  { icon: <Heart className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Spiritual Heritage", text: "Birthplace of Buddha, land of ancient traditions." },
+                ].map((item, i) => (
+                  <div key={i} className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                    <div className="p-5 sm:p-6 md:p-8">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded flex items-center justify-center text-[#f7f2e9] mb-4 sm:mb-6">
+                        {item.icon}
                       </div>
-                      <CardContent className="p-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="w-8 h-8 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
-                            {tour.icon}
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#14383b] mb-2 sm:mb-3">{item.title}</h3>
+                      <p className="text-xs sm:text-sm text-[#556363] leading-relaxed">{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Trekking Packages - matching main page trek layout */}
+          <section id="treks" className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Trekking Adventures</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    Himalayan <span className="text-[#cf6943]">Treks</span>
+                  </h2>
+                </div>
+                <div className="flex gap-3 sm:gap-4">
+                 
+                </div>
+              </div>
+
+              <p className="mt-4 sm:mt-6 max-w-2xl text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#556363]">
+                From easy hill walks to challenging high-altitude circuits. Each trek is guided by experienced professionals who know these mountains intimately.
+              </p>
+
+              {/* Mobile Horizontal Scroll */}
+              <div className="md:hidden mt-8 sm:mt-12">
+                <div className="flex overflow-x-auto pb-6 sm:pb-8 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory">
+                  {trekkingPackages.map((trek) => (
+                    <Link
+                      key={trek.name}
+                      href={trek.link}
+                      className="flex-shrink-0 w-[80vw] sm:w-[85vw] mr-4 sm:mr-6 last:mr-0 snap-start"
+                    >
+                      <div className="bg-[#f7f2e9] border border-[#d8cec0] overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                        <div className="relative h-48 sm:h-56 overflow-hidden">
+                          <Image
+                            src={trek.image}
+                            alt={trek.name}
+                            fill
+                            className="object-cover"
+                            sizes="85vw"
+                            quality={85}
+                          />
+                          <div className="absolute top-3 right-3 bg-[#14383b]/90 text-[#f7f2e9] px-2 sm:px-3 py-1 text-xs sm:text-sm font-bold flex items-center gap-1">
+                            <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" /> {trek.rating}
                           </div>
-                          <h4 className="text-base font-bold text-[#0f2940] line-clamp-1">{tour.name}</h4>
+                          <div className="absolute top-3 left-3 bg-[#cf6943] text-[#fff8ee] px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-bold tracking-wide">
+                            {trek.region}
+                          </div>
                         </div>
-                        <p className="text-slate-600 text-xs mb-3 line-clamp-2">{tour.description}</p>
-                        <div className="flex flex-wrap gap-1 mb-3">
-                          {tour.highlights?.slice(0, 2).map((h, idx) => (
-                            <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
-                              {h}
-                            </Badge>
-                          ))}
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-lg font-bold text-[#0f2940]">{tour.price}</span>
+                        <CardContent className="p-4 sm:p-5 md:p-6">
+                          <h3 className="text-lg sm:text-xl font-bold text-[#14383b] mb-1">{trek.name}</h3>
+                          <p className="text-[#556363] text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed">{trek.description}</p>
+                          <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                            <div className="flex items-center gap-1.5 sm:gap-2 text-[#556363] text-xs sm:text-sm">
+                              <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" aria-hidden="true" /> {trek.duration}
+                            </div>
+                            <div className="flex items-center gap-1.5 sm:gap-2 text-[#556363] text-xs sm:text-sm">
+                              <Mountain className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" aria-hidden="true" /> {trek.altitude}
+                            </div>
+                            <div className="flex items-center gap-1.5 sm:gap-2 text-[#556363] text-xs sm:text-sm">
+                              <Footprints className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" aria-hidden="true" /> {trek.difficulty}
+                            </div>
+                            <div className="text-[#cf6943] font-bold text-base sm:text-lg">{trek.price}</div>
+                          </div>
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                            {trek.highlights.slice(0, 3).map((h) => (
+                              <span key={h} className="text-[10px] sm:text-xs border border-[#d8cec0] text-[#556363] px-2 sm:px-3 py-0.5 sm:py-1 rounded">
+                                {h}
+                              </span>
+                            ))}
+                          </div>
                           <Button 
-                            size="sm" 
-                            className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs min-h-[44px]"
-                            onClick={(e) => { e.preventDefault(); handleBookNow(tour.name); }}
-                            aria-label={`Book ${tour.name}`}
+                            className="w-full bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-full text-xs min-h-[44px]"
+                            onClick={(e) => { e.preventDefault(); handleBookNow(trek.name); }}
                           >
                             Book Now
                           </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-              <button
-                onClick={scrollCityTourLeft}
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-1.5 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
-                aria-label="Scroll left"
-              >
-                <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-              </button>
-              <button
-                onClick={scrollCityTourRight}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-1.5 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
-                aria-label="Scroll right"
-              >
-                <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
-              </button>
-            </div>
-
-            {/* Desktop Grid */}
-            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {cityTours.map((tour, i) => (
-                <Link 
-                  key={i}
-                  href={tour.link}
-                  className="cursor-pointer"
-                  aria-label={tour.name}
-                >
-                  <Card className={`bg-gradient-to-br ${tour.color} border-0 h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]`}>
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={tour.image}
-                        alt={tour.name}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 33vw, 33vw"
-                        quality={85}
-                        loading="lazy"
-                      />
-                      <div className="absolute top-4 right-4">
-                        <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
-                          {tour.duration}
-                        </Badge>
+                        </CardContent>
                       </div>
-                    </div>
-                    <CardContent className="p-5">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
-                          {tour.icon}
-                        </div>
-                        <h4 className="text-lg font-bold text-[#0f2940]">{tour.name}</h4>
-                      </div>
-                      <p className="text-slate-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
-                      <div className="flex flex-wrap gap-1.5 mb-4">
-                        {tour.highlights?.slice(0, 3).map((h, idx) => (
-                          <Badge key={idx} variant="secondary" className="bg-white/60 text-[#2d6a8a] text-xs">
-                            {h}
-                          </Badge>
-                        ))}
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-xl font-bold text-[#0f2940]">{tour.price}</span>
-                        <Button 
-                          size="sm" 
-                          className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full min-h-[44px]"
-                          onClick={(e) => { e.preventDefault(); handleBookNow(tour.name); }}
-                          aria-label={`Book ${tour.name}`}
-                        >
-                          Book Now
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Why Nepal */}
-        <section className="py-12 sm:py-16 md:py-20 bg-[#0f2940] relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 left-20 w-96 h-96 bg-[#C5E0ED] rounded-full blur-[150px]" />
-            <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#7fb8d4] rounded-full blur-[150px]" />
-          </div>
-          <div className="container mx-auto px-4 sm:px-6 relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                <CheckCircle className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHY VISIT NEPAL
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white mb-4">
-                A Country Like No Other
-              </h2>
-              <p className="text-white/70 text-sm sm:text-base leading-relaxed">
-                From world-record peaks to ancient kingdoms, Nepal offers unique experiences.
-              </p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              {whyNepal.map((item, i) => (
-                <Card key={i} className="bg-white/5 border-white/10 backdrop-blur-sm h-full rounded-xl hover:bg-white/10 transition-all hover:scale-[1.02]">
-                  <CardContent className="p-4 sm:p-5">
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] mb-3">
-                      <div className="scale-125" aria-hidden="true">
-                        {item.icon}
-                      </div>
-                    </div>
-                    <h4 className="text-sm sm:text-base md:text-lg font-bold text-white mb-1.5">{item.title}</h4>
-                    <p className="text-white/60 text-xs sm:text-sm leading-relaxed">{item.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Trekking Regions */}
-        <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-[#f0f7fa] to-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <div className="flex justify-center items-center gap-3 mb-4">
-                <div className="h-px w-12 bg-gradient-to-l from-[#2d6a8a]/30 to-transparent"></div>
-                <Badge className="bg-transparent text-[#2d6a8a] border-[#2d6a8a]/20 px-5 py-1.5 text-xs font-light tracking-[0.2em] uppercase rounded-full">
-                  Himalayan Kingdoms
-                </Badge>
-                <div className="h-px w-12 bg-gradient-to-r from-[#2d6a8a]/30 to-transparent"></div>
-              </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-4">
-                Nepal's Legendary Regions
-              </h2>
-              <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                From the Sherpa kingdoms of the east to the Tibetan-influenced valleys of the west, each region tells its own story
-              </p>
-            </div>
-
-            <div className="max-w-5xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-                {regions.map((region, index) => (
-                  <div key={index} className="relative">
-                    <div className="absolute -left-6 top-0 text-6xl font-serif text-[#C5E0ED]/30 select-none">
-                      {String(index + 1).padStart(2, '0')}
-                    </div>
-                    
-                    <div className="relative pl-4 border-l-2 border-[#C5E0ED] group hover:border-[#2d6a8a] transition-colors duration-300">
-                      <h3 className="text-2xl font-serif text-[#0f2940] mb-3 group-hover:text-[#2d6a8a] transition-colors">
-                        {region.name}
-                      </h3>
-                      
-                      <p className="text-slate-600 text-base leading-relaxed mb-4">
-                        {region.description}
-                      </p>
-                      
-                      <div className="space-y-2">
-                        {region.characteristics?.map((trait, idx) => (
-                          <div key={idx} className="flex items-start gap-2 text-sm">
-                            <span className="text-[#2d6a8a] mt-1">•</span>
-                            <span className="text-slate-600">{trait}</span>
-                          </div>
-                        ))}
-                      </div>
-                      
-                      <div className="mt-4 inline-block">
-                        <span className="text-xs text-[#2d6a8a] bg-[#C5E0ED]/10 px-3 py-1 rounded-full border border-[#C5E0ED]/20">
-                          {region.culturalSignature}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-20 text-center">
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-[#C5E0ED]/20"></div>
-                  </div>
-                  <div className="relative flex justify-center">
-                    <div className="bg-gradient-to-b from-[#f0f7fa] to-white px-8">
-                      <span className="text-sm text-slate-500 flex items-center gap-2">
-                        <Mountain className="w-4 h-4 text-[#2d6a8a]/40" aria-hidden="true" />
-                        Where the gods reside and legends are born
-                        <Mountain className="w-4 h-4 text-[#2d6a8a]/40" aria-hidden="true" />
-                      </span>
-                    </div>
-                  </div>
+                    </Link>
+                  ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Best Time to Visit */}
-        <section className="py-12 sm:py-16 md:py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                <Calendar className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHEN TO VISIT
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4">
-                Best Time to Visit Nepal
-              </h2>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-              {[
-                {
-                  season: "Spring",
-                  months: "March - May",
-                  icon: <Sunrise className="w-5 h-5 sm:w-5 sm:h-5" />,
-                  color: "from-pink-100 to-orange-100",
-                  borderColor: "border-pink-200",
-                  highlights: ["Rhododendron blooms", "Clear skies", "Warm temperatures", "Pre-monsoon trekking"],
-                  rating: "Excellent",
-                },
-                {
-                  season: "Summer/Monsoon",
-                  months: "June - August",
-                  icon: <TreePine className="w-5 h-5 sm:w-5 sm:h-5" />,
-                  color: "from-green-100 to-emerald-100",
-                  borderColor: "border-green-200",
-                  highlights: ["Lush landscapes", "Fewer tourists", "Best for Mustang", "Cultural festivals"],
-                  rating: "Moderate",
-                },
-                {
-                  season: "Autumn",
-                  months: "September - November",
-                  icon: <Mountain className="w-5 h-5 sm:w-5 sm:h-5" />,
-                  color: "from-amber-100 to-orange-100",
-                  borderColor: "border-amber-200",
-                  highlights: ["Best visibility", "Peak trekking season", "Dashain festival", "Perfect weather"],
-                  rating: "Best",
-                },
-                {
-                  season: "Winter",
-                  months: "December - February",
-                  icon: <Snowflake className="w-5 h-5 sm:w-5 sm:h-5" />,
-                  color: "from-blue-100 to-cyan-100",
-                  borderColor: "border-blue-200",
-                  highlights: ["Clear views", "Fewer crowds", "Lower altitude treks", "Budget-friendly"],
-                  rating: "Good",
-                },
-              ].map((season, i) => (
-                <Card key={i} className={`bg-gradient-to-br ${season.color} ${season.borderColor} border h-full rounded-xl hover:scale-[1.02] transition-transform`}>
-                  <CardContent className="p-4 sm:p-5">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 bg-white/80 rounded-lg flex items-center justify-center text-[#2d6a8a]">
-                        {season.icon}
-                      </div>
-                      <Badge className={`
-                        ${season.rating === "Best" ? "bg-green-500 text-white" : 
-                          season.rating === "Excellent" ? "bg-blue-500 text-white" : 
-                          season.rating === "Good" ? "bg-amber-500 text-white" : "bg-slate-500 text-white"
-                        } border-none text-xs
-                      `}>
-                        {season.rating}
-                      </Badge>
-                    </div>
-                    <h4 className="text-base sm:text-lg font-bold text-[#0f2940] mb-1">{season.season}</h4>
-                    <p className="text-xs sm:text-sm text-slate-500 mb-2.5">{season.months}</p>
-                    <ul className="space-y-1.5">
-                      {season.highlights.map((h, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-slate-600">
-                          <Star className="w-3 h-3 text-[#2d6a8a] fill-[#C5E0ED]" aria-hidden="true" />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Trekking Packages */}
-        <section id="packages" className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-5">
-              <div className="max-w-2xl">
-                <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                  <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" aria-hidden="true" /> TREKKING ADVENTURES
-                </Badge>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940]">
-                  Himalayan Treks
-                </h2>
-                <p className="text-slate-600 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">
-                  From easy hill walks to challenging high-altitude circuits.
-                </p>
-              </div>
-              <Link href="/services/trekking" aria-label="View all treks">
-                <Button variant="outline" className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 font-bold group rounded-full px-4 sm:px-6 text-xs sm:text-sm min-h-[44px]">
-                  View All Treks <ChevronRightIcon className="ml-2 w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />
-                </Button>
-              </Link>
-            </div>
-
-            {/* Mobile Horizontal Scroll */}
-            <div className="md:hidden relative">
-              <div 
-                className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
-                ref={trekScrollContainerRef}
-              >
-                {trekkingPackages.map((trek, i) => (
-                  <Link 
-                    key={i} 
+              {/* Desktop Grid */}
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+                {trekkingPackages.map((trek) => (
+                  <Link
+                    key={trek.name}
                     href={trek.link}
-                    className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
-                    aria-label={trek.name}
+                    className="group block"
                   >
-                    <Card className="bg-white border-[#C5E0ED]/30 h-full rounded-xl overflow-hidden hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all">
+                    <div className="bg-[#f7f2e9] border border-[#d8cec0] overflow-hidden hover:shadow-md transition-all duration-300 rounded-lg h-full">
                       <div className="relative h-56 overflow-hidden">
                         <Image
                           src={trek.image}
                           alt={trek.name}
                           fill
-                          className="object-cover"
-                          sizes="85vw"
+                          className="object-cover opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                          sizes="(max-width: 1024px) 33vw, 33vw"
                           quality={85}
-                          loading="lazy"
                         />
-                        <div className="absolute top-3 left-3">
-                          <Badge className="bg-[#C5E0ED] text-[#0f2940] border-none font-bold text-xs">
-                            {trek.region}
-                          </Badge>
+                        <div className="absolute top-4 right-4 bg-[#14383b]/90 text-[#f7f2e9] px-3 py-1.5 text-sm font-bold flex items-center gap-1">
+                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" /> {trek.rating}
                         </div>
-                        <div className="absolute top-3 right-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                          <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {trek.rating}
+                        <div className="absolute top-4 left-4 bg-[#cf6943] text-[#fff8ee] px-3 py-1.5 text-xs font-bold tracking-wide">
+                          {trek.region}
                         </div>
                       </div>
-                      <CardContent className="p-4">
-                        <h4 className="text-base font-bold text-[#0f2940] mb-2 line-clamp-1">{trek.name}</h4>
-                        <p className="text-slate-500 text-xs mb-3 line-clamp-2">{trek.description}</p>
-                        <div className="grid grid-cols-2 gap-1.5 mb-3">
-                          <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                            <Clock className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" /> {trek.duration}
+                      <CardContent className="p-6">
+                        <h3 className="text-xl font-bold text-[#14383b] mb-1">{trek.name}</h3>
+                        <p className="text-[#556363] text-sm mb-4 leading-relaxed">{trek.description}</p>
+                        <div className="grid grid-cols-2 gap-2 mb-4">
+                          <div className="flex items-center gap-2 text-[#556363] text-sm">
+                            <Clock className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {trek.duration}
                           </div>
-                          <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                            <TrendingUp className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" /> {trek.altitude}
+                          <div className="flex items-center gap-2 text-[#556363] text-sm">
+                            <Mountain className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {trek.altitude}
                           </div>
-                          <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                            <Footprints className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" /> {trek.difficulty}
+                          <div className="flex items-center gap-2 text-[#556363] text-sm">
+                            <Footprints className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {trek.difficulty}
                           </div>
-                          <div className="text-[#0f2940] font-bold text-base">{trek.price}</div>
+                          <div className="text-[#cf6943] font-bold text-xl">{trek.price}</div>
                         </div>
-                        <div className="flex flex-wrap gap-1 mb-3">
-                          {trek.highlights.slice(0, 3).map((h, idx) => (
-                            <Badge key={idx} variant="secondary" className="bg-[#f0f7fa] text-[#2d6a8a] text-xs">
+                        <div className="flex flex-wrap gap-1.5 mb-4">
+                          {trek.highlights.slice(0, 3).map((h) => (
+                            <span key={h} className="text-xs border border-[#d8cec0] text-[#556363] px-2.5 py-1 rounded">
                               {h}
-                            </Badge>
+                            </span>
                           ))}
                         </div>
                         <Button 
-                          className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm min-h-[44px]"
+                          className="w-full bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-full min-h-[44px]"
                           onClick={(e) => { e.preventDefault(); handleBookNow(trek.name); }}
-                          aria-label={`Book ${trek.name}`}
                         >
                           Book Now
                         </Button>
                       </CardContent>
-                    </Card>
+                    </div>
                   </Link>
                 ))}
               </div>
-              <button
-                onClick={scrollTrekLeft}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
-                aria-label="Scroll left"
-              >
-                <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-              </button>
-              <button
-                onClick={scrollTrekRight}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
-                aria-label="Scroll right"
-              >
-                <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
-              </button>
             </div>
+          </section>
 
-            {/* Desktop Grid */}
-            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-              {trekkingPackages.map((trek, i) => (
-                <Link 
-                  key={i}
-                  href={trek.link}
-                  className="cursor-pointer"
-                  aria-label={trek.name}
-                >
-                  <Card className="bg-white border-[#C5E0ED]/30 h-full rounded-xl overflow-hidden hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all group hover:scale-[1.02]">
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={trek.image}
-                        alt={trek.name}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        sizes="(max-width: 1024px) 33vw, 25vw"
-                        quality={85}
-                        loading="lazy"
-                      />
-                      <div className="absolute top-3 left-3">
-                        <Badge className="bg-[#C5E0ED] text-[#0f2940] border-none font-bold text-sm">
-                          {trek.region}
-                        </Badge>
+          {/* Cultural Tours - matching city tours style */}
+          <section id="tours" className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Cultural Tours</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    Cultural & <span className="text-[#cf6943]">Heritage Experiences</span>
+                  </h2>
+                </div>
+                <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                  Discover Nepal's rich heritage with our expert-guided day tours and multi-day cultural journeys.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
+                {cityTours.map((tour) => (
+                  <Link
+                    key={tour.name}
+                    href={tour.link}
+                    className="group block"
+                  >
+                    <div className={`bg-[#f7f2e9] border border-[#d8cec0] overflow-hidden hover:shadow-md transition-all duration-300 rounded-lg h-full`}>
+                      <div className="relative h-48 overflow-hidden">
+                        <Image
+                          src={tour.image}
+                          alt={tour.name}
+                          fill
+                          className="object-cover opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                          sizes="(max-width: 1024px) 33vw, 33vw"
+                          quality={85}
+                        />
+                        <div className="absolute top-4 right-4 bg-[#14383b]/90 text-[#f7f2e9] px-3 py-1.5 text-sm font-bold flex items-center gap-1">
+                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" /> {tour.rating}
+                        </div>
+                        <div className="absolute top-4 left-4 bg-[#cf6943] text-[#fff8ee] px-3 py-1.5 text-xs font-bold tracking-wide">
+                          {tour.duration}
+                        </div>
                       </div>
-                      <div className="absolute top-3 right-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                        <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {trek.rating}
+                      <CardContent className="p-6">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-10 h-10 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded-lg flex items-center justify-center text-[#f7f2e9]">
+                            {tour.icon}
+                          </div>
+                          <h3 className="text-lg font-bold text-[#14383b]">{tour.name}</h3>
+                        </div>
+                        <p className="text-[#556363] text-sm mb-4 leading-relaxed">{tour.description}</p>
+                        <div className="flex flex-wrap gap-1.5 mb-4">
+                          {tour.highlights.slice(0, 3).map((h) => (
+                            <span key={h} className="text-xs border border-[#d8cec0] text-[#556363] px-2.5 py-1 rounded">
+                              {h}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xl font-bold text-[#14383b]">{tour.price}</span>
+                          <Button 
+                            size="sm" 
+                            className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-full min-h-[44px] px-6"
+                            onClick={(e) => { e.preventDefault(); handleBookNow(tour.name); }}
+                          >
+                            Book Now
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Nepal Regions - clean text-focused */}
+          <section id="regions" className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Regions</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    Nepal's <span className="text-[#cf6943]">Legendary Regions</span>
+                  </h2>
+                </div>
+                <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                  From the Sherpa kingdoms of the east to the Tibetan-influenced valleys of the west, each region tells its own story.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-12">
+                {regions.map((region, index) => (
+                  <div key={index} className="bg-[#f7f2e9] p-5 sm:p-6 md:p-8 rounded-lg border border-[#d8cec0] hover:shadow-md transition-all duration-300">
+                    <div className="flex items-start gap-4">
+                      <div className="text-4xl sm:text-5xl font-serif text-[#e47a4f]/30 select-none leading-none">
+                        {String(index + 1).padStart(2, '0')}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl sm:text-2xl font-serif text-[#14383b] mb-2">{region.name}</h3>
+                        <p className="text-[#556363] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
+                          {region.description}
+                        </p>
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                          {region.highlights.map((item) => (
+                            <span key={item} className="text-[10px] sm:text-xs border border-[#d8cec0] text-[#556363] px-2 sm:px-3 py-0.5 sm:py-1 rounded">
+                              {item}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                    <CardContent className="p-4 sm:p-5">
-                      <h4 className="text-base sm:text-lg font-bold text-[#0f2940] mb-2 line-clamp-1">{trek.name}</h4>
-                      <p className="text-slate-500 text-xs sm:text-sm mb-3 line-clamp-2">{trek.description}</p>
-                      <div className="grid grid-cols-2 gap-1.5 mb-3">
-                        <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                          <Clock className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" /> {trek.duration}
-                        </div>
-                        <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                          <TrendingUp className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" /> {trek.altitude}
-                        </div>
-                        <div className="flex items-center gap-1.5 text-slate-600 text-xs">
-                          <Footprints className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" /> {trek.difficulty}
-                        </div>
-                        <div className="text-[#0f2940] font-bold text-base sm:text-lg">{trek.price}</div>
-                      </div>
-                      <div className="flex flex-wrap gap-1 mb-3">
-                        {trek.highlights.slice(0, 3).map((h, idx) => (
-                          <Badge key={idx} variant="secondary" className="bg-[#f0f7fa] text-[#2d6a8a] text-xs">
-                            {h}
-                          </Badge>
-                        ))}
-                      </div>
-                      <Button 
-                        className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm min-h-[44px]"
-                        onClick={(e) => { e.preventDefault(); handleBookNow(trek.name); }}
-                        aria-label={`Book ${trek.name}`}
-                      >
-                        Book Now
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* What's Included */}
-        <section className="py-12 sm:py-16 md:py-20 bg-[#f0f7fa]">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-              <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                <ShieldCheck className="w-3 h-3 mr-1.5" aria-hidden="true" /> OUR SERVICES
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4">
-                What We Provide
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Comprehensive support for a safe, comfortable, and unforgettable experience.
-              </p>
+          {/* Best Time to Visit */}
+          <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">When to Visit</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    Best Time to <span className="text-[#cf6943]">Visit Nepal</span>
+                  </h2>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mt-8 sm:mt-12">
+                {[
+                  {
+                    season: "Spring",
+                    months: "March - May",
+                    icon: <Sunrise className="w-4 h-4 sm:w-5 sm:h-5" />,
+                    highlights: ["Rhododendron blooms", "Clear skies", "Warm temperatures", "Pre-monsoon trekking"],
+                    rating: "Excellent",
+                  },
+                  {
+                    season: "Summer/Monsoon",
+                    months: "June - August",
+                    icon: <TreePine className="w-4 h-4 sm:w-5 sm:h-5" />,
+                    highlights: ["Lush landscapes", "Fewer tourists", "Best for Mustang", "Cultural festivals"],
+                    rating: "Moderate",
+                  },
+                  {
+                    season: "Autumn",
+                    months: "September - November",
+                    icon: <Mountain className="w-4 h-4 sm:w-5 sm:h-5" />,
+                    highlights: ["Best visibility", "Peak trekking season", "Dashain festival", "Perfect weather"],
+                    rating: "Best",
+                  },
+                  {
+                    season: "Winter",
+                    months: "December - February",
+                    icon: <Snowflake className="w-4 h-4 sm:w-5 sm:h-5" />,
+                    highlights: ["Clear views", "Fewer crowds", "Lower altitude treks", "Budget-friendly"],
+                    rating: "Good",
+                  },
+                ].map((season) => (
+                  <div key={season.season} className="bg-[#f7f2e9] p-5 sm:p-6 rounded-lg border border-[#d8cec0] hover:shadow-md transition-all duration-300">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded-lg flex items-center justify-center text-[#f7f2e9]">
+                        {season.icon}
+                      </div>
+                      <span className={`text-xs font-bold px-3 py-1 rounded-full ${
+                        season.rating === "Best" ? "bg-green-500 text-white" : 
+                        season.rating === "Excellent" ? "bg-blue-500 text-white" : 
+                        season.rating === "Good" ? "bg-amber-500 text-white" : "bg-slate-500 text-white"
+                      }`}>
+                        {season.rating}
+                      </span>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-[#14383b] mb-1">{season.season}</h3>
+                    <p className="text-[#66706d] text-sm mb-3">{season.months}</p>
+                    <ul className="space-y-1.5">
+                      {season.highlights.map((h) => (
+                        <li key={h} className="flex items-center gap-2 text-sm text-[#556363]">
+                          <CheckCircle className="w-3 h-3 text-[#cf6943]" aria-hidden="true" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
+          </section>
 
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-              {[
-                { icon: <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Licensed Guides", desc: "Government-certified guides" },
-                { icon: <Tent className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Accommodation", desc: "Best available teahouses" },
-                { icon: <Utensils className="w-4 h-4 sm:w-5 sm:h-5" />, title: "All Meals", desc: "Three meals daily on trek" },
-                { icon: <Map className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Permits & Fees", desc: "All trekking permits" },
-                { icon: <Plane className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Transportation", desc: "Airport transfers included" },
-                { icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Porter Service", desc: "1 porter per 2 trekkers" },
-                { icon: <Award className="w-4 h-4 sm:w-5 sm:h-5" />, title: "First Aid Kit", desc: "Medical supplies" },
-                { icon: <Binoculars className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Equipment", desc: "Sleeping bag & jacket" },
-              ].map((item, i) => (
-                <Card key={i} className="bg-white border-[#C5E0ED]/30 h-full rounded-lg hover:shadow-md transition-all hover:scale-[1.02]">
-                  <CardContent className="p-3 sm:p-4 text-center">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] rounded-lg flex items-center justify-center text-[#0f2940] mx-auto mb-1.5 sm:mb-2">
+          {/* What's Included - clean cards */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Our Services</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    What We <span className="text-[#cf6943]">Provide</span>
+                  </h2>
+                </div>
+                <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                  Comprehensive support for a safe, comfortable, and unforgettable experience.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mt-8 sm:mt-12">
+                {[
+                  { icon: <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Licensed Guides", desc: "Government-certified guides" },
+                  { icon: <Tent className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Accommodation", desc: "Best available teahouses" },
+                  { icon: <Utensils className="w-4 h-4 sm:w-5 sm:h-5" />, title: "All Meals", desc: "Three meals daily on trek" },
+                  { icon: <Map className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Permits & Fees", desc: "All trekking permits" },
+                  { icon: <Plane className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Transportation", desc: "Airport transfers included" },
+                  { icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Porter Service", desc: "1 porter per 2 trekkers" },
+                  { icon: <Award className="w-4 h-4 sm:w-5 sm:h-5" />, title: "First Aid Kit", desc: "Medical supplies" },
+                  { icon: <Binoculars className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Equipment", desc: "Sleeping bag & jacket" },
+                ].map((item, i) => (
+                  <div key={i} className="bg-[#f7f2e9] p-4 sm:p-5 rounded-lg border border-[#d8cec0] text-center hover:shadow-md transition-all duration-300">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded-lg flex items-center justify-center text-[#f7f2e9] mx-auto mb-2 sm:mb-3">
                       {item.icon}
                     </div>
-                    <h4 className="font-bold text-[#0f2940] text-xs sm:text-sm mb-1">{item.title}</h4>
-                    <p className="text-slate-500 text-xs line-clamp-2">{item.desc}</p>
-                  </CardContent>
-                </Card>
-              ))}
+                    <h4 className="text-sm sm:text-base font-bold text-[#14383b] mb-0.5 sm:mb-1">{item.title}</h4>
+                    <p className="text-[#556363] text-xs sm:text-sm">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </main>
+
+        <style jsx global>{`
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+
+          .touch-manipulation {
+            touch-action: manipulation;
+          }
+
+          .snap-x {
+            scroll-snap-type: x mandatory;
+          }
+          .snap-start {
+            scroll-snap-align: start;
+          }
+        `}</style>
       </div>
     </>
   );

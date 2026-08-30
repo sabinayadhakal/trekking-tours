@@ -3,36 +3,25 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   Mountain,
   Calendar,
   Clock,
   User,
-  ArrowLeft,
   Share2,
-  Bookmark,
   Facebook,
-  Twitter,
   Copy,
   Check,
   Tag,
   ChevronRight,
   Quote,
-  MapPin,
   Camera,
-  AlertTriangle,
-  Lightbulb,
   Menu,
   X,
   Heart,
-  Globe,
-  Shield,
-  Bird,
-  Landmark,
-  Droplets,
   Sparkles,
-  TrendingUp
+  MoveUpRight,
+  ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -44,8 +33,6 @@ const blogPost = {
   heroImage: "/images/used/historic-scenic-photography-nepal.webp",
   author: {
     name: "Sabinaya Dhakal",
-    avatar: "/placeholder.svg?text=SD",
-    
   },
   date: "May 7, 2026",
   readTime: "9 min read",
@@ -71,43 +58,21 @@ const relatedPosts = [
     date: "August 7, 2026",
     readTime: "18 min",
     href: "/blog/solo-trekking-nepal-2026",
-},
+  },
   {
     title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
     image: "/images/used/nepal-trek-cost-blog-hero.webp",
     date: "June 4, 2026",
     readTime: "16 min",
     href: "/blog/nepal-trek-cost-2026",
-},
+  },
   {
     title: "Everest Base Camp vs. Annapurna Base Camp: How To Decide Your Next Big Trek",
     image: "/images/used/ebc-vs-abc.webp",
     date: "May 26, 2026",
     readTime: "16 min",
     href: "/blog/everest-vs-annapurna-base-camp",
-},
-  {
-    title: "5 Best Beginner Treks in Nepal: From Sunrise Hikes to Himalayan Valleys",
-    image: "/images/used/manaslu-main-page.webp",
-    date: "May 24, 2026",
-    readTime: "14 min",
-    href: "/blog/best-beginner-treks-nepal",
-},
-  {
-    title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
-    image: "/images/used/dog-pigeons.webp",
-    date: "May 9, 2026",
-    readTime: "9 min",
-    href: "/blog/pigeons-symbol-peace-nepal",
   },
-  {
-    title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
-    image: "/images/used/tilicho-blog.webp",
-    date: "May 20, 2026",
-    readTime: "12 min",
-    href: "/blog/tilicho-lake-sacred-trek",
-},
-
 ];
 
 export default function BlogPostPage() {
@@ -123,13 +88,10 @@ export default function BlogPostPage() {
 
   const handleShare = (platform: string) => {
     const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent(blogPost.title);
     let shareUrl = "";
 
     if (platform === "facebook") {
       shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-    } else if (platform === "twitter") {
-      shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
     }
 
     window.open(shareUrl, "_blank", "noopener,noreferrer");
@@ -142,10 +104,10 @@ export default function BlogPostPage() {
       const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
+
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
     setShowMobileTOC(false);
@@ -155,34 +117,35 @@ export default function BlogPostPage() {
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": blogPost.title,
-    "description": blogPost.excerpt,
-    "image": `https://www.himkalaadventure.com${blogPost.heroImage}`,
-    "datePublished": "2026-05-07",
-    "dateModified": "2026-05-07",
-    "author": {
+    headline: blogPost.title,
+    description: blogPost.excerpt,
+    image: `https://www.himkalaadventure.com${blogPost.heroImage}`,
+    datePublished: "2026-05-07",
+    dateModified: "2026-05-07",
+    author: {
       "@type": "Person",
-      "name": blogPost.author.name
+      name: blogPost.author.name,
     },
-    "publisher": {
+    publisher: {
       "@type": "Organization",
-      "name": "Himkala Adventure Pvt. Ltd.",
-      "logo": {
+      name: "Himkala Adventure Pvt. Ltd.",
+      logo: {
         "@type": "ImageObject",
-        "url": "https://www.himkalaadventure.com/images/logo.webp"
-      }
+        url: "https://www.himkalaadventure.com/images/logo.webp",
+      },
     },
-    "mainEntityOfPage": {
+    mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": "https://www.himkalaadventure.com/blog/when-to-visit-nepal"
+      "@id": "https://www.himkalaadventure.com/blog/when-to-visit-nepal",
     },
-    "keywords": "Nepal travel, best time to visit Nepal, trekking seasons, Nepal weather, Himalayan trekking, cultural tours Nepal",
-    "articleSection": "Travel Guide",
-    "wordCount": "1500"
+    keywords:
+      "Nepal travel, best time to visit Nepal, trekking seasons, Nepal weather, Himalayan trekking, cultural tours Nepal",
+    articleSection: "Travel Guide",
+    wordCount: "1500",
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-[#f2ede4] overflow-x-hidden">
       {/* Schema.org structured data */}
       <script
         type="application/ld+json"
@@ -192,34 +155,34 @@ export default function BlogPostPage() {
       {/* Mobile Table of Contents Drawer */}
       {showMobileTOC && (
         <div className="lg:hidden fixed inset-0 z-50">
-          <div 
+          <div
             className="absolute inset-0 bg-black/50"
             onClick={() => setShowMobileTOC(false)}
             aria-label="Close table of contents"
           />
-          <div className="absolute right-0 top-0 bottom-0 w-4/5 max-w-sm bg-white shadow-xl">
-            <div className="p-6 h-full overflow-y-auto">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg text-[#0f2940] flex items-center gap-2">
-                  <Menu className="w-5 h-5 text-[#2d6a8a]" aria-hidden="true" /> Contents
+          <div className="absolute right-0 top-0 bottom-0 w-4/5 max-w-sm bg-[#f7f2e9] shadow-xl">
+            <div className="p-5 sm:p-6 h-full overflow-y-auto">
+              <div className="flex items-center justify-between mb-5 sm:mb-6">
+                <h3 className="font-bold text-base sm:text-lg text-[#14383b] flex items-center gap-2">
+                  <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-[#cf6943]" /> Contents
                 </h3>
-                <button 
+                <button
                   onClick={() => setShowMobileTOC(false)}
-                  className="p-2 rounded-lg hover:bg-slate-100"
+                  className="p-2 rounded-lg hover:bg-[#e4d8c8] active:bg-[#e4d8c8] touch-manipulation"
                   aria-label="Close table of contents"
                 >
-                  <X className="w-5 h-5" aria-hidden="true" />
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
-              <nav className="space-y-2" aria-label="Table of contents">
+              <nav className="space-y-1 sm:space-y-2">
                 {tableOfContents.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`block w-full text-left text-sm py-3 px-4 rounded-lg transition-all ${
+                    className={`block w-full text-left text-xs sm:text-sm py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg transition-all touch-manipulation ${
                       activeSection === item.id
-                        ? "bg-[#C5E0ED]/30 text-[#0f2940] font-medium"
-                        : "text-slate-600 hover:bg-[#f0f7fa] hover:text-[#2d6a8a]"
+                        ? "bg-[#e47a4f]/20 text-[#14383b] font-medium"
+                        : "text-[#556363] hover:bg-[#e4d8c8] hover:text-[#cf6943] active:bg-[#e4d8c8]"
                     }`}
                     aria-current={activeSection === item.id ? "location" : undefined}
                   >
@@ -227,31 +190,23 @@ export default function BlogPostPage() {
                   </button>
                 ))}
               </nav>
-              <div className="mt-8 pt-6 border-t border-slate-200">
+              <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-[#d8cec0]">
                 <div className="flex gap-2">
                   <Button
                     size="sm"
-                    className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
+                    className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white active:scale-[0.98] transition-transform"
                     onClick={() => handleShare("facebook")}
                     aria-label="Share on Facebook"
                   >
-                    <Facebook className="w-4 h-4" aria-hidden="true" />
+                    <Facebook className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </Button>
                   <Button
                     size="sm"
-                    className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
-                    onClick={() => handleShare("twitter")}
-                    aria-label="Share on Twitter"
-                  >
-                    <Twitter className="w-4 h-4" aria-hidden="true" />
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
+                    className="flex-1 bg-[#14383b] hover:bg-[#0d2427] text-[#f7f2e9] active:scale-[0.98] transition-transform"
                     onClick={handleCopyLink}
-                    aria-label="Copy link to clipboard"
+                    aria-label="Copy link to article"
                   >
-                    {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
+                    {copied ? <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Copy className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
                   </Button>
                 </div>
               </div>
@@ -260,310 +215,357 @@ export default function BlogPostPage() {
         </div>
       )}
 
-      {/* Hero Section */}
-      <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={blogPost.heroImage}
-            alt="Scenic Himalayan landscape with mountains and prayer flags in Nepal - guide to best time to visit"
-            fill
-            className="object-cover object-center"
-            priority
-            quality={85}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
+      {/* Page Header - Dark theme matching main page */}
+      <section className="bg-[#0d2427] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden border-b border-[#f7f2e9]/20">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-[#e47a4f] rounded-full blur-[120px]" />
+          <div className="absolute bottom-10 right-10 w-48 sm:w-72 h-48 sm:h-72 bg-[#f0a17f] rounded-full blur-[120px]" />
         </div>
 
-        <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
-          <div className="max-w-4xl mx-auto text-center w-full">
-            <Badge className="mb-4 bg-white/20 backdrop-blur-sm text-white border-white/30 py-1.5 px-3 text-xs font-medium">
-              <Tag className="w-3 h-3 mr-1.5" aria-hidden="true" /> {blogPost.category}
-            </Badge>
-            
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-white leading-tight mb-4 md:mb-6 px-2">
-              {blogPost.title}
-            </h1>
-            
-            <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed mb-8 md:mb-10 font-light px-2 sm:px-0">
+        <div className="mx-auto max-w-[1220px] relative z-10">
+          <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-5">
+                <div className="h-px w-6 sm:w-9 bg-[#e47a4f]" />
+                <span className="text-[9px] sm:text-xs font-semibold tracking-[.08em] text-[#f0a17f]">
+                  {blogPost.category}
+                </span>
+              </div>
+
+              <h1 className="font-serif text-[clamp(2rem,6vw,4.5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#f7f2e9]">
+                {blogPost.title}
+              </h1>
+            </div>
+            <p className="max-w-full md:max-w-[380px] text-sm leading-6 text-[#f7f2e9]/70">
               {blogPost.excerpt}
             </p>
-            
-            <div className="flex flex-col items-center justify-center gap-4 text-xs sm:text-sm text-white/70">
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#C5E0ED] bg-white/10 flex items-center justify-center">
-                    <User className="w-5 h-5 text-white" aria-hidden="true" />
-                  </div>
-                  <div className="text-center sm:text-left">
-                    <p className="font-bold text-white text-sm sm:text-base">{blogPost.author.name}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1.5">
-                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-[#C5E0ED]" aria-hidden="true" /> 
-                    <span>{blogPost.date}</span>
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-[#C5E0ED]" aria-hidden="true" /> 
-                    {blogPost.readTime}
-                  </span>
-                </div>
+          </div>
+
+          {/* Author & Meta */}
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 mt-4 sm:mt-6 text-xs sm:text-sm text-[#f7f2e9]/70">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-[#f0a17f]/30 bg-[#f7f2e9]/10 flex items-center justify-center">
+                <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#f0a17f]" />
               </div>
+              <span className="font-medium text-[#f7f2e9]">{blogPost.author.name}</span>
             </div>
+            <span className="flex items-center gap-1 sm:gap-1.5">
+              <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#f0a17f]" />
+              <span>{blogPost.date}</span>
+            </span>
+            <span className="flex items-center gap-1 sm:gap-1.5">
+              <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#f0a17f]" />
+              {blogPost.readTime}
+            </span>
+            {/* Mobile TOC Trigger */}
+            <button
+              onClick={() => setShowMobileTOC(true)}
+              className="lg:hidden inline-flex items-center gap-1.5 text-[#f0a17f] hover:text-[#f7f2e9] text-xs font-medium active:text-[#f7f2e9] transition-colors"
+            >
+              <Menu className="w-3.5 h-3.5" /> Contents
+            </button>
+          </div>
+
+          {/* Share buttons - header */}
+          <div className="flex items-center gap-2 mt-4 sm:mt-5">
+            <button
+              onClick={() => handleShare("facebook")}
+              className="p-1.5 sm:p-2 rounded-full bg-[#f7f2e9]/10 hover:bg-[#f7f2e9]/20 transition-colors active:bg-[#f7f2e9]/30 touch-manipulation"
+              aria-label="Share on Facebook"
+            >
+              <Facebook className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#f7f2e9]" />
+            </button>
+            <button
+              onClick={handleCopyLink}
+              className="p-1.5 sm:p-2 rounded-full bg-[#f7f2e9]/10 hover:bg-[#f7f2e9]/20 transition-colors active:bg-[#f7f2e9]/30 touch-manipulation"
+              aria-label="Copy link"
+            >
+              {copied ? (
+                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#f0a17f]" />
+              ) : (
+                <Copy className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#f7f2e9]" />
+              )}
+            </button>
           </div>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-8 md:py-16">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-12 gap-8">
-            {/* Sidebar - Table of Contents (Desktop only) */}
-            <aside className="hidden lg:block lg:col-span-3">
-              <div className="sticky top-24 space-y-6">
-                <Card className="bg-white border-[#C5E0ED]/30 rounded-2xl overflow-hidden">
-                  <CardContent className="p-6">
-                    <h2 className="font-bold text-[#0f2940] mb-4 flex items-center gap-2 text-base">
-                      <Calendar className="w-4 h-4 text-[#2d6a8a]" aria-hidden="true" /> Table of Contents
-                    </h2>
-                    <nav className="space-y-2" aria-label="Table of contents">
-                      {tableOfContents.map((item) => (
-                        <button
-                          key={item.id}
-                          onClick={() => scrollToSection(item.id)}
-                          className={`block w-full text-left text-sm py-2 px-3 rounded-lg transition-all ${
-                            activeSection === item.id
-                              ? "bg-[#C5E0ED]/30 text-[#0f2940] font-medium"
-                              : "text-slate-600 hover:bg-[#f0f7fa] hover:text-[#2d6a8a]"
-                          }`}
-                          aria-current={activeSection === item.id ? "location" : undefined}
-                        >
-                          {item.title}
-                        </button>
-                      ))}
-                    </nav>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-2xl overflow-hidden">
-                  <CardContent className="p-6">
-                    <h3 className="font-bold text-white mb-4 flex items-center gap-2 text-base">
-                      <Share2 className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" /> Share Article
-                    </h3>
-                    <div className="flex gap-2">
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-xl"
-                        onClick={() => handleShare("facebook")}
-                        aria-label="Share on Facebook"
-                      >
-                        <Facebook className="w-4 h-4" aria-hidden="true" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-xl"
-                        onClick={() => handleShare("twitter")}
-                        aria-label="Share on Twitter"
-                      >
-                        <Twitter className="w-4 h-4" aria-hidden="true" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-white/10 hover:bg-white/20 text-white rounded-xl"
-                        onClick={handleCopyLink}
-                        aria-label="Copy link to clipboard"
-                      >
-                        {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Himkala Adventure Callout */}
-                <Card className="bg-gradient-to-br from-amber-50 to-orange-50 border-amber-200 rounded-2xl overflow-hidden">
-                  <CardContent className="p-6 text-center">
-                    <Mountain className="w-8 h-8 text-amber-600 mx-auto mb-3" aria-hidden="true" />
-                    <h3 className="font-bold text-amber-800 mb-2 text-base">Plan Your Perfect Trip</h3>
-                    <p className="text-amber-700 text-sm mb-4">
-                      Let Himkala Adventure help you choose the best season for your dream Nepal experience.
-                    </p>
-                    <Link href="/services/day-sightseeings" className="block">
-                      <Button className="bg-amber-600 hover:bg-amber-700 text-white w-full rounded-xl" aria-label="Plan your Nepal trip with Himkala Adventure">
-                        Plan My Journey
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </div>
-            </aside>
-
-            {/* Article Content */}
-            <article className="lg:col-span-9">
-              <div className="max-w-none">
+      <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
+        <div className="mx-auto max-w-[1220px]">
+          <div className="grid lg:grid-cols-12 gap-6 sm:gap-8">
+            {/* Article Content - Left side */}
+            <article className="lg:col-span-9 overflow-x-hidden">
+              <div className="max-w-full prose prose-sm sm:prose-base prose-slate prose-headings:font-serif prose-headings:text-[#14383b] prose-a:text-[#cf6943] prose-a:no-underline hover:prose-a:underline prose-strong:text-[#14383b] prose-headings:tracking-[-.02em] prose-headings:leading-tight">
                 {/* Introduction */}
-                <section id="introduction" className="mb-8 md:mb-12">
-                  <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-4 first-letter:text-4xl md:first-letter:text-6xl first-letter:font-serif first-letter:text-[#0f2940] first-letter:float-left first-letter:mr-3 first-letter:mt-1">
+                <section id="introduction" className="mb-6 sm:mb-8 md:mb-12">
+                  <p className="text-sm sm:text-base md:text-lg text-[#556363] leading-relaxed mb-3 sm:mb-4 first-letter:text-3xl sm:first-letter:text-4xl md:first-letter:text-6xl first-letter:font-serif first-letter:text-[#14383b] first-letter:float-left first-letter:mr-2 sm:first-letter:mr-3 first-letter:mt-0.5 sm:first-letter:mt-1">
                     Ask ten different travelers about the best time to visit Nepal, and you might get ten different answers. The trekker who summited Kala Patthar in November will swear by autumn's crystal skies. The photographer who captured rhododendron forests ablaze with color will insist spring is unmatched. And the budget traveler who had entire tea houses to themselves in February? They'll tell you winter's secret magic is worth the chill.
                   </p>
-                  <p className="text-slate-600 leading-relaxed mb-4">
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
                     The truth is, Nepal doesn't have one "best" time. It has four distinct seasons, each offering a completely different version of this Himalayan nation. The question isn't "When should you visit Nepal?" but rather "What kind of Nepal experience are you seeking?"
                   </p>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
                     In this comprehensive guide, we'll walk you through every season, so you can time your visit perfectly. Whether you're dreaming of Everest views, cultural festivals, wildlife safaris, or peaceful monastery stays, there's a perfect window waiting for you. Let's find it together.
                   </p>
                 </section>
 
-                {/* Image Break */}
-                <div className="relative h-[250px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden my-8 md:my-12">
-                  <Image
-                    src="/images/used/when-to-visit-nepal-1.webp"
-                    alt="Breathtaking Himalayan mountain views in the Everest region during December - prime winter trekking in Nepal"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 80vw"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-2 left-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1">
-                    <Camera className="w-3 h-3" aria-hidden="true" /> Views of the Everest region at the time of December
+                {/* Image Break - Floating right */}
+                <div className="w-full sm:w-[280px] md:w-[320px] lg:w-[360px] float-right ml-0 sm:ml-4 md:ml-6 mb-3 sm:mb-4">
+                  <div className="relative h-[200px] sm:h-[220px] md:h-[240px] rounded-lg overflow-hidden">
+                    <Image
+                      src="/images/used/when-to-visit-nepal-1.webp"
+                      alt="Breathtaking Himalayan mountain views in the Everest region during December"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 280px, (max-width: 1024px) 320px, 360px"
+                      loading="lazy"
+                      quality={75}
+                    />
+                    <div className="absolute bottom-2 left-2 right-2 bg-black/60 text-white text-[8px] sm:text-[9px] px-2 py-1 rounded flex items-center gap-1">
+                      <Camera className="w-2.5 h-2.5" /> Everest region in December
+                    </div>
                   </div>
                 </div>
 
+                <p className="text-[#556363] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
+                  This guide breaks down each season with honest advice, insider tips, and practical recommendations for what to expect. We'll cover the best times for different activities, the hidden gems of each season, and the practical considerations that can make or break your journey. By the end, you'll have a clear picture of when to plan your Nepal adventure.
+                </p>
+
+                <div className="clear-both"></div>
+
                 {/* Autumn Season */}
-                <section id="autumn" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
-                    </span>
+                <section id="autumn" className="mb-6 sm:mb-8 md:mb-12">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-[#14383b] mb-3 sm:mb-4 tracking-[-.025em]">
                     Autumn (September - November): The Golden Season
                   </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4">
+
+                  <div className="w-full sm:w-[280px] md:w-[320px] lg:w-[360px] float-right ml-0 sm:ml-4 md:ml-6 mb-3 sm:mb-4">
+                    <div className="relative h-[200px] sm:h-[220px] md:h-[240px] rounded-lg overflow-hidden">
+                      <Image
+                        src="/images/used/abc-3.webp"
+                        alt="Crystal clear autumn views of the Himalayas in Nepal"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 280px, (max-width: 1024px) 320px, 360px"
+                        loading="lazy"
+                        quality={75}
+                      />
+                      <div className="absolute bottom-2 left-2 right-2 bg-black/60 text-white text-[8px] sm:text-[9px] px-2 py-1 rounded flex items-center gap-1">
+                        <Camera className="w-2.5 h-2.5" /> Crystal clear Himalayan views in autumn
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
                     If there's a consensus "best" season in Nepal, autumn takes the crown and for very good reason. The monsoon rains have just departed, washing the dust from the air and leaving behind impossibly clear skies. The mountains, often hidden behind haze or clouds for much of the year, emerge in breathtaking clarity.
                   </p>
-                  <p className="text-slate-600 leading-relaxed mb-4">
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
                     This is also festival season. Dashain and Tihar, Nepal's biggest celebrations, fill the streets with music, lights, and joy. The weather is mild and stable which is perfect for trekking, sightseeing, or simply sitting at a café watching the world go by.
                   </p>
-                  <div className="bg-green-50 border border-green-200 rounded-xl p-4 md:p-5 mt-4">
-                    <div className="flex gap-3">
-                      <Sparkles className="w-5 h-5 text-green-600 shrink-0" aria-hidden="true" />
-                      <p className="text-green-800 text-sm italic leading-relaxed">
-                        <span className="font-bold">Pro Tip:</span> October is the absolute sweet spot. The trails have dried out, the temperatures are perfect, and the festival season brings an extra layer of cultural magic to your journey.
+                  <div className="clear-both"></div>
+                  <div className="bg-[#e4d8c8] rounded-lg p-3 sm:p-4 md:p-5 mt-3 sm:mt-4">
+                    <div className="flex gap-2 sm:gap-3">
+                      <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#cf6943] shrink-0 mt-0.5" />
+                      <p className="text-[#556363] text-xs sm:text-sm italic leading-relaxed">
+                        <span className="font-bold text-[#14383b]">Pro Tip:</span> October is the absolute sweet spot. The trails have dried out, the temperatures are perfect, and the festival season brings an extra layer of cultural magic to your journey.
                       </p>
                     </div>
                   </div>
                 </section>
 
                 {/* Spring Season */}
-                <section id="spring" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
-                    </span>
+                <section id="spring" className="mb-6 sm:mb-8 md:mb-12">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-[#14383b] mb-3 sm:mb-4 tracking-[-.025em]">
                     Spring (March - May): Blooming Beauty
                   </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4">
+
+                  <div className="w-full sm:w-[280px] md:w-[320px] lg:w-[360px] float-right ml-0 sm:ml-4 md:ml-6 mb-3 sm:mb-4">
+                    <div className="relative h-[200px] sm:h-[220px] md:h-[240px] rounded-lg overflow-hidden">
+                      <Image
+                        src="/images/used/manaslu-4.webp"
+                        alt="Clear view of a lake from Manaslu during spring"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 280px, (max-width: 1024px) 320px, 360px"
+                        loading="lazy"
+                        quality={75}
+                      />
+                      <div className="absolute bottom-2 left-2 right-2 bg-black/60 text-white text-[8px] sm:text-[9px] px-2 py-1 rounded flex items-center gap-1">
+                        <Camera className="w-2.5 h-2.5" /> Clear view from Manaslu during spring
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
                     Spring in Nepal is nature's grand unveiling. After the cooler winter months, the hillsides explode into color as rhododendrons; Nepal's national flower those bloom in brilliant reds, pinks, and whites. The weather warms gradually, and the days grow longer, making it the second-most popular trekking season after autumn.
                   </p>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
                     For mountaineers, spring is the climbing season. This is when Everest expeditions begin, and the Khumbu region buzzes with an energy unlike any other time of year. Even if you're not summiting, watching the preparations and meeting climbers from around the world adds a unique dimension to your trek.
                   </p>
+
+                  <div className="clear-both"></div>
                 </section>
 
                 {/* Winter Season */}
-                <section id="winter" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
-                    </span>
+                <section id="winter" className="mb-6 sm:mb-8 md:mb-12">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-[#14383b] mb-3 sm:mb-4 tracking-[-.025em]">
                     Winter (December - February): Solitude & Snow
                   </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4">
+
+                  <div className="w-full sm:w-[280px] md:w-[320px] lg:w-[360px] float-right ml-0 sm:ml-4 md:ml-6 mb-3 sm:mb-4">
+                    <div className="relative h-[200px] sm:h-[220px] md:h-[240px] rounded-lg overflow-hidden">
+                      <Image
+                        src="/images/used/mardi-himal-1.webp"
+                        alt="Snow-covered trails and peaceful winter trekking in Nepal"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 280px, (max-width: 1024px) 320px, 360px"
+                        loading="lazy"
+                        quality={75}
+                      />
+                      <div className="absolute bottom-2 left-2 right-2 bg-black/60 text-white text-[8px] sm:text-[9px] px-2 py-1 rounded flex items-center gap-1">
+                        <Camera className="w-2.5 h-2.5" /> Snow-covered trails in winter
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
                     Winter is Nepal's best-kept secret. While most travelers assume the country shuts down, the truth is far more interesting. Yes, it's cold, especially at higher elevations but the skies are often shockingly clear, the crowds vanish, and you might find yourself the only guest in a tea house with the world's best view.
                   </p>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
                     For budget travelers and solitude seekers, winter offers incredible value. Flight prices drop, accommodations negotiate, and the trails feel like they belong to you alone. The key is choosing your destination wisely: stick to lower elevations (Pokhara, Chitwan, Lumbini) or prepare properly for high-altitude treks.
                   </p>
+
+                  <div className="clear-both"></div>
                 </section>
 
                 {/* Monsoon Season */}
-                <section id="monsoon" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
-                    </span>
+                <section id="monsoon" className="mb-6 sm:mb-8 md:mb-12">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-[#14383b] mb-3 sm:mb-4 tracking-[-.025em]">
                     Summer/Monsoon (June - August): The Green Season
                   </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4">
+
+                  <div className="w-full sm:w-[280px] md:w-[320px] lg:w-[360px] float-right ml-0 sm:ml-4 md:ml-6 mb-3 sm:mb-4">
+                    <div className="relative h-[200px] sm:h-[220px] md:h-[240px] rounded-lg overflow-hidden">
+                      <Image
+                        src="/images/used/hiking-1.webp"
+                        alt="Lush green landscapes during monsoon season in Nepal"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 280px, (max-width: 1024px) 320px, 360px"
+                        loading="lazy"
+                        quality={75}
+                      />
+                      <div className="absolute bottom-2 left-2 right-2 bg-black/60 text-white text-[8px] sm:text-[9px] px-2 py-1 rounded flex items-center gap-1">
+                        <Camera className="w-2.5 h-2.5" /> Lush green landscapes during monsoon
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
                     Monsoon is Nepal's most misunderstood season. While many guidebooks tell you to avoid it entirely, savvy travelers know that monsoon offers unique rewards if you know where to go and what to expect. The landscapes transform into a lush, vibrant green that you won't see any other time of year.
                   </p>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
                     The key to enjoying monsoon is staying in rain-shadow areas like Upper Mustang (which receives almost no rain) or focusing on cultural tours in Kathmandu and Pokhara valleys. The north side of the Annapurna circuit, including Manang, also stays relatively dry. And the best part? You'll have entire sights almost to yourself.
                   </p>
+
+                  <div className="clear-both"></div>
                 </section>
 
                 {/* Quick Month Guide */}
-                <section id="month-guide" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
-                    </span>
+                <section id="month-guide" className="mb-6 sm:mb-8 md:mb-12">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-[#14383b] mb-3 sm:mb-4 tracking-[-.025em]">
                     Quick Month-by-Month Guide
                   </h2>
-                  
-                  <div className="space-y-4 mt-4">
+
+                  <div className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
                     {[
-                      { title: "March-April", desc: "Rhododendrons in full bloom. Perfect trekking weather. Holi festival." },
-                      { title: "October-November", desc: "Crystal clear mountain views. Dashain and Tihar festivals. Peak season." },
-                      { title: "December-February", desc: "Solitude on the trails. Clear skies but cold. Best for budget travelers." },
-                      { title: "June-August", desc: "Lush green landscapes. Upper Mustang stays dry. Lowest prices of the year." },
+                      {
+                        title: "March-April",
+                        desc: "Rhododendrons in full bloom. Perfect trekking weather. Holi festival.",
+                      },
+                      {
+                        title: "October-November",
+                        desc: "Crystal clear mountain views. Dashain and Tihar festivals. Peak season.",
+                      },
+                      {
+                        title: "December-February",
+                        desc: "Solitude on the trails. Clear skies but cold. Best for budget travelers.",
+                      },
+                      {
+                        title: "June-August",
+                        desc: "Lush green landscapes. Upper Mustang stays dry. Lowest prices of the year.",
+                      },
                     ].map((item, i) => (
-                      <div key={i} className="flex gap-3 p-3 bg-[#f8fbfc] rounded-lg border border-[#C5E0ED]/20">
-                        <div className="w-6 h-6 bg-[#2d6a8a]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                          <ChevronRight className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" />
+                      <div
+                        key={i}
+                        className="flex gap-2 sm:gap-3 p-3 sm:p-4 bg-[#f7f2e9] rounded-lg border border-[#d8cec0]/30"
+                      >
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#cf6943]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                          <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#cf6943]" />
                         </div>
                         <div>
-                          <h3 className="font-bold text-[#0f2940] text-sm md:text-base">{item.title}</h3>
-                          <p className="text-slate-600 text-xs md:text-sm mt-0.5">{item.desc}</p>
+                          <h3 className="font-bold text-[#14383b] text-sm sm:text-base">
+                            {item.title}
+                          </h3>
+                          <p className="text-[#556363] text-xs sm:text-sm mt-0.5">{item.desc}</p>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <div className="bg-green-50 border border-green-200 rounded-xl p-4 md:p-5 mt-6">
-                    <div className="flex gap-3">
-                      <Sparkles className="w-5 h-5 text-green-600 shrink-0" aria-hidden="true" />
-                      <p className="text-green-800 text-sm italic leading-relaxed">
-                        <span className="font-bold">Insider Tip:</span> If you want the perfect balance of good weather and fewer crowds, try late September or early November. You'll catch the tail end of the monsoon freshness or the beginning of winter's clarity without the October rush.
+                  <div className="bg-[#e4d8c8] rounded-lg p-3 sm:p-4 md:p-5 mt-4 sm:mt-5">
+                    <div className="flex gap-2 sm:gap-3">
+                      <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#cf6943] shrink-0 mt-0.5" />
+                      <p className="text-[#556363] text-xs sm:text-sm italic leading-relaxed">
+                        <span className="font-bold text-[#14383b]">Insider Tip:</span> If you want the perfect balance of good weather and fewer crowds, try late September or early November. You'll catch the tail end of the monsoon freshness or the beginning of winter's clarity without the October rush.
                       </p>
                     </div>
                   </div>
                 </section>
 
                 {/* Best Seasons by Activity */}
-                <section id="by-activity" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
-                    </span>
+                <section id="by-activity" className="mb-6 sm:mb-8 md:mb-12">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-[#14383b] mb-3 sm:mb-4 tracking-[-.025em]">
                     Best Seasons by Activity
                   </h2>
-                  
-                  <div className="space-y-4 mt-4">
+
+                  <div className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
                     {[
-                      { title: "🏔️ High-Altitude Trekking", desc: "Best during October-November or March-April for clear skies and stable weather." },
-                      { title: "🐘 Wildlife Safari", desc: "Best during October-March when animals gather near water sources." },
-                      { title: "🏛️ Cultural Tours", desc: "Best during September-November or March-May for pleasant walking weather." },
-                      { title: "💰 Budget Travel", desc: "Best during December-February or June-August for lower prices." },
-                      { title: "🎉 Festival Experiences", desc: "Best during October for Dashain and Tihar, Nepal's biggest celebrations." },
+                      {
+                        title: "🏔️ High-Altitude Trekking",
+                        desc: "Best during October-November or March-April for clear skies and stable weather.",
+                      },
+                      {
+                        title: "🐘 Wildlife Safari",
+                        desc: "Best during October-March when animals gather near water sources.",
+                      },
+                      {
+                        title: "🏛️ Cultural Tours",
+                        desc: "Best during September-November or March-May for pleasant walking weather.",
+                      },
+                      {
+                        title: "💰 Budget Travel",
+                        desc: "Best during December-February or June-August for lower prices.",
+                      },
+                      {
+                        title: "🎉 Festival Experiences",
+                        desc: "Best during October for Dashain and Tihar, Nepal's biggest celebrations.",
+                      },
                     ].map((item, i) => (
-                      <div key={i} className="flex gap-3 p-3 bg-[#f8fbfc] rounded-lg border border-[#C5E0ED]/20">
-                        <div className="w-6 h-6 bg-[#2d6a8a]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                          <ChevronRight className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" />
+                      <div
+                        key={i}
+                        className="flex gap-2 sm:gap-3 p-3 sm:p-4 bg-[#f7f2e9] rounded-lg border border-[#d8cec0]/30"
+                      >
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#cf6943]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                          <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#cf6943]" />
                         </div>
                         <div>
-                          <h3 className="font-bold text-[#0f2940] text-sm md:text-base">{item.title}</h3>
-                          <p className="text-slate-600 text-xs md:text-sm mt-0.5">{item.desc}</p>
+                          <h3 className="font-bold text-[#14383b] text-sm sm:text-base">
+                            {item.title}
+                          </h3>
+                          <p className="text-[#556363] text-xs sm:text-sm mt-0.5">{item.desc}</p>
                         </div>
                       </div>
                     ))}
@@ -571,177 +573,213 @@ export default function BlogPostPage() {
                 </section>
 
                 {/* Quote Block */}
-                <div className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] rounded-xl md:rounded-2xl p-6 md:p-8 my-8 md:my-12 relative overflow-hidden">
-                  <div className="absolute top-3 left-3 md:top-4 md:left-4 opacity-20">
-                    <Quote className="w-12 h-12 md:w-16 md:h-16 text-[#C5E0ED]" aria-hidden="true" />
+                <div className="bg-[#14383b] rounded-lg p-5 sm:p-6 md:p-8 my-6 sm:my-8 md:my-12 relative overflow-hidden border border-[#f7f2e9]/20">
+                  <div className="absolute top-2 sm:top-3 left-2 sm:left-3 opacity-20">
+                    <Quote className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#f0a17f]" />
                   </div>
                   <blockquote className="relative z-10">
-                    <p className="text-base md:text-lg lg:text-xl font-serif text-white leading-relaxed mb-3 md:mb-4 italic">
+                    <p className="text-sm sm:text-base md:text-lg font-serif text-[#f7f2e9] leading-relaxed mb-3 sm:mb-4 italic">
                       &quot;I've led treks in every season, and here's what I tell my guests: there's no bad time to come to Nepal, only different times for different dreams. October gives you postcards. February gives you the mountains to yourself. July gives you the deepest green you've ever seen. The question is never 'if' you should come. It's 'which Nepal' you want to meet.&quot;
                     </p>
-                    <footer className="flex items-center gap-3">
-                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-[#C5E0ED] flex items-center justify-center bg-white/10">
-                        <User className="w-5 h-5 text-[#C5E0ED]" aria-hidden="true" />
+                    <footer className="flex items-center gap-2 sm:gap-3">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-[#f0a17f] flex items-center justify-center bg-[#f7f2e9]/10">
+                        <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#f0a17f]" />
                       </div>
                       <div>
-                        <cite className="font-bold text-[#C5E0ED] not-italic text-sm md:text-base"> Sabinaya Dhakal</cite>
-                 
+                        <cite className="font-bold text-[#f0a17f] not-italic text-xs sm:text-sm md:text-base">
+                          Sabinaya Dhakal
+                        </cite>
                       </div>
                     </footer>
                   </blockquote>
                 </div>
 
                 {/* Conclusion */}
-                <section id="conclusion" className="mb-8 md:mb-12">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-4 flex items-center gap-3">
-                    <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center text-[#0f2940]">
-                      <Heart className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
-                    </span>
+                <section id="conclusion" className="mb-6 sm:mb-8 md:mb-12">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-[#14383b] mb-3 sm:mb-4 tracking-[-.025em]">
                     Finding Your Perfect Time
                   </h2>
-                  <p className="text-slate-600 leading-relaxed mb-4">
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
                     After reading this guide, you might feel overwhelmed by choices. That's understandable. Nepal truly offers something special in every season. Here's how to decide:
                   </p>
-                  <div className="bg-[#f0f7fa] rounded-xl p-5 mb-4">
-                    <p className="text-[#0f2940] font-medium mb-2">Ask yourself these questions:</p>
-                    <ul className="space-y-2 text-sm text-slate-700">
-                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" aria-hidden="true" /> Do you want guaranteed clear mountain views? → <span className="font-medium">Autumn (October-November)</span></li>
-                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" aria-hidden="true" /> Do you dream of blooming rhododendron forests? → <span className="font-medium">Spring (March-April)</span></li>
-                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" aria-hidden="true" /> Is solitude and budget your priority? → <span className="font-medium">Winter (December-February)</span></li>
-                      <li className="flex items-start gap-2"><ChevronRight className="w-4 h-4 text-[#2d6a8a] mt-0.5 shrink-0" aria-hidden="true" /> Do you love lush landscapes and don't mind rain? → <span className="font-medium">Monsoon (June-August) with a rain-shadow trek</span></li>
+                  <div className="bg-[#e4d8c8] rounded-lg p-4 sm:p-5 mb-3 sm:mb-4">
+                    <p className="text-[#14383b] font-medium text-sm sm:text-base mb-2">
+                      Ask yourself these questions:
+                    </p>
+                    <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-[#556363]">
+                      <li className="flex items-start gap-2">
+                        <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#cf6943] mt-0.5 shrink-0" />
+                        Do you want guaranteed clear mountain views? →{" "}
+                        <span className="font-medium text-[#14383b]">Autumn (October-November)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#cf6943] mt-0.5 shrink-0" />
+                        Do you dream of blooming rhododendron forests? →{" "}
+                        <span className="font-medium text-[#14383b]">Spring (March-April)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#cf6943] mt-0.5 shrink-0" />
+                        Is solitude and budget your priority? →{" "}
+                        <span className="font-medium text-[#14383b]">Winter (December-February)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#cf6943] mt-0.5 shrink-0" />
+                        Do you love lush landscapes and don't mind rain? →{" "}
+                        <span className="font-medium text-[#14383b]">Monsoon (June-August) with a rain-shadow trek</span>
+                      </li>
                     </ul>
                   </div>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
                     Ultimately, the best time to visit Nepal is whenever you can make it happen. The mountains wait. The temples stand patient. And whichever season you choose, Nepal will welcome you with warmth that has nothing to do with the weather.
                   </p>
                 </section>
 
-                {/* Author Card */}
-<Card className="bg-gradient-to-br from-[#f8fbfc] to-[#e8f4f8] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-  <CardContent className="p-4 md:p-6 lg:p-8">
-    <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center md:items-start">
-      <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden border-4 border-white shadow-lg flex items-center justify-center bg-[#2d6a8a]/10">
-        <User className="w-8 h-8 text-[#2d6a8a]" aria-hidden="true" />
-      </div>
-      <div className="text-center md:text-left">
-        <p className="text-xs font-bold text-[#2d6a8a] uppercase tracking-wider mb-1 md:mb-2">Written By</p>
-        <h3 className="text-lg md:text-xl font-bold text-[#0f2940] mb-1">{blogPost.author.name}</h3>
-        <a 
-          href="https://www.instagram.com/sabinayadhakal/" 
-          target="_blank" 
-          rel="noopener noreferrer nofollow"
-          className="inline-flex items-center gap-2 text-sm text-[#2d6a8a] hover:text-[#1a4a6a] transition-colors mt-2"
-          aria-label="Follow Sabinaya Dhakal on Instagram"
-        >
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.667.072 4.947.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.667-.014 4.947-.072 4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-          </svg>
-          @sabinayadhakal
-        </a>
-      </div>
-    </div>
-  </CardContent>
-</Card>
-                {/* Mobile Share Buttons */}
-                <div className="lg:hidden mt-6">
-                  <div className="flex flex-col gap-3">
-                    <div className="flex gap-2">
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
-                        onClick={() => handleShare("facebook")}
-                        aria-label="Share on Facebook"
-                      >
-                        <Facebook className="w-4 h-4 mr-2" aria-hidden="true" /> Share
-                      </Button>
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
-                        onClick={() => handleShare("twitter")}
-                        aria-label="Share on Twitter"
-                      >
-                        <Twitter className="w-4 h-4 mr-2" aria-hidden="true" /> Tweet
-                      </Button>
-                    </div>
-                    <Button
-                      variant="outline"
-                      className="w-full border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/10"
-                      onClick={handleCopyLink}
-                      aria-label="Copy link to clipboard"
-                    >
-                      {copied ? (
-                        <>
-                          <Check className="w-4 h-4 mr-2" aria-hidden="true" /> Link Copied!
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-4 h-4 mr-2" aria-hidden="true" /> Copy Link
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                </div>
-
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mt-6 md:mt-8">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-4 sm:mt-5 md:mt-6">
                   {blogPost.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 cursor-pointer rounded-full px-3 py-1 text-xs md:text-sm">
+                    <Badge
+                      key={tag}
+                      variant="outline"
+                      className="border-[#d8cec0] text-[#556363] hover:bg-[#e4d8c8] active:bg-[#e4d8c8] cursor-pointer rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 text-[9px] sm:text-xs"
+                    >
                       #{tag}
                     </Badge>
                   ))}
                 </div>
               </div>
             </article>
+
+            {/* Sidebar - Table of Contents (Desktop only) - STICKY */}
+            <aside className="hidden lg:block lg:col-span-3">
+              <div className="sticky top-24 space-y-5 sm:space-y-6">
+                <div className="bg-[#f7f2e9] border border-[#d8cec0]/50 rounded-lg p-5 sm:p-6">
+                  <h2 className="font-serif text-lg font-bold text-[#14383b] mb-3 sm:mb-4 flex items-center gap-2">
+                    <Menu className="w-4 h-4 text-[#cf6943]" /> Contents
+                  </h2>
+                  <nav className="space-y-1 sm:space-y-2">
+                    {tableOfContents.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => scrollToSection(item.id)}
+                        className={`block w-full text-left text-xs sm:text-sm py-2 px-3 rounded-lg transition-all touch-manipulation ${
+                          activeSection === item.id
+                            ? "bg-[#e47a4f]/20 text-[#14383b] font-medium"
+                            : "text-[#556363] hover:bg-[#e4d8c8] hover:text-[#cf6943]"
+                        }`}
+                        aria-current={activeSection === item.id ? "location" : undefined}
+                      >
+                        {item.title}
+                      </button>
+                    ))}
+                  </nav>
+                </div>
+
+                {/* Share Article Card */}
+                <div className="bg-gradient-to-br from-[#0d2427] to-[#14383b] border-none rounded-lg p-5 sm:p-6">
+                  <h3 className="font-bold text-[#f7f2e9] mb-3 sm:mb-4 flex items-center gap-2 text-base sm:text-lg">
+                    <Share2 className="w-4 h-4 text-[#f0a17f]" /> Share Article
+                  </h3>
+                  <div className="flex gap-2">
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg active:scale-[0.98] transition-transform"
+                      onClick={() => handleShare("facebook")}
+                      aria-label="Share on Facebook"
+                    >
+                      <Facebook className="w-3.5 h-3.5" />
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-[#f7f2e9]/10 hover:bg-[#f7f2e9]/20 text-[#f7f2e9] rounded-lg active:scale-[0.98] transition-transform"
+                      onClick={handleCopyLink}
+                      aria-label="Copy link to article"
+                    >
+                      {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Himkala Adventure Callout */}
+                <div className="bg-gradient-to-br from-[#e47a4f]/20 to-[#cf6943]/20 border border-[#e47a4f]/30 rounded-lg p-5 sm:p-6 text-center">
+                  <Mountain className="w-7 h-7 sm:w-8 sm:h-8 text-[#cf6943] mx-auto mb-2 sm:mb-3" />
+                  <h3 className="font-serif text-base font-bold text-[#14383b] mb-1 sm:mb-2">
+                    Plan Your Perfect Trip
+                  </h3>
+                  <p className="text-[#556363] text-xs sm:text-sm mb-3 sm:mb-4">
+                    Let Himkala Adventure help you choose the best season for your dream Nepal experience.
+                  </p>
+                  <Link href="/services/day-sightseeings" className="block">
+                    <Button className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#f7f2e9] w-full rounded-none text-xs sm:text-sm active:scale-[0.98] transition-transform">
+                      Plan My Journey
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
 
       {/* Related Posts */}
-      <section className="py-12 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="mb-8 md:mb-12 text-center">
-            <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-3 md:mb-4">Continue Your Journey</h2>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">More Insights from Us</h3>
+      <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+        <div className="mx-auto max-w-[1220px]">
+          <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between mb-8 sm:mb-10 md:mb-12">
+            <div>
+              <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">
+                Continue Your Journey
+              </div>
+              <h2 className="mt-2 sm:mt-3 font-serif text-[clamp(1.8rem,4vw,4rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                More Insights <span className="text-[#cf6943]">from Us</span>
+              </h2>
+            </div>
+            <Link
+              href="/blog"
+              className="flex items-center gap-2 border-b border-[#cf6943] pb-1 text-[10px] sm:text-[11px] font-bold tracking-[.14em] text-[#cf6943] active:text-[#b85a38]"
+            >
+              VIEW ALL <ArrowRight size={12} className="sm:w-[14px] sm:h-[14px]" />
+            </Link>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {relatedPosts.map((post, i) => (
-              <Link href={post.href} key={i} className="block">
-                <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg hover:shadow-[#C5E0ED]/20 transition-all duration-300 group cursor-pointer">
-                  <div className="relative h-40 md:h-48 overflow-hidden">
+              <Link href={post.href} key={i} className="block active:scale-[0.99] transition-transform">
+                <div className="group bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 rounded-lg h-full">
+                  <div className="relative h-48 sm:h-56 overflow-hidden">
                     <Image
                       src={post.image}
                       alt={post.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover opacity-85 group-hover:scale-[1.02] transition-transform duration-500"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       loading="lazy"
+                      quality={70}
                     />
                   </div>
-                  <CardContent className="p-4 md:p-6">
-                    <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-2 md:mb-3 leading-snug group-hover:text-[#2d6a8a] transition-colors line-clamp-2">
+                  <div className="p-4 sm:p-5 md:p-6">
+                    <h3 className="text-sm sm:text-base md:text-lg font-bold text-[#14383b] mb-2 leading-snug line-clamp-2 group-hover:text-[#cf6943] transition-colors">
                       {post.title}
-                    </h4>
-                    <div className="flex items-center gap-3 md:gap-4 text-xs text-slate-500">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" aria-hidden="true" /> {post.date}
+                    </h3>
+                    <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs text-[#556363]">
+                      <span className="flex items-center gap-0.5 sm:gap-1">
+                        <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {post.date}
                       </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" aria-hidden="true" /> {post.readTime}
+                      <span className="flex items-center gap-0.5 sm:gap-1">
+                        <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {post.readTime}
                       </span>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
-
-          
         </div>
       </section>
 
-      
-      
+      <style jsx global>{`
+        .touch-manipulation {
+          touch-action: manipulation;
+        }
+      `}</style>
     </div>
   );
 }
