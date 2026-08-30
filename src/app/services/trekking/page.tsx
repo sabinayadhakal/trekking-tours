@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -12,51 +13,21 @@ import {
   MapPin,
   ChevronRight,
   Star,
+  CheckCircle,
   Compass,
   TrendingUp,
   ArrowRight,
   Footprints,
-  AlertTriangle,
+  Award,
+  ShieldCheck,
+  Heart,
+  Camera,
+  Utensils,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-// Schema.org structured data for Trekking Packages
-const orgSchema = {
-  "@context": "https://schema.org",
-  "@type": "TravelAgency",
-  "name": "Himkala Adventure Pvt. Ltd.",
-  "description": "Expert-guided trekking packages in Nepal including Everest Base Camp, Annapurna Circuit, Langtang Valley, and Manaslu Circuit treks.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Thamel, Lekhnath Marga",
-    "addressLocality": "Kathmandu",
-    "addressCountry": "Nepal"
-  },
-  "telephone": "+977 9841376470",
-  "email": "info@himkalaadventure.com",
-  "url": "https://www.himkalaadventure.com",
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 27.7172,
-    "longitude": 85.3240
-  }
-};
-
-const collectionSchema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Trekking Packages in Nepal",
-  "description": "Explore our wide range of trekking packages in Nepal including Everest Base Camp, Annapurna Circuit, Langtang Valley, Manaslu Circuit, and more. Expert-guided Himalayan treks with guaranteed departures.",
-  "url": "https://www.himkalaadventure.com/services/trekking",
-  "about": {
-    "@type": "Thing",
-    "name": "Trekking in Nepal"
-  }
-};
-
-// Only include treks that exist in your folder structure
+// Only include the treks you want (excluding Gokyo, Langtang Ganjala, Gosainkunda, Nar Phu, Rupina La, Upper Mustang)
 const trekkingPackages = [
   {
     id: 1,
@@ -74,19 +45,8 @@ const trekkingPackages = [
     reviews: 234,
     highlights: ["Khumbu Glacier", "Tengboche Monastery", "Sherpa Culture", "Kala Patthar"],
     description: "Trek to the foot of the world's highest mountain through legendary Sherpa villages and breathtaking Himalayan landscapes.",
-    featured: false,
+    featured: true,
     link: "/services/trekking/everest-base-camp-trek",
-    bookable: true,
-    schema: {
-      "@type": "Product",
-      "name": "Everest Base Camp Trek - 14 Days",
-      "description": "Trek to the foot of the world's highest mountain through legendary Sherpa villages and breathtaking Himalayan landscapes.",
-      "offers": {
-        "@type": "Offer",
-        "price": "1520",
-        "priceCurrency": "USD"
-      }
-    }
   },
   {
     id: 2,
@@ -104,19 +64,8 @@ const trekkingPackages = [
     reviews: 189,
     highlights: ["Thorong La Pass", "Muktinath Temple", "Manang Valley", "Diverse Landscapes"],
     description: "The classic Himalayan trek circumnavigating the Annapurna massif, crossing the legendary Thorong La Pass.",
-    featured: false,
+    featured: true,
     link: "/services/trekking/annapurna-circuit-trek",
-    bookable: true,
-    schema: {
-      "@type": "Product",
-      "name": "Annapurna Circuit Trek - 9 Days",
-      "description": "The classic Himalayan trek circumnavigating the Annapurna massif, crossing the legendary Thorong La Pass.",
-      "offers": {
-        "@type": "Offer",
-        "price": "800",
-        "priceCurrency": "USD"
-      }
-    }
   },
   {
     id: 3,
@@ -136,17 +85,6 @@ const trekkingPackages = [
     description: "Extended Annapurna Circuit with a side trip to the world's highest lake - Tilicho.",
     featured: false,
     link: "/services/trekking/annapurna-circuit-trek-with-tilicho-lake",
-    bookable: true,
-    schema: {
-      "@type": "Product",
-      "name": "Annapurna Circuit Trek with Tilicho Lake - 12 Days",
-      "description": "Extended Annapurna Circuit with a side trip to the world's highest lake - Tilicho.",
-      "offers": {
-        "@type": "Offer",
-        "price": "1200",
-        "priceCurrency": "USD"
-      }
-    }
   },
   {
     id: 4,
@@ -166,18 +104,6 @@ const trekkingPackages = [
     description: "Explore the 'Valley of Glaciers' just north of Kathmandu with rich Tamang culture.",
     featured: false,
     link: "/services/trekking/langtang-valley-trek",
-    bookable: false,
-    notBookableReason: "Temporarily unavailable due to natural disaster impact. We are monitoring the situation and will resume bookings when conditions are safe.",
-    schema: {
-      "@type": "Product",
-      "name": "Langtang Valley Trek - 8 Days",
-      "description": "Explore the 'Valley of Glaciers' just north of Kathmandu with rich Tamang culture.",
-      "offers": {
-        "@type": "Offer",
-        "price": "650",
-        "priceCurrency": "USD"
-      }
-    }
   },
   {
     id: 5,
@@ -197,17 +123,6 @@ const trekkingPackages = [
     description: "Circle the world's eighth highest mountain through pristine wilderness and authentic Tibetan culture.",
     featured: true,
     link: "/services/trekking/manaslu-circuit-trek",
-    bookable: true,
-    schema: {
-      "@type": "Product",
-      "name": "Manaslu Circuit Trek - 12 Days",
-      "description": "Circle the world's eighth highest mountain through pristine wilderness and authentic Tibetan culture.",
-      "offers": {
-        "@type": "Offer",
-        "price": "1200",
-        "priceCurrency": "USD"
-      }
-    }
   },
   {
     id: 6,
@@ -227,17 +142,6 @@ const trekkingPackages = [
     description: "Combine the Manaslu Circuit with the sacred Tsum Valley for an extended cultural adventure.",
     featured: false,
     link: "/services/trekking/manaslu-circuit-trek-with-tsum-valley",
-    bookable: true,
-    schema: {
-      "@type": "Product",
-      "name": "Manaslu Circuit Trek with Tsum Valley - 17 Days",
-      "description": "Combine the Manaslu Circuit with the sacred Tsum Valley for an extended cultural adventure.",
-      "offers": {
-        "@type": "Offer",
-        "price": "2050",
-        "priceCurrency": "USD"
-      }
-    }
   },
   {
     id: 7,
@@ -255,22 +159,11 @@ const trekkingPackages = [
     reviews: 212,
     highlights: ["Annapurna Sanctuary", "Machapuchare Base Camp", "Hot Springs", "Gurung Villages"],
     description: "Journey into the heart of the Annapurna Sanctuary, surrounded by towering peaks.",
-    featured: false,
+    featured: true,
     link: "/services/trekking/annapurna-base-camp-trek",
-    bookable: true,
-    schema: {
-      "@type": "Product",
-      "name": "Annapurna Base Camp Trek - 9 Days",
-      "description": "Journey into the heart of the Annapurna Sanctuary, surrounded by towering peaks.",
-      "offers": {
-        "@type": "Offer",
-        "price": "700",
-        "priceCurrency": "USD"
-      }
-    }
   },
   {
-    id: 9,
+    id: 8,
     name: "Everest Three Passes Trek",
     region: "Everest Region",
     duration: "18 Days",
@@ -285,22 +178,11 @@ const trekkingPackages = [
     reviews: 89,
     highlights: ["Kongma La", "Cho La", "Renjo La", "Gokyo Lakes"],
     description: "The ultimate challenge for experienced trekkers, crossing three high passes above 5,300m.",
-    featured: false,
+    featured: true,
     link: "/services/trekking/everest-three-passes-trek",
-    bookable: true,
-    schema: {
-      "@type": "Product",
-      "name": "Everest Three Passes Trek - 18 Days",
-      "description": "The ultimate challenge for experienced trekkers, crossing three high passes above 5,300m.",
-      "offers": {
-        "@type": "Offer",
-        "price": "1950",
-        "priceCurrency": "USD"
-      }
-    }
   },
   {
-    id: 10,
+    id: 9,
     name: "Ghorepani Poon Hill Trek",
     region: "Annapurna Region",
     duration: "6 Days",
@@ -317,20 +199,9 @@ const trekkingPackages = [
     description: "The perfect short trek with stunning sunrise views over the Annapurna and Dhaulagiri ranges.",
     featured: false,
     link: "/services/trekking/ghorepani-poon-hill-trek",
-    bookable: true,
-    schema: {
-      "@type": "Product",
-      "name": "Ghorepani Poon Hill Trek - 6 Days",
-      "description": "The perfect short trek with stunning sunrise views over the Annapurna and Dhaulagiri ranges.",
-      "offers": {
-        "@type": "Offer",
-        "price": "500",
-        "priceCurrency": "USD"
-      }
-    }
   },
   {
-    id: 11,
+    id: 10,
     name: "Khopra Ridge Trek with Khayar Lake",
     region: "Annapurna Region",
     duration: "8 Days",
@@ -340,27 +211,16 @@ const trekkingPackages = [
     bestSeason: "Mar-May, Sep-Nov",
     price: 700,
     originalPrice: 875,
-    image:"/images/used/khopra-trek-1.webp",
+    image: "/images/used/khopra-trek-1.webp",
     rating: 4.8,
     reviews: 78,
     highlights: ["Khopra Ridge", "Khayar Lake", "Annapurna South", "Dhaulagiri Views"],
     description: "Off-the-beaten-path trek offering stunning mountain views and the sacred Khayar Lake.",
     featured: false,
     link: "/services/trekking/khopra-ridge-trek-with-khayar-lake",
-    bookable: true,
-    schema: {
-      "@type": "Product",
-      "name": "Khopra Ridge Trek with Khayar Lake - 8 Days",
-      "description": "Off-the-beaten-path trek offering stunning mountain views and the sacred Khayar Lake.",
-      "offers": {
-        "@type": "Offer",
-        "price": "700",
-        "priceCurrency": "USD"
-      }
-    }
   },
   {
-    id: 15,
+    id: 11,
     name: "Mardi Himal Trek",
     region: "Annapurna Region",
     duration: "7 Days",
@@ -375,22 +235,11 @@ const trekkingPackages = [
     reviews: 145,
     highlights: ["Mardi Himal Base Camp", "Machapuchare Views", "Forest Trails", "Camping Experience"],
     description: "A hidden gem offering spectacular close-up views of Machapuchare and Annapurna South.",
-    featured: false,
+    featured: true,
     link: "/services/trekking/mardi-himal-trek",
-    bookable: true,
-    schema: {
-      "@type": "Product",
-      "name": "Mardi Himal Trek - 7 Days",
-      "description": "A hidden gem offering spectacular close-up views of Machapuchare and Annapurna South.",
-      "offers": {
-        "@type": "Offer",
-        "price": "600",
-        "priceCurrency": "USD"
-      }
-    }
   },
   {
-    id: 18,
+    id: 12,
     name: "Tamang Heritage Trail and Langtang Valley Trek",
     region: "Langtang Region",
     duration: "13 Days",
@@ -407,18 +256,6 @@ const trekkingPackages = [
     description: "Combine the cultural Tamang Heritage Trail with the stunning Langtang Valley trek.",
     featured: false,
     link: "/services/trekking/tamang-heritage-trail-and-langtang-valley-trek",
-    bookable: false,
-    notBookableReason: "Temporarily unavailable due to natural disaster impact. We are monitoring the situation and will resume bookings when conditions are safe.",
-    schema: {
-      "@type": "Product",
-      "name": "Tamang Heritage Trail and Langtang Valley Trek - 13 Days",
-      "description": "Combine the cultural Tamang Heritage Trail with the stunning Langtang Valley trek.",
-      "offers": {
-        "@type": "Offer",
-        "price": "1195",
-        "priceCurrency": "USD"
-      }
-    }
   },
 ];
 
@@ -440,293 +277,313 @@ export default function TrekkingNepalPage() {
     router.push(`/contact?trek=${encodeURIComponent(trekName)}`);
   };
 
-  const featuredPackage = trekkingPackages.find((pkg) => pkg.id === 5);
+  const featuredPackage = trekkingPackages.find((pkg) => pkg.id === 1);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Schema.org structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
-      />
+    <>
+      <Head>
+        <title>Trekking in Nepal - Himalayan Treks - Himkala Adventure</title>
+        <meta name="description" content="Explore Nepal's best treks with Himkala Adventure. Everest Base Camp, Annapurna Circuit, Manaslu Circuit, and more. Expert guides, safe and unforgettable experiences." />
+        <link rel="canonical" href="https://www.himkalaadventure.com/services/trekking" />
+        <meta property="og:title" content="Trekking in Nepal - Himalayan Treks - Himkala Adventure" />
+        <meta property="og:description" content="Explore Nepal's best treks with Himkala Adventure. Everest Base Camp, Annapurna Circuit, Manaslu Circuit, and more." />
+        <meta property="og:image" content="https://www.himkalaadventure.com/images/used/everest-main-page.webp" />
+        <meta property="og:url" content="https://www.himkalaadventure.com/services/trekking" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Himkala Adventure" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Trekking in Nepal - Himalayan Treks - Himkala Adventure" />
+        <meta name="twitter:description" content="Explore Nepal's best treks with Himkala Adventure. Everest Base Camp, Annapurna Circuit, Manaslu Circuit, and more." />
+        <meta name="twitter:image" content="https://www.himkalaadventure.com/images/used/everest-main-page.webp" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
 
-      {/* Page Header */}
-      <section className="pt-6 pb-12 md:pt-8 md:pb-16 bg-gradient-to-br from-[#0f2940] to-[#1a4166] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-[#C5E0ED] rounded-full blur-[120px]" />
-          <div className="absolute bottom-10 right-10 w-72 h-72 bg-[#7fb8d4] rounded-full blur-[120px]" />
-        </div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
-            <Badge className="mb-4 md:mb-6 bg-[#C5E0ED]/20 text-white backdrop-blur-md border-[#C5E0ED]/40 py-1.5 md:py-2 px-4 md:px-5 text-xs md:text-sm">
-              <Compass className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Nepal - The Himalayan Wonderland
-            </Badge>
-            <h1 className="text-2xl md:text-4xl lg:text-6xl font-serif text-white mb-4 md:mb-6">
-              Trekking in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4]">Nepal</span>
-            </h1>
-            <p className="text-sm md:text-base text-white/80 leading-relaxed mb-6 md:mb-8">
-              From the legendary Everest Base Camp to the sacred trails of Annapurna, discover why Nepal remains 
-              the ultimate destination for trekkers worldwide with our expertly curated <strong className="text-white">trekking packages in Nepal</strong>.
-            </p>
-            <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-              <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> 12 Trekking Routes
-              </div>
-              <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> 6 to 18 Days
-              </div>
-              <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <TrendingUp className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> Up to 5,545m
+      <div className="flex flex-col min-h-screen bg-[#f2ede4] overflow-x-hidden">
+        <main>
+          {/* Page Header - matching Day Hikes style */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Himalayan Adventures</div>
+                  <h1 className="mt-3 sm:mt-5 font-serif text-[clamp(2.2rem,7vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    Trekking <span className="text-[#cf6943]">in Nepal</span>
+                  </h1>
+                </div>
+                <p className="max-w-full md:max-w-[280px] lg:max-w-[380px] text-sm leading-6 text-[#66706d]">
+                  From easy hill walks to challenging high-altitude circuits. Each trek is guided by experienced professionals who know these mountains intimately.
+                </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Featured Package - Manaslu Circuit Trek */}
-      {featuredPackage && (
-        <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white" aria-label="Featured trekking package">
-          <div className="container mx-auto px-4 md:px-6">
-            <Link 
-              href={featuredPackage.link}
-              className="cursor-pointer block"
-              aria-label={`View details for ${featuredPackage.name}`}
-            >
-              <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10">
-                <div className="grid lg:grid-cols-2">
-                  <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
+          {/* Featured Trek - matching Day Hikes featured layout */}
+          {featuredPackage && (
+            <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+              <div className="mx-auto max-w-[1220px]">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-8 sm:gap-12 lg:gap-14 lg:items-center lg:gap-24">
+                  <div className="relative min-h-[280px] sm:min-h-[350px] md:min-h-[400px] lg:min-h-[480px] order-2 lg:order-1">
                     <Image
                       src={featuredPackage.image}
-                      alt={`${featuredPackage.name} - trekking package in ${featuredPackage.region}, Nepal`}
+                      alt={featuredPackage.name}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
+                      quality={85}
                     />
-                    <div className="absolute top-4 left-4">
-                      <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1 text-xs md:text-sm">
-                        Most Popular
-                      </Badge>
-                    </div>
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {featuredPackage.rating} ({featuredPackage.reviews})
+                    <div className="absolute bottom-0 left-0 bg-[#e47a4f] px-4 sm:px-6 py-3 sm:py-4 md:py-5 text-[#fff8ee] sm:px-8">
+                      <div className="font-serif text-2xl sm:text-3xl md:text-4xl leading-none">🏔️</div>
+                      <div className="mt-1 sm:mt-2 text-[8px] sm:text-[10px] font-bold tracking-[.15em]">MOST POPULAR</div>
                     </div>
                   </div>
-                  <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
-                    <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
-                      <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" aria-hidden="true" /> {featuredPackage.region}
-                    </Badge>
-                    <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
+                  <div className="order-1 lg:order-2">
+                    <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Featured Trek</div>
+                    <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,4.8rem)] leading-[1.05] sm:leading-[.96] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
                       {featuredPackage.name}
                     </h2>
-                    <p className="text-slate-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
-                      {featuredPackage.description}
-                    </p>
-                    <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
-                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredPackage.duration}
-                      </div>
-                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredPackage.maxAltitude}
-                      </div>
-                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Footprints className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredPackage.difficulty}
-                      </div>
-                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredPackage.groupSize} People
+                    <div className="mt-4 sm:mt-7 space-y-3 sm:space-y-4 text-[#556363] text-sm leading-relaxed">
+                      <p>{featuredPackage.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {featuredPackage.highlights.map((h, idx) => (
+                          <span key={idx} className="text-[10px] sm:text-xs border border-[#d8cec0] text-[#556363] px-2 sm:px-3 py-0.5 sm:py-1 rounded">
+                            {h}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
-                      {featuredPackage.highlights.map((h, idx) => (
-                        <span key={idx} className="text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
-                          {h}
-                        </span>
-                      ))}
+                    <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-[#556363]">
+                      <span className="flex items-center gap-1 sm:gap-2">
+                        <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" /> {featuredPackage.duration}
+                      </span>
+                      <span className="flex items-center gap-1 sm:gap-2">
+                        <Mountain className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" /> {featuredPackage.maxAltitude}
+                      </span>
+                      <span className="flex items-center gap-1 sm:gap-2">
+                        <Footprints className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" /> {featuredPackage.difficulty}
+                      </span>
+                      <span className="flex items-center gap-1 sm:gap-2">
+                        <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" /> {featuredPackage.region}
+                      </span>
                     </div>
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 md:pt-6 border-t border-slate-100 gap-4">
-                      <div>
-                        <span className="text-slate-400 text-sm line-through">${featuredPackage.originalPrice}</span>
-                        <span className="text-2xl md:text-3xl font-bold text-[#0f2940] ml-1 md:ml-2">${featuredPackage.price}</span>
-                        <span className="text-slate-500 text-sm">/person</span>
+                    <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-4 sm:gap-6">
+                      <div className="flex items-baseline gap-1 sm:gap-2">
+                        <span className="text-[#66706d] text-sm line-through">${featuredPackage.originalPrice}</span>
+                        <span className="font-bold text-[#cf6943] text-xl sm:text-2xl">${featuredPackage.price}</span>
+                        <span className="text-[#556363] text-xs">/person</span>
                       </div>
                       <Button 
-                        className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                        className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-none px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm"
                         onClick={(e) => {
                           e.preventDefault();
                           handleBookNow(featuredPackage.name);
                         }}
-                        aria-label={`Book ${featuredPackage.name} now`}
                       >
-                        Book Now
-                        <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+                        Book Now <ArrowRight className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       </Button>
                     </div>
-                  </CardContent>
-                </div>
-              </Card>
-            </Link>
-          </div>
-        </section>
-      )}
-
-      {/* All Packages Grid */}
-      <section className="py-8 md:py-20 bg-white" aria-label="All trekking packages">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="mb-6 md:mb-12">
-            <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-2 md:mb-4">All Packages</h2>
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <h3 className="text-xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">Explore Our Treks</h3>
-              <p className="text-slate-500 text-sm">
-                Showing <span className="font-bold text-[#0f2940]">{trekkingPackages.length}</span> packages
-              </p>
-            </div>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-            {trekkingPackages.map((pkg) => (
-              <Link 
-                key={pkg.id} 
-                href={pkg.link}
-                className="cursor-pointer block"
-                aria-label={`View details for ${pkg.name}`}
-              >
-                <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
-                  <div className="relative h-40 md:h-52 overflow-hidden">
-                    <Image
-                      src={pkg.image}
-                      alt={`${pkg.name} - trekking package in ${pkg.region}, Nepal`}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <Badge className={`border-none text-xs font-medium ${getDifficultyColor(pkg.difficulty)}`}>
-                        {pkg.difficulty}
-                      </Badge>
-                    </div>
-                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {pkg.rating}
-                    </div>
-                    {pkg.featured && (
-                      <div className="absolute bottom-3 left-3">
-                        <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none text-xs font-bold">
-                          Featured
-                        </Badge>
-                      </div>
-                    )}
-                    {!pkg.bookable && (
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                        <Badge className="bg-red-500 text-white border-none text-xs font-bold px-3 py-1.5">
-                          <AlertTriangle className="w-3 h-3 inline mr-1" /> Temporarily Unavailable
-                        </Badge>
-                      </div>
-                    )}
                   </div>
-                  <CardContent className="p-4 md:p-6">
-                    <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
-                      {pkg.region}
-                    </Badge>
-                    <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-1 md:mb-2 group-hover:text-[#2d6a8a] transition-colors line-clamp-1">
-                      {pkg.name}
-                    </h4>
-                    <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
-                      {pkg.description}
-                    </p>
-                    <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
-                      <div className="flex items-center gap-1.5 text-slate-500">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {pkg.duration}
-                      </div>
-                      <div className="flex items-center gap-1.5 text-slate-500">
-                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {pkg.maxAltitude}
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
-                      <div>
-                        <span className="text-slate-400 text-xs line-through">${pkg.originalPrice}</span>
-                        <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${pkg.price}</span>
-                      </div>
-                      {pkg.bookable ? (
-                        <Button 
-                          size="sm" 
-                          variant="ghost" 
-                          className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleBookNow(pkg.name);
-                          }}
-                          aria-label={`Book ${pkg.name} now`}
-                        >
-                          Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" aria-hidden="true" />
-                        </Button>
-                      ) : (
-                        <Badge className="bg-amber-100 text-amber-700 border-none text-xs font-medium px-2.5 py-1">
-                          <AlertTriangle className="w-3 h-3 inline mr-1" /> Not Bookable
-                        </Badge>
-                      )}
-                    </div>
-                    {!pkg.bookable && pkg.notBookableReason && (
-                      <p className="text-xs text-slate-500 mt-2 leading-relaxed border-t border-amber-100 pt-2">
-                        {pkg.notBookableReason}
-                      </p>
-                    )}
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+                </div>
+              </div>
+            </section>
+          )}
 
-      {/* Info Section */}
-      <section className="py-8 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white" aria-label="Why trek with us">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div>
-              <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-3 md:mb-4">Why Trek with Us</h2>
-              <h3 className="text-xl md:text-3xl lg:text-4xl font-serif text-[#0f2940] mb-4 md:mb-6">
-                Your Safety & Experience Are Our Priority
-              </h3>
-              <p className="text-slate-600 leading-relaxed mb-6 md:mb-8 text-sm md:text-base">
-                With over a decade of experience in Himalayan expeditions, we&apos;ve built a reputation for excellence, 
-                safety, and creating life-changing adventures. Our <strong>Nepal trekking packages</strong> are designed to 
-                provide the perfect balance of challenge and comfort.
-              </p>
-              <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
-                {[
-                  "Government Licensed & Certified Guides",
-                  "Best Available Teahouse Accommodations",
-                  "All Permits & Entry Fees Included",
-                  "24/7 Emergency Support & Communication",
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3 text-slate-700">
-                    <div className="w-5 h-5 md:w-6 md:h-6 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                      <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-[#0f2940]" aria-hidden="true" />
+          {/* All Treks Grid - matching Day Hikes grid */}
+          <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">All Treks</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    Himalayan <span className="text-[#cf6943]">Trekking Adventures</span>
+                  </h2>
+                </div>
+                <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                  {trekkingPackages.length} treks available. From 6-day short treks to 18-day expeditions.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
+                {trekkingPackages.map((pkg) => (
+                  <Link
+                    key={pkg.id}
+                    href={pkg.link}
+                    className="group block"
+                  >
+                    <div className="bg-[#f7f2e9] border border-[#d8cec0] overflow-hidden hover:shadow-md transition-all duration-300 rounded-lg h-full">
+                      <div className="relative h-48 overflow-hidden">
+                        <Image
+                          src={pkg.image}
+                          alt={pkg.name}
+                          fill
+                          className="object-cover opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                          sizes="(max-width: 1024px) 33vw, 33vw"
+                          quality={85}
+                        />
+                        <div className="absolute top-4 right-4 bg-[#14383b]/90 text-[#f7f2e9] px-3 py-1.5 text-sm font-bold flex items-center gap-1">
+                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" /> {pkg.rating}
+                        </div>
+                        <div className="absolute top-4 left-4 bg-[#cf6943] text-[#fff8ee] px-3 py-1.5 text-xs font-bold tracking-wide">
+                          {pkg.region}
+                        </div>
+                        {pkg.featured && (
+                          <div className="absolute bottom-4 left-4">
+                            <Badge className="bg-[#e47a4f] text-[#fff8ee] border-none text-[9px] px-2 py-0.5">Featured</Badge>
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-lg font-bold text-[#14383b] mb-1">{pkg.name}</h3>
+                        <p className="text-[#556363] text-sm mb-4 leading-relaxed line-clamp-2">{pkg.description}</p>
+                        <div className="grid grid-cols-2 gap-2 mb-4">
+                          <div className="flex items-center gap-2 text-[#556363] text-sm">
+                            <Clock className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {pkg.duration}
+                          </div>
+                          <div className="flex items-center gap-2 text-[#556363] text-sm">
+                            <Mountain className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {pkg.maxAltitude}
+                          </div>
+                          <div className="flex items-center gap-2 text-[#556363] text-sm">
+                            <Footprints className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {pkg.difficulty}
+                          </div>
+                          <div className="flex items-center gap-2 text-[#556363] text-sm">
+                            <Users className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {pkg.groupSize}
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-1.5 mb-4">
+                          {pkg.highlights.slice(0, 2).map((h) => (
+                            <span key={h} className="text-xs border border-[#d8cec0] text-[#556363] px-2.5 py-1 rounded">
+                              {h}
+                            </span>
+                          ))}
+                          {pkg.highlights.length > 2 && (
+                            <span className="text-xs text-[#66706d]">+{pkg.highlights.length - 2} more</span>
+                          )}
+                        </div>
+                        <div className="flex items-center justify-between pt-3 border-t border-[#d8cec0]/30">
+                          <div>
+                            <span className="text-[#66706d] text-xs line-through">${pkg.originalPrice}</span>
+                            <span className="font-bold text-[#cf6943] text-lg ml-1">${pkg.price}</span>
+                          </div>
+                          <Button 
+                            size="sm" 
+                            className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-full min-h-[44px] px-4 text-xs"
+                            onClick={(e) => { e.preventDefault(); handleBookNow(pkg.name); }}
+                          >
+                            Book Now
+                          </Button>
+                        </div>
+                      </div>
                     </div>
-                    <span className="text-sm md:text-base">{item}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Why Choose Us - matching Day Hikes style */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Why Choose Us</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    Trusted <span className="text-[#cf6943]">Himalayan Guides</span>
+                  </h2>
+                </div>
+                <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                  Experienced guides, comprehensive support, and unforgettable experiences.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
+                {[
+                  { icon: <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Licensed Guides", text: "Government-certified guides with years of Himalayan experience." },
+                  { icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Small Groups", text: "Intimate group sizes for personalized attention and safety." },
+                  { icon: <Compass className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Expert Planning", text: "Carefully curated itineraries with proper acclimatization." },
+                  { icon: <Heart className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Local Knowledge", text: "Insider tips and cultural insights from our expert guides." },
+                  { icon: <Camera className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Photo Opportunities", text: "Perfect spots for capturing Nepal's stunning landscapes." },
+                  { icon: <Award className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Safety First", text: "Comprehensive safety protocols and emergency support." },
+                ].map((item, i) => (
+                  <div key={i} className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                    <div className="p-5 sm:p-6 md:p-8">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded flex items-center justify-center text-[#f7f2e9] mb-4 sm:mb-6">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#14383b] mb-2 sm:mb-3">{item.title}</h3>
+                      <p className="text-xs sm:text-sm text-[#556363] leading-relaxed">{item.text}</p>
+                    </div>
                   </div>
                 ))}
               </div>
-              <Link href="/contact">
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-3 md:py-4 text-sm md:text-base" aria-label="Get free consultation for trekking packages">
-                  Get Free Consultation
-                </Button>
-              </Link>
             </div>
-            <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
-              <Image
-                src="/images/used/hero.webp"
-                alt="Trekkers in the Himalayas - enjoying Nepal's legendary trekking routes with stunning mountain views"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+          </section>
+
+          {/* What's Included - clean list format matching Bhutan page */}
+<section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+  <div className="mx-auto max-w-[1220px]">
+    <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+      <div>
+        <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Included</div>
+        <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+          What's <span className="text-[#cf6943]">Included</span>
+        </h2>
+      </div>
+      <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+        Comprehensive support for a safe, comfortable, and unforgettable experience.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-12">
+      <div className="space-y-4 sm:space-y-5">
+        {[
+          { title: "Licensed Guides", text: "Government-certified guides with years of Himalayan experience and comprehensive first aid training." },
+          { title: "Porter Service", text: "One porter for every two trekkers, carrying up to 15kg of personal gear." },
+          { title: "Accommodation", text: "Best available teahouses and lodges throughout the trek with comfortable amenities." },
+          { title: "All Meals", text: "Three meals daily on trek, prepared with local ingredients and hygienic practices." },
+        ].map((item) => (
+          <div key={item.title} className="flex items-start gap-3 sm:gap-4">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#f7f2e9] rounded-lg flex items-center justify-center text-[#cf6943] flex-shrink-0 border border-[#d8cec0]">
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+            </div>
+            <div>
+              <h3 className="font-bold text-[#14383b] text-sm sm:text-base mb-0.5 sm:mb-1">{item.title}</h3>
+              <p className="text-[#556363] text-sm leading-relaxed">{item.text}</p>
             </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+
+      <div className="bg-[#f7f2e9] p-5 sm:p-6 md:p-8 rounded-lg border border-[#d8cec0]">
+        <h3 className="font-bold text-[#14383b] text-lg sm:text-xl mb-4">Additional Services</h3>
+        <ul className="space-y-3">
+          {[
+            <><strong>Permits:</strong> All trekking permits and national park entry fees included in the package</>,
+            <><strong>Transportation:</strong> Airport transfers and all local transport arrangements on the itinerary</>,
+            <><strong>Equipment:</strong> Sleeping bag (-15°C rated) and down jacket provided for the trek</>,
+            <><strong>First Aid Kit:</strong> Comprehensive medical supplies and oxygen cylinder for emergencies</>,
+            <><strong>Small Groups:</strong> Intimate group sizes for personalized attention and safety</>,
+            <><strong>Cultural Insights:</strong> Expert guidance on local customs, traditions, and history</>,
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-2 sm:gap-3">
+              <CheckCircle className="w-4 h-4 text-[#cf6943] mt-0.5 flex-shrink-0" />
+              <span className="text-[#556363] text-sm sm:text-base">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
+
+    {/* CTA */}
+    <div className="mt-8 sm:mt-12 text-center">
+      <Link href="/contact">
+        <Button className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-none px-8 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm">
+          Plan Your Trek Today
+        </Button>
+      </Link>
+    </div>
+  </div>
+</section>
+        </main>
+      </div>
+    </>
   );
 }

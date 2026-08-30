@@ -32,16 +32,12 @@ const trekkingPages: Entry[] = [
     path: '/services/trekking/manaslu-circuit-trek-with-tsum-valley',
     label: 'Manaslu Circuit Trek with Tsum Valley',
   },
-  { path: '/services/trekking/upper-mustang-trek', label: 'Upper Mustang Trek' },
   { path: '/services/trekking/langtang-valley-trek', label: 'Langtang Valley Trek' },
-  { path: '/services/trekking/langtang-gosainkunda-trek', label: 'Langtang Gosainkunda Trek' },
   { path: '/services/trekking/langtang-helambu-trek', label: 'Langtang Helambu Trek' },
-  { path: '/services/trekking/langtang-ganjala-pass-trek', label: 'Langtang Ganjala Pass Trek' },
   {
     path: '/services/trekking/tamang-heritage-trail-and-langtang-valley-trek',
     label: 'Tamang Heritage Trail and Langtang Valley Trek',
   },
-  { path: '/services/trekking/gokyo-trek', label: 'Everest Gokyo Trek' },
   { path: '/services/trekking/everest-three-passes-trek', label: 'Everest Three Passes Trek' },
   { path: '/services/trekking/ghorepani-poon-hill-trek', label: 'Ghorepani Poon Hill Trek' },
   { path: '/services/trekking/mardi-himal-trek', label: 'Mardi Himal Trek' },
@@ -49,16 +45,10 @@ const trekkingPages: Entry[] = [
     path: '/services/trekking/khopra-ridge-trek-with-khayar-lake',
     label: 'Khopra Ridge Trek with Khayar Lake',
   },
-  { path: '/services/trekking/nar-phu-trek', label: 'Nar Phu Trek' },
-  { path: '/services/trekking/rupina-la-trek', label: 'Rupina La Trek' },
 ]
 
-const peakClimbingPages: Entry[] = [
-  { path: '/services/peak-climbing', label: 'Peak Climbing Overview' },
-  { path: '/services/peak-climbing/island-peak-climbing', label: 'Island Peak Climbing' },
-  { path: '/services/peak-climbing/mera-peak-climbing', label: 'Mera Peak Climbing' },
-  { path: '/services/peak-climbing/yala-peak-climbing', label: 'Yala Peak Climbing' },
-]
+// Peak Climbing section removed - no longer in use
+const peakClimbingPages: Entry[] = []
 
 const dayHikesPages: Entry[] = [
   { path: '/services/day-hikings', label: 'Day Hikes Overview' },
@@ -135,9 +125,6 @@ const flightPages: Entry[] = [
 
 const bhutanPages: Entry[] = [
   { path: '/destinations/bhutan', label: 'Bhutan Overview' },
-  { path: '/destinations/bhutan/snowman-trek', label: 'Snowman Trek' },
-  { path: '/destinations/bhutan/jomolhari-trek', label: 'Jomolhari Trek' },
-  { path: '/destinations/bhutan/druk-path-trek', label: 'Druk Path Trek' },
   { path: '/destinations/bhutan/tigers-nest-day-hiking', label: "Tiger's Nest Day Hiking" },
   { path: '/destinations/bhutan/3-nights-4-days-bhutan-tour', label: '3 Nights 4 Days Bhutan Tour' },
   { path: '/destinations/bhutan/bhutan-cultural-tour', label: 'Bhutan Cultural Tour' },
@@ -152,18 +139,16 @@ const tibetPages: Entry[] = [
   { path: '/destinations/tibet/kailash-mansarovar-yatra', label: 'Kailash Mansarovar Yatra' },
   { path: '/destinations/tibet/lhasa-city-tour', label: 'Lhasa City Tour' },
   { path: '/destinations/tibet/tibet-overland-tour', label: 'Tibet Overland Tour' },
-  { path: '/destinations/tibet/tibetan-plateau-adventure', label: 'Tibetan Plateau Adventure' },
   { path: '/destinations/tibet/tibet-unique-cultural-tour', label: 'Tibet Unique Cultural Tour' },
-  { path: '/destinations/tibet/ancient-kingdoms-tour', label: 'Ancient Kingdoms Tour' },
-  { path: '/destinations/tibet/monastery-discovery-tour', label: 'Monastery Discovery Tour' },
   { path: '/destinations/tibet/tibet-tour-namtso-lake', label: 'Tibet Tour Namtso Lake' },
 ]
 
-const walkingTourPages: Entry[] = [
+const freeTourPages: Entry[] = [
+  { path: '/services/free-tour-kathmandu', label: 'Free Tour Kathmandu' },
   { path: '/services/free-walking-tour-kathmandu', label: 'Free Walking Tour Kathmandu' },
+  { path: '/services/local-city-tour-kathmandu-free', label: 'Local City Tour Kathmandu Free' },
 ]
 
-// UPDATED: Blog pages with new solo trekking blog added
 const blogPages: Entry[] = [
   { path: '/blog/solo-trekking-nepal-2026', label: 'Solo Trekking in Nepal: Complete 2026 Guide' },
   { path: '/blog/nepal-trek-cost-2026', label: 'How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown' },
@@ -178,7 +163,7 @@ const blogPages: Entry[] = [
 const sections: { heading: string; entries: Entry[] }[] = [
   { heading: 'Company', entries: companyPages },
   { heading: 'Trekking (Nepal)', entries: trekkingPages },
-  { heading: 'Peak Climbing', entries: peakClimbingPages },
+  // Peak Climbing section removed - no longer in use
   { heading: 'Day Hikes', entries: dayHikesPages },
   { heading: 'Day Sightseeing', entries: sightseeingPages },
   { heading: 'Multi-Day Cultural Tours', entries: culturalToursPages },
@@ -186,7 +171,7 @@ const sections: { heading: string; entries: Entry[] }[] = [
   { heading: 'Mountain Flights & Helicopter Trips', entries: flightPages },
   { heading: 'Bhutan', entries: bhutanPages },
   { heading: 'Tibet', entries: tibetPages },
-  { heading: 'Free Walking Tour', entries: walkingTourPages },
+  { heading: 'Free Tours', entries: freeTourPages },
   { heading: 'Blog / Guides', entries: blogPages },
 ]
 
@@ -202,6 +187,9 @@ function buildLlmsTxt(): string {
   )
 
   for (const section of sections) {
+    // Skip empty sections
+    if (section.entries.length === 0) continue
+    
     lines.push('')
     lines.push(`## ${section.heading}`)
     lines.push('')

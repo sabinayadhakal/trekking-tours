@@ -11,7 +11,6 @@ import {
   MapPin,
   Share2,
   Facebook,
-  Twitter,
   Copy,
   Check,
   ChevronDown,
@@ -42,9 +41,11 @@ import {
   Droplet,
   Eye,
   Sunrise,
+  ArrowRight,
+  Phone,
+  Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 // All free tour options
@@ -208,7 +209,8 @@ const faqs = [
   {
     question: "Do I need to book in advance?",
     answer:
-"Please use the 'Join Tour' button on this page or visit our Contact page to reserve your spot. We recommend booking at least 24 hours in advance to ensure guide availability.",  },
+"Please use the 'Join Tour' button on this page or visit our Contact page to reserve your spot. We recommend booking at least 24 hours in advance to ensure guide availability.",
+  },
   {
     question: "What should I bring?",
     answer:
@@ -228,7 +230,6 @@ const faqs = [
 
 export default function FreeToursKathmanduPage() {
   const [copied, setCopied] = React.useState(false);
-  const [showMobileNav, setShowMobileNav] = React.useState(false);
   const [expandedFaq, setExpandedFaq] = React.useState<number | null>(null);
 
   const tourName = "Free Tours Kathmandu Valley";
@@ -241,384 +242,306 @@ export default function FreeToursKathmanduPage() {
 
   const handleShare = (platform: string) => {
     const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent("Free Tours Kathmandu Valley - UNESCO Heritage Tours");
-    let shareUrl = "";
     if (platform === "facebook") {
-      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-    } else if (platform === "twitter") {
-      shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank", "noopener,noreferrer");
     }
-    window.open(shareUrl, "_blank", "noopener,noreferrer");
   };
 
   const toggleFaq = (idx: number) => {
     setExpandedFaq(expandedFaq === idx ? null : idx);
   };
 
-  // Schema.org structured data
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "TouristInformationCenter",
-    "name": "Himkala Adventure Pvt. Ltd.",
-    "description": "Free walking tours in Kathmandu Valley exploring UNESCO World Heritage sites. Tips-based tours in Kathmandu, Pashupatinath, Bouddhanath, Patan, and Bhaktapur.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Thamel, Lekhnath Marga",
-      "addressLocality": "Kathmandu",
-      "addressCountry": "Nepal"
-    },
-    "telephone": "+977 9841376470",
-    "email": "info@himkalaadventure.com",
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 27.7172,
-      "longitude": 85.3240
-    }
-  };
-
-  const tourSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Free Tours Kathmandu Valley",
-    "description": "Free tips-based walking tours in Kathmandu Valley exploring UNESCO World Heritage sites including Kathmandu Durbar Square, Swoyambhunath, Pashupatinath, Bouddhanath, Patan, and Bhaktapur.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Himkala Adventure Pvt. Ltd."
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "450"
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Schema.org structured data */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tourSchema) }} />
-
-      {/* Mobile Navigation Drawer */}
-      {showMobileNav && (
-        <div className="lg:hidden fixed inset-0 z-50">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setShowMobileNav(false)} />
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg text-[#0f2940]">Quick Navigation</h3>
-                <button onClick={() => setShowMobileNav(false)} className="p-2 rounded-lg hover:bg-slate-100">
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              <div className="space-y-4">
-                <a href="#tours" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">Free Tours</a>
-                <a href="#why-choose" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">Why Choose Us</a>
-                <a href="#how-it-works" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">How It Works</a>
-                <a href="#faq" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">FAQ</a>
-                <a href="#contact" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">Contact</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Hero Section */}
-      <section className="relative min-h-[55vh] md:min-h-[65vh] overflow-hidden bg-[#0f2940]">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/used/FWT-4.webp"
-            alt="Free tours Kathmandu Valley - Explore UNESCO World Heritage sites including Pashupatinath, Bouddhanath, Patan, and Bhaktapur"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0f2940]/20 via-[#0f2940]/50 to-[#0f2940]/95" />
-        </div>
-
-        <div className="absolute inset-0 flex items-center z-10 px-4">
-          <div className="max-w-6xl mx-auto w-full">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="space-y-4">
-                <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5">
-                    <Footprints className="w-3 h-3 mr-1" /> FREE Tips-Based Tours
-                  </Badge>
-                  <Badge className="bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/40 font-bold px-3 py-1.5">
-                    <Globe className="w-3 h-3 mr-1" /> 7 UNESCO Sites
-                  </Badge>
-                  <Badge className="bg-green-100 text-green-700 border-none font-bold px-3 py-1.5">
-                    <Users className="w-3 h-3 mr-1" /> 5 Tour Options
-                  </Badge>
+    <div className="flex flex-col min-h-screen bg-[#f2ede4] overflow-x-hidden">
+      <main>
+        {/* Header - Matching Free Walking Tour style */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto max-w-[880px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">
+                  <span className="h-px w-6 sm:w-8 bg-[#cf6943]" />
+                  <span>Free Tours</span>
                 </div>
-
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-tight">
-                  Free Tours
-                  <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4]">Kathmandu Valley</span>
+                <h1 className="mt-3 sm:mt-5 font-serif text-[clamp(2.5rem,8vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Free Tours <br />
+                  <span className="text-[#cf6943]">Kathmandu Valley</span>
                 </h1>
-                
-                <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-xl leading-relaxed">
-                  Choose from <strong>5 free tips-based tours</strong> across Kathmandu Valley. Explore 
-                  <strong> UNESCO World Heritage sites</strong> including Pashupatinath, Bouddhanath, Patan, and Bhaktapur.
-                </p>
-
-                <div className="flex flex-wrap gap-2 text-white/70 text-xs sm:text-sm">
-                  <span className="flex items-center"><Clock className="w-4 h-4 mr-1 text-[#C5E0ED]" /> 2-5 hours</span>
-                  <span className="flex items-center"><MapPin className="w-4 h-4 mr-1 text-[#C5E0ED]" /> Multiple locations</span>
-                  <span className="flex items-center"><Sparkles className="w-4 h-4 mr-1 text-[#C5E0ED]" /> Tips-based</span>
-                </div>
-
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <a href="#tours">
-                    <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 py-2 shadow-lg shadow-[#0f2940]/30">
-                      <Heart className="w-4 h-4 mr-2" /> Choose Your Free Tour
-                    </Button>
-                  </a>
-                 
-                </div>
               </div>
-
-              {/* Stats Cards */}
-              <div className="hidden lg:grid grid-cols-2 gap-4">
-                <Card className="bg-white/10 backdrop-blur-md border-white/20">
-                  <CardContent className="p-4 text-center">
-                    <Landmark className="w-8 h-8 text-[#C5E0ED] mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-white">5</div>
-                    <div className="text-xs text-white/70">Free Tour Options</div>
-                  </CardContent>
-                </Card>
-                <Card className="bg-white/10 backdrop-blur-md border-white/20">
-                  <CardContent className="p-4 text-center">
-                    <Star className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-white">4.9</div>
-                    <div className="text-xs text-white/70">450+ Reviews</div>
-                  </CardContent>
-                </Card>
-                <Card className="bg-white/10 backdrop-blur-md border-white/20 col-span-2">
-                  <CardContent className="p-4 text-center">
-                    <Users className="w-8 h-8 text-[#C5E0ED] mx-auto mb-2" />
-                    <div className="text-sm font-bold text-white">All Tours are Tips-Based</div>
-                    <div className="text-xs text-white/70">You decide the value of your guide's expertise</div>
-                  </CardContent>
-                </Card>
+              <div className="max-w-full md:max-w-[280px]">
+                <p className="text-sm leading-6 text-[#66706d]">
+                  Choose from 5 free tips-based tours across Kathmandu Valley. Explore UNESCO World Heritage sites including Pashupatinath, Bouddhanath, Patan, and Bhaktapur.
+                </p>
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <span className="bg-[#cf6943] text-[#fff8ee] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full">
+                    FREE · Tips-based
+                  </span>
+                  <span className="bg-[#f7f2e9] text-[#14383b] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full border border-[#d8cec0]/30">
+                    5 Tour Options
+                  </span>
+                </div>
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Feature Image */}
+        <div className="max-w-[880px] mx-auto px-4 sm:px-5 md:px-8">
+          <figure className="relative h-[220px] sm:h-[300px] md:h-[380px] lg:h-[420px] rounded-lg overflow-hidden bg-[#14383b]">
+            <Image
+              src="/images/used/FWT-4.webp"
+              alt="Free Tours Kathmandu Valley - Explore UNESCO World Heritage sites"
+              fill
+              className="object-cover opacity-90"
+              priority
+              quality={85}
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/70 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 p-4 sm:p-5 md:p-6">
+              <span className="bg-[#e47a4f] text-[#fff8ee] px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold tracking-wide rounded">
+                Tips-based · Free to join
+              </span>
+            </div>
+            <div className="absolute top-4 right-4 flex flex-wrap gap-2">
+              <span className="bg-[#14383b]/90 text-[#f7f2e9] px-3 py-1.5 text-[9px] sm:text-[10px] font-bold tracking-wide rounded">
+                7 UNESCO Sites
+              </span>
+            </div>
+          </figure>
         </div>
-      </section>
 
-      {/* Tour Options Section - FIXED: All cards equal height, Join Tour links to contact */}
-      <section className="py-12 md:py-20 bg-white" id="tours">
-        <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
-            <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-2">Choose Your Tour</h2>
-            <h3 className="text-2xl md:text-4xl lg:text-5xl font-serif text-[#0f2940] mb-4">Free Tours Across the Valley</h3>
-            <p className="text-slate-600 text-sm md:text-base">
-              Select from 5 different free walking tours covering Kathmandu Valley's most iconic UNESCO World Heritage sites. 
-              All tours are tips-based and led by expert local guides.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {freeTourOptions.map((tour) => {
-              const Icon = tour.icon;
-              return (
-                <Card 
-                  key={tour.id} 
-                  className="bg-white border-[#C5E0ED]/30 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col h-full"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={tour.image}
-                      alt={`${tour.name} - free walking tour in Kathmandu Valley`}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute top-3 left-3 flex flex-wrap gap-1">
-                      {tour.featured && (
-                        <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none text-[10px] font-bold">
-                          Most Popular
-                        </Badge>
-                      )}
-                      <Badge className="bg-emerald-500/90 text-white border-none text-[10px] font-bold">
-                        FREE
-                      </Badge>
-                    </div>
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <Badge variant="outline" className="border-white/50 text-white bg-black/30 backdrop-blur-sm text-[10px]">
-                        <Landmark className="w-2.5 h-2.5 inline mr-1" /> {tour.unesco}
-                      </Badge>
-                    </div>
-                    <div className="absolute top-3 right-3">
-                      <Badge className="bg-white/90 backdrop-blur-sm text-[#0f2940] border-none text-[10px] font-bold">
-                        <Star className="w-3 h-3 inline fill-yellow-400 text-yellow-400 mr-0.5" /> 4.9
-                      </Badge>
-                    </div>
-                  </div>
-                  <CardContent className="p-5 flex-1 flex flex-col">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-8 h-8 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg flex items-center justify-center shrink-0">
-                        <Icon className="w-4 h-4 text-[#0f2940]" />
-                      </div>
-                      <h4 className="font-bold text-[#0f2940] text-sm">{tour.name}</h4>
-                    </div>
-                    <p className="text-slate-600 text-xs leading-relaxed mb-3 flex-1 line-clamp-2">{tour.description}</p>
-                    <div className="flex flex-wrap gap-2 text-xs text-slate-500 mb-3">
-                      <span className="flex items-center"><Clock className="w-3 h-3 mr-1 text-[#2d6a8a]" /> {tour.duration}</span>
-                      <span className="flex items-center"><MapPin className="w-3 h-3 mr-1 text-[#2d6a8a]" /> {tour.meetingPoint}</span>
-                    </div>
-                    <div className="flex items-center justify-between pt-3 border-t border-slate-100 mt-auto">
-                      <div className="text-xs text-emerald-600 font-bold flex items-center">
-                        <Sparkles className="w-3 h-3 mr-1" /> Tips-based
-                      </div>
-                      {/* FIXED: Links to contact page with tour name pre-filled */}
-                      <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`}>
-                        <Button size="sm" className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-4 py-1.5 text-xs">
-                          Join Tour <ChevronRight className="w-3 h-3 ml-1" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-
-          {/* Special Request Banner */}
-          <div className="mt-8 p-4 md:p-6 bg-gradient-to-r from-blue-50 to-[#f0f7fa] border border-[#C5E0ED]/30 rounded-2xl text-center">
-            <p className="text-[#0f2940] text-sm md:text-base">
-              <strong className="text-[#2d6a8a]">Special Request?</strong> We also conduct free walking tours for 
-              <strong> Patan</strong> and <strong>Bhaktapur</strong> upon request. 
-              <Link href="/contact" className="text-[#2d6a8a] font-bold underline ml-1">Contact us</Link> to customize your experience.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-12 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white" id="why-choose">
-        <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
-            <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-2">Why Choose Our Free Tours</h2>
-            <h3 className="text-2xl md:text-4xl lg:text-5xl font-serif text-[#0f2940]">Explore Kathmandu Valley for Free</h3>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {whyChoose.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <Card key={idx} className="bg-white border-[#C5E0ED]/30 rounded-2xl overflow-hidden hover:shadow-lg transition-all text-center group">
-                  <CardContent className="p-6">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                      <Icon className="w-7 h-7 text-[#0f2940]" />
-                    </div>
-                    <h4 className="font-bold text-[#0f2940] text-sm mb-2">{item.title}</h4>
-                    <p className="text-slate-600 text-xs leading-relaxed">{item.description}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="py-12 md:py-20 bg-white" id="how-it-works">
-        <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
-            <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-2">How It Works</h2>
-            <h3 className="text-2xl md:text-4xl lg:text-5xl font-serif text-[#0f2940]">Join a Free Tour in 4 Simple Steps</h3>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-4 md:gap-6">
+        {/* Quick Stats - Minimal inline */}
+        <div className="max-w-[880px] mx-auto px-4 sm:px-5 md:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 -mt-6 sm:-mt-8 relative z-10">
             {[
-              {
-                step: "1",
-                title: "Choose Your Tour",
-                description: "Select from 5 free tour options across Kathmandu Valley.",
-                icon: Compass,
-              },
-              {
-                step: "2",
-                title: "Show Up",
-                description: "Meet your guide at the designated meeting point 5-10 minutes early.",
-                icon: MapPin,
-              },
-              {
-                step: "3",
-                title: "Explore & Learn",
-                description: "Enjoy an expert-guided tour through UNESCO World Heritage sites.",
-                icon: Landmark,
-              },
-              {
-                step: "4",
-                title: "Tip Your Guide",
-                description: "You decide the value of your guide's time and expertise.",
-                icon: Heart,
-              },
-            ].map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div key={idx} className="text-center relative">
-                  {idx < 3 && (
-                    <div className="hidden md:block absolute top-8 left-[60%] w-[40%] h-0.5 bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0]" />
-                  )}
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-full flex items-center justify-center mx-auto mb-4 relative">
-                    <span className="text-2xl font-bold text-[#0f2940]">{item.step}</span>
-                  </div>
-                  <div className="w-12 h-12 bg-[#f0f7fa] rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <Icon className="w-6 h-6 text-[#2d6a8a]" />
-                  </div>
-                  <h4 className="font-bold text-[#0f2940] text-sm mb-2">{item.title}</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed max-w-xs mx-auto">{item.description}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link href="#tours">
-              <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-8 py-3">
-                Choose Your Free Tour Now
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white" id="faq">
-        <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
-            <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-2">FAQ</h2>
-            <h3 className="text-2xl md:text-4xl lg:text-5xl font-serif text-[#0f2940]">Frequently Asked Questions</h3>
-            <p className="text-slate-600 text-sm md:text-base mt-2">Everything you need to know about our free tours.</p>
-          </div>
-
-          <div className="space-y-3">
-            {faqs.map((faq, idx) => (
-              <Card key={idx} className={`bg-white border-[#C5E0ED]/30 rounded-xl overflow-hidden transition-all ${expandedFaq === idx ? 'shadow-md shadow-[#C5E0ED]/20' : ''}`}>
-                <CardContent className="p-0">
-                  <button className="w-full flex items-center justify-between p-4 md:p-5 text-left" onClick={() => toggleFaq(idx)}>
-                    <span className="font-bold text-[#0f2940] text-sm md:text-base pr-4">{faq.question}</span>
-                    <ChevronDown className={`w-5 h-5 text-[#2d6a8a] transition-transform shrink-0 ${expandedFaq === idx ? 'rotate-180' : ''}`} />
-                  </button>
-                  {expandedFaq === idx && (
-                    <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-[#C5E0ED]/20">
-                      <p className="text-slate-600 text-sm leading-relaxed pt-3">{faq.answer}</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+              { label: "Tour Options", value: "5 Free Tours" },
+              { label: "UNESCO Sites", value: "7 Sites" },
+              { label: "Rating", value: "4.9/5 (450+)" },
+              { label: "Duration", value: "2-5 hours" },
+            ].map((stat, i) => (
+              <div key={i} className="bg-[#f7f2e9] rounded-lg p-3 text-center shadow-sm border border-[#d8cec0]/30">
+                <p className="text-[10px] text-[#66706d] uppercase tracking-wider font-semibold">{stat.label}</p>
+                <p className="text-sm font-bold text-[#14383b]">{stat.value}</p>
+              </div>
             ))}
           </div>
         </div>
-      </section>
 
-      
+        {/* Main Content - Editorial Style */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-[880px]">
+            {/* Overview */}
+            <article className="prose prose-sm sm:prose-base max-w-none">
+              <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
+                <strong className="text-[#14383b]">Free Tours Kathmandu Valley</strong> offers a unique opportunity to explore Nepal's rich cultural heritage without spending a dime. All tours are tips-based, meaning you decide the value of your guide's expertise.
+              </p>
+              <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
+                Choose from <strong className="text-[#14383b]">5 different free walking tours</strong> covering Kathmandu Valley's most iconic <strong className="text-[#14383b]">UNESCO World Heritage sites</strong>. Each tour is led by expert local guides with decades of experience and deep cultural knowledge.
+              </p>
+              <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
+                Whether you're interested in the sacred temples of Pashupatinath, the Buddhist stupas of Bouddhanath, or the medieval cities of Patan and Bhaktapur, there's a free tour waiting for you.
+              </p>
+            </article>
+
+            <div className="mt-6 p-4 sm:p-5 bg-amber-50 border-l-4 border-amber-400 text-amber-800 text-sm rounded">
+              <AlertTriangle className="w-4 h-4 inline mr-2" aria-hidden="true" />
+              <strong>Tips‑based model:</strong> you award the time and experience of the guide. No fixed fee — gratitude welcomed.
+            </div>
+          </div>
+        </section>
+
+        {/* Tour Options - Clean cards */}
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20" id="tours">
+          <div className="mx-auto max-w-[880px]">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Choose Your Free Tour</h2>
+            <p className="text-[#556363] text-sm sm:text-base mb-8">
+              Select from 5 different free walking tours covering Kathmandu Valley's most iconic UNESCO World Heritage sites.
+            </p>
+
+            <div className="space-y-4 sm:space-y-5">
+              {freeTourOptions.map((tour) => {
+                const Icon = tour.icon;
+                return (
+                  <div key={tour.id} className="bg-[#f7f2e9] rounded-lg border border-[#d8cec0]/30 overflow-hidden hover:shadow-md transition-all">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                      <div className="relative h-48 md:h-auto md:col-span-1 min-h-[180px]">
+                        <Image
+                          src={tour.image}
+                          alt={tour.name}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 25vw"
+                          loading="lazy"
+                          quality={75}
+                        />
+                        <div className="absolute top-3 left-3 flex flex-wrap gap-1">
+                          {tour.featured && (
+                            <span className="bg-[#e47a4f] text-[#f7f2e9] text-[10px] font-bold px-2 py-0.5 rounded">Most Popular</span>
+                          )}
+                          <span className="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">FREE</span>
+                        </div>
+                      </div>
+                      <div className="p-4 sm:p-5 md:p-6 md:col-span-3 flex flex-col justify-between">
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <div className="w-8 h-8 bg-[#cf6943]/10 rounded-lg flex items-center justify-center shrink-0">
+                              <Icon className="w-4 h-4 text-[#cf6943]" />
+                            </div>
+                            <h3 className="font-bold text-[#14383b] text-base sm:text-lg">{tour.name}</h3>
+                          </div>
+                          <p className="text-[#556363] text-sm leading-relaxed mb-3">{tour.description}</p>
+                          <div className="flex flex-wrap gap-3 text-xs text-[#66706d] mb-3">
+                            <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-[#cf6943]" /> {tour.duration}</span>
+                            <span className="flex items-center gap-1"><MapPin className="w-3 h-3 text-[#cf6943]" /> {tour.meetingPoint}</span>
+                            <span className="flex items-center gap-1"><Landmark className="w-3 h-3 text-[#cf6943]" /> {tour.unesco}</span>
+                          </div>
+                          <div className="flex flex-wrap gap-1.5">
+                            {tour.highlights.slice(0, 3).map((h, i) => (
+                              <span key={i} className="text-[10px] border border-[#d8cec0]/50 text-[#556363] px-2 py-0.5 rounded">{h}</span>
+                            ))}
+                            {tour.highlights.length > 3 && (
+                              <span className="text-[10px] text-[#66706d]">+{tour.highlights.length - 3} more</span>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between mt-4 pt-3 border-t border-[#d8cec0]/30">
+                          <span className="text-xs text-emerald-600 font-bold flex items-center gap-1">
+                            <Sparkles className="w-3 h-3" /> Tips-based
+                          </span>
+                          <Link href={`/contact?trek=${encodeURIComponent(tour.name)}`}>
+                            <Button size="sm" className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#f7f2e9] font-bold rounded-full px-4 py-1.5 text-xs">
+                              Join Tour <ChevronRight className="w-3 h-3 ml-1" />
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Special Request Banner */}
+            <div className="mt-6 p-4 bg-[#f7f2e9] border border-[#d8cec0]/30 rounded-lg text-center">
+              <p className="text-[#556363] text-sm">
+                <strong className="text-[#14383b]">Special Request?</strong> We also conduct free walking tours for 
+                <strong> Patan</strong> and <strong>Bhaktapur</strong> upon request. 
+                <Link href="/contact" className="text-[#cf6943] font-bold ml-1">Contact us</Link> to customize your experience.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us - Clean */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20" id="why-choose">
+          <div className="mx-auto max-w-[880px]">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-3">Why Choose Our Free Tours</h2>
+            <p className="text-[#556363] text-sm sm:text-base mb-6">Explore Kathmandu Valley with expert local guides at no cost.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {whyChoose.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div key={idx} className="flex gap-3 p-4 bg-[#f7f2e9] rounded-lg border border-[#d8cec0]/30">
+                    <div className="w-10 h-10 bg-[#cf6943]/10 rounded-lg flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 text-[#cf6943]" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#14383b] text-sm">{item.title}</h4>
+                      <p className="text-[#556363] text-sm leading-relaxed">{item.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works - Clean */}
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20" id="how-it-works">
+          <div className="mx-auto max-w-[880px]">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-3">How It Works</h2>
+            <p className="text-[#556363] text-sm sm:text-base mb-6">Join a free tour in 4 simple steps.</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {[
+                {
+                  step: "1",
+                  title: "Choose Your Tour",
+                  description: "Select from 5 free tour options.",
+                  icon: Compass,
+                },
+                {
+                  step: "2",
+                  title: "Show Up",
+                  description: "Meet your guide 5-10 minutes early.",
+                  icon: MapPin,
+                },
+                {
+                  step: "3",
+                  title: "Explore & Learn",
+                  description: "Enjoy expert-guided UNESCO tours.",
+                  icon: Landmark,
+                },
+                {
+                  step: "4",
+                  title: "Tip Your Guide",
+                  description: "You decide the value of the tour.",
+                  icon: Heart,
+                },
+              ].map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div key={idx} className="bg-[#f7f2e9] p-4 rounded-lg border border-[#d8cec0]/30 text-center">
+                    <div className="w-10 h-10 bg-[#cf6943]/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-sm font-bold text-[#cf6943]">{item.step}</span>
+                    </div>
+                    <div className="w-10 h-10 bg-[#cf6943]/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <Icon className="w-5 h-5 text-[#cf6943]" />
+                    </div>
+                    <h4 className="font-bold text-[#14383b] text-sm">{item.title}</h4>
+                    <p className="text-[#556363] text-xs">{item.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="text-center mt-6">
+              <Link href="#tours">
+                <Button className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-full px-6 py-2.5 text-sm">
+                  Choose Your Free Tour
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20" id="faq">
+          <div className="mx-auto max-w-[880px]">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-3">Frequently Asked Questions</h2>
+            <p className="text-[#556363] text-sm sm:text-base mb-6">Everything you need to know about our free tours.</p>
+            <div className="space-y-3">
+              {faqs.map((faq, idx) => (
+                <div key={idx} className="bg-[#f7f2e9] rounded-lg border border-[#d8cec0]/30 overflow-hidden">
+                  <button
+                    className="w-full flex items-center justify-between p-4 text-left"
+                    onClick={() => toggleFaq(idx)}
+                  >
+                    <span className="font-bold text-[#14383b] text-sm pr-4">{faq.question}</span>
+                    <ChevronDown className={`w-4 h-4 text-[#66706d] transition-transform shrink-0 ${expandedFaq === idx ? 'rotate-180' : ''}`} />
+                  </button>
+                  {expandedFaq === idx && (
+                    <div className="px-4 pb-4 border-t border-[#d8cec0]/30">
+                      <p className="text-[#556363] text-sm leading-relaxed pt-3">{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+       
+      </main>
     </div>
   );
 }

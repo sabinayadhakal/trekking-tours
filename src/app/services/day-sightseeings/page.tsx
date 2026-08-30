@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -10,22 +11,26 @@ import {
   Users,
   MapPin,
   ChevronRight,
+  CheckCircle,
   Star,
   ArrowRight,
   Mountain,
-  Sunrise,
   Camera,
+  Footprints,
   Building2,
   Landmark,
   Gift,
+  Award,
+  ShieldCheck,
+  Compass,
+  Heart,
+  ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 // Day sightseeing tours data
 const daySightseeings = [
-  // Free Walking Tour - Featured First
   {
     id: 1,
     name: "Free Walking Tour Kathmandu",
@@ -162,31 +167,19 @@ const daySightseeings = [
   },
 ];
 
-const getCategoryColor = (category: string) => {
-  switch (category) {
-    case "Cultural": return "bg-amber-100 text-amber-700";
-    case "Heritage": return "bg-purple-100 text-purple-700";
-    case "Spiritual": return "bg-indigo-100 text-indigo-700";
-    case "Free Tour": return "bg-emerald-100 text-emerald-700";
-    case "Sunrise View": return "bg-orange-100 text-orange-700";
-    case "Nature": return "bg-green-100 text-green-700";
-    case "Scenic": return "bg-blue-100 text-blue-700";
-    case "Summit": return "bg-purple-100 text-purple-700";
-    case "Forest": return "bg-emerald-100 text-emerald-700";
-    case "Family": return "bg-pink-100 text-pink-700";
-    default: return "bg-slate-100 text-slate-700";
-  }
-};
-
 export default function DaySightseeingsPage() {
   const router = useRouter();
+  const [expandedTour, setExpandedTour] = React.useState<number | null>(null);
 
   const handleBookNow = (tourName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(tourName)}`);
   };
 
   const featuredTour = daySightseeings.find((tour) => tour.id === 1);
-  const freeTour = daySightseeings.find((tour) => tour.isFree === true);
+
+  const toggleTour = (id: number) => {
+    setExpandedTour(expandedTour === id ? null : id);
+  };
 
   // Schema.org Product schema for sightseeing tours
   const productSchemas = daySightseeings.map((tour) => ({
@@ -236,290 +229,324 @@ export default function DaySightseeingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Schema.org structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      {productSchemas.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
+    <>
+      <Head>
+        <title>Day Sightseeing Tours in Nepal - Himkala Adventure</title>
+        <meta name="description" content="Explore Nepal's cultural heritage with our day sightseeing tours. UNESCO World Heritage sites, ancient temples, and historic cities. Book your cultural tour today!" />
+        <link rel="canonical" href="https://www.himkalaadventure.com/services/day-sightseeings" />
+        <meta property="og:title" content="Day Sightseeing Tours in Nepal - Himkala Adventure" />
+        <meta property="og:description" content="Explore Nepal's cultural heritage with our day sightseeing tours. UNESCO World Heritage sites, ancient temples, and historic cities." />
+        <meta property="og:image" content="https://www.himkalaadventure.com/images/used/nepal-temple.webp" />
+        <meta property="og:url" content="https://www.himkalaadventure.com/services/day-sightseeings" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Himkala Adventure" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Day Sightseeing Tours in Nepal - Himkala Adventure" />
+        <meta name="twitter:description" content="Explore Nepal's cultural heritage with our day sightseeing tours. UNESCO World Heritage sites, ancient temples, and historic cities." />
+        <meta name="twitter:image" content="https://www.himkalaadventure.com/images/used/nepal-temple.webp" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
 
-      {/* Page Header */}
-      <section className="pt-6 pb-12 md:pt-8 md:pb-16 bg-gradient-to-br from-[#0f2940] to-[#1a4166] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-[#C5E0ED] rounded-full blur-[120px]" />
-          <div className="absolute bottom-10 right-10 w-72 h-72 bg-[#7fb8d4] rounded-full blur-[120px]" />
-        </div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
-            <Badge className="mb-4 md:mb-6 bg-[#C5E0ED]/20 text-white backdrop-blur-md border-[#C5E0ED]/40 py-1.5 md:py-2 px-4 md:px-5 text-xs md:text-sm">
-              <Landmark className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Discover Nepal's Rich Heritage
-            </Badge>
-            <h1 className="text-2xl md:text-4xl lg:text-6xl font-serif text-white mb-4 md:mb-6">
-              Day <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4]">Sightseeing</span>
-            </h1>
-            <p className="text-sm md:text-base text-white/80 leading-relaxed mb-6 md:mb-8">
-              Immerse yourself in Nepal's rich cultural tapestry with our expertly guided day tours. 
-              From ancient temples and royal palaces to vibrant villages and UNESCO World Heritage sites.
-            </p>
-            <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-              <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Gift className="w-3 h-3 md:w-4 md:h-4 text-emerald-300" aria-hidden="true" /> Free Walking Tour
-              </div>
-              
-              <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Building2 className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> Ancient Cities
+      <div className="flex flex-col min-h-screen bg-[#f2ede4] overflow-x-hidden">
+        <main>
+          {/* Page Header - matching Day Hikes style */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Cultural Tours</div>
+                  <h1 className="mt-3 sm:mt-5 font-serif text-[clamp(2.2rem,7vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    Day <span className="text-[#cf6943]">Sightseeing</span>
+                  </h1>
+                </div>
+                <p className="max-w-full md:max-w-[280px] lg:max-w-[380px] text-sm leading-6 text-[#66706d]">
+                  Immerse yourself in Nepal's rich cultural tapestry with our expertly guided day tours. From ancient temples and royal palaces to vibrant villages and UNESCO World Heritage sites.
+                </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Featured Tour - Free Walking Tour */}
-      {featuredTour && (
-        <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white">
-          <div className="container mx-auto px-4 md:px-6">
-            <Link 
-              href={featuredTour.link}
-              className="cursor-pointer block"
-              aria-label={`View details for ${featuredTour.name}`}
-            >
-              <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-[2rem] overflow-hidden shadow-lg md:shadow-xl shadow-[#0f2940]/10 relative">
-                {featuredTour.isFree && (
-                  <div className="absolute top-4 left-4 z-10">
-                    <Badge className="bg-gradient-to-r from-emerald-400 to-emerald-600 text-white border-none font-bold px-4 py-1.5 text-sm shadow-lg">
-                      <Gift className="w-4 h-4 mr-1.5 inline" /> FREE TOUR
-                    </Badge>
-                  </div>
-                )}
-                <div className="grid lg:grid-cols-2">
-                  <div className="relative h-60 md:h-72 lg:h-auto min-h-[300px] md:min-h-[400px]">
+          {/* Featured Tour - Free Walking Tour */}
+          {featuredTour && (
+            <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+              <div className="mx-auto max-w-[1220px]">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-8 sm:gap-12 lg:gap-14 lg:items-center lg:gap-24">
+                  <div className="relative min-h-[280px] sm:min-h-[350px] md:min-h-[400px] lg:min-h-[480px] order-2 lg:order-1">
                     <Image
                       src={featuredTour.image}
-                      alt={`${featuredTour.name} - free walking tour in Kathmandu`}
+                      alt={featuredTour.name}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      priority
+                      quality={85}
                     />
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3 md:w-4 md:h-4 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {featuredTour.rating} ({featuredTour.reviews})
+                    <div className="absolute bottom-0 left-0 bg-[#e47a4f] px-4 sm:px-6 py-3 sm:py-4 md:py-5 text-[#fff8ee] sm:px-8">
+                      <div className="font-serif text-2xl sm:text-3xl md:text-4xl leading-none">🎁</div>
+                      <div className="mt-1 sm:mt-2 text-[8px] sm:text-[10px] font-bold tracking-[.15em]">FREE TOUR</div>
                     </div>
+                    {featuredTour.isFree && (
+                      <div className="absolute top-4 right-4">
+                        <Badge className="bg-emerald-500 text-white border-none font-bold px-3 py-1.5 text-xs shadow-lg">
+                          <Gift className="w-3 h-3 mr-1 inline" /> FREE
+                        </Badge>
+                      </div>
+                    )}
                   </div>
-                  <CardContent className="p-5 md:p-8 lg:p-12 flex flex-col justify-center">
-                    <Badge className="w-fit mb-3 md:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">
-                      <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3 mr-1" aria-hidden="true" /> {featuredTour.region}
-                    </Badge>
-                    <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-[#0f2940] mb-3 md:mb-4 leading-tight">
+                  <div className="order-1 lg:order-2">
+                    <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Featured Tour</div>
+                    <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,4.8rem)] leading-[1.05] sm:leading-[.96] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
                       {featuredTour.name}
                     </h2>
-                    <p className="text-slate-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
-                      {featuredTour.description}
-                    </p>
-                    <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
-                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredTour.duration}
-                      </div>
-                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredTour.difficulty}
-                      </div>
-                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredTour.groupSize} People
-                      </div>
-                      <div className="flex items-center gap-1.5 md:gap-2 text-slate-600 text-xs md:text-sm">
-                        <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {featuredTour.bestSeason}
+                    <div className="mt-4 sm:mt-7 space-y-3 sm:space-y-4 text-[#556363] text-sm leading-relaxed">
+                      <p>{featuredTour.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {featuredTour.highlights.map((h, idx) => (
+                          <span key={idx} className="text-[10px] sm:text-xs border border-[#d8cec0] text-[#556363] px-2 sm:px-3 py-0.5 sm:py-1 rounded">
+                            {h}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
-                      {featuredTour.highlights.map((h, idx) => (
-                        <span key={idx} className="text-xs bg-[#C5E0ED]/20 text-[#2d6a8a] px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
-                          {h}
-                        </span>
-                      ))}
+                    <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-[#556363]">
+                      <span className="flex items-center gap-1 sm:gap-2">
+                        <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" /> {featuredTour.duration}
+                      </span>
+                      <span className="flex items-center gap-1 sm:gap-2">
+                        <Mountain className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" /> {featuredTour.difficulty}
+                      </span>
+                      <span className="flex items-center gap-1 sm:gap-2">
+                        <Users className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" /> {featuredTour.groupSize}
+                      </span>
                     </div>
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 md:pt-6 border-t border-slate-100 gap-4">
-                      <div>
-                        <span className="text-2xl md:text-3xl font-bold text-emerald-600">FREE</span>
-                        <span className="text-slate-500 text-sm ml-2">/person</span>
+                    <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-4 sm:gap-6">
+                      <div className="flex items-baseline gap-1 sm:gap-2">
+                        <span className="font-bold text-emerald-600 text-xl sm:text-2xl">FREE</span>
+                        <span className="text-[#556363] text-xs">/person</span>
                       </div>
                       <Button 
-                        className="bg-gradient-to-r from-emerald-500 to-emerald-700 hover:from-emerald-600 hover:to-emerald-800 text-white font-bold rounded-full px-6 md:px-8 py-2 md:py-3 text-sm md:text-base shadow-lg shadow-emerald-500/30"
+                        className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-none px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm"
                         onClick={(e) => {
                           e.preventDefault();
                           handleBookNow(featuredTour.name);
                         }}
-                        aria-label={`Book ${featuredTour.name} now`}
                       >
-                        Book Now - Free!
-                        <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+                        Book Now - Free! <ArrowRight className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       </Button>
                     </div>
-                  </CardContent>
-                </div>
-              </Card>
-            </Link>
-          </div>
-        </section>
-      )}
-
-      {/* All Tours Grid */}
-      <section className="py-8 md:py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="mb-6 md:mb-12">
-            <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-2 md:mb-4">All Tours</h2>
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <h3 className="text-xl md:text-3xl lg:text-4xl font-serif text-[#0f2940]">Cultural & Heritage Sightseeing</h3>
-              <p className="text-slate-500 text-sm">
-                Showing <span className="font-bold text-[#0f2940]">{daySightseeings.length}</span> tours
-              </p>
-            </div>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-            {daySightseeings.map((tour) => (
-              <Link 
-                key={tour.id} 
-                href={tour.link}
-                className="cursor-pointer block"
-                aria-label={`View details for ${tour.name}`}
-              >
-                <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden h-full hover:shadow-lg md:hover:shadow-xl hover:shadow-[#C5E0ED]/20 transition-all duration-300 group">
-                  <div className="relative h-40 md:h-52 overflow-hidden">
-                    <Image
-                      src={tour.image}
-                      alt={`${tour.name} - ${tour.category} sightseeing tour in ${tour.region}`}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <Badge className={`border-none text-xs font-medium ${getCategoryColor(tour.category)}`}>
-                        {tour.isFree ? <><Gift className="w-3 h-3 inline mr-1" /> FREE</> : tour.category}
-                      </Badge>
-                    </div>
-                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-[#0f2940] px-2 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {tour.rating}
-                    </div>
-                    {tour.featured && !tour.isFree && (
-                      <div className="absolute bottom-3 left-3">
-                        <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none text-xs font-bold">
-                          Featured
-                        </Badge>
-                      </div>
-                    )}
-                    {tour.isFree && (
-                      <div className="absolute bottom-3 left-3">
-                        <Badge className="bg-gradient-to-r from-emerald-400 to-emerald-600 text-white border-none text-xs font-bold">
-                          <Gift className="w-3 h-3 inline mr-1" /> Free Tour
-                        </Badge>
-                      </div>
-                    )}
                   </div>
-                  <CardContent className="p-4 md:p-6">
-                    <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
-                      {tour.region}
-                    </Badge>
-                    <h4 className="text-base md:text-lg font-bold text-[#0f2940] mb-1 md:mb-2 group-hover:text-[#2d6a8a] transition-colors line-clamp-1">
-                      {tour.name}
-                    </h4>
-                    <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
-                      {tour.description}
-                    </p>
-                    <div className="grid grid-cols-2 gap-1.5 md:gap-2 mb-3 md:mb-4 text-xs md:text-sm">
-                      <div className="flex items-center gap-1.5 text-slate-500">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {tour.duration}
-                      </div>
-                      <div className="flex items-center gap-1.5 text-slate-500">
-                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> {tour.groupSize}
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-slate-100">
-                      <div>
-                        {tour.isFree ? (
-                          <span className="text-lg md:text-xl font-bold text-emerald-600">FREE</span>
-                        ) : (
-                          <>
-                            <span className="text-slate-400 text-xs line-through">${tour.originalPrice}</span>
-                            <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${tour.price}</span>
-                          </>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* All Tours Grid - matching Day Hikes style */}
+          <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">All Tours</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    Cultural & <span className="text-[#cf6943]">Heritage Sightseeing</span>
+                  </h2>
+                </div>
+                <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                  {daySightseeings.length} tours available. From ancient temples to living heritage.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
+                {daySightseeings.map((tour) => (
+                  <Link
+                    key={tour.id}
+                    href={tour.link}
+                    className="group block"
+                  >
+                    <div className="bg-[#f7f2e9] border border-[#d8cec0] overflow-hidden hover:shadow-md transition-all duration-300 rounded-lg h-full">
+                      <div className="relative h-48 overflow-hidden">
+                        <Image
+                          src={tour.image}
+                          alt={tour.name}
+                          fill
+                          className="object-cover opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                          sizes="(max-width: 1024px) 33vw, 33vw"
+                          quality={85}
+                        />
+                        <div className="absolute top-4 right-4 bg-[#14383b]/90 text-[#f7f2e9] px-3 py-1.5 text-sm font-bold flex items-center gap-1">
+                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" /> {tour.rating}
+                        </div>
+                        <div className="absolute top-4 left-4 bg-[#cf6943] text-[#fff8ee] px-3 py-1.5 text-xs font-bold tracking-wide">
+                          {tour.isFree ? "FREE" : tour.category}
+                        </div>
+                        {tour.isFree && (
+                          <div className="absolute bottom-4 left-4">
+                            <Badge className="bg-emerald-500 text-white border-none text-[9px] font-bold px-2 py-0.5">
+                              <Gift className="w-2.5 h-2.5 mr-1 inline" /> Free Tour
+                            </Badge>
+                          </div>
                         )}
                       </div>
-                      <Button 
-                        size="sm" 
-                        variant="ghost" 
-                        className={`font-bold rounded-full text-xs md:text-sm ${tour.isFree ? 'text-emerald-600 hover:bg-emerald-50' : 'text-[#2d6a8a] hover:bg-[#C5E0ED]/20'}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleBookNow(tour.name);
-                        }}
-                        aria-label={`Book ${tour.name}`}
-                      >
-                        Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" aria-hidden="true" />
-                      </Button>
+                      <div className="p-6">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs font-medium text-[#66706d]">{tour.region}</span>
+                        </div>
+                        <h3 className="text-lg font-bold text-[#14383b] mb-1">{tour.name}</h3>
+                        <p className="text-[#556363] text-sm mb-4 leading-relaxed line-clamp-2">{tour.description}</p>
+                        <div className="grid grid-cols-2 gap-2 mb-4">
+                          <div className="flex items-center gap-2 text-[#556363] text-sm">
+                            <Clock className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {tour.duration}
+                          </div>
+                          <div className="flex items-center gap-2 text-[#556363] text-sm">
+                            <Users className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {tour.groupSize}
+                          </div>
+                          <div className="flex items-center gap-2 text-[#556363] text-sm">
+                            <MapPin className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {tour.region}
+                          </div>
+                          <div className="flex items-center gap-2 text-[#556363] text-sm">
+                            <Calendar className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {tour.bestSeason}
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-1.5 mb-4">
+                          {tour.highlights.slice(0, 2).map((h) => (
+                            <span key={h} className="text-xs border border-[#d8cec0] text-[#556363] px-2.5 py-1 rounded">
+                              {h}
+                            </span>
+                          ))}
+                          {tour.highlights.length > 2 && (
+                            <span className="text-xs text-[#66706d]">+{tour.highlights.length - 2} more</span>
+                          )}
+                        </div>
+                        <div className="flex items-center justify-between pt-3 border-t border-[#d8cec0]/30">
+                          <div>
+                            {tour.isFree ? (
+                              <span className="font-bold text-emerald-600 text-lg">FREE</span>
+                            ) : (
+                              <>
+                                <span className="text-[#66706d] text-xs line-through">${tour.originalPrice}</span>
+                                <span className="font-bold text-[#cf6943] text-lg ml-1">${tour.price}</span>
+                              </>
+                            )}
+                          </div>
+                          <Button 
+                            size="sm" 
+                            className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-full min-h-[44px] px-4 text-xs"
+                            onClick={(e) => { e.preventDefault(); handleBookNow(tour.name); }}
+                          >
+                            Book Now
+                          </Button>
+                        </div>
+                      </div>
                     </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
 
-      {/* Info Section */}
-      <section className="py-8 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div>
-              <h2 className="text-xs md:text-sm font-bold text-[#2d6a8a] uppercase tracking-[0.25em] mb-3 md:mb-4">Why Choose Our Tours</h2>
-              <h3 className="text-xl md:text-3xl lg:text-4xl font-serif text-[#0f2940] mb-4 md:mb-6">
-                Expert Guides, Timeless Stories
-              </h3>
-              <p className="text-slate-600 leading-relaxed mb-6 md:mb-8 text-sm md:text-base">
-                Our knowledgeable guides bring Nepal's rich history and culture to life. From ancient temples 
-                to hidden courtyards, discover the stories behind every monument and tradition.
-              </p>
-              <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
+          {/* Why Choose Us - matching Day Hikes style */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Why Choose Us</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    Expert Guides, <span className="text-[#cf6943]">Timeless Stories</span>
+                  </h2>
+                </div>
+                <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                  Certified guides, small groups, and unforgettable cultural experiences.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
                 {[
-                  "Certified Cultural & Heritage Guides",
-                  "Small Groups for Personalized Experience",
-                  "Round-trip Transportation Included",
-                  "Flexible Itineraries & Multiple Language Options",
-                  "Free Walking Tours Available Daily",
+                  { icon: <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Certified Guides", text: "All tours led by government-certified cultural guides with deep local knowledge." },
+                  { icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Small Groups", text: "Intimate group sizes for a personalized and immersive experience." },
+                  { icon: <Compass className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Curated Routes", text: "Carefully selected heritage sites with the best stories and insights." },
+                  { icon: <Heart className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Local Knowledge", text: "Insider tips and cultural insights from our expert local guides." },
+                  { icon: <Camera className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Photo Friendly", text: "Perfect spots for capturing Nepal's stunning architecture and culture." },
+                  { icon: <Clock className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Flexible Scheduling", text: "Morning, afternoon, and full-day options to suit your schedule." },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3 text-slate-700">
-                    <div className="w-5 h-5 md:w-6 md:h-6 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                      <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-[#0f2940]" aria-hidden="true" />
+                  <div key={i} className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                    <div className="p-5 sm:p-6 md:p-8">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded flex items-center justify-center text-[#f7f2e9] mb-4 sm:mb-6">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#14383b] mb-2 sm:mb-3">{item.title}</h3>
+                      <p className="text-xs sm:text-sm text-[#556363] leading-relaxed">{item.text}</p>
                     </div>
-                    <span className="text-sm md:text-base">{item}</span>
                   </div>
                 ))}
               </div>
-              <Link href="/contact">
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] hover:from-[#1a4166] hover:to-[#0f2940] text-white font-bold rounded-full px-6 md:px-8 py-3 md:py-4 text-sm md:text-base" aria-label="Contact us to plan your sightseeing tour">
-                  Plan Your Tour
-                </Button>
-              </Link>
             </div>
-            <div className="relative h-60 md:h-[450px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl order-first lg:order-last">
-              <Image
-                src="/images/used/nepal-temple.webp"
-                alt="Historic temple and palace in Kathmandu Valley with intricate Newari architecture"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                loading="lazy"
-              />
+          </section>
+
+         {/* What's Included - clean list format matching Bhutan page */}
+<section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+  <div className="mx-auto max-w-[1220px]">
+    <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+      <div>
+        <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Included</div>
+        <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+          What's <span className="text-[#cf6943]">Included</span>
+        </h2>
+      </div>
+      <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+        Everything you need for a perfect sightseeing experience.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-12">
+      <div className="space-y-4 sm:space-y-5">
+        {[
+          { title: "Licensed Guide", text: "Government-certified cultural guides with deep local knowledge and storytelling expertise." },
+          { title: "Transportation", text: "Round-trip transport from Kathmandu to all tour destinations." },
+          { title: "Entry Fees", text: "All UNESCO World Heritage site entry fees included in the tour price." },
+          { title: "Expert Insights", text: "Historical, cultural, and architectural knowledge shared throughout the tour." },
+        ].map((item) => (
+          <div key={item.title} className="flex items-start gap-3 sm:gap-4">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#f7f2e9] rounded-lg flex items-center justify-center text-[#cf6943] flex-shrink-0 border border-[#d8cec0]">
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+            </div>
+            <div>
+              <h3 className="font-bold text-[#14383b] text-sm sm:text-base mb-0.5 sm:mb-1">{item.title}</h3>
+              <p className="text-[#556363] text-sm leading-relaxed">{item.text}</p>
             </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+
+      <div className="bg-[#f7f2e9] p-5 sm:p-6 md:p-8 rounded-lg border border-[#d8cec0]">
+        <h3 className="font-bold text-[#14383b] text-lg sm:text-xl mb-4">Additional Amenities</h3>
+        <ul className="space-y-3">
+          {[
+            <><strong>Flexible Timing:</strong> Choose between morning, afternoon, or full-day departures</>,
+            <><strong>Photo Stops:</strong> Access to the best photo opportunities at each heritage site</>,
+            <><strong>Small Groups:</strong> Intimate groups of 2-15 people for a personalized experience</>,
+            <><strong>Free Tour Option:</strong> Free walking tour available in Kathmandu (tips-based)</>,
+            <><strong>Cultural Insights:</strong> Local stories and traditions shared at each location</>,
+            <><strong>Comfortable Pace:</strong> Tours designed for easy walking with regular rest stops</>,
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-2 sm:gap-3">
+              <CheckCircle className="w-4 h-4 text-[#cf6943] mt-0.5 flex-shrink-0" />
+              <span className="text-[#556363] text-sm sm:text-base">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
+
+    {/* CTA */}
+    <div className="mt-8 sm:mt-12 text-center">
+      <Link href="/contact">
+        <Button className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-none px-8 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm">
+          Plan Your Sightseeing Tour Today
+        </Button>
+      </Link>
+    </div>
+  </div>
+</section>
+        </main>
+      </div>
+    </>
   );
 }

@@ -327,46 +327,41 @@ export default function BlogPage() {
           </div>
         )}
 
-        {/* Page Header - Same style as main page hero section */}
-        <section className="bg-[#0d2427] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden border-b border-[#f7f2e9]/10">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-10 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-[#e47a4f] rounded-full blur-[120px]" />
-            <div className="absolute bottom-10 right-10 w-48 sm:w-72 h-48 sm:h-72 bg-[#f0a17f] rounded-full blur-[120px]" />
-          </div>
-          
-          <div className="mx-auto max-w-[1220px] relative z-10">
+        {/* Page Header - Changed to match About page color (light) */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto max-w-[1220px]">
             <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-5">
                   <div className="h-px w-6 sm:w-9 bg-[#e47a4f]" />
-                  <span className="text-[9px] sm:text-xs font-semibold tracking-[.08em] text-[#f0a17f]">Stories & Insights</span>
+                  <span className="text-[9px] sm:text-xs font-semibold tracking-[.08em] text-[#cf6943]">Stories & Insights</span>
                 </div>
                 
-                <h1 className="font-serif text-[clamp(2.2rem,7vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#f7f2e9]">
-                  The <span className="text-[#f0a17f]">Himalayan</span> Journal
+                <h1 className="font-serif text-[clamp(2.2rem,7vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  The <span className="text-[#cf6943]">Himalayan</span> Journal
                 </h1>
               </div>
-              <p className="max-w-full md:max-w-[380px] text-sm leading-6 text-[#eee8dc]">
+              <p className="max-w-full md:max-w-[380px] text-sm leading-6 text-[#66706d]">
                 Expert guides, trekking tips, cultural insights, and inspiring stories from the roof of the world.
               </p>
             </div>
 
-            {/* Search Bar - Same style as main page */}
+            {/* Search Bar */}
             <div className="mt-6 sm:mt-8 max-w-lg">
               <div className="relative">
-                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#f7f2e9]/40" />
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#66706d]/40" />
                 <Input
                   type="search"
                   placeholder="Search articles..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 sm:pl-12 pr-9 h-10 sm:h-11 md:h-12 bg-[#f7f2e9]/5 border-[#f7f2e9]/20 text-[#f7f2e9] placeholder:text-[#f7f2e9]/40 rounded-none focus:bg-[#f7f2e9]/10 focus:border-[#e47a4f] text-sm sm:text-base transition-colors"
+                  className="w-full pl-9 sm:pl-12 pr-9 h-10 sm:h-11 md:h-12 bg-[#f7f2e9] border-[#d8cec0]/50 text-[#14383b] placeholder:text-[#66706d]/50 rounded-lg focus:border-[#cf6943] focus:ring-[#cf6943]/20 text-sm sm:text-base transition-colors"
                   aria-label="Search blog articles"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-[#f7f2e9]/40 hover:text-[#f7f2e9] active:text-[#f7f2e9] touch-manipulation"
+                    className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-[#66706d]/40 hover:text-[#66706d] active:text-[#66706d] touch-manipulation"
                     aria-label="Clear search"
                   >
                     <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -385,7 +380,9 @@ export default function BlogPage() {
                 <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Featured Story</div>
                 <div className="mt-2 sm:mt-3 h-px w-16 sm:w-20 bg-[#cf6943]" />
               </div>
-              
+              <Link href="/blog" className="flex items-center gap-2 border-b border-[#cf6943] pb-1 text-[10px] sm:text-[11px] font-bold tracking-[.14em] text-[#cf6943] active:text-[#b85a38]">
+                VIEW ALL <ArrowRight size={12} className="sm:w-[14px] sm:h-[14px]" />
+              </Link>
             </div>
 
             <Link href={`/blog/${featuredPost.slug}`} className="block active:scale-[0.99] transition-transform">

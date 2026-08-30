@@ -10,7 +10,6 @@ import {
   Clock,
   Users,
   MapPin,
-  ArrowLeft,
   Share2,
   Facebook,
   Twitter,
@@ -31,8 +30,6 @@ import {
   Snowflake,
   Map,
   Backpack,
-  Menu,
-  X,
   Flame,
   Landmark,
   Church,
@@ -86,8 +83,6 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 const itinerary = [
   {
@@ -183,17 +178,16 @@ const gallery = [
     alt: "Potala Palace in Lhasa, Tibet - iconic UNESCO World Heritage site and former winter palace of the Dalai Lamas",
     caption: "Potala Palace - Iconic Landmark of Lhasa",
   },
-   {
+  {
     src: "/images/used/tibet-lake-1.webp",
     alt: "Stacked stones and prayer flags beside Namtso Lake, Tibet - sacred pilgrimage site",
     caption: "Stones Stacked Besides the Lake",
   },
-   {
+  {
     src: "/images/used/tibet-lake-2.webp",
     alt: "Tibetan yak grazing near Namtso Lake with mountain backdrop",
     caption: "Yak beside the lake",
   },
-  
 ];
 
 const namtsoFacts = [
@@ -252,9 +246,7 @@ const altitudeInfo = [
 export default function TibetTourWithNamtsoLakePage() {
   const [copied, setCopied] = React.useState(false);
   const [expandedDays, setExpandedDays] = React.useState<number[]>([1, 2, 3, 4]);
-  const [showMobileNav, setShowMobileNav] = React.useState(false);
 
-  // Tour name constant for auto-fill functionality
   const tourName = "5-Day Tibet Tour with Namtso Lake";
   const canonicalUrl = "https://www.himkalaadventure.com/tours/tibet-namtso-lake-tour";
   const pageTitle = "5-Day Tibet Tour with Namtso Lake - Sacred Lake Adventure";
@@ -269,112 +261,18 @@ export default function TibetTourWithNamtsoLakePage() {
 
   const handleShare = (platform: string) => {
     const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent("5-Day Tibet Tour with Namtso Lake - Himkala Adventure");
-    let shareUrl = "";
     if (platform === "facebook") {
-      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank", "noopener,noreferrer");
     } else if (platform === "twitter") {
-      shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+      const shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${encodeURIComponent("5-Day Tibet Tour with Namtso Lake - Himkala Adventure")}`;
+      window.open(shareUrl, "_blank", "noopener,noreferrer");
     }
-    window.open(shareUrl, "_blank", "noopener,noreferrer");
   };
 
   const toggleDay = (day: number) => {
     setExpandedDays((prev) =>
       prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
     );
-  };
-
-  // Schema.org Organization schema
-  const orgSchema = {
-    "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    "name": "Himkala Adventure Pvt. Ltd.",
-    "description": "Expert-guided Tibet tours including Namtso Lake. Explore Lhasa and sacred lakes with certified guides.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Thamel, Lekhnath Marga",
-      "addressLocality": "Kathmandu",
-      "addressCountry": "Nepal"
-    },
-    "telephone": "+977 9841376470",
-    "email": "info@himkalaadventure.com",
-    "url": "https://www.himkalaadventure.com",
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 27.7172,
-      "longitude": 85.3240
-    }
-  };
-
-  // Schema.org Product/Tour schema
-  const tourSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "5-Day Tibet Tour with Namtso Lake",
-    "description": pageDescription,
-    "image": imageUrl,
-    "url": canonicalUrl,
-    "brand": {
-      "@type": "Organization",
-      "name": "Himkala Adventure Pvt. Ltd."
-    },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "USD",
-      "price": "1150",
-      "priceValidUntil": "2026-12-31",
-      "availability": "https://schema.org/InStock",
-      "url": canonicalUrl,
-      "validFrom": "2024-01-01"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "52"
-    },
-    "additionalProperty": [
-      {
-        "@type": "PropertyValue",
-        "name": "Max Altitude",
-        "value": "5,190m"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Namtso Lake Altitude",
-        "value": "4,718m"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Duration",
-        "value": "5 Days / 4 Nights"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Difficulty",
-        "value": "Moderate"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Region",
-        "value": "Tibet"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Best Season",
-        "value": "Jun-Oct"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Transport",
-        "value": "4WD Land Cruiser"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Highlights",
-        "value": "Namtso Lake, Potala Palace, Jokhang Temple, Largen La Pass, Tashi Dor Island"
-      }
-    ]
   };
 
   return (
@@ -396,707 +294,490 @@ export default function TibetTourWithNamtsoLakePage() {
         <meta name="twitter:image" content={imageUrl} />
         <meta name="twitter:site" content="@himkalanepal" />
         <meta name="twitter:creator" content="@himkalanepal" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(tourSchema) }}
-        />
       </Head>
 
-    <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Mobile Navigation Drawer */}
-      {showMobileNav && (
-        <div className="lg:hidden fixed inset-0 z-50">
-          <div 
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setShowMobileNav(false)}
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto">
-            <div className="p-6">
+      <div className="flex flex-col min-h-screen bg-[#f2ede4] overflow-x-hidden">
+        <main>
+          {/* Header - Free Walking Tour Style */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+            <div className="mx-auto max-w-[880px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="flex items-center gap-2 text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">
+                    <span className="h-px w-6 sm:w-8 bg-[#cf6943]" />
+                    <span>Tibet Sacred Lake Tour</span>
+                  </div>
+                  <h1 className="mt-3 sm:mt-5 font-serif text-[clamp(2.5rem,8vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    5 Days <br />
+                    <span className="text-[#cf6943]">Tibet Tour with Namtso Lake</span>
+                  </h1>
+                </div>
+                <div className="max-w-full md:max-w-[280px]">
+                  <p className="text-sm leading-6 text-[#66706d]">
+                    Experience the best of Tibet in just 5 days! Explore the sacred sites of Lhasa and journey to 
+                    breathtaking Namtso Lake - the highest saltwater lake in the world, nestled in the Himalayas.
+                  </p>
+                  <div className="mt-3 flex flex-wrap items-center gap-2">
+                    <span className="bg-[#cf6943] text-[#fff8ee] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full">
+                      <Waves className="w-3 h-3 inline mr-1" aria-hidden="true" />
+                      Namtso Lake
+                    </span>
+                    <span className="bg-[#f7f2e9] text-[#14383b] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full border border-[#d8cec0]/30">
+                      4,718m
+                    </span>
+                    <span className="bg-[#f7f2e9] text-[#14383b] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full border border-[#d8cec0]/30">
+                      <Landmark className="w-3 h-3 inline mr-1" aria-hidden="true" />
+                      Potala Palace
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Feature Image - Free Walking Tour Style */}
+          <div className="max-w-[880px] mx-auto px-4 sm:px-5 md:px-8">
+            <figure className="relative h-[220px] sm:h-[300px] md:h-[380px] lg:h-[420px] rounded-lg overflow-hidden bg-[#14383b]">
+              <Image
+                src="/images/used/tibet-2.webp"
+                alt="Namtso Lake in Tibet - sacred heavenly lake at 4,718m with turquoise waters and mountain backdrop"
+                fill
+                className="object-cover opacity-90"
+                priority
+                quality={85}
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 p-4 sm:p-5 md:p-6">
+                <span className="bg-[#e47a4f] text-[#fff8ee] px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold tracking-wide rounded">
+                  Best Season: Jun-Oct
+                </span>
+              </div>
+              <div className="absolute top-4 right-4 flex flex-wrap gap-2">
+                <span className="bg-[#14383b]/90 text-[#f7f2e9] px-3 py-1.5 text-[9px] sm:text-[10px] font-bold tracking-wide rounded">
+                  $1,150 / person
+                </span>
+              </div>
+            </figure>
+          </div>
+
+          {/* Quick Stats - Free Walking Tour Style */}
+          <div className="max-w-[880px] mx-auto px-4 sm:px-5 md:px-8">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 -mt-6 sm:-mt-8 relative z-10">
+              {[
+                { label: "Duration", value: "5 Days / 4 Nights" },
+                { label: "Group Size", value: "2-12 people" },
+                { label: "Max Altitude", value: "5,190m" },
+                { label: "Distance", value: "~500km" },
+              ].map((stat, i) => (
+                <div key={i} className="bg-[#f7f2e9] rounded-lg p-3 text-center shadow-sm border border-[#d8cec0]/30">
+                  <p className="text-[10px] text-[#66706d] uppercase tracking-wider font-semibold">{stat.label}</p>
+                  <p className="text-sm font-bold text-[#14383b]">{stat.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Overview - Free Walking Tour Style */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-[880px]">
+              <article className="prose prose-sm sm:prose-base max-w-none">
+                <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
+                  The <strong className="text-[#14383b]">5-Day Tibet Tour with Namtso Lake</strong> offers the 
+                  perfect introduction to the spiritual and natural wonders of Tibet. This carefully crafted 
+                  itinerary combines the cultural treasures of Lhasa with an unforgettable journey to 
+                  <strong className="text-[#14383b]"> Namtso Lake (4,718m)</strong> - the highest saltwater lake 
+                  in the world and one of Tibet's three sacred lakes.
+                </p>
+                <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
+                  You'll explore the iconic <strong className="text-[#14383b]">Potala Palace</strong> and 
+                  <strong className="text-[#14383b]"> Jokhang Temple</strong>, walk the pilgrim circuit at Barkhor, 
+                  and witness living Tibetan Buddhism. Then venture north across the Tibetan plateau to discover 
+                  the breathtaking turquoise waters of Namtso, surrounded by the snow-capped Nyenchen Tanglha 
+                  mountains. Watch the sunset and sunrise over the sacred lake, visit meditation caves on Tashi 
+                  Dor Island, and experience the stark beauty of high-altitude Tibet.
+                </p>
+                <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
+                  With expert local guides, comfortable transport, and careful acclimatization, this tour offers 
+                  an unforgettable taste of Tibet's unique culture and landscapes. Perfect for travelers with limited 
+                  time who don't want to miss the absolute highlights of the 'Roof of the World'.
+                </p>
+              </article>
+
+              <div className="mt-6 p-4 sm:p-5 bg-amber-50 border-l-4 border-amber-400 text-amber-800 text-sm rounded">
+                <AlertTriangle className="w-4 h-4 inline mr-2" aria-hidden="true" />
+                <strong>Important:</strong> Travel insurance is MANDATORY and must cover high altitude up to 5,200m. 
+                You'll spend a night at 4,718m at Namtso - this is very high. Inform your guide immediately if you 
+                feel unwell. Road access is only open June-October.
+              </div>
+            </div>
+          </section>
+
+          {/* Highlights - Free Walking Tour Style */}
+          <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-[880px]">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Tour Highlights</h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  "Visit sacred Namtso Lake (4,718m) - highest saltwater lake in the world",
+                  "Cross Largen La Pass at 5,190m with stunning mountain views",
+                  "Explore iconic Potala Palace and Jokhang Temple in Lhasa",
+                  "Walk the Barkhor pilgrim circuit with devout Tibetans",
+                  "Witness sunset and sunrise over turquoise Namtso Lake",
+                  "Visit Tashi Dor Island with ancient meditation caves",
+                  "Experience Tibetan nomad culture on the drive to Namtso",
+                  "Photograph the Nyenchen Tanglha mountain range",
+                  "All Tibet and Namtso permits arranged in advance",
+                  "Perfect 5-day itinerary for time-limited travelers",
+                ].map((highlight, i) => (
+                  <li key={i} className="flex items-start gap-3 text-[#14383b] text-sm sm:text-base">
+                    <span className="text-[#cf6943] mt-1">✦</span>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          {/* Best Season - Free Walking Tour Style */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-[880px]">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Best Time to Visit</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-[#f7f2e9] p-5 rounded-lg border border-[#d8cec0]/30">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Flower2 className="w-5 h-5 text-[#cf6943]" aria-hidden="true" />
+                    <h3 className="font-semibold text-[#14383b]">Summer (Jun - Aug)</h3>
+                  </div>
+                  <p className="text-[#556363] text-sm leading-relaxed">
+                    Warmest temperatures, green pastures, and the lake is ice-free. Best chance for clear skies 
+                    and comfortable overnight at the lake. Occasional afternoon showers.
+                  </p>
+                  <span className="inline-block mt-2 bg-green-100 text-green-700 px-3 py-1 text-[10px] font-bold tracking-wide rounded-full">Excellent</span>
+                </div>
+                <div className="bg-[#f7f2e9] p-5 rounded-lg border border-[#d8cec0]/30">
+                  <div className="flex items-center gap-2 mb-2">
+                    <SunriseIcon className="w-5 h-5 text-[#cf6943]" aria-hidden="true" />
+                    <h3 className="font-semibold text-[#14383b]">Autumn (Sep - Oct)</h3>
+                  </div>
+                  <p className="text-[#556363] text-sm leading-relaxed">
+                    The most popular season with crystal-clear skies, stable weather, and spectacular colors. 
+                    Perfect for photography. Cold nights but stunning days.
+                  </p>
+                  <span className="inline-block mt-2 bg-green-100 text-green-700 px-3 py-1 text-[10px] font-bold tracking-wide rounded-full">Best Season</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Namtso Facts - Free Walking Tour Style */}
+          <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-[880px]">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Namtso Lake Facts</h2>
+              <div className="bg-[#f7f2e9] p-5 rounded-lg border border-[#d8cec0]/30">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {namtsoFacts.map((item, index) => (
+                    <div key={index} className="flex items-start gap-2 border-b border-[#d8cec0]/30 last:border-0 pb-2 last:pb-0">
+                      <span className="font-semibold text-[#14383b] text-sm w-28 shrink-0">{item.fact}:</span>
+                      <span className="text-[#556363] text-sm">{item.detail}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Namtso Highlight - Free Walking Tour Style */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-[880px]">
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200/50">
+                <h3 className="text-xl font-serif text-[#14383b] mb-3">The Heavenly Lake - Namtso</h3>
+                <p className="text-[#556363] text-sm leading-relaxed mb-4">
+                  Namtso, meaning 'Heavenly Lake' in Tibetan, is one of the most sacred sites in Tibet. At 4,718m, 
+                  it's the highest saltwater lake in the world. The lake is particularly famous for its incredible 
+                  color changes throughout the day - from deep turquoise to brilliant blue to golden at sunset.
+                </p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div className="bg-white/80 p-3 rounded-lg text-center">
+                    <span className="text-[#0f2940] font-bold text-xs block">Altitude</span>
+                    <p className="text-[#556363] text-sm">4,718m / 15,479ft</p>
+                  </div>
+                  <div className="bg-white/80 p-3 rounded-lg text-center">
+                    <span className="text-[#0f2940] font-bold text-xs block">Area</span>
+                    <p className="text-[#556363] text-sm">1,920 sq km</p>
+                  </div>
+                  <div className="bg-white/80 p-3 rounded-lg text-center">
+                    <span className="text-[#0f2940] font-bold text-xs block">Sacred Site</span>
+                    <p className="text-[#556363] text-sm">Tashi Dor Island</p>
+                  </div>
+                  <div className="bg-white/80 p-3 rounded-lg text-center">
+                    <span className="text-[#0f2940] font-bold text-xs block">Highest Pass</span>
+                    <p className="text-[#556363] text-sm">Largen La (5,190m)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Altitude Guide - Free Walking Tour Style */}
+          <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-[880px]">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Altitude Guide</h2>
+              <div className="bg-[#f7f2e9] p-5 rounded-lg border border-[#d8cec0]/30">
+                <div className="space-y-2">
+                  {altitudeInfo.map((item, index) => (
+                    <div key={index} className="flex flex-wrap items-center gap-2 border-b border-[#d8cec0]/30 last:border-0 pb-2 last:pb-0">
+                      <span className="font-semibold text-[#14383b] text-sm w-24">{item.location}</span>
+                      <span className="text-[#cf6943] font-medium text-sm w-20">{item.altitude}</span>
+                      {item.overnight && (
+                        <span className="text-[#66706d] text-xs">{item.overnight}</span>
+                      )}
+                      <span className="text-[#556363] text-xs flex-1">{item.notes}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 bg-amber-50 p-3 rounded-lg border-l-4 border-amber-400">
+                  <p className="text-amber-700 text-xs flex items-start gap-2">
+                    <Info className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
+                    <span><strong>Note:</strong> Namtso overnight at 4,718m is very high - inform guide if you feel unwell.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Itinerary - Free Walking Tour Style (Accordion) */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-[880px]">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg text-[#0f2940]">Quick Navigation</h3>
-                <button 
-                  onClick={() => setShowMobileNav(false)}
-                  className="p-2 rounded-lg hover:bg-slate-100 min-h-[44px] min-w-[44px]"
-                  aria-label="Close navigation menu"
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b]">Day-by-Day Itinerary</h2>
+                <button
+                  className="text-[#cf6943] text-xs font-semibold hover:underline"
+                  onClick={() =>
+                    setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
+                  }
                 >
-                  <X className="w-5 h-5" aria-hidden="true" />
+                  {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
                 </button>
               </div>
-              
-              <div className="space-y-4">
-                <a href="#overview" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Overview
-                </a>
-                <a href="#highlights" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Highlights
-                </a>
-                <a href="#namtso-facts" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Namtso Facts
-                </a>
-                <a href="#altitude" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Altitude Guide
-                </a>
-                <a href="#itinerary" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Itinerary
-                </a>
-                <a href="#includes" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  What's Included
-                </a>
-                <a href="#gallery" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Gallery
-                </a>
-                <a href="#faq" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  FAQ
-                </a>
-              </div>
 
-              <div className="mt-8 pt-6 border-t border-slate-200">
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
-                    onClick={() => handleShare("facebook")}
-                    aria-label="Share Tibet Tour with Namtso Lake on Facebook"
-                  >
-                    <Facebook className="w-4 h-4" aria-hidden="true" />
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
-                    onClick={() => handleShare("twitter")}
-                    aria-label="Share Tibet Tour with Namtso Lake on Twitter"
-                  >
-                    <Twitter className="w-4 h-4" aria-hidden="true" />
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
-                    onClick={handleCopyLink}
-                    aria-label="Copy Tibet Tour with Namtso Lake link to clipboard"
-                  >
-                    {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Hero Section */}
-      <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/used/tibet-2.webp"
-            alt="Namtso Lake in Tibet - sacred heavenly lake at 4,718m with turquoise waters and mountain backdrop"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
-        </div>
-
-        <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
-          <div className="max-w-5xl mx-auto text-center w-full">
-            <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
-              <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MapPin className="w-3 h-3 mr-1" aria-hidden="true" /> Tibet Autonomous Region
-              </Badge>
-              <Badge className="bg-blue-100 text-blue-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <Waves className="w-3 h-3 mr-1" aria-hidden="true" /> Namtso Lake
-              </Badge>
-              <Badge className="bg-amber-100 text-amber-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MountainSnow className="w-3 h-3 mr-1" aria-hidden="true" /> 4,718m
-              </Badge>
-            </div>
-            
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-3 md:mb-6 tracking-tight">
-              5 DAYS <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
-                TIBET TOUR WITH NAMTSO LAKE
-              </span>
-            </h1>
-            
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 max-w-2xl md:max-w-3xl mx-auto leading-relaxed font-light px-2">
-              Experience the best of Tibet in just 5 days! Explore the sacred sites of Lhasa and journey to 
-              breathtaking Namtso Lake - the highest saltwater lake in the world, nestled in the Himalayas.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="py-4 md:py-12">
-        <div className="container mx-auto px-3 md:px-6 max-w-full overflow-hidden">
-          {/* Mobile Sticky Book Now Bar */}
-          <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-slate-400 line-through">$1,350</div>
-                <div className="text-lg font-bold text-[#0f2940]">$1,150</div>
-              </div>
-              <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
-                <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]" aria-label={`Book ${tourName} now`}>
-                  <Heart className="w-3 h-3 mr-1" aria-hidden="true" /> Book Now
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Desktop Layout - Grid with sticky sidebar */}
-          <div className="lg:grid lg:grid-cols-12 lg:gap-4 lg:gap-10">
-            {/* Sidebar - Sticky on desktop */}
-            <aside className="hidden lg:block lg:col-span-4">
-              <div className="sticky top-24 space-y-4 md:space-y-6">
-                {/* Price Card */}
-                <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-4 md:p-6">
-                    <div className="text-center mb-4 md:mb-6">
-                      <span className="text-white/50 text-sm line-through">$1,350</span>
-                      <div className="text-3xl md:text-4xl font-bold text-white mt-1">$1,150</div>
-                      <span className="text-white/60 text-sm">per person</span>
-                      <Badge className="ml-2 bg-green-500/20 text-green-300 border-none text-[8px] md:text-xs">Save $200</Badge>
-                    </div>
-
-                    <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
-                        <span>5 Days / 4 Nights</span>
-                      </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
-                        <span>Best: May-Oct</span>
-                      </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
-                        <span>Group Size: 2-12</span>
-                      </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Car className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
-                        <span>4WD Land Cruiser</span>
-                      </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <MountainSnow className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
-                        <span>Max Altitude: 5,190m</span>
-                      </div>
-                    </div>
-
-                    {/* Book Now Button */}
-                    <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
-                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-sm md:text-base" aria-label={`Book ${tourName}`}>
-                        <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Book This Tour
-                      </Button>
-                    </Link>
-                    
-                    {/* WhatsApp Now Button */}
-                    <a 
-                      href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${tourName}.`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer nofollow"
-                      aria-label="Inquire about Tibet Tour with Namtso Lake on WhatsApp"
-                    >
-                      <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-sm md:text-base">
-                        <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> WhatsApp Now
-                      </Button>
-                    </a>
-                  </CardContent>
-                </Card>
-
-                {/* Quick Facts */}
-                <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                      <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Quick Facts
-                    </h3>
-                    <div className="space-y-2 text-[10px] md:text-sm">
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Start/End Point</span>
-                        <span className="font-medium text-[#0f2940]">Lhasa</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Total Distance</span>
-                        <span className="font-medium text-[#0f2940]">~500km</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Highest Point</span>
-                        <span className="font-medium text-[#0f2940]">Largen La Pass (5,190m)</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Tour Duration</span>
-                        <span className="font-medium text-[#0f2940]">5 Days / 4 Nights</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Difficulty</span>
-                        <span className="font-medium text-[#0f2940]">Moderate (high altitude)</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2">
-                        <span className="text-slate-500">Permits</span>
-                        <span className="font-medium text-[#0f2940]">Tibet Permit + Namtso Permit</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Namtso Facts Card */}
-                <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                      <Waves className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Namtso Lake Facts
-                    </h3>
-                    <div className="space-y-2 text-[10px] md:text-sm">
-                      {namtsoFacts.map((item, index) => (
-                        <div key={index} className="flex items-start gap-2 border-b border-[#C5E0ED]/20 last:border-0 pb-1.5 last:pb-0">
-                          <span className="font-medium text-[#0f2940] w-24 text-[10px]">{item.fact}:</span>
-                          <span className="text-slate-600 text-[10px] flex-1">{item.detail}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Altitude Guide Card */}
-                <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                      <MountainSnow className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Altitude Guide
-                    </h3>
-                    <div className="space-y-2 text-[10px] md:text-sm">
-                      {altitudeInfo.map((item, index) => (
-                        <div key={index} className="flex items-start gap-2 border-b border-[#C5E0ED]/20 last:border-0 pb-1.5 last:pb-0">
-                          <div className="w-20 font-medium text-[#0f2940] text-[10px]">{item.location}</div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2">
-                              <span className="text-slate-600 text-[10px]">{item.altitude}</span>
-                              {item.overnight && (
-                                <span className="text-slate-400 text-[8px]">{item.overnight}</span>
-                              )}
-                            </div>
-                            <p className="text-slate-500 text-[8px]">{item.notes}</p>
-                          </div>
-                        </div>
-                      ))}
-                      <div className="mt-2 bg-amber-50 p-2 rounded-lg">
-                        <p className="text-amber-700 text-[8px] flex items-start gap-1">
-                          <Info className="w-2.5 h-2.5 shrink-0 mt-0.5" aria-hidden="true" />
-                          <span><strong>Note:</strong> Namtso overnight at 4,718m is very high - inform guide if you feel unwell.</span>
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Share */}
-                <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                      <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Share
-                    </h3>
-                    <div className="flex gap-2">
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                        onClick={() => handleShare("facebook")}
-                        aria-label="Share Tibet Tour with Namtso Lake on Facebook"
-                      >
-                        <Facebook className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                        onClick={() => handleShare("twitter")}
-                        aria-label="Share Tibet Tour with Namtso Lake on Twitter"
-                      >
-                        <Twitter className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                        onClick={handleCopyLink}
-                        aria-label="Copy Tibet Tour with Namtso Lake link to clipboard"
-                      >
-                        {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />}
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </aside>
-
-            {/* Main Content */}
-            <article className="lg:col-span-8 w-full overflow-hidden mt-6 lg:mt-0">
-              {/* Mobile Share Buttons */}
-              <div className="lg:hidden flex gap-2 mb-4">
-                <Button
-                  size="sm"
-                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={() => handleShare("facebook")}
-                  aria-label="Share on Facebook"
-                >
-                  <Facebook className="w-3 h-3 mr-1" aria-hidden="true" /> Share
-                </Button>
-                <Button
-                  size="sm"
-                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={() => handleShare("twitter")}
-                  aria-label="Share on Twitter"
-                >
-                  <Twitter className="w-3 h-3 mr-1" aria-hidden="true" /> Tweet
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={handleCopyLink}
-                  aria-label="Copy link to clipboard"
-                >
-                  {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
-                </Button>
-              </div>
-
-              {/* Overview */}
-              <section className="mb-6 md:mb-12" id="overview">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Overview of Tibet Tour with Namtso Lake</h2>
-                <div className="prose prose-slate max-w-none">
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    The <strong>5-Day Tibet Tour with Namtso Lake</strong> offers the perfect introduction to the 
-                    spiritual and natural wonders of Tibet. This carefully crafted itinerary combines the cultural 
-                    treasures of Lhasa with an unforgettable journey to <strong>Namtso Lake (4,718m)</strong> - the 
-                    highest saltwater lake in the world and one of Tibet's three sacred lakes.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    You'll explore the iconic <strong>Potala Palace</strong> and <strong>Jokhang Temple</strong>, 
-                    walk the pilgrim circuit at Barkhor, and witness living Tibetan Buddhism. Then venture north 
-                    across the Tibetan plateau to discover the breathtaking turquoise waters of Namtso, surrounded 
-                    by the snow-capped Nyenchen Tanglha mountains. Watch the sunset and sunrise over the sacred lake, 
-                    visit meditation caves on Tashi Dor Island, and experience the stark beauty of high-altitude Tibet.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    With expert local guides, comfortable transport, and careful acclimatization, this tour offers 
-                    an unforgettable taste of Tibet's unique culture and landscapes. Perfect for travelers with limited 
-                    time who don't want to miss the absolute highlights of the 'Roof of the World'.
-                  </p>
-                </div>
-              </section>
-
-              {/* Highlights */}
-              <section className="mb-6 md:mb-12" id="highlights">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Tour Highlights</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
-                  {[
-                    "Visit sacred Namtso Lake (4,718m) - highest saltwater lake in the world",
-                    "Cross Largen La Pass at 5,190m with stunning mountain views",
-                    "Explore iconic Potala Palace and Jokhang Temple in Lhasa",
-                    "Walk the Barkhor pilgrim circuit with devout Tibetans",
-                    "Witness sunset and sunrise over turquoise Namtso Lake",
-                    "Visit Tashi Dor Island with ancient meditation caves",
-                    "Experience Tibetan nomad culture on the drive to Namtso",
-                    "Photograph the Nyenchen Tanglha mountain range",
-                    "All Tibet and Namtso permits arranged in advance",
-                    "Perfect 5-day itinerary for time-limited travelers",
-                  ].map((highlight, i) => (
+              <div className="space-y-2">
+                {itinerary.map((day) => {
+                  const isExpanded = expandedDays.includes(day.day);
+                  return (
                     <div
-                      key={i}
-                      className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
-                    >
-                      <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] fill-[#C5E0ED] shrink-0" aria-hidden="true" />
-                      <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* Best Season */}
-              <section className="mb-6 md:mb-12">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Best Time to Visit</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
-                  <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-5">
-                      <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <Flower2 className="w-4 h-4 md:w-5 md:h-5 text-green-600" aria-hidden="true" />
-                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Summer (Jun - Aug)</h3>
-                      </div>
-                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        Warmest temperatures, green pastures, and the lake is ice-free. Best chance for clear skies 
-                        and comfortable overnight at the lake. Occasional afternoon showers.
-                      </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Excellent</Badge>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-5">
-                      <div className="flex items-center gap-2 mb-1 md:mb-3">
-                        <SunriseIcon className="w-4 h-4 md:w-5 md:h-5 text-orange-500" aria-hidden="true" />
-                        <h3 className="font-bold text-[#0f2940] text-xs md:text-base">Autumn (Sep - Oct)</h3>
-                      </div>
-                      <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-2 md:mb-3">
-                        The most popular season with crystal-clear skies, stable weather, and spectacular colors. 
-                        Perfect for photography. Cold nights but stunning days.
-                      </p>
-                      <Badge className="bg-green-100 text-green-700 border-none text-[8px] md:text-xs">Best Season</Badge>
-                    </CardContent>
-                  </Card>
-                </div>
-              </section>
-
-              {/* Namtso Highlight Section */}
-              <section className="mb-6 md:mb-12">
-                <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200/50 rounded-lg md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-3 md:p-5">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3 className="font-bold text-[#0f2940] text-sm md:text-lg">The Heavenly Lake - Namtso</h3>
-                    </div>
-                    <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-3">
-                      Namtso, meaning 'Heavenly Lake' in Tibetan, is one of the most sacred sites in Tibet. At 4,718m, 
-                      it's the highest saltwater lake in the world. The lake is particularly famous for its incredible 
-                      color changes throughout the day - from deep turquoise to brilliant blue to golden at sunset.
-                    </p>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
-                      <div className="bg-white/80 p-2 rounded-lg">
-                        <span className="text-[#0f2940] font-bold text-[10px] md:text-xs">Altitude</span>
-                        <p className="text-slate-600 text-[8px] md:text-[10px]">4,718m / 15,479ft</p>
-                      </div>
-                      <div className="bg-white/80 p-2 rounded-lg">
-                        <span className="text-[#0f2940] font-bold text-[10px] md:text-xs">Area</span>
-                        <p className="text-slate-600 text-[8px] md:text-[10px]">1,920 sq km</p>
-                      </div>
-                      <div className="bg-white/80 p-2 rounded-lg">
-                        <span className="text-[#0f2940] font-bold text-[10px] md:text-xs">Sacred Site</span>
-                        <p className="text-slate-600 text-[8px] md:text-[10px]">Tashi Dor Island</p>
-                      </div>
-                      <div className="bg-white/80 p-2 rounded-lg">
-                        <span className="text-[#0f2940] font-bold text-[10px] md:text-xs">Highest Pass</span>
-                        <p className="text-slate-600 text-[8px] md:text-[10px]">Largen La (5,190m)</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </section>
-
-              {/* Detailed Itinerary */}
-              <section className="mb-6 md:mb-12" id="itinerary">
-                <div className="flex items-center justify-between mb-3 md:mb-6">
-                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Day-by-Day Itinerary</h2>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4 min-h-[44px]"
-                    onClick={() =>
-                      setExpandedDays(expandedDays.length === itinerary.length ? [] : itinerary.map((d) => d.day))
-                    }
-                    aria-label={expandedDays.length === itinerary.length ? "Collapse all itinerary days" : "Expand all itinerary days"}
-                  >
-                    {expandedDays.length === itinerary.length ? "Collapse All" : "Expand All"}
-                  </Button>
-                </div>
-
-                <div className="space-y-2 md:space-y-3">
-                  {itinerary.map((day) => (
-                    <Card
                       key={day.day}
-                      className={`bg-white border-[#C5E0ED]/30 rounded-lg md:rounded-xl overflow-hidden transition-all ${
-                        expandedDays.includes(day.day) ? "shadow-md md:shadow-lg shadow-[#C5E0ED]/20" : "hover:shadow-sm"
-                      }`}
+                      className="bg-[#f7f2e9] rounded-lg border border-[#d8cec0]/30 overflow-hidden"
                     >
-                      <CardContent className="p-0">
-                        <button
-                          className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left min-h-[44px]"
-                          onClick={() => toggleDay(day.day)}
-                          aria-expanded={expandedDays.includes(day.day)}
-                          aria-label={expandedDays.includes(day.day) ? `Collapse day ${day.day}` : `Expand day ${day.day}`}
-                        >
-                          <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
-                            <span className="text-[8px] md:text-[10px] font-bold text-[#0f2940] uppercase">Day</span>
-                            <span className="text-base md:text-xl font-bold text-[#0f2940] leading-none">{day.day}</span>
+                      <button
+                        className="w-full flex items-center gap-4 p-4 text-left"
+                        onClick={() => toggleDay(day.day)}
+                      >
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#cf6943]/10 rounded-lg flex flex-col items-center justify-center shrink-0">
+                          <span className="text-[8px] font-bold text-[#cf6943] uppercase">Day</span>
+                          <span className="text-base sm:text-lg font-bold text-[#14383b] leading-none">{day.day}</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <span className="font-medium text-[#14383b] text-sm sm:text-base block truncate">{day.title}</span>
+                          <div className="flex flex-wrap gap-2 text-[10px] sm:text-xs text-[#66706d] mt-0.5">
+                            <span>{day.altitude}</span>
+                            <span>·</span>
+                            <span>{day.distance}</span>
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{day.title}</h3>
-                            <div className="flex flex-wrap gap-1 md:gap-3 text-xs text-slate-500 mt-0.5 md:mt-1">
-                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.altitude}
+                        </div>
+                        <ChevronDown
+                          className={`w-4 h-4 text-[#66706d] transition-transform shrink-0 ${
+                            isExpanded ? "rotate-180" : ""
+                          }`}
+                          aria-hidden="true"
+                        />
+                      </button>
+
+                      {isExpanded && (
+                        <div className="px-4 pb-4 pt-0">
+                          <p className="text-[#556363] text-sm leading-relaxed mb-4">{day.description}</p>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+                            <div className="flex items-center gap-2 text-xs text-[#556363] bg-[#f2ede4] rounded-lg p-2">
+                              <Landmark className="w-3 h-3 text-[#cf6943]" aria-hidden="true" />
+                              <span><strong>Overnight:</strong> {day.overnight}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-xs text-[#556363] bg-[#f2ede4] rounded-lg p-2">
+                              <Utensils className="w-3 h-3 text-[#cf6943]" aria-hidden="true" />
+                              <span><strong>Meals:</strong> {day.meals}</span>
+                            </div>
+                          </div>
+
+                          <div className="flex flex-wrap gap-1">
+                            {day.highlights.map((h, i) => (
+                              <span key={i} className="bg-[#cf6943]/10 text-[#cf6943] text-[10px] font-medium px-2 py-0.5 rounded">
+                                {h}
                               </span>
-                              <span className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
-                                <Car className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> {day.distance}
-                              </span>
-                            </div>
+                            ))}
                           </div>
-                          <ChevronDown
-                            className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
-                              expandedDays.includes(day.day) ? "rotate-180" : ""
-                            }`}
-                            aria-hidden="true"
-                          />
-                        </button>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
 
-                        {expandedDays.includes(day.day) && (
-                          <div className="px-2 md:px-4 pb-2 md:pb-4 border-t border-[#C5E0ED]/20">
-                            <p className="text-slate-600 text-xs md:text-sm leading-relaxed pt-2 md:pt-4 mb-2 md:mb-4">{day.description}</p>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-4">
-                              <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Landmark className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
-                                <span className="text-[10px] md:text-xs"><strong>Overnight:</strong> {day.overnight}</span>
-                              </div>
-                              <div className="flex items-center gap-2 text-xs text-slate-600 bg-[#f8fbfc] rounded-lg p-2 md:p-3">
-                                <Utensils className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" />
-                                <span className="text-[10px] md:text-xs"><strong>Meals:</strong> {day.meals}</span>
-                              </div>
-                            </div>
-
-                            <div className="flex flex-wrap gap-1 md:gap-2">
-                              {day.highlights.map((h, i) => (
-                                <Badge key={i} variant="secondary" className="bg-[#C5E0ED]/20 text-[#2d6a8a] text-[8px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1">
-                                  {h}
-                                </Badge>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </CardContent>
-                    </Card>
-                  ))}
+          {/* Includes / Excludes - Free Walking Tour Style */}
+          <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-[880px]">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">What's Included</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="bg-[#f7f2e9] p-5 rounded-lg border border-[#d8cec0]/30">
+                  <h3 className="font-semibold text-[#14383b] text-sm mb-4 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-600" aria-hidden="true" />
+                    Cost Includes
+                  </h3>
+                  <ul className="space-y-1.5">
+                    {includes.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-[#556363] text-sm">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </section>
-
-              {/* Includes / Excludes */}
-              <section className="mb-6 md:mb-12" id="includes">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">What's Included</h2>
-                <div className="grid md:grid-cols-2 gap-3 md:gap-6">
-                  <Card className="bg-green-50/50 border-green-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-6">
-                      <h3 className="font-bold text-green-800 mb-2 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Includes
-                      </h3>
-                      <ul className="space-y-1 md:space-y-2">
-                        {includes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
-                            <span className="leading-tight">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-red-50/50 border-red-200/50 rounded-lg md:rounded-2xl">
-                    <CardContent className="p-3 md:p-6">
-                      <h3 className="font-bold text-red-800 mb-2 md:mb-4 flex items-center gap-2 text-sm md:text-base">
-                        <XCircle className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" /> Cost Excludes
-                      </h3>
-                      <ul className="space-y-1 md:space-y-2">
-                        {excludes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-[10px] md:text-sm text-slate-600">
-                            <XCircle className="w-2.5 h-2.5 md:w-4 md:h-4 text-red-500 shrink-0 mt-0.5" aria-hidden="true" />
-                            <span className="leading-tight">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </section>
-
-              {/* Important Note */}
-              <div className="bg-amber-50 border border-amber-200 rounded-lg md:rounded-2xl p-3 md:p-6 flex gap-2 md:gap-4 mb-6 md:mb-12">
-                <AlertTriangle className="w-4 h-4 md:w-6 md:h-6 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
-                <div>
-                  <h3 className="font-bold text-amber-800 mb-1 md:mb-2 text-xs md:text-base">Important Information - Namtso Lake Tour</h3>
-                  <ul className="text-amber-700 text-[10px] md:text-sm leading-relaxed space-y-1 md:space-y-2">
-                    <li>• <strong>Travel insurance is MANDATORY</strong> and must cover high altitude up to 5,200m.</li>
-                    <li>• <strong>Altitude Acclimatization:</strong> You'll spend a night at 4,718m at Namtso. This is very high - some people experience significant altitude symptoms. Inform your guide immediately if you feel unwell.</li>
-                    <li>• <strong>Namtso Lake access:</strong> The lake is accessible only from June to October. Winter and spring (November-May) the road is often closed due to snow. Check seasonal availability before booking.</li>
-                    <li>• <strong>Accommodation at Namtso:</strong> Basic guesthouse with shared facilities. No luxury - this is part of the experience. Bring warm sleeping bag if you have one.</li>
-                    <li>• <strong>Passport and Permits:</strong> You need a valid passport (6+ months) and China Visa. We arrange all Tibet permits including special Namtso permit. Submit passport copy at least 20 days before travel.</li>
-                    <li>• <strong>What to pack for Namtso:</strong> Warm layers (temperatures drop below freezing at night even in summer), warm hat, gloves, and a good sleeping bag if you have one.</li>
+                <div className="bg-[#f7f2e9] p-5 rounded-lg border border-[#d8cec0]/30">
+                  <h3 className="font-semibold text-[#14383b] text-sm mb-4 flex items-center gap-2">
+                    <XCircle className="w-4 h-4 text-red-500" aria-hidden="true" />
+                    Cost Excludes
+                  </h3>
+                  <ul className="space-y-1.5">
+                    {excludes.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-[#556363] text-sm">
+                        <XCircle className="w-3.5 h-3.5 text-red-500 shrink-0 mt-0.5" aria-hidden="true" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
+            </div>
+          </section>
 
-              {/* Photo Gallery */}
-              <section className="mb-6 md:mb-12" id="gallery">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Photo Gallery</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
-                  {gallery.map((image, i) => (
-                    <div
-                      key={i}
-                      className="relative h-24 md:h-48 rounded-lg md:rounded-xl overflow-hidden group cursor-pointer"
-                    >
-                      <Image
-                        src={image.src}
-                        alt={`${image.alt} - Tibet Tour with Namtso Lake experience`}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        sizes="(max-width: 768px) 50vw, 33vw"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="absolute bottom-0 left-0 right-0 p-1 md:p-3">
-                          <p className="text-white text-[8px] md:text-xs font-medium truncate">{image.caption}</p>
-                        </div>
+          {/* Gallery - Free Walking Tour Style */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-[880px]">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-3">Photo Gallery</h2>
+              <p className="text-[#556363] text-sm sm:text-base mb-6">
+                A visual journey from the sacred sites of Lhasa to the breathtaking beauty of Namtso Lake.
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {gallery.map((image, i) => (
+                  <div key={i} className="relative h-28 sm:h-40 rounded-lg overflow-hidden bg-[#d8cec0]">
+                    <Image 
+                      src={image.src} 
+                      alt={image.alt} 
+                      fill 
+                      className="object-cover"
+                      loading="lazy"
+                      sizes="(max-width: 640px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity">
+                      <div className="absolute bottom-0 left-0 right-0 p-2">
+                        <p className="text-white text-[10px] font-medium truncate">{image.caption}</p>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </section>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
 
-              {/* FAQ Section */}
-              <section className="mb-6 md:mb-12" id="faq">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Frequently Asked Questions</h2>
-                <div className="space-y-2 md:space-y-4">
-                  {[
-                    {
-                      q: "What is special about Namtso Lake?",
-                      a: "Namtso Lake is one of the three sacred lakes of Tibet and the highest saltwater lake in the world at 4,718m. Its name means 'Heavenly Lake' in Tibetan. The lake is famous for its stunning turquoise color, dramatic setting against the Nyenchen Tanglha mountains, and its sacred Tashi Dor Island with ancient meditation caves. For Tibetans, circumambulating the lake brings spiritual merit.",
-                    },
-                    {
-                      q: "Is it possible to visit Namtso Lake year-round?",
-                      a: "No. The road to Namtso is typically open only from June to October. In winter and spring (November-May), heavy snow blocks the mountain passes and access is not possible. Even in summer, weather can cause temporary closures. We always check conditions before departure.",
-                    },
-                    {
-                      q: "How difficult is the overnight stay at Namtso?",
-                      a: "The main challenge is the altitude - 4,718m is very high. Many people experience difficulty sleeping, headache, or shortness of breath. The accommodation is basic (simple guesthouse with shared facilities, no heating). Come prepared with warm clothes and a good attitude. The incredible sunset and sunrise make it all worthwhile!",
-                    },
-                    {
-                      q: "What permits do I need for this tour?",
-                      a: "You need: 1) China Visa (from your local Chinese embassy), 2) Tibet Travel Permit, and 3) Special Namtso permit. We arrange all Tibet permits for you - we need your passport copy at least 20 days before travel. China Visa must be obtained separately, but we provide support documents.",
-                    },
-                    {
-                      q: "How will the altitude affect me at Namtso?",
-                      a: "Most people feel some effects at 4,718m - headache, shortness of breath, difficulty sleeping are common. Our itinerary includes 2 nights in Lhasa for acclimatization before going to Namtso, which helps. We carry oxygen in the vehicle, and our guides are trained in altitude sickness recognition. Inform your guide immediately if you feel unwell.",
-                    },
-                    {
-                      q: "What is the accommodation like at Namtso?",
-                      a: "Accommodation at Namtso is basic - simple guesthouses with shared bathrooms (no attached bathrooms), no heating, and limited electricity. Rooms have beds with blankets, but it gets very cold at night. We recommend bringing a warm sleeping bag. This rustic experience is part of the adventure and allows you to experience the lake at sunset and sunrise.",
-                    },
-                    {
-                      q: "Can I visit Tashi Dor Island?",
-                      a: "Yes! Tashi Dor is a peninsula (not actually an island) with a small monastery and numerous meditation caves used by hermits for centuries. You can walk along the shore and explore the area. The rock formations and prayer flags make for excellent photography. Your guide will explain the sacred significance.",
-                    },
-                    {
-                      q: "What should I pack specifically for Namtso?",
-                      a: "Essentials: warm layers (temperatures drop below freezing at night even in summer), thermal underwear, fleece, down jacket, warm hat, gloves, thick socks, and a good sleeping bag (rated to at least -5°C). Daytime is warmer but windy. Sun protection is essential at this altitude. Your guide will provide a detailed packing list after booking.",
-                    },
-                  ].map((faq, i) => (
-                    <Card key={i} className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-lg md:rounded-xl">
-                      <CardContent className="p-2 md:p-5">
-                        <h3 className="font-bold text-[#0f2940] mb-1 md:mb-2 text-xs md:text-base">{faq.q}</h3>
-                        <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed">{faq.a}</p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </section>
-            </article>
-          </div>
-        </div>
-      </section>
-    </div>
+          {/* FAQ - Free Walking Tour Style */}
+          <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-[880px]">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Frequently Asked Questions</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {[
+                  {
+                    q: "What is special about Namtso Lake?",
+                    a: "Namtso Lake is one of the three sacred lakes of Tibet and the highest saltwater lake in the world at 4,718m. Its name means 'Heavenly Lake' in Tibetan. The lake is famous for its stunning turquoise color, dramatic setting against the Nyenchen Tanglha mountains, and its sacred Tashi Dor Island with ancient meditation caves. For Tibetans, circumambulating the lake brings spiritual merit.",
+                  },
+                  {
+                    q: "Is it possible to visit Namtso Lake year-round?",
+                    a: "No. The road to Namtso is typically open only from June to October. In winter and spring (November-May), heavy snow blocks the mountain passes and access is not possible. Even in summer, weather can cause temporary closures. We always check conditions before departure.",
+                  },
+                  {
+                    q: "How difficult is the overnight stay at Namtso?",
+                    a: "The main challenge is the altitude - 4,718m is very high. Many people experience difficulty sleeping, headache, or shortness of breath. The accommodation is basic (simple guesthouse with shared facilities, no heating). Come prepared with warm clothes and a good attitude. The incredible sunset and sunrise make it all worthwhile!",
+                  },
+                  {
+                    q: "What permits do I need for this tour?",
+                    a: "You need: 1) China Visa (from your local Chinese embassy), 2) Tibet Travel Permit, and 3) Special Namtso permit. We arrange all Tibet permits for you - we need your passport copy at least 20 days before travel. China Visa must be obtained separately, but we provide support documents.",
+                  },
+                  {
+                    q: "How will the altitude affect me at Namtso?",
+                    a: "Most people feel some effects at 4,718m - headache, shortness of breath, difficulty sleeping are common. Our itinerary includes 2 nights in Lhasa for acclimatization before going to Namtso, which helps. We carry oxygen in the vehicle, and our guides are trained in altitude sickness recognition. Inform your guide immediately if you feel unwell.",
+                  },
+                  {
+                    q: "What is the accommodation like at Namtso?",
+                    a: "Accommodation at Namtso is basic - simple guesthouses with shared bathrooms (no attached bathrooms), no heating, and limited electricity. Rooms have beds with blankets, but it gets very cold at night. We recommend bringing a warm sleeping bag. This rustic experience is part of the adventure and allows you to experience the lake at sunset and sunrise.",
+                  },
+                  {
+                    q: "Can I visit Tashi Dor Island?",
+                    a: "Yes! Tashi Dor is a peninsula (not actually an island) with a small monastery and numerous meditation caves used by hermits for centuries. You can walk along the shore and explore the area. The rock formations and prayer flags make for excellent photography. Your guide will explain the sacred significance.",
+                  },
+                  {
+                    q: "What should I pack specifically for Namtso?",
+                    a: "Essentials: warm layers (temperatures drop below freezing at night even in summer), thermal underwear, fleece, down jacket, warm hat, gloves, thick socks, and a good sleeping bag (rated to at least -5°C). Daytime is warmer but windy. Sun protection is essential at this altitude. Your guide will provide a detailed packing list after booking.",
+                  },
+                ].map((faq, i) => (
+                  <div key={i}>
+                    <h4 className="font-semibold text-[#14383b] text-sm mb-1">{faq.q}</h4>
+                    <p className="text-[#556363] text-sm leading-relaxed">{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Book Now / CTA - Free Walking Tour Style */}
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-[880px] text-center">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-3">Ready for the Heavenly Lake Adventure?</h2>
+              <p className="text-[#556363] text-sm sm:text-base mb-6 max-w-2xl mx-auto">
+                Book your 5-Day Tibet Tour with Namtso Lake today and experience the sacred beauty of Tibet's highest lake.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
+                  <Button className="bg-[#cf6943] hover:bg-[#b85a38] text-white font-bold rounded-full px-6 py-2 text-sm">
+                    <Heart className="w-4 h-4 mr-2" aria-hidden="true" />
+                    Book This Tour
+                  </Button>
+                </Link>
+                <a 
+                  href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${tourName}.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                >
+                  <Button className="bg-green-600 hover:bg-green-700 text-white font-bold rounded-full px-6 py-2 text-sm">
+                    <MessageCircle className="w-4 h-4 mr-2" aria-hidden="true" />
+                    WhatsApp Now
+                  </Button>
+                </a>
+                <Button
+                  variant="outline"
+                  className="border-[#cf6943] text-[#cf6943] hover:bg-[#cf6943]/10 rounded-full px-6 py-2 text-sm"
+                  onClick={() => {
+                    const url = encodeURIComponent(window.location.href);
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank", "noopener,noreferrer");
+                  }}
+                >
+                  <Share2 className="w-4 h-4 mr-2" aria-hidden="true" />
+                  Share
+                </Button>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
     </>
   );
 }

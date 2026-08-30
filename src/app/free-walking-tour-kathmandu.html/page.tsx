@@ -4,60 +4,37 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Mountain,
-  Calendar,
   Clock,
   Users,
   MapPin,
-  ArrowLeft,
   Share2,
   Facebook,
-  Twitter,
   Copy,
   Check,
-  ChevronDown,
   Star,
-  TrendingUp,
-  Tent,
-  Utensils,
   Heart,
-  Camera,
   AlertTriangle,
   CheckCircle2,
-  XCircle,
-  Phone,
-  Sunrise,
-  Snowflake,
-  Map,
-  Backpack,
-  Menu,
-  X,
   Landmark,
-  Compass,
-  Droplets,
-  Award,
-  TreePine,
-  Home,
-  MountainSnow,
-  Eye,
-  Sunset,
-  Droplet,
-  Building2,
   Coffee,
   ShoppingBag,
-  Scroll,
-  Sparkles,
+  MountainSnow,
   Church,
-  History,
-  Palette,
   Footprints,
   MessageCircle,
+  Calendar,
+  Compass,
+  Camera,
+  Shield,
+  Globe,
+  ChevronDown,
+  Sun,
+  Thermometer,
+  Phone,
+  Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
-// Free walking tour data based on the description
 const tourStops = [
   {
     name: "Kathe Swoyambhu",
@@ -85,13 +62,6 @@ const tourStops = [
   },
 ];
 
-const reviews = {
-  total: 350,
-  excellent: 97,
-  veryGood: 86,
-  quote: "Previous visitors have come from a wide range of countries and have included both 'first timers' and seasoned travellers to Nepal.",
-};
-
 const highlightsList = [
   "Hidden relics of Kathmandu's Malla Golden Age",
   "Tibetan Buddhist monastery & craft shops",
@@ -101,12 +71,96 @@ const highlightsList = [
   "Sacred Bishnumati river & local cremation ghats",
 ];
 
+const reviews = [
+  {
+    name: "Eline F.",
+    country: "Switzerland",
+    date: "April 2026",
+    text: "Great walking tour in Kathmandu! Sabinaya is extremely knowledgeable about his country and any question you would have about his culture, and has great recommendations! He made the tour really fun and interesting, I definitely recommend it!",
+  },
+  {
+    name: "Alessia C.",
+    country: "Italy",
+    date: "April 2026",
+    text: "We joined the free walking tour in the morning with Sabinaya, and it was absolutely amazing. We were fortunate to have a private experience with just the two of us, which made it easy to have continuous conversations with our guide. Sabinaya shared wonderful stories and fascinating insights about every place we visited. The tour lasted nearly five hours and took us through many interesting spots, all brought to life through his engaging storytelling.",
+  },
+  {
+    name: "Isabella R.",
+    country: "United Kingdom",
+    date: "March 2026",
+    text: "Shiva was a fantastic tour guide! He is enthusiastic and shared his knowledge with us freely. Highly recommend this walking tour!!",
+  },
+];
+
+const faqs = [
+  {
+    q: "Is the tour really free?",
+    a: "Yes! The Free Walking Tour Kathmandu is tips-based — you decide what to give the guide based on your experience. There is no fixed fee to join."
+  },
+  {
+    q: "Do I need to book in advance?",
+a: "Yes, advance reservation is required so our guide can prepare for the tour. Please book your spot at least 24 hours in advance. On tour day, simply meet us at the Garden of Dreams entrance 5–10 minutes before your scheduled start time (9:00 AM or 2:00 PM daily)"
+  },
+  {
+    q: "How long does the tour last?",
+    a: "The tour typically takes 4-5 hours, covering approximately 4-5 kilometers through Kathmandu's historic centre."
+  },
+  {
+    q: "What should I bring?",
+    a: "Comfortable walking shoes, water, sun protection, and small cash for refreshments and the Monkey Temple entrance fee (NPR 200)."
+  },
+  {
+    q: "Is it suitable for children?",
+    a: "Absolutely! The tour is family-friendly and suitable for all ages. Children often enjoy the monkeys at Swoyambhunath."
+  },
+  {
+    q: "What happens if it rains?",
+    a: "The tour operates rain or shine. In case of heavy rain, your guide will adjust the route to include more covered areas."
+  },
+  {
+    q: "How many people join the tour?",
+    a: "Group sizes vary from 2-3 people to 15-20 during peak season. The intimate size allows for personal attention and questions throughout the walk."
+  },
+  {
+    q: "Can I leave the tour early?",
+    a: "Yes, you're free to leave at any point. The guide can direct you back to Thamel or advise on transportation from wherever you are."
+  },
+];
+
+const galleryImages = [
+  "/images/used/beads.webp",
+  "/images/used/ancient_temple.webp",
+  "/images/used/buddhist_temple-1.webp",
+  "/images/used/cremation-1.webp",
+  "/images/used/indrachowk.webp",
+  "/images/used/kathesimbu.webp",
+  "/images/used/monkey_temple.webp",
+  "/images/used/teeth.webp",
+];
+
+const nearbyAttractions = [
+  {
+    name: "Garden of Dreams",
+    description: "Historic neo-classical garden with beautiful pavilions and fountains — your meeting point.",
+  },
+  {
+    name: "Thamel District",
+    description: "Kathmandu's vibrant tourist hub with shops, restaurants, and lively nightlife.",
+  },
+  {
+    name: "Durbar Square",
+    description: "UNESCO World Heritage site with ancient palaces, temples, and courtyards.",
+  },
+  {
+    name: "Swayambhunath Stupa",
+    description: "Ancient stupa perched on a hill with panoramic views of the Kathmandu Valley.",
+  },
+];
+
 export default function FreeWalkingTourKathmanduPage() {
   const [copied, setCopied] = React.useState(false);
-  const [expandedStops, setExpandedStops] = React.useState<number[]>([]); // none expanded by default
-  const [showMobileNav, setShowMobileNav] = React.useState(false);
+  const [expandedStops, setExpandedStops] = React.useState<number[]>([]);
 
-  // Tour name constant for auto-fill functionality
   const tourName = "Free Walking Tour Kathmandu";
 
   const handleCopyLink = () => {
@@ -117,14 +171,9 @@ export default function FreeWalkingTourKathmanduPage() {
 
   const handleShare = (platform: string) => {
     const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent("Free Walking Tour Kathmandu - Himkala Adventure");
-    let shareUrl = "";
     if (platform === "facebook") {
-      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-    } else if (platform === "twitter") {
-      shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank", "noopener,noreferrer");
     }
-    window.open(shareUrl, "_blank", "noopener,noreferrer");
   };
 
   const toggleStop = (idx: number) => {
@@ -133,528 +182,369 @@ export default function FreeWalkingTourKathmanduPage() {
     );
   };
 
-  // Schema.org Product schema for free walking tour
-  const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Free Walking Tour Kathmandu",
-    "description": "The first tips-based walking tour in Kathmandu Valley. Led by experienced guides, discover hidden temples, lively markets, and living culture — completely free to join.",
-    "image": "https://www.himkalaadventure.com/images/used/fwt-1.webp",
-    "brand": {
-      "@type": "Brand",
-      "name": "Himkala Adventure Pvt. Ltd."
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2026-01-01",
-      "url": "https://www.himkalaadventure.com/services/free-walking-tour-kathmandu"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "350"
-    }
-  };
-
-  // Organization schema
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "TouristInformationCenter",
-    "name": "Himkala Adventure Pvt. Ltd.",
-    "description": "Expert-guided free walking tours in Kathmandu, Nepal. Explore hidden temples, markets, and cultural heritage.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Thamel, Lekhnath Marga",
-      "addressLocality": "Kathmandu",
-      "addressCountry": "Nepal"
-    },
-    "telephone": "+977 9841376470",
-    "email": "info@himkalaadventure.com",
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 27.7172,
-      "longitude": 85.3240
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Schema.org structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-      />
-
-      {/* Mobile Navigation Drawer */}
-      {showMobileNav && (
-        <div className="lg:hidden fixed inset-0 z-50">
-          <div
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setShowMobileNav(false)}
-            aria-label="Close navigation"
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg text-[#0f2940]">Quick Navigation</h3>
-                <button
-                  onClick={() => setShowMobileNav(false)}
-                  className="p-2 rounded-lg hover:bg-slate-100"
-                  aria-label="Close navigation"
-                >
-                  <X className="w-5 h-5" aria-hidden="true" />
-                </button>
+    <div className="flex flex-col min-h-screen bg-[#f2ede4] overflow-x-hidden">
+      <main>
+        {/* Header */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto max-w-[880px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">
+                  <span className="h-px w-6 sm:w-8 bg-[#cf6943]" />
+                  <span>Free Walking Tour</span>
+                </div>
+                <h1 className="mt-3 sm:mt-5 font-serif text-[clamp(2.5rem,8vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Free Walking Tour <br />
+                  <span className="text-[#cf6943]">Kathmandu</span>
+                </h1>
               </div>
-
-              <div className="space-y-4">
-                <a href="#overview" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Overview
-                </a>
-                <a href="#highlights" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Highlights
-                </a>
-                <a href="#stops" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Tour Stops
-                </a>
-                <a href="#reviews" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Reviews
-                </a>
-                <a href="#practical" onClick={() => setShowMobileNav(false)} className="block py-3 px-4 text-[#2d6a8a] hover:bg-[#f0f7fa] rounded-lg">
-                  Practical Info
-                </a>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-slate-200">
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white"
-                    onClick={() => handleShare("facebook")}
-                    aria-label="Share on Facebook"
-                  >
-                    <Facebook className="w-4 h-4" aria-hidden="true" />
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white"
-                    onClick={() => handleShare("twitter")}
-                    aria-label="Share on Twitter"
-                  >
-                    <Twitter className="w-4 h-4" aria-hidden="true" />
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-slate-800 hover:bg-slate-900 text-white"
-                    onClick={handleCopyLink}
-                    aria-label="Copy link to clipboard"
-                  >
-                    {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
-                  </Button>
+              <div className="max-w-full md:max-w-[280px]">
+                <p className="text-sm leading-6 text-[#66706d]">
+                  The first tips‑based walking tour in the valley. Discover hidden temples, lively markets, and living culture.
+                </p>
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <span className="bg-[#cf6943] text-[#fff8ee] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full">
+                    FREE · Tips-based
+                  </span>
+                  <span className="bg-[#f7f2e9] text-[#14383b] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full border border-[#d8cec0]/30">
+                    Daily 9am & 2pm
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        </section>
 
-      {/* Hero Section */}
-      <section className="relative h-[45vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-[#0f2940]">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/used/fwt-1.webp"
-            alt="Free Walking Tour Kathmandu - explore hidden temples, markets and cultural heritage in Nepal's capital"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/80 via-transparent to-transparent" />
-        </div>
-
-        <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
-          <div className="max-w-5xl mx-auto text-center w-full">
-            <div className="flex flex-wrap gap-2 mb-4 md:mb-6 justify-center">
-              <Badge className="bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] text-[#0f2940] border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <MapPin className="w-3 h-3 mr-1" aria-hidden="true" /> Tips‑based · Free Tour
-              </Badge>
-              <Badge className="bg-green-100 text-green-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                Easy · 4‑5 hours
-              </Badge>
-              <Badge className="bg-purple-100 text-purple-700 border-none font-bold px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <Landmark className="w-3 h-3 mr-1" aria-hidden="true" /> Local expert guide
-              </Badge>
-            </div>
-
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-none mb-3 md:mb-6 tracking-tight">
-              FREE WALKING TOUR <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic font-light">
-                KATHMANDU
+        {/* Feature Image */}
+        <div className="max-w-[880px] mx-auto px-4 sm:px-5 md:px-8">
+          <figure className="relative h-[220px] sm:h-[300px] md:h-[380px] lg:h-[420px] rounded-lg overflow-hidden bg-[#14383b]">
+            <Image
+              src="/images/used/fwt-1.webp"
+              alt="Free Walking Tour Kathmandu - exploring hidden temples and cultural heritage in Nepal's capital"
+              fill
+              className="object-cover opacity-90"
+              priority
+              quality={85}
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/70 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 p-4 sm:p-5 md:p-6">
+              <span className="bg-[#e47a4f] text-[#fff8ee] px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold tracking-wide rounded">
+                Tips-based · Free to join
               </span>
-            </h1>
+            </div>
+            <div className="absolute top-4 right-4 flex flex-wrap gap-2">
+              <span className="bg-[#14383b]/90 text-[#f7f2e9] px-3 py-1.5 text-[9px] sm:text-[10px] font-bold tracking-wide rounded">
+                Daily 9am & 2pm
+              </span>
+            </div>
+          </figure>
+        </div>
 
-            <p className="text-sm sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light">
-              The first tips‑based walking tour in the valley. Led by decades‑experienced guides,
-              discover hidden temples, lively markets, and living culture — completely free to join.
-            </p>
+        {/* Quick Stats - Minimal inline */}
+        <div className="max-w-[880px] mx-auto px-4 sm:px-5 md:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 -mt-6 sm:-mt-8 relative z-10">
+            {[
+              { label: "Duration", value: "4-5 hours" },
+              { label: "Group Size", value: "2-20 people" },
+              { label: "Rating", value: "4.9/5 (350+)" },
+              { label: "Language", value: "English" },
+            ].map((stat, i) => (
+              <div key={i} className="bg-[#f7f2e9] rounded-lg p-3 text-center shadow-sm border border-[#d8cec0]/30">
+                <p className="text-[10px] text-[#66706d] uppercase tracking-wider font-semibold">{stat.label}</p>
+                <p className="text-sm font-bold text-[#14383b]">{stat.value}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
 
-      {/* Main Content */}
-      <section className="py-6 md:py-12">
-        <div className="container mx-auto px-3 md:px-6 max-w-full overflow-hidden">
-          <div className="grid lg:grid-cols-12 gap-4 md:gap-10">
-            {/* Mobile Sticky Info Bar */}
-            <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-[#C5E0ED]/30 shadow-sm py-2 -mx-3 px-3">
-              <div className="flex items-center justify-between">
-                <div className="text-sm text-[#0f2940] font-medium">
-                  <span className="text-slate-500 text-[10px]">tips‑based</span>
-                  <div className="font-bold text-xs">free to join</div>
-                </div>
-                <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
-                  <Button className="bg-gradient-to-r from-[#0f2940] to-[#1a4166] text-white font-bold rounded-full px-4 py-1.5 text-xs min-h-[44px]" aria-label={`Confirm attendance for ${tourName}`}>
-                    <Heart className="w-3 h-3 mr-1" aria-hidden="true" /> Confirm attendance
-                  </Button>
-                </Link>
+        {/* Main Content - Editorial Style */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-[880px]">
+            {/* Overview */}
+            <article className="prose prose-sm sm:prose-base max-w-none">
+              <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
+                <strong className="text-[#14383b]">Free Tour Kathmandu</strong> is the first of its kind in the Kathmandu Valley. While other walking tours exist, this is the only one that provides a free glimpse of the highlights of Kathmandu, led and narrated by a dedicated tour guide with decades of experience. Winding through the heart of the old centre, the tour encompasses iconic temples, stupas, monasteries, palaces and local Newar architecture.
+              </p>
+              <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
+                Departing from just outside the <strong className="text-[#14383b]">Garden of Dreams</strong> at 9:00 and 14:00 daily, the tour passes through southern Thamel via Kathesimbhu Stupa and Buddhist monasteries, then enters local streets towards Indra Chowk market. From there, the tour passes around Durbar Square and through a sleepy Newar neighbourhood towards the local cremation centre near the sacred Vishnumati River.
+              </p>
+              <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
+                Crossing the river, the tour passes through Swoyambhunath suburb and finishes at the top of picturesque <strong className="text-[#14383b]">Monkey Temple</strong>. Your guide will either walk you back to Thamel or direct you to a bus or taxi.
+              </p>
+            </article>
+
+            <div className="mt-6 p-4 sm:p-5 bg-amber-50 border-l-4 border-amber-400 text-amber-800 text-sm rounded">
+              <AlertTriangle className="w-4 h-4 inline mr-2" aria-hidden="true" />
+              <strong>Tips‑based model:</strong> you award the time and experience of the guide. No fixed fee — gratitude welcomed.
+            </div>
+          </div>
+        </section>
+
+        {/* Highlights - Clean list */}
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-[880px]">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Tour Highlights</h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {highlightsList.map((highlight, i) => (
+                <li key={i} className="flex items-start gap-3 text-[#14383b] text-sm sm:text-base">
+                  <span className="text-[#cf6943] mt-1">✦</span>
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Tour Stops - Clean accordion */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-[880px]">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b]">Stops Along the Way</h2>
+              <button
+                className="text-[#cf6943] text-xs font-semibold hover:underline"
+                onClick={() =>
+                  setExpandedStops(expandedStops.length === tourStops.length ? [] : tourStops.map((_, i) => i))
+                }
+              >
+                {expandedStops.length === tourStops.length ? "Collapse All" : "Expand All"}
+              </button>
+            </div>
+
+            <div className="space-y-2">
+              {tourStops.map((stop, idx) => {
+                const Icon = stop.icon;
+                const isExpanded = expandedStops.includes(idx);
+                return (
+                  <div
+                    key={idx}
+                    className="border-b border-[#d8cec0]/50 last:border-0"
+                  >
+                    <button
+                      className="w-full flex items-center gap-4 py-4 text-left"
+                      onClick={() => toggleStop(idx)}
+                    >
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#cf6943]/10 rounded-lg flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#cf6943]" aria-hidden="true" />
+                      </div>
+                      <span className="font-medium text-[#14383b] text-sm sm:text-base flex-1">{stop.name}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-[#66706d] transition-transform shrink-0 ${
+                          isExpanded ? "rotate-180" : ""
+                        }`}
+                        aria-hidden="true"
+                      />
+                    </button>
+
+                    {isExpanded && (
+                      <div className="pb-4 pl-12 sm:pl-14">
+                        <p className="text-[#556363] text-sm sm:text-base leading-relaxed">{stop.description}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Practical Info - Editorial */}
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-[880px]">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Plan Your Visit</h2>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <h3 className="font-semibold text-[#14383b] text-sm mb-3">Tour Details</h3>
+                <dl className="space-y-2 text-sm">
+                  <div className="flex justify-between border-b border-[#d8cec0]/30 py-2">
+                    <dt className="text-[#66706d]">Duration</dt>
+                    <dd className="text-[#14383b] font-medium">4-5 hours</dd>
+                  </div>
+                  <div className="flex justify-between border-b border-[#d8cec0]/30 py-2">
+                    <dt className="text-[#66706d]">Schedule</dt>
+                    <dd className="text-[#14383b] font-medium">Daily 9am & 2pm</dd>
+                  </div>
+                  <div className="flex justify-between border-b border-[#d8cec0]/30 py-2">
+                    <dt className="text-[#66706d]">Meeting Point</dt>
+                    <dd className="text-[#14383b] font-medium">Garden of Dreams</dd>
+                  </div>
+                  <div className="flex justify-between border-b border-[#d8cec0]/30 py-2">
+                    <dt className="text-[#66706d]">End Point</dt>
+                    <dd className="text-[#14383b] font-medium">Monkey Temple</dd>
+                  </div>
+                  <div className="flex justify-between py-2">
+                    <dt className="text-[#66706d]">Language</dt>
+                    <dd className="text-[#14383b] font-medium">English</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-[#14383b] text-sm mb-3">What to Bring</h3>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2 text-[#556363]">
+                    <CheckCircle2 className="w-4 h-4 text-[#cf6943] mt-0.5 shrink-0" />
+                    <span>Comfortable walking shoes</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-[#556363]">
+                    <CheckCircle2 className="w-4 h-4 text-[#cf6943] mt-0.5 shrink-0" />
+                    <span>Water bottle</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-[#556363]">
+                    <CheckCircle2 className="w-4 h-4 text-[#cf6943] mt-0.5 shrink-0" />
+                    <span>Sun protection</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-[#556363]">
+                    <CheckCircle2 className="w-4 h-4 text-[#cf6943] mt-0.5 shrink-0" />
+                    <span>NPR 200 for Monkey Temple entrance</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-[#556363]">
+                    <CheckCircle2 className="w-4 h-4 text-[#cf6943] mt-0.5 shrink-0" />
+                    <span>Small cash for refreshments</span>
+                  </li>
+                </ul>
               </div>
             </div>
 
-            {/* Sidebar - Hidden on mobile */}
-            <aside className="hidden lg:block lg:col-span-4">
-              <div className="sticky top-24 space-y-4 md:space-y-6">
-                {/* Info Card */}
-                <Card className="bg-gradient-to-br from-[#0f2940] to-[#1a4166] border-none rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-4 md:p-6">
-                    <div className="text-center mb-4 md:mb-6">
-                      <div className="text-3xl md:text-4xl font-bold text-white mt-1">FREE</div>
-                      <span className="text-white/60 text-[10px] md:text-sm">tips‑based tour</span>
-                      <Badge className="ml-2 bg-amber-500/20 text-amber-300 border-none text-[8px] md:text-xs">you decide</Badge>
-                    </div>
+            <div className="mt-6 p-4 bg-[#f7f2e9] rounded-lg border border-[#d8cec0]/30">
+              <p className="text-[#556363] text-sm">
+                <strong className="text-[#14383b]">Note:</strong> The tour runs rain or shine. In case of heavy rain, your guide will adjust the route to include more covered areas.
+              </p>
+            </div>
+          </div>
+        </section>
 
-                    <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
-                        <span>4‑5 hours · 9am & 2pm daily</span>
-                      </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <MapPin className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
-                        <span>Start: Garden of Dreams</span>
-                      </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Users className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
-                        <span>Group: any size (intimate)</span>
-                      </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Footprints className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
-                        <span>End: Monkey Temple (Swoyambhu)</span>
-                      </div>
-                      <div className="flex items-center gap-2 md:gap-3 text-white/80 text-[10px] md:text-sm">
-                        <Landmark className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" />
-                        <span>No reservation needed</span>
-                      </div>
-                    </div>
-
-                    {/* Confirm Attendance Button */}
-                    <Link href={`/contact?trek=${encodeURIComponent(tourName)}`}>
-                      <Button className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#9dcae0] hover:from-[#b3d6e6] hover:to-[#8bc0d8] text-[#0f2940] font-bold rounded-full h-10 md:h-12 mb-2 md:mb-3 text-xs md:text-base" aria-label={`Confirm attendance for ${tourName}`}>
-                        <Heart className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> Confirm attendance
-                      </Button>
-                    </Link>
-                    
-                    {/* WhatsApp Now Button */}
-                    <a 
-                      href={`https://wa.me/9779841376470?text=${encodeURIComponent(`Hello, I would like to inquire about the ${tourName}.`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer nofollow"
-                      aria-label="Inquire about free walking tour on WhatsApp"
-                    >
-                      <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full h-10 md:h-12 text-xs md:text-base">
-                        <MessageCircle className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" aria-hidden="true" /> WhatsApp Now
-                      </Button>
-                    </a>
-                    
-                    <p className="text-[8px] md:text-[10px] text-white/40 text-center">please arrive 5‑10 min early</p>
-                  </CardContent>
-                </Card>
-
-                {/* Quick Facts */}
-                <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                      <Map className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Quick Facts
-                    </h3>
-                    <div className="space-y-2 text-[10px] md:text-sm">
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Start times</span>
-                        <span className="font-medium text-[#0f2940]">9:00 & 14:00</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Meeting point</span>
-                        <span className="font-medium text-[#0f2940]">Garden of Dreams (outside)</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">Tour type</span>
-                        <span className="font-medium text-[#0f2940]">Cultural, heritage, walking</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2 border-b border-slate-100">
-                        <span className="text-slate-500">End point</span>
-                        <span className="font-medium text-[#0f2940]">Swoyambhu (Monkey Temple)</span>
-                      </div>
-                      <div className="flex justify-between py-1.5 md:py-2">
-                        <span className="text-slate-500">Difficulty</span>
-                        <span className="font-medium text-[#0f2940]">Easy, some stairs</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Share */}
-                <Card className="bg-[#f8fbfc] border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-4 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-3 md:mb-4 flex items-center gap-2 text-[10px] md:text-base">
-                      <Share2 className="w-3 h-3 md:w-4 md:h-4 text-[#2d6a8a]" aria-hidden="true" /> Share
-                    </h3>
-                    <div className="flex gap-2">
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                        onClick={() => handleShare("facebook")}
-                        aria-label="Share on Facebook"
-                      >
-                        <Facebook className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                        onClick={() => handleShare("twitter")}
-                        aria-label="Share on Twitter"
-                      >
-                        <Twitter className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg md:rounded-xl text-[8px] md:text-xs"
-                        onClick={handleCopyLink}
-                        aria-label="Copy link to clipboard"
-                      >
-                        {copied ? <Check className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" /> : <Copy className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />}
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </aside>
-
-            {/* Main Content */}
-            <article className="lg:col-span-8 w-full overflow-hidden">
-              {/* Mobile Share Buttons */}
-              <div className="lg:hidden flex gap-2 mb-6">
-                <Button
-                  size="sm"
-                  className="flex-1 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={() => handleShare("facebook")}
-                  aria-label="Share on Facebook"
-                >
-                  <Facebook className="w-3 h-3 mr-1" aria-hidden="true" /> Share
-                </Button>
-                <Button
-                  size="sm"
-                  className="flex-1 bg-[#1da1f2] hover:bg-[#1da1f2]/90 text-white rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={() => handleShare("twitter")}
-                  aria-label="Share on Twitter"
-                >
-                  <Twitter className="w-3 h-3 mr-1" aria-hidden="true" /> Tweet
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="flex-1 border-[#C5E0ED] text-[#2d6a8a] hover:bg-[#C5E0ED]/20 rounded-lg text-[10px] py-1.5 min-h-[44px]"
-                  onClick={handleCopyLink}
-                  aria-label="Copy link to clipboard"
-                >
-                  {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
-                </Button>
-              </div>
-
-              {/* Overview */}
-              <section className="mb-6 md:mb-12" id="overview">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Experience</h2>
-                <div className="prose prose-slate max-w-none">
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    <strong>Free Tour Kathmandu</strong> is the first of its kind in the Kathmandu Valley. While other walking tours exist,
-                    this is the only one that provides a free glimpse of the highlights of Kathmandu, led and narrated by a dedicated tour guide with decades of experience.
-                    Winding through the heart of the old centre, the tour encompasses iconic temples, stupas, monasteries, palaces and local Newar architecture.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed mb-2 md:mb-4 text-xs md:text-base">
-                    Departing from just outside the <strong>Garden of Dreams</strong> at 9:00 and 14:00 daily, the tour passes through southern Thamel
-                    via Kathesimbhu Stupa and Buddhist monasteries, then enters local streets towards Indra Chowk market.
-                    From there, the tour passes around Durbar Square and through a sleepy Newar neighbourhood towards the local cremation centre near the sacred Vishnumati River.
-                  </p>
-                  <p className="text-slate-600 leading-relaxed text-xs md:text-base">
-                    Crossing the river, the tour passes through Swoyambhunath suburb and finishes at the top of picturesque <strong>Monkey Temple</strong>.
-                    Your guide will either walk you back to Thamel or direct you to a bus or taxi.
-                  </p>
-                </div>
-                <div className="mt-3 md:mt-4 p-2 md:p-4 bg-amber-50 border-l-4 border-amber-400 text-amber-800 text-[10px] md:text-sm rounded">
-                  <AlertTriangle className="w-3 h-3 md:w-4 md:h-4 inline mr-1 md:mr-2" aria-hidden="true" />
-                  <strong>Tips‑based model:</strong> you award the time and experience of the guide. No fixed fee — gratitude welcomed.
-                </div>
-              </section>
-
-              {/* Highlights */}
-              <section className="mb-6 md:mb-12" id="highlights">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Trip Highlights</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
-                  {highlightsList.map((highlight, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2 md:gap-3 p-2 md:p-4 bg-gradient-to-r from-[#C5E0ED]/20 to-transparent rounded-lg md:rounded-xl border-l-4 border-[#2d6a8a]"
-                    >
-                      <Star className="w-3 h-3 md:w-4 h-4 text-[#2d6a8a] shrink-0" aria-hidden="true" />
-                      <span className="text-[#0f2940] font-medium text-xs md:text-base leading-tight">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* Tour Stops (like itinerary but as expandable cards) */}
-              <section className="mb-6 md:mb-12" id="stops">
-                <div className="flex items-center justify-between mb-3 md:mb-6">
-                  <h2 className="text-lg md:text-2xl font-serif text-[#0f2940]">Stops along the way</h2>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="text-[#2d6a8a] border-[#C5E0ED] hover:bg-[#C5E0ED]/20 rounded-full text-xs md:text-sm px-2 md:px-4"
-                    onClick={() =>
-                      setExpandedStops(expandedStops.length === tourStops.length ? [] : tourStops.map((_, i) => i))
-                    }
-                    aria-label={expandedStops.length === tourStops.length ? "Collapse all tour stops" : "Expand all tour stops"}
-                  >
-                    {expandedStops.length === tourStops.length ? "Collapse All" : "Expand All"}
-                  </Button>
-                </div>
-
-                <div className="space-y-2 md:space-y-3">
-                  {tourStops.map((stop, idx) => {
-                    const Icon = stop.icon;
-                    return (
-                      <Card
-                        key={idx}
-                        className={`bg-white border-[#C5E0ED]/30 rounded-lg md:rounded-xl overflow-hidden transition-all ${
-                          expandedStops.includes(idx) ? "shadow-md md:shadow-lg shadow-[#C5E0ED]/20" : "hover:shadow-sm"
-                        }`}
-                      >
-                        <CardContent className="p-0">
-                          <button
-                            className="w-full flex items-center gap-2 md:gap-4 p-2 md:p-4 text-left"
-                            onClick={() => toggleStop(idx)}
-                            aria-label={expandedStops.includes(idx) ? `Collapse ${stop.name}` : `Expand ${stop.name}`}
-                          >
-                            <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg md:rounded-xl flex items-center justify-center shrink-0">
-                              <Icon className="w-4 h-4 md:w-6 md:h-6 text-[#0f2940]" aria-hidden="true" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <h3 className="font-bold text-[#0f2940] text-xs md:text-base truncate">{stop.name}</h3>
-                            </div>
-                            <ChevronDown
-                              className={`w-3 h-3 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0 ${
-                                expandedStops.includes(idx) ? "rotate-180" : ""
-                              }`}
-                              aria-hidden="true"
-                            />
-                          </button>
-
-                          {expandedStops.includes(idx) && (
-                            <div className="px-2 md:px-4 pb-2 md:pb-4 border-t border-[#C5E0ED]/20">
-                              <p className="text-slate-600 text-[10px] md:text-sm leading-relaxed pt-2 md:pt-4">
-                                {stop.description}
-                              </p>
-                            </div>
-                          )}
-                        </CardContent>
-                      </Card>
-                    );
-                  })}
-                </div>
-              </section>
-
-              {/* Reviews & Tips box */}
-              <section className="mb-6 md:mb-12" id="reviews">
-                <Card className="bg-white border-[#C5E0ED]/30 rounded-xl md:rounded-2xl overflow-hidden">
-                  <CardContent className="p-3 md:p-6">
-                    <h3 className="font-bold text-[#0f2940] mb-2 flex items-center gap-2 text-sm md:text-lg">
-                      <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-500 fill-yellow-500" aria-hidden="true" /> Reviews
-                    </h3>
-                    <p className="text-slate-700 mb-2 text-[10px] md:text-sm">
-                      Out of over <strong>{reviews.total}+ reviews on TripAdvisor</strong>, {reviews.excellent}% rate the Free Walking Tour as 'Excellent' or ({reviews.veryGood}% 'Very Good').
-                    </p>
-                    <p className="text-slate-600 italic text-[10px] md:text-sm">“{reviews.quote}”</p>
-                    <div className="mt-3 md:mt-4 text-[8px] md:text-xs text-slate-500 flex items-center gap-1">
-                      <Users className="w-2.5 h-2.5 md:w-3 md:h-3" aria-hidden="true" /> solo, couples, families – all welcome
-                    </div>
-                  </CardContent>
-                </Card>
-              </section>
-
-              {/* Practical info (monkey temple note, entrance fee) */}
-              <section className="mb-6 md:mb-12" id="practical">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Note & Practical</h2>
-                <div className="bg-blue-50 border border-blue-200 rounded-lg md:rounded-2xl p-2 md:p-6">
-                  <div className="flex gap-2 md:gap-3">
-                    <div>
-                      <p className="text-blue-800 text-[10px] md:text-sm mb-1 md:mb-2">
-                        <strong>Please confirm prior to joining:</strong> The Free Walking Tour is tips‑based — you award the guide for their time and experience. Please show up at the Garden of Dreams 5‑10 minutes before start.
-                      </p>
-                      <p className="text-blue-700 text-[10px] md:text-sm">
-                        <strong>Monkey Temple entrance:</strong> NPR 200 per person (not included, payable on the spot). Bring small cash for refreshments like lassi or souvenirs.
-                      </p>
-                      <p className="text-blue-700 text-[10px] md:text-sm mt-1 md:mt-2">Namaste 🙏</p>
-                    </div>
+        {/* Tips - Clean */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-[880px]">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Tips for the Tour</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {[
+                {
+                  icon: <Sun className="w-4 h-4" />,
+                  title: "Best Time",
+                  text: "Morning tours (9am) are cooler. Afternoon tours (2pm) offer beautiful golden hour light at Monkey Temple."
+                },
+                {
+                  icon: <Thermometer className="w-4 h-4" />,
+                  title: "Weather",
+                  text: "Dress in layers and bring a light rain jacket during monsoon season."
+                },
+                {
+                  icon: <Camera className="w-4 h-4" />,
+                  title: "Photography",
+                  text: "Ask permission before photographing locals. The tour offers countless photo opportunities."
+                },
+                {
+                  icon: <Footprints className="w-4 h-4" />,
+                  title: "Walking",
+                  text: "Comfortable walking shoes are essential. The tour covers uneven streets, stairs, and steep sections."
+                },
+              ].map((tip, i) => (
+                <div key={i} className="flex gap-3">
+                  <div className="w-8 h-8 bg-[#cf6943]/10 rounded-full flex items-center justify-center shrink-0">
+                    {tip.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-[#14383b] text-sm">{tip.title}</h4>
+                    <p className="text-[#556363] text-sm leading-relaxed">{tip.text}</p>
                   </div>
                 </div>
-              </section>
-
-              {/* Photo Gallery - minimal version */}
-              <section className="mb-6 md:mb-12" id="gallery">
-                <h2 className="text-lg md:text-2xl font-serif text-[#0f2940] mb-2 md:mb-4">Glances of the route</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-3">
-                  {[
-                    "/images/used/beads.webp",
-                    "/images/used/ancient_temple.webp",
-                    "/images/used/buddhist_temple-1.webp",
-                    "/images/used/cremation-1.webp",
-                    "/images/used/indrachowk.webp",
-                    "/images/used/kathesimbu.webp",
-                    "/images/used/monkey_temple.webp",
-                    "/images/used/teeth.webp",
-                  ].map((src, i) => (
-                    <div key={i} className="relative h-20 md:h-32 rounded-lg overflow-hidden">
-                      <Image 
-                        src={src} 
-                        alt={`Free Walking Tour Kathmandu - stop along the route exploring Nepal's cultural heritage`} 
-                        fill 
-                        className="object-cover"
-                        loading="lazy"
-                        sizes="(max-width: 768px) 50vw, 25vw"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </section>
-            </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* FAQ */}
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-[880px]">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Frequently Asked Questions</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {faqs.map((faq, i) => (
+                <div key={i}>
+                  <h4 className="font-semibold text-[#14383b] text-sm mb-1">{faq.q}</h4>
+                  <p className="text-[#556363] text-sm leading-relaxed">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Nearby Attractions */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-[880px]">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-3">Nearby Attractions</h2>
+            <p className="text-[#556363] text-sm sm:text-base mb-6">
+              Extend your exploration with these nearby attractions, all within walking distance of the tour route.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {nearbyAttractions.map((attraction, i) => (
+                <div key={i} className="border-b border-[#d8cec0]/30 pb-3 last:border-0">
+                  <h4 className="font-semibold text-[#14383b] text-sm">{attraction.name}</h4>
+                  <p className="text-[#556363] text-sm leading-relaxed">{attraction.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Reviews */}
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-[880px]">
+            <div className="flex items-center gap-3 mb-6">
+              <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" aria-hidden="true" />
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b]">5.0 · 350+ Reviews</h2>
+              <span className="text-[#66706d] text-sm">on TripAdvisor</span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {reviews.map((review, i) => (
+                <div key={i} className="bg-[#f7f2e9] p-5 rounded-lg border border-[#d8cec0]/30">
+                  <div className="flex gap-0.5 mb-3">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-[#556363] text-sm leading-relaxed italic line-clamp-4">
+                    &ldquo;{review.text}&rdquo;
+                  </p>
+                  <div className="mt-3">
+                    <div className="font-medium text-[#14383b] text-sm">{review.name}</div>
+                    <div className="text-[#66706d] text-xs">{review.country} · {review.date}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Gallery */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-[880px]">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-3">Glances of the Route</h2>
+            <p className="text-[#556363] text-sm sm:text-base mb-6">
+              A visual journey through Kathmandu's hidden temples, lively markets, and sacred sites.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {galleryImages.map((src, i) => (
+                <div key={i} className="relative h-28 sm:h-32 rounded-lg overflow-hidden bg-[#d8cec0]">
+                  <Image 
+                    src={src} 
+                    alt={`Free Walking Tour Kathmandu - stop along the route`} 
+                    fill 
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+       
+      </main>
     </div>
   );
 }

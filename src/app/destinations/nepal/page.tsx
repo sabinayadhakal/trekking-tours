@@ -698,43 +698,64 @@ export default function NepalPage() {
             </div>
           </section>
 
-          {/* What's Included - clean cards */}
-          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
-            <div className="mx-auto max-w-[1220px]">
-              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
-                <div>
-                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Our Services</div>
-                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
-                    What We <span className="text-[#cf6943]">Provide</span>
-                  </h2>
-                </div>
-                <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
-                  Comprehensive support for a safe, comfortable, and unforgettable experience.
-                </p>
-              </div>
+          {/* What's Included - clean list format matching Bhutan page */}
+<section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+  <div className="mx-auto max-w-[1220px]">
+    <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+      <div>
+        <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Our Services</div>
+        <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+          What We <span className="text-[#cf6943]">Provide</span>
+        </h2>
+      </div>
+      <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+        Comprehensive support for a safe, comfortable, and unforgettable experience.
+      </p>
+    </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mt-8 sm:mt-12">
-                {[
-                  { icon: <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Licensed Guides", desc: "Government-certified guides" },
-                  { icon: <Tent className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Accommodation", desc: "Best available teahouses" },
-                  { icon: <Utensils className="w-4 h-4 sm:w-5 sm:h-5" />, title: "All Meals", desc: "Three meals daily on trek" },
-                  { icon: <Map className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Permits & Fees", desc: "All trekking permits" },
-                  { icon: <Plane className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Transportation", desc: "Airport transfers included" },
-                  { icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Porter Service", desc: "1 porter per 2 trekkers" },
-                  { icon: <Award className="w-4 h-4 sm:w-5 sm:h-5" />, title: "First Aid Kit", desc: "Medical supplies" },
-                  { icon: <Binoculars className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Equipment", desc: "Sleeping bag & jacket" },
-                ].map((item, i) => (
-                  <div key={i} className="bg-[#f7f2e9] p-4 sm:p-5 rounded-lg border border-[#d8cec0] text-center hover:shadow-md transition-all duration-300">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded-lg flex items-center justify-center text-[#f7f2e9] mx-auto mb-2 sm:mb-3">
-                      {item.icon}
-                    </div>
-                    <h4 className="text-sm sm:text-base font-bold text-[#14383b] mb-0.5 sm:mb-1">{item.title}</h4>
-                    <p className="text-[#556363] text-xs sm:text-sm">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-12">
+      <div className="space-y-4 sm:space-y-5">
+        {[
+          { title: "Licensed Guides", text: "Government-certified guides with extensive local knowledge." },
+          { title: "Accommodation", text: "Best available teahouses and lodges throughout the trek." },
+          { title: "All Meals", text: "Three meals daily on trek, prepared with local ingredients." },
+          { title: "Permits & Fees", text: "All trekking permits and national park entry fees included." },
+          { title: "Transportation", text: "Airport transfers and all local transport arrangements." },
+          { title: "Porter Service", text: "One porter for every two trekkers, carrying up to 15kg." },
+        ].map((item) => (
+          <div key={item.title} className="flex items-start gap-3 sm:gap-4">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#f7f2e9] rounded-lg flex items-center justify-center text-[#cf6943] flex-shrink-0 border border-[#d8cec0]">
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-          </section>
+            <div>
+              <h3 className="font-bold text-[#14383b] text-sm sm:text-base mb-0.5 sm:mb-1">{item.title}</h3>
+              <p className="text-[#556363] text-sm leading-relaxed">{item.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-[#f7f2e9] p-5 sm:p-6 md:p-8 rounded-lg border border-[#d8cec0]">
+        <h3 className="font-bold text-[#14383b] text-lg sm:text-xl mb-4">Included Equipment</h3>
+        <ul className="space-y-3">
+          {[
+            <><strong>Sleeping Bag:</strong> -15°C rated for high-altitude comfort</>,
+            <><strong>Down Jacket:</strong> Insulated jacket for cold mornings and evenings</>,
+            <><strong>Duffle Bag:</strong> For your trekking gear, carried by porters</>,
+            <><strong>First Aid Kit:</strong> Comprehensive medical supplies and oxygen cylinder</>,
+            <><strong>Water Purification:</strong> Tablets or UV filter for safe drinking water</>,
+            <><strong>Trekking Poles:</strong> Adjustable poles for stability on trails</>,
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-2 sm:gap-3">
+              <CheckCircle className="w-4 h-4 text-[#cf6943] mt-0.5 flex-shrink-0" />
+              <span className="text-[#556363] text-sm sm:text-base">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
         </main>
 
         <style jsx global>{`
