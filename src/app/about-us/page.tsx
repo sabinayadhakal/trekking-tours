@@ -3,6 +3,7 @@
 import * as React from "react";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Mountain,
   Award,
@@ -12,9 +13,6 @@ import {
   Heart,
   Globe,
   CheckCircle,
-  Scroll,
-  Building,
-  BadgeCheck,
   Quote,
   Mail,
   Phone,
@@ -25,13 +23,10 @@ import {
   XCircle,
   RefreshCw,
   Star,
-  Calendar,
   Plane,
   FileText,
-  FileWarning,
   MapPin as MapIcon,
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const licenses = [
@@ -39,60 +34,30 @@ const licenses = [
     name: "Certification of Incorporate Company",
     number: "ID: 131462/071/072",
     description: "Registered Private Limited Company under Nepal law",
-    icon: <Building className="w-6 h-6" />,
   },
   {
     name: "Trekking Agencies' Association of Nepal (TAAN)",
     number: "",
     description: "Member of Nepal's premier trekking association",
-    icon: <BadgeCheck className="w-6 h-6" />,
   },
-  
   {
     name: "Certificate of tourism industry division ",
     number: "ID: 1888/071",
     description: "Government-approved travel and tour operator license",
-    icon: <FileCheck className="w-6 h-6" />,
   },
   {
     name: "Guiding Certificate",
     number: "ID: TG-01/36",
     description: "Official certification for professional tourist guide in Nepal",
-    icon: <Scroll className="w-6 h-6" />,
   },
   {
     name: "Foreign Exchange Authorization Letter",
     number: "ID: N.R.B/B.B.Bya.B/E/Tre/H.223/081",
     description: "Official permission for making payments in foreign currency",
-    icon: <FileCheck className="w-6 h-6" />,
-  },
-];
-
-const accreditations = [
-  {
-    name: "Sustainable Tourism Certified",
-    description: "Committed to eco-friendly and responsible tourism practices",
-    icon: <Globe className="w-8 h-8" />,
-  },
-  {
-    name: "TripAdvisor Excellence Award",
-    description: "Consistently rated excellent by travelers worldwide",
-    icon: <Award className="w-8 h-8" />,
-  },
-  {
-    name: "Safety First Certified",
-    description: "Meeting international safety standards for adventure tourism",
-    icon: <ShieldCheck className="w-8 h-8" />,
-  },
-  {
-    name: "Local Community Partner",
-    description: "Supporting and empowering local Sherpa communities",
-    icon: <Heart className="w-8 h-8" />,
   },
 ];
 
 const teamMembers = [
- 
   {
     name: "Sabinaya Dhakal",
     role: "Professional Certified Trekking Guide & IT Facilitator",
@@ -103,125 +68,36 @@ const teamMembers = [
   },
 ];
 
-const policies = [
-  {
-    title: "Booking & Reservation",
-    icon: <CreditCard className="w-6 h-6" />,
-    points: [
-      "20% down payment required to secure your place (15% if booking more than ten weeks prior)",
-      "Remaining balance payable after arrival in Nepal",
-      "4% handling charge for credit card payments (no charge for bank transfers)",
-      "Last minute bookings accepted for Nepal trips only",
-    ],
-  },
-  {
-    title: "Cancellation Policy",
-    icon: <XCircle className="w-6 h-6" />,
-    points: [
-      "No refund of deposit for cancellations",
-      "Cancellation charges apply even for full payments",
-      "Written notification required for all cancellations",
-      "No refund for unused portions of the itinerary",
-    ],
-  },
-  {
-    title: "Safety & Insurance",
-    icon: <ShieldCheck className="w-6 h-6" />,
-    points: [
-      "Comprehensive travel insurance mandatory for all treks",
-      "Must cover medical, evacuation, and trip cancellation",
-      "Ensure policy covers all activities and altitudes",
-      "Emergency helicopter evacuation coordination included",
-    ],
-  },
-  {
-    title: "Changes & Modifications",
-    icon: <RefreshCw className="w-6 h-6" />,
-    points: [
-      "Prior notice required for itinerary changes",
-      "Modifications may occur en route due to circumstances like bad weather",
-      "Single supplement charge applies for solo travelers",
-      "Itinerary will be modified for flight delays/cancellations",
-    ],
-  },
-];
-
-const companyValues = [
-  {
-    icon: <ShieldCheck className="w-8 h-8" />,
-    title: "Safety First",
-    description: "Your safety is our absolute priority. We never compromise on equipment, training, or emergency protocols.",
-  },
-  {
-    icon: <Heart className="w-8 h-8" />,
-    title: "Authentic Experiences",
-    description: "We create genuine connections with local communities, cultures, and the natural environment.",
-  },
-  {
-    icon: <Globe className="w-8 h-8" />,
-    title: "Sustainable Tourism",
-    description: "We minimize our environmental footprint and contribute positively to local economies.",
-  },
-  {
-    icon: <Users className="w-8 h-8" />,
-    title: "Expert Guidance",
-    description: "Our guides are certified professionals with deep knowledge and years of experience.",
-  },
-];
-
 const companyHighlights = [
   {
-    icon: <MapIcon className="w-6 h-6" />,
+    icon: <MapIcon className="w-4 h-4 sm:w-5 sm:h-5" />,
     title: "Custom-Planned Journeys",
     text: "No generic packages. We create personalized itineraries that match your unique preferences and interests.",
   },
   {
-    icon: <Users className="w-6 h-6" />,
+    icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />,
     title: "Free Walking Tours",
     text: "First of its kind in Nepal! Daily tours exploring Kathmandu's streets and local life.",
   },
   {
-    icon: <ShieldCheck className="w-6 h-6" />,
+    icon: <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />,
     title: "Proven Trustworthiness",
     text: "Verified by glowing reviews from travelers worldwide on TripAdvisor and social media.",
   },
   {
-    icon: <Star className="w-6 h-6" />,
+    icon: <Star className="w-4 h-4 sm:w-5 sm:h-5" />,
     title: "Value for Money",
     text: "No glitches, no difficulties. We ensure smooth, hassle-free experiences throughout your journey.",
   },
   {
-    icon: <Heart className="w-6 h-6" />,
+    icon: <Heart className="w-4 h-4 sm:w-5 sm:h-5" />,
     title: "Home Away From Home",
     text: "We serve with honest spirit, making you feel at home while exploring Nepal's wonders.",
   },
   {
-    icon: <Award className="w-6 h-6" />,
+    icon: <Award className="w-4 h-4 sm:w-5 sm:h-5" />,
     title: "Top-Notch Service",
     text: "Single-sightedly determined to deliver exceptional experiences that exceed expectations.",
-  },
-];
-
-const additionalPolicies = [
-  {
-    icon: <AlertCircle className="w-5 h-5" />,
-    title: "Clients' Responsibility",
-    text: "Our guides have full authority during tours. Unlawful acts may result in removal from the tour.",
-  },
-  {
-    icon: <RefreshCw className="w-5 h-5" />,
-    title: "Tour Amendment",
-    text: "Prior notice required for itinerary changes. Modifications may occur en route due to circumstances like bad weather.",
-  },
-  {
-    icon: <FileText className="w-5 h-5" />,
-    title: "Paper and Documents",
-    text: "All necessary documents must be provided in sequence for visas and permits. We're not accountable for missing documents.",
-  },
-  {
-    icon: <Plane className="w-5 h-5" />,
-    title: "Flight Delay/Cancellation",
-    text: "Possible in Himalayan regions due to weather. Itinerary will be modified accordingly.",
   },
 ];
 
@@ -235,407 +111,243 @@ const bankDetails = {
 };
 
 export default function AboutPage() {
-  const [emailDisplay, setEmailDisplay] = React.useState("info[at]himkalaadventure[dot]com");
   const phoneNumber = "+977 9841376470";
 
   const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    const decoded = "info@himkalaadventure.com";
-    window.location.href = `mailto:${decoded}`;
+    window.location.href = "mailto:info@himkalaadventure.com";
   };
 
   return (
     <>
       <Head>
-        {/* Primary SEO */}
-        <title>About Himkala Adventure | Trekking Agency in Nepal since 2015</title>
-        <meta name="description" content="Learn about Himkala Adventure, a trusted trekking agency in Nepal since 2015. Meet our expert guides, explore our licenses, and discover why travelers choose us." />
+        <title>About Himkala Adventure | Trusted Trekking Agency in Nepal since 2015</title>
+        <meta name="description" content="Learn about Himkala Adventure, a trusted trekking agency in Nepal since 2015. Meet our expert guides, explore our licenses, and discover why travelers choose us for authentic Himalayan experiences." />
         <link rel="canonical" href="https://www.himkalaadventure.com/about-us" />
-        
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="About Himkala Adventure | Trekking Agency in Nepal since 2015" />
-        <meta property="og:description" content="Learn about Himkala Adventure, a trusted trekking agency in Nepal since 2015. Meet our expert guides, explore our licenses, and discover why travelers choose us." />
+        <meta property="og:title" content="About Himkala Adventure | Trusted Trekking Agency in Nepal since 2015" />
+        <meta property="og:description" content="Learn about Himkala Adventure, a trusted trekking agency in Nepal since 2015. Meet our expert guides, explore our licenses, and discover why travelers choose us for authentic Himalayan experiences." />
         <meta property="og:image" content="https://www.himkalaadventure.com/images/used/FWT-4.webp" />
         <meta property="og:url" content="https://www.himkalaadventure.com/about-us" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Himkala Adventure" />
-        
-        {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Himkala Adventure | Trekking Agency in Nepal since 2015" />
-        <meta name="twitter:description" content="Learn about Himkala Adventure, a trusted trekking agency in Nepal since 2015. Meet our expert guides, explore our licenses, and discover why travelers choose us." />
+        <meta name="twitter:title" content="About Himkala Adventure | Trusted Trekking Agency in Nepal since 2015" />
+        <meta name="twitter:description" content="Learn about Himkala Adventure, a trusted trekking agency in Nepal since 2015. Meet our expert guides, explore our licenses, and discover why travelers choose us for authentic Himalayan experiences." />
         <meta name="twitter:image" content="https://www.himkalaadventure.com/images/used/FWT-4.webp" />
-        
-        {/* Schema.org - Organization Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Himkala Adventure Pvt. Ltd.",
-              "description": "Trekking and tour agency in Nepal offering treks, cultural tours, and guided adventures in Nepal, Bhutan, and Tibet.",
-              "url": "https://www.himkalaadventure.com",
-              "logo": "https://www.himkalaadventure.com/images/logo.webp",
-              "foundingDate": "2015",
-              "founder": {
-                "@type": "Person",
-                "name": "Shiva Prasad Dhakal"
-              },
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Thamel, Lekhnath Marga",
-                "addressLocality": "Kathmandu",
-                "addressCountry": "Nepal"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+977 9841376470",
-                "contactType": "Customer Service",
-                "availableLanguage": ["English", "Nepali"]
-              },
-              "sameAs": [
-                "https://www.facebook.com/share/1HhkiiMrsz/",
-                "https://x.com/himkalanepal",
-                "https://www.instagram.com/himkalaadventure",
-                "https://youtube.com/@himkalaadventure5936",
-                "https://www.tiktok.com/@himkalaadventure"
-              ]
-            })
-          }}
-        />
-        
-        {/* Schema.org - LocalBusiness Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "Himkala Adventure Pvt. Ltd.",
-              "description": "Trekking and tour agency in Nepal offering guided treks, cultural tours, and adventure experiences.",
-              "image": "https://www.himkalaadventure.com/images/used/FWT-4.webp",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Thamel, Lekhnath Marga",
-                "addressLocality": "Kathmandu",
-                "addressCountry": "Nepal"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "27.7172",
-                "longitude": "85.3240"
-              },
-              "telephone": "+977 9841376470",
-              "email": "info@himkalaadventure.com",
-              "openingHours": "Sun-Fri 09:00-18:00",
-              "priceRange": "$$$",
-              "servesCuisine": "Nepali",
-              "tourOperator": {
-                "@type": "TourOperator",
-                "name": "Himkala Adventure"
-              }
-            })
-          }}
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <div className="bg-gradient-to-b from-slate-50 to-white">
-        {/* Page Header - COMPLETE FIX FOR SAFARI */}
-        <section className="pt-6 sm:pt-8 pb-12 sm:pb-16 bg-[#0f2940] bg-gradient-to-br from-[#0f2940] to-[#1a4166] relative overflow-hidden">
-          {/* Solid overlay for Safari fallback */}
-          <div className="absolute inset-0 bg-[#0f2940] safari-fallback" />
-          
-          {/* Gradient background for modern browsers */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0f2940] to-[#1a4166] modern-gradient" />
-          
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-10 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-[#C5E0ED] rounded-full blur-[120px]" />
-            <div className="absolute bottom-10 right-10 w-48 sm:w-72 h-48 sm:h-72 bg-[#7fb8d4] rounded-full blur-[120px]" />
-          </div>
-          
-          <div className="container mx-auto px-4 sm:px-6 relative z-10">
-            <div className="text-center max-w-3xl mx-auto">
-              {/* Badge with Safari-safe styling */}
-              <div className="mb-4 sm:mb-6 inline-block">
-                <Badge className="bg-[#0f2940]/95 bg-[#0a1e32] text-white border-[#C5E0ED]/40 border-[#C5E0ED] py-1.5 sm:py-2 px-4 sm:px-5 text-xs sm:text-sm">
-                  <Mountain className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" /> Est. 2015
-                </Badge>
+      <div className="flex flex-col min-h-screen bg-[#f2ede4] overflow-x-hidden">
+        {/* Page Header */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">About Us</div>
+                <h1 className="mt-3 sm:mt-5 font-serif text-[clamp(2.2rem,7vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  About <span className="text-[#cf6943]">Himkala</span> Adventure
+                </h1>
               </div>
-              
-              {/* Main title - Using solid text for Safari */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4 sm:mb-6 relative">
-                About <span className="text-[#C5E0ED] font-bold">Himkala Adventure</span>
-              </h1>
-              
-              {/* Description with Safari-safe high contrast */}
-              <div className="relative">
-                <p className="text-sm sm:text-base lg:text-lg text-white leading-relaxed px-2 safari-text-fallback">
-                 With years of field experience, Himkala Adventure provides expert guidance for travelers seeking more than just a trek. We are specialists in Nepal's legendary trekking routes and vibrant city tours, and we have expanded our expertise to include curated cultural journeys in Bhutan and Tibet. Our philosophy remains the same: professional advice, comprehensive planning, and a commitment to your safety ensures your trip is perfectly tailored to your dreams.
-                </p>
-                {/* Modern browser version with opacity */}
-                <p className="text-sm sm:text-base lg:text-lg text-white/95 leading-relaxed px-2 modern-text absolute top-0 left-0 w-full">
-                 With years of field experience, Himkala Adventure provides expert guidance for travelers seeking more than just a trek. We are specialists in Nepal's legendary trekking routes and vibrant city tours, and we have expanded our expertise to include curated cultural journeys in Bhutan and Tibet. Our philosophy remains the same: professional advice, comprehensive planning, and a commitment to your safety ensures your trip is perfectly tailored to your dreams.
-                </p>
-              </div>
+              <p className="max-w-full md:max-w-[280px] lg:max-w-[380px] text-sm leading-6 text-[#66706d]">
+                Est. 2015 · Kathmandu, Nepal — Trekking, cultural tours, and authentic Himalayan experiences.
+              </p>
             </div>
           </div>
         </section>
 
         {/* Our Story */}
-        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
-              <div>
-                <Badge className="mb-3 sm:mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 sm:py-1.5 sm:px-4 text-xs font-semibold">
-                  <Mountain className="w-3 h-3 mr-1.5" /> OUR STORY
-                </Badge>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4 sm:mb-6 leading-tight">
-          Streets, Stories & the Himalayas
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-8 sm:gap-12 lg:gap-14 lg:items-center lg:gap-24">
+              <div className="relative min-h-[280px] sm:min-h-[350px] md:min-h-[400px] lg:min-h-[480px] order-2 lg:order-1">
+                <Image
+                  src="/images/used/FWT-4.webp"
+                  alt="Himalayan landscape and trekking in Nepal with Himkala Adventure"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                  quality={85}
+                />
+                <div className="absolute bottom-0 left-0 bg-[#e47a4f] px-4 sm:px-6 py-3 sm:py-4 md:py-5 text-[#fff8ee] sm:px-8">
+                  <div className="font-serif text-2xl sm:text-3xl md:text-4xl leading-none">11<span className="text-xl sm:text-2xl">+</span></div>
+                  <div className="mt-1 sm:mt-2 text-[8px] sm:text-[10px] font-bold tracking-[.15em]">YEARS ON THESE TRAILS</div>
+                </div>
+              </div>
+              <div className="order-1 lg:order-2">
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Our Story</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,4.8rem)] leading-[1.05] sm:leading-[.96] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Streets, Stories &amp; <span className="text-[#cf6943]">the Himalayas</span>
                 </h2>
-                <div className="space-y-3 sm:space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+                <p className="mt-4 sm:mt-7 max-w-full lg:max-w-[510px] text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#536461]">
+                  Born in Gorkha, based in Kathmandu — we offer authentic Himalayan experiences with professional service.
+                </p>
+                <div className="mt-5 sm:mt-8 space-y-3 sm:space-y-4 text-[#556363] text-sm leading-relaxed">
                   <p>
                     Himkala Adventure was founded in 2015 by a native of Gorkha with a deep-rooted passion for the Himalayas and a dream to share Nepal's beauty with the world. What began as a small operation has grown into a locally trusted guiding service, known today for our immersive city tours and the highly popular Free Walking Tours in Kathmandu.
                   </p>
                   <p>
                     While we are steadily building our name in trekking, our focus remains on authentic cultural connections, helping travelers fall in love with Nepal's vibrant streets, stories, and traditions. We are proud to have extended our expertise into Bhutan and Tibet, and our vision remains clear: to grow into one of the region's most trusted names in adventure, one authentic experience at a time.
                   </p>
-                 
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-xl sm:rounded-2xl md:rounded-[2rem] overflow-hidden shadow-xl sm:shadow-2xl shadow-[#0f2940]/20">
-                  <Image
-                    src="/images/used/FWT-4.webp"
-                    alt="Himalayan landscape and trekking in Nepal with Himkala Adventure"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
-                    quality={85}
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940]/70 to-transparent" />
-                  <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 bg-white/20 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-white/30">
-                    <div className="grid grid-cols-3 gap-3 sm:gap-4 text-center">
-                      <div>
-                        <div className="text-xl sm:text-2xl font-bold text-[#C5E0ED]">11+</div>
-                        <div className="text-xs text-white/90">Years</div>
-                      </div>
-                      <div>
-                        <div className="text-xl sm:text-2xl font-bold text-[#C5E0ED]">2500+</div>
-                        <div className="text-xs text-white/90">Travelers</div>
-                      </div>
-                      <div>
-                        <div className="text-xl sm:text-2xl font-bold text-[#C5E0ED]">100%</div>
-                        <div className="text-xs text-white/90">Safety</div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Company Highlights */}
-        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#C5E0ED]/10 via-white to-[#C5E0ED]/5">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
-              <Badge className="mb-3 sm:mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 sm:py-1.5 sm:px-4 text-xs font-semibold">
-                <Star className="w-3 h-3 mr-1.5" /> WHAT SETS US APART
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4 sm:mb-6">What Sets Himkala Adventure Apart?</h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed px-2">
-                Among hundreds of tour companies in Nepal, we stand out with our unique approach 
-                and unwavering commitment to exceptional service.
+        {/* What Sets Us Apart */}
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Why choose us</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  What Sets <span className="text-[#cf6943]">Us Apart</span>
+                </h2>
+              </div>
+              <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                Among hundreds of tour companies in Nepal, we stand out with our unique approach.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
               {companyHighlights.map((item, i) => (
-                <div key={i}>
-                  <Card className="bg-white border-[#C5E0ED]/30 h-full rounded-xl sm:rounded-2xl hover:shadow-lg hover:shadow-[#C5E0ED]/20 transition-all duration-300 hover:-translate-y-1">
-                    <CardContent className="p-5 sm:p-6">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg sm:rounded-xl flex items-center justify-center text-[#0f2940] mb-3 sm:mb-4">
-                        {item.icon}
-                      </div>
-                      <h3 className="text-base sm:text-lg font-bold text-[#0f2940] mb-2">{item.title}</h3>
-                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{item.text}</p>
-                    </CardContent>
-                  </Card>
+                <div key={i} className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="p-5 sm:p-6 md:p-8">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded flex items-center justify-center text-[#f7f2e9] mb-4 sm:mb-6">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#14383b] mb-2 sm:mb-3">{item.title}</h3>
+                    <p className="text-xs sm:text-sm text-[#556363] leading-relaxed">{item.text}</p>
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div className="mt-10 sm:mt-12 md:mt-16 text-center">
-              <p className="text-slate-600 italic text-base sm:text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto px-4">
-                &quot;We don&apos;t just plan trips; we create memorable experiences that stay with you long after you&apos;ve returned home.&quot;
+            <div className="mt-8 sm:mt-12 text-center">
+              <p className="text-[#556363] italic text-base sm:text-lg leading-relaxed max-w-2xl mx-auto px-4">
+                &ldquo;We don&apos;t just plan trips; we create memorable experiences that stay with you long after you&apos;ve returned home.&rdquo;
               </p>
             </div>
           </div>
         </section>
 
         {/* Managing Director */}
-        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#C5E0ED]/20 via-[#e8f4f8] to-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
-              <div className="lg:order-1">
-                <Badge className="mb-3 sm:mb-4 bg-[#0f2940] text-[#C5E0ED] border-none text-xs">Managing Director</Badge>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-2">Shiva Prasad Dhakal</h2>
-                <p className="text-[#2d6a8a] font-medium mb-4 sm:mb-6 text-sm sm:text-base">Managing Director & Founder</p>
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-8 sm:gap-12 lg:gap-14 lg:items-center lg:gap-24">
+              <div className="order-2 lg:order-1">
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Managing Director</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,4.8rem)] leading-[1.05] sm:leading-[.96] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Shiva <span className="text-[#cf6943]">Prasad</span> Dhakal
+                </h2>
+                <p className="text-[#cf6943] font-medium mt-1 sm:mt-2 text-sm sm:text-base">Managing Director &amp; Founder</p>
                 
-                <div className="relative mb-4 sm:mb-6">
-                  <Quote className="absolute -top-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 text-[#C5E0ED]" />
-                  <p className="text-slate-600 italic leading-relaxed pl-6 sm:pl-8 text-sm sm:text-base">
-                    &quot;Beyond the trails and temples lie the real treasures: the conversations, the kindness of strangers, and the feeling of being truly welcomed somewhere new.&quot;
+                <div className="relative mt-4 sm:mt-6">
+                  <Quote className="absolute -top-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 text-[#e47a4f]" />
+                  <p className="text-[#556363] italic leading-relaxed pl-6 sm:pl-8 text-sm sm:text-base">
+                    &ldquo;Beyond the trails and temples lie the real treasures: the conversations, the kindness of strangers, and the feeling of being truly welcomed somewhere new.&rdquo;
                   </p>
                 </div>
 
-                <div className="space-y-3 sm:space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
+                <div className="mt-4 sm:mt-6 space-y-2 sm:space-y-3 text-[#556363] text-sm leading-relaxed">
                   <p>
-                    A native of Gorkha with a deep connection to the Himalayas, Shiva Prasad Dhakal founded Himkala Adventure to share Nepal's beauty in a more personal way. A true pioneer in Kathmandu's tourism scene, he introduced the city's first Free Walking Tours creating opportunities for travelers to experience local life beyond the usual tourist paths. Today, as Managing Director, he brings that same thoughtful approach to every journey, blending his passion for the mountains with a commitment to authentic cultural connection.
+                    A native of Gorkha with a deep connection to the Himalayas, Shiva Prasad Dhakal founded Himkala Adventure to share Nepal's beauty in a more personal way. A true pioneer in Kathmandu's tourism scene, he introduced the city's first Free Walking Tours creating opportunities for travelers to experience local life beyond the usual tourist paths.
                   </p>
                   <p>
-                   Our approach is simple: create meaningful experiences while giving back to the communities and landscapes that make them possible. We travel with care, respect, and a commitment to leaving things better than we found them.
+                    Today, as Managing Director, he brings that same thoughtful approach to every journey, blending his passion for the mountains with a commitment to authentic cultural connection. His leadership is defined by integrity, local knowledge, and a genuine care for both travelers and the communities they visit.
                   </p>
                 </div>
 
-                <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-                  <h3 className="font-bold text-[#0f2940] text-sm sm:text-base">Key Achievements:</h3>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2 text-slate-600 text-sm sm:text-base">
-                      <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#2d6a8a] shrink-0 mt-0.5" />
-                      <span>Certified Trekking Guide (2000)</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-slate-600 text-sm sm:text-base">
-                      <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#2d6a8a] shrink-0 mt-0.5" />
-                      <span>Certified Tour Guide (2010)</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-slate-600 text-sm sm:text-base">
-                      <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#2d6a8a] shrink-0 mt-0.5" />
-                      <span>Five times continuous receiver of Trip Advisor Excellence certificate (2016)</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-slate-600 text-sm sm:text-base">
-                      <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#2d6a8a] shrink-0 mt-0.5" />
-                      <span>First to start the Free Walking Tour in Kathmandu (2017)</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="grid grid-cols-3 gap-3 sm:gap-4">
-                  <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 shadow-sm border border-[#C5E0ED]/30 text-center">
-                    <div className="text-lg sm:text-xl md:text-2xl font-bold text-[#0f2940]">25+</div>
-                    <div className="text-xs text-slate-500">Years Experience</div>
-                  </div>
-                  <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 shadow-sm border border-[#C5E0ED]/30 text-center">
-                    <div className="text-lg sm:text-xl md:text-2xl font-bold text-[#0f2940]">2500+</div>
-                    <div className="text-xs text-slate-500">Clients Served</div>
-                  </div>
-                  <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 shadow-sm border border-[#C5E0ED]/30 text-center">
-                    <div className="text-lg sm:text-xl md:text-2xl font-bold text-[#0f2940]">100%</div>
-                    <div className="text-xs text-slate-500">Satisfaction</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="lg:order-2">
-                <div className="relative">
-                  <div className="relative h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] rounded-xl sm:rounded-2xl md:rounded-[2rem] overflow-hidden shadow-xl sm:shadow-2xl shadow-[#0f2940]/20">
-                    <Image
-                      src="/images/used/shiva.webp"
-                      alt="Shiva Prasad Dhakal - Managing Director of Himkala Adventure"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
-                      quality={85}
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-gradient-to-br from-[#0f2940] to-[#1a4166] rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl">
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#C5E0ED] rounded-full flex items-center justify-center">
-                        <Award className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#0f2940]" />
-                      </div>
+                <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 border-t border-[#cbbcac] pt-6 sm:pt-8">
+                  {[
+                    { title: "Certified Trekking Guide", year: "2000" },
+                    { title: "Certified Tour Guide", year: "2010" },
+                    { title: "TripAdvisor Excellence", year: "2016" },
+                    { title: "Free Walking Tour Pioneer", year: "2017" },
+                  ].map(({ title, year }) => (
+                    <div key={title} className="flex items-center gap-3">
+                      <CheckCircle className="w-4 h-4 text-[#cf6943] shrink-0" />
                       <div>
-                        <div className="text-white font-bold text-xs sm:text-sm">Founded</div>
-                        <div className="text-[#C5E0ED] text-lg sm:text-xl md:text-2xl font-bold">2015</div>
+                        <p className="text-sm font-medium text-[#14383b]">{title}</p>
+                        <p className="text-xs text-[#66706d]">{year}</p>
                       </div>
                     </div>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-6 sm:mt-8">
+                  <div className="bg-[#f7f2e9] border border-[#d8cec0]/30 rounded p-3 sm:p-4 text-center">
+                    <div className="text-lg sm:text-xl font-bold text-[#14383b]">25+</div>
+                    <div className="text-[10px] sm:text-xs text-[#556363]">Years Experience</div>
+                  </div>
+                  <div className="bg-[#f7f2e9] border border-[#d8cec0]/30 rounded p-3 sm:p-4 text-center">
+                    <div className="text-lg sm:text-xl font-bold text-[#14383b]">2500+</div>
+                    <div className="text-[10px] sm:text-xs text-[#556363]">Clients Served</div>
+                  </div>
+                  <div className="bg-[#f7f2e9] border border-[#d8cec0]/30 rounded p-3 sm:p-4 text-center">
+                    <div className="text-lg sm:text-xl font-bold text-[#14383b]">100%</div>
+                    <div className="text-[10px] sm:text-xs text-[#556363]">Satisfaction</div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Our Values */}
-        <section className="py-12 sm:py-16 md:py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
-              <Badge className="mb-3 sm:mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 sm:py-1.5 sm:px-4 text-xs font-semibold">
-                <Award className="w-3 h-3 mr-1.5" /> OUR VALUES
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4 sm:mb-6">What Drives Us Every Day</h2>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {companyValues.map((value, i) => (
-                <div key={i}>
-                  <Card className="bg-gradient-to-br from-[#f8fbfc] to-white border-[#C5E0ED]/30 h-full rounded-xl sm:rounded-2xl hover:shadow-lg hover:shadow-[#C5E0ED]/20 transition-all duration-300">
-                    <CardContent className="p-4 sm:p-6 text-center">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-xl sm:rounded-2xl flex items-center justify-center text-[#0f2940] mx-auto mb-3 sm:mb-4 md:mb-5">
-                        {value.icon}
-                      </div>
-                      <h3 className="text-base sm:text-lg font-bold text-[#0f2940] mb-1 sm:mb-2">{value.title}</h3>
-                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{value.description}</p>
-                    </CardContent>
-                  </Card>
+              <div className="order-1 lg:order-2">
+                <div className="relative min-h-[300px] sm:min-h-[400px] md:min-h-[450px] lg:min-h-[550px]">
+                  <Image
+                    src="/images/used/shiva.webp"
+                    alt="Shiva Prasad Dhakal - Managing Director of Himkala Adventure"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                    quality={85}
+                  />
+                  <div className="absolute bottom-0 left-0 bg-[#14383b] px-4 sm:px-6 py-3 sm:py-4 md:py-5 text-[#f7f2e9] sm:px-8">
+                    <div className="text-[8px] sm:text-[10px] font-bold tracking-[.15em]">FOUNDED</div>
+                    <div className="font-serif text-2xl sm:text-3xl md:text-4xl leading-none">2015</div>
+                  </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* Our Team */}
-        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-[#f0f7fa]">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
-              <Badge className="mb-3 sm:mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 sm:py-1.5 sm:px-4 text-xs font-semibold">
-                <Users className="w-3 h-3 mr-1.5" /> OUR TEAM
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4 sm:mb-6">Meet Our Expert Guides</h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed px-2">
-                We are passionate about creating authentic, safe, and transformative travel experiences.
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Our Team</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Meet Our <span className="text-[#cf6943]">Expert Guides</span>
+                </h2>
+              </div>
+              <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                Passionate about creating authentic, safe, and transformative travel experiences.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
               {teamMembers.map((member, i) => (
-                <div key={i}>
-                  <Card className="bg-white border-[#C5E0ED]/30 overflow-hidden rounded-xl sm:rounded-2xl hover:shadow-xl transition-all duration-300 group h-full">
-                    <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
-                        quality={85}
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] to-transparent opacity-60" />
-                      <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
-                        <Badge className="bg-[#C5E0ED] text-[#0f2940] border-none text-xs">{member.experience}</Badge>
-                      </div>
+                <div key={i} className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
+                      quality={85}
+                    />
+                    <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-[#14383b]/90 text-[#f7f2e9] px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold tracking-[.15em]">
+                      {member.experience}
                     </div>
-                    <CardContent className="p-4 sm:p-5">
-                      <h3 className="text-base sm:text-lg font-bold text-[#0f2940] mb-1">{member.name}</h3>
-                      <p className="text-[#2d6a8a] text-xs sm:text-sm font-medium mb-1 sm:mb-2">{member.role}</p>
-                      <p className="text-slate-500 text-xs mb-2 sm:mb-3">{member.speciality}</p>
-                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{member.bio}</p>
-                    </CardContent>
-                  </Card>
+                  </div>
+                  <div className="p-5 sm:p-6 md:p-8">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#14383b]">{member.name}</h3>
+                    <p className="text-[#cf6943] text-sm font-medium mt-1">{member.role}</p>
+                    <p className="text-[#66706d] text-xs mt-1">{member.speciality}</p>
+                    <p className="text-[#556363] text-sm leading-relaxed mt-3 sm:mt-4">{member.bio}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -643,58 +355,55 @@ export default function AboutPage() {
         </section>
 
         {/* Licenses & Accreditations */}
-        <section className="py-12 sm:py-16 md:py-20 bg-[#0f2940] relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-[#C5E0ED] rounded-full blur-[150px]" />
-            <div className="absolute bottom-10 sm:bottom-20 right-10 sm:right-20 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-[#7fb8d4] rounded-full blur-[150px]" />
-          </div>
-          <div className="container mx-auto px-4 sm:px-6 relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
-              <Badge className="mb-3 sm:mb-4 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1 px-3 sm:py-1.5 sm:px-4 text-xs font-semibold">
-                <ShieldCheck className="w-3 h-3 mr-1.5" /> CREDENTIALS
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white mb-4 sm:mb-6">Licenses & Accreditations</h2>
-              <p className="text-white/90 text-sm sm:text-base leading-relaxed px-2">
-                Demonstrating our commitment to safety, quality, and professional standards
+        <section className="bg-[#14383b] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 text-[#f7f2e9]">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#ef966e] uppercase">Credentials</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#f7f2e9]">
+                  Licenses &amp; <span className="text-[#ef966e]">Accreditations</span>
+                </h2>
+              </div>
+              <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#b9c9c0]">
+                Demonstrating our commitment to safety, quality, and professional standards.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
               {licenses.map((license, i) => (
-                <div key={i}>
-                  <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-xl sm:rounded-2xl h-full hover:bg-white/15 transition-all duration-300">
-                    <CardContent className="p-4 sm:p-6">
-                      <div className="flex items-start gap-3 sm:gap-4">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#C5E0ED]/30 rounded-lg sm:rounded-xl flex items-center justify-center text-[#C5E0ED] shrink-0">
-                          {license.icon}
-                        </div>
-                        <div>
-                          <h3 className="text-white font-bold text-sm sm:text-base mb-1">{license.name}</h3>
-                          <p className="text-[#C5E0ED] text-xs sm:text-sm font-mono mb-1 sm:mb-2">{license.number}</p>
-                          <p className="text-white/80 text-xs sm:text-sm">{license.description}</p>
-                        </div>
+                <div key={i} className="bg-[#f7f2e9]/10 border border-[#f7f2e9]/20 backdrop-blur-sm rounded hover:bg-[#f7f2e9]/15 transition-all duration-300">
+                  <div className="p-5 sm:p-6 md:p-8">
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#e47a4f]/30 rounded flex items-center justify-center text-[#f0a17f] shrink-0">
+                        <FileCheck className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
-                    </CardContent>
-                  </Card>
+                      <div className="min-w-0">
+                        <h4 className="text-sm sm:text-base text-[#f7f2e9] font-bold mb-0.5 sm:mb-1 break-words">{license.name}</h4>
+                        {license.number && (
+                          <p className="text-[#f0a17f] text-xs sm:text-sm font-mono mb-1 sm:mb-2 break-all">{license.number}</p>
+                        )}
+                        <p className="text-[#f7f2e9]/60 text-xs sm:text-sm">{license.description}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div className="border-t border-white/20 pt-8 sm:pt-12 md:pt-16">
-              <h3 className="text-center text-white font-bold text-lg sm:text-xl mb-6 sm:mb-8 md:mb-10">
-                Recognized & Certified By
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                {accreditations.map((acc, i) => (
-                  <div
-                    key={i}
-                    className="bg-white/10 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:bg-white/15 transition-all duration-300"
-                  >
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-[#C5E0ED]/30 rounded-full flex items-center justify-center text-[#C5E0ED] mx-auto mb-3 sm:mb-4">
-                      {acc.icon}
+            <div className="border-t border-[#f7f2e9]/20 mt-10 sm:mt-12 pt-10 sm:pt-12">
+              <h3 className="text-center text-[#f7f2e9] font-bold text-base sm:text-lg mb-6 sm:mb-8">Recognized &amp; Certified By</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 max-w-3xl mx-auto">
+                {[
+                  { name: "Sustainable Tourism Certified", icon: <Globe className="w-4 h-4 sm:w-5 sm:h-5" /> },
+                  { name: "TripAdvisor Excellence", icon: <Award className="w-4 h-4 sm:w-5 sm:h-5" /> },
+                  { name: "Safety First Certified", icon: <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" /> },
+                  { name: "Local Community Partner", icon: <Heart className="w-4 h-4 sm:w-5 sm:h-5" /> },
+                ].map((item, i) => (
+                  <div key={i} className="bg-[#f7f2e9]/5 border border-[#f7f2e9]/20 rounded p-3 sm:p-4 text-center hover:bg-[#f7f2e9]/10 transition-colors">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#e47a4f]/30 rounded-full flex items-center justify-center text-[#f0a17f] mx-auto mb-1.5 sm:mb-2">
+                      {item.icon}
                     </div>
-                    <h4 className="text-white font-bold text-sm mb-1 sm:mb-2">{acc.name}</h4>
-                    <p className="text-white/80 text-xs">{acc.description}</p>
+                    <p className="text-[#f7f2e9] text-[10px] sm:text-xs font-medium">{item.name}</p>
                   </div>
                 ))}
               </div>
@@ -702,103 +411,143 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Terms & Policies */}
-        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-[#f0f7fa] to-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
-              <Badge className="mb-3 sm:mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 sm:py-1.5 sm:px-4 text-xs font-semibold">
-                <FileCheck className="w-3 h-3 mr-1.5" /> TERMS & POLICIES
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4 sm:mb-6">Booking Terms & Conditions</h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed px-2">
+        {/* Booking Terms & Policies */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Terms &amp; Policies</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Booking <span className="text-[#cf6943]">Terms</span> &amp; Conditions
+                </h2>
+              </div>
+              <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
                 Transparent policies to ensure a smooth and worry-free booking experience.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-              {policies.map((policy, i) => (
-                <div key={i}>
-                  <Card className="bg-white border-[#C5E0ED]/30 rounded-xl sm:rounded-2xl h-full shadow-lg shadow-[#0f2940]/5">
-                    <CardContent className="p-4 sm:p-6 md:p-8">
-                      <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center text-[#0f2940]">
-                          {policy.icon}
-                        </div>
-                        <h3 className="text-lg sm:text-xl font-bold text-[#0f2940]">{policy.title}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mt-8 sm:mt-12">
+              {[
+                {
+                  title: "Booking & Reservation",
+                  icon: <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />,
+                  points: [
+                    "20% down payment required to secure your place (15% if booking more than ten weeks prior)",
+                    "Remaining balance payable after arrival in Nepal",
+                    "4% handling charge for credit card payments (no charge for bank transfers)",
+                    "Last minute bookings accepted for Nepal trips only",
+                  ],
+                },
+                {
+                  title: "Cancellation Policy",
+                  icon: <XCircle className="w-4 h-4 sm:w-5 sm:h-5" />,
+                  points: [
+                    "No refund of deposit for cancellations",
+                    "Cancellation charges apply even for full payments",
+                    "Written notification required for all cancellations",
+                    "No refund for unused portions of the itinerary",
+                  ],
+                },
+                {
+                  title: "Safety & Insurance",
+                  icon: <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />,
+                  points: [
+                    "Comprehensive travel insurance mandatory for all treks",
+                    "Must cover medical, evacuation, and trip cancellation",
+                    "Ensure policy covers all activities and altitudes",
+                    "Emergency helicopter evacuation coordination included",
+                  ],
+                },
+                {
+                  title: "Changes & Modifications",
+                  icon: <RefreshCw className="w-4 h-4 sm:w-5 sm:h-5" />,
+                  points: [
+                    "Prior notice required for itinerary changes",
+                    "Modifications may occur en route due to circumstances like bad weather",
+                    "Single supplement charge applies for solo travelers",
+                    "Itinerary will be modified for flight delays/cancellations",
+                  ],
+                },
+              ].map((policy, i) => (
+                <div key={i} className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="p-5 sm:p-6 md:p-8">
+                    <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded flex items-center justify-center text-[#f7f2e9]">
+                        {policy.icon}
                       </div>
-                      <ul className="space-y-2 sm:space-y-3">
-                        {policy.points.map((point, idx) => (
-                          <li key={idx} className="flex items-start gap-2 sm:gap-3">
-                            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#2d6a8a] shrink-0 mt-0.5" />
-                            <span className="text-slate-600 text-xs sm:text-sm">{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#14383b]">{policy.title}</h3>
+                    </div>
+                    <ul className="space-y-2 sm:space-y-3">
+                      {policy.points.map((point, idx) => (
+                        <li key={idx} className="flex items-start gap-2 sm:gap-3">
+                          <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#cf6943] shrink-0 mt-0.5" />
+                          <span className="text-xs sm:text-sm text-[#556363]">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ))}
             </div>
 
             {/* Additional Policies */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12">
-              {additionalPolicies.map((policy, i) => (
-                <div key={i}>
-                  <Card className="bg-white border-[#C5E0ED]/30 rounded-xl sm:rounded-2xl h-full">
-                    <CardContent className="p-4 sm:p-5">
-                      <div className="flex items-center gap-2 sm:gap-3 mb-3">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-lg sm:rounded-xl flex items-center justify-center text-[#0f2940]">
-                          {policy.icon}
-                        </div>
-                        <h4 className="text-sm sm:text-base font-bold text-[#0f2940]">{policy.title}</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mt-6 sm:mt-8">
+              {[
+                { icon: <AlertCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />, title: "Clients' Responsibility", text: "Our guides have full authority during tours. Unlawful acts may result in removal from the tour." },
+                { icon: <RefreshCw className="w-3.5 h-3.5 sm:w-4 sm:h-4" />, title: "Tour Amendment", text: "Prior notice required for itinerary changes. Modifications may occur en route due to circumstances like bad weather." },
+                { icon: <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4" />, title: "Paper and Documents", text: "All necessary documents must be provided in sequence for visas and permits." },
+                { icon: <Plane className="w-3.5 h-3.5 sm:w-4 sm:h-4" />, title: "Flight Delay/Cancellation", text: "Possible in Himalayan regions due to weather. Itinerary will be modified accordingly." },
+              ].map((policy, i) => (
+                <div key={i} className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="p-4 sm:p-5 md:p-6">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded flex items-center justify-center text-[#f7f2e9]">
+                        {policy.icon}
                       </div>
-                      <p className="text-slate-600 text-xs sm:text-sm">{policy.text}</p>
-                    </CardContent>
-                  </Card>
+                      <h4 className="text-xs sm:text-sm font-bold text-[#14383b]">{policy.title}</h4>
+                    </div>
+                    <p className="text-xs sm:text-sm text-[#556363]">{policy.text}</p>
+                  </div>
                 </div>
               ))}
             </div>
 
             {/* Bank Details */}
-            <Card className="mt-8 sm:mt-12 bg-gradient-to-r from-[#C5E0ED]/10 to-[#9dcae0]/10 border-[#C5E0ED]/30 rounded-xl sm:rounded-2xl">
-              <CardContent className="p-6 sm:p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <CreditCard className="w-6 h-6 sm:w-7 sm:h-7 text-[#0f2940]" />
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0f2940]">Payment Details</h3>
+            <div className="mt-6 sm:mt-8 bg-[#e4d8c8] rounded overflow-hidden">
+              <div className="p-5 sm:p-6 md:p-8">
+                <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                  <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 text-[#14383b]" />
+                  <h3 className="text-base sm:text-lg font-bold text-[#14383b]">Payment Details</h3>
                 </div>
-                <div className="grid gap-3 sm:gap-4 text-slate-600 text-sm sm:text-base">
+                <div className="grid gap-2 sm:gap-3 text-[#556363] text-xs sm:text-sm">
                   <div>
-                    <p className="font-bold text-[#0f2940] mb-1">FOR CREDIT TO:</p>
+                    <p className="font-bold text-[#14383b] mb-0.5 sm:mb-1">FOR CREDIT TO:</p>
                     <p>{bankDetails.bankName}</p>
                     <p>{bankDetails.location}</p>
+                    <p className="break-all">SWIFT: {bankDetails.swift}</p>
                   </div>
                   <div>
-                    <p className="font-bold text-[#0f2940] mb-1">SWIFT:</p>
-                    <p>{bankDetails.swift}</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#0f2940] mb-1">BENEFICIARY FINAL CREDIT TO:</p>
-                    <p>A/C Holder&apos;s Name: {bankDetails.accountHolder}</p>
-                    <p>A/C No: {bankDetails.accountNumber}</p>
+                    <p className="font-bold text-[#14383b] mb-0.5 sm:mb-1">BENEFICIARY FINAL CREDIT TO:</p>
+                    <p className="break-all">A/C Holder: {bankDetails.accountHolder}</p>
+                    <p className="break-all">A/C No: {bankDetails.accountNumber}</p>
                     <p>{bankDetails.bankName}</p>
                     <p>{bankDetails.branch}</p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            {/* Important Notice - Safari fallback */}
-            <div className="mt-8 sm:mt-12 bg-[#0f2940] bg-gradient-to-r from-[#0f2940] to-[#1a4166] rounded-xl sm:rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12">
-              <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-6">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-[#C5E0ED]/30 rounded-full flex items-center justify-center shrink-0">
-                  <AlertCircle className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#C5E0ED]" />
+            {/* Important Notice */}
+            <div className="mt-6 sm:mt-8 bg-[#14383b] rounded p-5 sm:p-6 md:p-8 border border-[#f7f2e9]/20">
+              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#e47a4f]/30 rounded-full flex items-center justify-center shrink-0">
+                  <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[#f0a17f]" />
                 </div>
-                <div className="text-center md:text-left">
-                  <h4 className="text-white font-bold text-lg sm:text-xl mb-1 sm:mb-2">Important Notice</h4>
-                  <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                <div className="text-center sm:text-left">
+                  <h4 className="text-[#f7f2e9] font-bold text-base sm:text-lg mb-0.5 sm:mb-1">Important Notice</h4>
+                  <p className="text-[#f7f2e9]/70 text-xs sm:text-sm leading-relaxed">
                     All policies are subject to change. Please refer to your booking confirmation for the specific terms 
-                    applicable to your reservation. For any questions or special circumstances, please contact us directly 
-                    and we&apos;ll be happy to assist you.
+                    applicable to your reservation. For any questions or special circumstances, please contact us directly.
                   </p>
                 </div>
               </div>
@@ -807,71 +556,63 @@ export default function AboutPage() {
         </section>
 
         {/* Contact Info */}
-        <section className="py-12 sm:py-16 md:py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-              <Badge className="mb-3 sm:mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 sm:py-1.5 sm:px-4 text-xs font-semibold">
-                <Phone className="w-3 h-3 mr-1.5" /> GET IN TOUCH
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940] mb-4 sm:mb-6">Contact Information</h2>
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Get In Touch</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Contact <span className="text-[#cf6943]">Information</span>
+                </h2>
+              </div>
+              <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                Have questions or ready to start planning your Himalayan adventure?
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {[
-                { icon: <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />, label: "Address", value: "Thamel, Kathmandu, Nepal" },
-                { icon: <Phone className="w-5 h-5 sm:w-6 sm:h-6" />, label: "Phone", value: phoneNumber },
-                { icon: <Mail className="w-5 h-5 sm:w-6 sm:h-6" />, label: "Email", value: emailDisplay, isEmail: true },
-                { icon: <Clock className="w-5 h-5 sm:w-6 sm:h-6" />, label: "Hours", value: "Sun - Fri, 9AM - 6PM" },
-              ].map((item, i) => (
-                <div key={i}>
-                  <Card className="bg-gradient-to-br from-[#f8fbfc] to-white border-[#C5E0ED]/30 rounded-xl sm:rounded-2xl text-center h-full">
-                    <CardContent className="p-4 sm:p-6">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-full flex items-center justify-center text-[#0f2940] mx-auto mb-3 sm:mb-4">
-                        {item.icon}
-                      </div>
-                      <p className="text-xs sm:text-sm text-slate-500 mb-1">{item.label}</p>
-                      {item.isEmail ? (
-                        <a 
-                          href="#" 
-                          onClick={handleEmailClick}
-                          className="text-[#0f2940] font-bold text-sm sm:text-base hover:text-[#2d6a8a] transition-colors"
-                          aria-label="Send email to Himkala Adventure"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="text-[#0f2940] font-bold text-sm sm:text-base">{item.value}</p>
-                      )}
-                    </CardContent>
-                  </Card>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 mt-8 sm:mt-12">
+              <div className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 p-5 sm:p-6 text-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#14383b] rounded-full flex items-center justify-center text-[#f0a17f] mx-auto mb-2 sm:mb-3">
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
-              ))}
+                <p className="text-[10px] sm:text-xs text-[#556363] uppercase tracking-wider mb-0.5 sm:mb-1">Address</p>
+                <p className="text-[#14383b] font-medium text-xs sm:text-sm">Thamel, Kathmandu, Nepal</p>
+              </div>
+
+              <div className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 p-5 sm:p-6 text-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#14383b] rounded-full flex items-center justify-center text-[#f0a17f] mx-auto mb-2 sm:mb-3">
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+                </div>
+                <p className="text-[10px] sm:text-xs text-[#556363] uppercase tracking-wider mb-0.5 sm:mb-1">Phone</p>
+                <a href={`tel:${phoneNumber.replace(/\s/g, '')}`} className="text-[#14383b] font-medium text-xs sm:text-sm hover:text-[#cf6943] transition-colors break-all">
+                  {phoneNumber}
+                </a>
+              </div>
+
+              <div className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 p-5 sm:p-6 text-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#14383b] rounded-full flex items-center justify-center text-[#f0a17f] mx-auto mb-2 sm:mb-3">
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+                </div>
+                <p className="text-[10px] sm:text-xs text-[#556363] uppercase tracking-wider mb-0.5 sm:mb-1">Email</p>
+                <a 
+                  href="#" 
+                  onClick={handleEmailClick}
+                  className="text-[#14383b] font-medium text-xs sm:text-sm hover:text-[#cf6943] transition-colors break-all"
+                >
+                  info@himkalaadventure.com
+                </a>
+              </div>
+
+              <div className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 p-5 sm:p-6 text-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#14383b] rounded-full flex items-center justify-center text-[#f0a17f] mx-auto mb-2 sm:mb-3">
+                  <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
+                </div>
+                <p className="text-[10px] sm:text-xs text-[#556363] uppercase tracking-wider mb-0.5 sm:mb-1">Hours</p>
+                <p className="text-[#14383b] font-medium text-xs sm:text-sm">Sun - Fri, 9AM - 6PM</p>
+              </div>
             </div>
           </div>
         </section>
-
-        {/* Add this CSS for Safari fallback */}
-        <style jsx global>{`
-          /* Hide modern styles in Safari */
-          @supports not (backdrop-filter: blur(10px)) {
-            .modern-gradient {
-              opacity: 0;
-            }
-            .modern-text {
-              opacity: 0;
-            }
-          }
-          
-          /* Show modern styles in modern browsers */
-          @supports (backdrop-filter: blur(10px)) {
-            .safari-fallback {
-              opacity: 0;
-            }
-            .safari-text-fallback {
-              opacity: 0;
-            }
-          }
-        `}</style>
       </div>
     </>
   );

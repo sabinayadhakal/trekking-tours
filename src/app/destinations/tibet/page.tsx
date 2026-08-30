@@ -130,48 +130,6 @@ const culturalTours = [
   },
 ];
 
-const monasteryTours = [
-  {
-    name: "Monastery Discovery Tour",
-    duration: "6 Days",
-    difficulty: "Easy",
-    altitude: "3,900m",
-    price: "$1,250",
-    image: "/images/used/tibet-1.webp",
-    rating: 4.8,
-    region: "Central Tibet",
-    highlights: ["Drepung Monastery", "Sera Monastery", "Ganden Monastery", "Monk Debates"],
-    description: "Explore Tibet's great monastic universities.",
-    link: "/destinations/tibet/monastery-discovery-tour",
-  },
-  {
-    name: "Ancient Kingdoms Tour",
-    duration: "9 Days",
-    difficulty: "Moderate",
-    altitude: "4,500m",
-    price: "$2,550",
-    image: "/images/used/tibet-kingdom.webp",
-    rating: 4.7,
-    region: "Tsang Province",
-    highlights: ["Shigatse", "Sakya Monastery", "Gyantse Dzong", "Tashilhunpo"],
-    description: "Journey through Tibet's historical kingdoms.",
-    link: "/destinations/tibet/ancient-kingdoms-tour",
-  },
-  {
-    name: "Tibetan Plateau Adventure",
-    duration: "12 Days",
-    difficulty: "Challenging",
-    altitude: "5,000m",
-    price: "$2,950",
-    image: "/images/used/tibet-plateau.webp",
-    rating: 4.9,
-    region: "Changtang Plateau",
-    highlights: ["Nomadic Culture", "High-altitude Lakes", "Wildlife", "Remote Valleys"],
-    description: "Explore the vast Tibetan plateau wilderness.",
-    link: "/destinations/tibet/tibetan-plateau-adventure",
-  },
-];
-
 const whyTibet = [
   {
     icon: <Mountain className="w-5 h-5" />,
@@ -250,19 +208,15 @@ const regions = [
 
 export default function TibetPage() {
   const router = useRouter();
-  const [trekScrollPosition, setTrekScrollPosition] = React.useState(0);
-  const [monasteryScrollPosition, setMonasteryScrollPosition] = React.useState(0);
   const [cityTourScrollPosition, setCityTourScrollPosition] = React.useState(0);
   const [regionScrollPosition, setRegionScrollPosition] = React.useState(0);
 
-  const trekScrollContainerRef = React.useRef<HTMLDivElement>(null);
-  const monasteryScrollContainerRef = React.useRef<HTMLDivElement>(null);
   const cityTourScrollContainerRef = React.useRef<HTMLDivElement>(null);
   const regionScrollContainerRef = React.useRef<HTMLDivElement>(null);
 
   const canonicalUrl = "https://www.himkalaadventure.com/destinations/tibet";
   const pageTitle = "Tibet Travel & Tours - Himkala Adventure";
-  const pageDescription = "Tibet travel & tours: Explore the Roof of the World with our expert-guided cultural tours and treks. Visit Lhasa, Potala Palace, Mount Kailash, and more. Book your Tibet adventure now!";
+  const pageDescription = "Tibet travel & tours: Explore the Roof of the World with our expert-guided cultural tours. Visit Lhasa, Potala Palace, and more. Book your Tibet adventure now!";
   const imageUrl = "https://www.himkalaadventure.com/images/used/tibet-main-page.webp";
 
   const handleBookNow = (itemName: string) => {
@@ -291,10 +245,6 @@ export default function TibetPage() {
 
   const scrollRegionLeft = () => scrollLeft(regionScrollContainerRef, setRegionScrollPosition);
   const scrollRegionRight = () => scrollRight(regionScrollContainerRef, setRegionScrollPosition);
-  const scrollTrekLeft = () => scrollLeft(trekScrollContainerRef, setTrekScrollPosition);
-  const scrollTrekRight = () => scrollRight(trekScrollContainerRef, setTrekScrollPosition);
-  const scrollMonasteryLeft = () => scrollLeft(monasteryScrollContainerRef, setMonasteryScrollPosition);
-  const scrollMonasteryRight = () => scrollRight(monasteryScrollContainerRef, setMonasteryScrollPosition);
   const scrollCityTourLeft = () => scrollLeft(cityTourScrollContainerRef, setCityTourScrollPosition);
   const scrollCityTourRight = () => scrollRight(cityTourScrollContainerRef, setCityTourScrollPosition);
 
@@ -324,7 +274,7 @@ export default function TibetPage() {
               "@context": "https://schema.org",
               "@type": "TravelAgency",
               "name": "Himkala Adventure Pvt. Ltd.",
-              "description": "Tibet travel and tours: Cultural tours and treks on the Roof of the World. Visit Lhasa, Potala Palace, Mount Kailash, and more.",
+              "description": "Tibet travel and tours: Cultural tours on the Roof of the World. Visit Lhasa, Potala Palace, and more.",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Thamel, Lekhnath Marga",
@@ -351,7 +301,7 @@ export default function TibetPage() {
               "name": "Tibet",
               "description": "Known as the Roof of the World, Tibet is the highest plateau on Earth with an average elevation over 4,500m. Explore Potala Palace, ancient monasteries, and sacred landscapes.",
               "image": imageUrl,
-              "touristType": "Cultural, Pilgrimage, Trekking, Spiritual",
+              "touristType": "Cultural, Pilgrimage, Spiritual",
               "bestTimeToVisit": "May-October (Summer and Autumn)",
               "timeZone": "UTC+6"
             })
@@ -443,7 +393,7 @@ export default function TibetPage() {
                       />
                     </div>
                   </Link>
-                  <Link href="/destinations/tibet/monastery-discovery-tour" aria-label="Tibetan Monastery tour">
+                  <Link href="/destinations/tibet/tibet-unique-cultural-tour" aria-label="Tibetan Monastery tour">
                     <div className="relative h-40 sm:h-44 md:h-48 rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
                       <Image
                         src="/images/used/tibet-3.webp"
@@ -836,188 +786,6 @@ export default function TibetPage() {
           </div>
         </section>
 
-        {/* Monastery & Adventure Tours */}
-        <section className="py-12 sm:py-16 md:py-20 bg-[#0f2940] relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 right-20 w-96 h-96 bg-[#C5E0ED] rounded-full blur-[150px]" />
-          </div>
-          <div className="container mx-auto px-4 sm:px-6 relative z-10">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-5">
-              <div className="max-w-2xl">
-                <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                  <Building className="w-3 h-3 mr-1.5" aria-hidden="true" /> MONASTERY & ADVENTURE
-                </Badge>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white">
-                  Spiritual & Adventure Tours
-                </h2>
-                <p className="text-white/70 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">
-                  Explore ancient monasteries and remote Tibetan landscapes.
-                </p>
-              </div>
-            </div>
-
-            {/* Mobile Horizontal Scroll */}
-            <div className="md:hidden relative">
-              <div 
-                className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
-                ref={monasteryScrollContainerRef}
-              >
-                {monasteryTours.map((tour, i) => (
-                  <Link 
-                    key={i} 
-                    href={tour.link}
-                    className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
-                    aria-label={tour.name}
-                  >
-                    <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-lg transition-all">
-                      <div className="relative h-56 overflow-hidden">
-                        <Image
-                          src={tour.image}
-                          alt={tour.name}
-                          fill
-                          className="object-cover"
-                          sizes="85vw"
-                          quality={85}
-                          loading="lazy"
-                        />
-                        <div className="absolute top-3 right-3">
-                          <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold text-xs">
-                            {tour.duration}
-                          </Badge>
-                        </div>
-                        <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                          <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {tour.rating}
-                        </div>
-                      </div>
-                      <CardContent className="p-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
-                            <Building className="w-5 h-5" aria-hidden="true" />
-                          </div>
-                          <h4 className="text-base font-bold text-white line-clamp-1">{tour.name}</h4>
-                        </div>
-                        <p className="text-white/70 text-xs mb-3 line-clamp-2">{tour.description}</p>
-                        <div className="grid grid-cols-2 gap-1.5 mb-3">
-                          <div className="flex items-center gap-1.5 text-white/70 text-xs">
-                            <Clock className="w-3 h-3 text-[#C5E0ED]" aria-hidden="true" /> {tour.duration}
-                          </div>
-                          <div className="flex items-center gap-1.5 text-white/70 text-xs">
-                            <TrendingUp className="w-3 h-3 text-[#C5E0ED]" aria-hidden="true" /> {tour.altitude}
-                          </div>
-                          <div className="flex items-center gap-1.5 text-white/70 text-xs">
-                            <Footprints className="w-3 h-3 text-[#C5E0ED]" aria-hidden="true" /> {tour.difficulty}
-                          </div>
-                        </div>
-                        <div className="flex flex-wrap gap-1 mb-3">
-                          {tour.highlights.slice(0, 2).map((h, idx) => (
-                            <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
-                              {h}
-                            </Badge>
-                          ))}
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-lg font-bold text-white">{tour.price}</span>
-                          <Button 
-                            size="sm" 
-                            className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs min-h-[44px]"
-                            onClick={(e) => { e.preventDefault(); handleBookNow(tour.name); }}
-                            aria-label={`Book ${tour.name}`}
-                          >
-                            Book Now
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-              <button
-                onClick={scrollMonasteryLeft}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
-                aria-label="Scroll left"
-              >
-                <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-              </button>
-              <button
-                onClick={scrollMonasteryRight}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
-                aria-label="Scroll right"
-              >
-                <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
-              </button>
-            </div>
-
-            {/* Desktop Grid */}
-            <div className="hidden md:grid md:grid-cols-3 gap-5">
-              {monasteryTours.map((tour, i) => (
-                <Link 
-                  key={i}
-                  href={tour.link}
-                  className="cursor-pointer"
-                  aria-label={tour.name}
-                >
-                  <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]">
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={tour.image}
-                        alt={tour.name}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        sizes="(max-width: 1024px) 33vw, 33vw"
-                        quality={85}
-                        loading="lazy"
-                      />
-                      <div className="absolute top-3 right-3">
-                        <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
-                          {tour.duration}
-                        </Badge>
-                      </div>
-                      <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                        <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {tour.rating}
-                      </div>
-                    </div>
-                    <CardContent className="p-4 sm:p-5">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
-                          <Building className="w-5 h-5" aria-hidden="true" />
-                        </div>
-                        <h4 className="text-lg font-bold text-white">{tour.name}</h4>
-                      </div>
-                      <p className="text-white/70 text-sm mb-4 line-clamp-2">{tour.description}</p>
-                      <div className="grid grid-cols-2 gap-2 mb-4">
-                        <div className="flex items-center gap-2 text-white/80 text-sm">
-                          <Clock className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" /> {tour.duration}
-                        </div>
-                        <div className="flex items-center gap-2 text-white/80 text-sm">
-                          <TrendingUp className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" /> {tour.altitude}
-                        </div>
-                        <div className="flex items-center gap-2 text-white/80 text-sm">
-                          <Footprints className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" /> {tour.difficulty}
-                        </div>
-                        <div className="text-white font-bold text-lg">{tour.price}</div>
-                      </div>
-                      <div className="flex flex-wrap gap-1.5 mb-4">
-                        {tour.highlights.slice(0, 3).map((h, idx) => (
-                          <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
-                            {h}
-                          </Badge>
-                        ))}
-                      </div>
-                      <Button 
-                        className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm min-h-[44px]"
-                        onClick={(e) => { e.preventDefault(); handleBookNow(tour.name); }}
-                        aria-label={`Book ${tour.name}`}
-                      >
-                        Book Now
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Travel Information */}
         <section className="py-12 sm:py-16 md:py-20 bg-[#f0f7fa]">
           <div className="container mx-auto px-4 sm:px-6">
@@ -1091,10 +859,6 @@ export default function TibetPage() {
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />
                     <span className="text-slate-600 text-sm"><strong>Dramatic Landscapes:</strong> Vast plateaus, turquoise lakes, snow-capped peaks</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />
-                    <span className="text-slate-600 text-sm"><strong>Monastic Cities:</strong> Visit Sakya, Shigatse, and Gyantse - ancient centers of power</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />

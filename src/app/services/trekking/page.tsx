@@ -16,6 +16,7 @@ import {
   TrendingUp,
   ArrowRight,
   Footprints,
+  AlertTriangle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -73,8 +74,9 @@ const trekkingPackages = [
     reviews: 234,
     highlights: ["Khumbu Glacier", "Tengboche Monastery", "Sherpa Culture", "Kala Patthar"],
     description: "Trek to the foot of the world's highest mountain through legendary Sherpa villages and breathtaking Himalayan landscapes.",
-    featured: true,
+    featured: false,
     link: "/services/trekking/everest-base-camp-trek",
+    bookable: true,
     schema: {
       "@type": "Product",
       "name": "Everest Base Camp Trek - 14 Days",
@@ -102,8 +104,9 @@ const trekkingPackages = [
     reviews: 189,
     highlights: ["Thorong La Pass", "Muktinath Temple", "Manang Valley", "Diverse Landscapes"],
     description: "The classic Himalayan trek circumnavigating the Annapurna massif, crossing the legendary Thorong La Pass.",
-    featured: true,
+    featured: false,
     link: "/services/trekking/annapurna-circuit-trek",
+    bookable: true,
     schema: {
       "@type": "Product",
       "name": "Annapurna Circuit Trek - 9 Days",
@@ -133,6 +136,7 @@ const trekkingPackages = [
     description: "Extended Annapurna Circuit with a side trip to the world's highest lake - Tilicho.",
     featured: false,
     link: "/services/trekking/annapurna-circuit-trek-with-tilicho-lake",
+    bookable: true,
     schema: {
       "@type": "Product",
       "name": "Annapurna Circuit Trek with Tilicho Lake - 12 Days",
@@ -162,6 +166,8 @@ const trekkingPackages = [
     description: "Explore the 'Valley of Glaciers' just north of Kathmandu with rich Tamang culture.",
     featured: false,
     link: "/services/trekking/langtang-valley-trek",
+    bookable: false,
+    notBookableReason: "Temporarily unavailable due to natural disaster impact. We are monitoring the situation and will resume bookings when conditions are safe.",
     schema: {
       "@type": "Product",
       "name": "Langtang Valley Trek - 8 Days",
@@ -191,6 +197,7 @@ const trekkingPackages = [
     description: "Circle the world's eighth highest mountain through pristine wilderness and authentic Tibetan culture.",
     featured: true,
     link: "/services/trekking/manaslu-circuit-trek",
+    bookable: true,
     schema: {
       "@type": "Product",
       "name": "Manaslu Circuit Trek - 12 Days",
@@ -220,6 +227,7 @@ const trekkingPackages = [
     description: "Combine the Manaslu Circuit with the sacred Tsum Valley for an extended cultural adventure.",
     featured: false,
     link: "/services/trekking/manaslu-circuit-trek-with-tsum-valley",
+    bookable: true,
     schema: {
       "@type": "Product",
       "name": "Manaslu Circuit Trek with Tsum Valley - 17 Days",
@@ -247,8 +255,9 @@ const trekkingPackages = [
     reviews: 212,
     highlights: ["Annapurna Sanctuary", "Machapuchare Base Camp", "Hot Springs", "Gurung Villages"],
     description: "Journey into the heart of the Annapurna Sanctuary, surrounded by towering peaks.",
-    featured: true,
+    featured: false,
     link: "/services/trekking/annapurna-base-camp-trek",
+    bookable: true,
     schema: {
       "@type": "Product",
       "name": "Annapurna Base Camp Trek - 9 Days",
@@ -256,35 +265,6 @@ const trekkingPackages = [
       "offers": {
         "@type": "Offer",
         "price": "700",
-        "priceCurrency": "USD"
-      }
-    }
-  },
-  {
-    id: 8,
-    name: "Gokyo Trek",
-    region: "Everest Region",
-    duration: "14 Days",
-    difficulty: "Moderate",
-    maxAltitude: "5,357m",
-    groupSize: "2-12",
-    bestSeason: "Mar-May, Sep-Nov",
-    price: 1650,
-    originalPrice: 1850,
-    image: "/images/used/gokyo-1.webp",
-    rating: 4.8,
-    reviews: 134,
-    highlights: ["Gokyo Lakes", "Gokyo Ri", "Ngozumpa Glacier", "Everest Views"],
-    description: "Trek to the stunning turquoise Gokyo Lakes and climb Gokyo Ri for panoramic Everest views.",
-    featured: false,
-    link: "/services/trekking/everest-gokyo-trek",
-    schema: {
-      "@type": "Product",
-      "name": "Gokyo Trek - 14 Days",
-      "description": "Trek to the stunning turquoise Gokyo Lakes and climb Gokyo Ri for panoramic Everest views.",
-      "offers": {
-        "@type": "Offer",
-        "price": "1650",
         "priceCurrency": "USD"
       }
     }
@@ -305,8 +285,9 @@ const trekkingPackages = [
     reviews: 89,
     highlights: ["Kongma La", "Cho La", "Renjo La", "Gokyo Lakes"],
     description: "The ultimate challenge for experienced trekkers, crossing three high passes above 5,300m.",
-    featured: true,
+    featured: false,
     link: "/services/trekking/everest-three-passes-trek",
+    bookable: true,
     schema: {
       "@type": "Product",
       "name": "Everest Three Passes Trek - 18 Days",
@@ -336,6 +317,7 @@ const trekkingPackages = [
     description: "The perfect short trek with stunning sunrise views over the Annapurna and Dhaulagiri ranges.",
     featured: false,
     link: "/services/trekking/ghorepani-poon-hill-trek",
+    bookable: true,
     schema: {
       "@type": "Product",
       "name": "Ghorepani Poon Hill Trek - 6 Days",
@@ -365,6 +347,7 @@ const trekkingPackages = [
     description: "Off-the-beaten-path trek offering stunning mountain views and the sacred Khayar Lake.",
     featured: false,
     link: "/services/trekking/khopra-ridge-trek-with-khayar-lake",
+    bookable: true,
     schema: {
       "@type": "Product",
       "name": "Khopra Ridge Trek with Khayar Lake - 8 Days",
@@ -372,64 +355,6 @@ const trekkingPackages = [
       "offers": {
         "@type": "Offer",
         "price": "700",
-        "priceCurrency": "USD"
-      }
-    }
-  },
-  {
-    id: 12,
-    name: "Langtang Ganjala Pass Trek",
-    region: "Langtang Region",
-    duration: "13 Days",
-    difficulty: "Challenging",
-    maxAltitude: "5,106m",
-    groupSize: "2-10",
-    bestSeason: "Mar-May, Sep-Nov",
-    price: 1200,
-    originalPrice: 1455,
-    image: "/images/used/ganjala-pass-1.webp",
-    rating: 4.8,
-    reviews: 67,
-    highlights: ["Ganjala Pass", "Langtang Valley", "Helambu Region", "Panoramic Views"],
-    description: "Cross the challenging Ganjala Pass connecting Langtang with Helambu for a complete adventure.",
-    featured: false,
-    link: "/services/trekking/langtang-ganjala-pass-trek",
-    schema: {
-      "@type": "Product",
-      "name": "Langtang Ganjala Pass Trek - 13 Days",
-      "description": "Cross the challenging Ganjala Pass connecting Langtang with Helambu for a complete adventure.",
-      "offers": {
-        "@type": "Offer",
-        "price": "1200",
-        "priceCurrency": "USD"
-      }
-    }
-  },
-  {
-    id: 13,
-    name: "Langtang Gosainkunda Trek",
-    region: "Langtang Region",
-    duration: "15 Days",
-    difficulty: "Moderate",
-    maxAltitude: "4,380m",
-    groupSize: "2-12",
-    bestSeason: "Mar-May, Sep-Nov",
-    price: 1395,
-    originalPrice: 1550,
-    image: "/images/used/gosaikunda-1.webp",
-    rating: 4.7,
-    reviews: 112,
-    highlights: ["Gosainkunda Lake", "Sacred Pilgrimage", "Langtang Valley", "Mountain Views"],
-    description: "Trek to the sacred alpine lakes of Gosainkunda, an important Hindu pilgrimage site.",
-    featured: false,
-    link: "/services/trekking/langtang-gosainkunda-trek",
-    schema: {
-      "@type": "Product",
-      "name": "Langtang Gosainkunda Trek - 15 Days",
-      "description": "Trek to the sacred alpine lakes of Gosainkunda, an important Hindu pilgrimage site.",
-      "offers": {
-        "@type": "Offer",
-        "price": "1395",
         "priceCurrency": "USD"
       }
     }
@@ -450,8 +375,9 @@ const trekkingPackages = [
     reviews: 145,
     highlights: ["Mardi Himal Base Camp", "Machapuchare Views", "Forest Trails", "Camping Experience"],
     description: "A hidden gem offering spectacular close-up views of Machapuchare and Annapurna South.",
-    featured: true,
+    featured: false,
     link: "/services/trekking/mardi-himal-trek",
+    bookable: true,
     schema: {
       "@type": "Product",
       "name": "Mardi Himal Trek - 7 Days",
@@ -459,64 +385,6 @@ const trekkingPackages = [
       "offers": {
         "@type": "Offer",
         "price": "600",
-        "priceCurrency": "USD"
-      }
-    }
-  },
-  {
-    id: 16,
-    name: "Nar Phu Trek",
-    region: "Annapurna Region",
-    duration: "13 Days",
-    difficulty: "Challenging",
-    maxAltitude: "5,300m",
-    groupSize: "2-10",
-    bestSeason: "Mar-May, Sep-Nov",
-    price: 1350,
-    originalPrice: 1605,
-    image: "/images/used/narphu-1.webp",
-    rating: 4.9,
-    reviews: 56,
-    highlights: ["Nar Village", "Phu Village", "Tibetan Culture", "Kang La Pass"],
-    description: "Explore the remote and restricted Nar-Phu valleys with their ancient Tibetan Buddhist culture.",
-    featured: true,
-    link: "/services/trekking/nar-phu-trek",
-    schema: {
-      "@type": "Product",
-      "name": "Nar Phu Trek - 13 Days",
-      "description": "Explore the remote and restricted Nar-Phu valleys with their ancient Tibetan Buddhist culture.",
-      "offers": {
-        "@type": "Offer",
-        "price": "1350",
-        "priceCurrency": "USD"
-      }
-    }
-  },
-  {
-    id: 17,
-    name: "Rupina La Trek",
-    region: "Manaslu Region",
-    duration: "16 Days",
-    difficulty: "Challenging",
-    maxAltitude: "4,620m",
-    groupSize: "2-10",
-    bestSeason: "Mar-May, Sep-Nov",
-    price: 1895,
-    originalPrice: 2150,
-    image: "/images/used/rupinala-1.webp",
-    rating: 4.7,
-    reviews: 45,
-    highlights: ["Rupina La Pass", "Remote Villages", "Mountain Views", "Cultural Experience"],
-    description: "An off-the-beaten-path trek in the Manaslu region offering pristine nature and authentic culture.",
-    featured: false,
-    link: "/services/trekking/rupina-la-trek",
-    schema: {
-      "@type": "Product",
-      "name": "Rupina La Trek - 16 Days",
-      "description": "An off-the-beaten-path trek in the Manaslu region offering pristine nature and authentic culture.",
-      "offers": {
-        "@type": "Offer",
-        "price": "1895",
         "priceCurrency": "USD"
       }
     }
@@ -539,6 +407,8 @@ const trekkingPackages = [
     description: "Combine the cultural Tamang Heritage Trail with the stunning Langtang Valley trek.",
     featured: false,
     link: "/services/trekking/tamang-heritage-trail-and-langtang-valley-trek",
+    bookable: false,
+    notBookableReason: "Temporarily unavailable due to natural disaster impact. We are monitoring the situation and will resume bookings when conditions are safe.",
     schema: {
       "@type": "Product",
       "name": "Tamang Heritage Trail and Langtang Valley Trek - 13 Days",
@@ -546,35 +416,6 @@ const trekkingPackages = [
       "offers": {
         "@type": "Offer",
         "price": "1195",
-        "priceCurrency": "USD"
-      }
-    }
-  },
-  {
-    id: 19,
-    name: "Upper Mustang Trek",
-    region: "Annapurna Region",
-    duration: "13 Days",
-    difficulty: "Moderate",
-    maxAltitude: "3,840m",
-    groupSize: "2-10",
-    bestSeason: "Mar-Nov",
-    price: 2595,
-    originalPrice: 2900,
-    image: "/images/used/upper-mustang-main-page.webp",
-    rating: 4.9,
-    reviews: 112,
-    highlights: ["Lo Manthang", "Ancient Caves", "Tibetan Culture", "Desert Landscape"],
-    description: "Journey to the forbidden kingdom of Lo in the rain shadow of the Himalayas.",
-    featured: true,
-    link: "/services/trekking/upper-mustang-trek",
-    schema: {
-      "@type": "Product",
-      "name": "Upper Mustang Trek - 13 Days",
-      "description": "Journey to the forbidden kingdom of Lo in the rain shadow of the Himalayas.",
-      "offers": {
-        "@type": "Offer",
-        "price": "2595",
         "priceCurrency": "USD"
       }
     }
@@ -599,7 +440,7 @@ export default function TrekkingNepalPage() {
     router.push(`/contact?trek=${encodeURIComponent(trekName)}`);
   };
 
-  const featuredPackage = trekkingPackages.find((pkg) => pkg.id === 1);
+  const featuredPackage = trekkingPackages.find((pkg) => pkg.id === 5);
 
   return (
     <div className="min-h-screen bg-white">
@@ -633,10 +474,10 @@ export default function TrekkingNepalPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-2 md:gap-4">
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> 19 Trekking Routes
+                <Mountain className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> 12 Trekking Routes
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
-                <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> 5 to 21 Days
+                <Calendar className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> 6 to 18 Days
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-white/90 text-xs md:text-sm">
                 <TrendingUp className="w-3 h-3 md:w-4 md:h-4 text-[#C5E0ED]" aria-hidden="true" /> Up to 5,545m
@@ -646,7 +487,7 @@ export default function TrekkingNepalPage() {
         </div>
       </section>
 
-      {/* Featured Package */}
+      {/* Featured Package - Manaslu Circuit Trek */}
       {featuredPackage && (
         <section className="py-8 md:py-16 bg-gradient-to-b from-[#f0f7fa] to-white" aria-label="Featured trekking package">
           <div className="container mx-auto px-4 md:px-6">
@@ -776,6 +617,13 @@ export default function TrekkingNepalPage() {
                         </Badge>
                       </div>
                     )}
+                    {!pkg.bookable && (
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <Badge className="bg-red-500 text-white border-none text-xs font-bold px-3 py-1.5">
+                          <AlertTriangle className="w-3 h-3 inline mr-1" /> Temporarily Unavailable
+                        </Badge>
+                      </div>
+                    )}
                   </div>
                   <CardContent className="p-4 md:p-6">
                     <Badge variant="outline" className="border-[#C5E0ED] text-[#2d6a8a] mb-2 md:mb-3 text-xs">
@@ -800,19 +648,30 @@ export default function TrekkingNepalPage() {
                         <span className="text-slate-400 text-xs line-through">${pkg.originalPrice}</span>
                         <span className="text-lg md:text-xl font-bold text-[#0f2940] ml-1">${pkg.price}</span>
                       </div>
-                      <Button 
-                        size="sm" 
-                        variant="ghost" 
-                        className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleBookNow(pkg.name);
-                        }}
-                        aria-label={`Book ${pkg.name} now`}
-                      >
-                        Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" aria-hidden="true" />
-                      </Button>
+                      {pkg.bookable ? (
+                        <Button 
+                          size="sm" 
+                          variant="ghost" 
+                          className="text-[#2d6a8a] hover:bg-[#C5E0ED]/20 font-bold rounded-full text-xs md:text-sm"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleBookNow(pkg.name);
+                          }}
+                          aria-label={`Book ${pkg.name} now`}
+                        >
+                          Book Now <ChevronRight className="w-3 h-3 md:w-4 md:h-4 ml-1" aria-hidden="true" />
+                        </Button>
+                      ) : (
+                        <Badge className="bg-amber-100 text-amber-700 border-none text-xs font-medium px-2.5 py-1">
+                          <AlertTriangle className="w-3 h-3 inline mr-1" /> Not Bookable
+                        </Badge>
+                      )}
                     </div>
+                    {!pkg.bookable && pkg.notBookableReason && (
+                      <p className="text-xs text-slate-500 mt-2 leading-relaxed border-t border-amber-100 pt-2">
+                        {pkg.notBookableReason}
+                      </p>
+                    )}
                   </CardContent>
                 </Card>
               </Link>

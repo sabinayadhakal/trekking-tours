@@ -11,11 +11,12 @@ const staticPages = [
   { path: '/contact', priority: 0.8, changefreq: 'monthly' },
   { path: '/blog', priority: 0.8, changefreq: 'weekly' },
   { path: '/services/trekking', priority: 0.95, changefreq: 'weekly' },
+  { path: '/services/free-tour-kathmandu', priority: 0.9, changefreq: 'weekly' },
   { path: '/services/free-walking-tour-kathmandu', priority: 0.9, changefreq: 'weekly' },
+  { path: '/services/local-city-tour-kathmandu-free', priority: 0.9, changefreq: 'weekly' },
   { path: '/destinations/nepal', priority: 0.95, changefreq: 'weekly' },
   { path: '/destinations/bhutan', priority: 0.9, changefreq: 'weekly' },
   { path: '/destinations/tibet', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/peak-climbing', priority: 0.85, changefreq: 'weekly' },
   { path: '/services/multi-day-cultural-tours', priority: 0.85, changefreq: 'weekly' },
   { path: '/services/jungle-safari', priority: 0.85, changefreq: 'weekly' },
   { path: '/services/day-hikings', priority: 0.8, changefreq: 'weekly' },
@@ -23,35 +24,25 @@ const staticPages = [
   { path: '/services/mountain-flight-heli-trip', priority: 0.85, changefreq: 'weekly' },
 ]
 
-// Trekking pages (based on your file structure)
+// Trekking pages (UPDATED - Removed: Upper Mustang, Gokyo, Langtang Ganjala, Langtang Gosainkunda, Nar Phu, Rupina La)
 const trekkingPages = [
   { path: '/services/trekking/everest-base-camp-trek', priority: 1.0, changefreq: 'weekly' },
   { path: '/services/trekking/annapurna-circuit-trek', priority: 1.0, changefreq: 'weekly' },
   { path: '/services/trekking/manaslu-circuit-trek', priority: 0.95, changefreq: 'weekly' },
   { path: '/services/trekking/annapurna-base-camp-trek', priority: 0.95, changefreq: 'weekly' },
-  { path: '/services/trekking/upper-mustang-trek', priority: 0.9, changefreq: 'weekly' },
   { path: '/services/trekking/langtang-valley-trek', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/trekking/gokyo-trek', priority: 0.9, changefreq: 'weekly' },
   { path: '/services/trekking/everest-three-passes-trek', priority: 0.9, changefreq: 'weekly' },
   { path: '/services/trekking/ghorepani-poon-hill-trek', priority: 0.85, changefreq: 'weekly' },
   { path: '/services/trekking/mardi-himal-trek', priority: 0.85, changefreq: 'weekly' },
   { path: '/services/trekking/annapurna-circuit-trek-with-tilicho-lake', priority: 0.85, changefreq: 'weekly' },
   { path: '/services/trekking/khopra-ridge-trek-with-khayar-lake', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/trekking/langtang-gosainkunda-trek', priority: 0.85, changefreq: 'weekly' },
   { path: '/services/trekking/langtang-helambu-trek', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/trekking/langtang-ganjala-pass-trek', priority: 0.8, changefreq: 'weekly' },
   { path: '/services/trekking/manaslu-circuit-trek-with-tsum-valley', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/trekking/nar-phu-trek', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/trekking/rupina-la-trek', priority: 0.8, changefreq: 'weekly' },
   { path: '/services/trekking/tamang-heritage-trail-and-langtang-valley-trek', priority: 0.8, changefreq: 'weekly' },
 ]
 
-// Peak climbing pages
-const peakClimbingPages = [
-  { path: '/services/peak-climbing/island-peak-climbing', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/peak-climbing/mera-peak-climbing', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/peak-climbing/yala-peak-climbing', priority: 0.8, changefreq: 'weekly' },
-]
+// Peak climbing pages - REMOVED (no longer in use)
+const peakClimbingPages: { path: string; priority: number; changefreq: string }[] = []
 
 // Day sightseeing pages
 const sightseeingPages = [
@@ -92,11 +83,8 @@ const safariPages = [
   { path: '/services/jungle-safari/chitwan-np-jungle-safari', priority: 0.85, changefreq: 'weekly' },
 ]
 
-// Bhutan pages
+// Bhutan pages (UPDATED - Removed: Snowman, Jomolhari, Druk Path)
 const bhutanPages = [
-  { path: '/destinations/bhutan/snowman-trek', priority: 0.9, changefreq: 'weekly' },
-  { path: '/destinations/bhutan/jomolhari-trek', priority: 0.85, changefreq: 'weekly' },
-  { path: '/destinations/bhutan/druk-path-trek', priority: 0.85, changefreq: 'weekly' },
   { path: '/destinations/bhutan/tigers-nest-day-hiking', priority: 0.85, changefreq: 'weekly' },
   { path: '/destinations/bhutan/3-nights-4-days-bhutan-tour', priority: 0.85, changefreq: 'weekly' },
   { path: '/destinations/bhutan/bhutan-cultural-tour', priority: 0.85, changefreq: 'weekly' },
@@ -105,16 +93,13 @@ const bhutanPages = [
   { path: '/destinations/bhutan/short-and-sweet-bhutan-tour', priority: 0.8, changefreq: 'weekly' },
 ]
 
-// Tibet pages
+// Tibet pages (UPDATED - Removed: Ancient Kingdoms, Monastery Discovery, Tibetan Plateau Adventure)
 const tibetPages = [
   { path: '/destinations/tibet/everest-base-camp-tibet', priority: 0.9, changefreq: 'weekly' },
   { path: '/destinations/tibet/kailash-mansarovar-yatra', priority: 0.9, changefreq: 'weekly' },
   { path: '/destinations/tibet/lhasa-city-tour', priority: 0.85, changefreq: 'weekly' },
   { path: '/destinations/tibet/tibet-overland-tour', priority: 0.85, changefreq: 'weekly' },
-  { path: '/destinations/tibet/tibetan-plateau-adventure', priority: 0.85, changefreq: 'weekly' },
   { path: '/destinations/tibet/tibet-unique-cultural-tour', priority: 0.85, changefreq: 'weekly' },
-  { path: '/destinations/tibet/ancient-kingdoms-tour', priority: 0.8, changefreq: 'weekly' },
-  { path: '/destinations/tibet/monastery-discovery-tour', priority: 0.8, changefreq: 'weekly' },
   { path: '/destinations/tibet/tibet-tour-namtso-lake', priority: 0.8, changefreq: 'weekly' },
 ]
 
@@ -127,6 +112,13 @@ const blogPages = [
   { path: '/blog/tilicho-lake-sacred-trek', priority: 0.85, changefreq: 'monthly' },
   { path: '/blog/best-beginner-treks-nepal', priority: 0.85, changefreq: 'monthly' },
   { path: '/blog/pigeons-symbol-peace-nepal', priority: 0.8, changefreq: 'monthly' },
+]
+
+// Free Tours pages (NEW)
+const freeTourPages = [
+  { path: '/services/free-tour-kathmandu', priority: 0.9, changefreq: 'weekly' },
+  { path: '/services/free-walking-tour-kathmandu', priority: 0.9, changefreq: 'weekly' },
+  { path: '/services/local-city-tour-kathmandu-free', priority: 0.9, changefreq: 'weekly' },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -143,6 +135,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...bhutanPages,
     ...tibetPages,
     ...blogPages,
+    ...freeTourPages,
   ]
 
   return allPages.map((page) => ({

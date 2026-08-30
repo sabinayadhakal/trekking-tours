@@ -1,12 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { 
   Mountain, 
-  Compass, 
   Award, 
   ShieldCheck, 
   Users, 
@@ -23,16 +22,16 @@ import {
   ChevronLeft,
   ChevronRight as RightIcon,
   Globe,
-  MessageCircle,
-  BookOpen,
   Youtube,
   Instagram,
   Play,
   XCircle,
+  ArrowRight,
+  ArrowDownRight,
+  MoveUpRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 const destinations = [
   {
@@ -61,9 +60,9 @@ const destinations = [
 const services = [
   {
     icon: (
-      <div className="relative w-6 h-6">
+      <div className="relative w-5 h-5 sm:w-6 sm:h-6">
         <div className="w-full h-full rounded-full bg-gradient-to-br from-[#C5E0ED] to-[#7fb8d4] flex items-center justify-center">
-          <span className="text-[#0f2940] font-bold text-sm">1</span>
+          <span className="text-[#0f2940] font-bold text-xs sm:text-sm">1</span>
         </div>
       </div>
     ),
@@ -73,35 +72,28 @@ const services = [
     link: "/services/free-walking-tour-kathmandu"
   },
   {
-    icon: <Mountain className="w-6 h-6" />,
+    icon: <Mountain className="w-5 h-5 sm:w-6 sm:h-6" />,
     title: "Mountain Trekking",
     description: "Guided treks through Everest, Annapurna, Langtang with Sherpa guides.",
     color: "from-blue-100 to-cyan-50",
     link: "/services/trekking"
   },
   {
-    icon: <Award className="w-6 h-6" />,
-    title: "Peak Climbing",
-    description: "Climbing expeditions to Island Peak, Mera Peak, Lobuche summits.",
-    color: "from-emerald-100 to-teal-50",
-    link: "/services/peak-climbing"
-  },
-  {
-    icon: <Users className="w-6 h-6" />,
+    icon: <Users className="w-5 h-5 sm:w-6 sm:h-6" />,
     title: "Cultural Tours",
     description: "Ancient temples, monasteries, and Himalayan heritage experiences.",
     color: "from-amber-100 to-orange-50",
     link: "/services/multi-day-cultural-tours"
   },
   {
-    icon: <Camera className="w-6 h-6" />,
+    icon: <Camera className="w-5 h-5 sm:w-6 sm:h-6" />,
     title: "Day Sightseeings",
     description: "Explore Kathmandu Valley's UNESCO heritage sites and hidden gems.",
     color: "from-rose-100 to-pink-50",
     link: "/services/day-sightseeings"
   },
   {
-    icon: <Tent className="w-6 h-6" />,
+    icon: <Tent className="w-5 h-5 sm:w-6 sm:h-6" />,
     title: "Jungle Safari",
     description: "Wildlife adventures in Chitwan National Park.",
     color: "from-green-100 to-emerald-50",
@@ -150,17 +142,6 @@ const popularTreks = [
     rating: 4.7,
     link: "/services/trekking/langtang-valley-trek"
   },
-  
-  {
-    name: "Upper Mustang",
-    duration: "12 Days",
-    difficulty: "Moderate",
-    altitude: "4,010m",
-    price: "$2,595",
-    image: "/images/used/upper-mustang-main-page.webp",
-    rating: 4.7,
-    link: "/services/trekking/upper-mustang-trek"
-  },
   {
     name: "Annapurna Base Camp",
     duration: "12 Days",
@@ -171,7 +152,6 @@ const popularTreks = [
     rating: 4.8,
     link: "/services/trekking/annapurna-base-camp-trek"
   },
- 
 ];
 
 const testimonials = [
@@ -231,8 +211,7 @@ const testimonials = [
     trek: "Kathmandu City Tour",
     trekLink: "/nepal-travel-packages"
   },
-
-    {
+  {
     name: "Sébastien Schillé",
     country: "UK",
     text: "I had an amazing and unforgettable experience with Himkala Adventure!... I came to Shiva, Himkala Adventure's director, to ask him what he thought was the best next step. Before I knew it, he had come up with a complete itinerary... Shiva was an excellent guide! He is easy going, kind and very knowledgeable.",
@@ -262,20 +241,8 @@ const testimonials = [
   }
 ];
 
-// Duplicate testimonials for infinite scroll effect
 const infiniteTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
-// --- BLOG AND SOCIAL DATA (from blog page) ---
-const featuredBlog = {
-  title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
-  excerpt: "From budget-friendly Poon Hill at $500 to premium Upper Mustang at $2,595 — break down every trek, permit, and hidden expense.",
-  image: "/images/used/nepal-trek-cost-blog-hero.webp",
-  slug: "nepal-trek-cost-2026",
-  date: "June 4, 2026",
-  readTime: "16 min",
-};
-
-// --- UPDATED BLOG DATA WITH 2 FEATURED BLOGS ---
 const featuredBlogs = [
   {
     title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
@@ -318,7 +285,6 @@ const youtubeVideos = [
   },
 ];
 
-// --- UPDATED INSTAGRAM POSTS WITH 2 NEW REELS ---
 const instagramPosts = [
   {
     title: "City or mountains? With us, you don't have to choose. 🇳🇵🏔️",
@@ -377,7 +343,8 @@ const instagramPosts = [
   },
 ];
 
-// Function to get YouTube thumbnail
+const tripadvisorUrl = "https://www.tripadvisor.com/Attraction_Review-g293890-d8417075-Reviews-Himkala_Adventure-Kathmandu_Kathmandu_Valley_Bagmati_Zone_Central_Region.html";
+
 const getYouTubeThumbnail = (url: string) => {
   let videoId = "";
   if (url.includes("youtube.com/watch?v=")) {
@@ -388,7 +355,6 @@ const getYouTubeThumbnail = (url: string) => {
   return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : "/images/fallback.jpg";
 };
 
-// Function to extract YouTube video ID
 const getYouTubeVideoId = (url: string) => {
   let videoId = "";
   if (url.includes("youtube.com/watch?v=")) {
@@ -399,11 +365,9 @@ const getYouTubeVideoId = (url: string) => {
   return videoId;
 };
 
-const tripadvisorUrl = "https://www.tripadvisor.com/Attraction_Review-g293890-d8417075-Reviews-Himkala_Adventure-Kathmandu_Kathmandu_Valley_Bagmati_Zone_Central_Region.html";
-
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [selectedVideo, setSelectedVideo] = React.useState<{ title: string; url: string } | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<{ title: string; url: string } | null>(null);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -437,8 +401,7 @@ export default function Home() {
     window.open(url, "_blank");
   };
 
-  // Handle escape key press
-  React.useEffect(() => {
+  useEffect(() => {
     const handleEscKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (selectedVideo) closeVideoModal();
@@ -450,10 +413,12 @@ export default function Home() {
   }, [selectedVideo]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-[#f2ede4] overflow-x-hidden">
+      {/* Viewport meta tag should be in _document.tsx or Head component */}
+      
       <main>
-        {/* Hero Section */}
-        <section aria-label="Hero" className="relative min-h-[95vh] md:min-h-screen flex items-center overflow-hidden bg-[#0f2940]">
+        {/* Hero Section - Improved for mobile */}
+        <section aria-label="Hero" className="hero-image relative min-h-[480px] sm:min-h-[560px] md:min-h-[720px] h-[85dvh] sm:h-[92dvh] max-h-[920px] bg-[#0d2427] overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/used/hero.webp"
@@ -464,127 +429,104 @@ export default function Home() {
               quality={85}
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0f2940]/90 via-[#1a4166]/70 to-[#0f2940]/90" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0f2940]/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-[#0d2427]/40" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 relative z-10 pt-20 pb-16 md:pt-32 md:pb-24">
-            <div className="max-w-4xl">
-              <Badge className="mb-6 bg-white/20 backdrop-blur-sm text-white border-white/30 py-2 px-4 text-xs md:text-sm font-medium">
-                <Star className="w-3 h-3 md:w-4 md:h-4 mr-1.5 fill-white" /> 2500+ Adventurers Since 2015
-              </Badge>
-             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-tight mb-6 md:mb-8">
-  Nepal Trekking & 
-  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] italic"> Cultural Tours</span>
-</h1>
-<p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 leading-relaxed max-w-2xl font-light">
-  Expert-guided adventures in Nepal, Bhutan, and Tibet; from Everest Base Camp treks to Kathmandu city walks.
-</p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-12 md:mb-16">
-                <Link href="/services/trekking">
-                  <Button size="lg" className="
-                    bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4]
-                    hover:from-[#b3d6e6] hover:to-[#6baac9]
-                    text-[#0f2940] font-bold 
-                    h-14 sm:h-16 md:h-18
-                    px-8 sm:px-10 md:px-12
-                    rounded-full
-                    text-base sm:text-lg md:text-xl
-                    shadow-2xl shadow-[#C5E0ED]/40
-                    border-2 border-white/30
-                    w-full sm:w-auto
-                    transition-all duration-300
-                    hover:scale-[1.02]
-                  ">
-                    <Compass className="mr-2 w-5 h-5 md:w-6 md:h-6" /> Explore Treks
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button size="lg" variant="outline" className="
-                    bg-white/15 backdrop-blur-sm
-                    text-white 
-                    border-white/40
-                    hover:bg-white/25 
-                    hover:border-white/60
-                    h-14 sm:h-16 md:h-18
-                    px-8 sm:px-10 md:px-12
-                    rounded-full
-                    text-base sm:text-lg md:text-xl
-                    border-2
-                    w-full sm:w-auto
-                    transition-all duration-300
-                  ">
-                    <MessageCircle className="mr-2 w-5 h-5 md:w-6 md:h-6" /> Customize Your Trip
-                  </Button>
-                </Link>
+          <div className="relative mx-auto flex h-full max-w-[1440px] flex-col px-4 sm:px-5 md:px-8 lg:px-14">
+            <div className="flex flex-1 items-end pb-12 sm:pb-16 lg:pb-24">
+              <div className="max-w-[780px] text-[#f7f2e9]">
+                <div className="mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 text-[#f0a17f]">
+                  <span className="h-px w-6 sm:w-9 bg-[#e47a4f]" />
+                  <span className="text-[9px] sm:text-xs font-semibold tracking-[.08em]">Local knowledge · wide horizons</span>
+                </div>
+                <h1 className="font-serif text-[clamp(2.8rem,8vw,8rem)] leading-[.95] sm:leading-[.91] tracking-[-.035em] sm:tracking-[-.045em]">
+                  Nepal Trekking & <br />
+                  <span className="text-[#f0a17f]">Cultural Tours</span>
+                </h1>
+                <p className="mt-5 sm:mt-7 max-w-[530px] text-sm sm:text-base leading-6 sm:leading-7 text-[#eee8dc]">
+                  Thoughtful journeys through Nepal's mountains, villages, and living cultures — led by people who call these trails home.
+                </p>
+                <div className="mt-6 sm:mt-9 flex flex-wrap items-center gap-4 sm:gap-5">
+                  <Link href="/services/trekking">
+                    <Button className="group flex items-center gap-3 sm:gap-4 bg-[#e47a4f] px-4 sm:px-5 py-3 sm:py-3.5 text-[10px] sm:text-[11px] font-bold tracking-[.14em] text-[#fff8ee] hover:bg-[#f0956d] h-auto rounded-none active:scale-[0.98] transition-transform">
+                      FIND YOUR WAY <ArrowDownRight size={15} className="sm:w-[17px] sm:h-[17px] transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
+                    </Button>
+                  </Link>
+                  <Link href="/contact" className="flex items-center gap-2 border-b border-[#eee8dc]/60 pb-1 text-[10px] sm:text-[11px] font-bold tracking-[.13em] hover:border-[#f0a17f] hover:text-[#f0a17f] active:text-[#f0a17f]">
+                    WHY WITH US <ArrowRight size={14} className="sm:w-[15px] sm:h-[15px]" />
+                  </Link>
+                </div>
               </div>
+            </div>
+            <div className="absolute bottom-7 right-5 hidden items-center gap-8 text-[10px] font-semibold tracking-[.18em] text-[#d8d0c3] sm:flex lg:right-14">
+              <span>27°42′N · 85°19′E</span>
+              <span className="h-px w-12 bg-[#e47a4f]" />
+              <span>KATHMANDU, NEPAL</span>
+            </div>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-12 sm:h-20 bg-gradient-to-t from-[#f2ede4] to-transparent" />
+        </section>
 
-              {/* Quick Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[
-                  { value: "11+", label: "Years Experience", icon: <Award className="w-4 h-4" aria-hidden="true" /> },
-                  { value: "2500+", label: "Happy Travelers", icon: <Users className="w-4 h-4" aria-hidden="true" /> },
-                  { value: "100%", label: "Safety Record", icon: <ShieldCheck className="w-4 h-4" aria-hidden="true" /> }
-                ].map((stat, i) => (
-                  <div
-                    key={i}
-                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20"
-                  >
-                    <div className="flex items-center gap-2 mb-2">
-                      {stat.icon}
-                      <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                    </div>
-                    <div className="text-xs text-white/70 font-medium uppercase tracking-wider">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
+        {/* Intro Section */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto grid max-w-[1220px] gap-8 sm:gap-12 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
+            <div>
+              <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">A different kind of guide</div>
+              <div className="mt-6 sm:mt-8 h-px w-16 sm:w-20 bg-[#cf6943]" />
+            </div>
+            <div>
+              <h2 className="max-w-[860px] font-serif text-[clamp(1.8rem,4.5vw,4.5rem)] leading-[1.1] sm:leading-[1.05] tracking-[-.03em] sm:tracking-[-.035em] text-[#14383b]">
+                The mountain is not a checklist. <span className="text-[#b7aaa0]">It is a conversation.</span>
+              </h2>
+              <p className="mt-5 sm:mt-8 max-w-[620px] text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#556363]">
+                We plan with the patience of people who know these paths — leaving room for a second cup of chiya, a village festival, or weather that asks you to stay another night. That is where Nepal tends to reveal itself.
+              </p>
             </div>
           </div>
         </section>
 
         {/* Destinations */}
-        <section id="destinations" className="py-16 md:py-32 bg-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-              <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-                <MapPin className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHERE WE GO
-              </Badge>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
-                Nepal, Bhutan & Tibet
-              </h2>
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+        <section id="destinations" className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Where we go</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,5.4vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Nepal, Bhutan & <span className="text-[#cf6943]">Tibet</span>
+                </h2>
+              </div>
+              <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
                 Trekking in Nepal, city tours in Kathmandu, and cultural experiences across the Himalayas.
               </p>
             </div>
 
             {/* Mobile Horizontal Scroll */}
-            <div className="md:hidden">
-              <div className="flex overflow-x-auto pb-8 -mx-4 px-4 scrollbar-hide">
+            <div className="md:hidden mt-8 sm:mt-12">
+              <div className="flex overflow-x-auto pb-6 sm:pb-8 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory">
                 {destinations.map((dest, i) => (
                   <Link
                     key={`${dest.name}-${i}`}
                     href={dest.link}
-                    className="flex-shrink-0 w-[85vw] mr-6 last:mr-0"
+                    className="flex-shrink-0 w-[80vw] sm:w-[85vw] mr-4 sm:mr-6 last:mr-0 snap-start"
                   >
-                    <div className="relative h-[400px] rounded-2xl overflow-hidden">
+                    <div className="relative h-[340px] sm:h-[400px] overflow-hidden bg-[#173b3d] rounded-lg">
                       <Image
                         src={dest.image}
                         alt={`${dest.name} destination - Himalayan trekking and cultural tours`}
                         fill
-                        className="object-cover"
+                        className="object-cover opacity-85"
                         sizes="85vw"
                         quality={85}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/30 to-transparent" />
-                      <div className="absolute bottom-0 p-6 w-full">
-                        
-                        <h3 className="text-2xl font-serif text-white mb-3">{dest.name}</h3>
-                        <p className="text-white/90 text-sm mb-4 leading-relaxed">
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#102c2f]/90 via-[#102c2f]/15 to-transparent" />
+                      <div className="absolute bottom-0 p-5 sm:p-6 w-full">
+                        <h3 className="text-xl sm:text-2xl font-serif text-[#f7f2e9] mb-2 sm:mb-3">{dest.name}</h3>
+                        <p className="text-[#e9dfd2] text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                           {dest.description}
                         </p>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
                           {dest.highlights.map((h, idx) => (
-                            <span key={idx} className="text-xs bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full">
+                            <span key={idx} className="text-[10px] sm:text-xs border border-[#f7f2e9]/50 text-[#f7f2e9] px-2 sm:px-3 py-0.5 sm:py-1 rounded">
                               {h}
                             </span>
                           ))}
@@ -597,31 +539,42 @@ export default function Home() {
             </div>
 
             {/* Desktop Grid */}
-            <div className="hidden md:grid grid-cols-3 gap-8">
+            <div className="hidden md:grid grid-cols-3 gap-5 mt-12">
               {destinations.map((dest, i) => (
                 <Link
                   key={dest.name}
                   href={dest.link}
-                  className="relative h-[500px] rounded-3xl overflow-hidden group"
+                  className="journey-card group relative block w-full overflow-hidden bg-[#173b3d] hover:shadow-xl transition-shadow duration-300"
                 >
-                  <Image
-                    src={dest.image}
-                    alt={`${dest.name} - Himalayan trekking destination with cultural highlights`}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 1200px) 33vw, 400px"
-                    quality={85}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f2940] via-[#0f2940]/30 to-transparent" />
-                  <div className="absolute bottom-0 p-8 w-full">
-                    
-                    <h3 className="text-3xl font-serif text-white mb-3">{dest.name}</h3>
-                    <p className="text-white/90 text-sm mb-4 leading-relaxed">
-                      {dest.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="relative min-h-[320px] overflow-hidden">
+                    <Image
+                      src={dest.image}
+                      alt={`${dest.name} - Himalayan trekking destination with cultural highlights`}
+                      fill
+                      className="object-cover opacity-85 journey-card-image"
+                      sizes="(max-width: 1200px) 33vw, 400px"
+                      quality={85}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#102c2f]/90 via-[#102c2f]/15 to-transparent" />
+                    <span className="absolute left-5 top-5 border border-[#f7f2e9]/50 px-2.5 py-1.5 text-[10px] font-bold tracking-[.15em] text-[#f7f2e9]">
+                      Destination
+                    </span>
+                    <span className="absolute bottom-5 left-5 flex items-center gap-2 text-[11px] font-semibold tracking-wide text-[#e9dfd2]">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#ef966e]" /> Himalayan
+                    </span>
+                  </div>
+                  <div className="flex flex-col justify-between p-6 sm:p-8">
+                    <div>
+                      <div className="mb-5 flex items-center justify-between text-[10px] font-bold tracking-[.15em] text-[#e5a07f]">
+                        <span>Explore</span>
+                        <MoveUpRight size={16} className="text-[#ef966e] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </div>
+                      <h3 className="font-serif text-3xl leading-none tracking-[-.03em] text-[#f7f2e9]">{dest.name}</h3>
+                      <p className="mt-5 max-w-[410px] text-sm leading-6 text-[#cad3cc]">{dest.description}</p>
+                    </div>
+                    <div className="mt-10 flex flex-wrap items-center justify-between border-t border-[#d9e0d5]/20 pt-5 gap-2">
                       {dest.highlights.map((h, idx) => (
-                        <span key={idx} className="text-xs bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full">
+                        <span key={idx} className="text-xs font-medium text-[#b8c6bb]">
                           {h}
                         </span>
                       ))}
@@ -634,40 +587,40 @@ export default function Home() {
         </section>
 
         {/* Our Services */}
-        <section id="services" className="py-16 md:py-32 bg-gradient-to-b from-white to-slate-50">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-              <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-                <CheckCircle className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHAT WE OFFER
-              </Badge>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#0f2940] mb-6">
-                Treks, Tours & Cultural Experiences
-              </h2>
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+        <section id="services" className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">What we offer</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,5.4vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Treks, Tours & <span className="text-[#cf6943]">Cultural Experiences</span>
+                </h2>
+              </div>
+              <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
                 Guided trekking in Nepal, city tours in Kathmandu, and cultural journeys through Bhutan and Tibet.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
               {services.map((service, i) => (
                 <Link
                   key={i}
                   href={service.link}
-                  className="group bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-[#C5E0ED]/30"
+                  className="group bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 active:scale-[0.99]"
                 >
-                  <CardContent className="p-6 md:p-8 h-full">
-                    <div className={`w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center text-[#2d6a8a] mb-6`}>
-                      <div className="scale-125" aria-hidden="true">
+                  <CardContent className="p-5 sm:p-6 md:p-8 h-full">
+                    <div className={`w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br ${service.color} rounded flex items-center justify-center text-[#2d6a8a] mb-4 sm:mb-6`}>
+                      <div className="scale-[1.1] sm:scale-125" aria-hidden="true">
                         {service.icon}
                       </div>
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-[#0f2940] mb-4">{service.title}</h3>
-                    <p className="text-slate-600 leading-relaxed text-sm md:text-base mb-6">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#14383b] mb-2 sm:mb-4">{service.title}</h3>
+                    <p className="text-[#556363] leading-relaxed text-sm md:text-base mb-4 sm:mb-6">
                       {service.description}
                     </p>
-                    <div className="text-[#2d6a8a] hover:text-[#0f2940] inline-flex items-center group">
+                    <div className="text-[#cf6943] hover:text-[#b85a38] inline-flex items-center group text-xs sm:text-sm font-bold">
                       Learn More
-                      <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                      <ChevronRight className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </div>
                   </CardContent>
                 </Link>
@@ -676,85 +629,77 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Popular Treks - Desktop with arrow navigation */}
-        <section id="treks" className="py-16 md:py-32 bg-[#0f2940]">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 md:mb-16 gap-6">
-              <div className="max-w-2xl">
-                <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-                  <Star className="w-3 h-3 mr-1.5 fill-[#C5E0ED]" aria-hidden="true" /> TREKKING ROUTES
-                </Badge>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4">
-                  Nepal's Finest Treks
+        {/* Popular Treks */}
+        <section id="treks" className="bg-[#14383b] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 text-[#f7f2e9]">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#ef966e] uppercase">Trekking Routes</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,5.4vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#f7f2e9]">
+                  Nepal's <span className="text-[#ef966e]">Finest Treks</span>
                 </h2>
-                <p className="text-white/70 text-base">
-                  Everest Base Camp, Annapurna Circuit, Manaslu, and classic Himalayan trails.
-                </p>
               </div>
-              
-              <div className="flex gap-4">
-                <Button
+              <div className="flex gap-3 sm:gap-4">
+                <button
                   onClick={scrollLeft}
-                  className="bg-white/10 hover:bg-white/20 border-white/30 text-white rounded-full p-3"
-                  size="icon"
+                  className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border border-[#55706e] hover:border-[#ef966e] hover:text-[#ef966e] transition-colors active:bg-[#ef966e]/10 touch-manipulation"
                   aria-label="Scroll left through treks"
                 >
-                  <ChevronLeft className="h-6 w-6" aria-hidden="true" />
-                </Button>
-                <Button
+                  <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+                </button>
+                <button
                   onClick={scrollRight}
-                  className="bg-white/10 hover:bg-white/20 border-white/30 text-white rounded-full p-3"
-                  size="icon"
+                  className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border border-[#55706e] hover:border-[#ef966e] hover:text-[#ef966e] transition-colors active:bg-[#ef966e]/10 touch-manipulation"
                   aria-label="Scroll right through treks"
                 >
-                  <RightIcon className="h-6 w-6" aria-hidden="true" />
-                </Button>
+                  <RightIcon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+                </button>
               </div>
             </div>
 
             {/* Mobile: Always horizontal scroll */}
-            <div className="md:hidden">
-              <div className="flex overflow-x-auto pb-8 -mx-4 px-4 scrollbar-hide">
+            <div className="md:hidden mt-8 sm:mt-12">
+              <div className="flex overflow-x-auto pb-6 sm:pb-8 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory">
                 {popularTreks.map((trek, i) => (
                   <Link
                     key={trek.name}
                     href={trek.link}
-                    className="flex-shrink-0 w-[85vw] mr-6 last:mr-0"
+                    className="flex-shrink-0 w-[80vw] sm:w-[85vw] mr-4 sm:mr-6 last:mr-0 snap-start"
                   >
-                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
-                      <div className="relative h-64 overflow-hidden">
+                    <div className="bg-[#173b3d] border border-[#55706e] overflow-hidden rounded-lg">
+                      <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                         <Image
                           src={trek.image}
                           alt={`${trek.name} trek - ${trek.duration} trek in Nepal Himalayas`}
                           fill
-                          className="object-cover"
+                          className="object-cover opacity-85"
                           sizes="85vw"
                           quality={85}
                         />
-                        <div className="absolute top-4 right-4 bg-[#0f2940]/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-bold flex items-center gap-1">
-                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" /> {trek.rating}
+                        <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-[#14383b]/90 text-[#f7f2e9] px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm font-bold flex items-center gap-0.5 sm:gap-1">
+                          <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" /> {trek.rating}
                         </div>
                       </div>
-                      <CardContent className="p-6">
-                        <h3 className="text-xl font-bold text-white mb-4">{trek.name}</h3>
-                        <div className="grid grid-cols-2 gap-4 mb-6">
-                          <div className="flex items-center gap-2 text-white/70">
-                            <Clock className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
-                            <span className="text-sm">{trek.duration}</span>
+                      <CardContent className="p-4 sm:p-5 md:p-6">
+                        <h3 className="text-lg sm:text-xl font-bold text-[#f7f2e9] mb-3 sm:mb-4">{trek.name}</h3>
+                        <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-6">
+                          <div className="flex items-center gap-1.5 sm:gap-2 text-[#b9c9c0]">
+                            <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ef966e]" aria-hidden="true" />
+                            <span className="text-xs sm:text-sm">{trek.duration}</span>
                           </div>
-                          <div className="flex items-center gap-2 text-white/70">
-                            <Mountain className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
-                            <span className="text-sm">{trek.altitude}</span>
+                          <div className="flex items-center gap-1.5 sm:gap-2 text-[#b9c9c0]">
+                            <Mountain className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ef966e]" aria-hidden="true" />
+                            <span className="text-xs sm:text-sm">{trek.altitude}</span>
                           </div>
-                          <div className="flex items-center gap-2 text-white/70">
-                            <Footprints className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
-                            <span className="text-sm">{trek.difficulty}</span>
+                          <div className="flex items-center gap-1.5 sm:gap-2 text-[#b9c9c0]">
+                            <Footprints className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ef966e]" aria-hidden="true" />
+                            <span className="text-xs sm:text-sm">{trek.difficulty}</span>
                           </div>
-                          <div className="text-[#C5E0ED] font-bold text-lg">
+                          <div className="text-[#ef966e] font-bold text-base sm:text-lg">
                             {trek.price}
                           </div>
                         </div>
-                        <div className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full hover:from-[#b3d6e6] hover:to-[#6baac9] py-4 text-center transition-all duration-300">
+                        <div className="w-full bg-[#e47a4f] text-[#fff8ee] font-bold hover:bg-[#cf6943] py-3 sm:py-4 text-center transition-all duration-300 text-[10px] sm:text-xs tracking-[.14em] active:scale-[0.98]">
                           View Details
                         </div>
                       </CardContent>
@@ -765,54 +710,53 @@ export default function Home() {
             </div>
 
             {/* Desktop with arrow navigation */}
-            <div className="hidden md:block relative">
-              {/* Scrollable Container */}
+            <div className="hidden md:block relative mt-12">
               <div 
                 ref={scrollContainerRef}
                 className="flex overflow-x-auto pb-8 scrollbar-hide"
                 style={{ scrollBehavior: 'smooth' }}
               >
-                <div className="flex gap-8 pr-8">
+                <div className="flex gap-5 pr-8">
                   {popularTreks.map((trek, i) => (
                     <Link
                       key={trek.name}
                       href={trek.link}
                       className="flex-shrink-0 w-[400px]"
                     >
-                      <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-all duration-300">
+                      <div className="bg-[#173b3d] border border-[#55706e] overflow-hidden hover:border-[#ef966e] transition-all duration-300 rounded-lg">
                         <div className="relative h-72 overflow-hidden">
                           <Image
                             src={trek.image}
                             alt={`${trek.name} trek - popular Himalayan trekking route`}
                             fill
-                            className="object-cover"
+                            className="object-cover opacity-85"
                             sizes="400px"
                             quality={85}
                           />
-                          <div className="absolute top-4 right-4 bg-[#0f2940]/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-bold flex items-center gap-1">
+                          <div className="absolute top-4 right-4 bg-[#14383b]/90 text-[#f7f2e9] px-3 py-1.5 text-sm font-bold flex items-center gap-1">
                             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" /> {trek.rating}
                           </div>
                         </div>
                         <CardContent className="p-8">
-                          <h3 className="text-2xl font-bold text-white mb-4">{trek.name}</h3>
+                          <h3 className="text-2xl font-bold text-[#f7f2e9] mb-4">{trek.name}</h3>
                           <div className="grid grid-cols-2 gap-4 mb-6">
-                            <div className="flex items-center gap-2 text-white/70">
-                              <Clock className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <div className="flex items-center gap-2 text-[#b9c9c0]">
+                              <Clock className="w-4 h-4 text-[#ef966e]" aria-hidden="true" />
                               <span className="text-sm">{trek.duration}</span>
                             </div>
-                            <div className="flex items-center gap-2 text-white/70">
-                              <Mountain className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <div className="flex items-center gap-2 text-[#b9c9c0]">
+                              <Mountain className="w-4 h-4 text-[#ef966e]" aria-hidden="true" />
                               <span className="text-sm">{trek.altitude}</span>
                             </div>
-                            <div className="flex items-center gap-2 text-white/70">
-                              <Footprints className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" />
+                            <div className="flex items-center gap-2 text-[#b9c9c0]">
+                              <Footprints className="w-4 h-4 text-[#ef966e]" aria-hidden="true" />
                               <span className="text-sm">{trek.difficulty}</span>
                             </div>
-                            <div className="text-[#C5E0ED] font-bold text-xl">
+                            <div className="text-[#ef966e] font-bold text-xl">
                               {trek.price}
                             </div>
                           </div>
-                          <div className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full hover:from-[#b3d6e6] hover:to-[#6baac9] py-4 text-center transition-all duration-300">
+                          <div className="w-full bg-[#e47a4f] text-[#fff8ee] font-bold hover:bg-[#cf6943] py-4 text-center transition-all duration-300 text-xs tracking-[.14em]">
                             View Details
                           </div>
                         </CardContent>
@@ -825,88 +769,84 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ===== UPDATED: FROM THE HIMALAYAN JOURNAL SECTION (2 FEATURED BLOGS) ===== */}
-        <section className="py-12 sm:py-16 md:py-24 bg-white overflow-hidden">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8 md:mb-12">
+        {/* From the Himalayan Journal */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
               <div>
-                <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                  <BookOpen className="w-3 h-3 mr-1.5" /> JOURNAL
-                </Badge>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f2940]">
-                  From the <span className="text-[#2d6a8a]">Himalayan</span> Journal
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Journal</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,5.4vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  From the <span className="text-[#cf6943]">Himalayan</span> Journal
                 </h2>
-                <p className="text-slate-500 text-sm mt-1">Stories, tips, and adventures from the Himalayas</p>
               </div>
-              <Link href="/blog">
-                <Button variant="ghost" className="text-[#2d6a8a] hover:text-[#0f2940] font-medium px-0 sm:px-4">
-                  View All Posts <ChevronRight className="w-4 h-4 ml-1" />
-                </Button>
+              <Link href="/blog" className="flex items-center gap-2 border-b border-[#cf6943] pb-1 text-[10px] sm:text-[11px] font-bold tracking-[.14em] text-[#cf6943] active:text-[#b85a38]">
+                VIEW ALL <ArrowRight size={12} className="sm:w-[14px] sm:h-[14px]" />
               </Link>
             </div>
 
             {/* 2 Featured Blog Post Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mt-8 sm:mt-12">
               {featuredBlogs.map((blog, index) => (
-                <Link href={`/blog/${blog.slug}`} key={index}>
-                  <Card className="bg-white border-[#C5E0ED]/30 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 h-full">
+                <Link href={`/blog/${blog.slug}`} key={index} className="active:scale-[0.99] transition-transform">
+                  <div className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full rounded-lg">
                     <div className="grid grid-cols-1 sm:grid-cols-3">
                       <div className="relative h-48 sm:h-auto sm:min-h-[200px]">
                         <Image
                           src={blog.image}
                           alt={blog.title}
                           fill
-                          className="object-cover"
+                          className="object-cover opacity-85"
                           sizes="(max-width: 768px) 100vw, 33vw"
+                          loading="lazy"
                         />
                         {index === 0 && (
-                          <Badge className="absolute top-3 left-3 bg-[#0f2940]/90 text-white border-none text-xs">
+                          <span className="absolute top-3 left-3 bg-[#14383b]/90 text-[#f7f2e9] px-2 sm:px-2.5 py-1 sm:py-1.5 text-[8px] sm:text-[10px] font-bold tracking-[.15em]">
                             Featured
-                          </Badge>
+                          </span>
                         )}
                       </div>
-                      <CardContent className="p-4 md:p-6 sm:col-span-2 flex flex-col justify-center">
-                        <div className="flex items-center gap-3 text-xs text-slate-500 mb-2">
-                          <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {blog.readTime}</span>
+                      <div className="p-4 sm:p-5 md:p-6 sm:col-span-2 flex flex-col justify-center">
+                        <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs text-[#66706d] mb-1.5 sm:mb-2">
+                          <span className="flex items-center gap-0.5 sm:gap-1"><Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {blog.readTime}</span>
                           <span>•</span>
                           <span>{blog.date}</span>
                         </div>
-                        <h3 className="text-base md:text-lg font-bold text-[#0f2940] mb-2 leading-snug line-clamp-2">
+                        <h3 className="text-sm sm:text-base md:text-lg font-bold text-[#14383b] mb-1.5 sm:mb-2 leading-snug line-clamp-2">
                           {blog.title}
                         </h3>
-                        <p className="text-slate-600 text-sm leading-relaxed line-clamp-2">
+                        <p className="text-[#556363] text-xs sm:text-sm leading-relaxed line-clamp-2">
                           {blog.excerpt}
                         </p>
-                        <div className="mt-3 text-[#2d6a8a] font-medium text-sm inline-flex items-center hover:underline">
-                          Read More <ChevronRight className="w-4 h-4 ml-1" />
+                        <div className="mt-2 sm:mt-3 text-[#cf6943] font-bold text-xs sm:text-sm inline-flex items-center hover:underline">
+                          Read More <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                         </div>
-                      </CardContent>
+                      </div>
                     </div>
-                  </Card>
+                  </div>
                 </Link>
               ))}
             </div>
 
             {/* YouTube & Instagram Horizontal Scrolls */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mt-6 sm:mt-8">
               {/* YouTube */}
               <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-6 h-6 bg-red-600 rounded flex items-center justify-center">
-                    <Youtube className="w-3.5 h-3.5 text-white" />
+                <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-red-600 rounded flex items-center justify-center">
+                    <Youtube className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
                   </div>
-                  <h4 className="text-xs font-bold text-slate-600 uppercase tracking-wider">  YouTube Videos</h4>
+                  <h4 className="text-[10px] sm:text-xs font-bold text-[#66706d] uppercase tracking-wider">YouTube Videos</h4>
                 </div>
                 <div className="overflow-hidden relative">
                   <div className="flex animate-infinite-scroll-youtube-home">
                     {[...youtubeVideos, ...youtubeVideos].map((video, i) => (
                       <div
                         key={`${video.url}-${i}`}
-                        className="flex-shrink-0 w-[160px] sm:w-[180px] mr-4 cursor-pointer"
+                        className="flex-shrink-0 w-[140px] sm:w-[160px] md:w-[180px] mr-3 sm:mr-4 cursor-pointer active:scale-[0.97] transition-transform"
                         onClick={() => openVideoModal(video)}
                       >
-                        <div className="bg-slate-100 rounded-lg overflow-hidden hover:shadow-md transition-all">
-                          <div className="relative h-24 sm:h-28 overflow-hidden">
+                        <div className="bg-[#f7f2e9] rounded-lg overflow-hidden hover:shadow-md transition-all">
+                          <div className="relative h-20 sm:h-24 md:h-28 overflow-hidden">
                             <Image
                               src={getYouTubeThumbnail(video.url)}
                               alt={video.title}
@@ -916,13 +856,13 @@ export default function Home() {
                               loading="lazy"
                             />
                             <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                              <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
-                                <Play className="w-3 h-3 text-white ml-0.5" fill="white" />
+                              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-red-600 rounded-full flex items-center justify-center">
+                                <Play className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white ml-0.5" fill="white" />
                               </div>
                             </div>
                           </div>
-                          <div className="p-2">
-                            <p className="text-xs font-medium text-slate-700 line-clamp-1">{video.title}</p>
+                          <div className="p-1.5 sm:p-2">
+                            <p className="text-[10px] sm:text-xs font-medium text-[#14383b] line-clamp-1">{video.title}</p>
                           </div>
                         </div>
                       </div>
@@ -933,28 +873,28 @@ export default function Home() {
 
               {/* Instagram */}
               <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-6 h-6 bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F56040] rounded flex items-center justify-center">
-                    <Instagram className="w-3.5 h-3.5 text-white" />
+                <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F56040] rounded flex items-center justify-center">
+                    <Instagram className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
                   </div>
-                  <h4 className="text-xs font-bold text-slate-600 uppercase tracking-wider">Instagram</h4>
+                  <h4 className="text-[10px] sm:text-xs font-bold text-[#66706d] uppercase tracking-wider">Instagram</h4>
                 </div>
                 <div className="overflow-hidden relative">
                   <div className="flex animate-infinite-scroll-instagram-home">
                     {[...instagramPosts, ...instagramPosts].map((post, i) => (
                       <div
                         key={`${post.url}-${i}`}
-                        className="flex-shrink-0 w-[160px] sm:w-[180px] mr-4 cursor-pointer"
+                        className="flex-shrink-0 w-[140px] sm:w-[160px] md:w-[180px] mr-3 sm:mr-4 cursor-pointer active:scale-[0.97] transition-transform"
                         onClick={() => openInstagramPost(post.url)}
                       >
-                        <div className="bg-gradient-to-br from-[#833AB4]/10 via-[#FD1D1D]/10 to-[#F56040]/10 rounded-lg overflow-hidden hover:shadow-md transition-all border border-[#C5E0ED]/20">
-                          <div className="relative h-24 sm:h-28 overflow-hidden flex items-center justify-center bg-gradient-to-br from-[#833AB4]/5 via-[#FD1D1D]/5 to-[#F56040]/5">
-                            <Instagram className="w-8 h-8 text-[#833AB4]/40" />
+                        <div className="bg-[#f7f2e9] rounded-lg overflow-hidden hover:shadow-md transition-all border border-[#d8cec0]">
+                          <div className="relative h-20 sm:h-24 md:h-28 overflow-hidden flex items-center justify-center bg-gradient-to-br from-[#833AB4]/5 via-[#FD1D1D]/5 to-[#F56040]/5">
+                            <Instagram className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#833AB4]/40" />
                             <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent" />
                           </div>
-                          <div className="p-2">
-                            <p className="text-xs font-medium text-slate-700 line-clamp-1">{post.title}</p>
-                            <p className="text-[10px] text-slate-400 mt-0.5">{post.type === "reel" ? "📱 Reel" : "📷 Post"}</p>
+                          <div className="p-1.5 sm:p-2">
+                            <p className="text-[10px] sm:text-xs font-medium text-[#14383b] line-clamp-1">{post.title}</p>
+                            <p className="text-[8px] sm:text-[10px] text-[#66706d] mt-0.5">{post.type === "reel" ? "📱 Reel" : "📷 Post"}</p>
                           </div>
                         </div>
                       </div>
@@ -966,26 +906,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* YouTube Modal */}
+        {/* YouTube Modal - Mobile optimized */}
         {selectedVideo && (
           <div 
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md animate-in fade-in duration-200"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#102e31]/75 backdrop-blur-sm animate-in fade-in duration-200 p-2 sm:p-4"
             onClick={closeVideoModal}
           >
             <div 
-              className="relative w-full max-w-5xl mx-4 bg-black rounded-xl overflow-hidden shadow-2xl"
+              className="relative w-full max-w-5xl bg-[#f7f2e9] rounded-lg overflow-hidden shadow-2xl mx-2 sm:mx-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#0f2940] to-[#1a4166]">
-                <h3 className="text-white font-bold text-lg truncate pr-4">
+              <div className="flex items-center justify-between p-3 sm:p-4 bg-[#14383b]">
+                <h3 className="text-[#f7f2e9] font-bold text-sm sm:text-base md:text-lg truncate pr-2 sm:pr-4">
                   {selectedVideo.title}
                 </h3>
                 <button
                   onClick={closeVideoModal}
-                  className="text-white hover:text-[#C5E0ED] transition-colors p-1"
+                  className="text-[#f7f2e9] hover:text-[#ef966e] transition-colors p-1 active:text-[#ef966e] touch-manipulation"
                   aria-label="Close video"
                 >
-                  <XCircle className="w-6 h-6" />
+                  <XCircle className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </div>
               <div className="relative pt-[56.25%] bg-black">
@@ -1003,128 +943,93 @@ export default function Home() {
         )}
 
         {/* Why Choose Us */}
-        <section className="py-16 md:py-32 bg-gradient-to-b from-slate-50 to-white">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
-              <div>
-                <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-                  <ShieldCheck className="w-3 h-3 mr-1.5" aria-hidden="true" /> WHY CHOOSE US
-                </Badge>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
-                  Local Knowledge, Global Standards
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-8 sm:gap-12 lg:gap-14 lg:items-center lg:gap-24">
+              <div className="relative min-h-[300px] sm:min-h-[400px] md:min-h-[510px] overflow-hidden sm:min-h-[610px] order-2 lg:order-1">
+                <Image
+                  src="/images/used/why_choose_us.webp"
+                  alt="Professional Himalayan expedition team - experienced guides and porters"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={85}
+                />
+                <div className="absolute bottom-0 left-0 bg-[#e47a4f] px-4 sm:px-6 py-3 sm:py-4 md:py-5 text-[#fff8ee] sm:px-8">
+                  <div className="font-serif text-2xl sm:text-3xl md:text-4xl leading-none">11<span className="text-xl sm:text-2xl">+</span></div>
+                  <div className="mt-0.5 sm:mt-2 text-[8px] sm:text-[10px] font-bold tracking-[.15em]">YEARS ON THESE TRAILS</div>
+                </div>
+              </div>
+              <div className="order-1 lg:order-2">
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Why choose us</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,5vw,4.8rem)] leading-[1.05] sm:leading-[.96] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Local Knowledge, <span className="text-[#cf6943]">Global Standards</span>
                 </h2>
-                <p className="text-slate-600 text-base md:text-lg mb-8 leading-relaxed">
+                <p className="mt-4 sm:mt-7 max-w-[510px] text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#536461]">
                   Born in Gorkha, based in Kathmandu, we offer authentic Himalayan experiences with professional service.
                 </p>
-
-                <div className="space-y-6">
+                <div className="mt-6 sm:mt-10 grid gap-5 sm:gap-7 border-t border-[#cbbcac] pt-5 sm:pt-7 sm:grid-cols-2">
                   {[
-                    { 
-                      title: "Local Experts", 
-                      desc: "Nepali guides with deep knowledge of trails, culture, and hidden gems.",
-                      icon: <Users className="w-5 h-5" aria-hidden="true" />
-                    },
-                    { 
-                      title: "Authentic City Tours", 
-                      desc: "Pioneers of Kathmandu's Free Walking Tours, see the real Nepal beyond the guidebooks.",
-                      icon: <MapPin className="w-5 h-5" aria-hidden="true" />
-                    },
-                    { 
-                      title: "Reliable & Safe", 
-                      desc: "24/7 support, experienced guides, and careful planning for peace of mind.",
-                      icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
-                    },
-                    { 
-                      title: "Community Focused", 
-                      desc: "We support local families and sustainable tourism across Nepal, Bhutan, and Tibet.",
-                      icon: <Heart className="w-5 h-5" aria-hidden="true" />
-                    }
-                  ].map((item, i) => (
-                    <div key={i} className="flex gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#C5E0ED] to-[#9dcae0] rounded-xl flex items-center justify-center shrink-0">
-                        <div className="text-[#0f2940]">
-                          {item.icon}
-                        </div>
-                      </div>
+                    { icon: Users, title: 'Local Experts', text: 'Nepali guides with deep knowledge of trails, culture, and hidden gems.' },
+                    { icon: MapPin, title: 'Authentic City Tours', text: "Pioneers of Kathmandu's Free Walking Tours, see the real Nepal beyond the guidebooks." },
+                    { icon: ShieldCheck, title: 'Reliable & Safe', text: '24/7 support, experienced guides, and careful planning for peace of mind.' },
+                    { icon: Heart, title: 'Community Focused', text: 'We support local families and sustainable tourism across Nepal, Bhutan, and Tibet.' },
+                  ].map(({ icon: Icon, title, text }) => (
+                    <div key={title} className="flex gap-3 sm:gap-4">
+                      <Icon size={18} className="sm:w-[20px] sm:h-[20px] mt-0.5 shrink-0 text-[#cf6943]" strokeWidth={1.5} />
                       <div>
-                        <h3 className="font-bold text-lg text-[#0f2940] mb-2">{item.title}</h3>
-                        <p className="text-slate-600 text-sm">{item.desc}</p>
+                        <h3 className="text-xs sm:text-sm font-bold text-[#14383b]">{title}</h3>
+                        <p className="mt-1 text-[11px] sm:text-xs leading-5 text-[#6b736d]">{text}</p>
                       </div>
                     </div>
                   ))}
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/used/why_choose_us.webp"
-                    alt="Professional Himalayan expedition team - experienced guides and porters"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
-                    quality={85}
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0f2940] to-transparent p-6 md:p-8">
-                    <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 md:p-6 border border-white/20">
-                      <div className="text-white mb-4">
-                        <div className="font-bold text-lg mb-2">2500+ Travelers Since 2015</div>
-                        <div className="text-white/70 text-sm">from 30+ countries around the world</div>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-                        ))}
-                        <span className="text-white font-bold ml-2 text-lg">4.8/5 Rating</span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Testimonials - Horizontal Flow Animation */}
-        <section className="py-16 md:py-32 bg-white overflow-hidden">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-              <Badge className="mb-4 bg-[#C5E0ED]/20 text-[#2d6a8a] border-[#C5E0ED]/30 py-1.5 px-4 text-xs font-semibold">
-                <Star className="w-3 h-3 mr-1.5 fill-[#2d6a8a]" aria-hidden="true" /> TRAVELER STORIES
-              </Badge>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0f2940] mb-6">
-                Real Travelers, Real Experiences
-              </h2>
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+        {/* Testimonials */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Traveler Stories</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,5.4vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Real Travelers, <span className="text-[#cf6943]">Real Experiences</span>
+                </h2>
+              </div>
+              <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
                 What guests say about their Everest Base Camp treks, Annapurna Circuit treks, and cultural journeys with us.
               </p>
             </div>
+
             {/* Horizontal Flow Animation for Mobile */}
-            <div className="md:hidden overflow-hidden relative py-4">
+            <div className="md:hidden overflow-hidden relative mt-8 sm:mt-12 py-3 sm:py-4">
               <div className="flex animate-infinite-scroll-slow-mobile">
                 {infiniteTestimonials.map((testimonial, i) => (
                   <div
                     key={`${testimonial.name}-${i}`}
-                    className="flex-shrink-0 w-[85vw] mr-6"
+                    className="flex-shrink-0 w-[80vw] sm:w-[85vw] mr-4 sm:mr-6"
                   >
-                    <div className="bg-gradient-to-br from-[#f8fafc] to-[#f0f7ff] rounded-2xl overflow-hidden border border-[#C5E0ED]/40 p-6 h-full shadow-lg hover:shadow-xl transition-all duration-300">
-                      <div className="flex gap-1 mb-6">
+                    <div className="bg-[#f7f2e9] rounded-lg overflow-hidden border border-[#d8cec0] p-4 sm:p-5 md:p-6 h-full shadow-sm">
+                      <div className="flex gap-0.5 sm:gap-1 mb-4 sm:mb-6">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+                          <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
                         ))}
                       </div>
-                      <p className="text-slate-700 italic mb-8 leading-relaxed text-base">
+                      <p className="text-[#556363] italic mb-5 sm:mb-8 leading-relaxed text-sm sm:text-base">
                         &ldquo;{testimonial.text}&rdquo;
                       </p>
-                      <div className="flex flex-col gap-2">
-                        <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
-                        <div className="text-slate-600 text-sm flex items-center gap-1">
-                          <Globe className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" /> {testimonial.country}
+                      <div className="flex flex-col gap-1.5 sm:gap-2">
+                        <div className="font-bold text-base sm:text-lg text-[#14383b]">{testimonial.name}</div>
+                        <div className="text-[#66706d] text-xs sm:text-sm flex items-center gap-1">
+                          <Globe className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#cf6943]" aria-hidden="true" /> {testimonial.country}
                         </div>
                         <Link href={testimonial.trekLink}>
-                          <Badge className="bg-gradient-to-r from-[#C5E0ED]/20 to-[#7fb8d4]/20 text-[#0f2940] border-[#C5E0ED]/40 text-xs w-fit hover:bg-[#C5E0ED]/40 cursor-pointer transition-colors">
+                          <span className="border border-[#cf6943]/50 text-[#cf6943] text-[10px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded w-fit hover:bg-[#cf6943]/10 active:bg-[#cf6943]/20 cursor-pointer transition-colors">
                             {testimonial.trek}
-                          </Badge>
+                          </span>
                         </Link>
                       </div>
                     </div>
@@ -1134,31 +1039,31 @@ export default function Home() {
             </div>
 
             {/* Horizontal Flow Animation for Desktop */}
-            <div className="hidden md:block overflow-hidden relative py-8">
+            <div className="hidden md:block overflow-hidden relative mt-12 py-8">
               <div className="flex animate-infinite-scroll-slow-desktop">
                 {infiniteTestimonials.map((testimonial, i) => (
                   <div
                     key={`${testimonial.name}-${i}`}
                     className="flex-shrink-0 w-[400px] mr-8"
                   >
-                    <div className="bg-gradient-to-br from-white to-[#f8fafc] rounded-3xl overflow-hidden border border-[#C5E0ED]/40 p-8 h-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-[#7fb8d4]/60">
+                    <div className="bg-[#f7f2e9] rounded-lg overflow-hidden border border-[#d8cec0] p-8 h-full shadow-sm hover:shadow-md transition-all duration-300">
                       <div className="flex gap-1 mb-6">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
                         ))}
                       </div>
-                      <p className="text-slate-700 italic mb-8 leading-relaxed text-base">
+                      <p className="text-[#556363] italic mb-8 leading-relaxed text-base">
                         &ldquo;{testimonial.text}&rdquo;
                       </p>
                       <div className="flex flex-col gap-2">
-                        <div className="font-bold text-lg text-[#0f2940]">{testimonial.name}</div>
-                        <div className="text-slate-600 text-sm flex items-center gap-1">
-                          <Globe className="w-3 h-3 text-[#2d6a8a]" aria-hidden="true" /> {testimonial.country}
+                        <div className="font-bold text-lg text-[#14383b]">{testimonial.name}</div>
+                        <div className="text-[#66706d] text-sm flex items-center gap-1">
+                          <Globe className="w-3 h-3 text-[#cf6943]" aria-hidden="true" /> {testimonial.country}
                         </div>
                         <Link href={testimonial.trekLink}>
-                          <Badge className="bg-gradient-to-r from-[#C5E0ED]/20 to-[#7fb8d4]/20 text-[#0f2940] border-[#C5E0ED]/40 text-xs w-fit font-medium hover:bg-[#C5E0ED]/40 cursor-pointer transition-colors">
+                          <span className="border border-[#cf6943]/50 text-[#cf6943] text-xs px-3 py-1 rounded w-fit font-medium hover:bg-[#cf6943]/10 cursor-pointer transition-colors">
                             {testimonial.trek}
-                          </Badge>
+                          </span>
                         </Link>
                       </div>
                     </div>
@@ -1168,13 +1073,13 @@ export default function Home() {
             </div>
 
             {/* TripAdvisor Section */}
-            <div className="mt-12 sm:mt-20 bg-gradient-to-r from-[#E3F8FF] to-[#CFE8FF] rounded-2xl p-6 sm:p-8 md:p-10">
-              <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div className="mt-8 sm:mt-12 bg-[#e4d8c8] rounded-lg p-5 sm:p-6 md:p-8 lg:p-10">
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6">
                 <div className="lg:w-2/3 text-center lg:text-left">
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#2E4F7C] mb-3">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#14383b] mb-2 sm:mb-3">
                     See All Reviews on Tripadvisor
                   </h3>
-                  <p className="text-sm sm:text-base text-[#3C6AA6] mb-4">
+                  <p className="text-sm sm:text-base text-[#556363] mb-3 sm:mb-4">
                     Join hundreds of satisfied travelers who've shared their experiences. 
                     Read detailed reviews, see more photos, and discover why we're rated so highly.
                   </p>
@@ -1182,10 +1087,10 @@ export default function Home() {
                     href={tripadvisorUrl}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2d6a8a] to-[#3C6AA6] hover:from-[#0f2940] hover:to-[#2d6a8a] text-white font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
+                    className="inline-flex items-center gap-2 bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded transition-all duration-300 text-[10px] sm:text-xs tracking-[.14em] active:scale-[0.98]"
                   >
                     <span>Visit Tripadvisor</span>
-                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                    <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
                   </a>
                 </div>
                 
@@ -1194,9 +1099,9 @@ export default function Home() {
                     href={tripadvisorUrl}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
-                    className="block hover:scale-105 transition-transform duration-300"
+                    className="block hover:scale-105 transition-transform duration-300 active:scale-95"
                   >
-                    <div className="relative w-48 sm:w-56 h-48 sm:h-56">
+                    <div className="relative w-36 sm:w-44 md:w-48 h-36 sm:h-44 md:h-48 lg:h-56">
                       <Image
                         src="/images/TripAdvisor-Logo.png"
                         alt="Tripadvisor logo and reviews for Himkala Adventure"
@@ -1224,7 +1129,6 @@ export default function Home() {
           }
         }
 
-        /* Animation speeds matching reference code */
         .animate-infinite-scroll-slow-mobile {
           display: flex;
           width: max-content;
@@ -1237,7 +1141,6 @@ export default function Home() {
           animation: infinite-scroll 150s linear infinite;
         }
 
-        /* YouTube Home Animation - faster for teaser */
         @keyframes infinite-scroll-youtube-home {
           0% {
             transform: translateX(0);
@@ -1257,7 +1160,6 @@ export default function Home() {
           animation-play-state: paused;
         }
 
-        /* Instagram Home Animation - faster for teaser */
         @keyframes infinite-scroll-instagram-home {
           0% {
             transform: translateX(0);
@@ -1277,7 +1179,6 @@ export default function Home() {
           animation-play-state: paused;
         }
 
-        /* Hide scrollbar */
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
@@ -1297,6 +1198,19 @@ export default function Home() {
 
         .animate-in {
           animation: fadeIn 0.2s ease-in;
+        }
+
+        /* Touch manipulation for mobile */
+        .touch-manipulation {
+          touch-action: manipulation;
+        }
+
+        /* Snap scrolling */
+        .snap-x {
+          scroll-snap-type: x mandatory;
+        }
+        .snap-start {
+          scroll-snap-align: start;
         }
       `}</style>
     </div>

@@ -129,48 +129,6 @@ const culturalTours = [
   },
 ];
 
-const trekkingPackages = [
-  {
-    name: "Druk Path Trek",
-    duration: "10 Days",
-    difficulty: "Moderate",
-    altitude: "4,200m",
-    price: "$2,950",
-    image: "/images/used/bhutan-druk.webp",
-    rating: 4.8,
-    region: "Paro to Thimphu",
-    highlights: ["Jele Dzong", "Jangchu Lakha", "Jimilang Tsho", "Thimphu Valley"],
-    description: "Classic trek connecting Paro and Thimphu through alpine lakes.",
-    link: "/destinations/bhutan/druk-path-trek",
-  },
-  {
-    name: "Snowman Trek",
-    duration: "25 Days",
-    difficulty: "Challenging",
-    altitude: "5,320m",
-    price: "$8,500",
-    image: "/images/used/bhutan-snowman.webp",
-    rating: 4.9,
-    region: "Lunana Region",
-    highlights: ["Laya Village", "Lunana Region", "14 High Passes", "Remote Valleys"],
-    description: "One of the world's most difficult and rewarding treks.",
-    link: "/destinations/bhutan/snowman-trek",
-  },
-  {
-    name: "Jomolhari Trek",
-    duration: "12 Days",
-    difficulty: "Moderate-Challenging",
-    altitude: "4,940m",
-    price: "$3,950",
-    image: "/images/used/bhutan-jomolhari-1.webp",
-    rating: 4.7,
-    region: "Paro Region",
-    highlights: ["Jomolhari Base Camp", "Jichu Drake", "Lingzhi Village", "Yak Herder Camps"],
-    description: "Trek to the base of Bhutan's sacred mountain.",
-    link: "/destinations/bhutan/jomolhari-trek",
-  },
-];
-
 const whyBhutan = [
   {
     icon: <Smile className="w-5 h-5" />,
@@ -250,18 +208,16 @@ const regions = [
 export default function BhutanPage() {
   const router = useRouter();
   const [trekScrollPosition, setTrekScrollPosition] = React.useState(0);
-  const [peakScrollPosition, setPeakScrollPosition] = React.useState(0);
   const [cityTourScrollPosition, setCityTourScrollPosition] = React.useState(0);
   const [regionScrollPosition, setRegionScrollPosition] = React.useState(0);
 
   const trekScrollContainerRef = React.useRef<HTMLDivElement>(null);
-  const peakScrollContainerRef = React.useRef<HTMLDivElement>(null);
   const cityTourScrollContainerRef = React.useRef<HTMLDivElement>(null);
   const regionScrollContainerRef = React.useRef<HTMLDivElement>(null);
 
   const canonicalUrl = "https://www.himkalaadventure.com/destinations/bhutan";
   const pageTitle = "Bhutan Travel & Tours - Himkala Adventure";
-  const pageDescription = "Bhutan travel & tours: Explore the Last Shangri-La with our expert-guided cultural tours and treks. Visit Tiger's Nest, Thimphu, Punakha, and more. Book your Bhutan adventure now!";
+  const pageDescription = "Bhutan travel & tours: Explore the Last Shangri-La with our expert-guided cultural tours. Visit Tiger's Nest, Thimphu, Punakha, and more. Book your Bhutan adventure now!";
   const imageUrl = "https://www.himkalaadventure.com/images/used/bhutan-tiger.webp";
 
   const handleBookNow = (tourName: string) => {
@@ -292,8 +248,6 @@ export default function BhutanPage() {
   const scrollRegionRight = () => scrollRight(regionScrollContainerRef, setRegionScrollPosition);
   const scrollTrekLeft = () => scrollLeft(trekScrollContainerRef, setTrekScrollPosition);
   const scrollTrekRight = () => scrollRight(trekScrollContainerRef, setTrekScrollPosition);
-  const scrollPeakLeft = () => scrollLeft(peakScrollContainerRef, setPeakScrollPosition);
-  const scrollPeakRight = () => scrollRight(peakScrollContainerRef, setPeakScrollPosition);
   const scrollCityTourLeft = () => scrollLeft(cityTourScrollContainerRef, setCityTourScrollPosition);
   const scrollCityTourRight = () => scrollRight(cityTourScrollContainerRef, setCityTourScrollPosition);
 
@@ -323,7 +277,7 @@ export default function BhutanPage() {
               "@context": "https://schema.org",
               "@type": "TravelAgency",
               "name": "Himkala Adventure Pvt. Ltd.",
-              "description": "Bhutan travel and tours: Cultural tours and treks in the Last Shangri-La. Visit Tiger's Nest, Thimphu, Punakha, and more.",
+              "description": "Bhutan travel and tours: Cultural tours in the Last Shangri-La. Visit Tiger's Nest, Thimphu, Punakha, and more.",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Thamel, Lekhnath Marga",
@@ -350,7 +304,7 @@ export default function BhutanPage() {
               "name": "Bhutan",
               "description": "Known as the Last Shangri-La, Bhutan is the world's only carbon-negative country and ranks as Asia's happiest nation. Explore ancient dzongs, trek to Tiger's Nest Monastery, and experience preserved Tibetan Buddhist culture.",
               "image": imageUrl,
-              "touristType": "Cultural, Trekking, Spiritual",
+              "touristType": "Cultural, Spiritual",
               "bestTimeToVisit": "Spring (March-May) and Autumn (September-November)",
               "timeZone": "UTC+6"
             })
@@ -818,188 +772,6 @@ export default function BhutanPage() {
                     </ul>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Bhutan Treks */}
-        <section className="py-12 sm:py-16 md:py-20 bg-[#0f2940] relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 right-20 w-96 h-96 bg-[#C5E0ED] rounded-full blur-[150px]" />
-          </div>
-          <div className="container mx-auto px-4 sm:px-6 relative z-10">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-5">
-              <div className="max-w-2xl">
-                <Badge className="mb-3 bg-[#C5E0ED]/20 text-[#C5E0ED] border-[#C5E0ED]/30 py-1 px-3 text-xs font-semibold">
-                  <Mountain className="w-3 h-3 mr-1.5" aria-hidden="true" /> BHUTAN TREKS
-                </Badge>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white">
-                  Himalayan Treks in Bhutan
-                </h2>
-                <p className="text-white/70 mt-2 sm:mt-3 leading-relaxed text-sm sm:text-base">
-                  From moderate valley walks to challenging high-altitude expeditions.
-                </p>
-              </div>
-            </div>
-
-            {/* Mobile Horizontal Scroll */}
-            <div className="md:hidden relative">
-              <div 
-                className="flex overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
-                ref={peakScrollContainerRef}
-              >
-                {trekkingPackages.map((trek, i) => (
-                  <Link 
-                    key={i} 
-                    href={trek.link}
-                    className="flex-shrink-0 w-[85vw] mr-6 last:mr-0 snap-center cursor-pointer"
-                    aria-label={trek.name}
-                  >
-                    <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-lg transition-all">
-                      <div className="relative h-56 overflow-hidden">
-                        <Image
-                          src={trek.image}
-                          alt={trek.name}
-                          fill
-                          className="object-cover"
-                          sizes="85vw"
-                          quality={85}
-                          loading="lazy"
-                        />
-                        <div className="absolute top-3 right-3">
-                          <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold text-xs">
-                            {trek.duration}
-                          </Badge>
-                        </div>
-                        <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                          <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {trek.rating}
-                        </div>
-                      </div>
-                      <CardContent className="p-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
-                            <Mountain className="w-5 h-5" aria-hidden="true" />
-                          </div>
-                          <h4 className="text-base font-bold text-white line-clamp-1">{trek.name}</h4>
-                        </div>
-                        <p className="text-white/70 text-xs mb-3 line-clamp-2">{trek.description}</p>
-                        <div className="grid grid-cols-2 gap-1.5 mb-3">
-                          <div className="flex items-center gap-1.5 text-white/70 text-xs">
-                            <Clock className="w-3 h-3 text-[#C5E0ED]" aria-hidden="true" /> {trek.duration}
-                          </div>
-                          <div className="flex items-center gap-1.5 text-white/70 text-xs">
-                            <TrendingUp className="w-3 h-3 text-[#C5E0ED]" aria-hidden="true" /> {trek.altitude}
-                          </div>
-                          <div className="flex items-center gap-1.5 text-white/70 text-xs">
-                            <Footprints className="w-3 h-3 text-[#C5E0ED]" aria-hidden="true" /> {trek.difficulty}
-                          </div>
-                        </div>
-                        <div className="flex flex-wrap gap-1 mb-3">
-                          {trek.highlights.slice(0, 2).map((h, idx) => (
-                            <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
-                              {h}
-                            </Badge>
-                          ))}
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-lg font-bold text-white">{trek.price}</span>
-                          <Button 
-                            size="sm" 
-                            className="bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] text-[#0f2940] font-bold rounded-full text-xs min-h-[44px]"
-                            onClick={(e) => { e.preventDefault(); handleBookNow(trek.name); }}
-                            aria-label={`Book ${trek.name}`}
-                          >
-                            Book Now
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-              <button
-                onClick={scrollPeakLeft}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
-                aria-label="Scroll left"
-              >
-                <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-              </button>
-              <button
-                onClick={scrollPeakRight}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
-                aria-label="Scroll right"
-              >
-                <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
-              </button>
-            </div>
-
-            {/* Desktop Grid */}
-            <div className="hidden md:grid md:grid-cols-3 gap-5">
-              {trekkingPackages.map((trek, i) => (
-                <Link 
-                  key={i}
-                  href={trek.link}
-                  className="cursor-pointer"
-                  aria-label={trek.name}
-                >
-                  <Card className="bg-white/5 border-white/10 backdrop-blur-sm text-white rounded-xl overflow-hidden hover:shadow-xl transition-all group hover:scale-[1.02]">
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={trek.image}
-                        alt={trek.name}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        sizes="(max-width: 1024px) 33vw, 33vw"
-                        quality={85}
-                        loading="lazy"
-                      />
-                      <div className="absolute top-3 right-3">
-                        <Badge className="bg-white/90 text-[#2d6a8a] border-none font-bold">
-                          {trek.duration}
-                        </Badge>
-                      </div>
-                      <div className="absolute top-3 left-3 bg-[#0f2940]/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                        <Star className="w-3 h-3 fill-[#C5E0ED] text-[#C5E0ED]" aria-hidden="true" /> {trek.rating}
-                      </div>
-                    </div>
-                    <CardContent className="p-4 sm:p-5">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-[#C5E0ED]">
-                          <Mountain className="w-5 h-5" aria-hidden="true" />
-                        </div>
-                        <h4 className="text-lg font-bold text-white">{trek.name}</h4>
-                      </div>
-                      <p className="text-white/70 text-sm mb-4 line-clamp-2">{trek.description}</p>
-                      <div className="grid grid-cols-2 gap-2 mb-4">
-                        <div className="flex items-center gap-2 text-white/80 text-sm">
-                          <Clock className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" /> {trek.duration}
-                        </div>
-                        <div className="flex items-center gap-2 text-white/80 text-sm">
-                          <TrendingUp className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" /> {trek.altitude}
-                        </div>
-                        <div className="flex items-center gap-2 text-white/80 text-sm">
-                          <Footprints className="w-4 h-4 text-[#C5E0ED]" aria-hidden="true" /> {trek.difficulty}
-                        </div>
-                        <div className="text-white font-bold text-lg">{trek.price}</div>
-                      </div>
-                      <div className="flex flex-wrap gap-1.5 mb-4">
-                        {trek.highlights.slice(0, 3).map((h, idx) => (
-                          <Badge key={idx} variant="secondary" className="bg-white/10 text-white/90 border-white/20 text-xs">
-                            {h}
-                          </Badge>
-                        ))}
-                      </div>
-                      <Button 
-                        className="w-full bg-gradient-to-r from-[#C5E0ED] to-[#7fb8d4] hover:from-[#b3d6e6] hover:to-[#6baac9] text-[#0f2940] font-bold rounded-full py-2 text-sm min-h-[44px]"
-                        onClick={(e) => { e.preventDefault(); handleBookNow(trek.name); }}
-                        aria-label={`Book ${trek.name}`}
-                      >
-                        Book Now
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Link>
               ))}
             </div>
           </div>
