@@ -1,7 +1,6 @@
 import { getTreksByRegion, getAllRegions } from '@/lib/supabase/treks';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export const revalidate = 3600;
@@ -20,7 +19,16 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: RegionPageProps): Promise<Metadata> {
-  const regionName = params.region.charAt(0).toUpperCase() + params.region.slice(1);
+  // ✅ FIX: Handle undefined region safely
+  const regionParam = params?.region;
+  
+  if (!regionParam) {
+    return {
+      title: 'Region Not Found | Himkala Adventure',
+    };
+  }
+
+  const regionName = regionParam.charAt(0).toUpperCase() + regionParam.slice(1);
 
   return {
     title: `${regionName} Trekking — Complete Guide to Nepal's ${regionName} | Himkala Adventure`,
@@ -29,7 +37,14 @@ export async function generateMetadata({ params }: RegionPageProps): Promise<Met
 }
 
 export default async function RegionPage({ params }: RegionPageProps) {
-  const regionName = params.region.charAt(0).toUpperCase() + params.region.slice(1);
+  // ✅ FIX: Handle undefined region safely
+  const regionParam = params?.region;
+  
+  if (!regionParam) {
+    notFound();
+  }
+
+  const regionName = regionParam.charAt(0).toUpperCase() + regionParam.slice(1);
   const treks = await getTreksByRegion(regionName);
 
   if (treks.length === 0) {
