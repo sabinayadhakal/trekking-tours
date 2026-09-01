@@ -149,7 +149,7 @@ export default function AboutPage() {
                 </h1>
               </div>
               <p className="max-w-full md:max-w-[280px] lg:max-w-[380px] text-sm leading-6 text-[#66706d]">
-                Est. 2015 · Kathmandu, Nepal — Trekking, cultural tours, and authentic Himalayan experiences.
+                Est. 2015 · Kathmandu, Nepal... Trekking, cultural tours, and authentic Himalayan experiences.
               </p>
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function AboutPage() {
                   Streets, Stories &amp; <span className="text-[#cf6943]">the Himalayas</span>
                 </h2>
                 <p className="mt-4 sm:mt-7 max-w-full lg:max-w-[510px] text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#536461]">
-                  Born in Gorkha, based in Kathmandu — we offer authentic Himalayan experiences with professional service.
+                  Born in Gorkha, based in Kathmandu, we offer authentic Himalayan experiences with professional service.
                 </p>
                 <div className="mt-5 sm:mt-8 space-y-3 sm:space-y-4 text-[#556363] text-sm leading-relaxed">
                   <p>

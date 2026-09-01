@@ -444,15 +444,16 @@ export default function Home() {
                   <span className="text-[#f0a17f]">Cultural Tours</span>
                 </h1>
                 <p className="mt-5 sm:mt-7 max-w-[530px] text-sm sm:text-base leading-6 sm:leading-7 text-[#eee8dc]">
-                  Thoughtful journeys through Nepal's mountains, villages, and living cultures — led by people who call these trails home.
+                  Thoughtful journeys through Nepal's mountains, villages, and living cultures led by people who call these trails home.
                 </p>
                 <div className="mt-6 sm:mt-9 flex flex-wrap items-center gap-4 sm:gap-5">
-                  <Link href="/services/trekking">
+                  <Link href="/contact
+                  ">
                     <Button className="group flex items-center gap-3 sm:gap-4 bg-[#e47a4f] px-4 sm:px-5 py-3 sm:py-3.5 text-[10px] sm:text-[11px] font-bold tracking-[.14em] text-[#fff8ee] hover:bg-[#f0956d] h-auto rounded-none active:scale-[0.98] transition-transform">
                       FIND YOUR WAY <ArrowDownRight size={15} className="sm:w-[17px] sm:h-[17px] transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
                     </Button>
                   </Link>
-                  <Link href="/contact" className="flex items-center gap-2 border-b border-[#eee8dc]/60 pb-1 text-[10px] sm:text-[11px] font-bold tracking-[.13em] hover:border-[#f0a17f] hover:text-[#f0a17f] active:text-[#f0a17f]">
+                  <Link href="/about-us" className="flex items-center gap-2 border-b border-[#eee8dc]/60 pb-1 text-[10px] sm:text-[11px] font-bold tracking-[.13em] hover:border-[#f0a17f] hover:text-[#f0a17f] active:text-[#f0a17f]">
                     WHY WITH US <ArrowRight size={14} className="sm:w-[15px] sm:h-[15px]" />
                   </Link>
                 </div>
@@ -475,12 +476,12 @@ export default function Home() {
               <div className="mt-6 sm:mt-8 h-px w-16 sm:w-20 bg-[#cf6943]" />
             </div>
             <div>
-              <h2 className="max-w-[860px] font-serif text-[clamp(1.8rem,4.5vw,4.5rem)] leading-[1.1] sm:leading-[1.05] tracking-[-.03em] sm:tracking-[-.035em] text-[#14383b]">
-                The mountain is not a checklist. <span className="text-[#b7aaa0]">It is a conversation.</span>
-              </h2>
-              <p className="mt-5 sm:mt-8 max-w-[620px] text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#556363]">
-                We plan with the patience of people who know these paths — leaving room for a second cup of chiya, a village festival, or weather that asks you to stay another night. That is where Nepal tends to reveal itself.
-              </p>
+             <h2 className="max-w-[860px] font-serif text-[clamp(1.8rem,4.5vw,4.5rem)] leading-[1.1] sm:leading-[1.05] tracking-[-.03em] sm:tracking-[-.035em] text-[#14383b]">
+The mountain doesn't care about your itinerary. <span className="text-[#b7aaa0]">It cares about your breath.</span>
+</h2>
+<p className="mt-5 sm:mt-8 max-w-[620px] text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#556363]">
+We move slow because the trail decides the pace, not the guidebook. We budget for a broken down bus, a sudden landslide, or a teahouse owner who insists you stay for dinner. That delay is usually the best part of the trip.
+</p>
             </div>
           </div>
         </section>
