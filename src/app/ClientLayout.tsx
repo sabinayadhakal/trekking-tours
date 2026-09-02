@@ -147,7 +147,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 // Import React Icons
 import { 
@@ -541,6 +541,7 @@ export default function ClientLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
@@ -560,6 +561,12 @@ export default function ClientLayout({
   }, []);
 
   const closeMenu = () => setIsMenuOpen(false);
+
+  // The administration area has its own application shell. Public pages retain
+  // the existing navigation, CTA, footer, and floating controls unchanged.
+  if (pathname.startsWith("/admin")) {
+    return <>{children}</>;
+  }
 
   return (
     <>
