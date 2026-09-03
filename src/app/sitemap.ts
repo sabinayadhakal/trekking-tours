@@ -1,5 +1,4 @@
-import { getAllTreks, getAllRegions } from '@/lib/supabase/treks';
-import { getAllBlogPosts } from '@/lib/supabase/blog';
+import { getAllTreks, getAllRegions, getAllBlogPosts } from '@/lib/static-content';
 import { MetadataRoute } from 'next';
 
 const baseUrl = 'https://www.himkalaadventure.com';
@@ -98,7 +97,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // ============================================
-  // DYNAMIC PAGES (Generated from Supabase)
+  // DYNAMIC PAGES (Generated from the permanent code fallback)
   // ============================================
 
   // 1. Dynamic trek pages (12 pages)
@@ -130,7 +129,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }));
 
-  // 4. Blog pages (from Supabase - future blogs)
+  // 4. Blog pages
   const blogPages = blogs.map((blog) => ({
     url: `${baseUrl}/blog/${blog.slug}`,
     lastModified: new Date(blog.updated_at),

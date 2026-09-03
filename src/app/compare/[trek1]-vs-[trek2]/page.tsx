@@ -1,4 +1,4 @@
-import { getAllTreks, getTrekBySlug } from '@/lib/supabase/treks';
+import { getAllTreks, getTrekBySlug } from '@/lib/static-content';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
