@@ -9,8 +9,6 @@ import {
   Clock,
   Users,
   MapPin,
-  Share2,
-  Facebook,
   Copy,
   Check,
   ChevronDown,
@@ -47,136 +45,10 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { loadManagedServices } from "@/lib/firebase/managed-services-repository";
+import { MANAGED_SERVICES_FALLBACK, MANAGED_SERVICES_UPDATED_EVENT } from "@/lib/managed-services";
 
 // All free tour options
-const freeTourOptions = [
-  {
-    id: 1,
-    name: "Original Kathmandu Free Walking Tour",
-    slug: "kathmandu",
-    icon: Footprints,
-    description:
-      "The original tips-based walking tour through Kathmandu's historic heart. Explore Durbar Square, hidden courtyards, local markets, and Swoyambhunath (Monkey Temple).",
-    duration: "4-5 hours",
-    difficulty: "Easy",
-    price: "FREE (tips-based)",
-    unesco: "Durbar Square & Swoyambhunath",
-    badge: "Most Popular",
-    meetingPoint: "Garden of Dreams",
-    startTimes: "9:00 AM & 2:00 PM",
-    image: "/images/used/fwt-1.webp",
-    highlights: [
-      "UNESCO Durbar Square & ancient palaces",
-      "Hidden Buddhist stupas and monasteries",
-      "Local markets and traditional handicrafts",
-      "Sacred Bishnumati river & cremation ghats",
-      "Swoyambhunath (Monkey Temple) panoramic views",
-    ],
-    link: "/services/free-walking-tour-kathmandu",
-    featured: true,
-  },
-  {
-    id: 2,
-    name: "Pashupatinath Free Walking Tour",
-    slug: "pashupatinath",
-    icon: Church,
-    description:
-      "Explore Nepal's most sacred Hindu temple complex. Witness ancient cremation ceremonies along the Bagmati River and discover the spiritual traditions of Kathmandu.",
-    duration: "2-3 hours",
-    difficulty: "Easy",
-    price: "FREE (tips-based)",
-    unesco: "Pashupatinath Temple",
-    badge: "Sacred Site",
-    meetingPoint: "Pashupatinath Main Entrance",
-    startTimes: "8:00 AM & 1:00 PM",
-    image: "/images/used/pashupati-1.webp",
-    highlights: [
-      "Sacred Pashupatinath Temple complex",
-      "Bagmati River cremation ceremonies",
-      "Ancient ashrams and sadhus",
-      "Spiritual Hindu traditions",
-      "Panoramic temple views",
-    ],
-    link: "/services/free-walking-tour-kathmandu",
-    featured: false,
-  },
-  {
-    id: 3,
-    name: "Bouddhanath Free Walking Tour",
-    slug: "bouddhanath",
-    icon: MountainSnow,
-    description:
-      "Walk the kora around one of Nepal's largest Buddhist stupas. Spin prayer wheels, visit monasteries, and experience vibrant Tibetan Buddhist culture.",
-    duration: "2-3 hours",
-    difficulty: "Easy",
-    price: "FREE (tips-based)",
-    unesco: "Bouddhanath Stupa",
-    badge: "Buddhist Heritage",
-    meetingPoint: "Bouddhanath Stupa Main Gate",
-    startTimes: "9:00 AM & 2:00 PM",
-    image: "/images/used/nepal-stupa.webp",
-    highlights: [
-      "Bouddhanath Stupa - one of Nepal's largest",
-      "Prayer wheel circumambulation (kora)",
-      "Tibetan Buddhist monasteries",
-      "Colorful prayer flags and rituals",
-      "Local Tibetan culture and cuisine",
-    ],
-    link: "/services/free-walking-tour-kathmandu",
-    featured: false,
-  },
-  {
-    id: 4,
-    name: "Patan Free Walking Tour",
-    slug: "patan",
-    icon: Building2,
-    description:
-      "Discover the ancient Newari city of Patan (Lalitpur). Explore Durbar Square, the Golden Temple, and hidden courtyards filled with art and architecture.",
-    duration: "3-4 hours",
-    difficulty: "Easy",
-    price: "FREE (tips-based)",
-    unesco: "Patan Durbar Square",
-    badge: "UNESCO Site",
-    meetingPoint: "Patan Durbar Square",
-    startTimes: "10:00 AM (Upon Request)",
-    image: "/images/used/patan-1.webp",
-    highlights: [
-      "Patan Durbar Square UNESCO site",
-      "Golden Temple (Hiranya Varna Mahavihar)",
-      "Newari art and architecture",
-      "Hidden courtyards and temples",
-      "Local artisan workshops",
-    ],
-    link: "/services/free-walking-tour-kathmandu",
-    featured: false,
-  },
-  {
-    id: 5,
-    name: "Bhaktapur Free Walking Tour",
-    slug: "bhaktapur",
-    icon: History,
-    description:
-      "Step back in time in the medieval city of Bhaktapur. Famous for preserved architecture, pottery square, and authentic Newari culture.",
-    duration: "3-4 hours",
-    difficulty: "Easy",
-    price: "FREE (tips-based)",
-    unesco: "Bhaktapur Durbar Square",
-    badge: "Medieval Gem",
-    meetingPoint: "Bhaktapur Durbar Square",
-    startTimes: "10:00 AM (Upon Request)",
-    image: "/images/used/bhaktapur-2.webp",
-    highlights: [
-      "Bhaktapur Durbar Square UNESCO site",
-      "Pottery Square and traditional crafts",
-      "Nyatapola Temple - tallest pagoda",
-      "Medieval Newari architecture",
-      "Authentic local culture",
-    ],
-    link: "/services/free-walking-tour-kathmandu",
-    featured: false,
-  },
-];
-
 const whyChoose = [
   {
     icon: Award,
@@ -228,11 +100,28 @@ const faqs = [
   },
 ];
 
+const freeTourIcons = {
+  kathmandu: Footprints,
+  pashupatinath: Church,
+  bouddhanath: Landmark,
+  patan: Building2,
+  bhaktapur: History,
+} as const;
+
 export default function FreeToursKathmanduPage() {
+  const [freeTourOptions, setFreeTourOptions] = React.useState(MANAGED_SERVICES_FALLBACK.freeTours);
   const [copied, setCopied] = React.useState(false);
   const [expandedFaq, setExpandedFaq] = React.useState<number | null>(null);
 
   const tourName = "Free Tours Kathmandu Valley";
+
+  React.useEffect(() => {
+    const refresh = () => { void loadManagedServices("freeTours").then(({ services }) => setFreeTourOptions(services.filter((service) => service.published))); };
+    refresh();
+    const onUpdate = (event: Event) => { if ((event as CustomEvent).detail === "freeTours") refresh(); };
+    window.addEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+    return () => window.removeEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+  }, []);
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -240,12 +129,6 @@ export default function FreeToursKathmanduPage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleShare = (platform: string) => {
-    const url = encodeURIComponent(window.location.href);
-    if (platform === "facebook") {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank", "noopener,noreferrer");
-    }
-  };
 
   const toggleFaq = (idx: number) => {
     setExpandedFaq(expandedFaq === idx ? null : idx);
@@ -361,7 +244,7 @@ export default function FreeToursKathmanduPage() {
 
             <div className="space-y-4 sm:space-y-5">
               {freeTourOptions.map((tour) => {
-                const Icon = tour.icon;
+                const Icon = freeTourIcons[tour.id as keyof typeof freeTourIcons] || Footprints;
                 return (
                   <div key={tour.id} className="bg-[#f7f2e9] rounded-lg border border-[#d8cec0]/30 overflow-hidden hover:shadow-md transition-all">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

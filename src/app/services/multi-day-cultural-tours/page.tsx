@@ -24,113 +24,27 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { loadManagedServices } from "@/lib/firebase/managed-services-repository";
+import { MANAGED_SERVICES_FALLBACK, MANAGED_SERVICES_UPDATED_EVENT } from "@/lib/managed-services";
 
 // Only include cultural tours that exist in your folder structure
-const culturalTours = [
-  {
-    id: 1,
-    name: "Historic Nature Scenic Photography Tour",
-    region: "Western Nepal",
-    duration: "12 Days",
-    difficulty: "Easy",
-    category: "Photography",
-    groupSize: "4-8",
-    bestSeason: "Sep-May",
-    price: 1895,
-    originalPrice: 2200,
-    image: "/images/used/historic-scenic-photography-nepal.webp",
-    rating: 4.9,
-    reviews: 67,
-    highlights: ["Historic Sites", "Nature", "Scenic Views", "Photography"],
-    description: "Capture Nepal's stunning landscapes and cultural heritage with expert photography guidance.",
-    featured: true,
-    link: "/services/multi-day-cultural-tours/historic-nature-scenic-photography-tour",
-  },
-  {
-    id: 2,
-    name: "Kathmandu Bhaktapur Lalitpur Tour",
-    region: "Kathmandu Valley",
-    duration: "5 Days",
-    difficulty: "Easy",
-    category: "Heritage",
-    groupSize: "4-12",
-    bestSeason: "Year Round",
-    price: 750,
-    originalPrice: 950,
-    image: "/images/used/durbar_square.webp",
-    rating: 4.8,
-    reviews: 156,
-    highlights: ["Kathmandu Durbar Square", "Bhaktapur", "Patan", "Newari Culture"],
-    description: "Explore the three medieval kingdoms of the Kathmandu Valley and their rich cultural heritage.",
-    featured: true,
-    link: "/services/multi-day-cultural-tours/kathmandu-bhaktapur-lalitpur-tour",
-  },
-  {
-    id: 3,
-    name: "Kathmandu Pokhara Lumbini Chitwan Tour",
-    region: "Western Nepal",
-    duration: "10 Days",
-    difficulty: "Easy",
-    category: "Heritage & Nature",
-    groupSize: "4-10",
-    bestSeason: "Sep-May",
-    price: 2200,
-    image: "/images/used/kathmandu-lumbini-pokhara-nepal.webp",
-    rating: 4.9,
-    reviews: 112,
-    highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
-    description: "The ultimate Nepal experience covering cultural heritage, natural beauty, and wildlife.",
-    featured: false,
-    link: "/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour",
-  },
-  {
-    id: 4,
-    name: "Nepal Heritage Sites Tour",
-    region: "Kathmandu Valley",
-    duration: "10 Days",
-    difficulty: "Easy",
-    category: "Heritage",
-    groupSize: "4-12",
-    bestSeason: "Year Round",
-    price: 2300,
-    originalPrice: 2450,
-    image: "/images/used/nepal-heritage-sites-tour-nepal.webp",
-    rating: 4.8,
-    reviews: 134,
-    highlights: ["UNESCO Sites", "Durbar Squares", "Stupas", "Temples"],
-    description: "Comprehensive tour of Nepal's cultural heritage sites with expert guides.",
-    featured: true,
-    link: "/services/multi-day-cultural-tours/nepal-heritage-sites-tour",
-  },
-  {
-    id: 5,
-    name: "Nepal Temples and Stupas Tour",
-    region: "Kathmandu Valley",
-    duration: "10 Days",
-    difficulty: "Easy",
-    category: "Spiritual",
-    groupSize: "4-12",
-    bestSeason: "Year Round",
-    price: 2200,
-    originalPrice: 2350,
-    image: "/images/used/monkey_temple.webp",
-    rating: 4.8,
-    reviews: 98,
-    highlights: ["Pashupatinath", "Boudhanath", "Swayambhunath", "Ancient Temples"],
-    description: "Spiritual journey through Nepal's most sacred temples and stupas.",
-    featured: false,
-    link: "/services/multi-day-cultural-tours/nepal-temples-and-stupas-tour",
-  },
-];
-
 export default function MultiDayCulturalToursPage() {
   const router = useRouter();
+  const [culturalTours, setCulturalTours] = React.useState(MANAGED_SERVICES_FALLBACK.multiDayTours);
+
+  React.useEffect(() => {
+    const refresh = () => { void loadManagedServices("multiDayTours").then(({ services }) => setCulturalTours(services.filter((service) => service.published))); };
+    refresh();
+    const onUpdate = (event: Event) => { if ((event as CustomEvent).detail === "multiDayTours") refresh(); };
+    window.addEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+    return () => window.removeEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+  }, []);
 
   const handleBookNow = (tourName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(tourName)}`);
   };
 
-  const featuredTour = culturalTours.find((tour) => tour.id === 1);
+  const featuredTour = culturalTours.find((tour) => tour.featured) || culturalTours[0];
 
   // Schema.org Product schemas for each tour
   const productSchemas = culturalTours.map((tour) => ({

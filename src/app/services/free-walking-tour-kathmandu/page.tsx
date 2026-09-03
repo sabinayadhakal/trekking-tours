@@ -7,8 +7,6 @@ import {
   Clock,
   Users,
   MapPin,
-  Share2,
-  Facebook,
   Copy,
   Check,
   Star,
@@ -169,12 +167,6 @@ export default function FreeWalkingTourKathmanduPage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleShare = (platform: string) => {
-    const url = encodeURIComponent(window.location.href);
-    if (platform === "facebook") {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank", "noopener,noreferrer");
-    }
-  };
 
   const toggleStop = (idx: number) => {
     setExpandedStops((prev) =>

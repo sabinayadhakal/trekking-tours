@@ -17,6 +17,36 @@ service cloud.firestore {
       allow create, update, delete: if isAdmin();
     }
 
+    match /freeTours/{tourId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /multiDayTours/{tourId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /dayHikings/{hikingId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /daySightseeings/{tourId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /mountainFlights/{flightId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /jungleSafaris/{safariId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
     match /admins/{userId} {
       allow read: if request.auth != null && request.auth.uid == userId;
       allow write: if false;

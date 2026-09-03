@@ -86,10 +86,24 @@ const TREKKING_SERVICE_SUMMARIES: TrekkingService[] = [
   { id: "tamang-heritage-langtang", name: "Tamang Heritage Trail and Langtang Valley Trek", region: "Langtang Region", duration: "13 Days", difficulty: "Moderate", maxAltitude: "4,984m", groupSize: "2-12", bestSeason: "Mar-May, Sep-Nov", price: 1195, originalPrice: 1350, image: "/images/used/tamang-heritage-1.webp", rating: 4.8, reviews: 89, highlights: ["Tamang Heritage Trail", "Gatlang Village", "Briddim Village", "Langtang Valley"], description: "Combine the cultural Tamang Heritage Trail with the stunning Langtang Valley trek.", featured: false, showOnHomepage: false, link: "/services/trekking/tamang-heritage-trail-and-langtang-valley-trek" },
 ];
 
-export const TREKKING_SERVICES_FALLBACK: TrekkingService[] = TREKKING_SERVICE_SUMMARIES.map((trek) => ({
-  ...trek,
-  ...TREKKING_HARDCODED_CONTENT[trek.id],
-}));
+function keepSingleFeatured(treks: TrekkingService[]) {
+  let foundFeatured = false;
+  return treks.map((trek) => {
+    if (!trek.featured) return trek;
+    if (!foundFeatured) {
+      foundFeatured = true;
+      return trek;
+    }
+    return { ...trek, featured: false };
+  });
+}
+
+export const TREKKING_SERVICES_FALLBACK: TrekkingService[] = keepSingleFeatured(
+  TREKKING_SERVICE_SUMMARIES.map((trek) => ({
+    ...trek,
+    ...TREKKING_HARDCODED_CONTENT[trek.id],
+  })),
+);
 
 const EDITORIAL_FIELDS = [
   "shortDescription", "heroBadge", "overview", "importantBanner", "trekHighlights", "seasons",
@@ -133,5 +147,5 @@ export function normalizeTrekkingServices(value: unknown): TrekkingService[] | n
       typeof trek.featured === "boolean" && typeof trek.showOnHomepage === "boolean" && typeof trek.link === "string";
   });
   if (!valid || new Set(value.map((item) => (item as TrekkingService).id)).size !== value.length) return null;
-  return value as TrekkingService[];
+  return keepSingleFeatured(value as TrekkingService[]);
 }

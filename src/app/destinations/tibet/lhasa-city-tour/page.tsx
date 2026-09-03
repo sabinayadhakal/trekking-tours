@@ -10,8 +10,6 @@ import {
   Clock,
   Users,
   MapPin,
-  Share2,
-  Facebook,
   Twitter,
   Copy,
   Check,
@@ -233,15 +231,6 @@ export default function LhasaCityTourPage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleShare = (platform: string) => {
-    const url = encodeURIComponent(window.location.href);
-    if (platform === "facebook") {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank", "noopener,noreferrer");
-    } else if (platform === "twitter") {
-      const shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${encodeURIComponent("4-Day Lhasa City Tour - Himkala Adventure")}`;
-      window.open(shareUrl, "_blank", "noopener,noreferrer");
-    }
-  };
 
   const toggleDay = (day: number) => {
     setExpandedDays((prev) =>
@@ -705,17 +694,6 @@ export default function LhasaCityTourPage() {
                     WhatsApp Now
                   </Button>
                 </a>
-                <Button
-                  variant="outline"
-                  className="border-[#cf6943] text-[#cf6943] hover:bg-[#cf6943]/10 rounded-full px-6 py-2 text-sm"
-                  onClick={() => {
-                    const url = encodeURIComponent(window.location.href);
-                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank", "noopener,noreferrer");
-                  }}
-                >
-                  <Share2 className="w-4 h-4 mr-2" aria-hidden="true" />
-                  Share
-                </Button>
               </div>
             </div>
           </section>

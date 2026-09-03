@@ -29,68 +29,10 @@ import Head from "next/head";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { loadManagedServices } from "@/lib/firebase/managed-services-repository";
+import { MANAGED_SERVICES_FALLBACK, MANAGED_SERVICES_UPDATED_EVENT } from "@/lib/managed-services";
 
 // Only include day hikes that exist in your folder structure
-const dayHikes = [
-  {
-    id: 1,
-    name: "Nagarkot Changunarayan Hiking",
-    region: "Nagarkot",
-    duration: "5-6 Hours",
-    difficulty: "Easy",
-    category: "Sunrise View",
-    groupSize: "2-12",
-    bestSeason: "Sep-May",
-    price: 45,
-    originalPrice: 60,
-    image: "/images/used/nagarkot-changu.webp",
-    rating: 4.9,
-    reviews: 245,
-    highlights: ["Himalayan Sunrise", "Panoramic Views", "Photo Points", "Breakfast with a View"],
-    description: "Watch the sunrise paint the Himalayas in golden hues from one of Nepal's best viewpoints.",
-    featured: true,
-    link: "/services/day-hikings/nagarkot-changunarayan-hiking",
-  },
-  {
-    id: 2,
-    name: "Champa Devi Hiking",
-    region: "Champadevi",
-    duration: "5-6 Hours",
-    difficulty: "Easy",
-    category: "Forest",
-    groupSize: "2-10",
-    bestSeason: "Mar-May, Sep-Nov",
-    price: 50,
-    originalPrice: 60,
-    image: "/images/used/champadevi-1.webp",
-    rating: 4.7,
-    reviews: 89,
-    highlights: ["Oak Forest", "Wildlife Spotting", "Temple Visit", "Valley Views"],
-    description: "Traverse through dense forests home to monkeys, deer, and colorful birds.",
-    featured: false,
-    link: "/services/day-hikings/champa-devi-hiking",
-  },
-  {
-    id: 3,
-    name: "Namobuddha Hiking",
-    region: "Dhulikhel",
-    duration: "6 Hours",
-    difficulty: "Easy",
-    category: "Cultural",
-    groupSize: "2-12",
-    bestSeason: "Sep-May",
-    price: 50,
-    originalPrice: 65,
-    image: "/images/used/namobuddha-1.webp",
-    rating: 4.8,
-    reviews: 112,
-    highlights: ["Buddhist Monastery", "Newari Villages", "Himalayan Views", "Sacred Site"],
-    description: "Visit one of Nepal's most important pilgrimage sites with stunning mountain backdrops.",
-    featured: true,
-    link: "/services/day-hikings/namobuddha-hiking",
-  },
-];
-
 const getCategoryColor = (category: string) => {
   switch (category) {
     case "Sunrise View": return "bg-orange-100 text-orange-700";
@@ -107,12 +49,21 @@ const getCategoryColor = (category: string) => {
 
 export default function DayHikesPage() {
   const router = useRouter();
+  const [dayHikes, setDayHikes] = React.useState(MANAGED_SERVICES_FALLBACK.dayHikings);
+
+  React.useEffect(() => {
+    const refresh = () => { void loadManagedServices("dayHikings").then(({ services }) => setDayHikes(services.filter((service) => service.published))); };
+    refresh();
+    const onUpdate = (event: Event) => { if ((event as CustomEvent).detail === "dayHikings") refresh(); };
+    window.addEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+    return () => window.removeEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+  }, []);
 
   const handleBookNow = (hikeName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(hikeName)}`);
   };
 
-  const featuredHike = dayHikes.find((hike) => hike.id === 1);
+  const featuredHike = dayHikes.find((hike) => hike.featured) || dayHikes[0];
 
   // Schema.org Product schema for day hikes
   const productSchemas = dayHikes.map((hike) => ({

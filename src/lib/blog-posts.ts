@@ -37,9 +37,21 @@ const summaries: Omit<BlogPost, "sections">[] = [
 export const BLOG_POSTS_FALLBACK: BlogPost[] = summaries.map((post) => ({ ...post, sections: content[post.slug] || [] }));
 export const BLOG_POSTS_UPDATED_EVENT = "himkala:blog-posts-updated";
 
+function keepSingleFeatured(posts: BlogPost[]) {
+  let foundFeatured = false;
+  return posts.map((post) => {
+    if (!post.featured) return post;
+    if (!foundFeatured) {
+      foundFeatured = true;
+      return post;
+    }
+    return { ...post, featured: false };
+  });
+}
+
 export function createBlogPostId(title: string) { return title.toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"") || `article-${Date.now()}`; }
 export function normalizeBlogPosts(value: unknown): BlogPost[] | null {
   if (!Array.isArray(value)) return null;
   const valid=value.every((item)=>{const post=item as Partial<BlogPost>;return typeof post.id==="string"&&typeof post.slug==="string"&&typeof post.title==="string"&&typeof post.excerpt==="string"&&typeof post.image==="string"&&typeof post.author==="string"&&typeof post.date==="string"&&typeof post.readTime==="string"&&typeof post.category==="string"&&Array.isArray(post.tags)&&Array.isArray(post.sections)&&Array.isArray(post.relatedSlugs)&&typeof post.featured==="boolean"&&typeof post.published==="boolean";});
-  return valid&&new Set(value.map((item)=>(item as BlogPost).id)).size===value.length?value as BlogPost[]:null;
+  return valid&&new Set(value.map((item)=>(item as BlogPost).id)).size===value.length?keepSingleFeatured(value as BlogPost[]):null;
 }

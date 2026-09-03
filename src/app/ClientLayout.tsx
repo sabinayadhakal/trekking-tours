@@ -615,7 +615,7 @@ export default function ClientLayout({
             
             <Link 
               href="/about-us"
-              className="text-xs font-semibold tracking-[.08em] text-[#f7f2e9]/90 hover:text-[#f0a17f] transition-colors px-3 py-1.5"
+              className="inline-flex h-8 items-center justify-center px-3 text-xs font-semibold tracking-[.08em] text-[#f7f2e9]/90 transition-colors hover:text-[#f0a17f]"
               onClick={closeMenu}
             >
               About Us
@@ -623,7 +623,7 @@ export default function ClientLayout({
             
             <Link 
               href="/blog"
-              className="text-xs font-semibold tracking-[.08em] text-[#f7f2e9]/90 hover:text-[#f0a17f] transition-colors px-3 py-1.5"
+              className="inline-flex h-8 items-center justify-center px-3 text-xs font-semibold tracking-[.08em] text-[#f7f2e9]/90 transition-colors hover:text-[#f0a17f]"
               onClick={closeMenu}
             >
               Blogs

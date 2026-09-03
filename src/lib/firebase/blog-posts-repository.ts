@@ -5,30 +5,40 @@ import { BLOG_POSTS_FALLBACK, BLOG_POSTS_UPDATED_EVENT, BlogPost, normalizeBlogP
 import { getFirebaseDatabase, isFirebaseConfigured } from "@/lib/firebase/client";
 
 const COLLECTION = "blogPosts";
-type StoredPost = BlogPost & { order?: number; updatedAt?: unknown };
+type StoredPost = BlogPost & { order?: number; createdAt?: unknown; updatedAt?: unknown };
 
 function cleanDocument(data: StoredPost): BlogPost {
-  const { order: _order, updatedAt: _updatedAt, ...post } = data;
+  const { order: _order, createdAt: _createdAt, updatedAt: _updatedAt, ...post } = data;
   return post;
+}
+
+function timestampValue(value: unknown) {
+  if (typeof value === "number") return value;
+  if (value && typeof value === "object" && "toMillis" in value && typeof value.toMillis === "function") return value.toMillis();
+  return 0;
 }
 
 async function readCollection() {
   const database = getFirebaseDatabase();
   if (!database) return null;
   const snapshot = await getDocs(collection(database, COLLECTION));
-  const documents = snapshot.docs
-    .map((item) => item.data() as StoredPost)
+  const stored = snapshot.docs.map((item) => item.data() as StoredPost);
+  const documents = stored
     .sort((a, b) => (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER))
     .map(cleanDocument);
-  return normalizeBlogPosts(documents);
+  const posts = normalizeBlogPosts(documents);
+  const dated = stored.filter((item) => timestampValue(item.createdAt) > 0).sort((a, b) => timestampValue(b.createdAt) - timestampValue(a.createdAt));
+  return posts ? { posts, latestId: dated[0]?.id || posts[0]?.id } : null;
 }
 
 async function writeCollection(posts: BlogPost[]) {
   const database = getFirebaseDatabase();
   if (!database) return { source: "unavailable" as const, error: "Firebase is not configured." };
   try {
+    const existingSnapshot = await getDocs(collection(database, COLLECTION));
+    const existingIds = new Set(existingSnapshot.docs.map((item) => item.id));
     const batch = writeBatch(database);
-    posts.forEach((post, order) => batch.set(doc(database, COLLECTION, post.id), { ...post, order, updatedAt: serverTimestamp() }));
+    posts.forEach((post, order) => batch.set(doc(database, COLLECTION, post.id), { ...post, order, updatedAt: serverTimestamp(), ...(!existingIds.has(post.id) ? { createdAt: serverTimestamp() } : {}) }, { merge: true }));
     await batch.commit();
     window.dispatchEvent(new Event(BLOG_POSTS_UPDATED_EVENT));
     return { source: "firestore" as const };
@@ -41,15 +51,15 @@ async function writeCollection(posts: BlogPost[]) {
 export async function loadBlogPosts({ allowFallback = true }: { allowFallback?: boolean } = {}) {
   if (isFirebaseConfigured) {
     try {
-      const posts = await readCollection();
-      if (posts?.length) return { posts, source: "firestore" as const };
+      const result = await readCollection();
+      if (result?.posts.length) return { ...result, source: "firestore" as const };
     } catch (error) {
       console.warn("Could not load blog posts from Firestore.", error);
     }
   }
   return allowFallback
-    ? { posts: BLOG_POSTS_FALLBACK, source: "fallback" as const }
-    : { posts: [], source: "unavailable" as const };
+    ? { posts: BLOG_POSTS_FALLBACK, latestId: BLOG_POSTS_FALLBACK[0]?.id, source: "fallback" as const }
+    : { posts: [], latestId: undefined, source: "unavailable" as const };
 }
 
 export function saveBlogPosts(posts: BlogPost[]) {
