@@ -34,6 +34,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { TREKKING_SERVICES_FALLBACK, TrekkingService } from "@/lib/trekking-services";
 import { loadTrekkingServices } from "@/lib/firebase/trekking-services-repository";
+import { loadSocialMediaContent } from "@/lib/firebase/social-media-repository";
+import { getYouTubeThumbnail, getYouTubeVideoId, SOCIAL_MEDIA_FALLBACK, SOCIAL_MEDIA_UPDATED_EVENT, SocialMediaContent } from "@/lib/social-media";
+import { loadTravelerStories } from "@/lib/firebase/traveler-stories-repository";
+import { TRAVELER_STORIES_FALLBACK, TRAVELER_STORIES_UPDATED_EVENT, TravelerStoriesContent } from "@/lib/traveler-stories";
 
 const destinations = [
   {
@@ -103,95 +107,6 @@ const services = [
   },
 ];
 
-const testimonials = [
-  {
-    name: "Carole Munanoa",
-    country: "France",
-    text: "What truly set this tour apart was the way Shiva explained the coexistence of Hinduism and Buddhism in Kathmandu. He carefully unpacked the history, symbols, and everyday practices of both faiths.",
-    trek: "Kathmandu City Tour",
-    trekLink: "/nepal-travel-packages"
-  },
-  {
-    name: "Arian Asgari",
-    country: "Iran",
-    text: "The Muldai trek is an underrated gem... What really made it special, though, were the people. Shiva and his son are just fantastic; they were so much more than guides, and the whole group felt like a family.",
-    trek: "Muldai Trek",
-    trekLink: "/services/trekking"
-  },
-  {
-    name: "Sandra Andermatt",
-    country: "Switzerland",
-    text: "If you're in Kathmandu, do not miss out on the incredible free walking tour... It takes you off the beaten path, offering a chance to explore hidden gems and unusual places that most tourists never get to see.",
-    trek: "Free Walking Tour",
-    trekLink: "/nepal-travel-packages"
-  },
-  {
-    name: "Anna Michelle Goksøyr",
-    country: "Norway",
-    text: "We did the Manaslu Circuit trek and it has been an amazing experience... The guides treated us like princesses, picked flowers for us, and have become friends for life. I deeply recommend traveling with Himkala Adventures.",
-    trek: "Manaslu Circuit",
-    trekLink: "/services/trekking/manaslu-circuit-trek"
-  },
-  {
-    name: "Aránzazu Gs",
-    country: "Spain",
-    text: "Shiva is a professional, passionate, friendly, empathetic and excellent guide... he made me discover the Nepalese culture and their way of life, food, superstitions, customs... He transmits good vibes.",
-    trek: "Nepal Cultural Tour",
-    trekLink: "/nepal-travel-packages"
-  },
-  {
-    name: "Krystsina Babets",
-    country: "Belarus",
-    text: "I did Annapurna Base Camp trekking... It was my third trekking experience with Himkala Adventure. Shiva is a very caring, knowledgeable guide and genuinely honest person. You will really have a great experience!",
-    trek: "Annapurna Base Camp",
-    trekLink: "/services/trekking/annapurna-base-camp-trek"
-  },
-  {
-    name: "Novitri Esna",
-    country: "Indonesia",
-    text: "I'm a beginner trekker, but Shiva made the Langtang trek feel possible. He was so patient and always checked in... He pointed out langurs, yaks, and special places I would've missed. I felt supported the whole way.",
-    trek: "Langtang Valley",
-    trekLink: "/services/trekking/langtang-valley-trek"
-  },
-  {
-    name: "Cangiamila Arianna",
-    country: "Italy",
-    text: "Nepal is a country rich in history and culture and Shiva is the best person you could ever ask to take you through all of that... Another great thing about Shiva is that he devolves part of his earnings towards the rebuilding of his village.",
-    trek: "Kathmandu City Tour",
-    trekLink: "/nepal-travel-packages"
-  },
-  {
-    name: "Sébastien Schillé",
-    country: "UK",
-    text: "I had an amazing and unforgettable experience with Himkala Adventure!... I came to Shiva, Himkala Adventure's director, to ask him what he thought was the best next step. Before I knew it, he had come up with a complete itinerary... Shiva was an excellent guide! He is easy going, kind and very knowledgeable.",
-    trek: "Valley Fringe Trek",
-    trekLink: "/services/trekking"
-  },
-  {
-    name: "Suffel Schatz",
-    country: "Germany",
-    text: "We did a 7day hiking tour with Himkala adventures... We had an amazing time, great conversations with our guide Sabinaya about Nepal's culture, history, everyday life, etc. Personal yet always professional. Thanks for that outstanding experience which we will never forget.",
-    trek: "Ghorepani Poonhill Trek",
-    trekLink: "/services/trekking/poon-hill-trek"
-  },
-  {
-    name: "Nina Dupuy",
-    country: "France",
-    text: "I had the incredible opportunity to do the Everest Base Camp with this company... The organization was impeccable. My guide, Khadga, was extremely attentive and helpful... Reaching Base Camp was a triumphant moment. I will 100% do it again!",
-    trek: "Everest Base Camp",
-    trekLink: "/services/trekking/everest-base-camp-trek"
-  },
-  {
-    name: "Dorota Grabek",
-    country: "Spain",
-    text: "Himkala Adventure organized for me and my friends 10 days trekking to Annapurna Base Camp. Our guide was very supportive and professional, he afforded us unforgettable and safe Himalayan trekking!",
-    trek: "Annapurna Base Camp",
-    trekLink: "/services/trekking/annapurna-base-camp-trek"
-  }
-];
-
-const infiniteTestimonials = [...testimonials, ...testimonials, ...testimonials];
-
 const featuredBlogs = [
   {
     title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
@@ -211,114 +126,16 @@ const featuredBlogs = [
   },
 ];
 
-const youtubeVideos = [
-  {
-    title: "Himkala Adventure | Kathmandu, Nepal",
-    url: "https://www.youtube.com/watch?v=JxiY-aG0e_c&t=10s",
-  },
-  {
-    title: "Ritual Thread Ceremony | Himkala Adventure",
-    url: "https://www.youtube.com/watch?v=a0P-e9MRRpY&pp=0gcJCdkKAYcqIYzv",
-  },
-  {
-    title: "Nagarkot to Changunarayan Hiking | Himkala Adventure",
-    url: "https://www.youtube.com/watch?v=6aUyYVxnaOA",
-  },
-  {
-    title: "Kathmandu Valley Fringe Hiking with Himkala Adventure | Kathmandu, Nepal",
-    url: "https://www.youtube.com/watch?v=JS9aWnSWHAA",
-  },
-  {
-    title: "Amazing Free Walking Tour Kathmandu | Himkala Adevnture",
-    url: "https://www.youtube.com/watch?v=BjfCd9C2uS4",
-  },
-];
-
-const instagramPosts = [
-  {
-    title: "City or mountains? With us, you don't have to choose. 🇳🇵🏔️",
-    url: "https://www.instagram.com/himkalaadventure/reel/DbsQAe9PPuI/",
-    type: "reel",
-  },
-  {
-    title: "The climb is worth it. 🇳🇵🐒 — Monkey Temple",
-    url: "https://www.instagram.com/freewalkingtourkathmandu/reel/DbsuPo8zUMf/",
-    type: "reel",
-  },
-  {
-    title: "Kathmandu's Free Walking Tour — 12 Years Strong",
-    url: "https://www.instagram.com/freewalkingtourkathmandu/reel/DblJWo7TsOB/",
-    type: "reel",
-  },
-  {
-    title: "Backpacking Diaries: Trekking the Himalayas with Himkala Adventure",
-    url: "https://www.instagram.com/amberlowentravels/reel/DSSTpFck6F4/",
-    type: "reel",
-  },
-  {
-    title: "Humbled by the Mountains — Annapurna Circuit Trek",
-    url: "https://www.instagram.com/back.to.that.moment/reel/DMzitZdIxVI/",
-    type: "reel",
-  },
-  {
-    title: "Langtang Summit: Kyangjing Ri at 4,400m",
-    url: "https://www.instagram.com/thelonecompass/reel/DM4xMomRuex/",
-    type: "reel",
-  },
-  {
-    title: "Manaslu Circuit — Captured on 35mm Film",
-    url: "https://www.instagram.com/himkalaadventure/reel/DLK9i0YvXLk/",
-    type: "reel",
-  },
-  {
-    title: "Annapurna Basecamp: Steep Stairs & Breathtaking Views",
-    url: "https://www.instagram.com/back.to.that.moment/reel/DJ2HAhPoeqS/",
-    type: "reel",
-  },
-  {
-    title: "Shree Kharka to Tilicho Base Camp",
-    url: "https://www.instagram.com/himkalaadventure/reel/DZzFS3_tL5w/",
-    type: "reel",
-  },
-  {
-    title: "Ice Lake — 4,620 Meters",
-    url: "https://www.instagram.com/himkalaadventure/reel/DZuqJtjPGVO/",
-    type: "reel",
-  },
-  {
-    title: "Everest Three Passes Trekking",
-    url: "https://www.instagram.com/himkalaadventure/p/Daj6PkTD1Tp/",
-    type: "post",
-  },
-];
-
-const tripadvisorUrl = "https://www.tripadvisor.com/Attraction_Review-g293890-d8417075-Reviews-Himkala_Adventure-Kathmandu_Kathmandu_Valley_Bagmati_Zone_Central_Region.html";
-
-const getYouTubeThumbnail = (url: string) => {
-  let videoId = "";
-  if (url.includes("youtube.com/watch?v=")) {
-    videoId = url.split("v=")[1]?.split("&")[0];
-  } else if (url.includes("youtu.be/")) {
-    videoId = url.split("youtu.be/")[1]?.split("?")[0];
-  }
-  return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : "/images/fallback.jpg";
-};
-
-const getYouTubeVideoId = (url: string) => {
-  let videoId = "";
-  if (url.includes("youtube.com/watch?v=")) {
-    videoId = url.split("v=")[1]?.split("&")[0];
-  } else if (url.includes("youtu.be/")) {
-    videoId = url.split("youtu.be/")[1]?.split("?")[0];
-  }
-  return videoId;
-};
-
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [selectedVideo, setSelectedVideo] = useState<{ title: string; url: string } | null>(null);
   const [trekkingServices, setTrekkingServices] = useState<TrekkingService[]>(TREKKING_SERVICES_FALLBACK);
+  const [socialMedia, setSocialMedia] = useState<SocialMediaContent>(SOCIAL_MEDIA_FALLBACK);
+  const [travelerStories, setTravelerStories] = useState<TravelerStoriesContent>(TRAVELER_STORIES_FALLBACK);
   const popularTreks = trekkingServices.filter((trek) => trek.showOnHomepage);
+  const { youtubeVideos, instagramPosts } = socialMedia;
+  const infiniteTestimonials = [...travelerStories.stories, ...travelerStories.stories, ...travelerStories.stories];
+  const tripadvisorUrl = travelerStories.tripadvisorUrl;
 
   useEffect(() => {
     let isMounted = true;
@@ -336,6 +153,34 @@ export default function Home() {
       isMounted = false;
       window.removeEventListener("himkala:trekking-services-updated", refreshTrekkingServices);
       window.removeEventListener("storage", refreshTrekkingServices);
+    };
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    const refreshTravelerStories = async () => {
+      const { content } = await loadTravelerStories();
+      if (isMounted) setTravelerStories(content);
+    };
+    void refreshTravelerStories();
+    window.addEventListener(TRAVELER_STORIES_UPDATED_EVENT, refreshTravelerStories);
+    return () => {
+      isMounted = false;
+      window.removeEventListener(TRAVELER_STORIES_UPDATED_EVENT, refreshTravelerStories);
+    };
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    const refreshSocialMedia = async () => {
+      const { content } = await loadSocialMediaContent();
+      if (isMounted) setSocialMedia(content);
+    };
+    void refreshSocialMedia();
+    window.addEventListener(SOCIAL_MEDIA_UPDATED_EVENT, refreshSocialMedia);
+    return () => {
+      isMounted = false;
+      window.removeEventListener(SOCIAL_MEDIA_UPDATED_EVENT, refreshSocialMedia);
     };
   }, []);
 
@@ -985,7 +830,7 @@ We move slow because the trail decides the pace, not the guidebook. We budget fo
                   >
                     <div className="bg-[#f7f2e9] rounded-lg overflow-hidden border border-[#d8cec0] p-4 sm:p-5 md:p-6 h-full shadow-sm">
                       <div className="flex gap-0.5 sm:gap-1 mb-4 sm:mb-6">
-                        {[...Array(5)].map((_, i) => (
+                        {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
                         ))}
                       </div>
@@ -1019,7 +864,7 @@ We move slow because the trail decides the pace, not the guidebook. We budget fo
                   >
                     <div className="bg-[#f7f2e9] rounded-lg overflow-hidden border border-[#d8cec0] p-8 h-full shadow-sm hover:shadow-md transition-all duration-300">
                       <div className="flex gap-1 mb-6">
-                        {[...Array(5)].map((_, i) => (
+                        {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
                         ))}
                       </div>

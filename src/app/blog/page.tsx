@@ -27,209 +27,38 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { BLOG_POSTS_FALLBACK, BLOG_POSTS_UPDATED_EVENT, BlogPost } from "@/lib/blog-posts";
 import { loadBlogPosts } from "@/lib/firebase/blog-posts-repository";
-
-// Function to get YouTube thumbnail from video URL
-const getYouTubeThumbnail = (url: string) => {
-  let videoId = "";
-  
-  if (url.includes("youtube.com/watch?v=")) {
-    videoId = url.split("v=")[1]?.split("&")[0];
-  } else if (url.includes("youtu.be/")) {
-    videoId = url.split("youtu.be/")[1]?.split("?")[0];
-  }
-  
-  return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : "/images/fallback.jpg";
-};
-
-// Function to extract YouTube video ID
-const getYouTubeVideoId = (url: string) => {
-  let videoId = "";
-  
-  if (url.includes("youtube.com/watch?v=")) {
-    videoId = url.split("v=")[1]?.split("&")[0];
-  } else if (url.includes("youtu.be/")) {
-    videoId = url.split("youtu.be/")[1]?.split("?")[0];
-  }
-  
-  return videoId;
-};
-
-const featuredPost = {
-    id: "solo-trekking-nepal-2026",
-    slug: "solo-trekking-nepal-2026",
-    title: "Solo Trekking in Nepal: Complete 2026 Guide for Independent Travelers",
-    excerpt: "Solo trekking in Nepal is legal again. Complete 2026 guide covering best treks, permits, costs, safety tips, and everything you need for a solo Himalayan adventure.",
-    image: "/images/used/solo-trek-blog-hero.webp",
-    author: "Sabinaya Dhakal",
-    date: "August 7, 2026",
-    readTime: "8 min",
-    category: "Trekking Guide",
-  };
-
-const blogPosts = [
-  {
-    id: "solo-trekking-nepal-2026",
-    slug: "solo-trekking-nepal-2026",
-    title: "Solo Trekking in Nepal: Complete 2026 Guide for Independent Travelers",
-    excerpt: "Solo trekking in Nepal is legal again. Complete 2026 guide covering best treks, permits, costs, safety tips, and everything you need for a solo Himalayan adventure.",
-    image: "/images/used/solo-trek-blog-hero.webp",
-    author: "Sabinaya Dhakal",
-    date: "August 7, 2026",
-    readTime: "8 min",
-    category: "Trekking Guide",
-  },
-  {
-    id: "nepal-trek-cost-2026",
-    slug: "nepal-trek-cost-2026",
-    title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
-    excerpt: "Planning a trek in Nepal? Here's exactly how much it costs in 2026. From budget-friendly Poon Hill at $500 to premium Upper Mustang at $2,595 — we break down every trek, permit, and hidden expense so you know what to budget.",
-    image: "/images/used/nepal-trek-cost-blog-hero.webp",
-    author: "Sabinaya Dhakal",
-    date: "June 4, 2026",
-    readTime: "16 min",
-    category: "Trekking Guide",
-  },
-  {
-    id: "everest-vs-annapurna-base-camp",
-    slug: "everest-vs-annapurna-base-camp",
-    title: "Everest Base Camp vs. Annapurna Base Camp: How To Decide Your Next Big Trek",
-    excerpt: "Two major treks dominate every Nepal itinerary shortlist. Everest Base Camp is famous for the altitude and the realisation that you're standing at the foot of the world's tallest mountain. Annapurna Base Camp is famous for the scenery, the feeling of being swallowed whole by peaks on every side. Which one is right for you?",
-    image: "/images/used/ebc-vs-abc.webp",
-    author: "Meg Cassidy",
-    date: "May 26, 2026",
-    readTime: "16 min",
-    category: "Trekking Guide",
-  },
-  {
-    id: "best-beginner-treks-nepal",
-    slug: "best-beginner-treks-nepal",
-    title: "5 Best Beginner Treks in Nepal: From Sunrise Hikes to Himalayan Valleys",
-    excerpt: "Nepal has a trek for every level of experience. Despite its reputation for giant peaks and extreme altitudes, some of the most rewarding adventures are easily within reach for first-timers – with only a moderate level of fitness required.",
-    image: "/images/used/manaslu-main-page.webp",
-    author: "Meg Cassidy",
-    date: "May 24, 2026",
-    readTime: "14 min",
-    category: "Trekking Guide",
-  },
-  {
-    id: "tilicho-lake-sacred-trek",
-    slug: "tilicho-lake-sacred-trek",
-    title: "Tilicho Lake: The Sacred Himalayan Lake of Legends, Faith, and Adventure",
-    excerpt: "Perched at 4,919 meters in the Annapurna region, Tilicho Lake is not just one of the highest lakes in the world—it is a place where Hindu mythology meets breathtaking natural beauty. Discover the ancient story of Kakbhusundi, the crow sage, and why thousands make the arduous journey to its holy shores.",
-    image: "/images/used/tilicho-blog.webp",
-    author: "Sabinaya Dhakal",
-    date: "May 20, 2026",
-    readTime: "12 min",
-    category: "Trekking & Pilgrimage",
-  },
-  {
-    id: "pigeons-symbol-peace-nepal",
-    slug: "pigeons-symbol-peace-nepal",
-    title: "From Sacred Messengers to 'Flying Rats': Why Nepalis Worship Pigeons While Europeans Shoo Them Away",
-    excerpt: "In Kathmandu, pigeons are revered as divine ancestors and harbingers of peace. In London, they're pests. This stark cultural divide reveals deep truths about how we see nature, spirituality, and our place in the world.",
-    image: "/images/used/dog-pigeons.webp",
-    author: "Sabinaya Dhakal",
-    date: "May 9, 2026",
-    readTime: "9 min",
-    category: "Culture & Society",
-  },
-  {
-    id: "best-time-to-visit-nepal",
-    slug: "best-time-to-visit-nepal",
-    title: "When Should You Visit Nepal? A Month-by-Month Guide to Perfect Timing",
-    excerpt: "From the rainbow blooms of spring to the crystal-clear skies of autumn, every season in Nepal offers something magical. But timing your visit right can mean the difference between watching Everest disappear behind clouds or standing beneath its glittering peak.",
-    image: "/images/used/historic-scenic-photography-nepal.webp",
-    author: "Sabinaya Dhakal",
-    date: "May 7, 2026",
-    readTime: "9 min",
-    category: "Travel Guide",
-  },
-];
-
-const youtubeVideos = [
-  {
-    title: "Himkala Adventure | Kathmandu, Nepal",
-    url: "https://www.youtube.com/watch?v=JxiY-aG0e_c&t=10s",
-  },
-  {
-    title: "Ritual Thread Ceremony | Himkala Adventure",
-    url: "https://www.youtube.com/watch?v=a0P-e9MRRpY&pp=0gcJCdkKAYcqIYzv",
-  },
-  {
-    title: "Nagarkot to Changunarayan Hiking | Himkala Adventure",
-    url: "https://www.youtube.com/watch?v=6aUyYVxnaOA",
-  },
-  {
-    title: "Kathmandu Valley Fringe Hiking with Himkala Adventure | Kathmandu, Nepal",
-    url: "https://www.youtube.com/watch?v=JS9aWnSWHAA",
-  },
-  {
-    title: "Amazing Free Walking Tour Kathmandu | Himkala Adevnture",
-    url: "https://www.youtube.com/watch?v=BjfCd9C2uS4",
-  },
-];
-
-const instagramPosts = [
-  {
-    title: "Kathmandu's Free Walking Tour — 12 Years Strong",
-    url: "https://www.instagram.com/freewalkingtourkathmandu/reel/DblJWo7TsOB/",
-    type: "reel",
-  },
-  {
-    title: "Backpacking Diaries: Trekking the Himalayas with Himkala Adventure",
-    url: "https://www.instagram.com/amberlowentravels/reel/DSSTpFck6F4/",
-    type: "reel",
-  },
-  {
-    title: "Humbled by the Mountains — Annapurna Circuit Trek",
-    url: "https://www.instagram.com/back.to.that.moment/reel/DMzitZdIxVI/",
-    type: "reel",
-  },
-  {
-    title: "Langtang Summit: Kyangjing Ri at 4,400m",
-    url: "https://www.instagram.com/thelonecompass/reel/DM4xMomRuex/",
-    type: "reel",
-  },
-  {
-    title: "Manaslu Circuit — Captured on 35mm Film",
-    url: "https://www.instagram.com/himkalaadventure/reel/DLK9i0YvXLk/",
-    type: "reel",
-  },
-  {
-    title: "Annapurna Basecamp: Steep Stairs & Breathtaking Views",
-    url: "https://www.instagram.com/back.to.that.moment/reel/DJ2HAhPoeqS/",
-    type: "reel",
-  },
-  {
-    title: "Shree Kharka to Tilicho Base Camp",
-    url: "https://www.instagram.com/himkalaadventure/reel/DZzFS3_tL5w/",
-    type: "reel",
-  },
-  {
-    title: "Ice Lake — 4,620 Meters",
-    url: "https://www.instagram.com/himkalaadventure/reel/DZuqJtjPGVO/",
-    type: "reel",
-  },
-  {
-    title: "Everest Three Passes Trekking",
-    url: "https://www.instagram.com/himkalaadventure/p/Daj6PkTD1Tp/",
-    type: "post",
-  },
-];
+import { loadSocialMediaContent } from "@/lib/firebase/social-media-repository";
+import { getYouTubeThumbnail, getYouTubeVideoId, SOCIAL_MEDIA_FALLBACK, SOCIAL_MEDIA_UPDATED_EVENT, SocialMediaContent } from "@/lib/social-media";
 
 export default function BlogPage() {
   const [managedPosts, setManagedPosts] = React.useState<BlogPost[]>(BLOG_POSTS_FALLBACK);
   const [searchQuery, setSearchQuery] = React.useState("");
   const [visiblePosts, setVisiblePosts] = React.useState(6);
   const [selectedVideo, setSelectedVideo] = React.useState<{ title: string; url: string } | null>(null);
+  const [socialMedia, setSocialMedia] = React.useState<SocialMediaContent>(SOCIAL_MEDIA_FALLBACK);
   const blogPosts = managedPosts.filter((post) => post.published);
   const featuredPost = blogPosts.find((post) => post.featured) || blogPosts[0] || BLOG_POSTS_FALLBACK[0];
+  const { youtubeVideos, instagramPosts } = socialMedia;
 
   React.useEffect(() => {
     const refresh = () => { void loadBlogPosts().then(({ posts }) => setManagedPosts(posts)); };
     refresh();
     window.addEventListener(BLOG_POSTS_UPDATED_EVENT, refresh);
     return () => window.removeEventListener(BLOG_POSTS_UPDATED_EVENT, refresh);
+  }, []);
+
+  React.useEffect(() => {
+    let isMounted = true;
+    const refresh = async () => {
+      const { content } = await loadSocialMediaContent();
+      if (isMounted) setSocialMedia(content);
+    };
+    void refresh();
+    window.addEventListener(SOCIAL_MEDIA_UPDATED_EVENT, refresh);
+    return () => {
+      isMounted = false;
+      window.removeEventListener(SOCIAL_MEDIA_UPDATED_EVENT, refresh);
+    };
   }, []);
 
   const filteredPosts = React.useMemo(() => {
@@ -251,11 +80,11 @@ export default function BlogPage() {
   };
 
   const handleYoutubeRedirect = () => {
-    window.open("https://www.youtube.com/@himkalaadventure5936", "_blank");
+    if (socialMedia.youtubeChannelUrl) window.open(socialMedia.youtubeChannelUrl, "_blank", "noopener,noreferrer");
   };
 
   const handleInstagramRedirect = () => {
-    window.open("https://www.instagram.com/himkalaadventure/", "_blank");
+    if (socialMedia.instagramProfileUrl) window.open(socialMedia.instagramProfileUrl, "_blank", "noopener,noreferrer");
   };
 
   const openVideoModal = (video: { title: string; url: string }) => {

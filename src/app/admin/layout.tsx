@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
-import { Binoculars, BookOpen, Footprints, Landmark, LayoutDashboard, LogOut, Map, Mountain, Plane } from "lucide-react";
+import { Binoculars, BookOpen, Footprints, Landmark, LayoutDashboard, LogOut, Map, MessageSquareQuote, Mountain, Plane, Share2 } from "lucide-react";
 import AdminAuthGate from "@/components/admin/AdminAuthGate";
 import { getFirebaseAuth } from "@/lib/firebase/client";
 
@@ -17,6 +17,8 @@ const navigation = [
   { href: "/admin/mountain-flights", label: "Mountain Flights", icon: Plane },
   { href: "/admin/jungle-safari", label: "Jungle Safari", icon: Binoculars },
   { href: "/admin/blog", label: "Blog", icon: BookOpen },
+  { href: "/admin/social-media", label: "Social Media", icon: Share2 },
+  { href: "/admin/traveler-stories", label: "Traveler Stories", icon: MessageSquareQuote },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
