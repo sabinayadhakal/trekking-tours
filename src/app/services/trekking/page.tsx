@@ -26,9 +26,13 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { TREKKING_SERVICES_FALLBACK, TrekkingService } from "@/lib/trekking-services";
+import { loadTrekkingServices } from "@/lib/firebase/trekking-services-repository";
 
 // Only include the treks you want (excluding Gokyo, Langtang Ganjala, Gosainkunda, Nar Phu, Rupina La, Upper Mustang)
-const trekkingPackages = [
+// Kept temporarily as a source reference for the original service copy. The UI uses
+// the shared trekking-services catalogue below.
+const legacyTrekkingPackages = [
   {
     id: 1,
     name: "Everest Base Camp Trek",
@@ -272,12 +276,30 @@ const getDifficultyColor = (difficulty: string) => {
 
 export default function TrekkingNepalPage() {
   const router = useRouter();
+  const [trekkingPackages, setTrekkingPackages] = React.useState<TrekkingService[]>(TREKKING_SERVICES_FALLBACK);
+
+  React.useEffect(() => {
+    let isMounted = true;
+    const refreshServices = async () => {
+      const { treks } = await loadTrekkingServices();
+      if (isMounted) setTrekkingPackages(treks);
+    };
+
+    void refreshServices();
+    window.addEventListener("himkala:trekking-services-updated", refreshServices);
+    window.addEventListener("storage", refreshServices);
+    return () => {
+      isMounted = false;
+      window.removeEventListener("himkala:trekking-services-updated", refreshServices);
+      window.removeEventListener("storage", refreshServices);
+    };
+  }, []);
 
   const handleBookNow = (trekName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(trekName)}`);
   };
 
-  const featuredPackage = trekkingPackages.find((pkg) => pkg.id === 1);
+  const featuredPackage = trekkingPackages.find((pkg) => pkg.featured) ?? trekkingPackages[0];
 
   return (
     <>

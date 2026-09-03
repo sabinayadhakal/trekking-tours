@@ -28,156 +28,30 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { loadManagedServices } from "@/lib/firebase/managed-services-repository";
+import { MANAGED_SERVICES_FALLBACK, MANAGED_SERVICES_UPDATED_EVENT } from "@/lib/managed-services";
 
-// Day sightseeing tours data
-const daySightseeings = [
-  {
-    id: 1,
-    name: "Free Walking Tour Kathmandu",
-    region: "Kathmandu",
-    duration: "2-3 Hours",
-    difficulty: "Easy",
-    category: "Free Tour",
-    groupSize: "2-15",
-    bestSeason: "All Year",
-    price: 0,
-    originalPrice: 0,
-    image: "/images/used/FWT-4.webp",
-    rating: 4.9,
-    reviews: 567,
-    highlights: ["Thamel Streets", "Asan Market", "Durbar Square", "Local Culture"],
-    description: "Join our free guided walking tour through the vibrant streets of Kathmandu and discover hidden gems, local markets, and ancient temples with our expert local guides.",
-    featured: true,
-    link: "/services/free-walking-tour-kathmandu",
-    isFree: true,
-  },
-  {
-    id: 2,
-    name: "Kathmandu Sightseeing",
-    region: "Kathmandu Valley",
-    duration: "6-7 Hours",
-    difficulty: "Easy",
-    category: "Cultural",
-    groupSize: "2-12",
-    bestSeason: "All Year",
-    price: 60,
-    originalPrice: 80,
-    image: "/images/used/monkey_temple.webp",
-    rating: 4.9,
-    reviews: 312,
-    highlights: ["Swayambhunath Stupa", "Patan Durbar Square", "Pashupatinath Temple", "Bouddhanath Stupa"],
-    description: "Explore the rich cultural heritage of Kathmandu Valley with visits to UNESCO World Heritage sites.",
-    featured: false,
-    link: "/services/day-sightseeings/kathmandu-sightseeing",
-  },
-  {
-    id: 3,
-    name: "Bhaktapur & Patan Sightseeing",
-    region: "Bhaktapur & Patan",
-    duration: "6-7 Hours",
-    difficulty: "Easy",
-    category: "Heritage",
-    groupSize: "2-12",
-    bestSeason: "All Year",
-    price: 65,
-    originalPrice: 85,
-    image: "/images/used/bhaktapur-2.webp",
-    rating: 4.8,
-    reviews: 178,
-    highlights: ["Bhaktapur Durbar Square", "Patan Durbar Square", "Pottery Square", "Golden Gate"],
-    description: "Discover the medieval architecture and Newari culture of Bhaktapur and Patan's ancient cities.",
-    featured: false,
-    link: "/services/day-sightseeings/bhaktapur-patan-sightseeing",
-  },
-  {
-    id: 4,
-    name: "Bouddhanath & Kapan Sightseeing",
-    region: "Kathmandu",
-    duration: "4-5 Hours",
-    difficulty: "Easy",
-    category: "Spiritual",
-    groupSize: "2-10",
-    bestSeason: "All Year",
-    price: 50,
-    originalPrice: 65,
-    image: "/images/used/kapan-1.webp",
-    rating: 4.7,
-    reviews: 134,
-    highlights: ["Bouddhanath Stupa", "Kapan Monastery", "Prayer Flags", "Monastic Life"],
-    description: "Experience the spiritual heart of Kathmandu at the largest stupa in Nepal and peaceful monastery.",
-    featured: false,
-    link: "/services/day-sightseeings/bouddhanath-kapan-sightseeing",
-  },
-  {
-    id: 5,
-    name: "Bungamati & Khokana Sightseeing",
-    region: "Kathmandu",
-    duration: "4-5 Hours",
-    difficulty: "Easy",
-    category: "Cultural",
-    groupSize: "2-10",
-    bestSeason: "All Year",
-    price: 50,
-    originalPrice: 65,
-    image: "/images/used/bungamati-1.webp",
-    rating: 4.6,
-    reviews: 98,
-    highlights: ["Rato Machhindranath Temple", "Newari Culture", "Mustard Oil Mills", "Traditional Villages"],
-    description: "Visit traditional Newari villages and experience authentic rural life in the Kathmandu Valley.",
-    featured: false,
-    link: "/services/day-sightseeings/bungamati-khokana-patan-sightseeing",
-  },
-  {
-    id: 6,
-    name: "Changunarayan & Sanga Sightseeing",
-    region: "Bhaktapur",
-    duration: "5-6 Hours",
-    difficulty: "Easy",
-    category: "Heritage",
-    groupSize: "2-12",
-    bestSeason: "All Year",
-    price: 55,
-    originalPrice: 70,
-    image: "/images/used/changunarayan-1.webp",
-    rating: 4.8,
-    reviews: 112,
-    highlights: ["Changunarayan Temple", "UNESCO Site", "Himalayan Views", "Sanga Views"],
-    description: "Visit the oldest Hindu temple in Nepal and enjoy panoramic views of the Himalayas.",
-    featured: false,
-    link: "/services/day-sightseeings/changunarayan-bhaktapur-sanga-sightseeing",
-  },
-  {
-    id: 7,
-    name: "Dakshinkali & Pharping Sightseeing",
-    region: "Kathmandu",
-    duration: "5-6 Hours",
-    difficulty: "Easy",
-    category: "Spiritual",
-    groupSize: "2-10",
-    bestSeason: "All Year",
-    price: 50,
-    originalPrice: 65,
-    image: "/images/used/dakshinkali-2.webp",
-    rating: 4.7,
-    reviews: 89,
-    highlights: ["Dakshinkali Temple", "Pharping Monastery", "Guru Rinpoche Cave", "River Views"],
-    description: "Explore sacred Hindu temples and Buddhist monasteries in the scenic hills of southern Kathmandu.",
-    featured: false,
-    link: "/services/day-sightseeings/dakshinkali-pharping-kirtipur-sightseeing",
-  },
-];
 
 export default function DaySightseeingsPage() {
   const router = useRouter();
-  const [expandedTour, setExpandedTour] = React.useState<number | null>(null);
+  const [daySightseeings, setDaySightseeings] = React.useState(MANAGED_SERVICES_FALLBACK.daySightseeings);
+  const [expandedTour, setExpandedTour] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    const refresh = () => { void loadManagedServices("daySightseeings").then(({ services }) => setDaySightseeings(services.filter((service) => service.published))); };
+    refresh();
+    const onUpdate = (event: Event) => { if ((event as CustomEvent).detail === "daySightseeings") refresh(); };
+    window.addEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+    return () => window.removeEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+  }, []);
 
   const handleBookNow = (tourName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(tourName)}`);
   };
 
-  const featuredTour = daySightseeings.find((tour) => tour.id === 1);
+  const featuredTour = daySightseeings.find((tour) => tour.featured) || daySightseeings[0];
 
-  const toggleTour = (id: number) => {
+  const toggleTour = (id: string) => {
     setExpandedTour(expandedTour === id ? null : id);
   };
 

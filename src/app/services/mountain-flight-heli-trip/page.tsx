@@ -25,79 +25,27 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { loadManagedServices } from "@/lib/firebase/managed-services-repository";
+import { MANAGED_SERVICES_FALLBACK, MANAGED_SERVICES_UPDATED_EVENT } from "@/lib/managed-services";
 
-// Only include mountain flights that exist in your folder structure
-const mountainFlights = [
-  {
-    id: 1,
-    name: "Everest Region Mountain Flight Trip",
-    route: "Everest Region",
-    duration: "1 Hour",
-    altitude: "8,848m",
-    groupSize: "1-25",
-    bestSeason: "Sep-May",
-    price: 350,
-    originalPrice: 450,
-    image: "/images/used/everest-flight-1.webp",
-    rating: 4.9,
-    reviews: 456,
-    highlights: ["Mount Everest", "Lhotse", "Makalu", "Ama Dablam"],
-    description: "The ultimate aerial adventure flying close to the world's highest peaks with guaranteed window seats.",
-    featured: true,
-    aircraft: "Beechcraft 1900D",
-    departure: "06:00 AM",
-    link: "/services/mountain-flight-heli-trip/everest-region-mountain-flight-trip",
-  },
-  {
-    id: 2,
-    name: "Everest Region Helicopter Trip",
-    route: "Everest Region",
-    duration: "4 Hours",
-    altitude: "8,848m",
-    groupSize: "1-5",
-    bestSeason: "Sep-May",
-    price: 2000,
-    originalPrice: 2450,
-    image: "/images/used/everest-heli-1.webp",
-    rating: 4.9,
-    reviews: 156,
-    highlights: ["Landing at Kalapatthar", "Everest Base Camp", "Gokyo Lakes", "Helicopter Landing"],
-    description: "Luxury helicopter tour with landing opportunities at strategic viewpoints.",
-    featured: true,
-    aircraft: "AS350 B3",
-    departure: "07:00 AM",
-    link: "/services/mountain-flight-heli-trip/everest-region-helicopter-trip",
-  },
-  {
-    id: 4,
-    name: "Langtang Region Helicopter Trip",
-    route: "Langtang Region",
-    duration: "1.5 Hours",
-    altitude: "7,234m",
-    groupSize: "1-6",
-    bestSeason: "Oct-Apr",
-    price: 1500,
-    originalPrice: 1750,
-    image: "/images/used/langtang-heli.webp",
-    rating: 4.8,
-    reviews: 89,
-    highlights: ["Langtang Lirung", "Ganesh Himal", "Dorje Lakpa", "Kyanjin Gompa"],
-    description: "Helicopter exploration of the beautiful Langtang Valley with landing at Kyanjin Gompa.",
-    featured: false,
-    aircraft: "AS350 B3",
-    departure: "08:00 AM",
-    link: "/services/mountain-flight-heli-trip/langtang-region-helicopter-trip",
-  },
-];
 
 export default function MountainFlightsPage() {
   const router = useRouter();
+  const [mountainFlights, setMountainFlights] = React.useState(MANAGED_SERVICES_FALLBACK.mountainFlights);
+
+  React.useEffect(() => {
+    const refresh = () => { void loadManagedServices("mountainFlights").then(({ services }) => setMountainFlights(services.filter((service) => service.published))); };
+    refresh();
+    const onUpdate = (event: Event) => { if ((event as CustomEvent).detail === "mountainFlights") refresh(); };
+    window.addEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+    return () => window.removeEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+  }, []);
 
   const handleBookNow = (flightName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(flightName)}`);
   };
 
-  const featuredFlight = mountainFlights.find((flight) => flight.id === 1);
+  const featuredFlight = mountainFlights.find((flight) => flight.featured) || mountainFlights[0];
 
   // Schema.org Product schemas for each flight
   const productSchemas = mountainFlights.map((flight) => ({

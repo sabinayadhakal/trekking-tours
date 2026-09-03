@@ -30,30 +30,9 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { loadManagedServices } from "@/lib/firebase/managed-services-repository";
+import { MANAGED_SERVICES_FALLBACK, MANAGED_SERVICES_UPDATED_EVENT } from "@/lib/managed-services";
 
-// Only include jungle safaris that exist in your folder structure
-const jungleSafaris = [
-  {
-    id: 1,
-    name: "Chitwan NP Jungle Safari",
-    park: "Chitwan National Park",
-    duration: "7 Days with Kathmandu Arrival and Departure",
-    difficulty: "Easy",
-    groupSize: "2-12",
-    bestSeason: "Oct-Mar",
-    price: 650,
-    originalPrice: 850,
-    image: "/images/used/nepal-chitwan.webp",
-    rating: 4.9,
-    reviews: 342,
-    highlights: ["Elephant Safari", "Canoe Ride", "Bird Watching", "Tharu Culture"],
-    description: "Experience Nepal's premier wildlife destination with elephant safaris and jungle walks.",
-    featured: true,
-    activities: ["Elephant Safari", "Jungle Walk", "Canoe", "Cultural Show"],
-    wildlife: ["Rhino", "Tiger", "Crocodile", "Birds"],
-    link: "/services/jungle-safari/chitwan-np-jungle-safari",
-  },
-];
 
 const getWildlifeIcon = (animal: string) => {
   const animalLower = animal.toLowerCase();
@@ -87,12 +66,21 @@ const getWildlifeIcon = (animal: string) => {
 
 export default function JungleSafariPage() {
   const router = useRouter();
+  const [jungleSafaris, setJungleSafaris] = React.useState(MANAGED_SERVICES_FALLBACK.jungleSafaris);
+
+  React.useEffect(() => {
+    const refresh = () => { void loadManagedServices("jungleSafaris").then(({ services }) => setJungleSafaris(services.filter((service) => service.published))); };
+    refresh();
+    const onUpdate = (event: Event) => { if ((event as CustomEvent).detail === "jungleSafaris") refresh(); };
+    window.addEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+    return () => window.removeEventListener(MANAGED_SERVICES_UPDATED_EVENT, onUpdate);
+  }, []);
 
   const handleBookNow = (safariName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(safariName)}`);
   };
 
-  const featuredSafari = jungleSafaris.find((safari) => safari.id === 1);
+  const featuredSafari = jungleSafaris.find((safari) => safari.featured) || jungleSafaris[0];
 
   // Schema.org Product schemas for each safari
   const productSchemas = jungleSafaris.map((safari) => ({

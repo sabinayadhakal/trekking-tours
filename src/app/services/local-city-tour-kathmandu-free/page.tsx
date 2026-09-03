@@ -10,8 +10,6 @@ import {
   Users,
   MapPin,
   Plus,
-  Share2,
-  Facebook,
   Copy,
   Check,
   ChevronDown,
@@ -217,12 +215,6 @@ export default function KathmanduFreeWalkingTourPage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleShare = (platform: string) => {
-    const url = encodeURIComponent(window.location.href);
-    if (platform === "facebook") {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank", "noopener,noreferrer");
-    }
-  };
 
   const toggleStop = (idx: number) => {
     setExpandedStops((prev) =>

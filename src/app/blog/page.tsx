@@ -25,6 +25,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
+import { BLOG_POSTS_FALLBACK, BLOG_POSTS_UPDATED_EVENT, BlogPost } from "@/lib/blog-posts";
+import { loadBlogPosts } from "@/lib/firebase/blog-posts-repository";
 
 // Function to get YouTube thumbnail from video URL
 const getYouTubeThumbnail = (url: string) => {
@@ -216,9 +218,19 @@ const instagramPosts = [
 ];
 
 export default function BlogPage() {
+  const [managedPosts, setManagedPosts] = React.useState<BlogPost[]>(BLOG_POSTS_FALLBACK);
   const [searchQuery, setSearchQuery] = React.useState("");
   const [visiblePosts, setVisiblePosts] = React.useState(6);
   const [selectedVideo, setSelectedVideo] = React.useState<{ title: string; url: string } | null>(null);
+  const blogPosts = managedPosts.filter((post) => post.published);
+  const featuredPost = blogPosts.find((post) => post.featured) || blogPosts[0] || BLOG_POSTS_FALLBACK[0];
+
+  React.useEffect(() => {
+    const refresh = () => { void loadBlogPosts().then(({ posts }) => setManagedPosts(posts)); };
+    refresh();
+    window.addEventListener(BLOG_POSTS_UPDATED_EVENT, refresh);
+    return () => window.removeEventListener(BLOG_POSTS_UPDATED_EVENT, refresh);
+  }, []);
 
   const filteredPosts = React.useMemo(() => {
     let filtered = blogPosts;

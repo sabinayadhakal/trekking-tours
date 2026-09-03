@@ -32,6 +32,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { TREKKING_SERVICES_FALLBACK, TrekkingService } from "@/lib/trekking-services";
+import { loadTrekkingServices } from "@/lib/firebase/trekking-services-repository";
 
 const destinations = [
   {
@@ -98,59 +100,6 @@ const services = [
     description: "Wildlife adventures in Chitwan National Park.",
     color: "from-green-100 to-emerald-50",
     link: "/services/jungle-safari"
-  },
-];
-
-const popularTreks = [
-  {
-    name: "Manaslu Circuit",
-    duration: "16 Days",
-    difficulty: "Challenging",
-    altitude: "5,106m",
-    price: "$1,200",
-    image: "/images/used/manaslu-main-page.webp",
-    rating: 4.8,
-    link: "/services/trekking/manaslu-circuit-trek"
-  },
-  {
-    name: "Everest Base Camp",
-    duration: "14 Days",
-    difficulty: "Moderate",
-    altitude: "5,364m",
-    price: "$1,520",
-    image: "/images/used/everest-main-page.webp",
-    rating: 4.9,
-    link: "/services/trekking/everest-base-camp-trek"
-  },
-  {
-    name: "Annapurna Circuit",
-    duration: "18 Days",
-    difficulty: "Challenging",
-    altitude: "5,416m",
-    price: "$800",
-    image: "/images/used/annapurna-circuit-main-page.webp",
-    rating: 4.8,
-    link: "/services/trekking/annapurna-circuit-trek"
-  },
-  {
-    name: "Langtang Valley",
-    duration: "10 Days",
-    difficulty: "Easy-Moderate",
-    altitude: "4,984m",
-    price: "$650",
-    image: "/images/used/langtang-main-page.webp",
-    rating: 4.7,
-    link: "/services/trekking/langtang-valley-trek"
-  },
-  {
-    name: "Annapurna Base Camp",
-    duration: "12 Days",
-    difficulty: "Moderate",
-    altitude: "4,130m",
-    price: "$700",
-    image: "/images/used/abc-main-page.webp",
-    rating: 4.8,
-    link: "/services/trekking/annapurna-base-camp-trek"
   },
 ];
 
@@ -368,6 +317,27 @@ const getYouTubeVideoId = (url: string) => {
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [selectedVideo, setSelectedVideo] = useState<{ title: string; url: string } | null>(null);
+  const [trekkingServices, setTrekkingServices] = useState<TrekkingService[]>(TREKKING_SERVICES_FALLBACK);
+  const popularTreks = trekkingServices.filter((trek) => trek.showOnHomepage);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const refreshTrekkingServices = async () => {
+      const { treks } = await loadTrekkingServices();
+      if (isMounted) setTrekkingServices(treks);
+    };
+
+    void refreshTrekkingServices();
+    window.addEventListener("himkala:trekking-services-updated", refreshTrekkingServices);
+    window.addEventListener("storage", refreshTrekkingServices);
+
+    return () => {
+      isMounted = false;
+      window.removeEventListener("himkala:trekking-services-updated", refreshTrekkingServices);
+      window.removeEventListener("storage", refreshTrekkingServices);
+    };
+  }, []);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -690,14 +660,14 @@ We move slow because the trail decides the pace, not the guidebook. We budget fo
                           </div>
                           <div className="flex items-center gap-1.5 sm:gap-2 text-[#b9c9c0]">
                             <Mountain className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ef966e]" aria-hidden="true" />
-                            <span className="text-xs sm:text-sm">{trek.altitude}</span>
+                            <span className="text-xs sm:text-sm">{trek.maxAltitude}</span>
                           </div>
                           <div className="flex items-center gap-1.5 sm:gap-2 text-[#b9c9c0]">
                             <Footprints className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ef966e]" aria-hidden="true" />
                             <span className="text-xs sm:text-sm">{trek.difficulty}</span>
                           </div>
                           <div className="text-[#ef966e] font-bold text-base sm:text-lg">
-                            {trek.price}
+                            ${trek.price.toLocaleString()}
                           </div>
                         </div>
                         <div className="w-full bg-[#e47a4f] text-[#fff8ee] font-bold hover:bg-[#cf6943] py-3 sm:py-4 text-center transition-all duration-300 text-[10px] sm:text-xs tracking-[.14em] active:scale-[0.98]">
@@ -747,14 +717,14 @@ We move slow because the trail decides the pace, not the guidebook. We budget fo
                             </div>
                             <div className="flex items-center gap-2 text-[#b9c9c0]">
                               <Mountain className="w-4 h-4 text-[#ef966e]" aria-hidden="true" />
-                              <span className="text-sm">{trek.altitude}</span>
+                              <span className="text-sm">{trek.maxAltitude}</span>
                             </div>
                             <div className="flex items-center gap-2 text-[#b9c9c0]">
                               <Footprints className="w-4 h-4 text-[#ef966e]" aria-hidden="true" />
                               <span className="text-sm">{trek.difficulty}</span>
                             </div>
                             <div className="text-[#ef966e] font-bold text-xl">
-                              {trek.price}
+                              ${trek.price.toLocaleString()}
                             </div>
                           </div>
                           <div className="w-full bg-[#e47a4f] text-[#fff8ee] font-bold hover:bg-[#cf6943] py-4 text-center transition-all duration-300 text-xs tracking-[.14em]">
