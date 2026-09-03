@@ -14,6 +14,8 @@ const groups = [
   { kind: "day-sightseeing", collection: "daySightseeings", list: "src/app/services/day-sightseeings/page.tsx", variable: "daySightseeings", detailRoot: "src/app/services/day-sightseeings" },
   { kind: "mountain-flight", collection: "mountainFlights", list: "src/app/services/mountain-flight-heli-trip/page.tsx", variable: "mountainFlights", detailRoot: "src/app/services/mountain-flight-heli-trip" },
   { kind: "jungle-safari", collection: "jungleSafaris", list: "src/app/services/jungle-safari/page.tsx", variable: "jungleSafaris", detailRoot: "src/app/services/jungle-safari" },
+  { kind: "destination-tour", collection: "destinationTours", destination: "bhutan", preserveExisting: true, list: "src/app/destinations/bhutan/page.tsx", variable: "legacyCulturalTours", detailRoot: "src/app/destinations/bhutan" },
+  { kind: "destination-tour", collection: "destinationTours", destination: "tibet", preserveExisting: true, list: "src/app/destinations/tibet/page.tsx", variable: "legacyCulturalTours", detailRoot: "src/app/destinations/tibet" },
 ];
 
 const jsxName = (node) => node?.name?.name || "";
@@ -56,10 +58,12 @@ function slugFromLink(link = "") { return link.split("/").filter(Boolean).at(-1)
 function detailData(file) {
   const ast = parseFile(file);
   const data = {};
+  const customArrays = {};
   const jsx = [];
   traverse(ast, {
     VariableDeclarator(cursor) {
       if (["itinerary", "includes", "excludes", "gallery"].includes(cursor.node.id.name)) data[cursor.node.id.name] = literal(cursor.node.init);
+      if (["trailInfo", "altitudeInfo", "everestFacts", "spiritualSignificance", "lhasaFacts", "routeInfo", "namtsoFacts"].includes(cursor.node.id.name)) customArrays[cursor.node.id.name] = literal(cursor.node.init);
     },
     JSXElement(cursor) { jsx.push(cursor.node); },
     CallExpression(cursor) {
@@ -72,6 +76,23 @@ function detailData(file) {
       if (value.every((item) => typeof item === "string") && value.length >= 4 && /Highlights/i.test(sectionText)) data.serviceHighlights = value;
       if (value.every((item) => item && typeof item === "object" && "q" in item && "a" in item)) data.faqs = value.map((item, index) => ({ id: `faq-${index + 1}`, question: item.q, answer: item.a }));
       if (!data.stats && value.length >= 3 && value.every((item) => item && typeof item === "object" && "label" in item && "value" in item)) data.stats = value;
+    },
+  });
+
+  data.informationTables = [];
+  const tableNames = new Set();
+  traverse(ast, {
+    CallExpression(cursor) {
+      const callee = cursor.node.callee;
+      if (callee.type !== "MemberExpression" || callee.property.name !== "map" || callee.object.type !== "Identifier") return;
+      const name = callee.object.name;
+      const rows = customArrays[name];
+      if (!Array.isArray(rows) || !rows.length || tableNames.has(name)) return;
+      tableNames.add(name);
+      const sectionPath = cursor.findParent((parent) => parent.isJSXElement() && jsxName(parent.node.openingElement) === "section");
+      const heading = descendants(sectionPath?.node, "h2")[0] || descendants(sectionPath?.node, "h3")[0];
+      const columns = Object.keys(rows[0]);
+      data.informationTables.push({ id: `table-${data.informationTables.length + 1}`, title: clean(text(heading)) || name, columns, rows: rows.map((row, index) => ({ id: `row-${index + 1}`, values: columns.map((column) => String(row[column] ?? "")) })) });
     },
   });
 
@@ -142,12 +163,30 @@ function detailData(file) {
 const existing = fs.existsSync(output) ? JSON.parse(fs.readFileSync(output, "utf8")) : {};
 const result = {};
 for (const group of groups) {
+  if (group.preserveExisting && Array.isArray(existing[group.collection])) {
+    const summaries = variable(parseFile(path.resolve(group.list)), group.variable) || [];
+    const summaryBySlug = new Map(summaries.map((summary) => [summary.slug || slugFromLink(summary.link), summary]));
+    result[group.collection] = (result[group.collection] || existing[group.collection]).map((item) => {
+      if (item.destination !== group.destination) return item;
+      const summary = summaryBySlug.get(item.slug || item.id);
+      return summary ? {
+        ...item,
+        cardTitle: summary.name,
+        cardDescription: summary.description,
+        informationTables: (item.informationTables || []).map((table) => ({
+          ...table,
+          placement: ["Trail Details", "Spiritual Significance"].includes(table.title) ? "before-seasons" : "before-itinerary",
+        })),
+      } : item;
+    });
+    continue;
+  }
   const summaries = variable(parseFile(path.resolve(group.list)), group.variable) || [];
   if (!summaries.length && Array.isArray(existing[group.collection])) {
     result[group.collection] = existing[group.collection];
     continue;
   }
-  result[group.collection] = summaries.map((summary, index) => {
+  const extracted = summaries.map((summary, index) => {
     const slug = summary.slug || slugFromLink(summary.link);
     const detailFile = group.detailRoot ? path.resolve(group.detailRoot, slug, "page.tsx") : "";
     const details = detailFile && fs.existsSync(detailFile) ? detailData(detailFile) : {};
@@ -157,14 +196,21 @@ for (const group of groups) {
       id: slug,
       slug,
       kind: group.kind,
+      ...(group.destination ? { destination: group.destination } : {}),
       order: index,
       name: details.title || summary.name,
-      description: details.shortDescription || summary.description,
+      cardTitle: summary.name,
+      description: summary.description,
+      cardDescription: summary.description,
+      shortDescription: details.shortDescription || summary.description,
       link: summary.link || `/services/${slug}`,
       featured: index === 0,
       published: true,
     };
   });
+  result[group.collection] = group.collection === "destinationTours"
+    ? [...(result[group.collection] || []), ...extracted]
+    : extracted;
 }
 
 fs.writeFileSync(output, `${JSON.stringify(result, null, 2)}\n`);
