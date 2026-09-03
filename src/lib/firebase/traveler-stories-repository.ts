@@ -48,7 +48,3 @@ export async function saveTravelerStories(content: TravelerStoriesContent) {
     };
   }
 }
-
-export function importHardcodedTravelerStories() {
-  return saveTravelerStories(TRAVELER_STORIES_FALLBACK);
-}

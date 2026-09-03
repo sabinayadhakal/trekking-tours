@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUp, Pencil, Plus, Star, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import { TrekkingService } from "@/lib/trekking-services";
 import { deleteTrekkingService, loadTrekkingServices, saveTrekkingServices } from "@/lib/firebase/trekking-services-repository";
 
@@ -13,10 +14,10 @@ export default function TrekkingAdminPage() {
   const [isSaving, setIsSaving] = React.useState(false);
   const [message, setMessage] = React.useState("");
   React.useEffect(() => { void loadTrekkingServices({ allowFallback: false }).then(({ treks, source }) => { setTreks(treks); setMessage(source === "unavailable" ? "No trekking documents found in Firebase. Use Importar Firebase on the dashboard." : "Loaded from Firebase."); }); }, []);
-  const persist = async (next: TrekkingService[], text: string) => { setIsSaving(true); const result = await saveTrekkingServices(next); setIsSaving(false); if (result.source === "firestore") { setTreks(next); setMessage(`${text} Saved to Firebase.`); } else setMessage(result.error || "Could not save to Firebase."); };
+  const persist = async (next: TrekkingService[], text: string) => { setIsSaving(true); const result = await saveTrekkingServices(next); setIsSaving(false); if (result.source === "firestore") { setTreks(next); setMessage(`${text} Saved to Firebase.`); toast.success(text); } else { const error = result.error || "Could not save to Firebase."; setMessage(error); toast.error(error); } };
   const move = async (index: number, direction: -1 | 1) => { const target = index + direction; if (target < 0 || target >= treks.length) return; const next = [...treks]; [next[index], next[target]] = [next[target], next[index]]; await persist(next, "Display order updated."); };
   const feature = async (id: string) => { const next = treks.map((trek) => ({ ...trek, featured: trek.id === id })); await persist(next, "Featured trek updated."); };
-  const remove = async (trek: TrekkingService) => { if (!window.confirm(`Delete ${trek.name}?`)) return; setIsSaving(true); const result = await deleteTrekkingService(trek.id); const next = treks.filter((item) => item.id !== trek.id); if (result.source === "firestore") { setTreks(next); await saveTrekkingServices(next); setMessage("Trek deleted from Firebase."); } else setMessage(result.error || "Could not delete from Firebase."); setIsSaving(false); };
+  const remove = async (trek: TrekkingService) => { if (!window.confirm(`Delete ${trek.name}?`)) return; setIsSaving(true); const result = await deleteTrekkingService(trek.id); const next = treks.filter((item) => item.id !== trek.id); if (result.source === "firestore") { setTreks(next); await saveTrekkingServices(next); setMessage("Trek deleted from Firebase."); toast.success("Trek deleted successfully."); } else { const error = result.error || "Could not delete from Firebase."; setMessage(error); toast.error(error); } setIsSaving(false); };
   return (
     <div className="px-5 py-8 sm:px-8 sm:py-10 lg:px-12">
       <div className="flex flex-col gap-4 border-b border-[#d8cec0] pb-6 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-xs font-bold uppercase tracking-[.16em] text-[#cf6943]">Content management</p><h1 className="mt-2 font-serif text-4xl">Trekking</h1><p className="mt-2 text-sm text-[#66706d]">Services are the source of the cards shown on the home page.</p></div><Button asChild className="bg-[#cf6943] text-white hover:bg-[#b85a38]"><Link href="/admin/trekking/new"><Plus className="mr-2 h-4 w-4" /> New trek</Link></Button></div>

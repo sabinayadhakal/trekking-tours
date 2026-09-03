@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUp, Pencil, Plus, Star, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import { BlogPost } from "@/lib/blog-posts";
 import { deleteBlogPost, loadBlogPosts, saveBlogPosts } from "@/lib/firebase/blog-posts-repository";
 
@@ -27,7 +28,12 @@ export default function BlogAdminPage() {
     if (result.source === "firestore") {
       setPosts(next);
       setMessage(`${text} Saved to Firebase.`);
-    } else setMessage(result.error || "Could not save to Firebase.");
+      toast.success(text);
+    } else {
+      const error = result.error || "Could not save to Firebase.";
+      setMessage(error);
+      toast.error(error);
+    }
   };
   const move = async (index: number, direction: -1 | 1) => {
     const target = index + direction;
@@ -48,7 +54,12 @@ export default function BlogAdminPage() {
       setPosts(next);
       await saveBlogPosts(next);
       setMessage("Article deleted from Firebase.");
-    } else setMessage(result.error || "Could not delete from Firebase.");
+      toast.success("Article deleted successfully.");
+    } else {
+      const error = result.error || "Could not delete from Firebase.";
+      setMessage(error);
+      toast.error(error);
+    }
     setSaving(false);
   };
 

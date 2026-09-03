@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 import { Binoculars, BookOpen, Footprints, Landmark, LayoutDashboard, LogOut, Map, MessageSquareQuote, Mountain, Plane, Share2 } from "lucide-react";
 import AdminAuthGate from "@/components/admin/AdminAuthGate";
+import { Toaster } from "@/components/ui/sonner";
 import { getFirebaseAuth } from "@/lib/firebase/client";
 
 const navigation = [
@@ -25,7 +26,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const pathname = usePathname();
   const router = useRouter();
 
-  if (pathname === "/admin/login") return <>{children}</>;
+  if (pathname === "/admin/login") return <><Toaster position="top-right" richColors closeButton />{children}</>;
 
   const logout = async () => {
     const auth = getFirebaseAuth();
@@ -34,7 +35,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   return (
-    <AdminAuthGate><div className="min-h-screen bg-[#f2ede4] text-[#14383b] lg:flex">
+    <AdminAuthGate><Toaster position="top-right" richColors closeButton /><div className="min-h-screen bg-[#f2ede4] text-[#14383b] lg:flex">
       <aside className="border-b border-[#d8cec0] bg-[#14383b] text-[#f7f2e9] lg:fixed lg:inset-y-0 lg:w-64 lg:border-b-0 lg:border-r">
         <div className="flex h-full flex-col p-5 sm:p-6">
           <Link href="/admin" className="flex items-center gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#cf6943]"><Map className="h-5 w-5" /></span><span><strong className="block font-serif text-lg">Himkala</strong><span className="text-xs text-[#f7f2e9]/60">Administration</span></span></Link>

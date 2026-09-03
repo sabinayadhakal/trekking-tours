@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUp, Pencil, Plus, Star, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import { deleteManagedService, loadManagedServices, saveManagedServices } from "@/lib/firebase/managed-services-repository";
 import { MANAGED_SERVICE_COLLECTIONS, ManagedService, ManagedServiceCollection } from "@/lib/managed-services";
 
@@ -25,8 +26,8 @@ export default function ManagedServiceList({ collection }: { collection: Managed
     setSaving(true);
     const result = await saveManagedServices(collection, next);
     setSaving(false);
-    if (result.source === "firestore") { setItems(next); setMessage(`${success} Saved to Firebase.`); }
-    else setMessage(result.error || "Could not save to Firebase.");
+    if (result.source === "firestore") { setItems(next); setMessage(`${success} Saved to Firebase.`); toast.success(success); }
+    else { const error = result.error || "Could not save to Firebase."; setMessage(error); toast.error(error); }
   };
   const move = (index: number, direction: -1 | 1) => {
     const target = index + direction;
@@ -41,8 +42,8 @@ export default function ManagedServiceList({ collection }: { collection: Managed
     setSaving(true);
     const result = await deleteManagedService(collection, item.id);
     setSaving(false);
-    if (result.source === "firestore") { setItems((current) => current.filter((candidate) => candidate.id !== item.id)); setMessage("Item deleted from Firebase."); }
-    else setMessage(result.error || "Could not delete from Firebase.");
+    if (result.source === "firestore") { setItems((current) => current.filter((candidate) => candidate.id !== item.id)); setMessage("Item deleted from Firebase."); toast.success("Item deleted successfully."); }
+    else { const error = result.error || "Could not delete from Firebase."; setMessage(error); toast.error(error); }
   };
 
   return <div className="px-5 py-8 sm:px-8 sm:py-10 lg:px-12">

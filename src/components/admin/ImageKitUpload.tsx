@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { toast } from "sonner";
 import { upload } from "@imagekit/next";
 import { CheckCircle2, LoaderCircle, UploadCloud } from "lucide-react";
 import { getFirebaseAuth } from "@/lib/firebase/client";
@@ -128,8 +129,11 @@ export default function ImageKitUpload({ value = "", onChange, onUploaded, folde
       onUploaded?.(result.url);
       setProgress(100);
       setMessage(`Image optimized from ${formatBytes(optimized.originalSize)} to ${formatBytes(optimized.optimizedSize)} (${optimized.width}×${optimized.height}px) and uploaded to ImageKit.`);
+      toast.success("Image uploaded successfully.");
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Could not upload the image.");
+      const errorMessage = error instanceof Error ? error.message : "Could not upload the image.";
+      setMessage(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setUploading(false);
       if (inputRef.current) inputRef.current.value = "";

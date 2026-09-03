@@ -1,16 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { ArrowDown, ArrowUp, Download, ExternalLink, Globe, Plus, Save, Star, Trash2 } from "lucide-react";
+import { ArrowDown, ArrowUp, ExternalLink, Globe, Plus, Save, Star, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  importHardcodedTravelerStories,
-  loadTravelerStories,
-  saveTravelerStories,
-} from "@/lib/firebase/traveler-stories-repository";
+import { toast } from "sonner";
+import { loadTravelerStories, saveTravelerStories } from "@/lib/firebase/traveler-stories-repository";
 import {
   TRAVELER_STORIES_EMPTY,
-  TRAVELER_STORIES_FALLBACK,
   TravelerStoriesContent,
   TravelerStory,
 } from "@/lib/traveler-stories";
@@ -42,7 +38,7 @@ export default function TravelerStoriesAdminPage() {
   React.useEffect(() => {
     void loadTravelerStories({ allowFallback: false }).then(({ content, source }) => {
       setContent(content);
-      if (source === "unavailable") setMessage("No Traveler Stories document found in Firebase. Import the current website stories or add new ones.");
+      if (source === "unavailable") setMessage("No Traveler Stories document found in Firebase. Add a story and save to create it.");
       setReady(true);
     });
   }, []);
@@ -55,33 +51,32 @@ export default function TravelerStoriesAdminPage() {
   const save = async () => {
     const invalid = content.stories.some((story) => !story.name.trim() || !story.country.trim() || !story.text.trim() || !story.trek.trim() || !story.trekLink.trim());
     if (invalid) {
-      setMessage("Every story needs a traveler name, country, testimonial, experience and destination link.");
+      const error = "Every story needs a traveler name, country, testimonial, experience and destination link.";
+      setMessage(error);
+      toast.error(error);
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
     setSaving(true);
     const result = await saveTravelerStories(content);
     setSaving(false);
-    setMessage(result.source === "firestore" ? "Traveler Stories saved to Firebase and published on the home page." : result.error || "Could not save to Firebase.");
-  };
-
-  const importCurrent = async () => {
-    setSaving(true);
-    const result = await importHardcodedTravelerStories();
-    setSaving(false);
     if (result.source === "firestore") {
-      setContent(structuredClone(TRAVELER_STORIES_FALLBACK));
-      setMessage("Current hardcoded Traveler Stories imported to Firebase.");
-    } else setMessage(result.error || "Could not import to Firebase.");
+      setMessage("Traveler Stories saved to Firebase and published on the home page.");
+      toast.success("Traveler Stories saved successfully.");
+    } else {
+      const error = result.error || "Could not save to Firebase.";
+      setMessage(error);
+      toast.error(error);
+    }
   };
 
   const addStory = () => setContent((current) => ({
     ...current,
-    stories: [...current.stories, { name: "", country: "", text: "", trek: "", trekLink: "", rating: 5 }],
+    stories: [{ name: "", country: "", text: "", trek: "", trekLink: "", rating: 5 }, ...current.stories],
   }));
 
   return <div className="px-5 py-8 sm:px-8 sm:py-10 lg:px-12">
-    <div className="flex flex-col gap-4 border-b border-[#d8cec0] pb-6 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-xs font-bold uppercase tracking-[.16em] text-[#cf6943]">Home page content</p><h1 className="mt-2 font-serif text-4xl">Traveler Stories</h1><p className="mt-2 max-w-2xl text-sm leading-6 text-[#66706d]">Manage the testimonials shown in the animated review carousel on the home page.</p></div><div className="flex flex-wrap gap-2"><Button type="button" variant="outline" disabled={!ready || saving} onClick={() => void importCurrent()} className="border-[#cf6943] text-[#cf6943]"><Download className="mr-2 h-4 w-4" />Import current stories</Button><Button type="button" disabled={!ready || saving} onClick={() => void save()} className="bg-[#cf6943] text-white"><Save className="mr-2 h-4 w-4" />{saving ? "Saving…" : "Save changes"}</Button></div></div>
+    <div className="flex flex-col gap-4 border-b border-[#d8cec0] pb-6 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-xs font-bold uppercase tracking-[.16em] text-[#cf6943]">Home page content</p><h1 className="mt-2 font-serif text-4xl">Traveler Stories</h1><p className="mt-2 max-w-2xl text-sm leading-6 text-[#66706d]">Manage the testimonials shown in the animated review carousel on the home page.</p></div><Button type="button" disabled={!ready || saving} onClick={() => void save()} className="bg-[#cf6943] text-white"><Save className="mr-2 h-4 w-4" />{saving ? "Saving…" : "Save changes"}</Button></div>
 
     {message && <p className="mt-5 rounded-lg border border-[#d8cec0] bg-[#f7f2e9] p-3 text-sm text-[#556363]">{message}</p>}
 

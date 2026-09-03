@@ -48,7 +48,3 @@ export async function saveSocialMediaContent(content: SocialMediaContent) {
     };
   }
 }
-
-export function importHardcodedSocialMediaContent() {
-  return saveSocialMediaContent(SOCIAL_MEDIA_FALLBACK);
-}
