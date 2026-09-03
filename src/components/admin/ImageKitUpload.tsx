@@ -23,6 +23,55 @@ type UploadCredentials = {
   publicKey: string;
 };
 
+const MAX_IMAGE_DIMENSION = 1000;
+const WEBP_QUALITY = 0.82;
+
+function formatBytes(bytes: number) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function canvasToWebp(canvas: HTMLCanvasElement) {
+  return new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error("This browser could not optimize the image.")), "image/webp", WEBP_QUALITY);
+  });
+}
+
+async function optimizeImage(file: File) {
+  let bitmap: ImageBitmap;
+  try {
+    bitmap = await createImageBitmap(file, { imageOrientation: "from-image" });
+  } catch {
+    throw new Error("This image format could not be processed. Please use JPEG, PNG or WebP.");
+  }
+
+  try {
+    const scale = Math.min(1, MAX_IMAGE_DIMENSION / Math.max(bitmap.width, bitmap.height));
+    const width = Math.max(1, Math.round(bitmap.width * scale));
+    const height = Math.max(1, Math.round(bitmap.height * scale));
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext("2d", { alpha: true });
+    if (!context) throw new Error("This browser could not prepare the image for upload.");
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = "high";
+    context.drawImage(bitmap, 0, 0, width, height);
+    const blob = await canvasToWebp(canvas);
+    const baseName = file.name.replace(/\.[^.]+$/, "").replace(/[^a-zA-Z0-9.-]+/g, "-") || "image";
+    return {
+      file: new File([blob], `${baseName}.webp`, { type: "image/webp", lastModified: Date.now() }),
+      width,
+      height,
+      originalSize: file.size,
+      optimizedSize: blob.size,
+    };
+  } finally {
+    bitmap.close();
+  }
+}
+
 export default function ImageKitUpload({ value = "", onChange, onUploaded, folder, label = "Image path or URL", compact = false }: ImageKitUploadProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = React.useState(false);
@@ -51,8 +100,9 @@ export default function ImageKitUpload({ value = "", onChange, onUploaded, folde
 
     setUploading(true);
     setProgress(0);
-    setMessage("");
+    setMessage("Optimizing image…");
     try {
+      const optimized = await optimizeImage(file);
       const idToken = await user.getIdToken();
       const authenticationResponse = await fetch("/api/imagekit-auth", {
         headers: { Authorization: `Bearer ${idToken}` },
@@ -62,8 +112,8 @@ export default function ImageKitUpload({ value = "", onChange, onUploaded, folde
       if (!authenticationResponse.ok) throw new Error(credentials.error || "Could not authorize the upload.");
 
       const result = await upload({
-        file,
-        fileName: file.name.replace(/[^a-zA-Z0-9.-]+/g, "-"),
+        file: optimized.file,
+        fileName: optimized.file.name,
         folder,
         useUniqueFileName: true,
         tags: ["himkala-admin"],
@@ -77,7 +127,7 @@ export default function ImageKitUpload({ value = "", onChange, onUploaded, folde
       onChange?.(result.url);
       onUploaded?.(result.url);
       setProgress(100);
-      setMessage("Image uploaded to ImageKit.");
+      setMessage(`Image optimized from ${formatBytes(optimized.originalSize)} to ${formatBytes(optimized.optimizedSize)} (${optimized.width}×${optimized.height}px) and uploaded to ImageKit.`);
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Could not upload the image.");
     } finally {
@@ -94,7 +144,7 @@ export default function ImageKitUpload({ value = "", onChange, onUploaded, folde
         {uploading ? <LoaderCircle className="h-4 w-4 animate-spin" /> : compact ? <UploadCloud className="h-4 w-4" /> : <><UploadCloud className="mr-2 h-4 w-4" />Upload to ImageKit</>}
       </button>
       {uploading && !compact && <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-[#e4d8c8]"><div className="h-full bg-[#cf6943] transition-[width]" style={{ width: `${progress}%` }} /></div>}
-      {message && <p className={`${compact ? "mt-1 max-w-52 text-[10px]" : "mt-2 text-xs"} ${message.startsWith("Image uploaded") ? "text-green-700" : "text-red-600"}`}><CheckCircle2 className="mr-1 inline h-3 w-3" />{message}</p>}
+      {message && <p className={`${compact ? "mt-1 max-w-52 text-[10px]" : "mt-2 text-xs"} ${message.includes("uploaded to ImageKit") ? "text-green-700" : uploading ? "text-[#66706d]" : "text-red-600"}`}><CheckCircle2 className="mr-1 inline h-3 w-3" />{message}</p>}
     </div>
   );
 }
