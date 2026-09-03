@@ -2,12 +2,10 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ArrowRight, BookOpen, CloudSun, Database, Footprints, Landmark, Mountain, ThermometerSun } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, BookOpen, CloudSun, Footprints, Landmark, Mountain, ThermometerSun } from "lucide-react";
 import { loadTrekkingServices } from "@/lib/firebase/trekking-services-repository";
 import { loadBlogPosts } from "@/lib/firebase/blog-posts-repository";
-import { importAllNewManagedServices, loadManagedServices } from "@/lib/firebase/managed-services-repository";
-import { isFirebaseConfigured } from "@/lib/firebase/client";
+import { loadManagedServices } from "@/lib/firebase/managed-services-repository";
 
 export default function AdminDashboard() {
   const [now, setNow] = React.useState<Date | null>(null);
@@ -15,8 +13,6 @@ export default function AdminDashboard() {
   const [trekCount, setTrekCount] = React.useState(0);
   const [blogCount, setBlogCount] = React.useState(0);
   const [serviceCounts, setServiceCounts] = React.useState({ freeTours: 0, multiDayTours: 0, dayHikings: 0, daySightseeings: 0, mountainFlights: 0, jungleSafaris: 0 });
-  const [isImporting, setIsImporting] = React.useState(false);
-  const [importMessage, setImportMessage] = React.useState("");
 
   React.useEffect(() => {
     const updateTime = () => setNow(new Date());
@@ -28,24 +24,6 @@ export default function AdminDashboard() {
     void fetch("https://api.open-meteo.com/v1/forecast?latitude=27.7172&longitude=85.3240&current=temperature_2m").then((response) => response.json()).then((data) => setTemperature(data.current?.temperature_2m ?? null)).catch(() => setTemperature(null));
     return () => window.clearInterval(clock);
   }, []);
-
-  const importToFirebase = async () => {
-    if (!isFirebaseConfigured) {
-      setImportMessage("Firebase is not configured. Add the NEXT_PUBLIC_FIREBASE_* environment variables first.");
-      return;
-    }
-    setIsImporting(true);
-    setImportMessage("Importing all six service categories…");
-    const result = await importAllNewManagedServices();
-    setIsImporting(false);
-    if (!result.success) {
-      setImportMessage(result.results.find((item) => item.source !== "firestore")?.error || "The Firebase import could not be completed.");
-      return;
-    }
-    const [freeTours, multiDayTours, dayHikings, daySightseeings, mountainFlights, jungleSafaris] = await Promise.all(["freeTours", "multiDayTours", "dayHikings", "daySightseeings", "mountainFlights", "jungleSafaris"].map((name) => loadManagedServices(name as Parameters<typeof loadManagedServices>[0], { allowFallback: false })));
-    setServiceCounts({ freeTours: freeTours.services.length, multiDayTours: multiDayTours.services.length, dayHikings: dayHikings.services.length, daySightseeings: daySightseeings.services.length, mountainFlights: mountainFlights.services.length, jungleSafaris: jungleSafaris.services.length });
-    setImportMessage(`Import completed: ${freeTours.services.length} free tours, ${multiDayTours.services.length} multi-day tours, ${dayHikings.services.length} day hikings, ${daySightseeings.services.length} sightseeings, ${mountainFlights.services.length} mountain flights and ${jungleSafaris.services.length} jungle safaris. Trekking and Blog were not changed.`);
-  };
 
   const greeting = !now ? "Welcome back" : now.getHours() < 12 ? "Good morning" : now.getHours() < 18 ? "Good afternoon" : "Good evening";
   return (
@@ -62,7 +40,6 @@ export default function AdminDashboard() {
       <section className="mt-4 grid gap-4 sm:grid-cols-3"><Link href="/admin/free-tours" className="rounded-xl border border-[#d8cec0] bg-[#f7f2e9] p-5 transition-colors hover:border-[#cf6943]"><Footprints className="h-5 w-5 text-[#cf6943]"/><p className="mt-4 font-serif text-3xl">{serviceCounts.freeTours}</p><p className="text-sm font-semibold text-[#556363]">Free Tours</p></Link><Link href="/admin/multi-day" className="rounded-xl border border-[#d8cec0] bg-[#f7f2e9] p-5 transition-colors hover:border-[#cf6943]"><Landmark className="h-5 w-5 text-[#cf6943]"/><p className="mt-4 font-serif text-3xl">{serviceCounts.multiDayTours}</p><p className="text-sm font-semibold text-[#556363]">Multi Day</p></Link><Link href="/admin/day-hikings" className="rounded-xl border border-[#d8cec0] bg-[#f7f2e9] p-5 transition-colors hover:border-[#cf6943]"><Mountain className="h-5 w-5 text-[#cf6943]"/><p className="mt-4 font-serif text-3xl">{serviceCounts.dayHikings}</p><p className="text-sm font-semibold text-[#556363]">Day Hikings</p></Link></section>
       <section className="mt-4 grid gap-4 sm:grid-cols-3"><Link href="/admin/day-sightseeings" className="rounded-xl border border-[#d8cec0] bg-[#f7f2e9] p-5 transition-colors hover:border-[#cf6943]"><Landmark className="h-5 w-5 text-[#cf6943]"/><p className="mt-4 font-serif text-3xl">{serviceCounts.daySightseeings}</p><p className="text-sm font-semibold text-[#556363]">Day Sightseeing</p></Link><Link href="/admin/mountain-flights" className="rounded-xl border border-[#d8cec0] bg-[#f7f2e9] p-5 transition-colors hover:border-[#cf6943]"><Mountain className="h-5 w-5 text-[#cf6943]"/><p className="mt-4 font-serif text-3xl">{serviceCounts.mountainFlights}</p><p className="text-sm font-semibold text-[#556363]">Mountain Flights</p></Link><Link href="/admin/jungle-safari" className="rounded-xl border border-[#d8cec0] bg-[#f7f2e9] p-5 transition-colors hover:border-[#cf6943]"><Footprints className="h-5 w-5 text-[#cf6943]"/><p className="mt-4 font-serif text-3xl">{serviceCounts.jungleSafaris}</p><p className="text-sm font-semibold text-[#556363]">Jungle Safari</p></Link></section>
       <section className="mt-8 rounded-xl border border-[#d8cec0] bg-[#f7f2e9] p-6 sm:p-8"><h2 className="font-serif text-2xl">Quick action</h2><p className="mt-2 max-w-xl text-sm leading-6 text-[#66706d]">Create a new trekking service or update an existing one. The public cards on the home page are derived from the services you mark for display.</p><Link href="/admin/trekking/new" className="mt-5 inline-flex items-center gap-2 rounded-md bg-[#cf6943] px-4 py-3 text-sm font-bold text-white hover:bg-[#b85a38]">Create new trek <ArrowRight className="h-4 w-4" /></Link></section>
-      <section className="mt-6 rounded-xl border border-[#d8cec0] bg-[#14383b] p-6 text-[#f7f2e9] sm:p-8"><div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"><div><div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.16em] text-[#ef966e]"><Database className="h-4 w-4"/>Firebase content migration</div><h2 className="mt-2 font-serif text-2xl">Importar Firebase</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-[#f7f2e9]/70">Imports all six pending hardcoded collections: <code>freeTours</code>, <code>multiDayTours</code>, <code>dayHikings</code>, <code>daySightseeings</code>, <code>mountainFlights</code> and <code>jungleSafaris</code>. Every service becomes its own document. Trekking and Blog remain excluded.</p></div><Button type="button" onClick={()=>void importToFirebase()} disabled={isImporting} className="shrink-0 bg-[#cf6943] px-5 text-white hover:bg-[#b85a38]"><Database className="mr-2 h-4 w-4"/>{isImporting?"Importando…":"Importar Firebase"}</Button></div>{importMessage&&<p className="mt-5 rounded-lg border border-white/10 bg-white/5 p-3 text-sm text-[#f7f2e9]" role="status">{importMessage}</p>}</section>
     </div>
   );
 }
