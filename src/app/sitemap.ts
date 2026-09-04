@@ -1,146 +1,123 @@
-// src/app/sitemap.ts
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next";
+import {
+  loadSitemapContent,
+  SitemapContentKind,
+} from "@/lib/firebase/sitemap-content";
 
-// Your domain
-const baseUrl = 'https://www.himkalaadventure.com'
+const baseUrl = "https://www.himkalaadventure.com";
 
-// Static pages with SEO-optimized priority
-const staticPages = [
-  { path: '', priority: 1.0, changefreq: 'daily' },  // Homepage
-  { path: '/about-us', priority: 0.9, changefreq: 'monthly' },
-  { path: '/contact', priority: 0.8, changefreq: 'monthly' },
-  { path: '/blog', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/trekking', priority: 0.95, changefreq: 'weekly' },
-  { path: '/services/free-tour-kathmandu', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/free-walking-tour-kathmandu', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/local-city-tour-kathmandu-free', priority: 0.9, changefreq: 'weekly' },
-  { path: '/destinations/nepal', priority: 0.95, changefreq: 'weekly' },
-  { path: '/destinations/bhutan', priority: 0.9, changefreq: 'weekly' },
-  { path: '/destinations/tibet', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/multi-day-cultural-tours', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/jungle-safari', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/day-hikings', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/day-sightseeings', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/mountain-flight-heli-trip', priority: 0.85, changefreq: 'weekly' },
-]
+export const revalidate = 3600;
 
-// Trekking pages (UPDATED - Removed: Upper Mustang, Gokyo, Langtang Ganjala, Langtang Gosainkunda, Nar Phu, Rupina La)
-const trekkingPages = [
-  { path: '/services/trekking/everest-base-camp-trek', priority: 1.0, changefreq: 'weekly' },
-  { path: '/services/trekking/annapurna-circuit-trek', priority: 1.0, changefreq: 'weekly' },
-  { path: '/services/trekking/manaslu-circuit-trek', priority: 0.95, changefreq: 'weekly' },
-  { path: '/services/trekking/annapurna-base-camp-trek', priority: 0.95, changefreq: 'weekly' },
-  { path: '/services/trekking/langtang-valley-trek', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/trekking/everest-three-passes-trek', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/trekking/ghorepani-poon-hill-trek', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/trekking/mardi-himal-trek', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/trekking/annapurna-circuit-trek-with-tilicho-lake', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/trekking/khopra-ridge-trek-with-khayar-lake', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/trekking/manaslu-circuit-trek-with-tsum-valley', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/trekking/tamang-heritage-trail-and-langtang-valley-trek', priority: 0.8, changefreq: 'weekly' },
-]
+type ChangeFrequency = NonNullable<
+  MetadataRoute.Sitemap[number]["changeFrequency"]
+>;
 
-// Peak climbing pages - REMOVED (no longer in use)
-const peakClimbingPages: { path: string; priority: number; changefreq: string }[] = []
+type SitemapEntry = {
+  path: string;
+  priority: number;
+  changeFrequency: ChangeFrequency;
+  lastModified?: string;
+};
 
-// Day sightseeing pages
-const sightseeingPages = [
-  { path: '/services/day-sightseeings/kathmandu-sightseeing', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/day-sightseeings/bhaktapur-patan-sightseeing', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/day-sightseeings/bouddhanath-kapan-sightseeing', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/day-sightseeings/bungamati-khokana-patan-sightseeing', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/day-sightseeings/changunarayan-bhaktapur-sanga-sightseeing', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/day-sightseeings/dakshinkali-pharping-kirtipur-sightseeing', priority: 0.8, changefreq: 'weekly' },
-]
+const staticPages: SitemapEntry[] = [
+  { path: "", priority: 1, changeFrequency: "daily" },
+  { path: "/about-us", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/services/trekking", priority: 0.95, changeFrequency: "weekly" },
+  {
+    path: "/services/free-tour-kathmandu",
+    priority: 0.9,
+    changeFrequency: "weekly",
+  },
+  {
+    path: "/services/free-walking-tour-kathmandu",
+    priority: 0.9,
+    changeFrequency: "weekly",
+  },
+  {
+    path: "/services/local-city-tour-kathmandu-free",
+    priority: 0.9,
+    changeFrequency: "weekly",
+  },
+  { path: "/destinations/nepal", priority: 0.95, changeFrequency: "weekly" },
+  { path: "/destinations/bhutan", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/destinations/tibet", priority: 0.9, changeFrequency: "weekly" },
+  {
+    path: "/services/multi-day-cultural-tours",
+    priority: 0.85,
+    changeFrequency: "weekly",
+  },
+  {
+    path: "/services/jungle-safari",
+    priority: 0.85,
+    changeFrequency: "weekly",
+  },
+  {
+    path: "/services/day-hikings",
+    priority: 0.8,
+    changeFrequency: "weekly",
+  },
+  {
+    path: "/services/day-sightseeings",
+    priority: 0.8,
+    changeFrequency: "weekly",
+  },
+  {
+    path: "/services/mountain-flight-heli-trip",
+    priority: 0.85,
+    changeFrequency: "weekly",
+  },
+];
 
-// Day hikes pages
-const dayHikesPages = [
-  { path: '/services/day-hikings/champa-devi-hiking', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/day-hikings/nagarkot-changunarayan-hiking', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/day-hikings/namobuddha-hiking', priority: 0.8, changefreq: 'weekly' },
-]
+const contentSettings: Record<
+  SitemapContentKind,
+  Pick<SitemapEntry, "priority" | "changeFrequency">
+> = {
+  trekking: { priority: 0.9, changeFrequency: "weekly" },
+  blog: { priority: 0.8, changeFrequency: "monthly" },
+  freeTours: { priority: 0.9, changeFrequency: "weekly" },
+  multiDayTours: { priority: 0.85, changeFrequency: "weekly" },
+  dayHikings: { priority: 0.8, changeFrequency: "weekly" },
+  daySightseeings: { priority: 0.8, changeFrequency: "weekly" },
+  mountainFlights: { priority: 0.85, changeFrequency: "weekly" },
+  jungleSafaris: { priority: 0.85, changeFrequency: "weekly" },
+  destinationTours: { priority: 0.85, changeFrequency: "weekly" },
+};
 
-// Mountain flight / Heli trips
-const flightPages = [
-  { path: '/services/mountain-flight-heli-trip/everest-region-mountain-flight-trip', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/mountain-flight-heli-trip/everest-region-helicopter-trip', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/mountain-flight-heli-trip/annapurna-region-mountain-flight-trip', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/mountain-flight-heli-trip/langtang-region-helicopter-trip', priority: 0.8, changefreq: 'weekly' },
-]
+function newerDate(first?: string, second?: string) {
+  if (!first) return second;
+  if (!second) return first;
+  return Date.parse(second) > Date.parse(first) ? second : first;
+}
 
-// Multi-day cultural tours
-const culturalToursPages = [
-  { path: '/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/multi-day-cultural-tours/nepal-heritage-sites-tour', priority: 0.85, changefreq: 'weekly' },
-  { path: '/services/multi-day-cultural-tours/kathmandu-bhaktapur-lalitpur-tour', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/multi-day-cultural-tours/nepal-temples-and-stupas-tour', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services/multi-day-cultural-tours/historic-nature-scenic-photography-tour', priority: 0.8, changefreq: 'weekly' },
-]
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const content = await loadSitemapContent();
+  const entries = new Map<string, SitemapEntry>();
 
-// Jungle safari
-const safariPages = [
-  { path: '/services/jungle-safari/chitwan-np-jungle-safari', priority: 0.85, changefreq: 'weekly' },
-]
-
-// Bhutan pages (UPDATED - Removed: Snowman, Jomolhari, Druk Path)
-const bhutanPages = [
-  { path: '/destinations/bhutan/tigers-nest-day-hiking', priority: 0.85, changefreq: 'weekly' },
-  { path: '/destinations/bhutan/3-nights-4-days-bhutan-tour', priority: 0.85, changefreq: 'weekly' },
-  { path: '/destinations/bhutan/bhutan-cultural-tour', priority: 0.85, changefreq: 'weekly' },
-  { path: '/destinations/bhutan/delightful-bhutan-tour', priority: 0.8, changefreq: 'weekly' },
-  { path: '/destinations/bhutan/bhutan-festival-tour', priority: 0.8, changefreq: 'weekly' },
-  { path: '/destinations/bhutan/short-and-sweet-bhutan-tour', priority: 0.8, changefreq: 'weekly' },
-]
-
-// Tibet pages (UPDATED - Removed: Ancient Kingdoms, Monastery Discovery, Tibetan Plateau Adventure)
-const tibetPages = [
-  { path: '/destinations/tibet/everest-base-camp-tibet', priority: 0.9, changefreq: 'weekly' },
-  { path: '/destinations/tibet/kailash-mansarovar-yatra', priority: 0.9, changefreq: 'weekly' },
-  { path: '/destinations/tibet/lhasa-city-tour', priority: 0.85, changefreq: 'weekly' },
-  { path: '/destinations/tibet/tibet-overland-tour', priority: 0.85, changefreq: 'weekly' },
-  { path: '/destinations/tibet/tibet-unique-cultural-tour', priority: 0.85, changefreq: 'weekly' },
-  { path: '/destinations/tibet/tibet-tour-namtso-lake', priority: 0.8, changefreq: 'weekly' },
-]
-
-// Blog pages (SEO-optimized with relevant keywords)
-const blogPages = [
-  { path: '/blog/nepal-trek-cost-2026', priority: 0.8, changefreq: 'monthly' },
-  { path: '/blog/solo-trekking-nepal-2026', priority: 0.85, changefreq: 'monthly' },
-  { path: '/blog/best-time-to-visit-nepal', priority: 0.9, changefreq: 'monthly' },
-  { path: '/blog/everest-vs-annapurna-base-camp', priority: 0.9, changefreq: 'monthly' },
-  { path: '/blog/tilicho-lake-sacred-trek', priority: 0.85, changefreq: 'monthly' },
-  { path: '/blog/best-beginner-treks-nepal', priority: 0.85, changefreq: 'monthly' },
-  { path: '/blog/pigeons-symbol-peace-nepal', priority: 0.8, changefreq: 'monthly' },
-]
-
-// Free Tours pages (NEW)
-const freeTourPages = [
-  { path: '/services/free-tour-kathmandu', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/free-walking-tour-kathmandu', priority: 0.9, changefreq: 'weekly' },
-  { path: '/services/local-city-tour-kathmandu-free', priority: 0.9, changefreq: 'weekly' },
-]
-
-export default function sitemap(): MetadataRoute.Sitemap {
-  // Combine all pages
-  const allPages = [
+  for (const entry of [
     ...staticPages,
-    ...trekkingPages,
-    ...peakClimbingPages,
-    ...sightseeingPages,
-    ...dayHikesPages,
-    ...flightPages,
-    ...culturalToursPages,
-    ...safariPages,
-    ...bhutanPages,
-    ...tibetPages,
-    ...blogPages,
-    ...freeTourPages,
-  ]
+    ...content.map((item) => ({
+      path: item.path,
+      ...contentSettings[item.kind],
+      lastModified: item.lastModified,
+    })),
+  ]) {
+    const normalizedPath = entry.path === "/" ? "" : entry.path;
+    const existing = entries.get(normalizedPath);
+    entries.set(normalizedPath, {
+      ...entry,
+      path: normalizedPath,
+      priority: Math.max(existing?.priority || 0, entry.priority),
+      changeFrequency: existing?.changeFrequency || entry.changeFrequency,
+      lastModified: newerDate(existing?.lastModified, entry.lastModified),
+    });
+  }
 
-  return allPages.map((page) => ({
-    url: `${baseUrl}${page.path}`,
-    lastModified: new Date(),
-    changeFrequency: page.changefreq as 'daily' | 'weekly' | 'monthly' | 'yearly',
-    priority: page.priority,
-  }))
+  return Array.from(entries.values()).map((entry) => ({
+    url: `${baseUrl}${entry.path}`,
+    ...(entry.lastModified ? { lastModified: entry.lastModified } : {}),
+    changeFrequency: entry.changeFrequency,
+    priority: entry.priority,
+  }));
 }

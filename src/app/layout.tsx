@@ -19,46 +19,51 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Himkala Adventure | Best Himalayan Trekking Tours in Nepal, Bhutan & Tibet",
-  description: "Expert-guided trekking tours in Nepal, Bhutan & Tibet. Everest Base Camp, Annapurna Circuit, Manaslu Trek & cultural tours. 2500+ happy travelers since 2015. Book your Himalayan adventure today!",
+  title:
+    "Himkala Adventure | Best Himalayan Trekking Tours in Nepal, Bhutan & Tibet",
+  description:
+    "Expert-guided trekking tours in Nepal, Bhutan & Tibet. Everest Base Camp, Annapurna Circuit, Manaslu Trek & cultural tours. 2500+ happy travelers since 2015. Book your Himalayan adventure today!",
   icons: {
     icon: [
       {
-        url: '/himkala-logo.png',
-        href: '/himkala-logo.png',
-      }
+        url: "/himkala-logo.png",
+        href: "/himkala-logo.png",
+      },
     ],
     apple: [
       {
-        url: '/himkala-logo.png',
-        href: '/himkala-logo.png',
-      }
+        url: "/himkala-logo.png",
+        href: "/himkala-logo.png",
+      },
     ],
   },
   alternates: {
-    canonical: 'https://himkalaadventure.com',
+    canonical: "https://himkalaadventure.com",
   },
   openGraph: {
-    title: 'Himkala Adventure | Himalayan Trekking Tours in Nepal, Bhutan & Tibet',
-    description: 'Expert-guided Everest Base Camp, Annapurna Circuit, Manaslu treks & cultural tours. Local guides, authentic experiences, and unforgettable Himalayan adventures.',
-    url: 'https://himkalaadventure.com',
-    siteName: 'Himkala Adventure',
+    title:
+      "Himkala Adventure | Himalayan Trekking Tours in Nepal, Bhutan & Tibet",
+    description:
+      "Expert-guided Everest Base Camp, Annapurna Circuit, Manaslu treks & cultural tours. Local guides, authentic experiences, and unforgettable Himalayan adventures.",
+    url: "https://himkalaadventure.com",
+    siteName: "Himkala Adventure",
     images: [
       {
-        url: 'https://himkalaadventure.com/images/og-image.jpg',
+        url: "https://himkalaadventure.com/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: 'Himkala Adventure - Himalayan Trekking Tours',
+        alt: "Himkala Adventure - Himalayan Trekking Tours",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Himkala Adventure | Himalayan Trekking Tours',
-    description: 'Expert-guided Everest Base Camp, Annapurna, Manaslu treks & cultural tours in Nepal, Bhutan & Tibet.',
-    images: ['https://himkalaadventure.com/images/twitter-image.jpg'],
+    card: "summary_large_image",
+    title: "Himkala Adventure | Himalayan Trekking Tours",
+    description:
+      "Expert-guided Everest Base Camp, Annapurna, Manaslu treks & cultural tours in Nepal, Bhutan & Tibet.",
+    images: ["https://himkalaadventure.com/images/twitter-image.jpg"],
   },
   robots: {
     index: true,
@@ -66,13 +71,13 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   verification: {
-    google: 'your-google-verification-code', // Add your Google Search Console code here
+    google: "your-google-verification-code", // Add your Google Search Console code here
   },
 };
 
@@ -82,94 +87,94 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const businessSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'TravelAgency',
-    name: 'Himkala Adventure Pvt. Ltd.',
-    alternateName: 'Himkala Adventure',
-    description: 'Himalayan trekking and tour agency specializing in Nepal, Bhutan, and Tibet expeditions. Expert-guided Everest Base Camp, Annapurna Circuit, Manaslu treks, and cultural tours.',
-    url: 'https://himkalaadventure.com',
-    logo: 'https://himkalaadventure.com/himkala-logo.png',
-    image: 'https://himkalaadventure.com/images/hero.webp',
-    telephone: '+9779841376470',
-    email: 'info@himkalaadventure.com',
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    name: "Himkala Adventure Pvt. Ltd.",
+    alternateName: "Himkala Adventure",
+    description:
+      "Himalayan trekking and tour agency specializing in Nepal, Bhutan, and Tibet expeditions. Expert-guided Everest Base Camp, Annapurna Circuit, Manaslu treks, and cultural tours.",
+    url: "https://himkalaadventure.com",
+    logo: "https://himkalaadventure.com/himkala-logo.png",
+    image: "https://himkalaadventure.com/images/hero.webp",
+    telephone: "+9779841376470",
+    email: "info@himkalaadventure.com",
     address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Thamel, Lekhnath Marga',
-      addressLocality: 'Kathmandu',
-      addressCountry: 'NP',
-      postalCode: '44600',
+      "@type": "PostalAddress",
+      streetAddress: "Thamel, Lekhnath Marga",
+      addressLocality: "Kathmandu",
+      addressCountry: "NP",
+      postalCode: "44600",
     },
     geo: {
-      '@type': 'GeoCoordinates',
+      "@type": "GeoCoordinates",
       latitude: 27.7172,
-      longitude: 85.3240,
+      longitude: 85.324,
     },
     sameAs: [
-      'https://www.facebook.com/share/1HhkiiMrsz/',
-      'https://x.com/himkalanepal',
-      'https://www.instagram.com/himkalaadventure',
-      'https://youtube.com/@himkalaadventure5936',
-      'https://www.tiktok.com/@himkalaadventure',
+      "https://www.facebook.com/share/1HhkiiMrsz/",
+      "https://x.com/himkalanepal",
+      "https://www.instagram.com/himkalaadventure",
+      "https://youtube.com/@himkalaadventure5936",
+      "https://www.tiktok.com/@himkalaadventure",
     ],
-    priceRange: '$$',
-    currenciesAccepted: 'USD, EUR, NPR',
-    paymentAccepted: 'Cash, Credit Card, Bank Transfer',
-    openingHours: 'Mo-Su 09:00-18:00',
+    priceRange: "$$",
+    currenciesAccepted: "USD, EUR, NPR",
+    paymentAccepted: "Cash, Credit Card, Bank Transfer",
+    openingHours: "Mo-Su 09:00-18:00",
     founder: {
-      '@type': 'Person',
-      name: 'Shiva Sapkota',
+      "@type": "Person",
+      name: "Shiva Sapkota",
     },
     makesOffer: [
       {
-        '@type': 'Offer',
-        name: 'Everest Base Camp Trek',
-        description: '14-day trek to Everest Base Camp with experienced guides',
-        price: '1520',
-        priceCurrency: 'USD',
-        availability: 'https://schema.org/InStock',
+        "@type": "Offer",
+        name: "Everest Base Camp Trek",
+        description: "14-day trek to Everest Base Camp with experienced guides",
+        price: "1520",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
       },
       {
-        '@type': 'Offer',
-        name: 'Annapurna Circuit Trek',
-        description: '18-day classic Annapurna Circuit trek',
-        price: '800',
-        priceCurrency: 'USD',
-        availability: 'https://schema.org/InStock',
+        "@type": "Offer",
+        name: "Annapurna Circuit Trek",
+        description: "18-day classic Annapurna Circuit trek",
+        price: "800",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
       },
       {
-        '@type': 'Offer',
-        name: 'Manaslu Circuit Trek',
-        description: '16-day Manaslu Circuit trek around the 8th highest peak',
-        price: '1200',
-        priceCurrency: 'USD',
-        availability: 'https://schema.org/InStock',
+        "@type": "Offer",
+        name: "Manaslu Circuit Trek",
+        description: "16-day Manaslu Circuit trek around the 8th highest peak",
+        price: "1200",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
       },
     ],
   };
 
   const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Himkala Adventure',
-    url: 'https://himkalaadventure.com',
-    description: 'Expert-guided trekking tours in Nepal, Bhutan & Tibet. Himalayan adventures including Everest Base Camp, Annapurna Circuit, and cultural tours.',
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Himkala Adventure",
+    url: "https://himkalaadventure.com",
+    description:
+      "Expert-guided trekking tours in Nepal, Bhutan & Tibet. Himalayan adventures including Everest Base Camp, Annapurna Circuit, and cultural tours.",
     potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://himkalaadventure.com/search?q={search_term_string}',
-      'query-input': 'required name=search_term_string',
+      "@type": "SearchAction",
+      target: "https://himkalaadventure.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string",
     },
   };
 
   return (
-    <html lang="en" className={`${plusJakartaSans.variable} ${playfairDisplay.variable}`}>
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} ${playfairDisplay.variable}`}
+    >
       <head>
         <link rel="icon" href="/himkala-logo.png" />
-        <link rel="canonical" href="https://himkalaadventure.com" />
-        
-        {/* hreflang tags */}
-        <link rel="alternate" href="https://himkalaadventure.com" hrefLang="en" />
-        <link rel="alternate" href="https://himkalaadventure.com" hrefLang="x-default" />
-        
+
         {/* Schema.org structured data */}
         <script
           type="application/ld+json"
@@ -179,7 +184,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        
+
         {/* Google Analytics placeholder */}
         <Script
           strategy="afterInteractive"
@@ -197,7 +202,7 @@ export default function RootLayout({
             `,
           }}
         />
-        
+
         {/* Facebook Pixel placeholder */}
         <Script
           id="facebook-pixel"
@@ -219,15 +224,14 @@ export default function RootLayout({
         />
         <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img 
-            height="1" 
-            width="1" 
-            style={{ display: 'none' }}
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
             alt=""
           />
         </noscript>
-        
       </head>
       <body className="antialiased font-sans" suppressHydrationWarning>
         <ClientLayout>{children}</ClientLayout>

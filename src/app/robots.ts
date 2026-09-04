@@ -1,31 +1,23 @@
 // src/app/robots.ts
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next";
 
-const baseUrl = 'https://www.himkalaadventure.com'
+const baseUrl = "https://www.himkalaadventure.com";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
-        disallow: [
-          '/api/',
-          '/_next/',
-          '/admin/',
-          '/images/used/',
-        ],
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/_next/", "/admin/", "/images/used/"],
       },
       {
-        userAgent: 'Googlebot',
-        allow: '/',
-        disallow: ['/api/', '/admin/'],
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: ["/api/", "/admin/"],
       },
     ],
-    sitemap: [
-      `${baseUrl}/sitemap.xml`,
-      `${baseUrl}/blog/sitemap.xml`,
-    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
     host: baseUrl,
-  }
+  };
 }

@@ -36,7 +36,10 @@ export default function BlogPage() {
   const [visiblePosts, setVisiblePosts] = React.useState(6);
   const [selectedVideo, setSelectedVideo] = React.useState<{ title: string; url: string } | null>(null);
   const [socialMedia, setSocialMedia] = React.useState<SocialMediaContent>(SOCIAL_MEDIA_FALLBACK);
-  const blogPosts = managedPosts.filter((post) => post.published);
+  const blogPosts = React.useMemo(
+    () => managedPosts.filter((post) => post.published),
+    [managedPosts],
+  );
   const featuredPost = blogPosts.find((post) => post.featured) || blogPosts[0] || BLOG_POSTS_FALLBACK[0];
   const { youtubeVideos, instagramPosts } = socialMedia;
 
@@ -73,7 +76,7 @@ export default function BlogPage() {
     }
     
     return filtered;
-  }, [searchQuery]);
+  }, [blogPosts, searchQuery]);
 
   const loadMorePosts = () => {
     setVisiblePosts(prev => Math.min(prev + 3, filteredPosts.length));

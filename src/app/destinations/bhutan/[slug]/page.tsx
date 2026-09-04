@@ -1,6 +1,25 @@
-import ManagedServiceDetail from "@/components/services/ManagedServiceDetail";
-
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+import type { Metadata } from "next";
+import ManagedServicePage, {
+  generateManagedServiceMetadata,
+} from "@/components/services/ManagedServicePage";
+type PageProps = { params: Promise<{ slug: string }> };
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  return <ManagedServiceDetail collection="destinationTours" destination="bhutan" serviceId={slug} />;
+  return generateManagedServiceMetadata({
+    collection: "destinationTours",
+    destination: "bhutan",
+    slug,
+  });
+}
+export default async function Page({ params }: PageProps) {
+  const { slug } = await params;
+  return (
+    <ManagedServicePage
+      collection="destinationTours"
+      destination="bhutan"
+      slug={slug}
+    />
+  );
 }
