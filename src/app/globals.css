@@ -300,6 +300,29 @@
 
 /* Mobile administration ergonomics */
 @media (max-width: 639px) {
+  .admin-shell,
+  .admin-shell main {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: clip;
+  }
+
+  .admin-shell main > div,
+  .admin-shell form,
+  .admin-shell form > *,
+  .admin-shell section,
+  .admin-shell section > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .admin-shell form nav,
+  .admin-shell form nav > div {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
   .admin-shell main > div.px-5 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -339,6 +362,9 @@
   }
 
   .admin-shell .sticky.bottom-4 {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
     bottom: max(0.5rem, env(safe-area-inset-bottom));
     gap: 0.5rem;
     padding: 0.5rem;

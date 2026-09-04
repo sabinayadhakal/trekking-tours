@@ -1211,10 +1211,10 @@ export default function ManagedServiceForm({
         )}
         <form
           onSubmit={submit}
-          className="mt-8 grid items-start gap-8 lg:grid-cols-[210px_minmax(0,1fr)]"
+          className="mt-8 grid min-w-0 items-start gap-8 lg:grid-cols-[210px_minmax(0,1fr)]"
         >
-          <nav className="sticky top-16 z-30 self-start bg-[#f2ede4]/95 py-2 backdrop-blur lg:top-6 lg:z-auto lg:bg-transparent lg:py-0">
-            <div className="overflow-x-auto lg:max-h-[calc(100vh-3rem)] lg:overflow-x-hidden lg:overflow-y-auto">
+          <nav className="sticky top-16 z-30 min-w-0 max-w-full self-start bg-[#f2ede4]/95 py-2 backdrop-blur lg:top-6 lg:z-auto lg:bg-transparent lg:py-0">
+            <div className="w-full min-w-0 max-w-full overflow-x-auto overscroll-x-contain lg:max-h-[calc(100vh-3rem)] lg:overflow-x-hidden lg:overflow-y-auto">
               <div className="flex w-max gap-1 rounded-xl border border-[#d8cec0] bg-[#f7f2e9] p-2 text-sm font-semibold text-[#556363] lg:block lg:w-auto lg:space-y-1 lg:p-3">
                 {nav.map(([anchor, label]) => (
                   <a
@@ -1228,7 +1228,7 @@ export default function ManagedServiceForm({
               </div>
             </div>
           </nav>
-          <div className="space-y-6">
+          <div className="min-w-0 space-y-6">
             <Section
               id="essentials"
               title="Card & essentials"
