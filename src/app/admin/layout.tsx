@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
@@ -12,6 +13,7 @@ import {
   LayoutDashboard,
   LogOut,
   Map,
+  Menu,
   MessageSquareQuote,
   Mountain,
   Plane,
@@ -19,6 +21,13 @@ import {
 } from "lucide-react";
 import AdminAuthGate from "@/components/admin/AdminAuthGate";
 import { Toaster } from "@/components/ui/sonner";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { getFirebaseAuth } from "@/lib/firebase/client";
 
 const navigation = [
@@ -47,6 +56,7 @@ export default function AdminLayout({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   if (pathname === "/admin/login")
     return (
@@ -65,8 +75,88 @@ export default function AdminLayout({
   return (
     <AdminAuthGate>
       <Toaster position="top-right" richColors closeButton />
-      <div className="min-h-screen bg-[#f2ede4] text-[#14383b] lg:flex">
-        <aside className="border-b border-[#d8cec0] bg-[#14383b] text-[#f7f2e9] lg:fixed lg:inset-y-0 lg:w-64 lg:border-b-0 lg:border-r">
+      <div className="admin-shell min-h-screen bg-[#f2ede4] text-[#14383b] lg:flex">
+        <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-white/10 bg-[#14383b] px-4 text-[#f7f2e9] shadow-sm lg:hidden">
+          <Link href="/admin" className="flex min-w-0 items-center gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#cf6943]">
+              <Map className="h-4 w-4" />
+            </span>
+            <span className="min-w-0">
+              <strong className="block truncate font-serif text-base">
+                Himkala Admin
+              </strong>
+              <span className="block truncate text-[10px] text-[#f7f2e9]/60">
+                {navigation.find(({ href }) =>
+                  href === "/admin"
+                    ? pathname === href
+                    : pathname.startsWith(href),
+                )?.label || "Administration"}
+              </span>
+            </span>
+          </Link>
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <button
+                type="button"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 bg-white/5 hover:bg-white/10"
+                aria-label="Open administration menu"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
+            </SheetTrigger>
+            <SheetContent
+              side="left"
+              className="w-[min(88vw,320px)] gap-0 border-r-0 bg-[#14383b] p-0 text-[#f7f2e9] [&>button]:text-white"
+            >
+              <SheetTitle className="sr-only">Administration menu</SheetTitle>
+              <div className="flex min-h-0 flex-1 flex-col p-5 pt-6">
+                <div className="flex items-center gap-3 border-b border-white/10 pb-5">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#cf6943]">
+                    <Map className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <strong className="block font-serif text-lg">
+                      Himkala
+                    </strong>
+                    <span className="text-xs text-[#f7f2e9]/60">
+                      Administration
+                    </span>
+                  </span>
+                </div>
+                <nav
+                  className="mt-5 min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-contain pr-1"
+                  aria-label="Mobile administration"
+                >
+                  {navigation.map(({ href, label, icon: Icon }) => {
+                    const active =
+                      href === "/admin"
+                        ? pathname === href
+                        : pathname.startsWith(href);
+                    return (
+                      <SheetClose asChild key={href}>
+                        <Link
+                          href={href}
+                          className={`flex min-h-11 items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold transition-colors ${active ? "bg-[#cf6943] text-white" : "text-[#f7f2e9]/75 hover:bg-white/10 hover:text-white"}`}
+                        >
+                          <Icon className="h-4 w-4 shrink-0" />
+                          <span>{label}</span>
+                        </Link>
+                      </SheetClose>
+                    );
+                  })}
+                </nav>
+                <button
+                  type="button"
+                  onClick={() => void logout()}
+                  className="mt-4 flex min-h-11 items-center gap-3 border-t border-white/10 px-4 pt-4 text-sm font-semibold text-[#f7f2e9]/75 hover:text-white"
+                >
+                  <LogOut className="h-4 w-4" /> Sign out
+                </button>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </header>
+        <aside className="hidden bg-[#14383b] text-[#f7f2e9] lg:fixed lg:inset-y-0 lg:block lg:w-64 lg:border-r lg:border-[#d8cec0]">
           <div className="flex h-full flex-col p-5 sm:p-6">
             <Link href="/admin" className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#cf6943]">

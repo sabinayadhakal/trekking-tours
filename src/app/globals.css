@@ -297,3 +297,61 @@
     transition: none !important;
   }
 }
+
+/* Mobile administration ergonomics */
+@media (max-width: 639px) {
+  .admin-shell main > div.px-5 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .admin-shell h1.text-4xl,
+  .admin-shell h1.text-5xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .admin-shell h2.text-2xl {
+    font-size: 1.375rem;
+    line-height: 1.75rem;
+  }
+
+  .admin-shell input:not([type="checkbox"]):not([type="radio"]),
+  .admin-shell textarea,
+  .admin-shell select {
+    font-size: 16px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .admin-shell textarea {
+    min-height: 7rem;
+  }
+
+  .admin-shell button,
+  .admin-shell a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .admin-shell .aspect-square {
+    aspect-ratio: auto;
+    min-height: 25rem;
+  }
+
+  .admin-shell .sticky.bottom-4 {
+    bottom: max(0.5rem, env(safe-area-inset-bottom));
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .admin-shell .sticky.bottom-4 > button,
+  .admin-shell .sticky.bottom-4 > a {
+    min-width: 0;
+    flex: 1 1 0%;
+  }
+
+  .admin-shell form,
+  .admin-shell label {
+    min-width: 0;
+  }
+}
