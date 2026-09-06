@@ -96,7 +96,7 @@ export default function DayHikesPage() {
     "@context": "https://schema.org",
     "@type": "TouristInformationCenter",
     "name": "Himkala Adventure Pvt. Ltd.",
-    "description": "Expert-guided day hikes in Nepal including Nagarkot, Champa Devi, and Namobuddha treks.",
+    "description": "Expert-guided day hikings in Nepal including Nagarkot, Champa Devi, and Namobuddha treks.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Thamel, Lekhnath Marga",
@@ -115,18 +115,18 @@ export default function DayHikesPage() {
   return (
     <>
       <Head>
-        <title>Day Hikes in Nepal - Himkala Adventure</title>
-        <meta name="description" content="Explore Nepal's best day hikes from Kathmandu. Expert-guided sunrise hikes, forest trails, and cultural walks. Book your day adventure now!" />
+        <title>Day Hikings in Nepal - Himkala Adventure</title>
+        <meta name="description" content="Explore Nepal's best day hikings from Kathmandu. Expert-guided sunrise hikingss, forest trails, and cultural walks. Book your day adventure now!" />
         <link rel="canonical" href="https://www.himkalaadventure.com/services/day-hikings" />
-        <meta property="og:title" content="Day Hikes in Nepal - Himkala Adventure" />
-        <meta property="og:description" content="Explore Nepal's best day hikes from Kathmandu. Expert-guided sunrise hikes, forest trails, and cultural walks." />
+        <meta property="og:title" content="Day Hikings in Nepal - Himkala Adventure" />
+        <meta property="og:description" content="Explore Nepal's best day hikings from Kathmandu. Expert-guided sunrise hikings, forest trails, and cultural walks." />
         <meta property="og:image" content="https://www.himkalaadventure.com/images/used/hiking-1.webp" />
         <meta property="og:url" content="https://www.himkalaadventure.com/services/day-hikings" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Himkala Adventure" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Day Hikes in Nepal - Himkala Adventure" />
-        <meta name="twitter:description" content="Explore Nepal's best day hikes from Kathmandu. Expert-guided sunrise hikes, forest trails, and cultural walks." />
+        <meta name="twitter:title" content="Day Hikings in Nepal - Himkala Adventure" />
+        <meta name="twitter:description" content="Explore Nepal's best day hikings from Kathmandu. Expert-guided sunrise hikings, forest trails, and cultural walks." />
         <meta name="twitter:image" content="https://www.himkalaadventure.com/images/used/hiking-1.webp" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
@@ -140,7 +140,7 @@ export default function DayHikesPage() {
                 <div>
                   <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Day Adventures</div>
                   <h1 className="mt-3 sm:mt-5 font-serif text-[clamp(2.2rem,7vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
-                    Day <span className="text-[#cf6943]">Hikes</span>
+                    Day <span className="text-[#cf6943]">Hikings</span>
                   </h1>
                 </div>
                 <p className="max-w-full md:max-w-[280px] lg:max-w-[380px] text-sm leading-6 text-[#66706d]">
@@ -222,13 +222,13 @@ export default function DayHikesPage() {
             <div className="mx-auto max-w-[1220px]">
               <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
                 <div>
-                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">All Hikes</div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">All Hikings</div>
                   <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
-                    One-Day <span className="text-[#cf6943]">Hiking Adventures</span>
+                    One-Day <span className="text-[#cf6943]">Hiking</span>
                   </h2>
                 </div>
                 <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
-                  {dayHikes.length} hikes available. From sunrise views to cultural walks.
+                  {dayHikes.length} hikings available. From sunrise views to cultural walks.
                 </p>
               </div>
 
@@ -327,7 +327,7 @@ export default function DayHikesPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
                 {[
-                  { icon: <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Certified Guides", text: "All hikes led by government-certified guides with first aid training." },
+                  { icon: <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Certified Guides", text: "All hikings led by government-certified guides with first aid training." },
                   { icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Small Groups", text: "Intimate group sizes for a personalized and safe experience." },
                   { icon: <Compass className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Curated Trails", text: "Carefully selected routes with the best views and experiences." },
                   { icon: <Heart className="w-4 h-4 sm:w-5 sm:h-5" />, title: "Local Knowledge", text: "Insider tips and cultural insights from our expert guides." },
