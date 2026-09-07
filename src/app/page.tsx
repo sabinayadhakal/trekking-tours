@@ -284,22 +284,22 @@ export default function Home() {
         </section>
 
         {/* Intro Section */}
-        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
-          <div className="mx-auto grid max-w-[1220px] gap-8 sm:gap-12 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
-            <div>
-              <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">A different kind of guide</div>
-              <div className="mt-6 sm:mt-8 h-px w-16 sm:w-20 bg-[#cf6943]" />
-            </div>
-            <div>
-             <h2 className="max-w-[860px] font-serif text-[clamp(1.8rem,4.5vw,4.5rem)] leading-[1.1] sm:leading-[1.05] tracking-[-.03em] sm:tracking-[-.035em] text-[#14383b]">
-The mountain doesn't care about your itinerary. <span className="text-[#b7aaa0]">It cares about your breath.</span>
-</h2>
-<p className="mt-5 sm:mt-8 max-w-[620px] text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#556363]">
-We move slow because the trail decides the pace, not the guidebook. We budget for a broken down bus, a sudden landslide, or a teahouse owner who insists you stay for dinner. That delay is usually the best part of the trip.
-</p>
-            </div>
-          </div>
-        </section>
+<section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+  <div className="mx-auto grid max-w-[1220px] gap-8 sm:gap-12 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
+    <div>
+      <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">What we are</div>
+      <div className="mt-6 sm:mt-8 h-px w-16 sm:w-20 bg-[#cf6943]" />
+    </div>
+    <div>
+     <h2 className="max-w-[860px] font-serif text-[clamp(1.8rem,4.5vw,4.5rem)] leading-[1.1] sm:leading-[1.05] tracking-[-.03em] sm:tracking-[-.035em] text-[#14383b]">
+       Explore Nepal with <span className="text-[#b7aaa0]">Himkala Adventure</span>
+     </h2>
+     <p className="mt-5 sm:mt-8 max-w-[620px] text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#556363]">
+       Himkala Adventure is a Kathmandu-based trekking company that leads small-group journeys through the Himalayas. We pioneered the city's first free walking tour, connecting travelers with Nepal's culture beyond the summit. We value authentic connection over rushed itineraries. Our guides are local, our groups are intimate, and we value safety as a paramount.
+     </p>
+    </div>
+  </div>
+</section>
 
         {/* Destinations */}
         <section id="destinations" className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
