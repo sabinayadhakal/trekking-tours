@@ -86,7 +86,7 @@ export default function DaySightseeingsPage() {
     "@context": "https://schema.org",
     "@type": "TouristInformationCenter",
     "name": "Himkala Adventure Pvt. Ltd.",
-    "description": "Expert-guided day sightseeing tours in Nepal's Kathmandu Valley including UNESCO World Heritage sites.",
+    "description": "Expert-guided day tours in Nepal's Kathmandu Valley including UNESCO World Heritage sites.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Thamel, Lekhnath Marga",
@@ -105,8 +105,8 @@ export default function DaySightseeingsPage() {
   return (
     <>
       <Head>
-        <title>Day Sightseeing Tours in Nepal - Himkala Adventure</title>
-        <meta name="description" content="Explore Nepal's cultural heritage with our day sightseeing tours. UNESCO World Heritage sites, ancient temples, and historic cities. Book your cultural tour today!" />
+        <title>Day Tour in Nepal - Himkala Adventure</title>
+        <meta name="description" content="Explore Nepal's cultural heritage with our day tours. UNESCO World Heritage sites, ancient temples, and historic cities. Book your cultural tour today!" />
         <link rel="canonical" href="https://www.himkalaadventure.com/services/day-sightseeings" />
         <meta property="og:title" content="Day Sightseeing Tours in Nepal - Himkala Adventure" />
         <meta property="og:description" content="Explore Nepal's cultural heritage with our day sightseeing tours. UNESCO World Heritage sites, ancient temples, and historic cities." />
@@ -115,8 +115,8 @@ export default function DaySightseeingsPage() {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Himkala Adventure" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Day Sightseeing Tours in Nepal - Himkala Adventure" />
-        <meta name="twitter:description" content="Explore Nepal's cultural heritage with our day sightseeing tours. UNESCO World Heritage sites, ancient temples, and historic cities." />
+        <meta name="twitter:title" content="Day Tours in Nepal - Himkala Adventure" />
+        <meta name="twitter:description" content="Explore Nepal's cultural heritage with our day tours. UNESCO World Heritage sites, ancient temples, and historic cities." />
         <meta name="twitter:image" content="https://www.himkalaadventure.com/images/used/nepal-temple.webp" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
@@ -130,7 +130,7 @@ export default function DaySightseeingsPage() {
                 <div>
                   <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Cultural Tours</div>
                   <h1 className="mt-3 sm:mt-5 font-serif text-[clamp(2.2rem,7vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
-                    Day <span className="text-[#cf6943]">Sightseeing</span>
+                    Day <span className="text-[#cf6943]">Tour</span>
                   </h1>
                 </div>
                 <p className="max-w-full md:max-w-[280px] lg:max-w-[380px] text-sm leading-6 text-[#66706d]">
@@ -413,7 +413,7 @@ export default function DaySightseeingsPage() {
     <div className="mt-8 sm:mt-12 text-center">
       <Link href="/contact">
         <Button className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-none px-8 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm">
-          Plan Your Sightseeing Tour Today
+          Plan Your Day Tour Today
         </Button>
       </Link>
     </div>

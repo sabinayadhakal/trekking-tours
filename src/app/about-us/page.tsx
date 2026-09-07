@@ -26,6 +26,9 @@ import {
   Plane,
   FileText,
   MapPin as MapIcon,
+  X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -34,26 +37,65 @@ const licenses = [
     name: "Certification of Incorporate Company",
     number: "ID: 131462/071/072",
     description: "Registered Private Limited Company under Nepal law",
+    image: "/images/licenses/incorporate-company.jpg",
   },
   {
     name: "Trekking Agencies' Association of Nepal (TAAN)",
     number: "",
     description: "Member of Nepal's premier trekking association",
+    image: "/images/used/TAAN-certificate.webp",
   },
   {
-    name: "Certificate of tourism industry division ",
+    name: "Certificate of tourism industry division",
     number: "ID: 1888/071",
     description: "Government-approved travel and tour operator license",
+    image: "/images/used/certificate-of-industry-division.webp",
   },
   {
     name: "Guiding Certificate",
     number: "ID: TG-01/36",
     description: "Official certification for professional tourist guide in Nepal",
+    image: "/images/licenses/guiding-certificate.jpg",
   },
   {
     name: "Foreign Exchange Authorization Letter",
     number: "ID: N.R.B/B.B.Bya.B/E/Tre/H.223/081",
     description: "Official permission for making payments in foreign currency",
+    image: "/images/licenses/foreign-exchange.jpg",
+  },
+];
+
+// TripAdvisor Excellence Certificates
+const tripadvisorCertificates = [
+  
+  {
+    name: "TripAdvisor Certificate of Excellence 2017",
+    image: "/images/used/tripadvisor/certificate-2017.webp",
+    year: "2017",
+  },
+  {
+    name: "TripAdvisor Certificate of Excellence 2018",
+    image: "/images/used/tripadvisor/certificate-2018.webp",
+    year: "2018",
+  },
+  
+  {
+    name: "TripAdvisor Certificate of Excellence 2020",
+    image: "/images/used/tripadvisor/certificate-2020.webp",
+    year: "2020",
+  },
+  
+
+  
+  {
+    name: "TripAdvisor Certificate of Excellence 2024",
+    image: "/images/used/tripadvisor/certificate-2024.webp",
+    year: "2024",
+  },
+  {
+    name: "TripAdvisor Certificate of Excellence 2025",
+    image: "/images/used/tripadvisor/certificate-2025.webp",
+    year: "2025",
   },
 ];
 
@@ -63,7 +105,7 @@ const teamMembers = [
     role: "Professional Certified Trekking Guide & IT Facilitator",
     experience: "6 years",
     speciality: "High-Altitude Trekking & IT Management",
-    image: "/images/sabinaya.jpg",
+    image: "/images/used/sabinaya.webp",
     bio: "Sabinaya has a strong background in high-altitude trekking and also manages various IT tasks within the company. His calm approach, safety awareness, and knowledge of the region make him a dependable part of our team.",
   },
 ];
@@ -112,11 +154,64 @@ const bankDetails = {
 
 export default function AboutPage() {
   const phoneNumber = "+977 9841376470";
+  const [selectedLicense, setSelectedLicense] = React.useState<{ name: string; image: string } | null>(null);
+  const [selectedCertificate, setSelectedCertificate] = React.useState<{ name: string; image: string } | null>(null);
+  const [certificateStartIndex, setCertificateStartIndex] = React.useState(0);
+  const certificatesPerPage = 3;
 
   const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault();
     window.location.href = "mailto:info@himkalaadventure.com";
   };
+
+  const openLicenseModal = (license: { name: string; image: string }) => {
+    setSelectedLicense(license);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLicenseModal = () => {
+    setSelectedLicense(null);
+    document.body.style.overflow = "auto";
+  };
+
+  const openCertificateModal = (certificate: { name: string; image: string }) => {
+    setSelectedCertificate(certificate);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeCertificateModal = () => {
+    setSelectedCertificate(null);
+    document.body.style.overflow = "auto";
+  };
+
+  const nextCertificateSlide = () => {
+    if (certificateStartIndex + certificatesPerPage < tripadvisorCertificates.length) {
+      setCertificateStartIndex(certificateStartIndex + 1);
+    }
+  };
+
+  const prevCertificateSlide = () => {
+    if (certificateStartIndex > 0) {
+      setCertificateStartIndex(certificateStartIndex - 1);
+    }
+  };
+
+  React.useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (selectedLicense) closeLicenseModal();
+        if (selectedCertificate) closeCertificateModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscKey);
+    return () => document.removeEventListener("keydown", handleEscKey);
+  }, [selectedLicense, selectedCertificate]);
+
+  const visibleCertificates = tripadvisorCertificates.slice(
+    certificateStartIndex,
+    certificateStartIndex + certificatesPerPage
+  );
 
   return (
     <>
@@ -371,18 +466,41 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
               {licenses.map((license, i) => (
-                <div key={i} className="bg-[#f7f2e9]/10 border border-[#f7f2e9]/20 backdrop-blur-sm rounded hover:bg-[#f7f2e9]/15 transition-all duration-300">
+                <div 
+                  key={i} 
+                  className="bg-[#f7f2e9]/10 border border-[#f7f2e9]/20 backdrop-blur-sm rounded hover:bg-[#f7f2e9]/15 transition-all duration-300 cursor-pointer group"
+                  onClick={() => openLicenseModal(license)}
+                >
                   <div className="p-5 sm:p-6 md:p-8">
                     <div className="flex items-start gap-3 sm:gap-4">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#e47a4f]/30 rounded flex items-center justify-center text-[#f0a17f] shrink-0">
                         <FileCheck className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
-                      <div className="min-w-0">
-                        <h4 className="text-sm sm:text-base text-[#f7f2e9] font-bold mb-0.5 sm:mb-1 break-words">{license.name}</h4>
+                      <div className="min-w-0 flex-1">
+                        <h4 className="text-sm sm:text-base text-[#f7f2e9] font-bold mb-0.5 sm:mb-1 break-words group-hover:text-[#ef966e] transition-colors">
+                          {license.name}
+                        </h4>
                         {license.number && (
                           <p className="text-[#f0a17f] text-xs sm:text-sm font-mono mb-1 sm:mb-2 break-all">{license.number}</p>
                         )}
                         <p className="text-[#f7f2e9]/60 text-xs sm:text-sm">{license.description}</p>
+                        
+                        {/* Image preview */}
+                        <div className="mt-3 sm:mt-4 relative h-24 sm:h-28 md:h-32 overflow-hidden rounded border border-[#f7f2e9]/20 group-hover:border-[#ef966e]/50 transition-colors">
+                          <Image
+                            src={license.image}
+                            alt={license.name}
+                            fill
+                            className="object-cover hover:scale-105 transition-transform duration-300"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
+                            quality={80}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#14383b]/60 to-transparent flex items-end justify-center pb-1.5 sm:pb-2">
+                            <span className="text-[8px] sm:text-[10px] text-[#f7f2e9] font-medium bg-[#14383b]/80 px-2 py-0.5 sm:px-3 sm:py-1 rounded">
+                              Click to view full size
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -410,6 +528,223 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        {/* License Modal */}
+        {selectedLicense && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#102e31]/90 backdrop-blur-sm animate-in fade-in duration-200 p-2 sm:p-4"
+            onClick={closeLicenseModal}
+          >
+            <div 
+              className="relative max-w-4xl w-full bg-[#f7f2e9] rounded-lg overflow-hidden shadow-2xl mx-2 sm:mx-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between p-3 sm:p-4 bg-[#14383b]">
+                <h3 className="text-[#f7f2e9] font-bold text-sm sm:text-base md:text-lg truncate pr-2 sm:pr-4">
+                  {selectedLicense.name}
+                </h3>
+                <button
+                  onClick={closeLicenseModal}
+                  className="text-[#f7f2e9] hover:text-[#ef966e] transition-colors p-1 active:text-[#ef966e] touch-manipulation"
+                  aria-label="Close license image"
+                >
+                  <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+              </div>
+              <div className="relative bg-[#f2ede4] p-2 sm:p-4 flex items-center justify-center min-h-[60vh] max-h-[80vh]">
+                <div className="relative w-full h-[60vh] sm:h-[70vh] max-h-[70vh]">
+                  <Image
+                    src={selectedLicense.image}
+                    alt={selectedLicense.name}
+                    fill
+                    className="object-contain"
+                    sizes="100vw"
+                    quality={90}
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TripAdvisor Excellence Certificates - NEW SECTION */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Awards</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  TripAdvisor <span className="text-[#cf6943]">Excellence</span> Certificates
+                </h2>
+              </div>
+              <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                Recognized consistently for exceptional service and traveler satisfaction.
+              </p>
+            </div>
+
+            {/* Certificate Cards - Desktop Carousel */}
+            <div className="hidden md:block mt-8 sm:mt-12 relative">
+              <div className="flex gap-5 overflow-hidden">
+                {visibleCertificates.map((cert, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 min-w-[calc(33.333%-14px)] cursor-pointer group"
+                    onClick={() => openCertificateModal(cert)}
+                  >
+                    <div className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 rounded-lg border border-[#d8cec0]/30 hover:border-[#cf6943]/50">
+                      <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
+                        <Image
+                          src={cert.image}
+                          alt={cert.name}
+                          fill
+                          className="object-cover hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 1024px) 33vw, 300px"
+                          quality={85}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#14383b]/60 via-transparent to-transparent flex items-end justify-center pb-3 sm:pb-4">
+                          <span className="text-[10px] sm:text-xs text-[#f7f2e9] font-medium bg-[#14383b]/80 px-3 py-1 sm:px-4 sm:py-1.5 rounded">
+                            Click to view full size
+                          </span>
+                        </div>
+                        <div className="absolute top-3 right-3 bg-[#e47a4f] text-[#fff8ee] px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-bold rounded">
+                          {cert.year}
+                        </div>
+                      </div>
+                      <div className="p-4 sm:p-6">
+                        <h4 className="text-sm sm:text-base font-bold text-[#14383b] text-center">{cert.name}</h4>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Navigation Arrows */}
+              {tripadvisorCertificates.length > certificatesPerPage && (
+                <div className="flex justify-center gap-3 mt-6">
+                  <button
+                    onClick={prevCertificateSlide}
+                    disabled={certificateStartIndex === 0}
+                    className={`flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border rounded transition-colors ${
+                      certificateStartIndex === 0
+                        ? 'border-[#d8cec0]/30 text-[#d8cec0]/30 cursor-not-allowed'
+                        : 'border-[#14383b] hover:border-[#cf6943] hover:text-[#cf6943] active:bg-[#cf6943]/10'
+                    }`}
+                    aria-label="Previous certificates"
+                  >
+                    <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+                  </button>
+                  <button
+                    onClick={nextCertificateSlide}
+                    disabled={certificateStartIndex + certificatesPerPage >= tripadvisorCertificates.length}
+                    className={`flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border rounded transition-colors ${
+                      certificateStartIndex + certificatesPerPage >= tripadvisorCertificates.length
+                        ? 'border-[#d8cec0]/30 text-[#d8cec0]/30 cursor-not-allowed'
+                        : 'border-[#14383b] hover:border-[#cf6943] hover:text-[#cf6943] active:bg-[#cf6943]/10'
+                    }`}
+                    aria-label="Next certificates"
+                  >
+                    <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                  </button>
+                </div>
+              )}
+
+              {/* Dots indicator */}
+              {tripadvisorCertificates.length > certificatesPerPage && (
+                <div className="flex justify-center gap-1.5 mt-4">
+                  {Array.from({ length: Math.ceil(tripadvisorCertificates.length / certificatesPerPage) }).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCertificateStartIndex(i * certificatesPerPage)}
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        Math.floor(certificateStartIndex / certificatesPerPage) === i
+                          ? 'bg-[#cf6943]'
+                          : 'bg-[#d8cec0] hover:bg-[#cf6943]/50'
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile: Horizontal Scroll */}
+            <div className="md:hidden mt-8 sm:mt-12">
+              <div className="flex overflow-x-auto pb-6 sm:pb-8 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory">
+                {tripadvisorCertificates.map((cert, i) => (
+                  <div
+                    key={i}
+                    className="flex-shrink-0 w-[80vw] sm:w-[75vw] mr-4 sm:mr-6 last:mr-0 snap-start cursor-pointer group"
+                    onClick={() => openCertificateModal(cert)}
+                  >
+                    <div className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 rounded-lg border border-[#d8cec0]/30">
+                      <div className="relative h-64 sm:h-72 overflow-hidden">
+                        <Image
+                          src={cert.image}
+                          alt={cert.name}
+                          fill
+                          className="object-cover"
+                          sizes="80vw"
+                          quality={85}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#14383b]/60 via-transparent to-transparent flex items-end justify-center pb-3 sm:pb-4">
+                          <span className="text-[10px] sm:text-xs text-[#f7f2e9] font-medium bg-[#14383b]/80 px-3 py-1 sm:px-4 sm:py-1.5 rounded">
+                            Tap to view full size
+                          </span>
+                        </div>
+                        <div className="absolute top-3 right-3 bg-[#e47a4f] text-[#fff8ee] px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-bold rounded">
+                          {cert.year}
+                        </div>
+                      </div>
+                      <div className="p-4 sm:p-6">
+                        <h4 className="text-sm sm:text-base font-bold text-[#14383b] text-center">{cert.name}</h4>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Certificate Modal */}
+        {selectedCertificate && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#102e31]/90 backdrop-blur-sm animate-in fade-in duration-200 p-2 sm:p-4"
+            onClick={closeCertificateModal}
+          >
+            <div 
+              className="relative max-w-4xl w-full bg-[#f7f2e9] rounded-lg overflow-hidden shadow-2xl mx-2 sm:mx-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between p-3 sm:p-4 bg-[#14383b]">
+                <h3 className="text-[#f7f2e9] font-bold text-sm sm:text-base md:text-lg truncate pr-2 sm:pr-4">
+                  {selectedCertificate.name}
+                </h3>
+                <button
+                  onClick={closeCertificateModal}
+                  className="text-[#f7f2e9] hover:text-[#ef966e] transition-colors p-1 active:text-[#ef966e] touch-manipulation"
+                  aria-label="Close certificate image"
+                >
+                  <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+              </div>
+              <div className="relative bg-[#f2ede4] p-2 sm:p-4 flex items-center justify-center min-h-[60vh] max-h-[80vh]">
+                <div className="relative w-full h-[60vh] sm:h-[70vh] max-h-[70vh]">
+                  <Image
+                    src={selectedCertificate.image}
+                    alt={selectedCertificate.name}
+                    fill
+                    className="object-contain"
+                    sizes="100vw"
+                    quality={90}
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Booking Terms & Policies */}
         <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">

@@ -185,9 +185,9 @@ const searchData: SearchResult[] = [
   { title: "Bhutan", url: "/destinations/bhutan", category: "destination", icon: <Globe className="w-4 h-4" /> },
   { title: "Tibet", url: "/destinations/tibet", category: "destination", icon: <Globe className="w-4 h-4" /> },
   { title: "Nepal", url: "/destinations/nepal", category: "destination", icon: <Globe className="w-4 h-4" /> },
-  { title: "Day Hikings", url: "/services/day-hikings", category: "service", icon: <Sun className="w-4 h-4" /> },
-  { title: "Day Sightseeings", url: "/services/day-sightseeings", category: "service", icon: <Camera className="w-4 h-4" /> },
-  { title: "Free Tours Kathmandu", url: "/services/free-tour-kathmandu", category: "service", icon: <Compass className="w-4 h-4" /> },
+  { title: "Day Hiking in Nepal", url: "/services/day-hikings", category: "service", icon: <Sun className="w-4 h-4" /> },
+  { title: "Day Tour in Nepal", url: "/services/day-sightseeings", category: "service", icon: <Camera className="w-4 h-4" /> },
+  { title: "Free Walking Tour Kathmandu", url: "/services/free-tour-kathmandu", category: "service", icon: <Compass className="w-4 h-4" /> },
   { title: "Jungle Safari", url: "/services/jungle-safari", category: "service", icon: <Trees className="w-4 h-4" /> },
   { title: "Mountain Flight & Heli Trip", url: "/services/mountain-flight-heli-trip", category: "service", icon: <Plane className="w-4 h-4" /> },
   { title: "Multi Day Cultural Tours", url: "/services/multi-day-cultural-tours", category: "service", icon: <Landmark className="w-4 h-4" /> },
@@ -207,8 +207,8 @@ const categoryLabels: Record<string, string> = {
   destination: 'Destinations',
   service: 'Services',
   trek: 'Trekking Packages',
-  'day-hiking': 'Day Hikings',
-  sightseeing: 'Day Sightseeings',
+  'day-hiking': 'Day Hiking in Nepal',
+  sightseeing: 'Day Tour in Nepal',
   'jungle-safari': 'Jungle Safari',
   'mountain-flight': 'Mountain Flights & Heli Trips',
   'cultural-tour': 'Multi Day Cultural Tours',
@@ -358,12 +358,12 @@ const ServicesDropdown = () => {
         {isOpen && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ duration: 0.2 }} className="absolute left-0 top-full mt-2 w-72 bg-[#0d2427]/95 backdrop-blur-xl border border-[#f7f2e9]/20 rounded-xl shadow-2xl shadow-black/30 overflow-hidden z-50">
             <div className="py-2">
-              <Link href="/services/free-tour-kathmandu" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Free Tours Kathmandu</Link>
-              <Link href="/services/free-walking-tour-kathmandu" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Original Free Walking Tour</Link>
-              <Link href="/services/trekking" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Trekkings</Link>
+              <Link href="/services/free-tour-kathmandu" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Free Walking Tour Kathmandu</Link>
+              <Link href="/services/free-walking-tour-kathmandu" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Free Tour Kathmandu</Link>
+              <Link href="/services/trekking" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Trekking in Nepal</Link>
               <Link href="/services/multi-day-cultural-tours" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Multi Day Cultural Tours</Link>
-              <Link href="/services/day-hikings" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Day Hikings</Link>
-              <Link href="/services/day-sightseeings" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Day Sightseeings</Link>
+              <Link href="/services/day-hikings" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Day Hiking in Nepal</Link>
+              <Link href="/services/day-sightseeings" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Day Tour in Nepal</Link>
               <Link href="/services/mountain-flight-heli-trip" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Mountain Flights and Heli</Link>
               <Link href="/services/jungle-safari" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors" onClick={() => setIsOpen(false)}>Jungle Safari</Link>
             </div>
@@ -414,8 +414,8 @@ const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
               <Link href="/services/free-walking-tour-kathmandu" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Original Free Walking Tour</Link>
               <Link href="/services/trekking" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Trekking</Link>
               <Link href="/services/multi-day-cultural-tours" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Multi Day Cultural Tours</Link>
-              <Link href="/services/day-hikings" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Day Hikings</Link>
-              <Link href="/services/day-sightseeings" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Day Sightseeings</Link>
+              <Link href="/services/day-hikings" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Day Hiking in Nepal</Link>
+              <Link href="/services/day-sightseeings" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Day Tour in Nepal</Link>
               <Link href="/services/mountain-flight-heli-trip" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Mountain Flights and Heli</Link>
               <Link href="/services/jungle-safari" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Jungle Safari</Link>
             </div>
@@ -796,16 +796,16 @@ export default function ClientLayout({
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-[#f7f2e9]/10 backdrop-blur-sm border border-[#f7f2e9]/20">
               <Star className="w-4 h-4 text-[#f0a17f]" aria-hidden="true" />
-              <span className="text-[#f7f2e9]/90 text-sm font-medium">Ready for your next adventure?</span>
+              <span className="text-[#f7f2e9]/90 text-sm font-medium">With each trip... comes a new optimism!!!</span>
             </div>
             
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#f7f2e9] mb-4 sm:mb-6 leading-tight">
               Start Planning Your <br className="hidden sm:block" />
-              <span className="text-[#f0a17f]">Himalayan Journey</span>
+              <span className="text-[#f0a17f]">Journey</span>
             </h2>
             
             <p className="text-[#f7f2e9]/80 text-base sm:text-lg mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4">
-              Whether you're dreaming of trekking to Everest Base Camp, exploring ancient temples, or discovering hidden valleys, we're here to make it happen.
+              Whether you're dreaming of trekking in Nepal, exploring ancient temples, or discovering hidden valleys, we're here to make it happen.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -891,8 +891,8 @@ export default function ClientLayout({
               </h5>
               <ul className="space-y-3 text-sm text-[#f7f2e9]/60">
                 {[
-                  { name: "Free Tours Kathmandu", url: "/services/free-tour-kathmandu" },
-                  { name: "Original Free Walking Tour Kathmandu", url: "/services/free-walking-tour-kathmandu" },
+                  { name: "Free Walking Tour", url: "/services/free-tour-kathmandu" },
+                  { name: "Free Tour, Kathmandu", url: "/services/free-walking-tour-kathmandu" },
                   { name: "Manaslu Circuit", url: "/services/trekking/manaslu-circuit-trek" },
                   { name: "Everest Base Camp", url: "/services/trekking/everest-base-camp-trek" },
                   { name: "Annapurna Circuit", url: "/services/trekking/annapurna-circuit-trek" },

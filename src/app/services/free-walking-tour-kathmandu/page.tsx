@@ -101,7 +101,7 @@ a: "Yes, advance reservation is required so our guide can prepare for the tour. 
   },
   {
     q: "How long does the tour last?",
-    a: "The tour typically takes 4-5 hours, covering approximately 4-5 kilometers through Kathmandu's historic centre."
+    a: "The tour typically takes 3-4 hours, covering approximately 4-5 kilometers through Kathmandu's historic centre."
   },
   {
     q: "What should I bring?",
@@ -238,9 +238,9 @@ export default function FreeWalkingTourKathmanduPage() {
         <div className="max-w-[880px] mx-auto px-4 sm:px-5 md:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 -mt-6 sm:-mt-8 relative z-10">
             {[
-              { label: "Duration", value: "4-5 hours" },
+              { label: "Duration", value: "3-4 hours" },
               { label: "Group Size", value: "2-20 people" },
-              { label: "Rating", value: "4.9/5 (350+)" },
+              { label: "Rating", value: "4.9/5 (1000+)" },
               { label: "Language", value: "English" },
             ].map((stat, i) => (
               <div key={i} className="bg-[#f7f2e9] rounded-lg p-3 text-center shadow-sm border border-[#d8cec0]/30">
@@ -269,7 +269,7 @@ export default function FreeWalkingTourKathmanduPage() {
 
             <div className="mt-6 p-4 sm:p-5 bg-amber-50 border-l-4 border-amber-400 text-amber-800 text-sm rounded">
               <AlertTriangle className="w-4 h-4 inline mr-2" aria-hidden="true" />
-              <strong>Tips‑based model:</strong> you award the time and experience of the guide. No fixed fee — gratitude welcomed.
+              <strong>Tips‑based model:</strong> you award the time and experience of the guide. No fixed fee, gratitude welcomed.
             </div>
           </div>
         </section>
@@ -352,7 +352,7 @@ export default function FreeWalkingTourKathmanduPage() {
                 <dl className="space-y-2 text-sm">
                   <div className="flex justify-between border-b border-[#d8cec0]/30 py-2">
                     <dt className="text-[#66706d]">Duration</dt>
-                    <dd className="text-[#14383b] font-medium">4-5 hours</dd>
+                    <dd className="text-[#14383b] font-medium">3-4 hours</dd>
                   </div>
                   <div className="flex justify-between border-b border-[#d8cec0]/30 py-2">
                     <dt className="text-[#66706d]">Schedule</dt>
@@ -487,7 +487,7 @@ export default function FreeWalkingTourKathmanduPage() {
           <div className="mx-auto max-w-[880px]">
             <div className="flex items-center gap-3 mb-6">
               <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" aria-hidden="true" />
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b]">5.0 · 350+ Reviews</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b]">5.0 · 1000+ Reviews</h2>
               <span className="text-[#66706d] text-sm">on TripAdvisor</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

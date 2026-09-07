@@ -29,6 +29,10 @@ import {
   ArrowRight,
   ArrowDownRight,
   MoveUpRight,
+  Compass,
+  Castle,
+  Sunrise,
+  Landmark,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -72,7 +76,7 @@ const services = [
         </div>
       </div>
     ),
-    title: "Free Walking Tour, Kathmandu",
+    title: "Free Walking Tour Kathmandu",
     description: "First Free Walking Tour in Kathmandu, Nepal.",
     color: "from-sky-100 to-blue-50",
     link: "/services/free-walking-tour-kathmandu"
@@ -104,6 +108,91 @@ const services = [
     description: "Wildlife adventures in Chitwan National Park.",
     color: "from-green-100 to-emerald-50",
     link: "/services/jungle-safari"
+  },
+];
+
+// Featured Packages from the .txt file
+const featuredPackages = [
+  {
+    name: "Free Walking Tour Kathmandu",
+    duration: "4-5 Hours",
+    difficulty: "Easy",
+    altitude: "1,400m",
+    price: "Tips-based",
+    image: "/images/used/free-walking-tour-nepal.webp",
+    rating: 4.8,
+    highlights: ["Kathe Swoyambhu", "Glass Beads Market", "Local Lassi", "Monkey Temple", "Newar Architecture"],
+    description: "First Free Walking Tour in Kathmandu and other parts of Kathmandu Valley, Nepal.",
+    icon: Compass,
+    color: "from-sky-100 to-blue-50",
+    link: "/services/local-city-tour-kathmandu-free",
+  },
+  {
+    name: "Bhaktapur & Patan Day Tour",
+    duration: "1 Day",
+    price: "$100",
+    image: "/images/used/bhaktapur-patan-nepal.webp",
+    highlights: ["Bhaktapur Durbar Square", "Patan Durbar Square", "Golden Temple", "Traditional Crafts"],
+    description: "Discover ancient Newari architecture and living culture.",
+    icon: Castle,
+    color: "from-amber-100 to-amber-50",
+    link: "/services/day-sightseeings/bhaktapur-patan-sightseeing",
+  },
+  {
+    name: "Nagarkot Changunarayan Hiking",
+    duration: "1 Day",
+    difficulty: "Easy",
+    altitude: "2,195m",
+    price: "$45",
+    image: "/images/used/nagarkot-changu.webp",
+    rating: 4.8,
+    highlights: ["Himalayan Sunrise", "Mt. Everest Views", "UNESCO Temple", "Village Walk", "Downhill Trail", "Rural Life Experience"],
+    description: "Scenic day hike with panoramic mountain views.",
+    icon: Sunrise,
+    color: "from-orange-100 to-amber-50",
+    link: "/services/day-hikings/nagarkot-changunarayan-hiking",
+  },
+  {
+    name: "Nepal Heritage Sites Tour",
+    duration: "10 Days",
+    difficulty: "Easy",
+    altitude: "1,400m",
+    price: "$2300",
+    image: "/images/used/nepal-heritage-sites-tour-nepal.webp",
+    rating: 4.8,
+    highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
+    description: "Explore Nepal's rich cultural heritage across the country.",
+    icon: Landmark,
+    color: "from-emerald-100 to-teal-50",
+    link: "/services/multi-day-cultural-tours/nepal-heritage-sites-tour",
+  },
+  {
+    name: "Kathmandu Pokhara Lumbini Chitwan Tour",
+    duration: "10 Days",
+    difficulty: "Easy",
+    altitude: "1,400m",
+    price: "$2200",
+    image: "/images/used/kathmandu-lumbini-pokhara-nepal.webp",
+    rating: 4.8,
+    highlights: ["Kathmandu Valley", "Pokhara", "Lumbini", "Chitwan"],
+    description: "Complete Nepal experience covering all major destinations.",
+    icon: MapPin,
+    color: "from-blue-100 to-cyan-50",
+    link: "/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour",
+  },
+  {
+    name: "Historic Nature Scenic Photography Tour",
+    duration: "12 Days",
+    difficulty: "Easy",
+    altitude: "2,100m",
+    price: "$1895",
+    image: "/images/used/historic-scenic-photography-nepal.webp",
+    rating: 4.9,
+    highlights: ["Historic Sites", "Nature", "Scenic Views", "Photography"],
+    description: "Perfect tour for photography enthusiasts.",
+    icon: Camera,
+    color: "from-purple-100 to-pink-50",
+    link: "/services/multi-day-cultural-tours/historic-nature-scenic-photography-tour",
   },
 ];
 
@@ -262,8 +351,7 @@ export default function Home() {
                   Thoughtful journeys through Nepal's mountains, villages, and living cultures led by people who call these trails home.
                 </p>
                 <div className="mt-6 sm:mt-9 flex flex-wrap items-center gap-4 sm:gap-5">
-                  <Link href="/contact
-                  ">
+                  <Link href="/contact">
                     <Button className="group flex items-center gap-3 sm:gap-4 bg-[#e47a4f] px-4 sm:px-5 py-3 sm:py-3.5 text-[10px] sm:text-[11px] font-bold tracking-[.14em] text-[#fff8ee] hover:bg-[#f0956d] h-auto rounded-none active:scale-[0.98] transition-transform">
                       FIND YOUR WAY <ArrowDownRight size={15} className="sm:w-[17px] sm:h-[17px] transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
                     </Button>
@@ -284,22 +372,22 @@ export default function Home() {
         </section>
 
         {/* Intro Section */}
-<section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
-  <div className="mx-auto grid max-w-[1220px] gap-8 sm:gap-12 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
-    <div>
-      <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">What we are</div>
-      <div className="mt-6 sm:mt-8 h-px w-16 sm:w-20 bg-[#cf6943]" />
-    </div>
-    <div>
-     <h2 className="max-w-[860px] font-serif text-[clamp(1.8rem,4.5vw,4.5rem)] leading-[1.1] sm:leading-[1.05] tracking-[-.03em] sm:tracking-[-.035em] text-[#14383b]">
-       Explore Nepal with <span className="text-[#b7aaa0]">Himkala Adventure</span>
-     </h2>
-     <p className="mt-5 sm:mt-8 max-w-[620px] text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#556363]">
-       Himkala Adventure is a Kathmandu-based trekking company that leads small-group journeys through the Himalayas. We pioneered the city's first free walking tour, connecting travelers with Nepal's culture beyond the summit. We value authentic connection over rushed itineraries. Our guides are local, our groups are intimate, and we value safety as a paramount.
-     </p>
-    </div>
-  </div>
-</section>
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto grid max-w-[1220px] gap-8 sm:gap-12 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
+            <div>
+              <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">What we are</div>
+              <div className="mt-6 sm:mt-8 h-px w-16 sm:w-20 bg-[#cf6943]" />
+            </div>
+            <div>
+              <h2 className="max-w-[860px] font-serif text-[clamp(1.8rem,4.5vw,4.5rem)] leading-[1.1] sm:leading-[1.05] tracking-[-.03em] sm:tracking-[-.035em] text-[#14383b]">
+                Explore Nepal with <span className="text-[#b7aaa0]">Himkala Adventure</span>
+              </h2>
+              <p className="mt-5 sm:mt-8 max-w-[620px] text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#556363]">
+                Himkala Adventure is a Kathmandu-based trekking company that leads small-group journeys through the Himalayas. We pioneered the city's first free walking tour, connecting travelers with Nepal's culture beyond the summit. We value authentic connection over rushed itineraries. Our guides are local, our groups are intimate, and we value safety as a paramount.
+              </p>
+            </div>
+          </div>
+        </section>
 
         {/* Destinations */}
         <section id="destinations" className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
@@ -441,6 +529,102 @@ export default function Home() {
                   </CardContent>
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Packages - NEW SECTION */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          <div className="mx-auto max-w-[1220px]">
+            <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Featured Packages</div>
+                <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,5.4vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                  Our <span className="text-[#cf6943]">Popular Tours</span>
+                </h2>
+              </div>
+              <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                Explore our most popular tours and experiences in Nepal.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
+              {featuredPackages.map((pkg, i) => {
+                const Icon = pkg.icon;
+                return (
+                  <Link
+                    key={i}
+                    href={pkg.link}
+                    className="group bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 active:scale-[0.99] flex flex-col rounded-lg"
+                  >
+                    <div className="relative h-48 sm:h-52 md:h-56 overflow-hidden">
+                      <Image
+                        src={pkg.image}
+                        alt={pkg.name}
+                        fill
+                        className="object-cover opacity-85"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        quality={85}
+                      />
+                      {pkg.rating && (
+                        <div className="absolute top-3 right-3 bg-[#14383b]/90 text-[#f7f2e9] px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm font-bold flex items-center gap-0.5 sm:gap-1 rounded">
+                          <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" /> {pkg.rating}
+                        </div>
+                      )}
+                      {pkg.price && (
+                        <div className="absolute bottom-3 left-3 bg-[#14383b]/90 text-[#ef966e] px-3 py-1 sm:py-1.5 text-sm sm:text-base font-bold rounded">
+                          {pkg.price}
+                        </div>
+                      )}
+                    </div>
+                    <CardContent className="p-4 sm:p-5 md:p-6 flex-1 flex flex-col">
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#14383b] leading-tight">
+                          {pkg.name}
+                        </h3>
+                        <div className={`w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-br ${pkg.color} rounded flex items-center justify-center text-[#2d6a8a] shrink-0`}>
+                          <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                        </div>
+                      </div>
+                      
+                      <p className="text-[#556363] text-sm leading-relaxed mb-3">
+                        {pkg.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-1.5 mb-3">
+                        {pkg.duration && (
+                          <span className="text-xs bg-[#e4d8c8] px-2 py-0.5 rounded text-[#14383b]">
+                            {pkg.duration}
+                          </span>
+                        )}
+                        {pkg.difficulty && (
+                          <span className="text-xs bg-[#e4d8c8] px-2 py-0.5 rounded text-[#14383b]">
+                            {pkg.difficulty}
+                          </span>
+                        )}
+                        {pkg.altitude && (
+                          <span className="text-xs bg-[#e4d8c8] px-2 py-0.5 rounded text-[#14383b]">
+                            {pkg.altitude}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex flex-wrap gap-1 mt-auto pt-3 border-t border-[#e4d8c8]">
+                        {pkg.highlights.slice(0, 3).map((h, idx) => (
+                          <span key={idx} className="text-[9px] sm:text-[10px] border border-[#d8cec0] text-[#556363] px-1.5 sm:px-2 py-0.5 rounded">
+                            {h}
+                          </span>
+                        ))}
+                        {pkg.highlights.length > 3 && (
+                          <span className="text-[9px] sm:text-[10px] text-[#cf6943] px-1.5 sm:px-2 py-0.5">
+                            +{pkg.highlights.length - 3} more
+                          </span>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
