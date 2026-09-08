@@ -24,7 +24,7 @@ const staticPages: SitemapEntry[] = [
   { path: "/about-us", priority: 0.9, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
   { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
-  { path: "/free-walking-tour-kathmandu.html", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/free-walking-tour-kathmandu.html", priority: 0.95, changeFrequency: "weekly" },
   { path: "/services/trekking", priority: 0.95, changeFrequency: "weekly" },
   {
     path: "/services/free-tour-kathmandu",
