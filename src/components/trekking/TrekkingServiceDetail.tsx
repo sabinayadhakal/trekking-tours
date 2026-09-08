@@ -17,7 +17,10 @@ import {
   XCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TrekkingService } from "@/lib/trekking-services";
+import {
+  getTrekkingDurationLabel,
+  TrekkingService,
+} from "@/lib/trekking-services";
 
 function splitTitle(title: string) {
   const words = title.trim().split(/\s+/);
@@ -122,9 +125,9 @@ export default function TrekkingServiceDetail({
             {[
               {
                 label: "Duration",
-                value: trek.durationDays
-                  ? `${trek.durationDays} Days / ${trek.durationNights ?? Math.max(trek.durationDays - 1, 0)} Nights`
-                  : trek.duration,
+                value: getTrekkingDurationLabel(trek, {
+                  includeNights: true,
+                }),
               },
               { label: "Group Size", value: `${trek.groupSize} people` },
               { label: "Max Altitude", value: trek.maxAltitude },

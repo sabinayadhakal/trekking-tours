@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { TREKKING_SERVICES_FALLBACK, TrekkingService } from "@/lib/trekking-services";
+import { getTrekkingDurationLabel, TREKKING_SERVICES_FALLBACK, TrekkingService } from "@/lib/trekking-services";
 import { loadTrekkingServices } from "@/lib/firebase/trekking-services-repository";
 
 // Only include the treks you want (excluding Gokyo, Langtang Ganjala, Gosainkunda, Nar Phu, Rupina La, Upper Mustang)
@@ -375,7 +375,7 @@ export default function TrekkingNepalPage() {
                     </div>
                     <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-[#556363]">
                       <span className="flex items-center gap-1 sm:gap-2">
-                        <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" /> {featuredPackage.duration}
+                        <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" /> {getTrekkingDurationLabel(featuredPackage)}
                       </span>
                       <span className="flex items-center gap-1 sm:gap-2">
                         <Mountain className="w-3 h-3 sm:w-4 sm:h-4 text-[#cf6943]" /> {featuredPackage.maxAltitude}
@@ -458,7 +458,7 @@ export default function TrekkingNepalPage() {
                         <p className="text-[#556363] text-sm mb-4 leading-relaxed line-clamp-2">{pkg.description}</p>
                         <div className="grid grid-cols-2 gap-2 mb-4">
                           <div className="flex items-center gap-2 text-[#556363] text-sm">
-                            <Clock className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {pkg.duration}
+                            <Clock className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {getTrekkingDurationLabel(pkg)}
                           </div>
                           <div className="flex items-center gap-2 text-[#556363] text-sm">
                             <Mountain className="w-4 h-4 text-[#cf6943]" aria-hidden="true" /> {pkg.maxAltitude}

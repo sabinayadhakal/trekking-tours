@@ -32,7 +32,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { TREKKING_SERVICES_FALLBACK, TrekkingService } from "@/lib/trekking-services";
+import { getTrekkingDurationLabel, TREKKING_SERVICES_FALLBACK, TrekkingService } from "@/lib/trekking-services";
 import { loadTrekkingServices } from "@/lib/firebase/trekking-services-repository";
 import { loadSocialMediaContent } from "@/lib/firebase/social-media-repository";
 import { getYouTubeThumbnail, getYouTubeVideoId, SOCIAL_MEDIA_FALLBACK, SOCIAL_MEDIA_UPDATED_EVENT, SocialMediaContent } from "@/lib/social-media";
@@ -486,7 +486,7 @@ We move slow because the trail decides the pace, not the guidebook. We budget fo
                       <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                         <Image
                           src={trek.image}
-                          alt={`${trek.name} trek - ${trek.duration} trek in Nepal Himalayas`}
+                          alt={`${trek.name} trek - ${getTrekkingDurationLabel(trek)} trek in Nepal Himalayas`}
                           fill
                           className="object-cover opacity-85"
                           sizes="85vw"
@@ -501,7 +501,7 @@ We move slow because the trail decides the pace, not the guidebook. We budget fo
                         <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-6">
                           <div className="flex items-center gap-1.5 sm:gap-2 text-[#b9c9c0]">
                             <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ef966e]" aria-hidden="true" />
-                            <span className="text-xs sm:text-sm">{trek.duration}</span>
+                            <span className="text-xs sm:text-sm">{getTrekkingDurationLabel(trek)}</span>
                           </div>
                           <div className="flex items-center gap-1.5 sm:gap-2 text-[#b9c9c0]">
                             <Mountain className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ef966e]" aria-hidden="true" />
@@ -558,7 +558,7 @@ We move slow because the trail decides the pace, not the guidebook. We budget fo
                           <div className="grid grid-cols-2 gap-4 mb-6">
                             <div className="flex items-center gap-2 text-[#b9c9c0]">
                               <Clock className="w-4 h-4 text-[#ef966e]" aria-hidden="true" />
-                              <span className="text-sm">{trek.duration}</span>
+                              <span className="text-sm">{getTrekkingDurationLabel(trek)}</span>
                             </div>
                             <div className="flex items-center gap-2 text-[#b9c9c0]">
                               <Mountain className="w-4 h-4 text-[#ef966e]" aria-hidden="true" />
