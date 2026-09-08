@@ -410,8 +410,8 @@ const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
         {isOpen && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
             <div className="pl-6 pt-2 space-y-1">
-              <Link href="/services/free-tour-kathmandu" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Free Tours Kathmandu</Link>
-              <Link href="/services/free-walking-tour-kathmandu" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Original Free Walking Tour</Link>
+              <Link href="/services/free-tour-kathmandu" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Free Walking Tour Kathmandu</Link>
+              <Link href="/services/free-walking-tour-kathmandu" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Free Tour Kathmandu</Link>
               <Link href="/services/trekking" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Trekking</Link>
               <Link href="/services/multi-day-cultural-tours" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Multi Day Cultural Tours</Link>
               <Link href="/services/day-hikings" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Day Hiking in Nepal</Link>
@@ -523,7 +523,7 @@ const SearchModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
               <div className="mt-4 text-[#f7f2e9]/70 text-sm">
                 <p className="mb-3 text-xs font-bold tracking-[.12em] text-[#e47a4f] uppercase">Popular Searches</p>
                 <div className="flex flex-wrap gap-2">
-                  {["Everest Base Camp", "Annapurna Circuit", "Bhutan Tour", "Tibet Tour", "Kathmandu Sightseeing", "Free Walking Tour", "Free Tour Kathmandu"].map((term) => (
+                  {["Everest Base Camp", "Annapurna Circuit", "Bhutan Tour", "Tibet Tour", "Kathmandu Sightseeing", "Free Walking Tour"].map((term) => (
                     <button key={term} onClick={() => setSearchQuery(term)} className="px-3 py-1.5 bg-[#f7f2e9]/5 hover:bg-[#f7f2e9]/10 rounded-lg backdrop-blur-sm border border-[#f7f2e9]/10 transition-colors text-sm">{term}</button>
                   ))}
                 </div>
