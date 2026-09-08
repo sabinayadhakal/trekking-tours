@@ -523,7 +523,7 @@ const SearchModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
               <div className="mt-4 text-[#f7f2e9]/70 text-sm">
                 <p className="mb-3 text-xs font-bold tracking-[.12em] text-[#e47a4f] uppercase">Popular Searches</p>
                 <div className="flex flex-wrap gap-2">
-                  {["Everest Base Camp", "Annapurna Circuit", "Bhutan Tour", "Tibet Tour", "Kathmandu Sightseeing", "Free Walking Tour", "Free Tours Kathmandu"].map((term) => (
+                  {["Everest Base Camp", "Annapurna Circuit", "Bhutan Tour", "Tibet Tour", "Kathmandu Sightseeing", "Free Walking Tour", "Free Tour Kathmandu"].map((term) => (
                     <button key={term} onClick={() => setSearchQuery(term)} className="px-3 py-1.5 bg-[#f7f2e9]/5 hover:bg-[#f7f2e9]/10 rounded-lg backdrop-blur-sm border border-[#f7f2e9]/10 transition-colors text-sm">{term}</button>
                   ))}
                 </div>
@@ -891,7 +891,7 @@ export default function ClientLayout({
               </h5>
               <ul className="space-y-3 text-sm text-[#f7f2e9]/60">
                 {[
-                  { name: "Free Walking Tour", url: "/services/free-tour-kathmandu" },
+                  { name: "Free Walking Tour", url: "/services/free-walking-tour-kathmandu" },
                   { name: "Free Tour, Kathmandu", url: "/services/free-walking-tour-kathmandu" },
                   { name: "Manaslu Circuit", url: "/services/trekking/manaslu-circuit-trek" },
                   { name: "Everest Base Camp", url: "/services/trekking/everest-base-camp-trek" },
