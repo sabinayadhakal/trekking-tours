@@ -25,6 +25,7 @@ import {
 } from "@/lib/firebase/managed-services-repository";
 import {
   blankManagedService,
+  canShowManagedServiceOnHomepage,
   createManagedServiceId,
   managedServicePublicLink,
   MANAGED_SERVICE_COLLECTIONS,
@@ -1056,6 +1057,7 @@ export default function ManagedServiceForm({
 }) {
   const router = useRouter();
   const config = MANAGED_SERVICE_COLLECTIONS[collection];
+  const supportsHomepage = canShowManagedServiceOnHomepage(collection);
   const [form, setForm] = React.useState<ManagedService>(() =>
     blankManagedService(collection),
   );
@@ -1764,11 +1766,30 @@ export default function ManagedServiceForm({
                   />
                   Published
                 </label>
+                {supportsHomepage && (
+                  <label className="flex items-center gap-2 text-sm font-semibold">
+                    <input
+                      type="checkbox"
+                      checked={form.showOnHomepage}
+                      onChange={(event) =>
+                        set("showOnHomepage", event.target.checked)
+                      }
+                    />
+                    Show on home page
+                  </label>
+                )}
               </div>
               <p className="mt-3 text-xs text-[#66706d]">
                 Only one item can be featured in this category. Saving this
                 selection removes the previous star.
               </p>
+              {supportsHomepage && (
+                <p className="mt-1 text-xs text-[#66706d]">
+                  {collection === "destinationTours"
+                    ? "Selected destination tours appear in the Nepal, Bhutan & Tibet section on the home page."
+                    : "Selected services appear in the Our Popular Tours section on the home page."}
+                </p>
+              )}
             </Section>
             <div className="sticky bottom-4 z-20 flex justify-end gap-3 rounded-xl border border-[#d8cec0] bg-[#f7f2e9]/95 p-3 shadow-lg backdrop-blur">
               <Button

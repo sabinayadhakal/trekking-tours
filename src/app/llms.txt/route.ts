@@ -144,9 +144,7 @@ const tibetPages: Entry[] = [
 ]
 
 const freeTourPages: Entry[] = [
-  { path: '/services/free-tour-kathmandu', label: 'Free Tour Kathmandu' },
   { path: '/services/free-walking-tour-kathmandu', label: 'Free Walking Tour Kathmandu' },
-  { path: '/services/local-city-tour-kathmandu-free', label: 'Local City Tour Kathmandu Free' },
 ]
 
 const blogPages: Entry[] = [
@@ -189,7 +187,7 @@ function buildLlmsTxt(): string {
   for (const section of sections) {
     // Skip empty sections
     if (section.entries.length === 0) continue
-    
+
     lines.push('')
     lines.push(`## ${section.heading}`)
     lines.push('')

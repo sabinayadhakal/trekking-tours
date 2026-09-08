@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Mountain, 
-  MapPin, 
+import {
+  Mountain,
+  MapPin,
   Phone,
   Mail,
   Calendar,
@@ -28,7 +28,7 @@ import {
   Award,
   Users,
   Star,
-  ExternalLink, 
+  ExternalLink,
   ArrowRight,
   Globe as GlobeIcon,
   FileText,
@@ -150,14 +150,14 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 
 // Import React Icons
-import { 
-  FaFacebook, 
-  FaInstagram, 
-  FaTwitter, 
-  FaYoutube, 
-  FaLinkedin, 
-  FaTiktok, 
-  FaPinterest 
+import {
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+  FaYoutube,
+  FaLinkedin,
+  FaTiktok,
+  FaPinterest
 } from "react-icons/fa";
 
 // WhatsApp SVG Icon Component
@@ -187,7 +187,7 @@ const searchData: SearchResult[] = [
   { title: "Nepal", url: "/destinations/nepal", category: "destination", icon: <Globe className="w-4 h-4" /> },
   { title: "Day Hiking in Nepal", url: "/services/day-hikings", category: "service", icon: <Sun className="w-4 h-4" /> },
   { title: "Day Tour in Nepal", url: "/services/day-sightseeings", category: "service", icon: <Camera className="w-4 h-4" /> },
-  { title: "Free Walking Tour Kathmandu", url: "/services/free-tour-kathmandu", category: "service", icon: <Compass className="w-4 h-4" /> },
+  { title: "Free Walking Tour Kathmandu", url: "/services/free-walking-tour-kathmandu", category: "service", icon: <Compass className="w-4 h-4" /> },
   { title: "Jungle Safari", url: "/services/jungle-safari", category: "service", icon: <Trees className="w-4 h-4" /> },
   { title: "Mountain Flight & Heli Trip", url: "/services/mountain-flight-heli-trip", category: "service", icon: <Plane className="w-4 h-4" /> },
   { title: "Multi Day Cultural Tours", url: "/services/multi-day-cultural-tours", category: "service", icon: <Landmark className="w-4 h-4" /> },
@@ -358,7 +358,6 @@ const ServicesDropdown = () => {
         {isOpen && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ duration: 0.2 }} className="absolute left-0 top-full mt-2 w-72 bg-[#0d2427]/95 backdrop-blur-xl border border-[#f7f2e9]/20 rounded-xl shadow-2xl shadow-black/30 overflow-hidden z-50">
             <div className="py-2">
-              <Link href="/services/free-tour-kathmandu" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Free Walking Tour Kathmandu</Link>
               <Link href="/services/free-walking-tour-kathmandu" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Free Tour Kathmandu</Link>
               <Link href="/services/trekking" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Trekking in Nepal</Link>
               <Link href="/services/multi-day-cultural-tours" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>Multi Day Cultural Tours</Link>
@@ -410,7 +409,6 @@ const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
         {isOpen && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
             <div className="pl-6 pt-2 space-y-1">
-              <Link href="/services/free-tour-kathmandu" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Free Walking Tour Kathmandu</Link>
               <Link href="/services/free-walking-tour-kathmandu" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Free Tour Kathmandu</Link>
               <Link href="/services/trekking" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Trekking</Link>
               <Link href="/services/multi-day-cultural-tours" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Multi Day Cultural Tours</Link>
@@ -571,11 +569,10 @@ export default function ClientLayout({
   return (
     <>
       {/* Navigation - Dark Theme */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-[#0d2427]/95 shadow-lg shadow-black/20' 
-          : 'bg-[#0d2427]/85'
-      } border-b border-[#f7f2e9]/20 backdrop-blur-md`} aria-label="Main navigation">
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-[#0d2427]/95 shadow-lg shadow-black/20'
+        : 'bg-[#0d2427]/85'
+        } border-b border-[#f7f2e9]/20 backdrop-blur-md`} aria-label="Main navigation">
         <div className="container mx-auto px-4 sm:px-6 py-3 md:py-4 flex items-center justify-between relative">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 md:gap-3 group relative z-10" onClick={closeMenu} aria-label="Himkala Adventure - Home">
@@ -602,7 +599,7 @@ export default function ClientLayout({
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6 relative z-10">
-            <button 
+            <button
               onClick={() => setIsSearchOpen(true)}
               className="text-[#f7f2e9]/80 hover:text-[#f0a17f] p-2 transition-colors"
               aria-label="Search treks, tours, and destinations"
@@ -612,24 +609,24 @@ export default function ClientLayout({
 
             <DestinationsDropdown />
             <ServicesDropdown />
-            
-            <Link 
+
+            <Link
               href="/about-us"
               className="inline-flex h-8 items-center justify-center px-3 text-xs font-semibold tracking-[.08em] text-[#f7f2e9]/90 transition-colors hover:text-[#f0a17f]"
               onClick={closeMenu}
             >
               About Us
             </Link>
-            
-            <Link 
+
+            <Link
               href="/blog"
               className="inline-flex h-8 items-center justify-center px-3 text-xs font-semibold tracking-[.08em] text-[#f7f2e9]/90 transition-colors hover:text-[#f0a17f]"
               onClick={closeMenu}
             >
               Blogs
             </Link>
-            
-            <a 
+
+            <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer nofollow"
@@ -639,7 +636,7 @@ export default function ClientLayout({
               <span>WhatsApp</span>
             </a>
 
-            <Button 
+            <Button
               asChild
               className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-full px-5 py-2 shadow-lg shadow-[#e47a4f]/20 active:scale-95 transition-transform text-xs tracking-[.08em] h-auto"
             >
@@ -651,7 +648,7 @@ export default function ClientLayout({
 
           {/* Mobile Navigation Icons */}
           <div className="md:hidden flex items-center gap-2 relative z-10">
-            <button 
+            <button
               onClick={() => setIsSearchOpen(true)}
               className="text-[#f7f2e9] p-2 transition-colors"
               aria-label="Search treks and tours"
@@ -659,7 +656,7 @@ export default function ClientLayout({
               <Search className="w-5 h-5" aria-hidden="true" />
             </button>
 
-            <button 
+            <button
               className="text-[#f7f2e9] p-2 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -694,8 +691,8 @@ export default function ClientLayout({
                     <div className="flex flex-col space-y-1">
                       <MobileDestinationsDropdown closeMenu={closeMenu} />
                       <MobileServicesDropdown closeMenu={closeMenu} />
-                      
-                      <Link 
+
+                      <Link
                         href="/about-us"
                         className="py-4 px-4 text-base font-medium text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-xl transition-all active:scale-95 flex items-center justify-between border-b border-[#f7f2e9]/10 group"
                         onClick={closeMenu}
@@ -703,8 +700,8 @@ export default function ClientLayout({
                         <span>About Us</span>
                         <ChevronRight className="w-4 h-4 text-[#f7f2e9]/50 group-hover:text-[#f0a17f] group-hover:translate-x-1 transition-all" aria-hidden="true" />
                       </Link>
-                      
-                      <Link 
+
+                      <Link
                         href="/blog"
                         className="py-4 px-4 text-base font-medium text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-xl transition-all active:scale-95 flex items-center justify-between border-b border-[#f7f2e9]/10 group"
                         onClick={closeMenu}
@@ -712,8 +709,8 @@ export default function ClientLayout({
                         <span>Blogs</span>
                         <ChevronRight className="w-4 h-4 text-[#f7f2e9]/50 group-hover:text-[#f0a17f] group-hover:translate-x-1 transition-all" aria-hidden="true" />
                       </Link>
-                      
-                      <a 
+
+                      <a
                         href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer nofollow"
@@ -726,8 +723,8 @@ export default function ClientLayout({
                         </span>
                         <ExternalLink className="w-4 h-4 text-[#f7f2e9]/50 group-hover:text-[#25D366] transition-all" aria-hidden="true" />
                       </a>
-                      
-                      <Link 
+
+                      <Link
                         href="/contact"
                         className="py-4 px-4 text-base font-medium text-[#f7f2e9]/90 bg-[#e47a4f]/20 hover:bg-[#e47a4f]/30 rounded-xl transition-all active:scale-95 flex items-center justify-between border border-[#e47a4f]/30 group"
                         onClick={closeMenu}
@@ -737,10 +734,10 @@ export default function ClientLayout({
                       </Link>
                     </div>
                   </div>
-                  
+
                   <div className="mt-auto pt-6 border-t border-[#f7f2e9]/20">
                     <div className="grid grid-cols-2 gap-3 mb-6">
-                      <a 
+                      <a
                         href={`tel:${phoneNumber.replace(/\s/g, '')}`}
                         className="flex items-center justify-center gap-2 text-[#f7f2e9]/90 hover:text-[#f0a17f] transition-colors px-4 py-3 rounded-lg hover:bg-[#f7f2e9]/10 border border-[#f7f2e9]/10 group"
                         onClick={closeMenu}
@@ -748,8 +745,8 @@ export default function ClientLayout({
                         <Phone className="w-4 h-4" aria-hidden="true" />
                         <span className="text-sm font-medium">Call Us</span>
                       </a>
-                      <a 
-                        href="mailto:info@himkalaadventure.com" 
+                      <a
+                        href="mailto:info@himkalaadventure.com"
                         className="flex items-center justify-center gap-2 text-[#f7f2e9]/90 hover:text-[#f0a17f] transition-colors px-4 py-3 rounded-lg hover:bg-[#f7f2e9]/10 border border-[#f7f2e9]/10 group"
                         onClick={closeMenu}
                       >
@@ -757,7 +754,7 @@ export default function ClientLayout({
                         <span className="text-sm font-medium">Email Us</span>
                       </a>
                     </div>
-                    
+
                     <div className="text-center text-[#f7f2e9]/60 text-xs space-y-3">
                       <p className="flex items-center justify-center gap-2">
                         <MapPin className="w-3 h-3" aria-hidden="true" />
@@ -791,26 +788,26 @@ export default function ClientLayout({
           <div className="absolute top-10 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-[#e47a4f] rounded-full blur-[120px]" />
           <div className="absolute bottom-10 right-10 w-48 sm:w-72 h-48 sm:h-72 bg-[#f0a17f] rounded-full blur-[120px]" />
         </div>
-        
+
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-[#f7f2e9]/10 backdrop-blur-sm border border-[#f7f2e9]/20">
               <Star className="w-4 h-4 text-[#f0a17f]" aria-hidden="true" />
               <span className="text-[#f7f2e9]/90 text-sm font-medium">With each trip... comes a new optimism!!!</span>
             </div>
-            
+
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#f7f2e9] mb-4 sm:mb-6 leading-tight">
               Start Planning Your <br className="hidden sm:block" />
               <span className="text-[#f0a17f]">Journey</span>
             </h2>
-            
+
             <p className="text-[#f7f2e9]/80 text-base sm:text-lg mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4">
               Whether you're dreaming of trekking in Nepal, exploring ancient temples, or discovering hidden valleys, we're here to make it happen.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               {/* Plan My Trip Button - Primary */}
-              <Button 
+              <Button
                 asChild
                 className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold h-14 sm:h-16 px-8 sm:px-10 rounded-full text-base sm:text-lg shadow-2xl shadow-[#e47a4f]/40 hover:shadow-[#e47a4f]/60 hover:scale-105 active:scale-95 transition-all w-full sm:w-auto"
               >
@@ -819,9 +816,9 @@ export default function ClientLayout({
                   Plan My Trip Now
                 </Link>
               </Button>
-              
+
               {/* WhatsApp Us Button - Secondary */}
-              <Button 
+              <Button
                 asChild
                 variant="outline"
                 className="bg-[#f7f2e9]/10 hover:bg-[#f7f2e9]/20 text-[#f7f2e9] border-[#f7f2e9]/30 hover:border-[#f7f2e9]/50 h-14 sm:h-16 px-8 sm:px-10 rounded-full text-base sm:text-lg backdrop-blur-sm hover:scale-105 active:scale-95 transition-all w-full sm:w-auto"
@@ -832,7 +829,7 @@ export default function ClientLayout({
                 </a>
               </Button>
             </div>
-            
+
             <p className="text-[#f7f2e9]/50 text-xs sm:text-sm mt-6">
               ✦ Free consultation • No obligations • Expert advice ✦
             </p>
@@ -868,7 +865,7 @@ export default function ClientLayout({
               </p>
               <div className="flex gap-3 flex-wrap">
                 {socialLinks.map((social) => (
-                  <a 
+                  <a
                     key={social.name}
                     href={social.href}
                     target="_blank"
@@ -899,7 +896,7 @@ export default function ClientLayout({
                   { name: "Kathmandu, Pokhara, Lumbini, Chitwan Tour", url: "/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour" },
                 ].map((trek) => (
                   <li key={trek.name}>
-                    <Link 
+                    <Link
                       href={trek.url}
                       className="hover:text-[#f0a17f] transition-colors flex items-center gap-2 py-1 group"
                     >
@@ -924,7 +921,7 @@ export default function ClientLayout({
                   { label: "Customize Your Trip", href: "/contact" },
                 ].map((link) => (
                   <li key={link.label}>
-                    <Link 
+                    <Link
                       href={link.href}
                       className="hover:text-[#f0a17f] transition-colors flex items-center gap-2 py-1 group"
                     >
@@ -1001,14 +998,14 @@ export default function ClientLayout({
               © {new Date().getFullYear()} Himkala Adventure (SnowArt). All rights reserved.
             </p>
             <div className="flex gap-4 md:gap-6 text-xs text-[#f7f2e9]/40">
-              <button 
+              <button
                 onClick={() => setPrivacyOpen(true)}
                 className="hover:text-[#f0a17f] transition-colors cursor-pointer"
                 aria-label="Open privacy policy"
               >
                 Privacy Policy
               </button>
-              <button 
+              <button
                 onClick={() => setTermsOpen(true)}
                 className="hover:text-[#f0a17f] transition-colors cursor-pointer"
                 aria-label="Open terms and conditions"
@@ -1024,7 +1021,7 @@ export default function ClientLayout({
       <PrivacyDialog open={privacyOpen} onOpenChange={setPrivacyOpen} />
 
       {/* Floating WhatsApp Button */}
-      <a 
+      <a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer nofollow"
@@ -1037,7 +1034,7 @@ export default function ClientLayout({
 
       {/* Floating Call Button - Mobile Only */}
       <div className="md:hidden fixed bottom-24 right-6 z-40">
-        <a 
+        <a
           href={`tel:${phoneNumber.replace(/\s/g, '')}`}
           className="w-12 h-12 rounded-full bg-[#e47a4f] flex items-center justify-center shadow-2xl shadow-[#e47a4f]/50 hover:shadow-[#e47a4f]/70 hover:scale-110 active:scale-95 transition-all"
           aria-label="Call us"

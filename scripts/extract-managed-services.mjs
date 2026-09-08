@@ -8,7 +8,7 @@ const traverse = require("@babel/traverse").default;
 const output = path.resolve("src/lib/managed-services-hardcoded.generated.json");
 
 const groups = [
-  { kind: "free-tour", collection: "freeTours", list: "src/app/services/free-tour-kathmandu/page.tsx", variable: "freeTourOptions" },
+  { kind: "free-tour", collection: "freeTours", list: "src/app/services/free-walking-tour-kathmandu/page.tsx", variable: "freeTourOptions" },
   { kind: "multi-day", collection: "multiDayTours", list: "src/app/services/multi-day-cultural-tours/page.tsx", variable: "culturalTours", detailRoot: "src/app/services/multi-day-cultural-tours" },
   { kind: "day-hiking", collection: "dayHikings", list: "src/app/services/day-hikings/page.tsx", variable: "dayHikes", detailRoot: "src/app/services/day-hikings" },
   { kind: "day-sightseeing", collection: "daySightseeings", list: "src/app/services/day-sightseeings/page.tsx", variable: "daySightseeings", detailRoot: "src/app/services/day-sightseeings" },

@@ -124,7 +124,7 @@ const trekkingPackages = [
 ];
 
 const cityTours = [
- {
+  {
     name: "Free Walking Tour Kathmandu",
     duration: "4-5 Hours",
     difficulty: "Easy",
@@ -136,8 +136,8 @@ const cityTours = [
     description: "First Free Walking Tour in Kathmandu and other parts of Kathmandu Valley, Nepal.",
     icon: <Compass className="w-5 h-5" />,
     color: "from-sky-100 to-blue-50",
-    link: "/services/local-city-tour-kathmandu-free",
-},
+    link: "/services/free-walking-tour-kathmandu",
+  },
   {
     name: "Bhaktapur & Patan Day Tour",
     duration: "1 Day",
@@ -162,7 +162,7 @@ const cityTours = [
     icon: <Sunrise className="w-5 h-5" />,
     color: "from-orange-100 to-amber-50",
     link: "/services/day-hikings/nagarkot-changunarayan-hiking",
-},
+  },
   {
     name: "Nepal Heritage Sites Tour",
     duration: "10 Days",
@@ -176,9 +176,9 @@ const cityTours = [
     icon: <Landmark className="w-5 h-5" />,
     color: "from-emerald-100 to-teal-50",
     link: "/services/multi-day-cultural-tours/nepal-heritage-sites-tour",
-},
+  },
 
-{
+  {
     name: "Kathmandu Pokhara Lumbini Chitwan Tour",
     duration: "10 Days",
     difficulty: "Easy",
@@ -191,9 +191,9 @@ const cityTours = [
     icon: <Map className="w-5 h-5" />,
     color: "from-blue-100 to-cyan-50",
     link: "/services/multi-day-cultural-tours/kathmandu-pokhara-lumbini-chitwan-tour",
-},
+  },
 
-{
+  {
     name: "Historic Nature Scenic Photography Tour",
     duration: "12 Days",
     difficulty: "Easy",
@@ -206,7 +206,7 @@ const cityTours = [
     icon: <Camera className="w-5 h-5" />,
     color: "from-purple-100 to-pink-50",
     link: "/services/multi-day-cultural-tours/historic-nature-scenic-photography-tour",
-}
+  }
 ];
 
 const regions = [
@@ -382,7 +382,7 @@ export default function NepalPage() {
                   </h2>
                 </div>
                 <div className="flex gap-3 sm:gap-4">
-                 
+
                 </div>
               </div>
 
@@ -438,7 +438,7 @@ export default function NepalPage() {
                               </span>
                             ))}
                           </div>
-                          <Button 
+                          <Button
                             className="w-full bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-full text-xs min-h-[44px]"
                             onClick={(e) => { e.preventDefault(); handleBookNow(trek.name); }}
                           >
@@ -498,7 +498,7 @@ export default function NepalPage() {
                             </span>
                           ))}
                         </div>
-                        <Button 
+                        <Button
                           className="w-full bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-full min-h-[44px]"
                           onClick={(e) => { e.preventDefault(); handleBookNow(trek.name); }}
                         >
@@ -568,8 +568,8 @@ export default function NepalPage() {
                         </div>
                         <div className="flex items-center justify-between">
                           <span className="text-xl font-bold text-[#14383b]">{tour.price}</span>
-                          <Button 
-                            size="sm" 
+                          <Button
+                            size="sm"
                             className="bg-[#e47a4f] hover:bg-[#cf6943] text-[#fff8ee] font-bold rounded-full min-h-[44px] px-6"
                             onClick={(e) => { e.preventDefault(); handleBookNow(tour.name); }}
                           >
@@ -674,11 +674,10 @@ export default function NepalPage() {
                       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded-lg flex items-center justify-center text-[#f7f2e9]">
                         {season.icon}
                       </div>
-                      <span className={`text-xs font-bold px-3 py-1 rounded-full ${
-                        season.rating === "Best" ? "bg-green-500 text-white" : 
-                        season.rating === "Excellent" ? "bg-blue-500 text-white" : 
-                        season.rating === "Good" ? "bg-amber-500 text-white" : "bg-slate-500 text-white"
-                      }`}>
+                      <span className={`text-xs font-bold px-3 py-1 rounded-full ${season.rating === "Best" ? "bg-green-500 text-white" :
+                          season.rating === "Excellent" ? "bg-blue-500 text-white" :
+                            season.rating === "Good" ? "bg-amber-500 text-white" : "bg-slate-500 text-white"
+                        }`}>
                         {season.rating}
                       </span>
                     </div>
@@ -699,63 +698,63 @@ export default function NepalPage() {
           </section>
 
           {/* What's Included - clean list format matching Bhutan page */}
-<section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
-  <div className="mx-auto max-w-[1220px]">
-    <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
-      <div>
-        <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Our Services</div>
-        <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
-          What We <span className="text-[#cf6943]">Provide</span>
-        </h2>
-      </div>
-      <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
-        Comprehensive support for a safe, comfortable, and unforgettable experience.
-      </p>
-    </div>
+          <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+            <div className="mx-auto max-w-[1220px]">
+              <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">Our Services</div>
+                  <h2 className="mt-3 sm:mt-5 font-serif text-[clamp(2rem,6vw,5rem)] leading-[1.05] sm:leading-[.95] tracking-[-.03em] sm:tracking-[-.045em] text-[#14383b]">
+                    What We <span className="text-[#cf6943]">Provide</span>
+                  </h2>
+                </div>
+                <p className="max-w-full md:max-w-[280px] text-sm leading-6 text-[#66706d]">
+                  Comprehensive support for a safe, comfortable, and unforgettable experience.
+                </p>
+              </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-12">
-      <div className="space-y-4 sm:space-y-5">
-        {[
-          { title: "Licensed Guides", text: "Government-certified guides with extensive local knowledge." },
-          { title: "Accommodation", text: "Best available teahouses and lodges throughout the trek." },
-          { title: "All Meals", text: "Three meals daily on trek, prepared with local ingredients." },
-          { title: "Permits & Fees", text: "All trekking permits and national park entry fees included." },
-          { title: "Transportation", text: "Airport transfers and all local transport arrangements." },
-          { title: "Porter Service", text: "One porter for every two trekkers, carrying up to 15kg." },
-        ].map((item) => (
-          <div key={item.title} className="flex items-start gap-3 sm:gap-4">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#f7f2e9] rounded-lg flex items-center justify-center text-[#cf6943] flex-shrink-0 border border-[#d8cec0]">
-              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-            </div>
-            <div>
-              <h3 className="font-bold text-[#14383b] text-sm sm:text-base mb-0.5 sm:mb-1">{item.title}</h3>
-              <p className="text-[#556363] text-sm leading-relaxed">{item.text}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-12">
+                <div className="space-y-4 sm:space-y-5">
+                  {[
+                    { title: "Licensed Guides", text: "Government-certified guides with extensive local knowledge." },
+                    { title: "Accommodation", text: "Best available teahouses and lodges throughout the trek." },
+                    { title: "All Meals", text: "Three meals daily on trek, prepared with local ingredients." },
+                    { title: "Permits & Fees", text: "All trekking permits and national park entry fees included." },
+                    { title: "Transportation", text: "Airport transfers and all local transport arrangements." },
+                    { title: "Porter Service", text: "One porter for every two trekkers, carrying up to 15kg." },
+                  ].map((item) => (
+                    <div key={item.title} className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#f7f2e9] rounded-lg flex items-center justify-center text-[#cf6943] flex-shrink-0 border border-[#d8cec0]">
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-[#14383b] text-sm sm:text-base mb-0.5 sm:mb-1">{item.title}</h3>
+                        <p className="text-[#556363] text-sm leading-relaxed">{item.text}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
-      <div className="bg-[#f7f2e9] p-5 sm:p-6 md:p-8 rounded-lg border border-[#d8cec0]">
-        <h3 className="font-bold text-[#14383b] text-lg sm:text-xl mb-4">Included Equipment</h3>
-        <ul className="space-y-3">
-          {[
-            <><strong>Sleeping Bag:</strong> -15°C rated for high-altitude comfort</>,
-            <><strong>Down Jacket:</strong> Insulated jacket for cold mornings and evenings</>,
-            <><strong>Duffle Bag:</strong> For your trekking gear, carried by porters</>,
-            <><strong>First Aid Kit:</strong> Comprehensive medical supplies and oxygen cylinder</>,
-            <><strong>Water Purification:</strong> Tablets or UV filter for safe drinking water</>,
-            <><strong>Trekking Poles:</strong> Adjustable poles for stability on trails</>,
-          ].map((item, i) => (
-            <li key={i} className="flex items-start gap-2 sm:gap-3">
-              <CheckCircle className="w-4 h-4 text-[#cf6943] mt-0.5 flex-shrink-0" />
-              <span className="text-[#556363] text-sm sm:text-base">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+                <div className="bg-[#f7f2e9] p-5 sm:p-6 md:p-8 rounded-lg border border-[#d8cec0]">
+                  <h3 className="font-bold text-[#14383b] text-lg sm:text-xl mb-4">Included Equipment</h3>
+                  <ul className="space-y-3">
+                    {[
+                      <><strong>Sleeping Bag:</strong> -15°C rated for high-altitude comfort</>,
+                      <><strong>Down Jacket:</strong> Insulated jacket for cold mornings and evenings</>,
+                      <><strong>Duffle Bag:</strong> For your trekking gear, carried by porters</>,
+                      <><strong>First Aid Kit:</strong> Comprehensive medical supplies and oxygen cylinder</>,
+                      <><strong>Water Purification:</strong> Tablets or UV filter for safe drinking water</>,
+                      <><strong>Trekking Poles:</strong> Adjustable poles for stability on trails</>,
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 sm:gap-3">
+                        <CheckCircle className="w-4 h-4 text-[#cf6943] mt-0.5 flex-shrink-0" />
+                        <span className="text-[#556363] text-sm sm:text-base">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
         </main>
 
         <style jsx global>{`

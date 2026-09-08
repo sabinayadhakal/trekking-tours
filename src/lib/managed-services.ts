@@ -86,6 +86,7 @@ export type ManagedService = {
   highlights: string[];
   serviceHighlights?: string[];
   featured: boolean;
+  showOnHomepage: boolean;
   published: boolean;
   link: string;
   badge?: string;
@@ -180,6 +181,22 @@ export const MANAGED_SERVICE_COLLECTIONS: Record<
   },
 };
 
+export const HOMEPAGE_MANAGED_SERVICE_COLLECTIONS = [
+  "freeTours",
+  "multiDayTours",
+  "dayHikings",
+  "daySightseeings",
+  "destinationTours",
+] as const satisfies readonly ManagedServiceCollection[];
+
+export function canShowManagedServiceOnHomepage(
+  collection: ManagedServiceCollection,
+) {
+  return HOMEPAGE_MANAGED_SERVICE_COLLECTIONS.includes(
+    collection as (typeof HOMEPAGE_MANAGED_SERVICE_COLLECTIONS)[number],
+  );
+}
+
 function completeManagedService(
   value: Partial<ManagedService>,
 ): ManagedService {
@@ -203,6 +220,7 @@ function completeManagedService(
     image: value.image || "/images/used/",
     highlights: Array.isArray(value.highlights) ? value.highlights : [],
     featured: value.featured === true,
+    showOnHomepage: value.showOnHomepage === true,
     published: value.published !== false,
     link: value.link || "",
     route: value.route || "",
@@ -223,9 +241,9 @@ function completeManagedService(
     seasons: Array.isArray(value.seasons) ? value.seasons : [],
     contentSections: Array.isArray(value.contentSections)
       ? value.contentSections.filter(
-          (section) =>
-            kind !== "destination-tour" || section.title !== "Cost Includes",
-        )
+        (section) =>
+          kind !== "destination-tour" || section.title !== "Cost Includes",
+      )
       : [],
     informationTables: Array.isArray(value.informationTables)
       ? value.informationTables
@@ -295,7 +313,7 @@ export function normalizeManagedServices(
   if (
     !valid ||
     new Set(value.map((entry) => (entry as ManagedService).id)).size !==
-      value.length
+    value.length
   )
     return null;
   const services = value.map((entry) =>
@@ -346,6 +364,7 @@ export function blankManagedService(
     highlights: [],
     serviceHighlights: [],
     featured: false,
+    showOnHomepage: false,
     published: true,
     link: collection === "freeTours" ? config.publicPath : "",
     badge: "",

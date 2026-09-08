@@ -4,11 +4,11 @@ import * as React from "react";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  Mountain, 
-  Award, 
-  ShieldCheck, 
-  Users, 
+import {
+  Mountain,
+  Award,
+  ShieldCheck,
+  Users,
   Star,
   Clock,
   Tent,
@@ -42,8 +42,40 @@ import { loadSocialMediaContent } from "@/lib/firebase/social-media-repository";
 import { getYouTubeThumbnail, getYouTubeVideoId, SOCIAL_MEDIA_FALLBACK, SOCIAL_MEDIA_UPDATED_EVENT, SocialMediaContent } from "@/lib/social-media";
 import { loadTravelerStories } from "@/lib/firebase/traveler-stories-repository";
 import { TRAVELER_STORIES_FALLBACK, TRAVELER_STORIES_UPDATED_EVENT, TravelerStoriesContent } from "@/lib/traveler-stories";
+import { loadManagedServices } from "@/lib/firebase/managed-services-repository";
+import {
+  canShowManagedServiceOnHomepage,
+  HOMEPAGE_MANAGED_SERVICE_COLLECTIONS,
+  managedServicePublicLink,
+  MANAGED_SERVICES_UPDATED_EVENT,
+  ManagedService,
+  ManagedServiceCollection,
+} from "@/lib/managed-services";
 
-const destinations = [
+type HomeDestinationCard = {
+  name: string;
+  image: string;
+  description: string;
+  highlights: string[];
+  link: string;
+};
+
+type HomePackageCard = {
+  name: string;
+  duration?: string;
+  difficulty?: string;
+  altitude?: string;
+  price?: string;
+  image: string;
+  rating?: number;
+  highlights: string[];
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  link: string;
+};
+
+const destinations: HomeDestinationCard[] = [
   {
     name: "Nepal",
     image: "/images/used/nepal-main-page.webp",
@@ -112,21 +144,7 @@ const services = [
 ];
 
 // Featured Packages from the .txt file
-const featuredPackages = [
-  {
-    name: "Free Walking Tour Kathmandu",
-    duration: "4-5 Hours",
-    difficulty: "Easy",
-    altitude: "1,400m",
-    price: "Tips-based",
-    image: "/images/used/free-walking-tour-nepal.webp",
-    rating: 4.8,
-    highlights: ["Kathe Swoyambhu", "Glass Beads Market", "Local Lassi", "Monkey Temple", "Newar Architecture"],
-    description: "First Free Walking Tour in Kathmandu and other parts of Kathmandu Valley, Nepal.",
-    icon: Compass,
-    color: "from-sky-100 to-blue-50",
-    link: "/services/local-city-tour-kathmandu-free",
-  },
+const featuredPackages: HomePackageCard[] = [
   {
     name: "Bhaktapur & Patan Day Tour",
     duration: "1 Day",
@@ -196,6 +214,65 @@ const featuredPackages = [
   },
 ];
 
+const popularTourCollections = [
+  "freeTours",
+  "multiDayTours",
+  "dayHikings",
+  "daySightseeings",
+] as const satisfies readonly ManagedServiceCollection[];
+
+const packagePresentation: Record<
+  (typeof popularTourCollections)[number],
+  Pick<HomePackageCard, "icon" | "color">
+> = {
+  freeTours: { icon: Compass, color: "from-sky-100 to-blue-50" },
+  multiDayTours: { icon: Landmark, color: "from-emerald-100 to-teal-50" },
+  dayHikings: { icon: Sunrise, color: "from-orange-100 to-amber-50" },
+  daySightseeings: { icon: Camera, color: "from-amber-100 to-amber-50" },
+};
+
+function managedPriceLabel(price: ManagedService["price"]) {
+  return typeof price === "number"
+    ? `$${price.toLocaleString("en-US")}`
+    : price;
+}
+
+function toHomePackage(
+  collection: (typeof popularTourCollections)[number],
+  service: ManagedService,
+): HomePackageCard {
+  return {
+    name: service.cardTitle || service.name,
+    duration: service.duration,
+    difficulty: service.difficulty,
+    altitude: service.altitude,
+    price: managedPriceLabel(service.price),
+    image: service.image,
+    rating: service.rating,
+    highlights: service.highlights,
+    description:
+      service.cardDescription ||
+      service.shortDescription ||
+      service.description,
+    ...packagePresentation[collection],
+    link:
+      service.link || managedServicePublicLink(collection, service),
+  };
+}
+
+function toHomeDestination(service: ManagedService): HomeDestinationCard {
+  return {
+    name: service.cardTitle || service.name,
+    image: service.image,
+    description:
+      service.cardDescription ||
+      service.shortDescription ||
+      service.description,
+    highlights: service.highlights,
+    link: managedServicePublicLink("destinationTours", service),
+  };
+}
+
 const featuredBlogs = [
   {
     title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
@@ -221,6 +298,10 @@ export default function Home() {
   const [trekkingServices, setTrekkingServices] = useState<TrekkingService[]>(TREKKING_SERVICES_FALLBACK);
   const [socialMedia, setSocialMedia] = useState<SocialMediaContent>(SOCIAL_MEDIA_FALLBACK);
   const [travelerStories, setTravelerStories] = useState<TravelerStoriesContent>(TRAVELER_STORIES_FALLBACK);
+  const [homePackages, setHomePackages] =
+    useState<HomePackageCard[]>(featuredPackages);
+  const [homeDestinations, setHomeDestinations] =
+    useState<HomeDestinationCard[]>(destinations);
   const popularTreks = trekkingServices.filter((trek) => trek.showOnHomepage);
   const { youtubeVideos, instagramPosts } = socialMedia;
   const infiniteTestimonials = [...travelerStories.stories, ...travelerStories.stories, ...travelerStories.stories];
@@ -242,6 +323,66 @@ export default function Home() {
       isMounted = false;
       window.removeEventListener("himkala:trekking-services-updated", refreshTrekkingServices);
       window.removeEventListener("storage", refreshTrekkingServices);
+    };
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const refreshHomepageServices = async () => {
+      const [freeTours, multiDayTours, dayHikings, daySightseeings, destinationTours] =
+        await Promise.all(
+          HOMEPAGE_MANAGED_SERVICE_COLLECTIONS.map((collection) =>
+            loadManagedServices(collection),
+          ),
+        );
+
+      if (!isMounted) return;
+
+      const packageResults = [
+        ["freeTours", freeTours.services],
+        ["multiDayTours", multiDayTours.services],
+        ["dayHikings", dayHikings.services],
+        ["daySightseeings", daySightseeings.services],
+      ] as const;
+      const selectedPackages = packageResults.flatMap(([collection, items]) =>
+        items
+          .filter((item) => item.published && item.showOnHomepage)
+          .map((item) => toHomePackage(collection, item)),
+      );
+      const selectedDestinations = destinationTours.services
+        .filter((item) => item.published && item.showOnHomepage)
+        .map(toHomeDestination);
+
+      setHomePackages(
+        selectedPackages.length > 0 ? selectedPackages : featuredPackages,
+      );
+      setHomeDestinations(
+        selectedDestinations.length > 0
+          ? selectedDestinations
+          : destinations,
+      );
+    };
+
+    const handleManagedServicesUpdate = (event: Event) => {
+      const collection = (event as CustomEvent<ManagedServiceCollection>)
+        .detail;
+      if (canShowManagedServiceOnHomepage(collection)) {
+        void refreshHomepageServices();
+      }
+    };
+
+    void refreshHomepageServices();
+    window.addEventListener(
+      MANAGED_SERVICES_UPDATED_EVENT,
+      handleManagedServicesUpdate,
+    );
+    return () => {
+      isMounted = false;
+      window.removeEventListener(
+        MANAGED_SERVICES_UPDATED_EVENT,
+        handleManagedServicesUpdate,
+      );
     };
   }, []);
 
@@ -319,7 +460,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-[#f2ede4] overflow-x-hidden">
       {/* Viewport meta tag should be in _document.tsx or Head component */}
-      
+
       <main>
         {/* Hero Section - Improved for mobile */}
         <section aria-label="Hero" className="hero-image relative min-h-[480px] sm:min-h-[560px] md:min-h-[720px] h-[85dvh] sm:h-[92dvh] max-h-[920px] bg-[#0d2427] overflow-hidden">
@@ -407,7 +548,7 @@ export default function Home() {
             {/* Mobile Horizontal Scroll */}
             <div className="md:hidden mt-8 sm:mt-12">
               <div className="flex overflow-x-auto pb-6 sm:pb-8 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory">
-                {destinations.map((dest, i) => (
+                {homeDestinations.map((dest, i) => (
                   <Link
                     key={`${dest.name}-${i}`}
                     href={dest.link}
@@ -444,7 +585,7 @@ export default function Home() {
 
             {/* Desktop Grid */}
             <div className="hidden md:grid grid-cols-3 gap-5 mt-12">
-              {destinations.map((dest, i) => (
+              {homeDestinations.map((dest, i) => (
                 <Link
                   key={dest.name}
                   href={dest.link}
@@ -549,7 +690,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8 sm:mt-12">
-              {featuredPackages.map((pkg, i) => {
+              {homePackages.map((pkg, i) => {
                 const Icon = pkg.icon;
                 return (
                   <Link
@@ -586,11 +727,11 @@ export default function Home() {
                           <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                         </div>
                       </div>
-                      
+
                       <p className="text-[#556363] text-sm leading-relaxed mb-3">
                         {pkg.description}
                       </p>
-                      
+
                       <div className="flex flex-wrap gap-1.5 mb-3">
                         {pkg.duration && (
                           <span className="text-xs bg-[#e4d8c8] px-2 py-0.5 rounded text-[#14383b]">
@@ -711,7 +852,7 @@ export default function Home() {
 
             {/* Desktop with arrow navigation */}
             <div className="hidden md:block relative mt-12">
-              <div 
+              <div
                 ref={scrollContainerRef}
                 className="flex overflow-x-auto pb-8 scrollbar-hide"
                 style={{ scrollBehavior: 'smooth' }}
@@ -908,11 +1049,11 @@ export default function Home() {
 
         {/* YouTube Modal - Mobile optimized */}
         {selectedVideo && (
-          <div 
+          <div
             className="fixed inset-0 z-[100] flex items-center justify-center bg-[#102e31]/75 backdrop-blur-sm animate-in fade-in duration-200 p-2 sm:p-4"
             onClick={closeVideoModal}
           >
-            <div 
+            <div
               className="relative w-full max-w-5xl bg-[#f7f2e9] rounded-lg overflow-hidden shadow-2xl mx-2 sm:mx-4"
               onClick={(e) => e.stopPropagation()}
             >
@@ -1080,7 +1221,7 @@ export default function Home() {
                     See All Reviews on Tripadvisor
                   </h3>
                   <p className="text-sm sm:text-base text-[#556363] mb-3 sm:mb-4">
-                    Join hundreds of satisfied travelers who've shared their experiences. 
+                    Join hundreds of satisfied travelers who've shared their experiences.
                     Read detailed reviews, see more photos, and discover why we're rated so highly.
                   </p>
                   <a
@@ -1093,7 +1234,7 @@ export default function Home() {
                     <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
                   </a>
                 </div>
-                
+
                 <div className="lg:w-1/3 flex justify-center">
                   <a
                     href={tripadvisorUrl}

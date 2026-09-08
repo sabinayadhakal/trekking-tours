@@ -27,17 +27,7 @@ const staticPages: SitemapEntry[] = [
   { path: "/free-walking-tour-kathmandu.html", priority: 0.95, changeFrequency: "weekly" },
   { path: "/services/trekking", priority: 0.95, changeFrequency: "weekly" },
   {
-    path: "/services/free-tour-kathmandu",
-    priority: 0.9,
-    changeFrequency: "weekly",
-  },
-  {
     path: "/services/free-walking-tour-kathmandu",
-    priority: 0.9,
-    changeFrequency: "weekly",
-  },
-  {
-    path: "/services/local-city-tour-kathmandu-free",
     priority: 0.9,
     changeFrequency: "weekly",
   },
