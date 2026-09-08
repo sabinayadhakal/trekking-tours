@@ -34,35 +34,40 @@ import { Badge } from "@/components/ui/badge";
 
 const licenses = [
   {
-    name: "Certification of Incorporate Company",
-    number: "ID: 131462/071/072",
-    description: "Registered Private Limited Company under Nepal law",
-    image: "/images/licenses/incorporate-company.jpg",
+    "name": "Business Registration Certificate",
+    "description": "Official registration of the business under Nepal's company law",
+    "image": "/images/used/certs/ktm-municipal-cert.webp"
   },
   {
-    name: "Trekking Agencies' Association of Nepal (TAAN)",
-    number: "",
-    description: "Member of Nepal's premier trekking association",
-    image: "/images/used/TAAN-certificate.webp",
+    "name": "Foreign Exchange Authorization Letter",
+    "description": "Official permission for making payments in foreign currency",
+    "image": "/images/used/certs/foreign-exchange-cert.webp"
   },
   {
-    name: "Certificate of tourism industry division",
-    number: "ID: 1888/071",
-    description: "Government-approved travel and tour operator license",
-    image: "/images/used/certificate-of-industry-division.webp",
+    "name": "Industry and Commerce Office Certificate",
+    "description": "Certificate issued by the Industry and Commerce Office for business operation",
+    "image": "/images/used/certs/udhyog-banijya.webp"
   },
   {
-    name: "Guiding Certificate",
-    number: "ID: TG-01/36",
-    description: "Official certification for professional tourist guide in Nepal",
-    image: "/images/licenses/guiding-certificate.jpg",
+    "name": "PAN Permanent Account Number Certificate",
+    "description": "Tax identification certificate issued by the Inland Revenue Department",
+    "image": "/images/used/certs/PAN-cert.webp"
   },
   {
-    name: "Foreign Exchange Authorization Letter",
-    number: "ID: N.R.B/B.B.Bya.B/E/Tre/H.223/081",
-    description: "Official permission for making payments in foreign currency",
-    image: "/images/licenses/foreign-exchange.jpg",
+    "name": "Company Registration Certificate",
+    "description": "Certificate of incorporation issued by the Company Registrar's Office",
+    "image": "/images/used/certs/incorporate-cert.webp"
   },
+  {
+    "name": "Trekking Agencies' Association of Nepal (TAAN) Membership Certificate",
+    "description": "Member of Nepal's premier trekking association",
+    "image": "/images/used/certs/TAAN-cert-new.webp"
+  },
+  {
+    "name": "Tourism Industry Division Certificate",
+    "description": "Government-approved travel and tour operator license",
+    "image": "/images/used/certs/department-tourism-license.webp"
+  }
 ];
 
 // TripAdvisor Excellence Certificates
@@ -480,9 +485,6 @@ export default function AboutPage() {
                         <h4 className="text-sm sm:text-base text-[#f7f2e9] font-bold mb-0.5 sm:mb-1 break-words group-hover:text-[#ef966e] transition-colors">
                           {license.name}
                         </h4>
-                        {license.number && (
-                          <p className="text-[#f0a17f] text-xs sm:text-sm font-mono mb-1 sm:mb-2 break-all">{license.number}</p>
-                        )}
                         <p className="text-[#f7f2e9]/60 text-xs sm:text-sm">{license.description}</p>
                         
                         {/* Image preview */}
