@@ -27,8 +27,21 @@ async function readCollection() {
     .sort((a, b) => (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER))
     .map(cleanDocument);
   const posts = normalizeBlogPosts(documents);
-  const dated = stored.filter((item) => timestampValue(item.createdAt) > 0).sort((a, b) => timestampValue(b.createdAt) - timestampValue(a.createdAt));
-  return posts ? { posts, latestId: dated[0]?.id || posts[0]?.id } : null;
+  if (!posts) return null;
+  const dated = stored
+    .filter((item) => timestampValue(item.createdAt) > 0)
+    .sort(
+      (a, b) =>
+        timestampValue(b.createdAt) - timestampValue(a.createdAt) ||
+        (a.order ?? Number.MAX_SAFE_INTEGER) -
+          (b.order ?? Number.MAX_SAFE_INTEGER),
+    );
+  const datedIds = new Set(dated.map((item) => item.id));
+  const recentIds = [
+    ...dated.map((item) => item.id),
+    ...posts.filter((item) => !datedIds.has(item.id)).map((item) => item.id),
+  ];
+  return { posts, latestId: recentIds[0], recentIds };
 }
 
 async function writeCollection(posts: BlogPost[]) {
@@ -58,8 +71,18 @@ export async function loadBlogPosts({ allowFallback = true }: { allowFallback?: 
     }
   }
   return allowFallback
-    ? { posts: BLOG_POSTS_FALLBACK, latestId: BLOG_POSTS_FALLBACK[0]?.id, source: "fallback" as const }
-    : { posts: [], latestId: undefined, source: "unavailable" as const };
+    ? {
+        posts: BLOG_POSTS_FALLBACK,
+        latestId: BLOG_POSTS_FALLBACK[0]?.id,
+        recentIds: BLOG_POSTS_FALLBACK.map((post) => post.id),
+        source: "fallback" as const,
+      }
+    : {
+        posts: [],
+        latestId: undefined,
+        recentIds: [],
+        source: "unavailable" as const,
+      };
 }
 
 export function saveBlogPosts(posts: BlogPost[]) {

@@ -134,7 +134,7 @@ export const MANAGED_SERVICE_COLLECTIONS: Record<
     label: "Free Tours",
     singular: "Free tour",
     kind: "free-tour",
-    publicPath: "/services/free-tour-kathmandu",
+    publicPath: "/services/free-walking-tour-kathmandu",
     adminPath: "/admin/free-tours",
   },
   multiDayTours: {

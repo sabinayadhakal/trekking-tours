@@ -240,3 +240,37 @@ export const loadPublicManagedService = cache(
     };
   },
 );
+
+export const loadPublicFeaturedManagedService = cache(
+  async (
+    collection: ManagedServiceCollection,
+  ): Promise<PublicContentResult<ManagedService>> => {
+    const result = await readCollection(collection);
+    if (result.status === "unavailable") {
+      const published = MANAGED_SERVICES_FALLBACK[collection].filter(
+        (service) => service.published,
+      );
+      const item = published.find((service) => service.featured) || published[0];
+      return item
+        ? {
+            status: "found",
+            item,
+            items: published,
+            source: "fallback",
+          }
+        : { status: "unavailable" };
+    }
+
+    const services = normalizeEach(result.records, normalizeManagedServices);
+    const published = services.filter((service) => service.published);
+    const item = published.find((service) => service.featured);
+    if (!item) return { status: "not-found" };
+
+    return {
+      status: "found",
+      item,
+      items: published,
+      source: "firestore",
+    };
+  },
+);

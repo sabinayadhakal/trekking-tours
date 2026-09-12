@@ -44,6 +44,12 @@ import { loadTravelerStories } from "@/lib/firebase/traveler-stories-repository"
 import { TRAVELER_STORIES_FALLBACK, TRAVELER_STORIES_UPDATED_EVENT, TravelerStoriesContent } from "@/lib/traveler-stories";
 import { loadManagedServices } from "@/lib/firebase/managed-services-repository";
 import {
+  BLOG_POSTS_FALLBACK,
+  BLOG_POSTS_UPDATED_EVENT,
+  BlogPost,
+} from "@/lib/blog-posts";
+import { loadBlogPosts } from "@/lib/firebase/blog-posts-repository";
+import {
   canShowManagedServiceOnHomepage,
   HOMEPAGE_MANAGED_SERVICE_COLLECTIONS,
   managedServicePublicLink,
@@ -273,25 +279,6 @@ function toHomeDestination(service: ManagedService): HomeDestinationCard {
   };
 }
 
-const featuredBlogs = [
-  {
-    title: "How Much Does a Nepal Trek Really Cost? Complete 2026 Budget Breakdown",
-    excerpt: "From budget-friendly Poon Hill at $500 to premium Upper Mustang at $2,595 — break down every trek, permit, and hidden expense.",
-    image: "/images/used/nepal-trek-cost-blog-hero.webp",
-    slug: "nepal-trek-cost-2026",
-    date: "June 4, 2026",
-    readTime: "16 min",
-  },
-  {
-    title: "Solo Trekking in Nepal: Complete 2026 Guide for Independent Travelers",
-    excerpt: "Solo trekking in Nepal is legal again. Complete 2026 guide covering best treks, permits, costs, safety tips, and everything you need for a solo Himalayan adventure.",
-    image: "/images/used/solo-trek-blog-hero.webp",
-    slug: "solo-trekking-nepal-2026",
-    date: "August 7, 2026",
-    readTime: "8 min",
-  },
-];
-
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [selectedVideo, setSelectedVideo] = useState<{ title: string; url: string } | null>(null);
@@ -302,7 +289,24 @@ export default function Home() {
     useState<HomePackageCard[]>(featuredPackages);
   const [homeDestinations, setHomeDestinations] =
     useState<HomeDestinationCard[]>(destinations);
+  const [blogPosts, setBlogPosts] =
+    useState<BlogPost[]>(BLOG_POSTS_FALLBACK);
+  const [recentBlogIds, setRecentBlogIds] = useState<string[]>(
+    BLOG_POSTS_FALLBACK.map((post) => post.id),
+  );
   const popularTreks = trekkingServices.filter((trek) => trek.showOnHomepage);
+  const publishedBlogPosts = blogPosts.filter((post) => post.published);
+  const featuredBlog =
+    publishedBlogPosts.find((post) => post.featured) ||
+    publishedBlogPosts[0];
+  const latestNonFeaturedBlog =
+    recentBlogIds
+      .map((id) => publishedBlogPosts.find((post) => post.id === id))
+      .find((post) => post && post.id !== featuredBlog?.id) ||
+    publishedBlogPosts.find((post) => post.id !== featuredBlog?.id);
+  const featuredBlogs = [featuredBlog, latestNonFeaturedBlog].filter(
+    (post): post is BlogPost => Boolean(post),
+  );
   const { youtubeVideos, instagramPosts } = socialMedia;
   const infiniteTestimonials = [...travelerStories.stories, ...travelerStories.stories, ...travelerStories.stories];
   const tripadvisorUrl = travelerStories.tripadvisorUrl;
@@ -323,6 +327,24 @@ export default function Home() {
       isMounted = false;
       window.removeEventListener("himkala:trekking-services-updated", refreshTrekkingServices);
       window.removeEventListener("storage", refreshTrekkingServices);
+    };
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const refreshBlogPosts = async () => {
+      const { posts, recentIds } = await loadBlogPosts();
+      if (!isMounted) return;
+      setBlogPosts(posts);
+      setRecentBlogIds(recentIds);
+    };
+
+    void refreshBlogPosts();
+    window.addEventListener(BLOG_POSTS_UPDATED_EVENT, refreshBlogPosts);
+    return () => {
+      isMounted = false;
+      window.removeEventListener(BLOG_POSTS_UPDATED_EVENT, refreshBlogPosts);
     };
   }, []);
 

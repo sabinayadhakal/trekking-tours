@@ -41,8 +41,35 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  getTrekkingDurationLabel,
+  TREKKING_SERVICES_UPDATED_EVENT,
+  TrekkingService,
+} from "@/lib/trekking-services";
+import { loadTrekkingServices } from "@/lib/firebase/trekking-services-repository";
+import { loadManagedServices } from "@/lib/firebase/managed-services-repository";
+import {
+  managedServicePublicLink,
+  MANAGED_SERVICES_UPDATED_EVENT,
+  ManagedService,
+  ManagedServiceCollection,
+} from "@/lib/managed-services";
 
-const trekkingPackages = [
+type NepalTrekCard = {
+  name: string;
+  duration: string;
+  difficulty: string;
+  altitude: string;
+  price: string;
+  image: string;
+  rating: number;
+  region: string;
+  highlights: string[];
+  description: string;
+  link: string;
+};
+
+const trekkingPackagesFallback: NepalTrekCard[] = [
   {
     name: "Everest Base Camp Trek",
     duration: "14 Days",
@@ -123,7 +150,38 @@ const trekkingPackages = [
   },
 ];
 
-const cityTours = [
+function toNepalTrekCard(trek: TrekkingService): NepalTrekCard {
+  return {
+    name: trek.name,
+    duration: getTrekkingDurationLabel(trek),
+    difficulty: trek.difficulty,
+    altitude: trek.maxAltitude,
+    price: `$${trek.price.toLocaleString("en-US")}`,
+    image: trek.image,
+    rating: trek.rating,
+    region: trek.region,
+    highlights: trek.highlights,
+    description: trek.shortDescription || trek.description,
+    link: trek.link,
+  };
+}
+
+type CulturalExperienceCard = {
+  name: string;
+  duration: string;
+  difficulty?: string;
+  altitude?: string;
+  price: string;
+  image: string;
+  rating?: number;
+  highlights: string[];
+  description: string;
+  icon: React.ReactNode;
+  color: string;
+  link: string;
+};
+
+const cityToursFallback: CulturalExperienceCard[] = [
   {
     name: "Free Walking Tour Kathmandu",
     duration: "4-5 Hours",
@@ -209,6 +267,73 @@ const cityTours = [
   }
 ];
 
+const culturalExperienceCollections = [
+  "freeTours",
+  "multiDayTours",
+  "dayHikings",
+  "daySightseeings",
+  "mountainFlights",
+  "jungleSafaris",
+] as const satisfies readonly ManagedServiceCollection[];
+
+const culturalExperiencePresentation: Record<
+  (typeof culturalExperienceCollections)[number],
+  { icon: React.ReactNode; color: string }
+> = {
+  freeTours: {
+    icon: <Compass className="h-5 w-5" />,
+    color: "from-sky-100 to-blue-50",
+  },
+  multiDayTours: {
+    icon: <Landmark className="h-5 w-5" />,
+    color: "from-emerald-100 to-teal-50",
+  },
+  dayHikings: {
+    icon: <Sunrise className="h-5 w-5" />,
+    color: "from-orange-100 to-amber-50",
+  },
+  daySightseeings: {
+    icon: <Castle className="h-5 w-5" />,
+    color: "from-amber-100 to-amber-50",
+  },
+  mountainFlights: {
+    icon: <Plane className="h-5 w-5" />,
+    color: "from-blue-100 to-cyan-50",
+  },
+  jungleSafaris: {
+    icon: <Binoculars className="h-5 w-5" />,
+    color: "from-green-100 to-emerald-50",
+  },
+};
+
+function servicePriceLabel(price: ManagedService["price"]) {
+  return typeof price === "number"
+    ? `$${price.toLocaleString("en-US")}`
+    : price;
+}
+
+function toCulturalExperience(
+  collection: (typeof culturalExperienceCollections)[number],
+  service: ManagedService,
+): CulturalExperienceCard {
+  return {
+    name: service.cardTitle || service.name,
+    duration: service.duration,
+    difficulty: service.difficulty,
+    altitude: service.altitude,
+    price: servicePriceLabel(service.price),
+    image: service.image,
+    rating: service.rating,
+    highlights: service.highlights,
+    description:
+      service.cardDescription ||
+      service.shortDescription ||
+      service.description,
+    ...culturalExperiencePresentation[collection],
+    link: service.link || managedServicePublicLink(collection, service),
+  };
+}
+
 const regions = [
   {
     name: "Everest Region",
@@ -235,6 +360,73 @@ const regions = [
 export default function NepalPage() {
   const router = useRouter();
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+  const [trekkingPackages, setTrekkingPackages] =
+    React.useState<NepalTrekCard[]>(trekkingPackagesFallback);
+  const [cityTours, setCityTours] =
+    React.useState<CulturalExperienceCard[]>(cityToursFallback);
+
+  React.useEffect(() => {
+    let isMounted = true;
+
+    const refreshTreks = async () => {
+      const { treks } = await loadTrekkingServices();
+      if (isMounted) setTrekkingPackages(treks.map(toNepalTrekCard));
+    };
+
+    void refreshTreks();
+    window.addEventListener(TREKKING_SERVICES_UPDATED_EVENT, refreshTreks);
+    return () => {
+      isMounted = false;
+      window.removeEventListener(TREKKING_SERVICES_UPDATED_EVENT, refreshTreks);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    let isMounted = true;
+
+    const refreshCulturalExperiences = async () => {
+      const results = await Promise.all(
+        culturalExperienceCollections.map(async (collection) => ({
+          collection,
+          result: await loadManagedServices(collection),
+        })),
+      );
+      if (!isMounted) return;
+
+      setCityTours(
+        results.flatMap(({ collection, result }) =>
+          result.services
+            .filter((service) => service.published)
+            .map((service) => toCulturalExperience(collection, service)),
+        ),
+      );
+    };
+
+    const handleManagedServicesUpdate = (event: Event) => {
+      const collection = (event as CustomEvent<ManagedServiceCollection>)
+        .detail;
+      if (
+        culturalExperienceCollections.some(
+          (candidate) => candidate === collection,
+        )
+      ) {
+        void refreshCulturalExperiences();
+      }
+    };
+
+    void refreshCulturalExperiences();
+    window.addEventListener(
+      MANAGED_SERVICES_UPDATED_EVENT,
+      handleManagedServicesUpdate,
+    );
+    return () => {
+      isMounted = false;
+      window.removeEventListener(
+        MANAGED_SERVICES_UPDATED_EVENT,
+        handleManagedServicesUpdate,
+      );
+    };
+  }, []);
 
   const handleBookNow = (itemName: string) => {
     router.push(`/contact?trek=${encodeURIComponent(itemName)}`);
