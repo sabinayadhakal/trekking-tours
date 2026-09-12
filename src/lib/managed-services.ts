@@ -87,6 +87,8 @@ export type ManagedService = {
   serviceHighlights?: string[];
   featured: boolean;
   showOnHomepage: boolean;
+  showOnNepalSection1: boolean;
+  showOnNepalSection2: boolean;
   published: boolean;
   link: string;
   badge?: string;
@@ -134,7 +136,7 @@ export const MANAGED_SERVICE_COLLECTIONS: Record<
     label: "Free Tours",
     singular: "Free tour",
     kind: "free-tour",
-    publicPath: "/services/free-walking-tour-kathmandu",
+    publicPath: "/services/free-tour-kathmandu",
     adminPath: "/admin/free-tours",
   },
   multiDayTours: {
@@ -230,6 +232,11 @@ function completeManagedService(
     park: value.park || "",
     isFree: value.isFree === true,
     ...value,
+    showOnNepalSection1: value.showOnNepalSection1 === true,
+    showOnNepalSection2:
+      typeof value.showOnNepalSection2 === "boolean"
+        ? value.showOnNepalSection2
+        : kind !== "destination-tour",
     activities: Array.isArray(value.activities) ? value.activities : [],
     wildlife: Array.isArray(value.wildlife) ? value.wildlife : [],
     serviceHighlights: Array.isArray(value.serviceHighlights)
@@ -365,6 +372,8 @@ export function blankManagedService(
     serviceHighlights: [],
     featured: false,
     showOnHomepage: false,
+    showOnNepalSection1: false,
+    showOnNepalSection2: false,
     published: true,
     link: collection === "freeTours" ? config.publicPath : "",
     badge: "",

@@ -1778,6 +1778,30 @@ export default function ManagedServiceForm({
                     Show on home page
                   </label>
                 )}
+                {collection !== "destinationTours" && (
+                  <>
+                    <label className="flex items-center gap-2 text-sm font-semibold">
+                      <input
+                        type="checkbox"
+                        checked={form.showOnNepalSection1}
+                        onChange={(event) =>
+                          set("showOnNepalSection1", event.target.checked)
+                        }
+                      />
+                      Nepal Section 1
+                    </label>
+                    <label className="flex items-center gap-2 text-sm font-semibold">
+                      <input
+                        type="checkbox"
+                        checked={form.showOnNepalSection2}
+                        onChange={(event) =>
+                          set("showOnNepalSection2", event.target.checked)
+                        }
+                      />
+                      Nepal Section 2
+                    </label>
+                  </>
+                )}
               </div>
               <p className="mt-3 text-xs text-[#66706d]">
                 Only one item can be featured in this category. Saving this
@@ -1788,6 +1812,13 @@ export default function ManagedServiceForm({
                   {collection === "destinationTours"
                     ? "Selected destination tours appear in the Nepal, Bhutan & Tibet section on the home page."
                     : "Selected services appear in the Our Popular Tours section on the home page."}
+                </p>
+              )}
+              {collection !== "destinationTours" && (
+                <p className="mt-1 text-xs text-[#66706d]">
+                  Nepal Section 1 displays the item under Himalayan Treks.
+                  Nepal Section 2 displays it under Cultural &amp; Heritage
+                  Experiences. Both options can be selected.
                 </p>
               )}
             </Section>

@@ -166,6 +166,28 @@ function toNepalTrekCard(trek: TrekkingService): NepalTrekCard {
   };
 }
 
+function managedServiceToNepalTrekCard(
+  collection: (typeof culturalExperienceCollections)[number],
+  service: ManagedService,
+): NepalTrekCard {
+  return {
+    name: service.cardTitle || service.name,
+    duration: service.duration,
+    difficulty: service.difficulty,
+    altitude: service.altitude,
+    price: servicePriceLabel(service.price),
+    image: service.image,
+    rating: service.rating ?? 4.8,
+    region: service.region || service.category || "Nepal",
+    highlights: service.highlights,
+    description:
+      service.cardDescription ||
+      service.shortDescription ||
+      service.description,
+    link: service.link || managedServicePublicLink(collection, service),
+  };
+}
+
 type CulturalExperienceCard = {
   name: string;
   duration: string;
@@ -334,6 +356,25 @@ function toCulturalExperience(
   };
 }
 
+function trekkingServiceToCulturalExperience(
+  trek: TrekkingService,
+): CulturalExperienceCard {
+  return {
+    name: trek.name,
+    duration: getTrekkingDurationLabel(trek),
+    difficulty: trek.difficulty,
+    altitude: trek.maxAltitude,
+    price: `$${trek.price.toLocaleString("en-US")}`,
+    image: trek.image,
+    rating: trek.rating,
+    highlights: trek.highlights,
+    description: trek.shortDescription || trek.description,
+    icon: <Mountain className="h-5 w-5" />,
+    color: "from-blue-100 to-cyan-50",
+    link: trek.link,
+  };
+}
+
 const regions = [
   {
     name: "Everest Region",
@@ -368,37 +409,43 @@ export default function NepalPage() {
   React.useEffect(() => {
     let isMounted = true;
 
-    const refreshTreks = async () => {
-      const { treks } = await loadTrekkingServices();
-      if (isMounted) setTrekkingPackages(treks.map(toNepalTrekCard));
-    };
-
-    void refreshTreks();
-    window.addEventListener(TREKKING_SERVICES_UPDATED_EVENT, refreshTreks);
-    return () => {
-      isMounted = false;
-      window.removeEventListener(TREKKING_SERVICES_UPDATED_EVENT, refreshTreks);
-    };
-  }, []);
-
-  React.useEffect(() => {
-    let isMounted = true;
-
-    const refreshCulturalExperiences = async () => {
-      const results = await Promise.all(
-        culturalExperienceCollections.map(async (collection) => ({
+    const refreshNepalSections = async () => {
+      const [{ treks }, ...managedResults] = await Promise.all([
+        loadTrekkingServices(),
+        ...culturalExperienceCollections.map(async (collection) => ({
           collection,
           result: await loadManagedServices(collection),
         })),
-      );
+      ]);
       if (!isMounted) return;
 
+      const managedServices = managedResults.flatMap(({ collection, result }) =>
+        result.services
+          .filter((service) => service.published)
+          .map((service) => ({ collection, service })),
+      );
+
+      setTrekkingPackages([
+        ...treks
+          .filter((trek) => trek.showOnNepalSection1 === true)
+          .map(toNepalTrekCard),
+        ...managedServices
+          .filter(({ service }) => service.showOnNepalSection1)
+          .map(({ collection, service }) =>
+            managedServiceToNepalTrekCard(collection, service),
+          ),
+      ]);
       setCityTours(
-        results.flatMap(({ collection, result }) =>
-          result.services
-            .filter((service) => service.published)
-            .map((service) => toCulturalExperience(collection, service)),
-        ),
+        [
+          ...treks
+            .filter((trek) => trek.showOnNepalSection2 === true)
+            .map(trekkingServiceToCulturalExperience),
+          ...managedServices
+            .filter(({ service }) => service.showOnNepalSection2)
+            .map(({ collection, service }) =>
+              toCulturalExperience(collection, service),
+            ),
+        ],
       );
     };
 
@@ -410,17 +457,25 @@ export default function NepalPage() {
           (candidate) => candidate === collection,
         )
       ) {
-        void refreshCulturalExperiences();
+        void refreshNepalSections();
       }
     };
 
-    void refreshCulturalExperiences();
+    void refreshNepalSections();
+    window.addEventListener(
+      TREKKING_SERVICES_UPDATED_EVENT,
+      refreshNepalSections,
+    );
     window.addEventListener(
       MANAGED_SERVICES_UPDATED_EVENT,
       handleManagedServicesUpdate,
     );
     return () => {
       isMounted = false;
+      window.removeEventListener(
+        TREKKING_SERVICES_UPDATED_EVENT,
+        refreshNepalSections,
+      );
       window.removeEventListener(
         MANAGED_SERVICES_UPDATED_EVENT,
         handleManagedServicesUpdate,

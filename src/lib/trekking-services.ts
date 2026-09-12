@@ -50,6 +50,8 @@ export type TrekkingService = {
   description: string;
   featured: boolean;
   showOnHomepage: boolean;
+  showOnNepalSection1?: boolean;
+  showOnNepalSection2?: boolean;
   link: string;
   shortDescription?: string;
   heroBadge?: string;
@@ -421,6 +423,8 @@ export const TREKKING_SERVICES_FALLBACK: TrekkingService[] = keepSingleFeatured(
   TREKKING_SERVICE_SUMMARIES.map((trek) => ({
     ...trek,
     ...TREKKING_HARDCODED_CONTENT[trek.id],
+    showOnNepalSection1: true,
+    showOnNepalSection2: false,
   })),
 );
 
@@ -515,5 +519,11 @@ export function normalizeTrekkingServices(
       value.length
   )
     return null;
-  return keepSingleFeatured(value as TrekkingService[]);
+  return keepSingleFeatured(
+    (value as TrekkingService[]).map((trek) => ({
+      ...trek,
+      showOnNepalSection1: trek.showOnNepalSection1 ?? true,
+      showOnNepalSection2: trek.showOnNepalSection2 ?? false,
+    })),
+  );
 }
