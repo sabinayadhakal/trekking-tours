@@ -33,9 +33,29 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+/* ------------------------------------------------------------------ */
+/*  SEO CONSTANTS                                                      */
+/* ------------------------------------------------------------------ */
+
+const SITE_URL = "https://www.freetourkathmandu.com";
+const PAGE_URL = `${SITE_URL}/free-walking-tour-kathmandu`;
+const TOUR_NAME = "Free Walking Tour Kathmandu";
+const TOUR_IMAGE = `${SITE_URL}/images/used/fwt-1.webp`;
+const PRICE_NPR = "0";
+const CURRENCY = "NPR";
+const RATING_VALUE = "4.9";
+const REVIEW_COUNT = "1000";
+const DURATION_ISO = "PT4H30M";
+const LATITUDE = "27.7148";
+const LONGITUDE = "85.3145";
+
+/* ------------------------------------------------------------------ */
+/*  DATA                                                               */
+/* ------------------------------------------------------------------ */
+
 const tourStops = [
   {
-    name: "Kathe Swoyambhu",
+    name: "Kathe Swoyambhu (Kathesimbhu Stupa)",
     icon: Church,
     description:
       "A beautiful embodiment of religious harmony where Hindu, Buddhist and Tibetan cultures coexist. Small stupas with symbolic paintings surround the main stupa. Very photogenic, often undergoing gentle construction.",
@@ -47,16 +67,54 @@ const tourStops = [
       "Near the glass-bead market, try freshly churned lassi with sugar, yogurt, dried fruits and concentrated milk (khuwa). A must-try refreshment — NPR 40 (small) / NPR 70 (large).",
   },
   {
-    name: "Glass Beads Market",
+    name: "Glass Beads Market (Indra Chowk)",
     icon: ShoppingBag,
     description:
       "Generations of Kathmandu's Muslim minority make colourful glass beads for Hindu ceremonies. Iconic green bead necklaces are given to brides. A wholesale market bursting with colour.",
   },
   {
-    name: "Monkey Temple (Swoyambhunath)",
+    name: "Monkey Temple (Swoyambhunath Stupa)",
     icon: MountainSnow,
     description:
-      "Now 424 steps (post‑quake reconstruction). Hundreds of monkeys, not aggressive but will pester if you carry sweets. Panoramic valley views, symbolic carvings, souvenir shops. Entrance NPR 200.",
+      "Now 424 steps (post-quake reconstruction). Hundreds of monkeys, not aggressive but will pester if you carry sweets. Panoramic valley views, symbolic carvings, souvenir shops. Entrance NPR 200.",
+  },
+];
+
+const neighborhoods = [
+  {
+    name: "Thamel",
+    description:
+      "The city's main travel hub, known for trekking gear, North Face and outdoor brand shops (official and otherwise), fancy jewelry, garments, and ethnic items.",
+  },
+  {
+    name: "Thahity",
+    description:
+      "A quieter square known for prayer flags, butter lamps, robes for monks and nuns, ethnic dress, tea, and incense — reflecting the neighbourhood's strong Buddhist character.",
+  },
+  {
+    name: "Naghal",
+    description:
+      "Home to traditional Nepali handmade paper (lokta), Newari food including the savory lentil pancake known as bara, and shops selling Nepal's national dress.",
+  },
+  {
+    name: "Asan Market",
+    description:
+      "One of Kathmandu's oldest and busiest trading squares — local vegetables and fruit, fried fish, dried meat, beans, beaten rice (chiura), leaf plates, Nepali spices, copper pots, saris, and ritual items used in daily Hindu worship.",
+  },
+  {
+    name: "Indrachowk",
+    description:
+      "Known for lassi stalls, jewelry, clothing, glass beads, and cosmetics — one of the city's classic old trading intersections.",
+  },
+  {
+    name: "Yetkha",
+    description:
+      "A good stop for souvenirs of all kinds, Nepali handicrafts, and traditional Nepali musical instruments.",
+  },
+  {
+    name: "Bhagawan Bahal Road",
+    description:
+      "Famous specifically for prayer beads, including bodhichitta seed malas, alongside handcrafted singing bowls.",
   },
 ];
 
@@ -93,35 +151,35 @@ const reviews = [
 const faqs = [
   {
     q: "Is the tour really free?",
-    a: "Yes! The Free Walking Tour Kathmandu is tips-based — you decide what to give the guide based on your experience. There is no fixed fee to join."
+    a: "Yes! The Free Walking Tour Kathmandu is tips-based — you decide what to give the guide based on your experience. There is no fixed fee to join.",
   },
   {
     q: "Do I need to book in advance?",
-a: "Yes, advance reservation is required so our guide can prepare for the tour. Please book your spot at least 24 hours in advance. On tour day, simply meet us at the Garden of Dreams entrance 5–10 minutes before your scheduled start time (9:00 AM or 2:00 PM daily)"
+    a: "Yes, advance reservation is required so our guide can prepare for the tour. Please book your spot at least 24 hours in advance. On tour day, simply meet us at the Garden of Dreams entrance 5–10 minutes before your scheduled start time (9:00 AM or 2:00 PM daily).",
   },
   {
     q: "How long does the tour last?",
-    a: "The tour typically takes 4-5 hours, covering approximately 4-5 kilometers through Kathmandu's historic centre."
+    a: "The tour typically takes 4-5 hours, covering approximately 4-5 kilometers through Kathmandu's historic centre.",
   },
   {
     q: "What should I bring?",
-    a: "Comfortable walking shoes, water, sun protection, and small cash for refreshments and the Monkey Temple entrance fee (NPR 200)."
+    a: "Comfortable walking shoes, water, sun protection, and small cash for refreshments and the Monkey Temple entrance fee (NPR 200).",
   },
   {
     q: "Is it suitable for children?",
-    a: "Absolutely! The tour is family-friendly and suitable for all ages. Children often enjoy the monkeys at Swoyambhunath."
+    a: "Absolutely! The tour is family-friendly and suitable for all ages. Children often enjoy the monkeys at Swoyambhunath.",
   },
   {
     q: "What happens if it rains?",
-    a: "The tour operates rain or shine. In case of heavy rain, your guide will adjust the route to include more covered areas."
+    a: "The tour operates rain or shine. In case of heavy rain, your guide will adjust the route to include more covered areas.",
   },
   {
     q: "How many people join the tour?",
-    a: "Group sizes vary from 2-3 people to 15-20 during peak season. The intimate size allows for personal attention and questions throughout the walk."
+    a: "Group sizes vary from 2-3 people to 15-20 during peak season. The intimate size allows for personal attention and questions throughout the walk.",
   },
   {
     q: "Can I leave the tour early?",
-    a: "Yes, you're free to leave at any point. The guide can direct you back to Thamel or advise on transportation from wherever you are."
+    a: "Yes, you're free to leave at any point. The guide can direct you back to Thamel or advise on transportation from wherever you are.",
   },
 ];
 
@@ -155,18 +213,178 @@ const nearbyAttractions = [
   },
 ];
 
+/* ------------------------------------------------------------------ */
+/*  STRUCTURED DATA (JSON-LD) — declared AFTER the arrays it uses      */
+/* ------------------------------------------------------------------ */
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${PAGE_URL}/#webpage`,
+      url: PAGE_URL,
+      name: "Free Walking Tour Kathmandu | Tips-Based Walking Tour Nepal",
+      description:
+        "Join the #1 Free Walking Tour in Kathmandu. Daily 9am & 2pm. Discover Swoyambhunath (Monkey Temple), Durbar Square, Indra Chowk, hidden Newar courtyards & more. Book your spot — tips-based, no fixed fee.",
+      inLanguage: "en",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": `${PAGE_URL}/#tour` },
+      primaryImageOfPage: { "@id": `${PAGE_URL}/#primaryimage` },
+      datePublished: "2024-01-15",
+      dateModified: new Date().toISOString().split("T")[0],
+      breadcrumb: { "@id": `${PAGE_URL}/#breadcrumb` },
+    },
+    {
+      "@type": "ImageObject",
+      "@id": `${PAGE_URL}/#primaryimage`,
+      url: TOUR_IMAGE,
+      contentUrl: TOUR_IMAGE,
+      width: 1200,
+      height: 630,
+      caption:
+        "Free Walking Tour Kathmandu group exploring hidden temples and cultural heritage in Nepal's capital",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${PAGE_URL}/#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Kathmandu Tours", item: `${SITE_URL}/tours` },
+        { "@type": "ListItem", position: 3, name: TOUR_NAME, item: PAGE_URL },
+      ],
+    },
+    {
+      "@type": ["Product", "TouristAttraction"],
+      "@id": `${PAGE_URL}/#tour`,
+      name: TOUR_NAME,
+      alternateName: [
+        "Free Tour Kathmandu",
+        "Kathmandu Free Walking Tour",
+        "Tips-Based Walking Tour Kathmandu",
+      ],
+      description:
+        "The first tips-based free walking tour in the Kathmandu Valley. A 4–5 hour guided walk through Thamel, Kathesimbhu Stupa, Indra Chowk, Durbar Square, Newar courtyards, the Vishnumati cremation ghats, and Swoyambhunath (Monkey Temple). Led by expert local guides. Daily departures at 9:00 AM and 2:00 PM from the Garden of Dreams.",
+      image: [TOUR_IMAGE, `${SITE_URL}/images/used/monkey_temple.webp`, `${SITE_URL}/images/used/kathesimbu.webp`],
+      brand: { "@type": "Brand", name: "Free Tour Kathmandu" },
+      category: "Walking Tour",
+      offers: {
+        "@type": "Offer",
+        url: PAGE_URL,
+        priceCurrency: CURRENCY,
+        price: PRICE_NPR,
+        priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split("T")[0],
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: RATING_VALUE,
+        reviewCount: REVIEW_COUNT,
+        bestRating: "5",
+        worstRating: "1",
+      },
+      review: reviews.map((r) => ({
+        "@type": "Review",
+        author: { "@type": "Person", name: r.name },
+        datePublished: r.date,
+        reviewBody: r.text,
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        locationCreated: { "@type": "Place", name: r.country },
+      })),
+      touristType: ["Cultural travellers", "Solo travellers", "Families", "Backpackers", "Photographers"],
+      availableLanguage: ["English", "Nepali", "Hindi"],
+      provider: { "@id": `${SITE_URL}/#organization` },
+      itinerary: {
+        "@type": "ItemList",
+        itemListElement: tourStops.map((stop, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "TouristAttraction",
+            name: stop.name,
+            description: stop.description,
+          },
+        })),
+      },
+      geo: { "@type": "GeoCoordinates", latitude: LATITUDE, longitude: LONGITUDE },
+      duration: DURATION_ISO,
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "Free Tour Kathmandu",
+      url: SITE_URL,
+      logo: `${SITE_URL}/images/logo.png`,
+      sameAs: [
+        "https://www.tripadvisor.com/",
+        "https://www.instagram.com/",
+        "https://www.facebook.com/",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+977-9800000000",
+        contactType: "customer service",
+        availableLanguage: ["English", "Nepali", "Hindi"],
+      },
+    },
+    {
+      "@type": "TouristInformationCenter",
+      "@id": `${SITE_URL}/#localbusiness`,
+      name: "Free Tour Kathmandu — Garden of Dreams Meeting Point",
+      image: TOUR_IMAGE,
+      url: PAGE_URL,
+      telephone: "+977-9800000000",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Kaiser Mahal, Tridevi Marg",
+        addressLocality: "Kathmandu",
+        addressRegion: "Bagmati",
+        postalCode: "44600",
+        addressCountry: "NP",
+      },
+      geo: { "@type": "GeoCoordinates", latitude: LATITUDE, longitude: LONGITUDE },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          opens: "09:00",
+          closes: "14:00",
+        },
+      ],
+      priceRange: "Free (tips-based)",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${PAGE_URL}/#faq`,
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    },
+    {
+      "@type": "ImageGallery",
+      "@id": `${PAGE_URL}/#gallery`,
+      name: "Free Walking Tour Kathmandu — Route Photo Gallery",
+      image: galleryImages.map((src) => `${SITE_URL}${src}`),
+    },
+  ],
+};
+
+/* ------------------------------------------------------------------ */
+/*  COMPONENT                                                          */
+/* ------------------------------------------------------------------ */
+
 export default function FreeWalkingTourKathmanduPage() {
   const [copied, setCopied] = React.useState(false);
   const [expandedStops, setExpandedStops] = React.useState<number[]>([]);
-
-  const tourName = "Free Walking Tour Kathmandu";
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
 
   const toggleStop = (idx: number) => {
     setExpandedStops((prev) =>
@@ -176,10 +394,25 @@ export default function FreeWalkingTourKathmanduPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#f2ede4] overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       <main>
         {/* Header */}
         <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
           <div className="mx-auto max-w-[880px]">
+            <nav aria-label="Breadcrumb" className="mb-4">
+              <ol className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-[#66706d]">
+                <li><Link href="/" className="hover:underline">Home</Link></li>
+                <li aria-hidden="true">/</li>
+                <li><Link href="/tours" className="hover:underline">Kathmandu Tours</Link></li>
+                <li aria-hidden="true">/</li>
+                <li aria-current="page" className="text-[#14383b] font-semibold">Free Walking Tour</li>
+              </ol>
+            </nav>
+
             <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between">
               <div>
                 <div className="flex items-center gap-2 text-[10px] sm:text-xs font-semibold tracking-[.12em] text-[#cf6943] uppercase">
@@ -200,7 +433,7 @@ export default function FreeWalkingTourKathmanduPage() {
                     FREE · Tips-based
                   </span>
                   <span className="bg-[#f7f2e9] text-[#14383b] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full border border-[#d8cec0]/30">
-                    Daily 9am & 2pm
+                    Daily 9am &amp; 2pm
                   </span>
                 </div>
               </div>
@@ -228,19 +461,19 @@ export default function FreeWalkingTourKathmanduPage() {
             </div>
             <div className="absolute top-4 right-4 flex flex-wrap gap-2">
               <span className="bg-[#14383b]/90 text-[#f7f2e9] px-3 py-1.5 text-[9px] sm:text-[10px] font-bold tracking-wide rounded">
-                Daily 9am & 2pm
+                Daily 9am &amp; 2pm
               </span>
             </div>
           </figure>
         </div>
 
-        {/* Quick Stats - Minimal inline */}
+        {/* Quick Stats */}
         <div className="max-w-[880px] mx-auto px-4 sm:px-5 md:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 -mt-6 sm:-mt-8 relative z-10">
             {[
               { label: "Duration", value: "4-5 hours" },
               { label: "Group Size", value: "2-20 people" },
-              { label: "Rating", value: "4.9/5 (350+)" },
+              { label: "Rating", value: "4.9/5 (1000+)" },
               { label: "Language", value: "English" },
             ].map((stat, i) => (
               <div key={i} className="bg-[#f7f2e9] rounded-lg p-3 text-center shadow-sm border border-[#d8cec0]/30">
@@ -251,10 +484,9 @@ export default function FreeWalkingTourKathmanduPage() {
           </div>
         </div>
 
-        {/* Main Content - Editorial Style */}
+        {/* Overview */}
         <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-[880px]">
-            {/* Overview */}
             <article className="prose prose-sm sm:prose-base max-w-none">
               <p className="text-[#556363] text-sm sm:text-base leading-relaxed">
                 <strong className="text-[#14383b]">Free Tour Kathmandu</strong> is the first of its kind in the Kathmandu Valley. While other walking tours exist, this is the only one that provides a free glimpse of the highlights of Kathmandu, led and narrated by a dedicated tour guide with decades of experience. Winding through the heart of the old centre, the tour encompasses iconic temples, stupas, monasteries, palaces and local Newar architecture.
@@ -274,8 +506,46 @@ export default function FreeWalkingTourKathmanduPage() {
           </div>
         </section>
 
-        {/* Highlights - Clean list */}
-        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+        {/* ============================================================ */}
+        {/* 🆕 NEIGHBORHOODS OF THE OLD CITY                             */}
+        {/* ============================================================ */}
+        <section
+          className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20"
+          aria-labelledby="neighborhoods-heading"
+        >
+          <div className="mx-auto max-w-[880px]">
+            <h2
+              id="neighborhoods-heading"
+              className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-4"
+            >
+              Neighborhoods of the Old City
+            </h2>
+            <p className="text-[#556363] text-sm sm:text-base leading-relaxed mb-8 max-w-[720px]">
+              The Free Walking Tour Kathmandu is built around a handful of neighborhoods in the old city core, each with its own character and its own specialty trade that's been passed down for generations.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+              {neighborhoods.map((hood, i) => (
+                <div key={i} className="border-b border-[#d8cec0]/40 pb-4 last:border-0">
+                  <h3 className="font-serif text-base sm:text-lg text-[#14383b] mb-1 flex items-start gap-2">
+                    <span className="text-[#cf6943] mt-1 text-sm" aria-hidden="true">✦</span>
+                    <span>{hood.name}</span>
+                  </h3>
+                  <p className="text-[#556363] text-sm leading-relaxed pl-5">
+                    {hood.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-8 text-[#556363] text-sm sm:text-base leading-relaxed italic max-w-[720px] border-l-2 border-[#cf6943] pl-4">
+              Walking through all of these in a single guided route, rather than visiting them separately over several days, is part of what makes the tour feel so dense with genuine local color in a relatively short amount of time.
+            </p>
+          </div>
+        </section>
+
+        {/* Highlights */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-[880px]">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Tour Highlights</h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -289,8 +559,8 @@ export default function FreeWalkingTourKathmanduPage() {
           </div>
         </section>
 
-        {/* Tour Stops - Clean accordion */}
-        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+        {/* Tour Stops */}
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-[880px]">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b]">Stops Along the Way</h2>
@@ -309,10 +579,7 @@ export default function FreeWalkingTourKathmanduPage() {
                 const Icon = stop.icon;
                 const isExpanded = expandedStops.includes(idx);
                 return (
-                  <div
-                    key={idx}
-                    className="border-b border-[#d8cec0]/50 last:border-0"
-                  >
+                  <div key={idx} className="border-b border-[#d8cec0]/50 last:border-0">
                     <button
                       className="w-full flex items-center gap-4 py-4 text-left"
                       onClick={() => toggleStop(idx)}
@@ -341,11 +608,11 @@ export default function FreeWalkingTourKathmanduPage() {
           </div>
         </section>
 
-        {/* Practical Info - Editorial */}
-        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+        {/* Practical Info */}
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-[880px]">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Plan Your Visit</h2>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-semibold text-[#14383b] text-sm mb-3">Tour Details</h3>
@@ -356,7 +623,7 @@ export default function FreeWalkingTourKathmanduPage() {
                   </div>
                   <div className="flex justify-between border-b border-[#d8cec0]/30 py-2">
                     <dt className="text-[#66706d]">Schedule</dt>
-                    <dd className="text-[#14383b] font-medium">Daily 9am & 2pm</dd>
+                    <dd className="text-[#14383b] font-medium">Daily 9am &amp; 2pm</dd>
                   </div>
                   <div className="flex justify-between border-b border-[#d8cec0]/30 py-2">
                     <dt className="text-[#66706d]">Meeting Point</dt>
@@ -376,26 +643,18 @@ export default function FreeWalkingTourKathmanduPage() {
               <div>
                 <h3 className="font-semibold text-[#14383b] text-sm mb-3">What to Bring</h3>
                 <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2 text-[#556363]">
-                    <CheckCircle2 className="w-4 h-4 text-[#cf6943] mt-0.5 shrink-0" />
-                    <span>Comfortable walking shoes</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-[#556363]">
-                    <CheckCircle2 className="w-4 h-4 text-[#cf6943] mt-0.5 shrink-0" />
-                    <span>Water bottle</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-[#556363]">
-                    <CheckCircle2 className="w-4 h-4 text-[#cf6943] mt-0.5 shrink-0" />
-                    <span>Sun protection</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-[#556363]">
-                    <CheckCircle2 className="w-4 h-4 text-[#cf6943] mt-0.5 shrink-0" />
-                    <span>NPR 200 for Monkey Temple entrance</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-[#556363]">
-                    <CheckCircle2 className="w-4 h-4 text-[#cf6943] mt-0.5 shrink-0" />
-                    <span>Small cash for refreshments</span>
-                  </li>
+                  {[
+                    "Comfortable walking shoes",
+                    "Water bottle",
+                    "Sun protection",
+                    "NPR 200 for Monkey Temple entrance",
+                    "Small cash for refreshments",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-[#556363]">
+                      <CheckCircle2 className="w-4 h-4 text-[#cf6943] mt-0.5 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -408,32 +667,16 @@ export default function FreeWalkingTourKathmanduPage() {
           </div>
         </section>
 
-        {/* Tips - Clean */}
-        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+        {/* Tips */}
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-[880px]">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Tips for the Tour</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
-                {
-                  icon: <Sun className="w-4 h-4" />,
-                  title: "Best Time",
-                  text: "Morning tours (9am) are cooler. Afternoon tours (2pm) offer beautiful golden hour light at Monkey Temple."
-                },
-                {
-                  icon: <Thermometer className="w-4 h-4" />,
-                  title: "Weather",
-                  text: "Dress in layers and bring a light rain jacket during monsoon season."
-                },
-                {
-                  icon: <Camera className="w-4 h-4" />,
-                  title: "Photography",
-                  text: "Ask permission before photographing locals. The tour offers countless photo opportunities."
-                },
-                {
-                  icon: <Footprints className="w-4 h-4" />,
-                  title: "Walking",
-                  text: "Comfortable walking shoes are essential. The tour covers uneven streets, stairs, and steep sections."
-                },
+                { icon: <Sun className="w-4 h-4" />, title: "Best Time", text: "Morning tours (9am) are cooler. Afternoon tours (2pm) offer beautiful golden hour light at Monkey Temple." },
+                { icon: <Thermometer className="w-4 h-4" />, title: "Weather", text: "Dress in layers and bring a light rain jacket during monsoon season." },
+                { icon: <Camera className="w-4 h-4" />, title: "Photography", text: "Ask permission before photographing locals. The tour offers countless photo opportunities." },
+                { icon: <Footprints className="w-4 h-4" />, title: "Walking", text: "Comfortable walking shoes are essential. The tour covers uneven streets, stairs, and steep sections." },
               ].map((tip, i) => (
                 <div key={i} className="flex gap-3">
                   <div className="w-8 h-8 bg-[#cf6943]/10 rounded-full flex items-center justify-center shrink-0">
@@ -450,7 +693,7 @@ export default function FreeWalkingTourKathmanduPage() {
         </section>
 
         {/* FAQ */}
-        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-[880px]">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-6">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -465,7 +708,7 @@ export default function FreeWalkingTourKathmanduPage() {
         </section>
 
         {/* Nearby Attractions */}
-        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-[880px]">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-3">Nearby Attractions</h2>
             <p className="text-[#556363] text-sm sm:text-base mb-6">
@@ -483,11 +726,11 @@ export default function FreeWalkingTourKathmanduPage() {
         </section>
 
         {/* Reviews */}
-        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-[880px]">
             <div className="flex items-center gap-3 mb-6">
               <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" aria-hidden="true" />
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b]">4.9 · 350+ Reviews</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b]">4.9 · 1000+ Reviews</h2>
               <span className="text-[#66706d] text-sm">on TripAdvisor</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -512,7 +755,7 @@ export default function FreeWalkingTourKathmanduPage() {
         </section>
 
         {/* Gallery */}
-        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
+        <section className="bg-[#e4d8c8] px-4 sm:px-5 md:px-8 py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-[880px]">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b] mb-3">Glances of the Route</h2>
             <p className="text-[#556363] text-sm sm:text-base mb-6">
@@ -521,10 +764,10 @@ export default function FreeWalkingTourKathmanduPage() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {galleryImages.map((src, i) => (
                 <div key={i} className="relative h-28 sm:h-32 rounded-lg overflow-hidden bg-[#d8cec0]">
-                  <Image 
-                    src={src} 
-                    alt={`Free Walking Tour Kathmandu - stop along the route`} 
-                    fill 
+                  <Image
+                    src={src}
+                    alt={`Free Walking Tour Kathmandu - stop along the route`}
+                    fill
                     className="object-cover"
                     loading="lazy"
                     sizes="(max-width: 640px) 50vw, 25vw"
@@ -534,8 +777,6 @@ export default function FreeWalkingTourKathmanduPage() {
             </div>
           </div>
         </section>
-
-       
       </main>
     </div>
   );

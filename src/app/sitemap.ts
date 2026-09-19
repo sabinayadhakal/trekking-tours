@@ -59,6 +59,18 @@ const staticPages: SitemapEntry[] = [
     priority: 0.85,
     changeFrequency: "weekly",
   },
+
+  /* ================================================================ */
+  /*  NEW STATIC PAGES ADDED TODAY                                     */
+  /* ================================================================ */
+  { path: "/free-tour-kathmandu.html", priority: 0.95, changeFrequency: "weekly" },
+  { path: "/free-walking-tour.html", priority: 0.9, changeFrequency: "weekly" },
+  {
+    path: "/blog/experiencing-free-walking-tour-kathmandu-with-shiva-dhakal.html",
+    priority: 0.95,
+    changeFrequency: "weekly",
+  },
+  { path: "/blog/free-walking-tour-kathmandu.html", priority: 0.95, changeFrequency: "weekly" },
 ];
 
 const contentSettings: Record<
