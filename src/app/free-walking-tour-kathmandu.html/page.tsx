@@ -239,7 +239,7 @@ export default function FreeWalkingTourKathmanduPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 -mt-6 sm:-mt-8 relative z-10">
             {[
               { label: "Duration", value: "4-5 hours" },
-              { label: "Group Size", value: "2-20 people" },
+              { label: "Group Size", value: "1-20 people" },
               { label: "Rating", value: "4.9/5 (350+)" },
               { label: "Language", value: "English" },
             ].map((stat, i) => (

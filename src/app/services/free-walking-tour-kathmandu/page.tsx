@@ -487,7 +487,7 @@ export default function FreeWalkingTourKathmanduPage() {
           <div className="mx-auto max-w-[880px]">
             <div className="flex items-center gap-3 mb-6">
               <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" aria-hidden="true" />
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b]">5.0 · 1000+ Reviews</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#14383b]">4.9 · 1000+ Reviews</h2>
               <span className="text-[#66706d] text-sm">on TripAdvisor</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

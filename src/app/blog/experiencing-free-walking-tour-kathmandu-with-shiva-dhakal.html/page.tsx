@@ -23,13 +23,13 @@ import {
 /*  SEO CONSTANTS                                                      */
 /* ------------------------------------------------------------------ */
 
-const SITE_URL = "https://www.freetourkathmandu.com";
+const SITE_URL = "https://www.freewalkingtourkathmandu.com";
 const PAGE_URL = `${SITE_URL}/free-walking-tour-kathmandu/experiencing-with-shiva`;
 const TOUR_NAME = "Free Walking Tour Kathmandu with Shiva";
 const TOUR_IMAGE = `${SITE_URL}/images/used/fwt-1.webp`;
 const PRICE_NPR = "0";
 const CURRENCY = "NPR";
-const RATING_VALUE = "5.0";
+const RATING_VALUE = "4.9";
 const REVIEW_COUNT = "1000";
 const DURATION_ISO = "PT4H30M";
 const LATITUDE = "27.7148";
@@ -828,7 +828,7 @@ export default function ExperiencingWithShivaPage() {
                 </p>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <span className="bg-[#cf6943] text-[#fff8ee] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full">
-                    ★ 5.0 · {REVIEW_COUNT}+ reviews
+                    ★ 4.9 · {REVIEW_COUNT}+ reviews
                   </span>
                   <span className="bg-[#f7f2e9] text-[#14383b] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full border border-[#d8cec0]/30">
                     Free · Tips-based
@@ -874,8 +874,8 @@ export default function ExperiencingWithShivaPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 -mt-6 sm:-mt-8 relative z-10">
             {[
               { label: "Duration", value: "3-5 hours" },
-              { label: "Group Size", value: "2-20 people" },
-              { label: "Rating", value: "5.0/5" },
+              { label: "Group Size", value: "1-20 people" },
+              { label: "Rating", value: "4.9/5" },
               { label: "Language", value: "English" },
             ].map((stat, i) => (
               <div key={i} className="bg-[#f7f2e9] rounded-lg p-3 text-center shadow-sm border border-[#d8cec0]/30">

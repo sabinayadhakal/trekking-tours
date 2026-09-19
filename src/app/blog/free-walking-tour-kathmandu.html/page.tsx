@@ -37,7 +37,7 @@ import { Button } from "@/components/ui/button";
 /*  SEO CONSTANTS                                                      */
 /* ------------------------------------------------------------------ */
 
-const SITE_URL = "https://www.freetourkathmandu.com";
+const SITE_URL = "https://www.freewalkingtourkathmandu.com";
 const PAGE_URL = `${SITE_URL}/free-walking-tour-kathmandu`;
 const TOUR_NAME = "Free Walking Tour Kathmandu";
 const TOUR_IMAGE = `${SITE_URL}/images/used/fwt-1.webp`;
@@ -532,7 +532,7 @@ export default function FreeWalkingTourKathmanduPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 -mt-6 sm:-mt-8 relative z-10">
             {[
               { label: "Duration", value: "4-5 hours" },
-              { label: "Group Size", value: "2-20 people" },
+              { label: "Group Size", value: "1-20 people" },
               { label: "Rating", value: "4.9/5 (1000+)" },
               { label: "Language", value: "English" },
             ].map((stat, i) => (
