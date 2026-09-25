@@ -35,7 +35,8 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [selectedVideo, setSelectedVideo] = React.useState<{ title: string; url: string } | null>(null);
   const [socialMedia, setSocialMedia] = React.useState<SocialMediaContent>(SOCIAL_MEDIA_FALLBACK);
-  const [showAllPosts, setShowAllPosts] = React.useState(false);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const POSTS_PER_PAGE = 9;
   const blogPosts = React.useMemo(
     () => managedPosts.filter((post) => post.published),
     [managedPosts],
@@ -77,6 +78,48 @@ export default function BlogPage() {
     
     return filtered;
   }, [blogPosts, searchQuery]);
+
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const paginatedPosts = React.useMemo(() => {
+    const start = (currentPage - 1) * POSTS_PER_PAGE;
+    return filteredPosts.slice(start, start + POSTS_PER_PAGE);
+  }, [filteredPosts, currentPage]);
+
+  const goToPage = (page: number) => {
+    if (page < 1 || page > totalPages || page === currentPage) return;
+    setCurrentPage(page);
+    if (page === 1) {
+      window.history.pushState(null, "", "/blog");
+    } else {
+      window.history.pushState(null, "", `/blog#${page}`);
+    }
+    document.getElementById("latest-articles")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
+  React.useEffect(() => {
+    const applyHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      const page = parseInt(hash, 10);
+      if (!isNaN(page) && page >= 1) {
+        setCurrentPage(page);
+      } else {
+        setCurrentPage(1);
+      }
+    };
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
+
+  React.useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
 
   const handleYoutubeRedirect = () => {
     if (socialMedia.youtubeChannelUrl) window.open(socialMedia.youtubeChannelUrl, "_blank", "noopener,noreferrer");
@@ -278,8 +321,8 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* Blog Posts Section - Slider by default, Grid when "Show All" is clicked */}
-        <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+        {/* Blog Posts Section - Paginated Grid */}
+        <section id="latest-articles" className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
           <div className="mx-auto max-w-[1220px]">
             <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between mb-8 sm:mb-12">
               <div>
@@ -309,26 +352,20 @@ export default function BlogPage() {
               </div>
             )}
 
-            {/* SLIDER VIEW (default) */}
-            {!showAllPosts && filteredPosts.length > 0 && (
-              <div className="relative">
-                <div
-                  className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-                >
-                  {filteredPosts.map((post) => (
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      key={post.id}
-                      className="block flex-shrink-0 w-[280px] sm:w-[320px] md:w-[340px] snap-start active:scale-[0.99] transition-transform"
-                    >
-                      <div className="group bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 rounded-lg h-full flex flex-col">
-                        <div className="relative h-48 sm:h-52 overflow-hidden flex-shrink-0">
+            {/* GRID VIEW - 9 per page */}
+            {filteredPosts.length > 0 && (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                  {paginatedPosts.map((post) => (
+                    <Link href={`/blog/${post.slug}`} key={post.id} className="block active:scale-[0.99] transition-transform">
+                      <div className="group bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 rounded-lg h-full">
+                        <div className="relative h-48 sm:h-56 overflow-hidden">
                           <Image
                             src={post.image}
                             alt={post.title}
                             fill
                             className="object-cover opacity-85 group-hover:scale-[1.02] transition-transform duration-500"
-                            sizes="340px"
+                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                             loading="lazy"
                           />
                           <div className="absolute top-3 left-3">
@@ -337,11 +374,11 @@ export default function BlogPage() {
                             </span>
                           </div>
                         </div>
-                        <CardContent className="p-4 sm:p-5 md:p-6 flex-1 flex flex-col">
+                        <CardContent className="p-4 sm:p-5 md:p-6">
                           <h3 className="text-sm sm:text-base md:text-lg font-bold text-[#14383b] mb-2 leading-snug line-clamp-2">
                             {post.title}
                           </h3>
-                          <p className="text-[#556363] text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
+                          <p className="text-[#556363] text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3">
                             {post.excerpt}
                           </p>
                           <div className="flex items-center justify-between text-[10px] sm:text-xs text-[#556363] pt-3 border-t border-[#d8cec0]/30">
@@ -357,50 +394,43 @@ export default function BlogPage() {
                     </Link>
                   ))}
                 </div>
-              </div>
-            )}
 
-            {/* GRID VIEW (when Show All is clicked) */}
-            {showAllPosts && filteredPosts.length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-                {filteredPosts.map((post) => (
-                  <Link href={`/blog/${post.slug}`} key={post.id} className="block active:scale-[0.99] transition-transform">
-                    <div className="group bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 rounded-lg h-full">
-                      <div className="relative h-48 sm:h-56 overflow-hidden">
-                        <Image
-                          src={post.image}
-                          alt={post.title}
-                          fill
-                          className="object-cover opacity-85 group-hover:scale-[1.02] transition-transform duration-500"
-                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                          loading="lazy"
-                        />
-                        <div className="absolute top-3 left-3">
-                          <span className="bg-[#14383b]/90 text-[#f7f2e9] text-[9px] font-bold tracking-[.12em] px-2.5 py-1">
-                            {post.category}
-                          </span>
-                        </div>
-                      </div>
-                      <CardContent className="p-4 sm:p-5 md:p-6">
-                        <h3 className="text-sm sm:text-base md:text-lg font-bold text-[#14383b] mb-2 leading-snug line-clamp-2">
-                          {post.title}
-                        </h3>
-                        <p className="text-[#556363] text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3">
-                          {post.excerpt}
-                        </p>
-                        <div className="flex items-center justify-between text-[10px] sm:text-xs text-[#556363] pt-3 border-t border-[#d8cec0]/30">
-                          <span className="flex items-center gap-1 sm:gap-1.5">
-                            <User className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {post.author}
-                          </span>
-                          <span className="flex items-center gap-0.5 sm:gap-1">
-                            <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {post.readTime}
-                          </span>
-                        </div>
-                      </CardContent>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+                {/* Pagination */}
+                {totalPages > 1 && (
+                  <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mt-10 sm:mt-12">
+                    <Button
+                      variant="outline"
+                      onClick={() => goToPage(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      className="border-[#d8cec0] text-[#14383b] hover:bg-[#e4d8c8] disabled:opacity-40 disabled:cursor-not-allowed rounded-none px-3 sm:px-4 py-2 text-[10px] sm:text-xs font-bold tracking-[.12em] h-auto"
+                    >
+                      PREV
+                    </Button>
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <Button
+                        key={page}
+                        variant="outline"
+                        onClick={() => goToPage(page)}
+                        className={`rounded-none px-3 sm:px-4 py-2 text-[10px] sm:text-xs font-bold tracking-[.12em] h-auto ${
+                          page === currentPage
+                            ? "bg-[#e47a4f] text-[#fff8ee] border-[#e47a4f] hover:bg-[#cf6943]"
+                            : "border-[#d8cec0] text-[#14383b] hover:bg-[#e4d8c8]"
+                        }`}
+                      >
+                        {page}
+                      </Button>
+                    ))}
+                    <Button
+                      variant="outline"
+                      onClick={() => goToPage(currentPage + 1)}
+                      disabled={currentPage === totalPages}
+                      className="border-[#d8cec0] text-[#14383b] hover:bg-[#e4d8c8] disabled:opacity-40 disabled:cursor-not-allowed rounded-none px-3 sm:px-4 py-2 text-[10px] sm:text-xs font-bold tracking-[.12em] h-auto"
+                    >
+                      NEXT
+                    </Button>
+                  </div>
+                )}
+              </>
             )}
 
             {/* No Results */}
@@ -418,28 +448,6 @@ export default function BlogPage() {
                 >
                   Clear Search
                 </Button>
-              </div>
-            )}
-
-            {/* Show All / Show Less Button */}
-            {filteredPosts.length > 0 && (
-              <div className="text-center mt-10 sm:mt-12">
-                {!showAllPosts ? (
-                  <Button
-                    onClick={() => setShowAllPosts(true)}
-                    className="bg-[#e47a4f] text-[#fff8ee] font-bold hover:bg-[#cf6943] rounded-none px-8 sm:px-10 py-3 sm:py-3.5 text-[10px] sm:text-[11px] tracking-[.14em] active:scale-[0.98] transition-transform"
-                  >
-                    SHOW ALL ARTICLES
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={() => setShowAllPosts(false)}
-                    variant="outline"
-                    className="border-[#cf6943] text-[#cf6943] hover:bg-[#cf6943]/10 font-bold rounded-none px-8 sm:px-10 py-3 sm:py-3.5 text-[10px] sm:text-[11px] tracking-[.14em] active:scale-[0.98] transition-transform"
-                  >
-                    SHOW LESS
-                  </Button>
-                )}
               </div>
             )}
           </div>
