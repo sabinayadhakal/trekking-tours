@@ -33,9 +33,9 @@ import { getYouTubeThumbnail, getYouTubeVideoId, SOCIAL_MEDIA_FALLBACK, SOCIAL_M
 export default function BlogPage() {
   const [managedPosts, setManagedPosts] = React.useState<BlogPost[]>(BLOG_POSTS_FALLBACK);
   const [searchQuery, setSearchQuery] = React.useState("");
-  const [visiblePosts, setVisiblePosts] = React.useState(6);
   const [selectedVideo, setSelectedVideo] = React.useState<{ title: string; url: string } | null>(null);
   const [socialMedia, setSocialMedia] = React.useState<SocialMediaContent>(SOCIAL_MEDIA_FALLBACK);
+  const [showAllPosts, setShowAllPosts] = React.useState(false);
   const blogPosts = React.useMemo(
     () => managedPosts.filter((post) => post.published),
     [managedPosts],
@@ -77,10 +77,6 @@ export default function BlogPage() {
     
     return filtered;
   }, [blogPosts, searchQuery]);
-
-  const loadMorePosts = () => {
-    setVisiblePosts(prev => Math.min(prev + 3, filteredPosts.length));
-  };
 
   const handleYoutubeRedirect = () => {
     if (socialMedia.youtubeChannelUrl) window.open(socialMedia.youtubeChannelUrl, "_blank", "noopener,noreferrer");
@@ -282,7 +278,7 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* Blog Posts Grid - Same style as main page destinations/services */}
+        {/* Blog Posts Section - Slider by default, Grid when "Show All" is clicked */}
         <section className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
           <div className="mx-auto max-w-[1220px]">
             <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between mb-8 sm:mb-12">
@@ -313,45 +309,99 @@ export default function BlogPage() {
               </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              {filteredPosts.slice(0, visiblePosts).map((post) => (
-                <Link href={`/blog/${post.slug}`} key={post.id} className="block active:scale-[0.99] transition-transform">
-                  <div className="group bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 rounded-lg h-full">
-                    <div className="relative h-48 sm:h-56 overflow-hidden">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover opacity-85 group-hover:scale-[1.02] transition-transform duration-500"
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                        loading="lazy"
-                      />
-                      <div className="absolute top-3 left-3">
-                        <span className="bg-[#14383b]/90 text-[#f7f2e9] text-[9px] font-bold tracking-[.12em] px-2.5 py-1">
-                          {post.category}
-                        </span>
+            {/* SLIDER VIEW (default) */}
+            {!showAllPosts && filteredPosts.length > 0 && (
+              <div className="relative">
+                <div
+                  className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                >
+                  {filteredPosts.map((post) => (
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      key={post.id}
+                      className="block flex-shrink-0 w-[280px] sm:w-[320px] md:w-[340px] snap-start active:scale-[0.99] transition-transform"
+                    >
+                      <div className="group bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 rounded-lg h-full flex flex-col">
+                        <div className="relative h-48 sm:h-52 overflow-hidden flex-shrink-0">
+                          <Image
+                            src={post.image}
+                            alt={post.title}
+                            fill
+                            className="object-cover opacity-85 group-hover:scale-[1.02] transition-transform duration-500"
+                            sizes="340px"
+                            loading="lazy"
+                          />
+                          <div className="absolute top-3 left-3">
+                            <span className="bg-[#14383b]/90 text-[#f7f2e9] text-[9px] font-bold tracking-[.12em] px-2.5 py-1">
+                              {post.category}
+                            </span>
+                          </div>
+                        </div>
+                        <CardContent className="p-4 sm:p-5 md:p-6 flex-1 flex flex-col">
+                          <h3 className="text-sm sm:text-base md:text-lg font-bold text-[#14383b] mb-2 leading-snug line-clamp-2">
+                            {post.title}
+                          </h3>
+                          <p className="text-[#556363] text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
+                            {post.excerpt}
+                          </p>
+                          <div className="flex items-center justify-between text-[10px] sm:text-xs text-[#556363] pt-3 border-t border-[#d8cec0]/30">
+                            <span className="flex items-center gap-1 sm:gap-1.5">
+                              <User className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {post.author}
+                            </span>
+                            <span className="flex items-center gap-0.5 sm:gap-1">
+                              <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {post.readTime}
+                            </span>
+                          </div>
+                        </CardContent>
                       </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* GRID VIEW (when Show All is clicked) */}
+            {showAllPosts && filteredPosts.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                {filteredPosts.map((post) => (
+                  <Link href={`/blog/${post.slug}`} key={post.id} className="block active:scale-[0.99] transition-transform">
+                    <div className="group bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 rounded-lg h-full">
+                      <div className="relative h-48 sm:h-56 overflow-hidden">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover opacity-85 group-hover:scale-[1.02] transition-transform duration-500"
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                          loading="lazy"
+                        />
+                        <div className="absolute top-3 left-3">
+                          <span className="bg-[#14383b]/90 text-[#f7f2e9] text-[9px] font-bold tracking-[.12em] px-2.5 py-1">
+                            {post.category}
+                          </span>
+                        </div>
+                      </div>
+                      <CardContent className="p-4 sm:p-5 md:p-6">
+                        <h3 className="text-sm sm:text-base md:text-lg font-bold text-[#14383b] mb-2 leading-snug line-clamp-2">
+                          {post.title}
+                        </h3>
+                        <p className="text-[#556363] text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3">
+                          {post.excerpt}
+                        </p>
+                        <div className="flex items-center justify-between text-[10px] sm:text-xs text-[#556363] pt-3 border-t border-[#d8cec0]/30">
+                          <span className="flex items-center gap-1 sm:gap-1.5">
+                            <User className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {post.author}
+                          </span>
+                          <span className="flex items-center gap-0.5 sm:gap-1">
+                            <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {post.readTime}
+                          </span>
+                        </div>
+                      </CardContent>
                     </div>
-                    <CardContent className="p-4 sm:p-5 md:p-6">
-                      <h3 className="text-sm sm:text-base md:text-lg font-bold text-[#14383b] mb-2 leading-snug line-clamp-2">
-                        {post.title}
-                      </h3>
-                      <p className="text-[#556363] text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3">
-                        {post.excerpt}
-                      </p>
-                      <div className="flex items-center justify-between text-[10px] sm:text-xs text-[#556363] pt-3 border-t border-[#d8cec0]/30">
-                        <span className="flex items-center gap-1 sm:gap-1.5">
-                          <User className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {post.author}
-                        </span>
-                        <span className="flex items-center gap-0.5 sm:gap-1">
-                          <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> {post.readTime}
-                        </span>
-                      </div>
-                    </CardContent>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  </Link>
+                ))}
+              </div>
+            )}
 
             {/* No Results */}
             {filteredPosts.length === 0 && (
@@ -371,15 +421,25 @@ export default function BlogPage() {
               </div>
             )}
 
-            {/* Load More Button */}
-            {visiblePosts < filteredPosts.length && (
+            {/* Show All / Show Less Button */}
+            {filteredPosts.length > 0 && (
               <div className="text-center mt-10 sm:mt-12">
-                <Button
-                  onClick={loadMorePosts}
-                  className="bg-[#e47a4f] text-[#fff8ee] font-bold hover:bg-[#cf6943] rounded-none px-8 sm:px-10 py-3 sm:py-3.5 text-[10px] sm:text-[11px] tracking-[.14em] active:scale-[0.98] transition-transform"
-                >
-                  LOAD MORE ARTICLES
-                </Button>
+                {!showAllPosts ? (
+                  <Button
+                    onClick={() => setShowAllPosts(true)}
+                    className="bg-[#e47a4f] text-[#fff8ee] font-bold hover:bg-[#cf6943] rounded-none px-8 sm:px-10 py-3 sm:py-3.5 text-[10px] sm:text-[11px] tracking-[.14em] active:scale-[0.98] transition-transform"
+                  >
+                    SHOW ALL ARTICLES
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={() => setShowAllPosts(false)}
+                    variant="outline"
+                    className="border-[#cf6943] text-[#cf6943] hover:bg-[#cf6943]/10 font-bold rounded-none px-8 sm:px-10 py-3 sm:py-3.5 text-[10px] sm:text-[11px] tracking-[.14em] active:scale-[0.98] transition-transform"
+                  >
+                    SHOW LESS
+                  </Button>
+                )}
               </div>
             )}
           </div>
