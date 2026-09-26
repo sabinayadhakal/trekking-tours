@@ -179,6 +179,7 @@ interface SearchResult {
     | 'tibet-tour'
     | 'free-tour'
     | 'blog'
+    | 'legal'
     | 'page';
   description?: string;
   icon?: React.ReactNode;
@@ -190,8 +191,15 @@ const searchData: SearchResult[] = [
   // ── Main Pages ──
   { title: "Home", url: "/", category: "page", icon: <Home className="w-4 h-4" /> },
   { title: "About Us", url: "/about-us", category: "page", icon: <FileText className="w-4 h-4" /> },
+  { title: "Partners and Communities", url: "/partners-communities", category: "page", icon: <Users className="w-4 h-4" /> },
+  { title: "Licenses and Awards", url: "/licenses-awards", category: "page", icon: <Award className="w-4 h-4" /> },
   { title: "Blog", url: "/blog", category: "page", icon: <BookOpen className="w-4 h-4" /> },
   { title: "Contact", url: "/contact", category: "page", icon: <Mail className="w-4 h-4" /> },
+
+  // ── Legal ──
+  { title: "Privacy Policy", url: "/privacy-policy", category: "legal", icon: <Shield className="w-4 h-4" /> },
+  { title: "Terms and Conditions", url: "/terms-and-conditions", category: "legal", icon: <FileText className="w-4 h-4" /> },
+  { title: "Cancellation and Refund Policy", url: "/cancellation-refund-policy", category: "legal", icon: <CheckCircle className="w-4 h-4" /> },
 
   // ── Destinations ──
   { title: "Bhutan", url: "/destinations/bhutan", category: "destination", icon: <Globe className="w-4 h-4" /> },
@@ -313,6 +321,7 @@ const categoryLabels: Record<string, string> = {
   'tibet-tour': 'Tibet Tours',
   'free-tour': 'Free Tours',
   blog: 'Blog',
+  legal: 'Legal & Policies',
   page: 'Pages'
 };
 

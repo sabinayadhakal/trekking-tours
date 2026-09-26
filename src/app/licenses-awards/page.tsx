@@ -3,7 +3,6 @@
 import * as React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import {
   Award,
   ShieldCheck,
@@ -17,9 +16,7 @@ import {
   Star,
   BadgeCheck,
   Medal,
-  ArrowRight,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const licenses = [
   {
@@ -105,23 +102,7 @@ const recognitionBadges = [
 export default function LicensesAwardsPage() {
   const [selectedLicense, setSelectedLicense] = React.useState<{ name: string; image: string } | null>(null);
   const [selectedCertificate, setSelectedCertificate] = React.useState<{ name: string; image: string } | null>(null);
-  const [certificateStartIndex, setCertificateStartIndex] = React.useState(0);
   const [activeLicenseCategory, setActiveLicenseCategory] = React.useState<string>("All");
-
-  // Responsive cards per page
-  const [certificatesPerPage, setCertificatesPerPage] = React.useState(3);
-
-  React.useEffect(() => {
-    const updatePerPage = () => {
-      const w = window.innerWidth;
-      if (w < 640) setCertificatesPerPage(1);
-      else if (w < 1024) setCertificatesPerPage(2);
-      else setCertificatesPerPage(3);
-    };
-    updatePerPage();
-    window.addEventListener("resize", updatePerPage);
-    return () => window.removeEventListener("resize", updatePerPage);
-  }, []);
 
   const licenseCategories = ["All", ...Array.from(new Set(licenses.map((l) => l.category)))];
   const filteredLicenses =
@@ -133,32 +114,17 @@ export default function LicensesAwardsPage() {
     setSelectedLicense(license);
     document.body.style.overflow = "hidden";
   };
-
   const closeLicenseModal = () => {
     setSelectedLicense(null);
     document.body.style.overflow = "auto";
   };
-
   const openCertificateModal = (certificate: { name: string; image: string }) => {
     setSelectedCertificate(certificate);
     document.body.style.overflow = "hidden";
   };
-
   const closeCertificateModal = () => {
     setSelectedCertificate(null);
     document.body.style.overflow = "auto";
-  };
-
-  const nextCertificateSlide = () => {
-    if (certificateStartIndex + certificatesPerPage < excellenceCertificates.length) {
-      setCertificateStartIndex(certificateStartIndex + 1);
-    }
-  };
-
-  const prevCertificateSlide = () => {
-    if (certificateStartIndex > 0) {
-      setCertificateStartIndex(certificateStartIndex - 1);
-    }
   };
 
   React.useEffect(() => {
@@ -171,18 +137,6 @@ export default function LicensesAwardsPage() {
     document.addEventListener("keydown", handleEscKey);
     return () => document.removeEventListener("keydown", handleEscKey);
   }, [selectedLicense, selectedCertificate]);
-
-  // Reset slide index if it goes out of bounds when per-page changes
-  React.useEffect(() => {
-    setCertificateStartIndex(0);
-  }, [certificatesPerPage]);
-
-  const visibleCertificates = excellenceCertificates.slice(
-    certificateStartIndex,
-    certificateStartIndex + certificatesPerPage
-  );
-
-  const totalSlides = Math.max(1, excellenceCertificates.length - certificatesPerPage + 1);
 
   return (
     <>
@@ -274,7 +228,6 @@ export default function LicensesAwardsPage() {
                   className="bg-[#f7f2e9]/10 border border-[#f7f2e9]/20 backdrop-blur-sm rounded-lg hover:bg-[#f7f2e9]/15 transition-all duration-300 cursor-pointer group overflow-hidden flex flex-col"
                   onClick={() => openLicenseModal(license)}
                 >
-                  {/* Large Preview Image */}
                   <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#0d2427]/40">
                     <Image
                       src={license.image}
@@ -294,7 +247,6 @@ export default function LicensesAwardsPage() {
                     </div>
                   </div>
 
-                  {/* Text Content */}
                   <div className="p-4 sm:p-5 md:p-6 flex-1 flex flex-col">
                     <div className="flex items-start gap-3 mb-2">
                       <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[#e47a4f]/25 rounded flex items-center justify-center text-[#f0a17f] shrink-0">
@@ -377,13 +329,19 @@ export default function LicensesAwardsPage() {
               </div>
             </div>
 
-            {/* Carousel — Responsive for desktop/tablet */}
-            <div className="hidden sm:block mt-8 sm:mt-12 relative">
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-                {visibleCertificates.map((cert, i) => (
+            {/* Carousel — swipeable track, no arrows, no dots */}
+            <div className="mt-8 sm:mt-12">
+              <div
+                className="flex gap-4 sm:gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 scrollbar-hide"
+                style={{
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                }}
+              >
+                {excellenceCertificates.map((cert, i) => (
                   <div
                     key={`${cert.year}-${i}`}
-                    className="cursor-pointer group"
+                    className="flex-shrink-0 w-[85%] sm:w-[calc((100%-20px)/2)] lg:w-[calc((100%-40px)/3)] snap-start cursor-pointer group"
                     onClick={() => openCertificateModal(cert)}
                   >
                     <div className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 rounded-lg border border-[#d8cec0]/30 hover:border-[#cf6943]/50 flex flex-col h-full">
@@ -393,14 +351,14 @@ export default function LicensesAwardsPage() {
                           alt={cert.name}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          sizes="(max-width: 1024px) 50vw, 400px"
+                          sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 33vw"
                           quality={88}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#14383b]/70 via-transparent to-transparent" />
                         <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 flex justify-center">
                           <span className="text-[10px] sm:text-xs text-[#f7f2e9] font-medium bg-[#14383b]/85 backdrop-blur-sm px-3 py-1.5 rounded flex items-center gap-1.5">
                             <FileCheck className="w-3 h-3" />
-                            Click to view full size
+                            Tap to view full size
                           </span>
                         </div>
                         <div className="absolute top-3 right-3 bg-[#e47a4f] text-[#fff8ee] px-2.5 py-1 text-[10px] sm:text-xs font-bold rounded shadow-md">
@@ -409,103 +367,6 @@ export default function LicensesAwardsPage() {
                       </div>
                       <div className="p-4 sm:p-5 flex-1 flex flex-col justify-center">
                         <h4 className="text-sm sm:text-base font-bold text-[#14383b] text-center leading-snug">
-                          {cert.name}
-                        </h4>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-                {/* Fill empty grid slots with placeholders so layout stays consistent */}
-                {visibleCertificates.length < certificatesPerPage &&
-                  Array.from({ length: certificatesPerPage - visibleCertificates.length }).map((_, i) => (
-                    <div
-                      key={`placeholder-${i}`}
-                      className="hidden lg:block"
-                      aria-hidden="true"
-                    />
-                  ))}
-              </div>
-
-              {/* Navigation Arrows + Dots */}
-              {excellenceCertificates.length > certificatesPerPage && (
-                <div className="flex items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8">
-                  <button
-                    onClick={prevCertificateSlide}
-                    disabled={certificateStartIndex === 0}
-                    className={`flex h-10 w-10 items-center justify-center border rounded-full transition-all ${
-                      certificateStartIndex === 0
-                        ? "border-[#d8cec0]/40 text-[#d8cec0] cursor-not-allowed"
-                        : "border-[#14383b] text-[#14383b] hover:border-[#cf6943] hover:text-[#cf6943] hover:bg-[#cf6943]/5 active:scale-95"
-                    }`}
-                    aria-label="Previous certificates"
-                  >
-                    <ChevronLeft className="h-5 w-5" />
-                  </button>
-
-                  <div className="flex justify-center gap-1.5">
-                    {Array.from({ length: totalSlides }).map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setCertificateStartIndex(i)}
-                        className={`rounded-full transition-all ${
-                          certificateStartIndex === i
-                            ? "w-6 h-2 bg-[#cf6943]"
-                            : "w-2 h-2 bg-[#d8cec0] hover:bg-[#cf6943]/50"
-                        }`}
-                        aria-label={`Go to slide ${i + 1}`}
-                      />
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={nextCertificateSlide}
-                    disabled={certificateStartIndex + certificatesPerPage >= excellenceCertificates.length}
-                    className={`flex h-10 w-10 items-center justify-center border rounded-full transition-all ${
-                      certificateStartIndex + certificatesPerPage >= excellenceCertificates.length
-                        ? "border-[#d8cec0]/40 text-[#d8cec0] cursor-not-allowed"
-                        : "border-[#14383b] text-[#14383b] hover:border-[#cf6943] hover:text-[#cf6943] hover:bg-[#cf6943]/5 active:scale-95"
-                    }`}
-                    aria-label="Next certificates"
-                  >
-                    <ChevronRight className="h-5 w-5" />
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* Mobile: Vertical Stack (all certificates visible) */}
-            <div className="sm:hidden mt-8">
-              <div className="grid grid-cols-1 gap-5">
-                {excellenceCertificates.map((cert, i) => (
-                  <div
-                    key={i}
-                    className="cursor-pointer group"
-                    onClick={() => openCertificateModal(cert)}
-                  >
-                    <div className="bg-[#f7f2e9] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 rounded-lg border border-[#d8cec0]/30">
-                      <div className="relative w-full aspect-[3/4] overflow-hidden bg-[#ebe2d0]">
-                        <Image
-                          src={cert.image}
-                          alt={cert.name}
-                          fill
-                          className="object-cover"
-                          sizes="100vw"
-                          quality={85}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#14383b]/70 via-transparent to-transparent" />
-                        <div className="absolute inset-x-0 bottom-0 p-3 flex justify-center">
-                          <span className="text-[10px] text-[#f7f2e9] font-medium bg-[#14383b]/85 backdrop-blur-sm px-3 py-1.5 rounded flex items-center gap-1.5">
-                            <FileCheck className="w-3 h-3" />
-                            Tap to view full size
-                          </span>
-                        </div>
-                        <div className="absolute top-3 right-3 bg-[#e47a4f] text-[#fff8ee] px-2.5 py-1 text-[10px] font-bold rounded shadow-md">
-                          {cert.year}
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <h4 className="text-sm font-bold text-[#14383b] text-center leading-snug">
                           {cert.name}
                         </h4>
                       </div>
@@ -534,8 +395,6 @@ export default function LicensesAwardsPage() {
             </div>
           </div>
         </section>
-
-       
       </div>
 
       {/* ═══════════════════════ License Modal ═══════════════════════ */}
@@ -615,6 +474,17 @@ export default function LicensesAwardsPage() {
           </div>
         </div>
       )}
+
+      {/* Scoped styles for hiding the scrollbar on the sliding track */}
+      <style jsx global>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </>
   );
 }
