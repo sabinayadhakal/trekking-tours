@@ -71,8 +71,63 @@ const bankDetails = {
   branch: "Thamel, Kathmandu",
 };
 
+// Country dial codes for the phone field
+// (A focused set covering common origins of our travelers)
+const COUNTRY_CODES = [
+  { code: "+977", country: "Nepal", flag: "🇳🇵" },
+  { code: "+1", country: "USA / Canada", flag: "🇺🇸" },
+  { code: "+44", country: "United Kingdom", flag: "🇬🇧" },
+  { code: "+61", country: "Australia", flag: "🇦🇺" },
+  { code: "+64", country: "New Zealand", flag: "🇳🇿" },
+  { code: "+49", country: "Germany", flag: "🇩🇪" },
+  { code: "+33", country: "France", flag: "🇫🇷" },
+  { code: "+39", country: "Italy", flag: "🇮🇹" },
+  { code: "+34", country: "Spain", flag: "🇪🇸" },
+  { code: "+31", country: "Netherlands", flag: "🇳🇱" },
+  { code: "+41", country: "Switzerland", flag: "🇨🇭" },
+  { code: "+43", country: "Austria", flag: "🇦🇹" },
+  { code: "+32", country: "Belgium", flag: "🇧🇪" },
+  { code: "+45", country: "Denmark", flag: "🇩🇰" },
+  { code: "+46", country: "Sweden", flag: "🇸🇪" },
+  { code: "+47", country: "Norway", flag: "🇳🇴" },
+  { code: "+358", country: "Finland", flag: "🇫🇮" },
+  { code: "+353", country: "Ireland", flag: "🇮🇪" },
+  { code: "+351", country: "Portugal", flag: "🇵🇹" },
+  { code: "+48", country: "Poland", flag: "🇵🇱" },
+  { code: "+420", country: "Czech Republic", flag: "🇨🇿" },
+  { code: "+36", country: "Hungary", flag: "🇭🇺" },
+  { code: "+30", country: "Greece", flag: "🇬🇷" },
+  { code: "+7", country: "Russia", flag: "🇷🇺" },
+  { code: "+86", country: "China", flag: "🇨🇳" },
+  { code: "+81", country: "Japan", flag: "🇯🇵" },
+  { code: "+82", country: "South Korea", flag: "🇰🇷" },
+  { code: "+91", country: "India", flag: "🇮🇳" },
+  { code: "+65", country: "Singapore", flag: "🇸🇬" },
+  { code: "+60", country: "Malaysia", flag: "🇲🇾" },
+  { code: "+66", country: "Thailand", flag: "🇹🇭" },
+  { code: "+62", country: "Indonesia", flag: "🇮🇩" },
+  { code: "+63", country: "Philippines", flag: "🇵🇭" },
+  { code: "+84", country: "Vietnam", flag: "🇻🇳" },
+  { code: "+92", country: "Pakistan", flag: "🇵🇰" },
+  { code: "+880", country: "Bangladesh", flag: "🇧🇩" },
+  { code: "+94", country: "Sri Lanka", flag: "🇱🇰" },
+  { code: "+971", country: "UAE", flag: "🇦🇪" },
+  { code: "+966", country: "Saudi Arabia", flag: "🇸🇦" },
+  { code: "+972", country: "Israel", flag: "🇮🇱" },
+  { code: "+27", country: "South Africa", flag: "🇿🇦" },
+  { code: "+55", country: "Brazil", flag: "🇧🇷" },
+  { code: "+52", country: "Mexico", flag: "🇲🇽" },
+  { code: "+54", country: "Argentina", flag: "🇦🇷" },
+  { code: "+56", country: "Chile", flag: "🇨🇱" },
+  { code: "+57", country: "Colombia", flag: "🇨🇴" },
+  { code: "+20", country: "Egypt", flag: "🇪🇬" },
+  { code: "+254", country: "Kenya", flag: "🇰🇪" },
+  { code: "+234", country: "Nigeria", flag: "🇳🇬" },
+];
+
 // Popular treks/tours options for clickable chips
 const POPULAR_TREKS = [
+  "Free Walking Tour, Kathmandu",
   "Everest Base Camp Trek",
   "Annapurna Circuit Trek",
   "Langtang Valley Trek",
@@ -82,7 +137,6 @@ const POPULAR_TREKS = [
   "Mardi Himal Trek",
   "Bhutan Cultural Tour",
   "Tibet Overland Tour",
-  "Free Walking Tour, Kathmandu",
   "Kathmandu, Pokhara, Lumbini, Chitwan Tour",
   "Chitwan National Park Jungle Safari",
   "Annapurna Region Mountain Flight Trip",
@@ -92,7 +146,7 @@ const POPULAR_TREKS = [
   "Mera Peak Climbing",
 ];
 
-// Bank Details Dialog - Dark Theme (matches the style of the removed Terms/Privacy dialogs)
+// Bank Details Dialog - Dark Theme
 const BankDetailsDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) => (
   <Dialog open={open} onOpenChange={onOpenChange}>
     <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-[#0d2427] border-[#f7f2e9]/20 text-[#f7f2e9] w-[95vw] sm:w-full mx-auto">
@@ -175,6 +229,164 @@ const BankDetailsDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange
     </DialogContent>
   </Dialog>
 );
+
+// Country code dropdown + phone input — combined phone field
+const PhoneField = ({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (fullValue: string) => void;
+}) => {
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const [selected, setSelected] = React.useState(COUNTRY_CODES[0]); // default Nepal
+  const [localNumber, setLocalNumber] = React.useState("");
+  const wrapRef = React.useRef<HTMLDivElement>(null);
+  const searchRef = React.useRef<HTMLInputElement>(null);
+  const [search, setSearch] = React.useState("");
+
+  // Parse an incoming value like "+977 9841376370" into country + local parts
+  React.useEffect(() => {
+    if (!value) return;
+    const trimmed = value.trim();
+    // find the longest matching dial code
+    const match = COUNTRY_CODES
+      .slice()
+      .sort((a, b) => b.code.length - a.code.length)
+      .find((c) => trimmed.startsWith(c.code));
+    if (match) {
+      setSelected(match);
+      const rest = trimmed.slice(match.code.length).trim();
+      setLocalNumber(rest);
+    } else {
+      setLocalNumber(trimmed);
+    }
+    // run only on mount / when external value changes deliberately
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+
+  // Close dropdown on outside click
+  React.useEffect(() => {
+    const onDown = (e: MouseEvent) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+        setSearch("");
+      }
+    };
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, []);
+
+  // Focus search input when dropdown opens
+  React.useEffect(() => {
+    if (dropdownOpen) {
+      setTimeout(() => searchRef.current?.focus(), 50);
+    }
+  }, [dropdownOpen]);
+
+  // Emit the combined value upward whenever either part changes
+  const emitChange = (country: typeof COUNTRY_CODES[number], number: string) => {
+    const clean = number.replace(/[^\d\s]/g, "");
+    onChange(clean ? `${country.code} ${clean}` : "");
+  };
+
+  const handleSelectCountry = (c: typeof COUNTRY_CODES[number]) => {
+    setSelected(c);
+    setDropdownOpen(false);
+    setSearch("");
+    emitChange(c, localNumber);
+  };
+
+  const handleNumberChange = (raw: string) => {
+    // allow digits, spaces, dashes, parentheses
+    const cleaned = raw.replace(/[^\d\s\-()]/g, "");
+    setLocalNumber(cleaned);
+    emitChange(selected, cleaned);
+  };
+
+  const filteredCountries = React.useMemo(() => {
+    if (!search.trim()) return COUNTRY_CODES;
+    const q = search.toLowerCase();
+    return COUNTRY_CODES.filter(
+      (c) =>
+        c.country.toLowerCase().includes(q) ||
+        c.code.includes(q)
+    );
+  }, [search]);
+
+  return (
+    <div className="flex gap-2 w-full" ref={wrapRef}>
+      {/* Country code dropdown */}
+      <div className="relative shrink-0">
+        <button
+          type="button"
+          onClick={() => setDropdownOpen((v) => !v)}
+          className="h-10 sm:h-12 px-2.5 sm:px-3 flex items-center gap-1.5 sm:gap-2 rounded-lg sm:rounded-xl border border-[#d8cec0]/50 bg-[#f7f2e9] hover:border-[#e47a4f]/50 transition-colors text-sm sm:text-base"
+          aria-label="Select country code"
+        >
+          <span className="text-base sm:text-lg leading-none">{selected.flag}</span>
+          <span className="font-medium text-[#14383b] tabular-nums">{selected.code}</span>
+          <ChevronDown
+            className={`w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#556363] transition-transform ${dropdownOpen ? "rotate-180" : ""}`}
+          />
+        </button>
+
+        {dropdownOpen && (
+          <div className="absolute z-30 mt-1 left-0 w-[260px] sm:w-[300px] max-h-[280px] flex flex-col bg-[#f7f2e9] border border-[#d8cec0]/60 rounded-lg sm:rounded-xl shadow-xl overflow-hidden">
+            {/* Search */}
+            <div className="p-2 border-b border-[#d8cec0]/40">
+              <input
+                ref={searchRef}
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search country..."
+                className="w-full h-9 px-3 text-sm rounded-md border border-[#d8cec0]/50 bg-white text-[#14383b] placeholder:text-[#556363]/60 focus:outline-none focus:border-[#e47a4f]"
+              />
+            </div>
+            {/* List */}
+            <div className="overflow-y-auto flex-1">
+              {filteredCountries.length === 0 ? (
+                <div className="py-6 text-center text-xs text-[#556363]">
+                  No countries found
+                </div>
+              ) : (
+                filteredCountries.map((c, i) => (
+                  <button
+                    key={`${c.code}-${i}`}
+                    type="button"
+                    onClick={() => handleSelectCountry(c)}
+                    className={`w-full px-3 py-2 flex items-center gap-2.5 text-left text-sm hover:bg-[#e4d8c8]/60 transition-colors ${
+                      selected.code === c.code && selected.country === c.country
+                        ? "bg-[#e4d8c8]/40"
+                        : ""
+                    }`}
+                  >
+                    <span className="text-base leading-none">{c.flag}</span>
+                    <span className="flex-1 text-[#14383b] truncate">{c.country}</span>
+                    <span className="text-[#556363] tabular-nums text-xs">{c.code}</span>
+                  </button>
+                ))
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Phone number */}
+      <Input
+        id="phone"
+        type="tel"
+        placeholder="9841376470"
+        value={localNumber}
+        onChange={(e) => handleNumberChange(e.target.value)}
+        className="h-10 sm:h-12 rounded-lg sm:rounded-xl border-[#d8cec0]/50 focus:border-[#e47a4f] focus:ring-1 focus:ring-[#e47a4f]/20 bg-[#f7f2e9] text-sm sm:text-base flex-1 min-w-0"
+        autoComplete="tel-national"
+        inputMode="tel"
+      />
+    </div>
+  );
+};
 
 // Contact Form Content Component
 function ContactFormContent() {
@@ -559,20 +771,15 @@ function ContactFormContent() {
             />
           </div>
 
-          {/* Phone */}
+          {/* Phone — country code + number */}
           <div className="space-y-1.5 sm:space-y-2 w-full">
             <Label htmlFor="phone" className="text-[#14383b] font-medium flex items-center gap-1.5 sm:gap-2 text-sm sm:text-base">
               <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#cf6943]" />
               Phone / WhatsApp <span className="text-[#556363] text-xs font-normal">(Optional)</span>
             </Label>
-            <Input
-              id="phone"
-              type="tel"
-              placeholder="+977 9841376470"
+            <PhoneField
               value={formData.phone}
-              onChange={(e) => handleChange("phone", e.target.value)}
-              className="h-10 sm:h-12 rounded-lg sm:rounded-xl border-[#d8cec0]/50 focus:border-[#e47a4f] focus:ring-1 focus:ring-[#e47a4f]/20 bg-[#f7f2e9] text-sm sm:text-base w-full"
-              autoComplete="tel"
+              onChange={(v) => handleChange("phone", v)}
             />
           </div>
 
@@ -689,11 +896,6 @@ function ContactFormContent() {
               <span className="flex items-center justify-center gap-2">
                 <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#f7f2e9]/30 border-t-[#f7f2e9] rounded-full animate-spin" />
                 Sending...
-              </span>
-            ) : !recaptchaLoaded && RECAPTCHA_CONFIG.SITE_KEY ? (
-              <span className="flex items-center justify-center gap-2">
-                <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#f7f2e9]/30 border-t-[#f7f2e9] rounded-full animate-spin" />
-                Loading security...
               </span>
             ) : (
               <span className="flex items-center justify-center gap-2">
@@ -833,7 +1035,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Payment Information - Clean card (NEW) */}
+              {/* Payment Information - Clean card */}
               <div className="bg-[#f7f2e9] border border-[#d8cec0]/50 overflow-hidden rounded-lg sm:rounded-xl">
                 <div className="p-4 sm:p-6">
                   <div className="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
