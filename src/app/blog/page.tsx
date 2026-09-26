@@ -112,7 +112,11 @@ export default function BlogPage() {
     };
     applyHash();
     window.addEventListener("hashchange", applyHash);
-    return () => window.removeEventListener("hashchange", applyHash);
+    window.addEventListener("popstate", applyHash);
+    return () => {
+      window.removeEventListener("hashchange", applyHash);
+      window.removeEventListener("popstate", applyHash);
+    };
   }, []);
 
   React.useEffect(() => {
@@ -322,7 +326,7 @@ export default function BlogPage() {
         </section>
 
         {/* Blog Posts Section - Paginated Grid */}
-        <section id="latest-articles" className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30">
+        <section id="latest-articles" className="bg-[#f2ede4] px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-20 lg:py-28 border-t border-[#d8cec0]/30 scroll-mt-[80px] md:scroll-mt-[90px]">
           <div className="mx-auto max-w-[1220px]">
             <div className="flex flex-col gap-4 md:gap-8 md:flex-row md:items-end md:justify-between mb-8 sm:mb-12">
               <div>

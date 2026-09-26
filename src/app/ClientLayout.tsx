@@ -141,12 +141,6 @@ import {
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { usePathname, useRouter } from "next/navigation";
 
 // Import React Icons
@@ -321,68 +315,6 @@ const categoryLabels: Record<string, string> = {
   blog: 'Blog',
   page: 'Pages'
 };
-
-// Terms Dialog
-const TermsDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) => (
-  <Dialog open={open} onOpenChange={onOpenChange}>
-    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-[#f2ede4] border-[#e4d8c8]/30 text-[#14383b]">
-      <DialogHeader>
-        <DialogTitle className="text-2xl font-serif font-bold text-[#14383b] mb-4">Terms and Conditions</DialogTitle>
-        <div className="mt-4 space-y-4 text-sm text-[#556363]">
-          <p><strong className="text-[#cf6943]">Down Payment:</strong></p>
-          <p>To secure your place, a 20% down payment is required in advance as per company policy. For bookings more than ten weeks prior to arrival date, a 15% deposit applies. Please contact us if this causes any issues as we try to be flexible.</p>
-          <p><strong className="text-[#cf6943]">How to pay your deposit:</strong></p>
-          <p>You can pay via bank transfer in USD, EUR, or GBP to the following account:</p>
-          <p className="bg-[#e4d8c8]/50 p-4 rounded-lg">FOR CREDIT TO:<br />Nepal Investment Mega Bank Nepal Ltd.<br />Kathmandu, Nepal<br />SWIFT: NIBLNPKT</p>
-          <p className="bg-[#e4d8c8]/50 p-4 rounded-lg">BENEFICIARY FINAL CREDIT TO:<br />A/C Holder's Name: Himkala Adventure Pvt. Ltd.<br />A/C No: 13201100002097<br />Nepal Investment Mega Bank Nepal Ltd<br />Thamel, Kathmandu</p>
-          <p><strong className="text-[#cf6943]">Payment of the balance:</strong></p>
-          <p>The remaining balance can be paid after your arrival in Nepal. Credit card payments incur a 4% handling charge on the outstanding balance. Bank transfers have no handling fee.</p>
-          <p><strong className="text-[#cf6943]">Last minute booking:</strong></p>
-          <p>We accept last-minute bookings for Nepal trips only, not for India, Bhutan, or Tibet trips.</p>
-          <p><strong className="text-[#cf6943]">Refund:</strong></p>
-          <p>The 15% deposit is non-refundable for any cancellation reason. If you've paid in full, you'll receive a refund minus cancellation charges. Written notification is required for cancellations.</p>
-          <p><strong className="text-[#cf6943]">Supplement charge:</strong></p>
-          <p>Rooms/tents are provided on a twin-sharing basis. Single room supplement charges apply for clients without a sharing partner.</p>
-          <p><strong className="text-[#cf6943]">Incomplete tour:</strong></p>
-          <p>No refunds are provided for unused portions of the itinerary if clients drop out.</p>
-          <p><strong className="text-[#cf6943]">Unforeseen circumstances:</strong></p>
-          <p>If Himkala Adventure cancels your trip due to war, natural disasters, conflict, or unfavorable climate, we'll offer an alternative trip or full refund. Other expenses incurred from the booking are your responsibility.</p>
-          <p><strong className="text-[#cf6943]">Clients' responsibility:</strong></p>
-          <p>Our tour/trek guides have full authority during tours. Any unlawful acts may result in removal from the tour.</p>
-          <p><strong className="text-[#cf6943]">Impact on your journey:</strong></p>
-          <p>We strive to provide the best service but note that facilities in Himalayan countries may differ from Western standards.</p>
-          <p><strong className="text-[#cf6943]">Travel insurance:</strong></p>
-          <p>Comprehensive travel insurance covering medical emergencies, natural calamities, helicopter evacuation, personal accidents, trip cancellation, etc., is mandatory. Ensure your policy covers your planned activities and maximum altitudes.</p>
-          <p><strong className="text-[#cf6943]">Tour amendment:</strong></p>
-          <p>Itinerary changes require prior notice, though adjustments may be necessary en route due to circumstances like bad weather.</p>
-          <p><strong className="text-[#cf6943]">Paper and documents:</strong></p>
-          <p>All necessary documents must be provided in time for visa and permit processing. We're not responsible for delays due to missing paperwork.</p>
-          <p><strong className="text-[#cf6943]">Flight delay/cancellation:</strong></p>
-          <p>Flight delays or cancellations may occur in Himalayan regions due to weather, requiring itinerary modifications.</p>
-        </div>
-      </DialogHeader>
-    </DialogContent>
-  </Dialog>
-);
-
-// Privacy Dialog
-const PrivacyDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) => (
-  <Dialog open={open} onOpenChange={onOpenChange}>
-    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-[#f2ede4] border-[#e4d8c8]/30 text-[#14383b]">
-      <DialogHeader>
-        <DialogTitle className="text-2xl font-serif font-bold text-[#14383b] mb-4">Privacy Policy</DialogTitle>
-        <div className="mt-4 space-y-4 text-sm text-[#556363]">
-          <p>Himkala Adventure Pvt. Ltd. takes the responsibility of your data seriously and respects your privacy concerning any information we may gather from you across this website.</p>
-          <p>Our website uses links to other websites (e.g. Facebook, Instagram, Twitter etc.) to which this data protection declaration does not apply. These sites might collect Device Information. Please be aware that we do not control the content and practices of these sites, and cannot take responsibility for their privacy policies.</p>
-          <p>We only collect personal information that we need to provide a service to you (e.g. your name, email address and phone number) when you send us an email through inquiry, booking, or contact form. We collect it by lawful means, with your knowledge and agreement.</p>
-          <p>We only keep the gathered information as long as required to provide you with the service you requested. The data we store will be protected with lawful means to prevent loss and theft, as well as unauthorized access, leak, copying, usage, or any adjustment. We don't share any personal information publicly or with third parties unless required by lawful request.</p>
-          <p>You have the right to ask that your personal information be corrected, updated, or deleted at any time; please contact us through the contact information available on the website. If you have any queries about how we handle your personal information, please do not hesitate to contact us through email.</p>
-          <p>We may update this privacy policy from time to time to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons.</p>
-        </div>
-      </DialogHeader>
-    </DialogContent>
-  </Dialog>
-);
 
 // Social links
 const socialLinks = [
@@ -786,6 +718,43 @@ const ServicesDropdown = () => {
   );
 };
 
+// About dropdown
+const AboutDropdown = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <button onClick={() => setIsOpen(!isOpen)} className="flex items-center gap-1 text-xs font-semibold tracking-[.08em] text-[#f7f2e9]/90 hover:text-[#f0a17f] transition-colors px-3 py-1.5">
+        About
+        <ChevronDown className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ duration: 0.2 }} className="absolute left-0 top-full mt-2 w-64 bg-[#0d2427]/95 backdrop-blur-xl border border-[#f7f2e9]/20 rounded-xl shadow-2xl shadow-black/30 overflow-hidden z-50">
+            <div className="py-2">
+              <Link href="/about-us" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors border-b border-[#f7f2e9]/5" onClick={() => setIsOpen(false)}>About Us</Link>
+              <Link href="/partners-communities" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors" onClick={() => setIsOpen(false)}>Partners and Communities</Link>
+              <Link href="/licenses-awards" className="block px-4 py-3 text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 transition-colors" onClick={() => setIsOpen(false)}>Licenses and Awards</Link>
+
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 // Mobile dropdowns
 const MobileDestinationsDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -830,6 +799,30 @@ const MobileServicesDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
               <Link href="/services/mountain-flight-heli-trip" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Mountain Flights and Heli</Link>
               <Link href="/services/jungle-safari" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Jungle Safari</Link>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const MobileAboutDropdown = ({ closeMenu }: { closeMenu: () => void }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  return (
+    <div className="w-full">
+      <button onClick={() => setIsOpen(!isOpen)} className="w-full py-4 px-4 text-base font-medium text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-xl transition-all active:scale-95 flex items-center justify-between border-b border-[#f7f2e9]/10 group">
+        <span>About</span>
+        <ChevronDown className={`w-4 h-4 text-[#f7f2e9]/50 group-hover:text-[#f0a17f] transition-transform ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
+            <div className="pl-6 pt-2 space-y-1">
+              <Link href="/about-us" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>About Us</Link>
+              <Link href="/partners-communities" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Partners and Communities</Link>
+              <Link href="/licenses-awards" className="block py-3 px-4 text-[#f7f2e9]/80 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-lg transition-colors" onClick={closeMenu}>Licenses and Awards</Link>
+
+ </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -956,8 +949,6 @@ export default function ClientLayout({
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
-  const [termsOpen, setTermsOpen] = React.useState(false);
-  const [privacyOpen, setPrivacyOpen] = React.useState(false);
 
   const phoneNumber = "+977 9841376470";
   const whatsappMessage = "";
@@ -1025,14 +1016,7 @@ export default function ClientLayout({
 
             <DestinationsDropdown />
             <ServicesDropdown />
-
-            <Link
-              href="/about-us"
-              className="inline-flex h-8 items-center justify-center px-3 text-xs font-semibold tracking-[.08em] text-[#f7f2e9]/90 transition-colors hover:text-[#f0a17f]"
-              onClick={closeMenu}
-            >
-              About Us
-            </Link>
+            <AboutDropdown />
 
             <Link
               href="/blog"
@@ -1107,15 +1091,7 @@ export default function ClientLayout({
                     <div className="flex flex-col space-y-1">
                       <MobileDestinationsDropdown closeMenu={closeMenu} />
                       <MobileServicesDropdown closeMenu={closeMenu} />
-
-                      <Link
-                        href="/about-us"
-                        className="py-4 px-4 text-base font-medium text-[#f7f2e9]/90 hover:text-[#f0a17f] hover:bg-[#f7f2e9]/10 rounded-xl transition-all active:scale-95 flex items-center justify-between border-b border-[#f7f2e9]/10 group"
-                        onClick={closeMenu}
-                      >
-                        <span>About Us</span>
-                        <ChevronRight className="w-4 h-4 text-[#f7f2e9]/50 group-hover:text-[#f0a17f] group-hover:translate-x-1 transition-all" aria-hidden="true" />
-                      </Link>
+                      <MobileAboutDropdown closeMenu={closeMenu} />
 
                       <Link
                         href="/blog"
@@ -1413,28 +1389,32 @@ export default function ClientLayout({
             <p className="text-xs text-[#f7f2e9]/40 text-center md:text-left">
               © {new Date().getFullYear()} Himkala Adventure (SnowArt). All rights reserved.
             </p>
-            <div className="flex gap-4 md:gap-6 text-xs text-[#f7f2e9]/40">
-              <button
-                onClick={() => setPrivacyOpen(true)}
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-xs text-[#f7f2e9]/40">
+              <Link
+                href="/privacy-policy"
                 className="hover:text-[#f0a17f] transition-colors cursor-pointer"
-                aria-label="Open privacy policy"
+                aria-label="View privacy policy"
               >
                 Privacy Policy
-              </button>
-              <button
-                onClick={() => setTermsOpen(true)}
+              </Link>
+              <Link
+                href="/terms-and-conditions"
                 className="hover:text-[#f0a17f] transition-colors cursor-pointer"
-                aria-label="Open terms and conditions"
+                aria-label="View terms and conditions"
               >
-                Terms & Conditions
-              </button>
+                Terms &amp; Conditions
+              </Link>
+              <Link
+                href="/cancellation-refund-policy"
+                className="hover:text-[#f0a17f] transition-colors cursor-pointer"
+                aria-label="View cancellation and refund policy"
+              >
+                Cancellation &amp; Refund Policy
+              </Link>
             </div>
           </div>
         </div>
       </footer>
-
-      <TermsDialog open={termsOpen} onOpenChange={setTermsOpen} />
-      <PrivacyDialog open={privacyOpen} onOpenChange={setPrivacyOpen} />
 
       {/* Floating WhatsApp Button */}
       <a

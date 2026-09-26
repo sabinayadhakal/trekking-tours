@@ -4,6 +4,7 @@ import * as React from "react";
 import emailjs from '@emailjs/browser';
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import Link from "next/link";
 import {
   Mail,
   Phone,
@@ -18,6 +19,9 @@ import {
   Shield,
   ChevronDown,
   ChevronUp,
+  CreditCard,
+  Landmark,
+  Wallet,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -57,6 +61,16 @@ const RECAPTCHA_CONFIG = {
   PROJECT_ID: 'third-light-479206-p6',
 } as const;
 
+// Bank details
+const bankDetails = {
+  bankName: "Nepal Investment Mega Bank Nepal Ltd.",
+  location: "Kathmandu, Nepal",
+  swift: "NIBLNPKT",
+  accountHolder: "Himkala Adventure Pvt. Ltd.",
+  accountNumber: "13201100002097",
+  branch: "Thamel, Kathmandu",
+};
+
 // Popular treks/tours options for clickable chips
 const POPULAR_TREKS = [
   "Everest Base Camp Trek",
@@ -78,74 +92,85 @@ const POPULAR_TREKS = [
   "Mera Peak Climbing",
 ];
 
-// Terms Dialog Component - Dark Theme
-const TermsDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) => (
+// Bank Details Dialog - Dark Theme (matches the style of the removed Terms/Privacy dialogs)
+const BankDetailsDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) => (
   <Dialog open={open} onOpenChange={onOpenChange}>
-    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-[#0d2427] border-[#f7f2e9]/20 text-[#f7f2e9] w-[95vw] sm:w-full mx-auto">
+    <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-[#0d2427] border-[#f7f2e9]/20 text-[#f7f2e9] w-[95vw] sm:w-full mx-auto">
       <DialogHeader>
-        <DialogTitle className="text-xl sm:text-2xl font-serif font-bold text-[#f0a17f] mb-4 text-center">Terms and Conditions</DialogTitle>
+        <DialogTitle className="text-xl sm:text-2xl font-serif font-bold text-[#f0a17f] mb-4 text-center">
+          Payment Information
+        </DialogTitle>
       </DialogHeader>
-      <div className="mt-4 space-y-4 text-sm text-[#f7f2e9]/80 px-2 sm:px-0">
-        <p><strong className="text-[#f0a17f]">Down Payment:</strong></p>
-        <p>To secure your place, a 20% down payment is required in advance as per company policy. For bookings more than ten weeks prior to arrival date, a 15% deposit applies. Please contact us if this causes any issues as we try to be flexible.</p>
-        <p><strong className="text-[#f0a17f]">How to pay your deposit:</strong></p>
-        <p>You can pay via bank transfer in USD, EUR, or GBP to the following account:</p>
-        <p className="bg-[#f7f2e9]/10 p-3 sm:p-4 rounded-lg text-xs sm:text-sm border border-[#f7f2e9]/10">
-          FOR CREDIT TO:<br />
-          Nepal Investment Mega Bank Nepal Ltd.<br />
-          Kathmandu, Nepal<br />
-          SWIFT: NIBLNPKT
-        </p>
-        <p className="bg-[#f7f2e9]/10 p-3 sm:p-4 rounded-lg text-xs sm:text-sm border border-[#f7f2e9]/10">
-          BENEFICIARY FINAL CREDIT TO:<br />
-          A/C Holder's Name: Himkala Adventure Pvt. Ltd.<br />
-          A/C No: 13201100002097<br />
-          Nepal Investment Mega Bank Nepal Ltd<br />
-          Thamel, Kathmandu
-        </p>
-        <p><strong className="text-[#f0a17f]">Payment of the balance:</strong></p>
-        <p>The remaining balance can be paid after your arrival in Nepal. Credit card payments incur a 4% handling charge on the outstanding balance. Bank transfers have no handling fee.</p>
-        <p><strong className="text-[#f0a17f]">Last minute booking:</strong></p>
-        <p>We accept last-minute bookings for Nepal trips only, not for India, Bhutan, or Tibet trips.</p>
-        <p><strong className="text-[#f0a17f]">Refund:</strong></p>
-        <p>The 15% deposit is non-refundable for any cancellation reason. If you've paid in full, you'll receive a refund minus cancellation charges. Written notification is required for cancellations.</p>
-        <p><strong className="text-[#f0a17f]">Supplement charge:</strong></p>
-        <p>Rooms/tents are provided on a twin-sharing basis. Single room supplement charges apply for clients without a sharing partner.</p>
-        <p><strong className="text-[#f0a17f]">Incomplete tour:</strong></p>
-        <p>No refunds are provided for unused portions of the itinerary if clients drop out.</p>
-        <p><strong className="text-[#f0a17f]">Unforeseen circumstances:</strong></p>
-        <p>If Himkala Adventure cancels your trip due to war, natural disasters, conflict, or unfavorable climate, we'll offer an alternative trip or full refund. Other expenses incurred from the booking are your responsibility.</p>
-        <p><strong className="text-[#f0a17f]">Clients' responsibility:</strong></p>
-        <p>Our tour/trek guides have full authority during tours. Any unlawful acts may result in removal from the tour.</p>
-        <p><strong className="text-[#f0a17f]">Impact on your journey:</strong></p>
-        <p>We strive to provide the best service but note that facilities in Himalayan countries may differ from Western standards.</p>
-        <p><strong className="text-[#f0a17f]">Travel insurance:</strong></p>
-        <p>Comprehensive travel insurance covering medical emergencies, natural calamities, helicopter evacuation, personal accidents, trip cancellation, etc., is mandatory. Ensure your policy covers your planned activities and maximum altitudes.</p>
-        <p><strong className="text-[#f0a17f]">Tour amendment:</strong></p>
-        <p>Itinerary changes require prior notice, though adjustments may be necessary en route due to circumstances like bad weather.</p>
-        <p><strong className="text-[#f0a17f]">Paper and documents:</strong></p>
-        <p>All necessary documents must be provided in time for visa and permit processing. We're not responsible for delays due to missing paperwork.</p>
-        <p><strong className="text-[#f0a17f]">Flight delay/cancellation:</strong></p>
-        <p>Flight delays or cancellations may occur in Himalayan regions due to weather, requiring itinerary modifications.</p>
-      </div>
-    </DialogContent>
-  </Dialog>
-);
 
-// Privacy Dialog Component - Dark Theme
-const PrivacyDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) => (
-  <Dialog open={open} onOpenChange={onOpenChange}>
-    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-[#0d2427] border-[#f7f2e9]/20 text-[#f7f2e9] w-[95vw] sm:w-full mx-auto">
-      <DialogHeader>
-        <DialogTitle className="text-xl sm:text-2xl font-serif font-bold text-[#f0a17f] mb-4 text-center">Privacy Policy</DialogTitle>
-      </DialogHeader>
-      <div className="mt-4 space-y-4 text-sm text-[#f7f2e9]/80 px-2 sm:px-0">
-        <p>Himkala Adventure Pvt. Ltd. takes the responsibility of your data seriously and respects your privacy concerning any information we may gather from you across this website.</p>
-        <p>Our website uses links to other websites (e.g. Facebook, Instagram, Twitter etc.) to which this data protection declaration does not apply. These sites might collect Device Information. Please be aware that we do not control the content and practices of these sites, and cannot take responsibility for their privacy policies.</p>
-        <p>We only collect personal information that we need to provide a service to you (e.g. your name, email address and phone number) when you send us an email through inquiry, booking, or contact form. We collect it by lawful means, with your knowledge and agreement.</p>
-        <p>We only keep the gathered information as long as required to provide you with the service you requested. The data we store will be protected with lawful means to prevent loss and theft, as well as unauthorized access, leak, copying, usage, or any adjustment. We don't share any personal information publicly or with third parties unless required by lawful request.</p>
-        <p>You have the right to ask that your personal information be corrected, updated, or deleted at any time; please contact us through the contact information available on the website. If you have any queries about how we handle your personal information, please do not hesitate to contact us through email.</p>
-        <p>We may update this privacy policy from time to time to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons.</p>
+      <div className="mt-2 space-y-5 text-sm text-[#f7f2e9]/80 px-1 sm:px-0">
+        <p className="text-center text-[#f7f2e9]/70 text-xs sm:text-sm leading-relaxed">
+          You can pay via bank transfer in USD, EUR, or GBP to the following account.
+          Please include your full name and trip reference in the transfer note.
+        </p>
+
+        {/* For Credit To */}
+        <div className="bg-[#f7f2e9]/10 p-4 sm:p-5 rounded-lg border border-[#f7f2e9]/10">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-9 h-9 bg-[#e47a4f]/25 rounded flex items-center justify-center text-[#f0a17f] shrink-0">
+              <Landmark className="w-4 h-4 sm:w-5 sm:h-5" />
+            </div>
+            <h3 className="text-[#f0a17f] font-bold text-sm sm:text-base tracking-wide">
+              FOR CREDIT TO
+            </h3>
+          </div>
+          <div className="space-y-1.5 text-xs sm:text-sm">
+            <p className="text-[#f7f2e9] font-medium">{bankDetails.bankName}</p>
+            <p>{bankDetails.location}</p>
+            <div className="pt-2 mt-2 border-t border-[#f7f2e9]/10">
+              <p className="text-[10px] sm:text-xs text-[#f7f2e9]/50 uppercase tracking-wider mb-0.5">
+                SWIFT Code
+              </p>
+              <p className="text-[#f7f2e9] font-bold tracking-wide break-all">
+                {bankDetails.swift}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Beneficiary */}
+        <div className="bg-[#f7f2e9]/10 p-4 sm:p-5 rounded-lg border border-[#f7f2e9]/10">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-9 h-9 bg-[#e47a4f]/25 rounded flex items-center justify-center text-[#f0a17f] shrink-0">
+              <Wallet className="w-4 h-4 sm:w-5 sm:h-5" />
+            </div>
+            <h3 className="text-[#f0a17f] font-bold text-sm sm:text-base tracking-wide">
+              BENEFICIARY FINAL CREDIT TO
+            </h3>
+          </div>
+          <div className="space-y-3 text-xs sm:text-sm">
+            <div>
+              <p className="text-[10px] sm:text-xs text-[#f7f2e9]/50 uppercase tracking-wider mb-0.5">
+                A/C Holder's Name
+              </p>
+              <p className="text-[#f7f2e9] font-bold break-all">
+                {bankDetails.accountHolder}
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] sm:text-xs text-[#f7f2e9]/50 uppercase tracking-wider mb-0.5">
+                A/C Number
+              </p>
+              <p className="text-[#f7f2e9] font-bold tracking-wide break-all">
+                {bankDetails.accountNumber}
+              </p>
+            </div>
+            <div className="pt-2 mt-2 border-t border-[#f7f2e9]/10">
+              <p className="text-[#f7f2e9]/80">{bankDetails.bankName}</p>
+              <p className="text-[#f7f2e9]/80">{bankDetails.branch}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Reminder */}
+        <p className="text-center text-[#f7f2e9]/60 text-[11px] sm:text-xs leading-relaxed pt-2 border-t border-[#f7f2e9]/10">
+          Credit card payments incur a 4% handling charge. Bank transfers have no handling fee.
+          Please send us a screenshot or receipt once the transfer is complete.
+        </p>
       </div>
     </DialogContent>
   </Dialog>
@@ -167,8 +192,6 @@ function ContactFormContent() {
     tour: trekFromUrl ? decodeURIComponent(trekFromUrl) : "",
     message: "",
   });
-  const [privacyOpen, setPrivacyOpen] = React.useState(false);
-  const [termsOpen, setTermsOpen] = React.useState(false);
   const [showMoreTreks, setShowMoreTreks] = React.useState(false);
 
   // Update when trekFromUrl changes
@@ -474,9 +497,6 @@ function ContactFormContent() {
 
   return (
     <>
-      <TermsDialog open={termsOpen} onOpenChange={setTermsOpen} />
-      <PrivacyDialog open={privacyOpen} onOpenChange={setPrivacyOpen} />
-
       {RECAPTCHA_CONFIG.SITE_KEY && (
         <Script
           src={`https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_CONFIG.SITE_KEY}`}
@@ -634,21 +654,19 @@ function ContactFormContent() {
               <p className="text-sm text-[#14383b] font-medium">Security & Privacy</p>
               <p className="text-xs text-[#556363] mt-1 leading-relaxed">
                 By submitting, you agree to our{' '}
-                <button
-                  type="button"
-                  onClick={() => setPrivacyOpen(true)}
+                <Link
+                  href="/privacy-policy"
                   className="underline hover:text-[#cf6943] transition-colors"
                 >
                   Privacy Policy
-                </button>{' '}
+                </Link>{' '}
                 and{' '}
-                <button
-                  type="button"
-                  onClick={() => setTermsOpen(true)}
+                <Link
+                  href="/terms-and-conditions"
                   className="underline hover:text-[#cf6943] transition-colors"
                 >
                   Terms of Service
-                </button>.
+                </Link>.
               </p>
             </div>
           </div>
@@ -697,9 +715,13 @@ function ContactFormContent() {
 // Main component with Suspense
 export default function ContactPage() {
   const phoneNumber = "+977 9841376470";
+  const [bankDialogOpen, setBankDialogOpen] = React.useState(false);
 
   return (
     <div className="min-h-screen bg-[#f2ede4]">
+      {/* Bank Details Dialog */}
+      <BankDetailsDialog open={bankDialogOpen} onOpenChange={setBankDialogOpen} />
+
       {/* Page Header - Dark Theme */}
       <section className="pt-6 pb-8 sm:pt-8 sm:pb-12 bg-[#0d2427] border-b border-[#f7f2e9]/20">
         <div className="container mx-auto px-4 sm:px-6">
@@ -808,6 +830,29 @@ export default function ContactPage() {
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              {/* Payment Information - Clean card (NEW) */}
+              <div className="bg-[#f7f2e9] border border-[#d8cec0]/50 overflow-hidden rounded-lg sm:rounded-xl">
+                <div className="p-4 sm:p-6">
+                  <div className="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-[#e47a4f] to-[#cf6943] rounded-lg sm:rounded-xl flex items-center justify-center">
+                      <CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-[#f7f2e9]" />
+                    </div>
+                    <h4 className="font-bold text-[#14383b] text-sm sm:text-base">Payment Information</h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#556363] mb-3 sm:mb-4">
+                    Ready to pay your deposit? View our bank transfer details for USD, EUR, or GBP.
+                  </p>
+                  <Button
+                    type="button"
+                    onClick={() => setBankDialogOpen(true)}
+                    className="w-full bg-[#14383b] hover:bg-[#0d2427] text-[#f7f2e9] font-bold rounded-lg sm:rounded-xl h-10 sm:h-11 text-xs sm:text-sm"
+                  >
+                    <Landmark className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
+                    View Bank Details
+                  </Button>
                 </div>
               </div>
 

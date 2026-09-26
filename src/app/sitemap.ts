@@ -71,6 +71,15 @@ const staticPages: SitemapEntry[] = [
     changeFrequency: "weekly",
   },
   { path: "/blog/free-walking-tour-kathmandu.html", priority: 0.95, changeFrequency: "weekly" },
+
+  /* ================================================================ */
+  /*  NEW PAGES ADDED — Legal, Credentials & Community                 */
+  /* ================================================================ */
+  { path: "/privacy-policy", priority: 0.5, changeFrequency: "yearly" },
+  { path: "/terms-and-conditions", priority: 0.5, changeFrequency: "yearly" },
+  { path: "/cancellation-refund-policy", priority: 0.5, changeFrequency: "yearly" },
+  { path: "/licenses-awards", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/partners-communities", priority: 0.7, changeFrequency: "monthly" },
 ];
 
 const contentSettings: Record<
